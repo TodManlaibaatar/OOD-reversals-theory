@@ -1,0 +1,553 @@
+% Separate analytical review increment. No automatic merge.
+% Unique label prefix: inc:LP:v1:
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=0.95in]{geometry}
+\usepackage{booktabs,array,xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Linear contrast and limiting persistence}
+\fancyhead[R]{\small Review increment v1}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\,d}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclareMathOperator{\diag}{diag}
+\title{Exact linear contrast and eventual permanent loss of probe benefit\
+\large A separate analytical increment, not initialized Theorem A}
+\author{Research proof material for independent review}
+\date{Version 1 --- not merged into the checkpoint}
+\begin{document}\maketitle
+
+\begin{abstract}
+We give two analytical statements with different scopes. First, a commuting,
+aligned two-layer linear initialization has an explicit diagonal logistic
+solution at finite width or in the continuum. With diagonal cluster second
+moments, every training cluster helps every probe. This extends and restates
+P10 of the supplied foundations; it is not a newly discovered architecture
+control. Second, the selected coherent weak-growth orbit of the defined
+small-noise system has $x(s)\to+\infty$, is eventually strictly increasing,
+and has exactly zero scaled probe benefit for all sufficiently late times.
+The basic persistence conclusion follows immediately from finite downward
+variation and the existing arbitrary-level hitting theorem. A separate
+comparison using $x+v$ proves eventual monotonicity without the unsupported
+moving-barrier step in the proposed outline. A final conditional diagonal
+argument explains what additional finite-noise convergence would imply
+persistence on growing windows. No numerical trajectory, interval arithmetic,
+or saved-array certificate is a premise.
+\end{abstract}
+
+\section{Scope, dependencies, and normalization}
+\label{inc:LP:v1:scope}
+
+The original initialized Theorems A and B remain open. This file does not
+prove isotropic capture, nonlinear passage of the full population, control
+of a non-small bridge, or any finite-noise trajectory transfer. It does not
+infer infinite-time behavior from an experiment ending at time $100$.
+
+The linear statement is proved directly below and extends \cite{F}, P10,
+from scalar-isotropic initial covariance to an arbitrary positive diagonal
+one. The limiting statements import the following from \cite{P},
+\texttt{pa:branch} and \texttt{pa:limitreversal}: the selected orbit exists
+globally forward, $v>0$, $v>y$, $v>x$, its coordinates grow at most linearly
+forward, and its input coordinate reaches every finite level greater than
+$a_\rho$. We restate the exact equations used. Uniformity over compact
+parameter sets additionally uses the smooth selected-branch dependence
+proved in \cite{W}, Lemma \texttt{inc:AN06:v2:branchsmooth}.
+
+Time $\tau$ for the normalized original flow satisfies
+$\tau=\mu_1^2t_{\mathrm{phys}}$. The centered limiting time is
+$s=\tau-\tau_h$, with weak half-mass at $s=0$. Limits of physical rates
+therefore use $D_p^{\mathrm{phys}}/(\mu_1^2q^2)$, not
+$D_p^{\mathrm{phys}}/q^2$.
+
+\section{The commuting linear architecture control}
+\label{inc:LP:v1:linear}
+Let $(\Omega,\kappa)$ be a label measure space. It can be a finite set with
+counting measure, or a continuum probability space. For square-integrable
+$u,w:\Omega\to\R^d$, put
+\[
+ M=\int_\Omega w_\alpha u_\alpha^\top\dd\kappa(\alpha),
+ \qquad f(X)=MX,\qquad G_0=\int u_{\alpha,0}u_{\alpha,0}^\top\dd\kappa.
+\]
+Let the training distribution be $\sum_p\pi_pP_p$, where $\pi_p>0$ and
+$\sum_p\pi_p=1$. In this section use \emph{weighted} second moments
+\[
+ \mathsf A_p=\pi_p\E_{P_p}[XX^\top],\qquad A=\sum_p\mathsf A_p.
+\]
+This differs from the raw-cluster convention in P10 by the included
+mixture weights. The loss is $\mathcal L=\tfrac12\E\norm{MX-X}^2$.
+The Euclidean or $L^2(\kappa)$ gradient equations are
+\begin{equation}\label{inc:LP:v1:label-flow}
+ w_\alpha'=Ru_\alpha,\qquad u_\alpha'=R^\top w_\alpha,
+ \qquad R=(I-M)A.
+\end{equation}
+
+\begin{theorem}[Diagonal aligned linear flow]
+\label{inc:LP:v1:linear-theorem}
+Suppose
+\[
+ u_{\alpha,0}=w_{\alpha,0}\quad\kappa\text{-a.e.},\qquad
+ G_0=\diag(c_1,\ldots,c_d),\quad 0<c_r<1,
+ \qquad A=\diag(a_1,\ldots,a_d),\quad a_r>0.
+\]
+Then the unique solution is global and remains aligned:
+\[
+ u_\alpha(\tau)=w_\alpha(\tau)=T(\tau)u_{\alpha,0},\qquad
+ T_{rr}(\tau)=\sqrt{\ell_r(\tau)/c_r},
+\]
+where
+\begin{equation}\label{inc:LP:v1:logistic}
+ \ell_r'=2a_r\ell_r(1-\ell_r),\qquad
+ \ell_r(\tau)=\frac{1}{1+(c_r^{-1}-1)e^{-2a_r\tau}},
+ \qquad M(\tau)=\diag(\ell_r(\tau)).
+\end{equation}
+For every nonzero probe $\xi$ and finite $\tau\ge0$,
+\begin{equation}\label{inc:LP:v1:linear-error}
+ E_\xi=\frac12\sum_r(1-\ell_r)^2\xi_r^2,
+ \qquad E_\xi'=-2\sum_ra_r\ell_r(1-\ell_r)^2\xi_r^2<0,
+ \qquad E_\xi=E_{-\xi}.
+\end{equation}
+If each $\mathsf A_p$ is also diagonal in this same basis, then its exact
+cluster-sourced contribution is
+\begin{equation}\label{inc:LP:v1:linear-source}
+ D_p^\tau(\xi)
+ =-2\sum_r(\mathsf A_p)_{rr}\ell_r(1-\ell_r)^2\xi_r^2\le0.
+\end{equation}
+It is strictly negative when $\xi$ has a nonzero coordinate on which
+$(\mathsf A_p)_{rr}>0$.
+\end{theorem}
+\begin{proof}
+The bilinear map $(u,w)\mapsto M$ is continuous from
+$L^2(\kappa)\times L^2(\kappa)$ into the finite-dimensional matrix space,
+by Cauchy--Schwarz. The right-hand side of
+\eqref{inc:LP:v1:label-flow} is therefore locally Lipschitz on that Hilbert
+space. Construct $\ell_r,T$ by \eqref{inc:LP:v1:logistic}. Their denominators
+are positive at all nonnegative times and $0<\ell_r<1$. For the proposed
+aligned solution,
+\[
+ M=TG_0T=\diag(\ell_r),\qquad
+ R=\diag(a_r(1-\ell_r)),\qquad T'=RT.
+\]
+The last identity follows by differentiating
+$T_{rr}=\sqrt{\ell_r/c_r}$. Both label equations are satisfied since
+$R=R^\top$. Local uniqueness identifies this explicitly global candidate
+with the initialized flow. Differentiating $E_\xi$ proves
+\eqref{inc:LP:v1:linear-error}; at finite times every coefficient is
+positive, so every nonzero probe has strict descent.
+
+For the cluster source write $R_p=(I-M)\mathsf A_p$. Directly
+from the two untied label velocities,
+\begin{equation}\label{inc:LP:v1:source-matrix}
+ M'_p=R_pP_U+P_WR_p,\quad
+ P_U=\int uu^\top\dd\kappa,\quad P_W=\int ww^\top\dd\kappa.
+\end{equation}
+On the constructed trajectory $P_U=P_W=M$. When $\mathsf A_p$ is diagonal,
+$M'_p=2(I-M)\mathsf A_pM$. Contracting its probe velocity with
+$-(I-M)\xi$ gives \eqref{inc:LP:v1:linear-source}. The mixture weight has
+already been included in $\mathsf A_p$.
+\end{proof}
+
+\begin{remark}[Necessary qualifications]
+The total diagonal moment alone does not imply each cluster helps. For
+example, at an aligned state with $M=\diag(1/5,4/5)$, let
+\[
+ \mathsf A_1=\begin{pmatrix}1/2&49/100\\49/100&1/2\end{pmatrix},\qquad
+ \mathsf A_2=\begin{pmatrix}1/2&-49/100\\-49/100&1/2\end{pmatrix}.
+\]
+Both matrices are positive definite and $A=I$, but
+\eqref{inc:LP:v1:source-matrix} gives
+$D_1((1,-1)/\sqrt2)=433/5000>0$ at that state. The diagonal cluster
+assumption must therefore accompany \eqref{inc:LP:v1:linear-source}.
+Similarly, positive $a_r$ is needed for strict descent of every direction;
+a zero data eigenvalue leaves that coordinate unchanged.
+\end{remark}
+
+\begin{corollary}[SIM continuum and exact finite-width scope]
+\label{inc:LP:v1:linear-SIM}
+For normalized two-concept SIM,
+\[
+ \mathsf A_1=\frac12\diag(1+q^2,q^2),\quad
+ \mathsf A_2=\frac12\diag(q^2,\rho^2+q^2),\quad
+ A=\diag(1/2+q^2,\rho^2/2+q^2).
+\]
+Aligned isotropic continuum initialization has $G_0=S_0I/2$, so for
+$0<S_0<2$ all conclusions of Theorem~\ref{inc:LP:v1:linear-theorem} hold.
+They also hold at any finite width whose initial Gram matrix is exactly
+positive diagonal, on these population distributions. Independent random
+finite-width isotropic initialization is not exactly diagonal in general.
+\end{corollary}
+\begin{proof}
+The Gaussian cluster moments are the displayed diagonal matrices. Uniform
+unit directions in the plane have second moment $I/2$ by antipodal and
+coordinate-exchange symmetry, giving $G_0=S_0I/2$. Apply the theorem.
+\end{proof}
+
+\begin{remark}[Positive-quadrant initialization]
+For a uniform initial angle on $[0,\pi/2]$ and total squared mass $S_0$,
+\[
+ G_0=S_0\begin{pmatrix}1/2&1/\pi\\1/\pi&1/2\end{pmatrix}.
+\]
+This follows by integrating $\cos^2\alpha$, $\sin^2\alpha$ and
+$\sin\alpha\cos\alpha$ with density $2/\pi$. It exhibits nonzero minor
+entries and generally leaves the commuting class when the data eigenvalues
+differ. It does not, on its own, prove reversal for that initialization.
+The tied predecessor and the untied network must still be distinguished.
+For the same mass the isotropic linear initial map is $S_0X/2$, whereas the
+ReLU initial map is $S_0X/4$; matching initial outputs rescales linear mass,
+without changing the monotonicity conclusion.
+\end{remark}
+
+\section{Selected limiting orbit and its already-proved properties}
+\label{inc:LP:v1:orbit}
+Fix $0<\rho<1$, $\lambda=\rho^2$, and
+$K(z)=\phi(z)+z\Phi(z)$, where $\phi,\Phi$ are the standard Gaussian density
+and distribution function. On the strong-learned coherent surface the
+selected weak-growth orbit solves
+\begin{align}
+ n(s)&=(1+e^{-\lambda s})^{-1},\nonumber\\
+ x'&=\frac\lambda2[nv-x+(1-n)y]\Phi(\rho x),\nonumber\\
+ y'&=\frac12[-y-nK(u)+\rho(1-n)K(\rho x)],\nonumber\\
+ u'&=\frac12[(1-n)(\phi(u)-\lambda u)-(nu+y)\Phi(u)],\nonumber\\
+ v'&=\frac12[\rho K(\rho x)-\lambda v].
+ \label{inc:LP:v1:orbit-equations}
+\end{align}
+It approaches $(n,x,y,u,v)=(0,a,a,u_*,a/\lambda)$ as $s\to-\infty$, with
+$a=\rho K(\rho a)$ and
+$\phi(u_*)-a\Phi(u_*)-\lambda u_*=0$.
+The selected branch and its global continuation are supplied by \cite{P}.
+In particular, for $s\ge0$ there is a finite constant $C$ such that
+\begin{equation}\label{inc:LP:v1:imports}
+ v>0,\quad v>y,\quad v>x,\qquad
+ \max(|x|,|y|,|u|,|v|)\le C(1+s).
+\end{equation}
+The same source proves that $x$ reaches every finite level $\zeta>a$.
+These are analytical orbit properties, not numerical observations.
+
+Define
+\[
+ d=v-x>0,\qquad \epsilon=(1-n)(v-y)>0,\qquad
+ P=\Phi(\rho x),\qquad
+ g_\rho(x)=K(\rho x)/\rho-x>0.
+\]
+Direct subtraction of \eqref{inc:LP:v1:orbit-equations} yields
+\begin{align}
+ x'&=\frac\lambda2(d-\epsilon)P,\label{inc:LP:v1:x-equation}\\
+ d'&=\frac\lambda2[g_\rho(x)-(1+P)d+\epsilon P],
+ \label{inc:LP:v1:d-equation}\\
+ v'&=\frac\lambda2[g_\rho(x)-d].\label{inc:LP:v1:v-equation}
+\end{align}
+Since $1-n\le e^{-\lambda s}$ for $s\ge0$, the imported growth bound gives
+\begin{equation}\label{inc:LP:v1:epsilon-tail}
+ 0<\epsilon(s)\le2C(1+s)e^{-\lambda s},\qquad
+ \frac\lambda2\int_s^\infty\epsilon(r)\dd r
+ \le C e^{-\lambda s}(1+s+\lambda^{-1})=:Q(s)\longrightarrow0.
+\end{equation}
+
+\section{Permanent loss of the leading probe benefit}
+\label{inc:LP:v1:persistence}
+\begin{lemma}[Unboundedness with finite downward variation]
+\label{inc:LP:v1:downward}
+Let $z$ be locally absolutely continuous on $[0,\infty)$. If
+$\int_0^\infty(z')_-<\infty$ and $\limsup_{s\to\infty}z(s)=+\infty$,
+then $z(s)\to+\infty$. More precisely, for $t\ge s$,
+\[
+ z(t)\ge z(s)-\int_s^\infty(z')_-(r)\dd r.
+\]
+\end{lemma}
+\begin{proof}
+Integrate $z'= (z')_+-(z')_-$ on $[s,t]$ and discard its positive part.
+Given a real threshold $H$, choose a sufficiently late $s$ for which
+$z(s)>H+1$ and the tail integral is less than one. Such $s$ exists by the
+unbounded limsup and convergence of the tail integral. The displayed
+inequality implies $z(t)>H$ for every $t\ge s$.
+\end{proof}
+
+\begin{theorem}[Eventual permanent inactivity in the selected limit]
+\label{inc:LP:v1:permanence}
+For the selected coherent orbit and every $0<\rho<1$,
+\[
+ x(s)\longrightarrow+\infty.
+\]
+For every finite $\zeta$, there is a finite $S_\zeta$ such that
+$x(s)>\zeta$ and
+\begin{equation}\label{inc:LP:v1:eventual-zero}
+ \mathcal E_\zeta(s)
+ =\frac12(\zeta-x(s))_+^2
+ -(\zeta-x(s))_+(\zeta-y(s))=0
+ \qquad(s\ge S_\zeta).
+\end{equation}
+The same $S_\zeta$ works for every offset in a bounded interval with upper
+endpoint $\zeta$. For $\zeta>a$, this follows after a genuine earlier
+reversal; all of the negative scaled probe error at any earlier time is
+eventually returned. In particular the earlier minimum lies below
+$-(\zeta-a)^2/2$, while the eventual scaled error is exactly zero.
+This theorem does not assert that re-entry is impossible immediately after
+the first gate hit.
+\end{theorem}
+\begin{proof}
+Equation \eqref{inc:LP:v1:x-equation} and $d,P>0$ imply
+$(x')_-\le\lambda\epsilon/2$. Hence
+\[
+ x(t)\ge x(s)-Q(s)\qquad(t\ge s\ge0).
+\]
+The imported arbitrary-level hitting theorem and boundedness on compact
+time intervals imply $\limsup_{s\to\infty}x(s)=+\infty$.
+Lemma~\ref{inc:LP:v1:downward} proves the asserted limit. Choose a time
+past which $x$ exceeds the largest offset. Both positive parts in
+\eqref{inc:LP:v1:eventual-zero} then vanish. The strict earlier minimum
+and reversal are the imported selected-orbit theorem, \cite{P},
+\texttt{pa:limitreversal}. No eventual monotonicity estimate is required for
+this argument.
+\end{proof}
+
+\begin{remark}[What is zero]
+$\mathcal E_\zeta$ is the coefficient in the small-noise expansion
+$E_{\xi_q}-1/2=q^2\mathcal E_\zeta+o(q^2)$ on a justified fixed window.
+Equation \eqref{inc:LP:v1:eventual-zero} is exact in the defined limiting
+system, not the assertion that the original isotropic network has zero
+probe output at finite $q$. Also, the leading system is continued as an
+ODE after gate loss; the training equations do not depend on $\zeta$.
+Its diverging scaled angles prevent an automatic interchange of $q\to0$
+and $s\to\infty$.
+\end{remark}
+
+\section{The additional eventual-monotonicity statement}
+\label{inc:LP:v1:monotonic}
+The proposed argument that a negative derivative whenever
+$d>g_\rho(x)+\epsilon$ automatically yields tracking of that moving graph
+is incomplete: the graph itself moves. The following proof uses a scalar
+comparison with $x+v$ instead.
+
+\begin{proposition}[Slow growth and eventual positive input velocity]
+\label{inc:LP:v1:monotonic-theorem}
+On the selected orbit,
+\[
+ x(s)=O(\sqrt{\log(2+s)}),\qquad x'(s)>0
+ \quad\text{for all sufficiently large }s.
+\]
+The constants and starting time may depend on $\rho$ and the selected
+orbit. No asymptotic equivalent, numerical gate time, or no-re-entry claim
+at the first hit is asserted.
+\end{proposition}
+\begin{proof}
+\emph{Bound the gap.}
+The downward-variation estimate gives a finite lower bound
+$x\ge x_-=x(0)-Q(0)$. Let
+$B_\epsilon=\sup_{s\ge0}\epsilon(s)<\infty$. Since $g_\rho$ is positive
+and decreasing, \eqref{inc:LP:v1:d-equation} gives
+\[
+ d'\le\frac\lambda2[g_\rho(x_-)+B_\epsilon-d].
+\]
+Thus $0<d\le D$, where
+$D=\max\{d(0),g_\rho(x_-)+B_\epsilon\}$.
+
+\emph{A scalar upper-growth comparison.}
+Put $W=x+v=2x+d$. From
+\eqref{inc:LP:v1:x-equation} and \eqref{inc:LP:v1:v-equation},
+\begin{equation}\label{inc:LP:v1:sum}
+ W'=\frac\lambda2[g_\rho(x)-(1-P)d-\epsilon P]
+ \le\frac\lambda2g_\rho(x).
+\end{equation}
+Theorem~\ref{inc:LP:v1:permanence} implies $W\to\infty$. Choose $s_0$
+such that $z=W-D\ge1$ and $x\ge0$ for $s\ge s_0$.
+Since $x=(W-d)/2\ge z/2$ and, for $r\ge0$,
+$g_\rho(r)\le\phi(\rho r)/\rho$, we have
+\[
+ z'\le c_1e^{-\lambda z^2/8},\qquad
+ c_1=\rho\phi(0)/2.
+\]
+Define $F(z)=\int_0^z e^{\lambda r^2/8}\dd r$. The ordinary chain rule
+and the preceding inequality give
+\[
+ F(z(s))\le F(z(s_0))+c_1(s-s_0)=:\mathcal Q(s).
+\]
+For $z\ge1$, integration over $[z-1,z]$ gives
+$F(z)\ge e^{\lambda(z-1)^2/8}$. Consequently
+\begin{equation}\label{inc:LP:v1:sqrtlog}
+ x(s)\le\frac{W(s)}2
+ \le\frac{D+1}{2}+\sqrt{\frac2\lambda\log\mathcal Q(s)}.
+\end{equation}
+This establishes the claimed logarithmic upper growth; eventual positivity
+of $x$ gives the stated big-$O$ bound.
+
+\emph{A polynomial lower bound beats the transient.}
+For $r\ge0$,
+\[
+ g_\rho(r)=\frac1\rho\int_{\rho r}^\infty(t-\rho r)\phi(t)\dd t
+ \ge\frac1\rho\phi(\rho r+2),
+\]
+by restricting to $t\in[\rho r+1,\rho r+2]$.
+Set $A_0=\rho(D+1)/2+2$. Equation \eqref{inc:LP:v1:sqrtlog} and
+$(a+b)^2/2\le a^2+b^2$ yield
+\begin{equation}\label{inc:LP:v1:gaplower}
+ g_\rho(x(s))\ge\frac{\phi(0)}\rho e^{-A_0^2}\mathcal Q(s)^{-2}
+ =:c_2\mathcal Q(s)^{-2}\qquad(s\ge s_0).
+\end{equation}
+The exact gap equation gives
+$d'+\lambda d\ge\lambda g_\rho(x)/2$. Integrating only over the last
+unit interval, for $s\ge s_0+1$, and using that $\mathcal Q$ increases,
+\[
+ d(s)\ge\frac{c_2}{2}(1-e^{-\lambda})\mathcal Q(s)^{-2}.
+\]
+The right side decays polynomially, whereas
+$\epsilon(s)\le2C(1+s)e^{-\lambda s}$ decays exponentially. Their ratio
+therefore tends to infinity. Eventually $d>\epsilon$ and
+\eqref{inc:LP:v1:x-equation} gives $x'>0$.
+\end{proof}
+
+\section{Uniform offsets and a conditional finite-noise implication}
+\label{inc:LP:v1:transfer}
+\begin{proposition}[A common limiting clearing time on compact parameters]
+\label{inc:LP:v1:uniform-clear}
+Let $\mathcal K$ be a compact parameter interval in $(0,1)$ on which the
+selected branches depend continuously on $\rho$ on fixed finite windows.
+Suppose the imported forward growth estimate is uniform on $\mathcal K$.
+For every finite $\zeta_+$ there is a common finite $S$ such that
+\[
+ x_\rho(s)>\zeta_+\qquad(\rho\in\mathcal K,\ s\ge S).
+\]
+For the interval used by AN06, the assumed continuity is supplied by its
+branch-smoothness lemma; uniform linear growth follows from the checkpoint's
+Dini inequality and bounded initial states on the compact parameter set.
+\end{proposition}
+\begin{proof}
+Write $\lambda_- =\min_{\mathcal K}\rho^2>0$ and
+$\lambda_+=\max_{\mathcal K}\rho^2$. The uniform bound
+$\epsilon_\rho(s)\le2C(1+s)e^{-\lambda_-s}$ supplies a uniform upper
+bound on $\lambda_\rho\int_s^\infty\epsilon_\rho/2$ tending to zero.
+Choose $s_0$ so that this tail bound is below $1/2$ afterward.
+For every $\rho_0$, choose $s_{\rho_0}\ge s_0$ with
+$x_{\rho_0}(s_{\rho_0})>\zeta_++2$, possible by divergence.
+Continuity gives a neighborhood of $\rho_0$ on which
+$x_\rho(s_{\rho_0})>\zeta_++1$. The downward-variation bound then keeps
+$x_\rho>\zeta_++1/2$ for every later time in that neighborhood. A finite
+subcover of $\mathcal K$ and the maximum of its times provide $S$.
+\end{proof}
+
+\begin{proposition}[A conditional growing-window transfer]
+\label{inc:LP:v1:diagonal-transfer}
+Let $\mathcal I$ be a compact set of scaled offsets and let $S$ be a common
+clearing time for a limiting family, including any stated compact $\rho$
+range. Consider an \emph{actual initialized} positive-noise family with
+$S_0=S_0(q)$, and an analytically specified centered time $t_h(q)$.
+Put
+\[
+ F_q(s,\zeta)=
+ \frac{E_{\xi_q}(t_h(q)+s/\mu_1^2)-1/2}{q^2},\qquad
+ \xi_q=(\sin(q\zeta),-\cos(q\zeta)).
+\]
+Suppose, as an additional analytically proved hypothesis, that for every
+finite $T>S$ the full original flow satisfies
+\begin{equation}\label{inc:LP:v1:compact-transfer}
+ \sup_{\zeta\in\mathcal I,\ S\le s\le T}
+ |F_q(s,\zeta)-\mathcal E_\zeta(s)|\longrightarrow0
+ \quad(q\downarrow0),
+\end{equation}
+with uniformity over any included $\rho$ range. Then there are
+$T_q\to\infty$ and $\varepsilon_q\to0$ such that
+\[
+ \left|E_{\xi_q}(t_h(q)+s/\mu_1^2)-\frac12\right|
+ \le\varepsilon_q q^2
+ \quad(S\le s\le S+T_q,\ \zeta\in\mathcal I).
+\]
+In particular the proposed lower bound follows. No rate of growth of
+$T_q$ is supplied by this proposition.
+\end{proposition}
+\begin{proof}
+The limiting observable is zero for $s\ge S$. For each positive integer
+$j$, use \eqref{inc:LP:v1:compact-transfer} with $T=S+j$ to choose
+$q_j>0$ so that the supremum is at most $1/j$ whenever $0<q\le q_j$.
+Choose the thresholds strictly decreasing to zero, with
+$q_{j+1}\le q_j/2$. For $0<q\le q_1$, let
+$j(q)=\max\{j:q\le q_j\}$. It is finite, tends to infinity as $q\to0$,
+and its defining estimate gives the result with
+$T_q=j(q)$ and $\varepsilon_q=1/j(q)$.
+\end{proof}
+
+\begin{remark}[What this conditional statement does not supply]
+Theorem A's error/rate control only on its crossing windows is weaker than
+\eqref{inc:LP:v1:compact-transfer}. Initialized selection, splitting,
+background contributions, and finite-noise evolution must still establish
+this additional compact-window convergence. The diagonal argument is an
+analytical implication, not a substitute for those estimates or an explicit
+long-time approximation. For a broad-bridge limiting population, one first
+needs its own limiting persistence theorem.
+
+The left endpoint must lie after an analytically justified limiting clearing
+or near-recovery time, not just at an arbitrary fixed delay after the
+minimum. If the limiting coefficient is still negative there, a bound
+$E\ge1/2-o(q^2)$ cannot hold at that time.
+\end{remark}
+
+\begin{remark}[Every label need not clear]
+To prove a lower bound on probe error, it is enough to control the
+remaining benefit:
+\[
+ E_\xi=\frac12-\xi^\top f(\xi)+\frac12\norm{f(\xi)}^2
+ \ge\frac12-[\xi^\top f(\xi)]_+.
+\]
+Thus $[\xi^\top f(\xi)]_+\le\varepsilon q^2$ suffices. Requiring every
+original label to become probe-inactive is unnecessary and, for the exact
+finite-time isotropic continuum, is incompatible with the angular
+surjectivity deduction in \cite{R}. Positive mass may remain in every open
+angular arc even while its observable contribution is negligible.
+\end{remark}
+
+\section{Status for Theorems A and B}
+\label{inc:LP:v1:status-final}
+The linear architecture control is already supported by the foundations;
+this file states a wider diagonal-initialization version and records the
+necessary per-cluster assumptions. The selected coherent limiting orbit
+now has an analytical eventual-persistence conclusion in addition to its
+reversal conclusion. These are not initialized theorems for the original
+ReLU population.
+
+An empirical statement of persistence through physical time $100$ should
+not be renamed infinite-time permanence. A finite-small-parameter theorem
+cannot be promoted to the canonical point without bounds that actually
+include $q=0.05$ and $S_0=2\cdot10^{-4}$. Conversely, the non-small bridge
+amplitude enhancement is not logically required for a first initialized
+small-shape reversal theorem. It remains important if the theorem is
+advertised as covering the canonical enhanced trajectory.
+
+The exact decay rate of the original training loss, the numerical
+$1.10$ time delay, finite-width fluctuations, and all empirical hypothesis
+outcomes are outside the proofs in this increment.
+
+\section*{Review and integration contract}
+This file and its companion review note are new, separate review material.
+No foundation, notebook, appendix, handoff, or theory checkpoint has been
+modified. After independent checking and explicit approval, the linear
+extension belongs with P10 (or its main-paper statement), and the limiting
+persistence theorem belongs after \texttt{pa:limitreversal}. The growing-window
+transfer remains an explicitly conditional corollary. No automatic merge is
+requested.
+
+\begin{thebibliography}{9}
+\bibitem{F} \emph{ReLU Population Foundations}, version 2.
+User-supplied \path{RELU_POPULATION_FOUNDATIONS_v2.tex}, P10, Section 16.
+\bibitem{P} \emph{Analytical Progress toward Initialized Population Reversal},
+checkpoint 1.0. User-supplied \path{THEOREM_A_ANALYTICAL_PROGRESS.tex},
+\texttt{pa:branch}, \texttt{pa:atomicrates}, \texttt{pa:limitreversal}.
+\bibitem{W} \emph{Learned Limiting-Orbit Witnesses}, version 2.
+User-supplied \path{AN06_learned_orbit_witnesses_v2.tex}, smooth branch
+dependence and common-window constructions.
+\bibitem{R} \emph{Reviewer Addendum to AN02 and AN06}, version 1.
+User-supplied \path{AN02_AN06_review_addendum_v1.tex}, finite-time angular
+surjectivity and background-budget distinctions.
+\end{thebibliography}
+\end{document}

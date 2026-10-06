@@ -1,0 +1,493 @@
+% Separate proof increment. No input or consolidated checkpoint is modified.
+% Unique label prefix: inc:AN03:local:v1:
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,booktabs,array,xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small AN03: local passage and mean tracking}
+\fancyhead[R]{\small Review increment v1}
+\fancyfoot[C]{\thepage}\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}\newcommand{\esssup}{\operatorname*{ess\,sup}}
+\title{Local-rate passage with collective mean tracking\\
+\large A fixed-core theorem with a weighted tail-forcing budget}
+\author{Analytical increment for independent review}
+\date{Version 1 --- October 3, 2026}
+\hypersetup{pdftitle={Local-rate passage with collective mean tracking},pdfauthor={Analytical increment for independent review}}
+\begin{document}\maketitle
+\begin{abstract}
+We prove a nonlinear resident-passage estimate in the full leading
+population. A fixed strong core is compared with a characteristic in
+its own population field. The resident collective mode is uniformly
+contracting for every strong mass between zero and one, while the core
+spread has leading growth rate $\alpha(1-N)$ rather than
+$\lambda(1-N)/2$. A coupled first-exit argument controls both the mean
+and the spread, with an explicit Riccati denominator and no additional
+logarithmic loss. The remaining strong population is retained through
+its first absolute moment relative to the core reference; weak feedback
+is retained through $N+|V|+K_w$. These integrated forcing budgets are
+hypotheses, not initialized conclusions. A subsequent bounded interval
+preserves the local power $N_0^{-\alpha/\lambda}$. We state the resulting
+joint-parameter exponent test with every seed and shape $q$-power
+visible. Neither Q2 retention, initialized entry, weak angular
+condensation, nor finite-noise transfer is proved here.
+\end{abstract}
+
+\section{Scope and exact leading equations}\label{inc:AN03:local:v1:contract}
+The source is the defined leading system in the supplied checkpoint,
+\texttt{pa:leading}, \texttt{pa:masslaws}, \texttt{pa:overlap},
+\texttt{pa:resident}, and \texttt{pa:spectra}. The pair cancellation is
+also recorded in AN03 two-sided passage v1; its mixed-order proof is
+repaired explicitly in v2. We restate all equations needed here. This is
+not a uniform reduction theorem for the original positive-noise flow.
+
+Fix $0<\rho<1$, $\lambda=\rho^2$, and
+\[
+ K(z)=\phi(z)+z\Phi(z),\qquad
+ F(t,r)=\phi(\min(t,r))+r\Phi(\min(t,r)).
+\]
+Let $\mu_s,\mu_w$ be the strong and weak measures, with total moments
+\[
+ M=\int\dd\mu_s,\quad N=\int\dd\mu_w,\quad
+ Y=\int y\dd\mu_s,\quad V=\int v\dd\mu_w,\quad
+ K_w=\int K(u)\dd\mu_w.
+\]
+In particular $V$ is not a normalized mean. The strong field is
+\begin{align}
+ 2f_x(x,y)&=-(1-M)x+\rho\phi(\rho x)-\rho\mathcal S(x)
+       +\lambda[V+(1-N)y]\Phi(\rho x),\label{inc:AN03:local:v1:field}\\
+ 2f_y(x,y)&=-(1-M)y-Y-K_w+\rho(1-N)K(\rho x),\nonumber\\
+ \mathcal S(x)&=\int F(\rho x,\rho\widetilde x)\dd\mu_s,\nonumber\\
+ M'&=M(1-M),\qquad N'=\lambda N(1-N).\label{inc:AN03:local:v1:mass}
+\end{align}
+We consider characteristic solutions on finite intervals with bounded
+support on compact subintervals, $0<M\le1$, $0<N\le1/2$, and fixed
+family labels. Their normalized label weights are constant. All tail
+statements below concern labels of this same leading system. A physical
+population outside the noise-scaled charts needs an additional field
+error budget; it is not incorporated by merely calling it a tail.
+
+Let $\eta$ be the normalized full strong-label law. Fix a measurable
+core $C$ with $\eta(C)>0$ at the initial time. No later relabeling is
+allowed. Let $(c,d)$ be any characteristic of \eqref{inc:AN03:local:v1:field}
+in the same evolving field; it need not carry mass. Define
+\begin{align}
+ D_\beta&=|x_\beta-c|+|y_\beta-d|,\qquad
+ r=\esssup_{\beta\in C}D_\beta,\nonumber\\
+ T&=\int_{C^c}D_\beta\dd\eta(\beta),\qquad
+ \mathfrak f=N+|V|+K_w+T.\label{inc:AN03:local:v1:forcing}
+\end{align}
+Thus $\int D\dd\eta\le r+T$. The tail budget is a moment, not just a
+mass fraction. A small mass at large scaled displacement need not have
+small $T$.
+
+Let $a=a_\rho$ be the unique positive solution of $a=\rho K(\rho a)$,
+and put
+\begin{align}
+ P&=\Phi(\rho a),\qquad \alpha=\lambda P/2,\nonumber\\
+ B&=a+1,\qquad C_0=4(a+3),\nonumber\\
+ \gamma&=\frac{\alpha(1/2-\alpha)}{\alpha+1/2}>0,
+ \qquad g=\gamma/2,\qquad
+ e_*=\min\{1,\gamma/(2C_0)\}.\label{inc:AN03:local:v1:constants}
+\end{align}
+The symbol $e=\sqrt{(c-a)^2+(d-a)^2}$ denotes reference mean-direction
+error, not the training residual.
+
+\section{A local all-order shape inequality}\label{inc:AN03:local:v1:shape}
+\begin{lemma}[Local coefficient with the full donor field]
+\label{inc:AN03:local:v1:localineq}
+While $e\le1$ and $r\le1$, the core radius obeys
+\begin{equation}\label{inc:AN03:local:v1:rineq}
+ D^+r\le[\alpha(1-N)+C_0(e+r+\mathfrak f)]r.
+\end{equation}
+No ordering between a core label and the reference is required.
+\end{lemma}
+\begin{proof}
+Set $\varepsilon_M=1-M$ and define
+\[
+ \Pi(z)=\int(\widetilde x-z)_+\dd\mu_s,\quad
+ \Lambda_-(z)=\int(z-\widetilde x)_+\dd\mu_s,\quad
+ X_s=M^{-1}\int x\dd\mu_s.
+\]
+Then $\Pi-\Lambda_-=M(X_s-z)$. Also, by the explicit overlap derivative,
+\begin{align*}
+ 2\partial_xf_x(z,d)
+  &=-\varepsilon_M+\rho^3[V+(1-N)d-z-\Pi(z)]\phi(\rho z),\\
+ 2\partial_yf_x(z,d)&=2\partial_xf_y(z,d)
+          =\lambda(1-N)\Phi(\rho z).
+\end{align*}
+Let $h=|x-c|$, $k=|y-d|$, $P(z)=\Phi(\rho z)$, and
+\[
+ U_c=V+(1-N)d-c,\qquad U_c^-=U_c+M(c-X_s),\qquad
+ c_\rho=\rho^3\phi(0)/2.
+\]
+For $x>c$, subtraction and absolute values give, with
+$\overline P_+=h^{-1}\int_c^{c+h}P(z)\dd z$,
+\begin{align*}
+ 2D^+h&\le-\varepsilon_Mh+\lambda(1-N)kP(c+h)
+                    +2c_\rho(U_c)_+h,\\
+ 2D^+k&\le-\varepsilon_Mk+\lambda(1-N)h\overline P_+.
+\end{align*}
+For $x<c$, use the donor cancellation before estimating. With
+$\overline P_-=h^{-1}\int_{c-h}^cP(z)\dd z$ and $P_-=P(c-h)$,
+\begin{align*}
+ 2D^+h&\le-\varepsilon_Mh+\lambda(1-N)kP_-
+  +\lambda\varepsilon_Mh(\overline P_--P_-)
+  +2c_\rho(U_c^-)_+h,\\
+ 2D^+k&\le-\varepsilon_Mk+\lambda(1-N)h\overline P_-.
+\end{align*}
+Both displays hold for either sign of $y-d$. At a zero coordinate
+difference, the absolute value of its cross velocity gives the same
+inequality. At full coincidence, uniqueness preserves coincidence.
+Since $h\le r$, all displayed gate factors are at most $P(c+r)$.
+The lower-side extra term is at most $\lambda\varepsilon_Mh$.
+Consequently every core label satisfies
+\[
+ D^+D\le\left[-\frac{(1-\lambda)\varepsilon_M}{2}
+   +\frac\lambda2(1-N)P(c+r)
+   +c_\rho\max(0,U_c,U_c^-)\right]D.
+\]
+The Gaussian Lipschitz bound gives
+$P(c+r)\le P+\rho\phi(0)(e+r)$. Furthermore,
+\[
+ \max(0,U_c,U_c^-)
+ \le |V|+\sqrt2e+BN+r+T,
+\]
+since $|d|\le B$ and $|c-X_s|\le\int D\dd\eta\le r+T$.
+Discard the negative strong-mass term and use $\lambda<1$, $\rho<1$,
+$\phi(0)<1/2$; the constant $C_0$ in
+\eqref{inc:AN03:local:v1:constants} exceeds all the resulting
+coefficients. This proves the common labelwise bound with coefficient
+$\alpha(1-N)+C_0(e+r+\mathfrak f)$.
+On compact time intervals bounded velocities make all $D_\beta$
+uniformly Lipschitz. Integrating their common scalar inequality and
+taking the essential supremum gives \eqref{inc:AN03:local:v1:rineq}
+in integral form and almost everywhere. The upper Dini interpretation
+follows by continuity of the common coefficient; measurable forcing
+may instead be kept in integral form.
+\end{proof}
+
+\section{Collective mean tracking, not an assumed mean budget}
+\label{inc:AN03:local:v1:mean}
+Collapse the entire strong mass to $(c,d)$, suppress weak feedback,
+and write its field as $G_M$:
+\begin{align}
+ 2(G_M)_1(c,d)&=-(1-M)c+\rho(1-M)\phi(\rho c)
+                 +\lambda(d-Mc)\Phi(\rho c),\nonumber\\
+ 2(G_M)_2(c,d)&=-d+\rho K(\rho c).\label{inc:AN03:local:v1:coherentfield}
+\end{align}
+This is an analytical comparison field. The actual reference continues
+to evolve in the full population field, not in $G_M$.
+
+\begin{lemma}[Uniform stable mode and exact perturbation budget]
+\label{inc:AN03:local:v1:meanineq}
+For $e\le1$, the actual reference obeys
+\begin{equation}\label{inc:AN03:local:v1:emean}
+ D^+e\le-\gamma e+C_0e^2+C_0(r+\mathfrak f).
+\end{equation}
+Therefore, while $e\le e_*$,
+\begin{align}
+ e(t)&\le e_0e^{-g(t-t_0)}+
+ C_0\int_{t_0}^te^{-g(t-s)}[r(s)+\mathfrak f(s)]\dd s,
+ \label{inc:AN03:local:v1:convolution}\\
+ \int_{t_0}^te&\le\frac{e_0}{g}
+       +\frac{C_0}{g}\int_{t_0}^t(r+\mathfrak f).
+ \label{inc:AN03:local:v1:intmean}
+\end{align}
+\end{lemma}
+\begin{proof}
+The point $(a,a)$ is stationary for $G_M$ at every $0\le M\le1$.
+Its derivative is the symmetric matrix
+\[
+ J_M=\begin{pmatrix}-(1-M)/2-M\alpha&\alpha\\
+                     \alpha&-1/2\end{pmatrix}
+ =J_1-\begin{pmatrix}(1-M)(1/2-\alpha)&0\\0&0\end{pmatrix}.
+\]
+The positive matrix $-J_1$ has determinant
+$\alpha(1/2-\alpha)$ and trace $\alpha+1/2$. Its smallest eigenvalue
+is at least determinant divided by trace. Hence
+$z^TJ_Mz\le-\gamma|z|^2$, uniformly in $M$.
+
+For completeness, on $|c-a|^2+|d-a|^2\le1$ the only nonzero second
+partials are bounded using
+\begin{align*}
+ 2\partial_{cc}(G_M)_1
+ &=-\rho^3[(M+1)+\rho^2c(d-c)]\phi(\rho c),\\
+ 2\partial_{cd}(G_M)_1&=\rho^3\phi(\rho c),\qquad
+ 2\partial_{cc}(G_M)_2=\rho^3\phi(\rho c).
+\end{align*}
+With $|c|,|d|\le B$ and $|d-c|\le2$, Taylor's formula on the segment
+from $(a,a)$ bounds the vector remainder by $C_0e^2$.
+
+The exact discrepancy $E=(c',d')-G_M(c,d)$ satisfies
+\begin{align*}
+ 2E_1&=-\rho[\mathcal S(c)-MK(\rho c)]
+                       +\lambda[V-Nd]\Phi(\rho c),\\
+ 2E_2&=Md-Y-K_w-\rho N K(\rho c).
+\end{align*}
+Since $0\le\partial_rF(t,r)\le1$,
+\[
+ |\mathcal S(c)-MK(\rho c)|\le\rho\int|x-c|\dd\mu_s.
+\]
+Also $|Y-Md|\le\int|y-d|\dd\mu_s$, $M\le1$, and
+$K(\rho c)\le\phi(0)+\rho B$. Thus
+\[
+ |E|_2\le |E|_1\le\tfrac12(r+T)+\tfrac12(|V|+K_w)
+                    +(B+1/2)N\le C_0(r+\mathfrak f).
+\]
+The Euclidean norm derivative, including its upper derivative at $e=0$,
+proves \eqref{inc:AN03:local:v1:emean}. For $e\le e_*$, the quadratic
+term is at most $\gamma e/2$. Scalar comparison yields
+\eqref{inc:AN03:local:v1:convolution}; Tonelli and integration of the
+exponential kernel yield \eqref{inc:AN03:local:v1:intmean}.
+\end{proof}
+
+\section{Coupled nonlinear local passage}\label{inc:AN03:local:v1:closure}
+Fix $n_b\in(0,1/2]$, $0<N_0=N(t_0)<n_b$, and let $t_b$ be the unique
+logistic time with $N(t_b)=n_b$. It is finite. Put
+\[
+ K_0=C_0(1+C_0/g),\qquad a_b=\alpha(1-n_b)>0.
+\]
+
+\begin{theorem}[Local-rate passage with proved mean tracking]
+\label{inc:AN03:local:v1:main}
+Assume the leading solution and reference exist on $[t_0,t_b]$ as in
+Section 1, and the full weak/tail forcing satisfies
+\[
+ \int_{t_0}^{t_b}\mathfrak f\le F_b.
+\]
+Set
+\begin{align}
+ L_b&=\exp(C_0e_0/g+K_0F_b)(n_b/N_0)^{\alpha/\lambda},\nonumber\\
+ \mathcal A&=r_0L_b,\qquad e_0=e(t_0),\quad r_0=r(t_0).
+ \label{inc:AN03:local:v1:smallparameter}
+\end{align}
+If
+\begin{align}
+ e_0&\le e_*/4,\qquad F_b\le e_*/(4C_0),\nonumber\\
+ \mathcal A&\le
+ \min\left\{\frac14,\frac{a_b}{2K_0},
+                      \frac{g e_*}{8C_0}\right\},
+ \label{inc:AN03:local:v1:guards}
+\end{align}
+then throughout the interval
+\begin{equation}\label{inc:AN03:local:v1:result}
+ e\le3e_*/4,\qquad r\le2\mathcal A\le1/2,
+ \qquad
+ r(t_b)\le2e^{C_0e_0/g+K_0F_b}(n_b/N_0)^{\alpha/\lambda}r_0.
+\end{equation}
+The mean also satisfies the convolution bound
+\eqref{inc:AN03:local:v1:convolution}, and
+\begin{equation}\label{inc:AN03:local:v1:intresult}
+ \int_{t_0}^{t_b}r\le\frac{2\mathcal A}{a_b},\qquad
+ \int_{t_0}^{t_b}e\le\frac{e_0}{g}
+              +\frac{C_0}{g}\left(F_b+\frac{2\mathcal A}{a_b}\right).
+\end{equation}
+In particular no lower bound on the actual growth of $r$ is needed.
+\end{theorem}
+\begin{proof}
+Work until the first exit of $e<e_*$ or $r<1$. Integrate
+\eqref{inc:AN03:local:v1:rineq} and use
+\eqref{inc:AN03:local:v1:intmean}. Since
+$\lambda\int_{t_0}^t(1-N)=\log(N(t)/N_0)$, this gives
+\[
+ r(t)\le r_0L(t)\exp\left(K_0\int_{t_0}^tr\right),\qquad
+ L(t)=e^{C_0e_0/g}(N(t)/N_0)^{\alpha/\lambda}
+                      e^{K_0\int_{t_0}^t\mathfrak f}.
+\]
+The case $r_0=0$ follows directly from same-field uniqueness. Otherwise,
+differentiate $\exp(-K_0\int r)$ and integrate to obtain
+\[
+ r(t)\le\frac{r_0L(t)}{Q(t)},\qquad
+ Q(t)=1-K_0r_0\int_{t_0}^tL(s)\dd s
+\]
+while $Q>0$. This argument is a scalar integral comparison, not an
+assumption that the radius increases. The comparison multiplier obeys
+\[
+ L'=[\alpha(1-N)+K_0\mathfrak f]L\ge a_bL,
+ \quad
+ \int_{t_0}^tL\le[L(t)-L(t_0)]/a_b\le L_b/a_b.
+\]
+Consequently \eqref{inc:AN03:local:v1:guards} gives $Q\ge1/2$ and
+$r\le2\mathcal A$, and also $\int r\le2\mathcal A/a_b$.
+The convolution bound yields
+\[
+ e(t)\le e_0+\frac{2C_0\mathcal A}{g}+C_0F_b\le3e_*/4.
+\]
+Both first-exit guards improve strictly, so continuation proves the
+claims on all of $[t_0,t_b]$. Finally integrate the same convolution to
+obtain \eqref{inc:AN03:local:v1:intresult}.
+\end{proof}
+
+\paragraph{One way to supply the small forcing budget.}
+If $|V|+K_w\le C_wN+w$, $w\ge0$, then
+\[
+ F_b\le\frac{1+C_w}{\lambda}\log\frac1{1-n_b}
+                       +\int_{t_0}^{t_b}(w+T).
+\]
+Thus a fixed small $n_b$ and a small integrated weighted tail/weak
+remainder supply the theorem's hypothesis. The latter estimates are not
+proved here. A large initial weak chart radius cannot be replaced by a
+bounded $C_w$ without an argument; an integral budget may still be useful.
+
+\paragraph{Which mean is controlled.}
+The core barycentre differs from $(c,d)$ in $\ell^1$ by at most $r$;
+the full strong barycentre differs by at most $r+T$. The theorem therefore
+controls the core mean through $e+r$, and the full mean through $e+r+T$.
+An integral bound on $T$ does not itself give a pointwise full-mean bound.
+Core radius about the core barycentre is at most $2r$.
+
+\section{Bounded late propagation and explicit joint powers}
+\label{inc:AN03:local:v1:powers}
+\begin{proposition}[No further initialization power after fixed $n_b$]
+\label{inc:AN03:local:v1:late}
+Suppose, in addition, that the leading solution continues from $N=n_b$
+to $N=1/2$, and all strong and weak coordinates and the reference are
+bounded by $R\ge1$ on this remaining interval. Then
+\[
+ r(t_h)\le C_{\rm post}r(t_b),\qquad
+ C_{\rm post}=\exp\left[
+ \left(\frac\lambda2+5c_\rho R\right)
+ \frac1\lambda\log\frac{1-n_b}{n_b}\right].
+\]
+This factor is independent of $N_0$.
+\end{proposition}
+\begin{proof}
+The global pair bound in the proof of Lemma
+\ref{inc:AN03:local:v1:localineq} has coefficient at most
+$\lambda/2+c_\rho\max(0,U_c,U_c^-)$ after dropping strong damping.
+Here $|V|\le NR\le R$, $|c|,|d|,|X_s|\le R$, so $|U_c|\le3R$
+and $|U_c^-|\le5R$. The logistic time from $n_b$ to half-mass is
+$\lambda^{-1}\log[(1-n_b)/n_b]$. Integrate the common labelwise bound.
+\end{proof}
+
+\begin{corollary}[Conditional joint-parameter exponent test]
+\label{inc:AN03:local:v1:joint}
+Suppose the hypotheses and forcing bounds of Theorem
+\ref{inc:AN03:local:v1:main}, and where needed Proposition
+\ref{inc:AN03:local:v1:late}, hold uniformly in a parameter family.
+At the same chart-valid entry clock suppose
+\[
+ r_0\le C_s q^{-s_{\rm sh}}S_0^{\beta_{\rm sh}},\qquad
+ N_0\ge c_w q^{s_{\rm seed}}S_0^{\gamma_{\rm seed}},
+\]
+with positive $C_s,c_w$ independent of $q,S_0$. Then the smallness
+parameter and final core radius are bounded by a constant times
+\begin{equation}\label{inc:AN03:local:v1:qpower}
+ q^{-s_{\rm sh}-s_{\rm seed}\alpha/\lambda}
+ S_0^{\beta_{\rm sh}-\gamma_{\rm seed}\alpha/\lambda}.
+\end{equation}
+For $S_0=q^\kappa$, a sufficient strict power condition is
+\[
+ \kappa(\beta_{\rm sh}-\gamma_{\rm seed}\alpha/\lambda)
+ -s_{\rm sh}-s_{\rm seed}\alpha/\lambda>0.
+\]
+This does not prove any of the displayed entry laws.
+\end{corollary}
+\begin{proof}
+Insert the two inequalities into $r_0(n_b/N_0)^{\alpha/\lambda}$.
+The other factors are uniformly bounded by the hypotheses. A strict
+positive $q$-power tends to zero and eventually satisfies the radius
+smallness condition. The mean and forcing hypotheses remain separate.
+\end{proof}
+
+\paragraph{Candidate matching laws, explicitly conditional.}
+The review proposes
+\[
+ \beta_{\rm sh}=\tfrac12-\alpha,\quad \gamma_{\rm seed}=1-\lambda,\quad
+ s_{\rm sh}=\frac{1-2\alpha}{1-\lambda},\quad s_{\rm seed}=0.
+\]
+Under those \emph{unproved common-clock matching laws}, the power in
+\eqref{inc:AN03:local:v1:qpower} is
+\begin{equation}\label{inc:AN03:local:v1:candidate}
+ E_{\rm loc}(\rho,\kappa)
+ =\frac\kappa2(1-P)-\frac{1-\lambda P}{1-\lambda}.
+\end{equation}
+This is the local nonlinear exponent, not a global-rate exponent.
+
+There is an elementary nonempty algebraic window on the reviewed ratio
+interval. The rational root bound in AN03 repaired v2, also proved below,
+gives $P<153/250$ for $\rho\in[13/20,7/10]$. At $\kappa=15/2$,
+\eqref{inc:AN03:local:v1:candidate} decreases as either $P$ or $\lambda$
+increases over this box. Hence
+\begin{equation}\label{inc:AN03:local:v1:rationalwindow}
+ E_{\rm loc}>
+ \frac{15}{4}\frac{97}{250}
+ -\frac{1-(49/100)(153/250)}{1-49/100}
+ =\frac{4193}{51000}>0.
+\end{equation}
+For the bound on $P$, set $z=\rho a$, so $z=\lambda K(z)$.
+Because $K(z)\le2/5+z/2+z^2/5$ for $z\ge0$ and
+$(49/100)[2/5+7/50+49/3125]<7/25$, monotonicity of
+$z-\lambda K(z)$ gives $z<7/25$. Thus
+$P<1/2+(2/5)(7/25)=153/250$.
+
+The same $\kappa$ lies strictly between the target-only crossing and
+fixed-angle round-trip timing powers:
+\[
+ \frac2\lambda<\frac{15}{2}<\frac{2}{\lambda(1-\lambda)}
+ \qquad(\lambda\in[169/400,49/100]).
+\]
+The right inequality follows from $\lambda(1-\lambda)\le1/4$;
+the left from $2/(169/400)<15/2$. These facts identify a useful
+\emph{conditional matching target}, not an initialized admissible
+region for Theorem A. In particular the weak seed is not yet in a fixed
+weak chart at the strong-learning clock in that proposed transit regime.
+A later common entry clock must be proved and all its costs counted.
+
+For reference, under the same candidate powers the algebraic condition
+that $s_{\rm sh}/[(1-P)/2]$ be below $2/[\lambda(1-\lambda)]$ is exactly
+\[
+ (1+\lambda)P<1.
+\]
+Indeed multiply the comparison by positive denominators and factor
+$1-\lambda$. This is a compatibility test for specified candidate laws,
+not a phase boundary of the original population.
+
+\section{Remaining initialized obligations}\label{inc:AN03:local:v1:residue}
+The new theorem removes the assumption of an already controlled mean
+trajectory during the local resident interval: its mean control is proved
+simultaneously with the radius bound. It does not remove the required
+entry mean/shape estimates or the weighted weak/tail forcing budget.
+No estimate of tail mass alone supplies $\int T$.
+
+To use the result for AN06 witnesses still requires: a common chart-valid
+entry state; a correctly matched weak seed; weak angular relaxation and
+selection of the desired coherent branch; the later bounded continuation;
+and original finite-noise, gate-strip, and outside-population estimates.
+The normalization of time remains the population's own weak half-mass
+clock. Before chart capture, a coordinate-energy law cannot be silently
+identified with the closed leading logistic mass law.
+
+The statement that a radius has an upper differential growth bound does
+not imply that the radius actually grows exponentially. Our proof bounds
+its time integral using a growing comparison multiplier and its Riccati
+denominator, so no such lower-growth assumption is used.
+
+\begin{thebibliography}{9}\small\raggedright
+\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}
+\bibitem{P}\path{THEOREM_A_ANALYTICAL_PROGRESS.tex}, supplied checkpoint:
+\texttt{pa:leading}, \texttt{pa:masslaws}, \texttt{pa:overlap},
+\texttt{pa:resident}, \texttt{pa:spectra}.
+\bibitem{A3}\path{AN03_two_sided_passage_and_Q2_retention_v1.tex} and
+its separately repaired v2. The new local mean--shape closure is not
+attributed to those sources.
+\bibitem{R}\path{Pasted markdown.md}, user's review supplied in the
+current turn. Reported data and matching powers are motivation, not proof
+premises.
+\bibitem{A2}\path{AN02_Q2_profiles_and_localized_tracking_v1.tex},
+companion target-only and exact conditional tracking increment.
+\end{thebibliography}
+\end{document}

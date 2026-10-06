@@ -1,0 +1,250 @@
+% Standalone review increment; no earlier source is modified.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,booktabs,xurl}
+\usepackage[hidelinks]{hyperref}\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small AN02: strong entry and tail budget}\fancyhead[R]{\small Review increment v1}\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}\newcommand{\R}{\mathbb R}
+\title{Strong target-only entry profiles and an escaped-tail budget}
+\author{Analytical increment for independent review}\date{Version 1}
+\begin{document}\maketitle
+\begin{abstract}
+We prove uniform two-stage angular matching and a radial ancestry law for the exact positive-noise target-only flow. Centering at its exact attracting direction, the upper Q1 entry profile has a power-law tail of index $3/s$, with $s=(1-\lambda P)/(1-\lambda)$. The ancestry weight regularizes to $(\cos\theta_0+q)^2$ in the initial weak-axis boundary layer, and the power law has a finite cutoff. An exact original-flow estimate charges an outside population's angular field and local field derivative at its scaled $\mu/q$ cost. Combining an explicitly conditional transfer of the entry profile with the local passage multiplier gives a tail-inclusive joint-power test. At $S_0=q^{10}$ it has a rational positive margin uniformly on the reviewed ratio interval. No initialized residual-flow entry, outside-mass amplification bound, or reversal theorem is claimed.
+\end{abstract}
+
+\section{Definitions and scope}\label{inc:AN02:profile:v1:scope}
+Fix a compact interval $\mathcal K\subset(0,1)$ of concept ratios. Constants in Sections 2--4 are positive and uniform on $\mathcal K$; they need not be uniform at $\rho=0,1$. Use
+\[
+ P_1=\mathcal N(e_1,q^2I_2),\quad P_2=\mathcal N(\rho e_2,q^2I_2),\quad P=(P_1+P_2)/2,\quad\lambda=\rho^2.
+\]
+The target-only comparison is
+\[
+ \widehat U'=\E[X(\widehat U^TX)_+],\qquad
+ \widehat U_0=\sqrt{S_0}(\cos\theta_0,\sin\theta_0),\quad
+ \widehat W=\widehat U,\quad \widehat m=|\widehat U|^2.
+\]
+It is not the nonlinear residual flow. Set $K(z)=\phi(z)+z\Phi(z)$, where $\phi,\Phi$ are the standard Gaussian density and distribution. Its exact angular field is
+\begin{equation}\label{inc:AN02:profile:v1:angle}
+ v_q(\theta)=\frac q2[-\sin\theta K(\cos\theta/q)+\rho\cos\theta K(\rho\sin\theta/q)].
+\end{equation}
+The exact coordinate equations, already recorded in AN02 Q2 profiles v1, are
+\begin{equation}\label{inc:AN02:profile:v1:coordinate}
+ \widehat U_j'=\frac{\mu_jq\sqrt{\widehat m}}2K(\mu_j\widehat a_j/q)+d_q\widehat U_j,
+ \qquad d_q=\frac{q^2}{2}[\Phi(\widehat a_1/q)+\Phi(\rho\widehat a_2/q)],
+\end{equation}
+with $(\mu_1,\mu_2)=(1,\rho)$ and $0\le d_q\le q^2$.
+
+Let $a=\rho K(\rho a)$ be the resident root, and put
+\begin{equation}\label{inc:AN02:profile:v1:powers}
+ P_\rho=\Phi(\rho a),\quad \alpha=\lambda P_\rho/2,\quad
+ \omega=\frac{1-\lambda}{2},\quad d=\frac12-\alpha,\quad s=\frac d\omega=\frac{1-\lambda P_\rho}{1-\lambda},\quad p=\frac3s.
+\end{equation}
+Here $d$ is an angular contraction rate; it is not the coefficient $d_q$ in \eqref{inc:AN02:profile:v1:coordinate}.
+All comparison notation $\asymp$ means two inequalities with uniform positive constants, not numerical fits. Initial labels have measure $\dd\theta_0/(2\pi)$.
+
+\section{Strong-axis attraction and two-stage arrival}
+\begin{lemma}[Exact attracting center and local exponent]\label{inc:AN02:profile:v1:root}
+There are $L>1,q_0>0$ such that, for $0<q<q_0$, $v_q$ has a unique zero $qa_q$ in $[0,qL]$. This interval is invariant and
+\[
+ a_q=a+O(q^2),\qquad \sigma_q:=-v_q'(qa_q)=d+O(q^2)>0.
+\]
+For the scalar flow starting at $\theta=qL$, and every $t\ge0$,
+\begin{equation}\label{inc:AN02:profile:v1:localdecay}
+ c e^{-\sigma_q t}\le \frac{\theta(t)}q-a_q\le C e^{-\sigma_q t}.
+\end{equation}
+For a start anywhere in $[0,qL]$, the absolute displacement is at most $C e^{-\sigma_q t}$.
+\end{lemma}
+\begin{proof}
+Write $f_q(x)=v_q(qx)/q$. On each fixed bounded $x$-interval,
+\[
+ f_q(x)=f_0(x)+O_{C^2}(q^2),\qquad f_0(x)=\tfrac12[\rho K(\rho x)-x].
+\]
+Indeed expand the sine and cosine and use $K(z)=z+K(-z)$ for the own gate; each derivative of its positive-mean tail is exponentially small and hence $O(q^2)$. The other $K$ argument stays bounded. Since $f_0'=(\lambda\Phi(\rho x)-1)/2\le-\omega$, a fixed $L$ above all roots gives, for small $q$, $f_q'<-\omega/2$, $f_q(0)>0$, and $f_q(L)<0$. The root and derivative estimates follow by the mean value theorem.
+For $h=x-a_q$, write $h'=-b_q(h)h$, where $b_q(0)=\sigma_q$, $b_q\ge\omega/2$, and $|b_q(h)-\sigma_q|\le C|h|$ on the fixed interval. The last bound follows from the uniform second derivative. Thus $\int_0^\infty |h|\le2|h(0)|/\omega$, and integrating $(\log|h|)'=-b_q(h)$ proves both comparisons. A zero displacement stays zero.
+\end{proof}
+
+\begin{lemma}[Uniform Q1 arrival, including the initial weak-axis layer]\label{inc:AN02:profile:v1:arrival}
+Increase $L$ if necessary. For every $\theta_0\in[\pi/4,\pi/2]$, let $T_L(\theta_0)$ be the first hit of $qL$. It is finite, and
+\begin{equation}\label{inc:AN02:profile:v1:arrivaltime}
+ T_L(\theta_0)=\frac1\omega\log\frac1{q(\cos\theta_0+q)}+O(1).
+\end{equation}
+In particular $\sup T_L=(2/\omega)\log(1/q)+O(1)$. This is a statement about strong-side Q1 ancestry, not Q2 transit through both quadrants.
+\end{lemma}
+\begin{proof}
+Put $w_q=-v_q$. For $0<\theta<\pi/2$,
+\begin{equation}\label{inc:AN02:profile:v1:outerdecomposition}
+ w_q=\omega\sin\theta\cos\theta
+ +\frac q2\sin\theta K(-\cos\theta/q)
+ -\frac{\rho q}{2}\cos\theta K(-\rho\sin\theta/q).
+\end{equation}
+On $[qL,\pi/4]$, choose $L$ large enough that the last term is at most one quarter of the first, uniformly in $\rho$; this follows from $K(-z)\le\phi(0)$ and $\sin(qL)\ge qL/2$. The positive correction is exponentially small there. Subtracting $1/(\omega\sin\theta\cos\theta)$ from $1/w_q$ and integrating gives a uniform $O(1)$ error. To verify integrability without an $O(1)$ relative error times a long time, the negative correction is bounded by a constant times
+\[
+ \int_{qL}^{\pi/4}\frac{qK(-\rho\sin\theta/q)}{\sin^2\theta\cos\theta}\dd\theta
+ \le C\int_{L/2}^\infty\frac{K(-\rho z)}{z^2}\dd z<\infty.
+\]
+The own-gate correction is an exponentially small term times at most a polynomial in $q^{-1}$ and $\log(1/q)$. This part of the arrival time is therefore $\omega^{-1}\log(1/q)+O(1)$.
+
+On $[\pi/4,\pi/2]$ write $c=\cos\theta$. Where $c\ge qL_1$ for a fixed sufficiently large $L_1$, the same subtraction is integrable: the nontrivial error is bounded by $C\int_{L_1}^\infty K(-z)z^{-2}\dd z$, and the other gate is exponentially close to fully active. Since $\int\dd\theta/(\sin\theta\cos\theta)=\log\tan\theta$, the time from such a start to $\pi/4$ is $\omega^{-1}\log(1/c)+O(1)$.
+For $0\le c\le qL_1$, put $z=c/q$. In this fixed layer,
+\[
+ \frac{c'}q\longrightarrow\frac12[K(z)-\lambda z]
+\]
+uniformly. Its limit is strictly positive on $[0,L_1]$, because $K(z)-\lambda z=(1-\lambda)z+K(-z)>0$. The time to reach $c=qL_1$ is uniformly bounded, including a start with $c=0$. Replacing $c$ by $c+q$ accounts uniformly for this layer. Adding the two parts proves \eqref{inc:AN02:profile:v1:arrivaltime}. The same estimates prove $w_q>0$ above $qL$, so each first hit exists. All lower bounds used are uniform on the compact ratio interval.
+\end{proof}
+
+\section{The radial law and the power-law profile}
+\begin{theorem}[Uniform strong target-only entry law]\label{inc:AN02:profile:v1:entry}
+There are uniform constants $C_1,C_2,q_0>0$ such that the following holds. Let $q<q_0$ and
+\begin{equation}\label{inc:AN02:profile:v1:timeguard}
+ T\ge\frac2\omega\log(1/q)+C_1,\qquad q^2T\le1.
+\end{equation}
+Set $\epsilon=q^{-s}e^{-dT}$ and $h_T=\widehat\theta(T)/q-a_q$. For every $\theta_0\in[\pi/4,\pi/2]$,
+\begin{align}
+ h_T(\theta_0)&\asymp \epsilon(\cos\theta_0+q)^{-s},\label{inc:AN02:profile:v1:displacement}\\
+ \widehat m_T(\theta_0)&\asymp S_0e^T(\cos\theta_0+q)^2.\label{inc:AN02:profile:v1:weight}
+\end{align}
+The weight estimate holds on the whole Q1 interval $[0,\pi/2]$. On its lower half $|h_T|\le C_2\epsilon$. Thus, after normalizing the Q1 radial measure to a probability $\eta_T$,
+\begin{equation}\label{inc:AN02:profile:v1:tailupper}
+ \eta_T\{|h_T|>z\}\le C\min\{1,(\epsilon/z)^p\}\quad(z>0),
+\end{equation}
+and for uniform $C_3,c_3>0$,
+\begin{equation}\label{inc:AN02:profile:v1:taillower}
+ \eta_T\{h_T>z\}\ge c(\epsilon/z)^p
+ \quad\hbox{when } C_3\epsilon\le z\le c_3\epsilon q^{-s}.
+\end{equation}
+There is no tail beyond $C\epsilon q^{-s}$. The joint aligned input/output displacement is $2|h_T|$, so the same tail index applies to it.
+\end{theorem}
+\begin{proof}
+By Lemmas \ref{inc:AN02:profile:v1:root} and \ref{inc:AN02:profile:v1:arrival},
+\[
+ h_T\asymp e^{-\sigma_q(T-T_L)}
+ \asymp e^{-\sigma_q T}[q(\cos\theta_0+q)]^{-\sigma_q/\omega}.
+\]
+Replacing $\sigma_q$ by $d$ changes the logarithm of this expression by at most $Cq^2[T+\log(1/q)]$, uniformly in the initial label. This is bounded under \eqref{inc:AN02:profile:v1:timeguard}, proving \eqref{inc:AN02:profile:v1:displacement}. Scalar order bounds the positive displacement for a label below $\pi/4$ by that of $\pi/4$. Labels below the attracting root stay in $[0,qL]$, where Lemma \ref{inc:AN02:profile:v1:root} gives the negative-displacement bound.
+
+For the weight, use the exact first-coordinate equation on Q1:
+\[
+ \widehat U_1'=(1/2+d_q)\widehat U_1
+              +\frac q2\sqrt{\widehat m}\,K(-\cos\widehat\theta/q).
+\]
+The upper bound $\sqrt{\widehat m(t)}\le\sqrt{S_0}e^{(1/2+q^2)t}$ follows from the target spectral bound. The same layer integrals used in the arrival proof give
+\begin{equation}\label{inc:AN02:profile:v1:gateintegral}
+ \int_0^T K(-\cos\widehat\theta(t)/q)\dd t\le C.
+\end{equation}
+Here is a direct audit of this bound. In $\cos\theta\le qL_1$ the time is bounded. Above that layer and above angle $\pi/4$, $dt\le C\,dc/c$ and the integral is bounded by $C\int_{L_1}^\infty K(-z)z^{-1}\dd z$. Once the angle is below $\pi/4$, the integrand is at most $K(-1/(\sqrt2q))$; multiply by $T\le q^{-2}$. The last product is uniformly bounded. For initial angles below $\pi/4$ only this last estimate is needed, since $[0,\pi/4]$ is invariant for small $q$.
+Variation of constants, $\int d_q\le q^2T$, and \eqref{inc:AN02:profile:v1:gateintegral} now give
+\[
+ \widehat U_1(T)\le C\sqrt{S_0}e^{T/2}(\cos\theta_0+q).
+\]
+If $\cos\theta_0\ge q$, its initial coordinate and $\widehat U_1'\ge\widehat U_1/2$ give the reverse bound. If $\cos\theta_0<q$, then on a fixed short initial interval $\cos\widehat\theta\le Cq$, by the bounded rescaled layer field and scalar comparison. On that interval $\sqrt{\widehat m}\ge\sqrt{S_0}$ and $K(-\cos\widehat\theta/q)\ge K(-C)>0$. The source therefore creates at least $c q\sqrt{S_0}$ in the first coordinate. Its subsequent growth is at least $e^{t/2}$. This proves the reverse bound also when the initial first coordinate is zero. At time $T$ the angle lies in $[0,qL]$, so dividing $\widehat U_1^2$ by $\cos^2\widehat\theta$ proves \eqref{inc:AN02:profile:v1:weight}.
+
+The Q1 normalizing mass is comparable to $S_0e^T$ by integration. Near its upper endpoint, $c=\cos\theta_0$ has $d\theta_0=dc/\sqrt{1-c^2}$, uniformly comparable to $dc$ on $[0,1/\sqrt2]$. Thus the normalized weight is comparable to $(c+q)^2dc$. The upper displacement bound restricts $c+q$ to at most $C(\epsilon/z)^{1/s}$. The integral of its weight is at most $C(\epsilon/z)^{3/s}$, unless the interval is empty; include the trivial bound one for small $z$. Conversely, choose the constants in \eqref{inc:AN02:profile:v1:taillower} so that the interval $0\le c\le c'(\epsilon/z)^{1/s}$ lies below $1/\sqrt2$, has endpoint at least $q$, and satisfies the strict lower displacement inequality. Its weight is at least $c''(\epsilon/z)^{3/s}$. The maximal-displacement bound follows from $c+q\ge q$. This proves all assertions.
+\end{proof}
+
+\begin{remark}[The exact center and the tail range matter]
+The center is $a_q$, not $a$. The $O(q^2)$ shift can exceed $\epsilon$ when the latter has a sufficiently high $q$-power; centering at $a$ would introduce a spurious shape floor. For $\cos\theta_0\gg q$, \eqref{inc:AN02:profile:v1:weight} becomes the familiar $\cos^2\theta_0$ weight and \eqref{inc:AN02:profile:v1:displacement} gives the $\tan^s\theta_0$ upper-tail scaling up to constants. Neither formula should be extended without regularization through the initial weak-axis layer. At $T=\log(1/S_0)+O(1)$, $\epsilon\asymp q^{-s}S_0^{1/2-\alpha}$. This is still a target-only entry law.
+\end{remark}
+
+\begin{corollary}[Q4 and the full initial right half-circle]\label{inc:AN02:profile:v1:rightcircle}
+Under the same time guard, put $s_-=2d$ and $\epsilon_-=q^{-s_-}e^{-dT}$. For $\theta_0\in[-\pi/2,-\pi/4]$,
+\[
+ a_q-\widehat\theta(T)/q\asymp\epsilon_-(\cos\theta_0+q)^{-s_-},\qquad
+ \widehat m_T\asymp S_0e^T(\cos\theta_0+q)^2.
+\]
+For $\theta_0\in[-\pi/4,0]$ the displacement is at most $C\epsilon_-$. The normalized Q4 radial tail has the corresponding upper power $p_-=3/s_-$. After normalizing over the entire initial right half-circle $[-\pi/2,\pi/2]$, the upper bound \eqref{inc:AN02:profile:v1:tailupper}, lower bound \eqref{inc:AN02:profile:v1:taillower}, and cutoff $C\epsilon q^{-s}$ remain valid. Thus the slower Q1 side controls this full-ancestry upper tail.
+\end{corollary}
+\begin{proof}
+For $r=-\theta\in(0,\pi/2)$ the positive angular velocity is
+\[
+ v_q(-r)=\tfrac12\sin r\cos r
+ +\tfrac q2\sin r K(-\cos r/q)
+ +\tfrac{\rho q}{2}\cos r K(-\rho\sin r/q).
+\]
+Both corrections have positive sign. The same integrable reciprocal-speed subtraction as in Lemma \ref{inc:AN02:profile:v1:arrival}, now with outer rate $1/2$, gives the time to $-qL$ as
+$2\log[1/(q(\cos\theta_0+q))]+O(1)$. In the initial boundary layer $z=\cos\theta/q$, the rescaled cosine speed tends to $K(z)/2>0$, so the $+q$ regularization is again uniform. The local proof of Lemma \ref{inc:AN02:profile:v1:root} extends to $[-L,L]$ with the same exact center and rate. Matching therefore gives the stated displacement; the first-coordinate variation-of-constants proof gives the stated radial weight without a sign change. Scalar order treats the remaining Q4 sector. Integrating $(c+q)^2dc$ gives its upper power $3/s_-$.
+Since $s_->0$, $s>s_-$, $\epsilon_->0$, $\epsilon_-\le\epsilon$ and $p_->p$, the Q4 bound is at most a constant times $(\epsilon/z)^p$ whenever $z\ge\epsilon$; for smaller $z$ use the bound one. Both quadrant normalizing masses are comparable to $S_0e^T$, and the positive lower tail comes from Q1. The Q4 cutoff is no larger than the Q1 cutoff. The common time guard exceeds the Q4 arrival requirement because $2/\omega>4$.
+\end{proof}
+
+\section{Original-flow cost of an outside population}\label{inc:AN02:profile:v1:outside}
+Let $B$ be any measurable group in an exact positive-noise balanced state, with current radial mass $\mu_B$, and let $f_B$ be its output. At a receiver angle define
+\[
+ C_B(\theta)=\E[f_B(X)X^T\mathbf1_{a_\theta^TX>0}].
+\]
+The statement is instantaneous; it imposes no law on $\mu_B(t)$.
+\begin{proposition}[Scaled field and derivative budget]\label{inc:AN02:profile:v1:cost}
+For $0<q\le1$, $0<\rho<1$,
+\[
+ \|C_B(\theta)\|\le a_*\mu_B,\qquad
+ \|\partial_\theta C_B(\theta)\|\le\frac{32}{q}\mu_B,
+ \qquad a_*=1/2+q^2.
+\]
+Consequently the contribution of $f_B$ to either scaled strong angular velocity is at most $a_*\mu_B/q$, and each first derivative with respect to bounded scaled input/output angles is at most $34\mu_B/q$. In particular $40\mu_B/q$ is a common value-and-first-derivative bound.
+\end{proposition}
+\begin{proof}
+Since $|f_B(z)|\le\mu_B|z|$, the operator bound follows by the same featurewise Cauchy--Schwarz argument as the foundational $\|C_f\|\le a_*S$ estimate. For the derivative use polar integration. For one cluster of mean $m$, $|m|\le1$, its angular weight for degree-two homogeneous integrands is
+\[
+ \omega_m(e)=\frac{e^{-(|m|^2-(m\cdot e)^2)/(2q^2)}}{2\pi q^2}
+ \int_0^\infty r^3 e^{-(r-m\cdot e)^2/(2q^2)}\dd r.
+\]
+It is at most $(\sqrt{2\pi}q)^{-1}\E|m\cdot e+qZ|^3\le16/q$: use $|a+b|^3\le4(|a|^3+|b|^3)$, $\E|Z|^3<2$, and $1/\sqrt{2\pi}<1/2$. Differentiating the half-circle integral for $C_B$ produces only its two endpoints, of norms at most $\mu_B\omega_m$. Averaging clusters proves the stated $32\mu_B/q$ bound. The network output is continuous on the circle, so the endpoint differentiation is legitimate. In scaled coordinates $\theta=qx,\psi=qy$, the $q$ from an angle derivative cancels the $1/q$ in angular velocity. A receiver input derivative costs $\|C_B'\|+\|C_B\|$; an output derivative costs $\|C_B\|$. Since $a_*\le3/2$, the constants displayed suffice.
+\end{proof}
+
+\section{Tail-inclusive joint powers: a conditional transfer result}
+Assume an entry law of the form \eqref{inc:AN02:profile:v1:tailupper} has been proved for the population to which passage is applied. This transfer is \emph{not} supplied by the target-only theorem. Suppose its local multiplier is bounded by $C G$, with
+\[
+ G\asymp S_0^{-(1-\lambda)\alpha/\lambda},\qquad
+ \epsilon G\asymp q^{E},\qquad
+ E=\frac\kappa2(1-P_\rho)-s,\qquad S_0=q^\kappa.
+\]
+The hypotheses must also supply the required mean, weak-feedback and field-defect budgets. Fix a small output core radius $h(q)=q^\chi$, $\chi>0$, and define the \emph{fixed} core at entry by displacement at most $h/(C G)$. Then
+\begin{equation}\label{inc:AN02:profile:v1:badmass}
+ \eta_0(C^c)\le Cq^{p(E-\chi)}.
+\end{equation}
+No statement that every complementary label escapes follows from this estimate: an upper differential growth bound gives only a sufficient safe-core condition.
+
+If the actual radial mass of this complementary ancestry is at most a constant times its entry normalized fraction throughout a time interval of length $O(\log(1/q))$, Proposition \ref{inc:AN02:profile:v1:cost} gives
+\begin{equation}\label{inc:AN02:profile:v1:tailcost}
+ \int \text{scaled outside-field cost}
+ \le Cq^{p(E-\chi)-1}\log(1/q).
+\end{equation}
+That radial-mass amplification hypothesis is automatic for fixed normalized labels in a closed leading strong family with bounded total mass; it is \emph{not} automatic for the original flow after transit or recruitment. A power-law amplification $q^{-r_m}$ would subtract $r_m$ from the exponent in \eqref{inc:AN02:profile:v1:tailcost}. Additional sources of outside population require separate budgets.
+
+For a fixed small, nonvanishing core radius ($\chi=0$), the sufficient strict power condition is
+\begin{equation}\label{inc:AN02:profile:v1:threshold}
+ pE>1\quad\Longleftrightarrow\quad
+ \kappa>\frac{8s}{3(1-P_\rho)}.
+\end{equation}
+This is the correct algebra for the proposed $\mu/q$ charging scheme, not a necessary threshold for the dynamics. A sharper signed or time-dependent outside estimate may improve it.
+
+\begin{corollary}[A rational tail-inclusive matching target]\label{inc:AN02:profile:v1:rational}
+On $\rho\in[13/20,7/10]$, set $\kappa=10$, $\chi=1/20$. Under the explicitly conditional laws above,
+\[
+ E>\frac{3616}{6375},\qquad
+ p(E-\chi)-1>\frac{4561}{35006}>0.
+\]
+Thus the safe core has final radius $O(q^{1/20})$, and its complementary field budget is $O(q^{4561/35006}\log(1/q))$ with a possibly larger constant. The inequalities leave strict slack. They do not establish an initialized Theorem A region.
+\end{corollary}
+\begin{proof}
+The previously proved rational root bound gives $P_\rho<153/250$ and $\lambda\le49/100$. At $\kappa=10$, $E=5(1-P)-(1-\lambda P)/(1-\lambda)$ decreases in both $P$ and $\lambda$ on this box. Evaluating at the upper bounds gives $3616/6375$.
+For the second inequality use the entire expression, not separate incompatible extrema of $p$ and $E$:
+\[
+ p(E-\chi)-1
+ =\frac{3(1-\lambda)[5(1-P)-\chi]}{1-\lambda P}-4.
+\]
+Its derivatives in $P$ and $\lambda$ are negative when $5(1-P)>\chi$. At $(\lambda,P,\chi)=(49/100,153/250,1/20)$ its value is exactly $4561/35006$. In particular one must not call the value of $s$ at the largest $P$ its separate maximum. The target-only entry time guard also holds for $T=10\log(1/q)+O(1)$ on this box, since $2/\omega=4/(1-\lambda)\le400/51<10$.
+\end{proof}
+
+\section{What is still missing}
+The target-only law is a genuine analytic entry profile, with a finite cutoff and exact positive-noise center. Original-flow tracking through strong learning, preservation or controlled distortion of its radial weighting, and the mass and feedback of recruited labels are not consequences of it. The $q^{10}$ calculation retains the leading tail cost but still assumes all those transfers, the amplitude seed, and the local passage hypotheses. Small mass at entry alone neither controls future outside mass nor proves future escape. The finite-noise derivative cost, weak return, probe-strip budget and learned witness transfer remain separate requirements.
+
+\begin{thebibliography}{9}\small
+\bibitem{F} Supplied \texttt{RELU\_POPULATION\_FOUNDATIONS\_v2.tex}: P1, P4, P5 and the exact characteristic equations.
+\bibitem{Q} Supplied \texttt{AN02\_Q2\_profiles\_and\_localized\_tracking\_v1.tex}: exact target-only coordinate and angular fields.
+\bibitem{L} Supplied \texttt{AN03\_local\_rate\_mean\_tracking\_v1.tex}: local-rate passage and explicitly conditional joint powers.
+\end{thebibliography}
+\end{document}

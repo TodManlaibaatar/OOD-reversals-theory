@@ -1,0 +1,2426 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  10pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\setlength{\emergencystretch}{3em}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{ReLU population foundations for two-concept
+SIM}\label{relu-population-foundations-for-two-concept-sim}
+
+\textbf{Status:} Revision 2. The original foundations (P1--P9) are
+retained, and Sections 15--24 add exact gradient attribution, the
+matched linear control, immediate ReLU minor-entry generation, Gaussian
+tail/purity bounds, a signed residual-curvature identity, and
+gate-density/continuation interfaces. This remains a mathematical
+research draft, not a proof of initialized competition (Theorem A), an
+interval-arithmetic certificate, or a machine-checked formal proof.
+
+\textbf{Scope:} Planar two-concept SIM; positive Gaussian noise; untied,
+bias-free two-layer ReLU networks; both layers trained; aligned-balanced
+isotropic initialization; population training data; fixed initial total
+squared mass in the continuum limit.
+
+\textbf{Preservation:} This is a new revision; the original foundations
+files remain unchanged. It also leaves \texttt{SIM.md},
+\texttt{main-15.tex}, and \texttt{ood\_reversals-appendix.tex}
+untouched. The original SIM paper is a source for the task and
+comparison model. The ReLU results below are derived here, not
+attributed to that paper.
+
+\subsection{Source map}\label{source-map}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}S1{]}} Yang, Park, Lubana, Okawa, Hu, and Tanaka,
+  \emph{Swing-by Dynamics in Concept Learning and Compositional
+  Generalization}, ICLR 2025, arXiv:2410.08309v2. The supplied PDF has
+  32 pages. Relevant locations: Section 2.1, pp.~3--4; Section 4.2,
+  pp.~7--9; Appendix D.1--D.2, pp.~19--25; Appendix E.4, p.~27.
+\item
+  \textbf{{[}S2{]}} \texttt{TodManlaibaatar/Swing-by-TwoLayerReLU},
+  \texttt{full\_flow\_diagnostic.py}, functions \texttt{make\_data},
+  \texttt{initialize}, \texttt{forward}, and \texttt{gradients}. The
+  reviewed implementation uses a shared diagonal covariance, uniform
+  planar input angles, \texttt{W\ =\ U.copy()}, and a loss equal to one
+  half of the mean squared Euclidean residual norm.
+\item
+  \textbf{{[}S3{]}} Du, Hu, and Lee, \emph{Algorithmic Regularization in
+  Learning Deep Homogeneous Models: Layers are Automatically Balanced},
+  arXiv:1806.00900. Background for homogeneous-network balance
+  identities; the particular identity needed here is proved directly
+  below.
+\end{itemize}
+
+Reviewed code blob identifier:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{0fccbe945ba9389609aa8bdcd8abdac1901d6ddd}
+\end{Highlighting}
+\end{Shaded}
+
+No external convergence or mean-field theorem is used as a black box in
+the proofs below. In particular, the global well-posedness statement is
+for the labeled characteristic class specified here, not an unqualified
+uniqueness claim for all distributional PDE solutions.
+
+\section{1. What is inherited, and what must be
+re-derived}\label{what-is-inherited-and-what-must-be-re-derived}
+
+From {[}S1, Section 2.1{]}, inherit identity targets, equal cluster
+weights, cluster means on distinct concept axes, and a common
+coordinate-indexed covariance. Specializing to equal noise in two
+dimensions is a restriction of that data model. We omit the optional
+origin cluster.
+
+Do not inherit the symmetric linear model's effective matrix evolution,
+its tied-parameter metric, its discrete update, or its Appendix D
+entrywise initialization assumptions. The current network has separate
+trainable input and output weights. Its training field depends on actual
+gates.
+
+The original paper uses \texttt{s} for the number of concepts. Here
+\texttt{s\ =\ d\ =\ 2}, and \texttt{S\_0} denotes initialization mass.
+These symbols must not be interchanged.
+
+The original compositional probe is the sum of concept means. Off-cone
+probes are an extension of the evaluation family. We retain both
+definitions without claiming that their error trajectories agree.
+
+A useful proof strategy from {[}S1, Appendix D.2{]} is to establish
+estimates up to a first exit and then close the corresponding bootstrap.
+The controlled state and the signed estimates must nevertheless be
+derived for ReLU.
+
+\section{2. Locked setup and
+normalization}\label{locked-setup-and-normalization}
+
+\subsection{2.1 Data, architecture, and
+loss}\label{data-architecture-and-loss}
+
+In physical coordinates,
+
+\[
+ P_1^{\rm phys}=\mathcal N(\mu_1e_1,\sigma^2I_2),\qquad
+ P_2^{\rm phys}=\mathcal N(\mu_2e_2,\sigma^2I_2),\qquad
+ 0<\mu_2<\mu_1,\quad\sigma>0.
+\]
+
+Let \(P^{\rm phys}=(P_1^{\rm phys}+P_2^{\rm phys})/2\). The finite-width
+network and population-data loss are
+
+\[
+ f_h(x)=\sum_{i=1}^h w_i(u_i^\top x)_+,
+ \qquad
+ \mathcal L_h=\frac12\mathbb E_{P^{\rm phys}}\|f_h(X)-X\|^2.
+ \tag{2.1}
+\]
+
+Both \(u_i\) and \(w_i\) are trained with the same unit-rate Euclidean
+gradient-flow convention. No bias, weight decay, tied-weight constraint,
+or frozen layer is present.
+
+Use \textbf{target-minus-output} residuals throughout:
+
+\[
+ e_f(x)=x-f(x),\qquad E_\xi(f)=\frac12\|e_f(\xi)\|^2.
+ \tag{2.2}
+\]
+
+The finite initialization is
+
+\[
+ \alpha_i\overset{\rm iid}{\sim}{\rm Unif}[0,2\pi),\qquad
+ u_i(0)=w_i(0)=\sqrt{S_0/h}\,a_{\alpha_i},\qquad
+ a_\theta=(\cos\theta,\sin\theta).
+ \tag{2.3}
+\]
+
+Thus \(S_0=h\varepsilon_h^2\). The reviewed canonical implementation
+{[}S2{]} has \(h=200\), \(\varepsilon_h=10^{-3}\), and therefore
+\(S_0=2\cdot10^{-4}\). Keeping \(\varepsilon_h\) fixed as \(h\to\infty\)
+is a different initialization regime and is not the limit defined here.
+
+\subsection{2.2 Data scaling and time}\label{data-scaling-and-time}
+
+Set
+
+\[
+ \rho=\mu_2/\mu_1,\qquad q=\sigma/\mu_1,\qquad
+ \tau=\mu_1^2t_{\rm phys}.
+ \tag{2.4}
+\]
+
+Positive homogeneity gives \(f(\mu_1x)=\mu_1 f(x)\). Consequently,
+
+\[
+ \mathcal L^{\rm phys}(\theta)=\mu_1^2\mathcal L^{\rm norm}(\theta),
+ \qquad \theta^{\rm phys}(t)=\theta^{\rm norm}(\mu_1^2t).
+ \tag{2.5}
+\]
+
+There is no accompanying rescaling of \(S_0\). From now on, \(t\)
+denotes normalized time and
+
+\[
+ P_1=\mathcal N(e_1,q^2I_2),\quad
+ P_2=\mathcal N(\rho e_2,q^2I_2),\quad
+ P=(P_1+P_2)/2.
+ \tag{2.6}
+\]
+
+Write \(c_1=e_1\), \(c_2=\rho e_2\). Define
+
+\[
+ M_{2,p}=\mathbb E_{P_p}|X|^2=|c_p|^2+2q^2,\qquad
+ M_2=\mathbb E_P|X|^2=\frac{1+\rho^2}{2}+2q^2.
+ \tag{2.7}
+\]
+
+The uncentered second-moment matrix is
+
+\[
+ A=\mathbb E_P[XX^\top]
+ =\operatorname{diag}(1/2+q^2,\rho^2/2+q^2).
+ \tag{2.8}
+\]
+
+For a fixed numerical probe \(\xi\), physical-time rates are \(\mu_1^2\)
+times the corresponding normalized-time rates. For the additionally
+rescaled probe \(\xi^{\rm phys}=\mu_1\bar\xi\), errors scale by
+\(\mu_1^2\) and physical-time rates by \(\mu_1^4\). Never reuse a
+physical time from the canonical experiment without this conversion.
+
+\subsection{2.3 Exact link to averaged particle
+coordinates}\label{exact-link-to-averaged-particle-coordinates}
+
+Set \(U_i=\sqrt h\,u_i\), \(W_i=\sqrt h\,w_i\). Then
+
+\[
+ f_h(x)=\frac1h\sum_iW_i(U_i^\top x)_+,
+\]
+
+but their equations in the same physical/normalized time are
+
+\[
+ \dot W_i=\mathbb E_P[e_f(X)(U_i^\top X)_+],\qquad
+ \dot U_i=\mathbb E_P[X\,e_f(X)^\top W_i\,\mathbf1_{\{U_i^\top X>0\}}].
+ \tag{2.9}
+\]
+
+These follow by multiplying the original equations by \(\sqrt h\).
+Equivalently, the averaged network uses the mean-field metric, or
+learning rate \(h\) relative to ordinary Euclidean gradient descent in
+\((U_i,W_i)\). Equation (2.9), not an unspecified convention, defines
+the continuum time normalization.
+
+\section{3. Proposition P1: exact gradient field and
+balance}\label{proposition-p1-exact-gradient-field-and-balance}
+
+For a network output \(f\) and an input direction \(a_\theta\), define
+the cluster-conditioned residual matrix
+
+\[
+ R_{p,f}(\theta)
+ =\mathbb E_{P_p}[e_f(X)X^\top\mathbf1_{\{a_\theta^\top X>0\}}],
+ \qquad R_f=(R_{1,f}+R_{2,f})/2.
+ \tag{3.1}
+\]
+
+For every nonzero input weight \(u_i\), population gradient flow is
+
+\[
+ \dot w_i=R_f(\arg u_i)u_i,\qquad
+ \dot u_i=R_f(\arg u_i)^\top w_i.
+ \tag{3.2}
+\]
+
+Moreover,
+
+\[
+ \frac d{dt}(|w_i|^2-|u_i|^2)=0.
+ \tag{3.3}
+\]
+
+\textbf{Proof.} For fixed nonzero \(u_i\), the Gaussian law assigns zero
+probability to \(u_i^\top X=0\). On bounded parameter sets, the
+derivatives of the integrand are bounded by a constant times \(|X|^2\),
+which is integrable. Differentiating the loss under the expectation
+therefore gives
+
+\[
+ -\nabla_{w_i}\mathcal L=\mathbb E[e_f(X)(u_i^\top X)_+],
+\]
+
+\[
+ -\nabla_{u_i}\mathcal L=\mathbb E[X(w_i^\top e_f(X))\mathbf1_{\{u_i^\top X>0\}}].
+\]
+
+Use \((u_i^\top X)_+=(u_i^\top X)\mathbf1_{\{u_i^\top X>0\}}\) to obtain
+(3.2). Then
+
+\[
+ \frac d{dt}|w_i|^2=2w_i^\top R_fu_i
+ =2u_i^\top R_f^\top w_i=\frac d{dt}|u_i|^2.
+\]
+
+This proves (3.3). Nonvanishing on every finite horizon for the
+specified initialized flow follows from P5 below. \(\square\)
+
+\textbf{Balance does not imply persistent alignment.} At a state with
+\(u_i=w_i\),
+
+\[
+ \dot w_i-\dot u_i=(R_f-R_f^\top)u_i.
+\]
+
+The right side is not identically zero for a general state. We keep two
+angles even though they start equal.
+
+\section{4. Proposition P2: exact angular state and transport--reaction
+flow}\label{proposition-p2-exact-angular-state-and-transportreaction-flow}
+
+Let \(\lambda(d\alpha)=d\alpha/(2\pi)\) on the initial-angle circle. A
+balanced labeled continuum neuron is written
+
+\[
+ U_t(\alpha)=\sqrt{m_t(\alpha)}a_{\theta_t(\alpha)},\qquad
+ W_t(\alpha)=\sqrt{m_t(\alpha)}b_{\psi_t(\alpha)},
+\]
+
+where \(b_\psi=(\cos\psi,\sin\psi)\) is an output direction and
+\(m_t>0\). Set
+
+\[
+ \nu_t=\int m_t(\alpha)
+ \delta_{(\theta_t(\alpha),\psi_t(\alpha))}\,d\lambda(\alpha),
+ \qquad S(t)=\nu_t(\mathbb T^2)=\int m_t\,d\lambda.
+ \tag{4.1}
+\]
+
+Then exactly
+
+\[
+ f_{\nu_t}(x)=\int b_\psi(a_\theta^\top x)_+\,d\nu_t(\theta,\psi).
+ \tag{4.2}
+\]
+
+For \(R=R_{f_{\nu_t}}(\theta)\), define
+
+\[
+ g_\nu(\theta,\psi)=b_\psi^\top R a_\theta,\qquad
+ v_\theta=b_\psi^\top R a_\theta^\perp,\qquad
+ v_\psi=(b_\psi^\perp)^\top R a_\theta,
+ \tag{4.3}
+\]
+
+where \(a_\theta^\perp=(-\sin\theta,\cos\theta)\) and similarly for
+\(b_\psi^\perp\). The exact characteristic equations are
+
+\[
+ \boxed{\dot\theta=v_\theta,\qquad
+ \dot\psi=v_\psi,\qquad \dot m=2mg_\nu.}
+ \tag{4.4}
+\]
+
+The initial condition is
+
+\[
+ \theta_0(\alpha)=\psi_0(\alpha)=\alpha,\qquad m_0(\alpha)=S_0,
+\]
+
+\[
+ \nu_0=\frac{S_0}{2\pi}\int_0^{2\pi}\delta_{(\alpha,\alpha)}\,d\alpha.
+ \tag{4.5}
+\]
+
+For every periodic \(C^1\) test function \(\varphi(\theta,\psi)\),
+
+\[
+ \frac d{dt}\int\varphi\,d\nu_t
+ =\int(v_\theta\partial_\theta\varphi+
+ v_\psi\partial_\psi\varphi+2g_\nu\varphi)\,d\nu_t.
+ \tag{4.6}
+\]
+
+Thus, in weak form,
+
+\[
+ \partial_t\nu+\partial_\theta(v_\theta\nu)
+ +\partial_\psi(v_\psi\nu)=2g_\nu\nu.
+ \tag{4.7}
+\]
+
+\textbf{Proof.} Substitute \(U=\sqrt m\,a\), \(W=\sqrt m\,b\) into
+(2.9). The projections of \(\dot U=\sqrt m R^\top b\) onto \(a\) and
+\(a^\perp\) yield \(\dot m/(2m)=b^\top Ra\) and
+\(\dot\theta=b^\top Ra^\perp\). Projections of \(\dot W=\sqrt m Ra\)
+onto \(b\) and \(b^\perp\) give the same radial equation and the
+displayed output-angle equation. This proves (4.4). The network
+representation follows from positive homogeneity. Differentiating
+\(m_t(\alpha)\varphi(\theta_t(\alpha),\psi_t(\alpha))\) and integrating
+proves (4.6). All differentiations are justified locally by bounded
+characteristic variables; P5 gives the bounds on every finite horizon.
+\(\square\)
+
+The measure need not have a density on \(\mathbb T^2\). Here it starts
+on, and is represented by the evolution of, a one-dimensional labeled
+curve. Angular spread, input/output mismatch, and all label masses are
+retained. Projection of this curve onto the input-angle coordinate need
+not stay one-to-one.
+
+For a finite network, the identical angular representation uses
+
+\[
+ \nu_h=\sum_{i=1}^h |u_i|^2\delta_{(\arg u_i,\arg w_i)}.
+\]
+
+The continuum equations are therefore not a two-block closure. A
+quantitative random finite-width/sample approximation theorem is a
+separate task.
+
+\section{5. Proposition P3: exact initial output and learning
+values}\label{proposition-p3-exact-initial-output-and-learning-values}
+
+For the initial measure (4.5),
+
+\[
+ f_0(x)=\frac{S_0}{4}x,\qquad
+ \int b_\psi a_\theta^\top\,d\nu_0=\frac{S_0}{2}I_2.
+ \tag{5.1}
+\]
+
+Consequently, with \(c_0=1-S_0/4\),
+
+\[
+ e_0(x)=c_0x,\qquad
+ E_\xi(0)=\frac{c_0^2}{2}|\xi|^2,
+\]
+
+\[
+ \mathcal L(0)=\frac{c_0^2}{2}M_2,\qquad
+ \mathcal L_p(0)=\frac{c_0^2}{2}M_{2,p}.
+ \tag{5.2}
+\]
+
+\textbf{Proof.} Pair \(a\) and \(-a\) under the uniform angular law:
+
+\[
+ a(a^\top x)_++(-a)((-a)^\top x)_+=aa^\top x.
+\]
+
+It follows that
+\(\mathbb E[a(a^\top x)_+]=\frac12\mathbb E[aa^\top]x=x/4\), since the
+diagonal angular averages are \(1/2\) and the off-diagonal averages
+vanish. Multiplication by \(S_0\) gives the first identity. The same
+angular second moment gives the second. Substitute the resulting
+residual into the losses. \(\square\)
+
+The finite random network does not equal its angular average exactly.
+Equation (5.1) is an exact continuum initialization identity, not an
+exact statement about every finite random draw. In particular, setting
+\(f_0=0\) would change the initial problem. Also, the effective ungated
+moment in (5.1) has zero off-diagonal entries; {[}S1, Eq. (D.8){]} must
+not be imported as an initialization assumption for it.
+
+\section{6. Proposition P4: exact one-dimensional Gaussian
+calculus}\label{proposition-p4-exact-one-dimensional-gaussian-calculus}
+
+\subsection{6.1 Radial integration}\label{radial-integration}
+
+Let \(p_p(x)\) be the planar density of \(P_p\) and define a weighted
+angular density, with respect to unnormalized Lebesgue measure
+\(d\beta\),
+
+\[
+ \omega_p(\beta)=\int_0^\infty r^3p_p(r a_\beta)\,dr,
+ \qquad \omega=(\omega_1+\omega_2)/2.
+ \tag{6.1}
+\]
+
+For every integrable positively 2-homogeneous scalar, vector, or matrix
+function \(H\),
+
+\[
+ \mathbb E_{P_p}H(X)=\int_0^{2\pi}\omega_p(\beta)H(a_\beta)\,d\beta.
+ \tag{6.2}
+\]
+
+In particular \(\int\omega_p=M_{2,p}\) and \(\int\omega=M_2\). These
+angular weights are not probability densities; do not insert an
+additional \(1/(2\pi)\).
+
+\textbf{Proof.} Write \(X=r a_\beta\) in the planar integral, whose
+Jacobian is \(r\). Since \(H(r a_\beta)=r^2H(a_\beta)\) for \(r\ge0\),
+its radial weight is precisely \(r^3p_p(r a_\beta)\). Fubini yields
+(6.2). \(\square\)
+
+The residual is positively 1-homogeneous because both the target and
+network are. Thus every training integral needed here has degree two,
+including loss, residual matrices, feature kernels, and the Gaussian
+expectation in the probe-rate formula. No Gaussian-tail truncation has
+been made.
+
+\subsection{6.2 Explicit angular weight}\label{explicit-angular-weight}
+
+Let \(\ell=c_p^\top a_\beta\). Then
+
+\[
+ \omega_p(\beta)=
+ \frac{\exp[-(|c_p|^2-\ell^2)/(2q^2)]}{2\pi q^2}J_3(\ell,q),
+ \quad
+ J_3(\ell,q)=\int_0^\infty r^3e^{-(r-\ell)^2/(2q^2)}\,dr.
+ \tag{6.3}
+\]
+
+Writing \(J_0=q\sqrt{2\pi}\,\Phi(\ell/q)\), integration by parts gives
+
+\[
+ J_1=\ell J_0+q^2e^{-\ell^2/(2q^2)},\qquad
+ J_k=\ell J_{k-1}+(k-1)q^2J_{k-2}\quad(k\ge2),
+\]
+
+and hence
+
+\[
+ J_3=(\ell^3+3\ell q^2)J_0+
+ q^2(\ell^2+2q^2)e^{-\ell^2/(2q^2)}.
+ \tag{6.4}
+\]
+
+The integral (6.3) is nonnegative and remains an appropriate definition
+when (6.4) has numerical cancellation for negative \(\ell/q\).
+
+For \(q>0\), \(\omega_p\) is smooth and bounded. An explicit exact
+supremum is
+
+\[
+ W_p:=\|\omega_p\|_\infty=
+ \frac{J_3(|c_p|,q)}{2\pi q^2}.
+ \tag{6.5}
+\]
+
+Indeed the density \(p_p(r a_\beta)\) is, for every \(r\ge0\), maximized
+when \(a_\beta\) points along \(c_p\). Put
+\(W=\|\omega\|_\infty\le(W_1+W_2)/2\).
+
+\subsection{6.3 Gaussian feature
+kernels}\label{gaussian-feature-kernels}
+
+Define
+
+\[
+ k_\theta(\beta)=(a_\theta^\top a_\beta)_+,
+\]
+
+\[
+ B_p(\theta)=\mathbb E_{P_p}[X(a_\theta^\top X)_+]
+ =\int\omega_p(\beta)a_\beta k_\theta(\beta)\,d\beta,
+\]
+
+\[
+ C_p(\theta,\vartheta)
+ =\mathbb E_{P_p}[(a_\theta^\top X)_+(a_\vartheta^\top X)_+]
+ =\int\omega_p k_\theta k_\vartheta\,d\beta.
+ \tag{6.6}
+\]
+
+Let \(\ell=a_\theta^\top c_p\), \(\kappa=\ell/q\), and let \(\phi,\Phi\)
+be the standard normal density and CDF. Then
+
+\[
+ B_p(\theta)=c_p[\ell\Phi(\kappa)+q\phi(\kappa)]
+ +q^2a_\theta\Phi(\kappa).
+ \tag{6.7}
+\]
+
+\textbf{Proof of (6.7).} Decompose
+\(X=c_p+qZa_\theta+qZ_\perp a_\theta^\perp\) with independent standard
+normal variables. The perpendicular centered term has mean zero. Direct
+one-dimensional integration gives
+\(\mathbb E(\ell+qZ)_+=\ell\Phi(\kappa)+q\phi(\kappa)\) and
+\(\mathbb E[Z(\ell+qZ)_+]=q\Phi(\kappa)\). Substitution proves the
+formula. \(\square\)
+
+The residual vector field admits the exact kernel closure
+
+\[
+ G_{p,\nu}(\theta):=R_{p,\nu}(\theta)a_\theta
+ =B_p(\theta)-\int b_\varphi C_p(\theta,\vartheta)\,d\nu(\vartheta,\varphi).
+ \tag{6.8}
+\]
+
+Differentiation is with respect to the displayed test angle, holding
+\(\nu\) fixed:
+
+\[
+ \partial_\theta G_{p,\nu}(\theta)
+ =R_{p,\nu}(\theta)a_\theta^\perp.
+ \tag{6.9}
+\]
+
+There is no boundary term here because the feature \(k_\theta\) itself
+vanishes at a gate boundary.
+
+First derivatives of \(B_p\) and \(C_p\) exist by differentiation under
+the angular integral. Useful explicit second-derivative formulas are
+
+\[
+ \partial_\theta^2B_p(\theta)=-B_p(\theta)
+ +\sum_{\epsilon\in\{-1,1\}}
+ \omega_p(\theta+\epsilon\pi/2)a_{\theta+\epsilon\pi/2},
+\]
+
+\[
+ \partial_\theta^2C_p(\theta,\vartheta)=-C_p(\theta,\vartheta)
+ +\sum_{\epsilon\in\{-1,1\}}
+ \omega_p(\theta+\epsilon\pi/2)k_\vartheta(\theta+\epsilon\pi/2).
+ \tag{6.10}
+\]
+
+The mixed derivative is the integral of
+\(\omega_p(\partial_\theta k_\theta)(\partial_\vartheta k_\vartheta)\).
+All these derivatives are continuous: the boundary terms are continuous,
+and dominated convergence handles the mixed derivative. In particular,
+\(C_p\) is jointly \(C^2\) and its first derivatives are Lipschitz on
+the angular torus. Its pure second derivatives have magnitude at most
+\(M_{2,p}+2W_p\), and its mixed derivative at most \(M_{2,p}\). No
+higher-order analyticity is asserted.
+
+\subsection{6.4 A simpler regularity formula for the residual
+matrix}\label{a-simpler-regularity-formula-for-the-residual-matrix}
+
+Since \(|f_\nu(x)|\le S|x|\), the function \(e_\nu(a_\beta)\) is
+continuous and bounded by \(1+S\). Equation (6.2) gives
+
+\[
+ R_{p,\nu}(\theta)=
+ \int_{\theta-\pi/2}^{\theta+\pi/2}
+ \omega_p(\beta)e_\nu(a_\beta)a_\beta^\top\,d\beta.
+ \tag{6.11}
+\]
+
+Use periodic integration in this formula. Therefore \(R_{p,\nu}\) is
+\(C^1\) in \(\theta\), with
+
+\[
+ \partial_\theta R_{p,\nu}(\theta)=
+ [\omega_p e_\nu(a_\beta)a_\beta^\top]_{\beta=\theta+\pi/2}
+ -[\omega_p e_\nu(a_\beta)a_\beta^\top]_{\beta=\theta-\pi/2}.
+ \tag{6.12}
+\]
+
+Consequently,
+
+\[
+ \|R_{p,\nu}(\theta)\|\le M_{2,p}(1+S),\qquad
+ \|\partial_\theta R_{p,\nu}(\theta)\|\le2W_p(1+S).
+ \tag{6.13}
+\]
+
+All matrix norms are operator norms. The same bounds hold for the
+mixture using \(M_2,W\). This proves the training-field regularity
+directly; it does not assume a density for the neuron input-angle
+marginal.
+
+\section{7. Proposition P5: global characteristic existence,
+dissipation, and
+bounds}\label{proposition-p5-global-characteristic-existence-dissipation-and-bounds}
+
+For every fixed \(0<\rho<1\), \(q>0\), and \(S_0>0\), the initial
+condition (4.5) has a unique global solution in the continuous
+labeled-characteristic class. Its masses remain strictly positive on
+every finite horizon.
+
+The population loss satisfies
+
+\[
+ \dot{\mathcal L}(t)
+ =-\int\bigl(\|R_\nu a_\theta\|^2+
+                  \|R_\nu^\top b_\psi\|^2\bigr)\,d\nu_t
+ =-\int(2g_\nu^2+v_\theta^2+v_\psi^2)\,d\nu_t\le0.
+ \tag{7.1}
+\]
+
+Total mass satisfies the exact identity
+
+\[
+ \boxed{
+ \dot S(t)=2\mathbb E_P[e_t(X)^\top f_t(X)]
+ =\frac{M_2}{2}-2\mathbb E_P\left|f_t(X)-\frac X2\right|^2
+ \le\frac{M_2}{2}.}
+ \tag{7.2}
+\]
+
+Set
+
+\[
+ C_0:=\sqrt{2\mathcal L(0)M_2}=|1-S_0/4|M_2.
+ \tag{7.3}
+\]
+
+On every finite horizon,
+
+\[
+ |g_\nu|,\ |v_\theta|,\ |v_\psi|\le C_0,
+ \qquad
+ S_0e^{-2C_0t}\le m_t(\alpha)\le S_0e^{2C_0t},
+ \tag{7.4}
+\]
+
+\[
+ 0<S(t)\le\min\{S_0e^{2C_0t},\ S_0+M_2t/2\}.
+ \tag{7.5}
+\]
+
+Angles in continuous lifts move by at most \(C_0t\) each. Further,
+
+\[
+ |f_t(x)|\le S(t)|x|,\qquad
+ |\dot f_t(x)|\le2C_0S(t)|x|\quad\text{for a.e. }t
+ \tag{7.6}
+\]
+
+for each fixed \(x\).
+
+\textbf{Proof: local existence.} Use the variables
+\((\theta(\alpha)-\alpha,\psi(\alpha)-\alpha,m(\alpha))\) in the Banach
+space of continuous periodic functions with the sup norm, restricting
+initially to masses bounded away from zero. For two labeled states with
+mass and sup-norm bounds, positive homogeneity and the Lipschitz
+property of ReLU give a uniform bound on the difference of their outputs
+on the unit circle. Integrating this difference in (6.11) bounds the
+change in \(R\) at the same angle. Equation (6.13) bounds its change
+when the angle moves. Trigonometric factors are Lipschitz, and
+multiplication by bounded \(m\) is Lipschitz. Hence the right side of
+(4.4) is locally Lipschitz in this Banach space. The usual local ODE
+construction applies: the integral map
+\(Z\mapsto Z_0+\int_0^t\mathscr F(Z_s)ds\) is a contraction on a
+sufficiently small closed tube because its Lipschitz constant is at most
+the field constant times the interval length. Its fixed point is the
+unique local solution. The detailed estimates also appear in P8.
+
+\textbf{Proof: dissipation on a local interval.} Define
+\(U=\sqrt m\,a\), \(W=\sqrt m\,b\). Their velocities are exactly
+\(\dot W=RU\) and \(\dot U=R^\top W\). The derivative of
+\(W(U^\top X)_+\) exists for almost every training \(X\) for each label.
+Gaussian boundary-nullness and Fubini justify differentiation under the
+training and label integrals, with a dominating multiple of \(|X|^2\) on
+the local bounded tube. Thus
+
+\[
+ \dot{\mathcal L}
+ =-\mathbb E[e_f(X)^\top\dot f(X)]
+ =-\int (|\dot W|^2+|\dot U|^2)\,d\lambda.
+\]
+
+Substitute the polar forms and decompose \(Ra\) along \(b,b^\perp\) and
+\(R^\top b\) along \(a,a^\perp\). Their shared radial component is
+\(g\). This gives (7.1).
+
+\textbf{Proof: mass and continuation.} Integrate \(\dot m=2mg\) and use
+the definitions to get \(\dot S=2\mathbb E[e^\top f]\). Completing the
+square gives (7.2). Also
+
+\[
+ \|R_\nu(\theta)\|
+ \le\mathbb E[|e_f(X)||X|]
+ \le\sqrt{2\mathcal L(t)M_2}\le C_0.
+\]
+
+Equations (4.4) imply (7.4), and integration of (7.2) gives (7.5). These
+bounds keep the characteristic variables bounded and masses bounded away
+from zero on any prescribed finite interval. Therefore the local
+solution can be continued past any finite endpoint by the same local
+construction. Uniqueness is preserved. Equation (7.6) follows by
+differentiating a single feature and using
+\(\|Ra\|,\|R^\top b\|\le C_0\); each of the two terms has magnitude at
+most \(mC_0|x|\). \(\square\)
+
+These are structural, potentially conservative bounds. In particular,
+global existence and bounded mass do not imply that the trajectory
+enters the competition region or that the bounds are sharp enough to
+certify the desired late sign margins.
+
+\section{8. Proposition P6: exact cluster-sourced probe
+rates}\label{proposition-p6-exact-cluster-sourced-probe-rates}
+
+For \(z=(\theta,\psi)\) write
+\(I_\theta(x)=\mathbf1_{\{a_\theta^\top x>0\}}\), taking value zero at
+equality. Define the matrix-valued tangent kernel
+
+\[
+ K_\nu(\xi,x)=\int\left[
+ (a_\theta^\top\xi)_+(a_\theta^\top x)_+I_2
+ +(\xi^\top x)I_\theta(\xi)I_\theta(x)b_\psi b_\psi^\top
+ \right]d\nu(z).
+ \tag{8.1}
+\]
+
+The raw cluster-\(p\) probe velocity is
+
+\[
+ V_{p,\nu}(\xi)=\mathbb E_{P_p}[K_\nu(\xi,X)e_\nu(X)].
+ \tag{8.2}
+\]
+
+An equivalent formula, convenient for direct evaluation, is
+
+\[
+ V_{p,\nu}(\xi)=\int\left[
+ R_{p,\nu}(\theta)a_\theta(a_\theta^\top\xi)_+
+ +I_\theta(\xi)b_\psi b_\psi^\top R_{p,\nu}(\theta)\xi
+ \right]d\nu.
+ \tag{8.3}
+\]
+
+Define
+
+\[
+ \boxed{D_p(t,\xi)=-\frac12e_t(\xi)^\top V_{p,\nu_t}(\xi).}
+ \tag{8.4}
+\]
+
+For each fixed probe \(\xi\),
+
+\[
+ \dot f_t(\xi)=\frac12[V_{1,\nu_t}(\xi)+V_{2,\nu_t}(\xi)],\qquad
+ \boxed{\dot E_\xi(t)=D_1(t,\xi)+D_2(t,\xi)}
+ \tag{8.5}
+\]
+
+for almost every time. Equivalently, writing the output-minus-target
+residual as \(r=f-x\) only in the following identity,
+
+\[
+ D_p=-\frac12\mathbb E_{P_p}
+ [\langle r_t(\xi),K_{\nu_t}(\xi,X)r_t(X)\rangle].
+ \tag{8.6}
+\]
+
+\textbf{Proof.} Differentiate \(W(U^\top\xi)_+\) using (2.9). The
+output-weight derivative contributes
+\(m R_\nu a_\theta(a_\theta^\top\xi)_+\). The input-weight derivative
+contributes \(mI_\theta(\xi)b_\psi b_\psi^\top R_\nu\xi\). Integrate
+labels and substitute \(R_\nu=(R_1+R_2)/2\) to obtain (8.3)--(8.5).
+Expanding \(R_p\) and interchanging integrals gives (8.1)--(8.2).
+Finally \(\dot E_\xi=-e_\xi^\top\dot f_\xi\), proving (8.4)--(8.6).
+
+For completeness, the a.e. statement at probe gates does not require
+training-density arguments. For each label, \(z(t)=U_t(\alpha)^\top\xi\)
+is absolutely continuous; \(d(z_+)/dt=\mathbf1_{\{z>0\}}\dot z\) for
+a.e. \(t\), with \(\dot z=0\) for a.e. time in the zero set. Applying
+Fubini in time and label and the finite-horizon bound from P5 justifies
+the integrated identity for each fixed probe. \(\square\)
+
+\textbf{Boundary convention.} When \(\nu\{a_\theta^\top\xi=0\}=0\), the
+cluster-rate formulas are independent of the chosen value of the
+indicator at zero. If positive mass sits on a probe boundary, the
+displayed zero-gate convention still gives the a.e. total identity, but
+individual cluster attributions at that boundary can depend on the
+convention. A theorem asserting robust common-interval signs must
+control this issue; see P9.
+
+\textbf{Interpretation.} The index \(p\) specifies the training
+distribution sourcing the gradient. Every neuron contributes to both
+\(D_p\) according to its actual gates. No strong/weak neuron partition,
+deletion, frozen gate, or retraining intervention is part of these
+definitions.
+
+The kernel is positive semidefinite as a kernel: for any
+square-integrable vector test function \(h\) for which the expressions
+exist,
+
+\[
+ \iint h(x)^\top K_\nu(x,y)h(y)\,dP(x)dP(y)
+ =\int\left\{\left|\mathbb E[h(X)(a_\theta^\top X)_+]\right|^2
+ +\left|\mathbb E[X(b_\psi^\top h(X))I_\theta(X)]\right|^2\right\}d\nu\ge0.
+\]
+
+This does not fix the sign of an individual off-diagonal probe/training
+contraction \(D_p\).
+
+\section{9. Proposition P7: exact concept-learning
+observables}\label{proposition-p7-exact-concept-learning-observables}
+
+Let \([B_p(\theta)]_p\) denote coordinate \(p\) of \(B_p\). Define
+
+\[
+ \mathsf m_p(\nu)=
+ \frac{\mathbb E_{P_p}[X_p f_{\nu,p}(X)]}{\mathbb E_{P_p}[X_p^2]}
+ =\frac{\int (b_\psi)_p[B_p(\theta)]_p\,d\nu}
+ {|c_p|^2+q^2}.
+ \tag{9.1}
+\]
+
+Then \(\mathsf m_p(\nu_0)=S_0/4\). The cluster loss is exactly
+
+\[
+ \mathcal L_p(\nu)=\frac{M_{2,p}}2
+ -\int b_\psi^\top B_p(\theta)\,d\nu(\theta,\psi)
+\]
+
+\[
+ \hspace{8mm}+\frac12\iint
+ b_\psi^\top b_\varphi C_p(\theta,\vartheta)
+ \,d\nu(\theta,\psi)d\nu(\vartheta,\varphi),
+ \qquad \mathcal L=\frac{\mathcal L_1+\mathcal L_2}{2}.
+ \tag{9.2}
+\]
+
+\textbf{Proof.} Substitute (4.2) into the correlation defining
+\(\mathsf m_p\), then use (6.6). For the loss, expand \(|X-f(X)|^2\)
+into \(|X|^2-2X^\top f(X)+|f(X)|^2\) and evaluate the two network terms
+by Fubini and (6.6). At initialization use \(f_0=(S_0/4)\mathrm{id}\).
+\(\square\)
+
+A future substantial-learning conclusion should use both
+\(\mathsf m_2\ge c_{\rm weak}>0\) and a nontrivial relative cluster-loss
+reduction, rather than reuse a strong block's small transverse entry
+under the ambiguous symbol \(m_{22}\).
+
+Neither monotonicity of \(\mathsf m_1\) nor monotonicity of an
+individual \(\mathcal L_p\) follows from P5. Only the averaged training
+loss is known to decrease. Any progress-clock inequality is a later
+trajectory estimate, not a foundational fact.
+
+\section{10. Proposition P8: finite-horizon labeled-state and data
+stability}\label{proposition-p8-finite-horizon-labeled-state-and-data-stability}
+
+\subsection{10.1 State stability for the same data
+law}\label{state-stability-for-the-same-data-law}
+
+Compare two characteristic solutions on a common label space, with
+corresponding continuous angular lifts and masses. Suppose
+\(S,\widetilde S\le M\) on \([0,T]\). Define
+
+\[
+ A_\theta=\|\theta-\widetilde\theta\|_\infty,\qquad
+ A_\psi=\|\psi-\widetilde\psi\|_\infty,\qquad
+ A_*=A_\theta+A_\psi,
+\]
+
+\[
+ B_*=\int|m-\widetilde m|\,d\lambda,\qquad
+ \Delta=A_*+B_*,\qquad \eta_f=B_*+MA_*.
+ \tag{10.1}
+\]
+
+Then
+
+\[
+ \sup_{|x|=1}|f_\nu(x)-f_{\widetilde\nu}(x)|\le\eta_f.
+ \tag{10.2}
+\]
+
+Let
+
+\[
+ H=M_2(1+M),\qquad J=2W(1+M),\qquad
+ F=H+M_2M+J,
+\]
+
+\[
+ L_M=\max\{2H+2(1+M)M_2,\ 2(1+M)F\}.
+ \tag{10.3}
+\]
+
+Then
+
+\[
+ \Delta(t)\le e^{L_Mt}\Delta(0),\qquad 0\le t\le T.
+ \tag{10.4}
+\]
+
+\textbf{Proof.} Split the network difference into mass,
+output-direction, and feature differences. Since \(|b|\le1\) and ReLU is
+1-Lipschitz, each unit-input feature has norm at most one, and the
+latter two differences cost at most \(\widetilde S(A_\psi+A_\theta)\).
+This proves (10.2).
+
+At corresponding test angles,
+
+\[
+ \|R_\nu(\theta)-R_{\widetilde\nu}(\widetilde\theta)\|
+ \le M_2\eta_f+J A_\theta.
+ \tag{10.5}
+\]
+
+The first term follows by integrating the residual difference against
+\(|X|\); the second follows from (6.13). Therefore each of the
+differences of \(g,v_\theta,v_\psi\) is at most
+
+\[
+ Q:=M_2 B_*+F A_*.
+\]
+
+The upper right derivative of \(A_*\) is at most \(2Q\). The mass
+equation gives
+
+\[
+ \frac{d^+}{dt}B_*
+ \le2H B_*+2\int\widetilde m|g-\widetilde g|\,d\lambda
+ \le2H B_*+2M Q.
+\]
+
+Add the inequalities to obtain \(\Delta'\le L_M\Delta\) in the
+upper-derivative/integral sense. Multiplication by \(e^{-L_Mt}\) and
+integration proves (10.4). The same bounds with a local sup bound on
+\(m\) establish the Banach-space local Lipschitz assertion used in P5.
+\(\square\)
+
+This is a labeled coupling bound, not a total-variation estimate between
+singular angular measures. Its constants are explicit but need not be
+sharp enough for canonical numerical certification.
+
+\subsection{10.2 Perturbing Gaussian
+parameters}\label{perturbing-gaussian-parameters}
+
+Let the second law have angular weight \(\widetilde\omega\). Put
+
+\[
+ \delta_\omega=\|\omega-\widetilde\omega\|_{L^1(d\beta)}.
+\]
+
+Choose \(H,J,F,L_M\) using uniform upper bounds valid for both laws.
+Equation (10.5) acquires the extra term \((1+M)\delta_\omega\), so
+
+\[
+ \Delta(t)\le e^{L_Mt}\Delta(0)
+ +2(1+M)^2\delta_\omega\frac{e^{L_Mt}-1}{L_M}.
+ \tag{10.6}
+\]
+
+On a compact parameter rectangle with \(q\ge q_{\min}>0\), let \(M_4^*\)
+bound
+
+\[
+ \mathbb E_{\mathcal N(c,q^2I_2)}|X|^4
+ =|c|^4+8q^2|c|^2+8q^4
+\]
+
+for both cluster means and every point of the rectangle. Then a valid
+bound is
+
+\[
+ \delta_\omega\le
+ \frac{\sqrt{M_4^*}}{q_{\min}}
+ \bigl(|\rho-\widetilde\rho|+2|q-\widetilde q|\bigr).
+ \tag{10.7}
+\]
+
+\textbf{Proof.} At a fixed network state, the difference between the
+residual matrices for the two angular weights is bounded by
+\((1+M)\delta_\omega\), using (6.11). Add this to the proof of (10.4)
+and integrate the resulting scalar differential inequality to get
+(10.6).
+
+For (10.7), differentiate the planar Gaussian density. Its score for a
+unit mean displacement is \((v^\top Z)/q\); its score for \(q\) is
+\((|Z|^2-2)/q\), with \(Z\sim\mathcal N(0,I_2)\). Integrating absolute
+scores with weight \(|X|^2\) bounds the corresponding \(L^1\)
+derivatives of \(\omega\). Cauchy--Schwarz gives bounds
+\(\sqrt{M_4^*}/q_{\min}\) and \(2\sqrt{M_4^*}/q_{\min}\), respectively,
+because \(\mathbb E(v^\top Z)^2=1\) and \(\mathbb E(|Z|^2-2)^2=4\).
+Integrate along line segments in the parameter rectangle and average
+clusters. The stated coefficient for \(\rho\) is conservative, since
+only the second cluster mean changes. The fourth moment follows by
+expanding \(|c+qZ|^4\) and using Gaussian second and fourth moments.
+\(\square\)
+
+Initial-mass variation is covered by \(\Delta(0)\): for aligned constant
+masses, it equals \(|S_0-\widetilde S_0|\) when the initial angles are
+identical.
+
+\section{11. Proposition P9: probe rates require a gate-strip
+modulus}\label{proposition-p9-probe-rates-require-a-gate-strip-modulus}
+
+\subsection{11.1 Why state stability is not
+enough}\label{why-state-stability-is-not-enough}
+
+For a nonzero probe define
+
+\[
+ \Gamma_\nu(\xi,\eta)=
+ \int\mathbf1_{\{|a_\theta^\top\xi|\le\eta|\xi|\}}\,d\nu,
+ \qquad 0\le\eta\le1.
+ \tag{11.1}
+\]
+
+For \(\eta>1\) set \(\Gamma_\nu(\xi,\eta)=S\). This measures
+squared-radius mass near the probe's two gate boundaries, not Gaussian
+training mass near a data hyperplane.
+
+Small changes in angles make \(f(\xi)\) change continuously, but they
+can change the indicator in the second term of (8.3). Therefore an
+output or state enclosure alone does not automatically give a small
+signed-rate error.
+
+A concrete static example makes the obstruction explicit. Take
+\(\xi=e_1\), \(\nu_n=M\delta_{(\pi/2-1/n,0)}\), and
+\(\nu=M\delta_{(\pi/2,0)}\). Their outputs converge uniformly on the
+unit circle. At the limit, the zero-gate convention gives
+\(D_{1,\nu}(e_1)=0\). For \(P_1=\mathcal N(e_1,q^2I_2)\), however,
+
+\[
+ \lim_{n\to\infty}D_{1,\nu_n}(e_1)
+ =-\frac M2\left(\frac{1+q^2}{2}-\frac{Mq}{\sqrt{2\pi}}\right),
+\]
+
+which is nonzero for sufficiently small \(M>0\). To calculate it, the
+smooth first term of (8.3) vanishes in the limit, while the second tends
+to \(M e_1 e_1^\top R_{1,\nu}(\pi/2)e_1\). Independence of \(X_1\) and
+\(X_2\) gives the displayed bracket. This is a counterexample to generic
+rate continuity at probe-boundary atoms, not a counterexample to
+initialized Theorem A or a claim that its trajectory reaches this state.
+
+\subsection{11.2 Explicit static rate perturbation
+bound}\label{explicit-static-rate-perturbation-bound}
+
+Use the quantities \(A_\theta,A_*,B_*,\eta_f\) from (10.1), and assume
+the same data law and \(S,\widetilde S\le M\). Put
+
+\[
+ H_p=M_{2,p}(1+M),\qquad J_p=2W_p(1+M),
+\]
+
+\[
+ \mathcal B_p=2H_pB_*
+ +2M\bigl(M_{2,p}\eta_f+J_pA_\theta+H_pA_*\bigr)
+ +H_p\Gamma_{\widetilde\nu}(\xi,A_\theta).
+ \tag{11.2}
+\]
+
+Then
+
+\[
+ |V_{p,\nu}(\xi)-V_{p,\widetilde\nu}(\xi)|
+ \le |\xi|\mathcal B_p,
+ \tag{11.3}
+\]
+
+\[
+ \boxed{
+ |D_{p,\nu}(\xi)-D_{p,\widetilde\nu}(\xi)|
+ \le |\xi|^2\left[
+ MH_p\eta_f+\frac{1+M}{2}\mathcal B_p\right].}
+ \tag{11.4}
+\]
+
+\textbf{Proof.} Use (8.3). Its unit-mass integrand has norm at most
+\(2H_p|\xi|\), which bounds the mass-difference contribution by
+\(2H_pB_*|\xi|\). At matched labels, the smooth difference of the first
+term is at most
+
+\[
+ |\xi|\left(\|R_p-\widetilde R_p\|+2H_pA_\theta\right).
+\]
+
+For the second term, first hold its probe indicator fixed. Since
+\(\|bb^\top-\widetilde b\widetilde b^\top\|\le2|b-\widetilde b|\), the
+smooth difference is at most
+
+\[
+ |\xi|\left(\|R_p-\widetilde R_p\|+2H_pA_\psi\right).
+\]
+
+If the two probe indicators differ, then
+\(|a_{\widetilde\theta}^\top\xi|\le A_\theta|\xi|\). The remaining
+integrand is at most \(H_p|\xi|\) there. Integrate it with the reference
+mass to get the last term in (11.2). Finally use the cluster version of
+(10.5) and \(\widetilde S\le M\) to prove (11.3).
+
+For (11.4), add and subtract the product
+\(\widetilde e(\xi)^\top V_{p,\nu}(\xi)\) in (8.4). Use
+\(|e-\widetilde e|\le\eta_f|\xi|\), \(|V_{p,\nu}|\le2MH_p|\xi|\), and
+\(|\widetilde e|\le(1+M)|\xi|\). \(\square\)
+
+For different Gaussian laws, add
+\((1+M)\|\omega_p-\widetilde\omega_p\|_1\) to the residual-matrix bound
+inside (11.2), and use constants that bound both laws. Thus parameter
+openness of strict rate signs follows when the reference strip modulus
+is controlled; it is not obtained from (10.6) alone.
+
+\subsection{11.3 Sector variation}\label{sector-variation}
+
+For a fixed state with mass \(S\le M\) and unit probes
+\(\xi,\widetilde\xi\), let \(\varepsilon=|\xi-\widetilde\xi|\). The same
+splitting gives
+
+\[
+ |V_{p,\nu}(\xi)-V_{p,\nu}(\widetilde\xi)|
+ \le 2MH_p\varepsilon+H_p\Gamma_\nu(\widetilde\xi,\varepsilon).
+ \tag{11.5}
+\]
+
+Here a changed indicator implies
+\(|a_\theta^\top\widetilde\xi|\le\varepsilon\). Since \(e_\nu\) has
+Lipschitz constant at most \(1+M\),
+
+\[
+ |D_{p,\nu}(\xi)-D_{p,\nu}(\widetilde\xi)|
+ \le2MH_p(1+M)\varepsilon
+ +\frac12(1+M)H_p\Gamma_\nu(\widetilde\xi,\varepsilon).
+ \tag{11.6}
+\]
+
+Uniform strip bounds therefore give uniform sector continuity. An error
+curve is easier to control: for unit probes,
+\(|E_\xi-E_{\widetilde\xi}|\le(1+S)^2|\xi-\widetilde\xi|\) directly,
+without a gate-strip term.
+
+\subsection{11.4 Initialization and a short-time strip
+bound}\label{initialization-and-a-short-time-strip-bound}
+
+At aligned isotropic initialization,
+
+\[
+ \Gamma_{\nu_0}(\xi,\eta)
+ =\frac{2S_0}{\pi}\arcsin\eta,\qquad0\le\eta\le1,
+ \tag{11.7}
+\]
+
+uniformly over nonzero probes. This is because the strip consists of two
+arcs of total angular length \(4\arcsin\eta\).
+
+A short-time extension can also be proved without assuming it. Fix
+\(T>0\), use
+
+\[
+ M=S_0+M_2T/2,\quad H=M_2(1+M),\quad J=2W(1+M),
+ \quad C_{\rm ang}=2(H+J).
+\]
+
+The angular vector field, with the already-determined measure path held
+fixed, is \(C^1\) in \((\theta,\psi)\). Its Jacobian has induced
+\(\ell^1\) norm at most \(C_{\rm ang}\): the derivatives in \(\theta\)
+have magnitude at most \(H+J\) in each equation, and derivatives in
+\(\psi\) at most \(H\) in each equation. For the initial-label
+derivative \(Z=\partial_\alpha(\theta,\psi)\),
+
+\[
+ |Z(t)|_1\le2e^{C_{\rm ang}t},\qquad
+ |\partial_\alpha\theta_t-1|\le e^{C_{\rm ang}t}-1.
+ \tag{11.8}
+\]
+
+Indeed \(\dot Z=Dv_t Z\), \(Z(0)=(1,1)\); integration of the first-row
+bound gives the second inequality. Thus on
+
+\[
+ 0\le t\le T_{\rm short}:=
+ \min\left\{T,\frac{\log(3/2)}{C_{\rm ang}}\right\},
+\]
+
+one has \(\partial_\alpha\theta_t\ge1/2\). The map
+\(\alpha\mapsto\theta_t(\alpha)\) is then a degree-one circle
+diffeomorphism. Its input-angle mass density is at most
+\(S_0e^{2C_0T}/\pi\), giving
+
+\[
+ \Gamma_{\nu_t}(\xi,\eta)
+ \le\min\left\{S(t),\frac{4S_0e^{2C_0T}}{\pi}\arcsin\eta\right\}
+ \quad(0\le t\le T_{\rm short}).
+ \tag{11.9}
+\]
+
+More generally, an independently established input-angle mass-density
+bound \(B_T\) gives \(\Gamma\le4B_T\arcsin\eta\). The joint angular flow
+being invertible does not by itself supply such a bound for its
+projection at late times. Proving a useful late strip bound or enclosing
+gate-boundary contributions directly remains part of the
+reachability/certification work.
+
+\section{12. Scope of the original P1--P9
+layer}\label{scope-of-the-original-p1p9-layer}
+
+Sections 12--14 describe the original foundations layer. Sections 15--24
+below extend that layer; Section 24 gives the updated proof status.
+
+The derivations provide a locked model, exact finite-to-continuum
+normalization, aligned initial values, the full angular
+transport--reaction equations, exact Gaussian integral formulas, global
+well-posedness in the specified characteristic class, loss dissipation,
+finite-horizon mass and speed bounds, exact cluster rates and learning
+observables, labeled-state/data stability, and a gate-aware
+rate-stability estimate. They also provide an explicit early-time strip
+bound.
+
+They do not establish a canonical learned-state tube, a positive-time
+strong-progress lower bound, substantial weak learning, the persistence
+of \(D_1<0<D_2\) into a learned regime, dominance crossover, a useful
+late gate-strip bound, or a quantitative reversal amplitude. They do not
+establish Theorem B, a normal-form timing theorem, or a
+finite-sample/finite-width high-probability lifting theorem.
+
+In particular, \textbf{a population pilot that integrates these
+equations is a witness search, not a proof}. A validated pilot would
+additionally need rigorous angular quadrature error, time-integration
+defect, continuation control, and probe-rate/gate enclosures. The crude
+global Gronwall constants here are not claimed to deliver such a
+certificate at the canonical parameters.
+
+\section{13. Immediate next proof
+interface}\label{immediate-next-proof-interface}
+
+The next computation should use exactly (4.4), with (6.8)--(6.9) or
+(6.11), and evaluate (8.4), (9.1), and (9.2). The first audit should
+check mass normalization, the \(S_0/4\) initial map, the factor \(1/2\)
+in each cluster contribution, and agreement of the matrix-kernel and
+direct-velocity formulas.
+
+A subsequent reachability proof must output a state enclosure and bounds
+on the terms in (11.4), not just a visually close output trajectory.
+Only after that enclosure is available should one certify
+common-interval opposite signs, early/late dominance, and the
+weak-learning floor.
+
+The proof order is therefore:
+
+\[
+ \begin{gathered}
+ \text{locked setup and exact equations}\\
+ \Downarrow\\
+ \text{well-posed population flow and gate-aware stability}\\
+ \Downarrow\\
+ \text{population witness and initialized reachability}\\
+ \Downarrow\\
+ \text{Theorem A}.
+ \end{gathered}
+\]
+
+The foundations are not a substitute for the central dynamical argument.
+Their role is to make every quantity in that argument exact and to
+expose, rather than hide, the remaining proof obligations.
+
+\section{14. Non-certifying algebra
+check}\label{non-certifying-algebra-check}
+
+A separate floating-point check compared the identities at a synthetic
+seven-neuron balanced state under positive Gaussian noise. It used
+one-dimensional angular quadrature split at the training gate
+boundaries, and compared the direct Cartesian gradient, angular
+equations, closed Gaussian \(B_p\), the \(B_p,C_p\) closure, both
+cluster-velocity formulas, the mass identity, and centered finite
+differences. The direct algebraic comparisons agreed within
+approximately \(3\cdot10^{-15}\); the finite-difference comparisons
+within approximately \(10^{-9}\) at the tested step sizes.
+
+This check is a transcription/normalization diagnostic only. It is not
+interval arithmetic, does not establish uniform bounds, does not replace
+the proofs, and did not integrate an initialized population trajectory
+or test the crossover conjecture.
+
+\section{15. Supplement to P6: exact gradient attribution and the
+correct
+metric}\label{supplement-to-p6-exact-gradient-attribution-and-the-correct-metric}
+
+The results in Sections 3--11 are retained. The additions below concern
+exact identities, controls, and conditional certificate interfaces; they
+do not assert that the canonical initialized trajectory has reached the
+competition regime. In particular, the global constants of P8 and the
+short-time strip estimate of P9 are not proposed as a quantitative
+continuation certificate over the canonical reversal horizon.
+
+Let \(Z=(U,W)\) denote the labeled Cartesian state, and use the
+fixed-reference mean-field inner product
+
+\[
+ \langle (v,z),(\widetilde v,\widetilde z)\rangle_{\mathcal H}
+ =\int(v^\top\widetilde v+z^\top\widetilde z)\,d\lambda.
+ \tag{15.1}
+\]
+
+At states without label mass on the probe boundary, the first variations
+of \(E_\xi\) are represented by
+
+\[
+ (\nabla_{\mathcal H}E_\xi)_U
+ =-\xi(W^\top e(\xi))\mathbf1_{\{U^\top\xi>0\}},
+ \qquad
+ (\nabla_{\mathcal H}E_\xi)_W=-e(\xi)(U^\top\xi)_+.
+ \tag{15.2}
+\]
+
+The single-cluster loss \(\mathcal L_p=\frac12\mathbb E_{P_p}|e(X)|^2\)
+has gradient
+
+\[
+ (\nabla_{\mathcal H}\mathcal L_p)_U=-R_p^\top W,
+ \qquad
+ (\nabla_{\mathcal H}\mathcal L_p)_W=-R_pU.
+ \tag{15.3}
+\]
+
+Consequently,
+
+\[
+ \boxed{D_p=-\frac12\langle\nabla_{\mathcal H}E_\xi,
+                         \nabla_{\mathcal H}\mathcal L_p\rangle_{\mathcal H}.}
+ \tag{15.4}
+\]
+
+\textbf{Proof.} Differentiate \(f_Z(\xi)=\int W(U^\top\xi)_+d\lambda\)
+against bounded variations. The zero-boundary-mass assumption and
+dominated convergence justify the first variation, giving (15.2).
+Applying the same calculation inside the Gaussian training expectation
+gives (15.3). Substitution into (15.1) gives
+\(\langle\nabla E,\nabla\mathcal L_p\rangle=e(\xi)^\top V_p(\xi)\), with
+\(V_p\) exactly as in (8.3). Equation (8.4) then yields (15.4).
+Equivalently, \(\dot Z=-\frac12(\nabla\mathcal L_1+\nabla\mathcal L_2)\)
+and the chain rule gives the same decomposition. \(\square\)
+
+Thus \(D_2>0\) means that the weak-cluster descent direction increases
+probe error instantaneously at the current full state. It is a negative
+inner product of gradients, not a counterfactual statement about
+retraining on cluster 2 alone. At a probe-boundary atom, use a specified
+compatible selected first variation and the almost-everywhere pathwise
+convention of P6 rather than assert an ordinary differentiable gradient
+at that state.
+
+On the balanced parameter manifold, the Cartesian metric pulls back to
+
+\[
+ \|\delta Z\|_{\mathcal H}^2
+ =\int\left[\frac{(\delta m)^2}{2m}
+       +m(\delta\theta)^2+m(\delta\psi)^2\right]d\lambda.
+ \tag{15.5}
+\]
+
+Indeed, differentiating \(U=\sqrt m\,a_\theta\) and
+\(W=\sqrt m\,b_\psi\) gives two radial squared contributions
+\((\delta m)^2/(4m)\) and the two tangential contributions in (15.5). A
+Euclidean logarithmic norm of the \((\theta,\psi,m)\) ODE is therefore
+not automatically the relevant gradient-flow one-sided bound. A
+time-dependent polar metric also contributes its own metric derivative
+to a stability calculation.
+
+\section{16. Proposition P10: exact matched linear
+control}\label{proposition-p10-exact-matched-linear-control}
+
+Replace ReLU by identity activation, keeping the untied architecture,
+the population data law, and the aligned isotropic initialization. In
+Cartesian mean-field coordinates, let
+
+\[
+ M=\int WU^\top d\lambda,\qquad f(x)=Mx,\qquad
+ A=\operatorname{diag}(a_1,a_2),
+\]
+
+\[
+ a_1=\tfrac12+q^2,\qquad a_2=\tfrac{\rho^2}{2}+q^2.
+\]
+
+For any \(S_0>0\) the initialized solution remains aligned, and
+
+\[
+ M(t)=\operatorname{diag}(\ell_1(t),\ell_2(t)),\qquad
+ \ell_k(0)=S_0/2,
+\]
+
+\[
+ \dot\ell_k=2a_k\ell_k(1-\ell_k),\qquad
+ \ell_k(t)=\frac{1}{1+(2/S_0-1)e^{-2a_kt}}.
+ \tag{16.1}
+\]
+
+Every fixed-probe error is non-increasing:
+
+\[
+ E_\xi(t)=\frac12\sum_{k=1}^2(1-\ell_k(t))^2\xi_k^2,
+\]
+
+\[
+ \boxed{\dot E_\xi(t)=-2\sum_{k=1}^2a_k\ell_k(t)(1-\ell_k(t))^2\xi_k^2\le0.}
+ \tag{16.2}
+\]
+
+There is a stronger clusterwise conclusion. Put
+
+\[
+ A_1=\operatorname{diag}(1+q^2,q^2),\qquad
+ A_2=\operatorname{diag}(q^2,\rho^2+q^2).
+\]
+
+Then, with the same cluster weight as in (15.4),
+
+\[
+ \boxed{D_p^{\rm lin}(t,\xi)
+ =-\sum_{k=1}^2(A_p)_{kk}\ell_k(t)(1-\ell_k(t))^2\xi_k^2\le0.}
+ \tag{16.3}
+\]
+
+\textbf{Proof.} The exact Cartesian field is \(\dot W=RU\),
+\(\dot U=R^\top W\), with \(R=(I-M)A\). Construct an aligned solution
+\(U(t,\alpha)=W(t,\alpha)=T(t)U(0,\alpha)\), where \(T\) is diagonal and
+\(T_{kk}=\sqrt{2\ell_k/S_0}\). Isotropic initialization gives
+\(\int U(0)U(0)^\top d\lambda=S_0I_2/2\), hence its moment is
+\(M=\operatorname{diag}(\ell_k)\). Equation (16.1) implies
+\(\dot T_{kk}=a_k(1-\ell_k)T_{kk}\), exactly the Cartesian field because
+\(R\) is diagonal. The explicit denominator in (16.1) is positive for
+every \(t\ge0\) and \(S_0>0\). Local uniqueness of the Cartesian field
+identifies this constructed solution with the initialized flow.
+Differentiating \(E_\xi\) proves (16.2).
+
+For a raw single-cluster field, \(R_p=(I-M)A_p\) is diagonal. Its
+contribution to \(\dot M\), before applying the mixture weight, is
+\(R_pM+MR_p=2\operatorname{diag}((A_p)_{kk}\ell_k(1-\ell_k))\).
+Multiplying the resulting probe velocity by the cluster weight \(1/2\)
+and contracting with \(-e(\xi)\) yields (16.3). \(\square\)
+
+\textbf{Normalization.} With the same parameter initialization mass, the
+linear initial map is \(S_0x/2\), whereas the ReLU initial map is
+\(S_0x/4\). An initial-output-matched linear control uses linear mass
+\(S_0/2\). Both matching conventions yield the monotonicity conclusion.
+For \(S_0>2\), linear coordinates approach 1 from above rather than
+below; (16.2) still holds. At \(S_0=2\) the linear model is initially
+the identity.
+
+\subsection{16.1 Do not extend the diagonal closure off the commuting
+manifold}\label{do-not-extend-the-diagonal-closure-off-the-commuting-manifold}
+
+For a general untied linear state set
+
+\[
+ P_U=\int UU^\top d\lambda,\qquad P_W=\int WW^\top d\lambda.
+\]
+
+The actual equation is
+
+\[
+ \boxed{\dot M=(I-M)AP_U+P_W(I-M)A.}
+ \tag{16.4}
+\]
+
+This follows by differentiating \(WU^\top\): \(\dot M=RP_U+P_WR\). It is
+not a closed equation in \(M\) alone. Even at an instant when \(U=W\)
+and \(M\) is symmetric, the resulting derivative is
+
+\[
+ (I-M)AM+M(I-M)A,
+\]
+
+and alignment generally fails immediately if the covariance is full rank
+and \([A,M]\ne0\). Indeed \(\dot W-\dot U=(R-R^\top)U\), so full-rank
+aligned covariance and tangency require \(R=R^\top\), equivalently
+\([A,M]=0\).
+
+Along the commuting aligned trajectory, (16.4) reduces to \(AM+MA-2MAM\)
+and to (16.1). The commuting class includes any diagonal \(M\) in the
+eigenbasis of \(A\), not only scalar-isotropic \(M\).
+
+For comparison only, the polynomial
+\(F_{\rm SIM}(M)=AM+MA-\frac12(AM^2+M^2A+2MAM)\) printed in {[}S1, Eq.
+(D.2){]} obeys
+
+\[
+ (AM+MA-2MAM)-F_{\rm SIM}(M)=\tfrac12[[A,M],M].
+ \tag{16.5}
+\]
+
+That is an algebraic identity between polynomials, not a derivation of
+an off-commuting untied flow. Direct differentiation of
+\(\frac12\|(UU^\top-I)A^{1/2}\|_F^2\) in tied Euclidean parameters gives
+twice \(F_{\rm SIM}\) as its continuous-time effective-matrix field.
+None of P10 depends on importing that normalization.
+
+\section{17. Proposition P10b: ReLU creates a probe-active minor entry
+immediately}\label{proposition-p10b-relu-creates-a-probe-active-minor-entry-immediately}
+
+For a nonzero probe define the exact active matrix
+
+\[
+ M_\xi(t)=\int\mathbf1_{\{a_\theta^\top\xi>0\}}b_\psi a_\theta^\top d\nu_t,
+ \qquad f_t(\xi)=M_\xi(t)\xi.
+ \tag{17.1}
+\]
+
+At aligned isotropic initialization,
+
+\[
+ M_\xi(0)=\frac{S_0}{4}I_2\quad\text{for every nonzero }\xi.
+ \tag{17.2}
+\]
+
+\textbf{Proof.} The map \(a\mapsto aa^\top\) is unchanged by
+\(a\mapsto-a\), and exactly one point of each antipodal pair lies in the
+active half-circle, except on a zero-measure boundary. The integral on
+any active half-circle is therefore half the full second moment
+\(S_0I_2/2\). \(\square\)
+
+In the normalized two-concept Gaussian model, for \(q>0\), \(\rho>0\),
+and \(0<S_0<4\),
+
+\[
+ \boxed{\left.\frac d{dt}[M_{e_1}(t)]_{21}\right|_{t=0}
+       =\left.\frac d{dt}f_{t,2}(e_1)\right|_{t=0}>0.}
+ \tag{17.3}
+\]
+
+Thus a nonzero probe-active off-diagonal response is generated in the
+exact continuum flow without initial random off-diagonal fluctuations.
+This is an initial generation result, not a reversal theorem.
+
+\textbf{Proof.} Write \(c_0=1-S_0/4>0\). Initially
+\(R(\theta)=c_0\mathbb E[XX^\top\mathbf1_{a_\theta^\top X>0}]\) is
+symmetric, so the initial velocities of \(U\) and \(W\) agree. Define
+
+\[
+ H(x)=\frac1{2\pi}\int_{-\pi/2}^{\pi/2}
+ (\cos\alpha\,x_2+\sin\alpha\,x_1)
+ (a_\alpha^\top x)_+\,d\alpha.
+ \tag{17.4}
+\]
+
+Differentiating \(f_2(e_1)\) in the two parameter layers gives
+
+\[
+ \dot f_{0,2}(e_1)=c_0S_0\mathbb E_P H(X).
+ \tag{17.5}
+\]
+
+There is no probe-boundary atom at initialization. The preceding
+derivative is therefore justified by the first-variation calculation of
+Section 15.
+
+For \(x=r(\cos\beta,\sin\beta)\) with \(0\le\beta\le\pi\), the active
+integration interval is \((\beta-\pi/2,\pi/2)\). The integrand becomes
+\(r^2\sin(\alpha+\beta)\cos(\alpha-\beta)\). Using
+\(\sin A\cos B=[\sin(A+B)+\sin(A-B)]/2\) and integrating yields
+
+\[
+ H(x)=\frac{r^2}{4\pi}
+       [\sin^2\beta+(\pi-\beta)\sin(2\beta)].
+ \tag{17.6}
+\]
+
+Reflection of \(\alpha\) in (17.4) shows \(H(x_1,-x_2)=-H(x_1,x_2)\). If
+\(x_1\ge0\) and \(x_2>0\), write \(0<\beta\le\pi/2\). Then
+
+\[
+ H(x_1,x_2)+H(-x_1,x_2)
+ =\frac{r^2}{2\pi}
+ [\sin^2\beta+(\pi-2\beta)\sin\beta\cos\beta]>0.
+ \tag{17.7}
+\]
+
+Cluster 1 is symmetric in \(X_2\), so \(\mathbb E_{P_1}H=0\). Cluster 2
+is symmetric in \(X_1\) and, for \(x_2>0\), its density satisfies
+\(p_2(x_1,x_2)>p_2(x_1,-x_2)\) because \(\rho>0\). Integrating over
+\(x_1\ge0,x_2>0\), using (17.7) and oddness in \(x_2\), gives
+\(\mathbb E_{P_2}H>0\). Equation (17.5) now proves (17.3). Finally
+\([M_{e_1}]_{21}=f_2(e_1)\) identically. \(\square\)
+
+As a normalization check, in the noiseless two-point limit the same
+calculation gives \(\dot f_{0,2}(e_1)=c_0S_0\rho^2/(8\pi)\). The
+positive-noise claim above does not use a small-\(q\) perturbation.
+
+\textbf{Vocabulary and flux.} It is consistent to reserve ``major'' for
+diagonal entries and ``minor'' for off-diagonal entries of \(M_\xi\). A
+transverse diagonal entry of a strong cohort block is not, for that
+reason alone, a minor entry of \(M_\xi\). Nor does (17.2) make all
+training-and-probe doubly gated moments diagonal.
+
+Although \(f_t(\xi)=M_\xi(t)\xi\) is exact, differentiating \(M_\xi\)
+itself can create a boundary-flux matrix. Formally it contains
+\(\int WU^\top\delta(U^\top\xi)(\dot U^\top\xi)d\lambda\). Its
+contraction with \(\xi\) vanishes because \(U^\top\xi=0\) on the
+boundary. Thus there is no additional output-rate flux term in P6, but
+matrix-entry equations still require the boundary contribution or a
+proved no-flux condition.
+
+\section{18. Proposition P11: explicit Gaussian angular tails and
+interior gate
+purity}\label{proposition-p11-explicit-gaussian-angular-tails-and-interior-gate-purity}
+
+\subsection{18.1 Angular tails, including the backward
+half-plane}\label{angular-tails-including-the-backward-half-plane}
+
+Let \(c\ne0\), \(c_*=|c|\), and \(\gamma\) be the angular distance from
+\(a_\beta\) to \(c/c_*\). Put \(\ell=c_*\cos\gamma\). For \(\ell\ge0\),
+(6.3) gives
+
+\[
+ \omega_c(\beta)\le W_c
+ \exp\left[-\frac{c_*^2\sin^2\gamma}{2q^2}\right].
+ \tag{18.1}
+\]
+
+For \(\ell\le0\) there is a useful stronger backward bound:
+
+\[
+ \omega_c(\beta)\le\frac{q^2}{\pi}
+                 e^{-c_*^2/(2q^2)}.
+ \tag{18.2}
+\]
+
+\textbf{Proof.} Integration by parts gives
+\(\partial_\ell J_3=3J_2\ge0\), so \(J_3(\ell,q)\le J_3(c_*,q)\) when
+\(0\le\ell\le c_*\). This proves (18.1). For \(\ell\le0\),
+
+\[
+ (r-\ell)^2=r^2+\ell^2-2r\ell\ge r^2+\ell^2,
+\]
+
+so \(J_3(\ell,q)\le e^{-\ell^2/(2q^2)}J_3(0,q)=2q^4e^{-\ell^2/(2q^2)}\).
+Substitute into (6.3) to prove (18.2). \(\square\)
+
+For an angular set \(B\) outside the cone \(\gamma<\delta\), with
+\(0<\delta\le\pi/2\), it follows that
+
+\[
+ \int_B\omega_c(\beta)d\beta
+ \le |B|\max\left\{W_c e^{-c_*^2\sin^2\delta/(2q^2)},
+                    (q^2/\pi)e^{-c_*^2/(2q^2)}\right\}.
+ \tag{18.3}
+\]
+
+Here \(|B|\) is its Lebesgue angular length. The separate backward
+estimate avoids mistaking the antipodal direction for a second
+concentration peak.
+
+\subsection{18.2 Exact wrong-gate second
+moments}\label{exact-wrong-gate-second-moments}
+
+For \(X\sim\mathcal N(c,q^2I_2)\), a unit gate vector \(a\), and
+\(\ell=a^\top c\), set \(\kappa=\ell/q\). Then
+
+\[
+ \mathbb E[|X|^2\mathbf1_{\{a^\top X>0\}}]
+ =(|c|^2+2q^2)\Phi(\kappa)+\ell q\phi(\kappa),
+ \tag{18.4}
+\]
+
+\[
+ \mathbb E[|X|^2\mathbf1_{\{a^\top X\le0\}}]
+ =(|c|^2+2q^2)\Phi(-\kappa)-\ell q\phi(\kappa).
+ \tag{18.5}
+\]
+
+\textbf{Proof.} Decompose \(X=Ya+Za^\perp\), where
+\(Y\sim\mathcal N(\ell,q^2)\) and
+\(Z\sim\mathcal N((a^\perp)^\top c,q^2)\) are independent. Direct
+truncated-normal integration gives
+\(\mathbb E[Y^2\mathbf1_{Y>0}]=(\ell^2+q^2)\Phi(\kappa)+\ell q\phi(\kappa)\).
+Add \(\mathbb E[Z^2]\mathbb P(Y>0)\) to obtain (18.4); subtract from
+\(\mathbb E|X|^2\) to obtain (18.5). \(\square\)
+
+In particular, if \(\ell\le-b<0\), the wrong active-gate moment is at
+most \((|c|^2+2q^2)\Phi(-b/q)\). If \(\ell\ge b>0\), the missing-gate
+moment has the same bound.
+
+Let \(0<\delta<\pi/4\) and consider the strict quadrant-II interior
+
+\[
+ J_\delta=[\pi/2+\delta,\pi-\delta].
+\]
+
+For every state of mass \(S\) and every \(\theta\in J_\delta\), define
+the ungated weak residual moment
+\(\overline R_2=\mathbb E_{P_2}[e(X)X^\top]\). Then
+
+\[
+ \boxed{\|R_1(\theta)\|\le
+ (1+S)M_{2,1}\Phi(-\sin\delta/q),}
+\]
+
+\[
+ \boxed{\|R_2(\theta)-\overline R_2\|\le
+ (1+S)M_{2,2}\Phi(-\rho\sin\delta/q).}
+ \tag{18.6}
+\]
+
+\textbf{Proof.} In \(J_\delta\),
+\(a_\theta^\top c_1=\cos\theta\le-\sin\delta\) and
+\(a_\theta^\top c_2=\rho\sin\theta\ge\rho\sin\delta\). Apply
+(18.4)--(18.5) and \(|e(X)|\le(1+S)|X|\) to the relevant matrix
+integrals. \(\square\)
+
+This is a static gate-purity estimate for a strictly interior arc. It
+does not claim purity uniformly up to \(\theta=\pi/2\), where the
+strong-cluster gate probability is \(1/2\). It also does not prove that
+sufficient initialized mass remains in this arc, acquires useful output
+orientation, or yields an \(O(1)\) weak response. Those are the
+dynamical obligations needed for weak learning.
+
+\section{19. Exact shared-gate forcing and a signed rotation
+interface}\label{exact-shared-gate-forcing-and-a-signed-rotation-interface}
+
+Let \(\mathcal K(\kappa)=\phi(\kappa)+\kappa\Phi(\kappa)\), and set
+
+\[
+ \kappa=\frac{\rho\sin\theta}{q}.
+\]
+
+Equation (6.7) specializes to
+
+\[
+ \boxed{B_2(\theta)=\rho q\mathcal K(\kappa)e_2
+                        +q^2\Phi(\kappa)a_\theta,}
+\]
+
+\[
+ G_{2,\nu}(\theta)=B_2(\theta)
+             -\int b_\varphi C_2(\theta,\vartheta)d\nu(\vartheta,\varphi).
+ \tag{19.1}
+\]
+
+This keeps the gate-overlap target forcing and the fitted-output
+subtraction distinct. At \(\kappa=0.234\),
+\(\mathcal K(\kappa)\simeq0.527\); this numerical substitution is not a
+dynamically proved tilt.
+
+The cluster-2 contribution to output-angle velocity is exactly
+
+\[
+ (\dot\psi)_2=\tfrac12(b_\psi^\perp)^\top G_{2,\nu}(\theta).
+ \tag{19.2}
+\]
+
+A positive \(e_2\) component of \(B_2\) alone does not determine the
+sign of (19.2), or of \(D_2\). For a scalar \(r\ge0\) define
+
+\[
+ \varepsilon_2(\theta;r)=
+ \mathbb E_{P_2}[(e(X)-rX_2e_2)(a_\theta^\top X)_+],
+\]
+
+\[
+ T_2(\theta)=\mathbb E_{P_2}[X_2(a_\theta^\top X)_+]
+ =\rho q\mathcal K(\kappa)+q^2\sin\theta\Phi(\kappa).
+\]
+
+Then the exact identity and a sufficient positive-rotation condition are
+
+\[
+ G_2(\theta)=rT_2(\theta)e_2+\varepsilon_2(\theta;r),
+\]
+
+\[
+ (\dot\psi)_2\ge\tfrac12
+ [rT_2(\theta)(b_\psi^\perp)^\top e_2-|\varepsilon_2(\theta;r)|],
+ \tag{19.3}
+\]
+
+with the explicit bound
+
+\[
+ |\varepsilon_2(\theta;r)|
+ \le \sqrt{C_2(\theta,\theta)}
+      \|e-rX_2e_2\|_{L^2(P_2)}.
+ \tag{19.4}
+\]
+
+The proof is substitution and Cauchy--Schwarz. A bound on the scalar
+correlation statistic \(\mathsf m_2\) alone does not imply the residual
+approximation in (19.4). A signed mechanism proof must control that
+approximation or retain the exact selected residual integral.
+
+\section{20. Proposition P12: signed residual-curvature identity and
+one-sided
+continuation}\label{proposition-p12-signed-residual-curvature-identity-and-one-sided-continuation}
+
+\subsection{20.1 Exact second variation in Cartesian
+coordinates}\label{exact-second-variation-in-cartesian-coordinates}
+
+Let \(Z=(U,W)\) be a continuous labeled Cartesian state, not necessarily
+balanced, with \(\inf_\alpha|U(\alpha)|>0\) and bounded \(U,W\). Let
+\(h=(v,z)\) be a bounded continuous perturbation. All inner products
+below use (15.1); the data law is fixed. Put
+\(F(Z)=-\nabla_{\mathcal H}\mathcal L(Z)\) and define its output
+differential
+
+\[
+ J_Zh(x)=\int\left[z(U^\top x)_+
+             +W\mathbf1_{\{U^\top x>0\}}(v^\top x)\right]d\lambda.
+ \tag{20.1}
+\]
+
+Write \(r=|U|\), \(a=U/r=a_\theta\), \(n=a_\theta^\perp\). Define
+
+\[
+ h_Z^{\rm gate}(\alpha)=
+ \sum_{\epsilon\in\{-1,1\}}
+ \omega(\theta+\epsilon\pi/2)
+ \frac{W(\alpha)^\top e_Z(a_{\theta+\epsilon\pi/2})}{r(\alpha)}.
+ \tag{20.2}
+\]
+
+Then
+
+\[
+ \boxed{\begin{aligned}
+ \langle h,DF(Z)h\rangle_{\mathcal H}
+ ={}&-\|J_Zh\|_{L^2(P)}^2
+       +2\int z^\top R_Z(\theta)v\,d\lambda\\
+    &+\int h_Z^{\rm gate}(\alpha)(v^\top n)^2d\lambda.
+ \end{aligned}}
+ \tag{20.3}
+\]
+
+The signs in (20.3) use \(e=x-f\), as in the rest of this document. Thus
+the Gauss--Newton term is nonpositive, while the residual terms need not
+have either sign.
+
+\textbf{Proof.} For \(Z_s=Z+sh\), the first output variation is (20.1).
+The second output variation, interpreted inside the Gaussian
+expectation, is
+
+\[
+ \delta^2f(x)=\int\left[
+ 2z\mathbf1_{\{U^\top x>0\}}(v^\top x)
+ +W\delta(U^\top x)(v^\top x)^2\right]d\lambda.
+\]
+
+This distributional identity may be justified without assigning any
+finite mass to an individual training hyperplane: use polar coordinates
+and differentiate the moving half-circle endpoints, exactly as in
+(6.12). Equivalently, the degree-two feature kernels of P4 are \(C^2\)
+for nonzero input vectors. Their derivatives justify differentiation of
+the loss twice on a uniformly nonzero, bounded Cartesian tube. Dominated
+integration over labels is valid there.
+
+Since \(e=x-f\), the negative Hessian quadratic form is
+
+\[
+ -\delta^2\mathcal L=-\mathbb E|J_Zh|^2+
+                          \mathbb E[e^\top\delta^2f].
+\]
+
+The smooth bilinear part is \(2\int z^\top R_Zv\,d\lambda\). For the
+boundary part write \(X=s a_\beta\), with \(s>0\). The delta factor is
+\(\delta(U^\top X)=(rs)^{-1}\delta(a_\theta^\top a_\beta)\). Homogeneity
+of \(e\), the two perturbation factors, and the polar Jacobian leave the
+radial integral \(\omega(\beta)\). The two roots are
+\(\beta=\theta\pm\pi/2\), each with unit angular derivative magnitude,
+and \((v^\top a_\beta)^2=(v^\top n)^2\). The remaining coefficient is
+precisely (20.2). This proves (20.3). \(\square\)
+
+The quadratic form is bounded and extends to the corresponding
+\(L^2(\lambda)\) perturbations on such a tube. Differentiability is
+asserted in the continuous bounded-state setting used to derive the
+formula, not on an unrestricted \(L^2\)-open set that would allow
+vanishing input weights on small label subsets.
+
+For a balanced state, \(W/r=b_\psi\), so
+
+\[
+ h_Z^{\rm gate}=
+ \sum_{\epsilon=\pm1}\omega(\theta+\epsilon\pi/2)
+                    b_\psi^\top e_Z(a_{\theta+\epsilon\pi/2}).
+ \tag{20.4}
+\]
+
+This is a \textbf{signed projection} of the boundary residual. Large
+\(\omega\) alone is not a positive one-sided expansion rate. In
+particular, replacing (20.4) by a norm of the full boundary residual can
+discard both a favorable sign and near-orthogonality to the output
+direction.
+
+\textbf{Exact initial cancellation.} At the aligned isotropic
+initialization, \(W/r=a_\theta\) and \(e_0(x)=c_0x\), with
+\(c_0=1-S_0/4\). Every boundary direction is perpendicular to
+\(a_\theta\), so
+
+\[
+ h_{Z_0}^{\rm gate}(\alpha)=0\quad\text{for every label}.
+ \tag{20.4a}
+\]
+
+For \(0<S_0<4\), the gated initial moment is
+\(R_0(\theta)=c_0\mathbb E[XX^\top\mathbf1_{a_\theta^\top X>0}]\), which
+is positive semidefinite and bounded above by \(c_0A\). Using
+\(2z^\top R_0v\le\|R_0\|(|z|^2+|v|^2)\) and retaining or discarding the
+nonpositive Gauss--Newton term gives the initial bound
+
+\[
+ \langle h,DF(Z_0)h\rangle_{\mathcal H}
+ \le c_0\|A\|\|h\|_{\mathcal H}^2
+ =c_0(1/2+q^2)\|h\|_{\mathcal H}^2.
+ \tag{20.4b}
+\]
+
+Thus a large \(O(1/q)\) norm of \(\partial_\theta R\) does not imply an
+\(O(1/q)\) expanding one-sided rate at initialization. This cancellation
+is exact at the specified initial state; retaining it approximately on a
+nonzero tube requires further bounds.
+
+\subsection{20.2 A local operator suitable for
+certification}\label{a-local-operator-suitable-for-certification}
+
+The residual part of (20.3) is the multiplication quadratic form
+associated with
+
+\[
+ \mathcal A_Z(\alpha)=
+ \begin{pmatrix}
+ h_Z^{\rm gate}nn^\top&R_Z^\top\\
+ R_Z&0
+ \end{pmatrix}
+ \quad\text{on }(v,z).
+ \tag{20.5}
+\]
+
+A valid upper one-sided rate is
+\(\operatorname*{ess\,sup}_\alpha\lambda_{\max}(\mathcal A_Z(\alpha))\).
+A potentially sharper rate retains the nonlocal negative term:
+
+\[
+ \ell_Z=\sup_{\|h\|_{\mathcal H}=1}
+ \left\{-\|J_Zh\|_{L^2(P)}^2
+      +\int h(\alpha)^\top\mathcal A_Z(\alpha)h(\alpha)d\lambda\right\}.
+ \tag{20.6}
+\]
+
+These are exact/sufficient interfaces. No claim is made that their upper
+bounds are small or negative along the canonical trajectory. Any
+numerical upper bound must enclose the continuum integrals, not only
+eigenvalues of a point-sampled finite matrix.
+
+\subsection{20.3 Conditional one-sided tube
+lemma}\label{conditional-one-sided-tube-lemma}
+
+Let \(\widehat Z(t)\) be a differentiable reference and
+\(d(t)=\dot{\widehat Z}(t)-F(\widehat Z(t))\) its defect. Suppose a
+prescribed labelwise tube contains every segment joining
+\(\widehat Z(t)\) to the candidate true state, keeps all input radii
+bounded away from zero, and satisfies
+
+\[
+ \langle h,DF(Y)h\rangle_{\mathcal H}
+ \le\ell(t,R)\|h\|_{\mathcal H}^2
+ \tag{20.7}
+\]
+
+for all states \(Y\) on those segments when the error norm is at most
+\(R\). If \(r(t)=\|Z(t)-\widehat Z(t)\|_{\mathcal H}\), then
+
+\[
+ D^+r(t)\le\ell(t,r(t))r(t)+\|d(t)\|_{\mathcal H}.
+ \tag{20.8}
+\]
+
+\textbf{Proof.} Put \(h=Z-\widehat Z\) and integrate \(DF\) along the
+Cartesian parameter segment. Then
+
+\[
+ \tfrac12\frac d{dt}\|h\|_{\mathcal H}^2
+ =\langle h,F(Z)-F(\widehat Z)\rangle-\langle h,d\rangle
+ \le\ell(t,r)r^2+r\|d\|.
+\]
+
+Divide by \(r\) when \(r>0\); at \(r=0\) the same inequality follows for
+the upper right derivative of the norm. \(\square\)
+
+A strict supersolution of (20.8), together with proved labelwise side
+guards, closes the usual first-exit comparison. An \(L^2\) radius alone
+does not guarantee a pointwise positive input radius, and does not
+provide P9's uniform angular error budget. Those labelwise guards and a
+compatible probe-rate error bound are additional parts of a certificate.
+Cartesian line segments between balanced states generally are not
+balanced, which is why (20.2), not only (20.4), is required in a tube
+proof.
+
+\section{21. Proposition P13: projected density, covariance, and probe
+strips}\label{proposition-p13-projected-density-covariance-and-probe-strips}
+
+Let \(\sigma_t\) denote the input-angle marginal of \(\nu_t\). For a
+regular angle \(\vartheta\), if the preimages of \(\vartheta\) under
+\(\alpha\mapsto\theta_t(\alpha)\) are noncritical, the local density is
+
+\[
+ n_t(\vartheta)=\frac1{2\pi}
+ \sum_{\alpha:\theta_t(\alpha)=\vartheta\;({\rm mod}\;2\pi)}
+ \frac{m_t(\alpha)}{|\partial_\alpha\theta_t(\alpha)|}.
+ \tag{21.1}
+\]
+
+\textbf{Proof.} Around each noncritical preimage, the inverse function
+theorem supplies a monotone coordinate chart. Changing variables in
+\(m_t(\alpha)d\alpha/(2\pi)\) gives its displayed density contribution.
+Summing the charts proves (21.1). On a compact preimage set regularity
+makes the number of such charts finite locally. \(\square\)
+
+For a unit probe at angle \(\phi\), the boundaries are \(\phi\pm\pi/2\).
+If \(n_t\le B\) throughout the two strips, then
+
+\[
+ \Gamma_{\nu_t}(\xi,\eta)\le4B\arcsin\eta.
+ \tag{21.2}
+\]
+
+If the density is continuous at both boundary angles, then
+
+\[
+ \Gamma_{\nu_t}(\xi,\eta)
+ =2\arcsin\eta\,[n_t(\phi-\pi/2)+n_t(\phi+\pi/2)]+o(\eta).
+ \tag{21.3}
+\]
+
+These statements follow by integrating the density over the two arcs,
+each of width \(2\arcsin\eta\). A smooth invertible joint
+\((\theta,\psi)\) flow alone does not prove any uniform bound on this
+projected density. Projection can have folds or large density; a
+non-atomicity assertion also needs justification rather than being
+inferred from joint invertibility.
+
+There is a weaker but useful connection to angular spread. Restrict the
+measure to a fixed measurable label subset \(A\) of mass \(S_A>0\).
+Choose a reference angle \(\bar\theta\), define its circular second
+moment
+
+\[
+ V_A=\frac1{S_A}\int_A d_{\mathbb T}(\theta,\bar\theta)^2d\nu,
+\]
+
+and let \(d>0\) be the circular distance from \(\bar\theta\) to the
+nearest probe boundary. If \(\arcsin\eta<d\), then
+
+\[
+ \boxed{\Gamma_{\nu|A}(\xi,\eta)
+ \le\frac{S_AV_A}{(d-\arcsin\eta)^2}.}
+ \tag{21.4}
+\]
+
+\textbf{Proof.} Every point in the strip is within \(\arcsin\eta\) of a
+boundary. The triangle inequality therefore gives
+\(d_{\mathbb T}(\theta,\bar\theta)\ge d-\arcsin\eta\). Integrate this
+squared inequality over the strip and bound its second moment by the
+total second moment. \(\square\)
+
+Equation (21.4) is a finite-tolerance tail bound. For fixed \(V_A\) it
+need not vanish as \(\eta\downarrow0\), so it is not a density estimate
+and by itself does not prove rate continuity. Nor does input-angle
+variance determine the joint input/output covariance in
+\(\int ba^\top d\nu\). The same population controls both questions, but
+they are not the same observable. A full strip estimate must include the
+complement of \(A\), not only a retrospectively named strong family.
+
+For the \(-85^\circ\) probe, the two input gate boundaries are at
+\(5^\circ\) and \(185^\circ\). Both must be included. A total
+inactive-neuron count is not a measurement of density at either
+boundary.
+
+\section{22. Scope guards: finite-horizon persistence, finite width, and
+small
+initialization}\label{scope-guards-finite-horizon-persistence-finite-width-and-small-initialization}
+
+\subsection{22.1 Rebound does not prove permanent
+non-recovery}\label{rebound-does-not-prove-permanent-non-recovery}
+
+After a certified minimum or low-error snapshot \(t_m\), let
+\(\Delta_0=E_\xi(t_+)-E_\xi(t_m)>0\). A sufficient finite-horizon
+persistence condition is
+
+\[
+ \int_{t_+}^{T_{\rm pers}}[-(D_1+D_2)(t,\xi)]_+dt
+ \le\Delta_0-\Delta_{\rm pers}
+ \quad\text{for some }0<\Delta_{\rm pers}\le\Delta_0.
+ \tag{22.1}
+\]
+
+Indeed, for every \(t\in[t_+,T_{\rm pers}]\), integrating
+\(\dot E=D_1+D_2\) and discarding positive increments gives
+\(E_\xi(t)\ge E_\xi(t_m)+\Delta_{\rm pers}\). This is an interface to
+prove, not a consequence of weak-family inactivity at an earlier time.
+
+Because \(q>0\), the population Gaussian mixture has strictly positive
+density everywhere. Any continuous map with exactly zero population loss
+equals the identity everywhere: otherwise a nonzero error at one point
+persists on an open neighborhood of positive probability and makes the
+loss positive. This observation does not prove convergence to zero loss,
+but prevents silently identifying ``very slow recovery'' with ``recovery
+is impossible.''
+
+A quantitative conditional version is also available. If the ReLU mass
+is at most \(M\) and \(\omega_*=\min_\beta\omega(\beta)>0\), then for a
+unit probe
+
+\[
+ |e(\xi)|^3\le\frac{8(1+M)\mathcal L}{\omega_*}.
+ \tag{22.2}
+\]
+
+\textbf{Proof.} Write \(r=|e(\xi)|\le1+M\). On the angular arc of radius
+\(r/[2(1+M)]\le1/2\) around the probe, Lipschitz continuity gives
+\(|e(a_\beta)|\ge r/2\). The loss is at least
+\(\frac12\omega_*[r/(1+M)](r/2)^2\), which yields (22.2). \(\square\)
+
+Thus uniformly bounded mass and \(\mathcal L(t)\to0\) would force
+pointwise recovery at every probe. Neither premise is proved here for
+long times. The constant \(1/\omega_*\) can be extremely large in
+low-density off-cone directions.
+
+The empirical E6 statement in \texttt{ood\_reversals-appendix.tex},
+subsection ``Long-horizon persistence and corrected cone geometry,''
+concerns ten finite-network seeds through physical time 100. It is
+evidence for finite-horizon persistence, not an asymptotic population
+theorem.
+
+\subsection{22.2 Exact initial fluctuation scales are not a rate-error
+theorem}\label{exact-initial-fluctuation-scales-are-not-a-rate-error-theorem}
+
+For the finite aligned isotropic initialization at fixed total mass
+\(S_0\),
+
+\[
+ M_h(0)=\frac{S_0}{h}\sum_i a_{\alpha_i}a_{\alpha_i}^\top.
+\]
+
+Then
+
+\[
+ \mathbb E M_h(0)=\frac{S_0}{2}I_2,\qquad
+ \operatorname{sd}([M_h(0)]_{12})=\frac{S_0}{\sqrt{8h}},
+\]
+
+\[
+ \sqrt{\mathbb E\|M_h(0)-S_0I_2/2\|_{\rm op}^2}
+ =\frac{S_0}{2\sqrt h}.
+ \tag{22.3}
+\]
+
+\textbf{Proof.} Use \(\cos\alpha\sin\alpha=\frac12\sin2\alpha\), whose
+mean is zero and second moment is \(1/8\). For the operator norm, write
+
+\[
+ M_h-S_0I_2/2=\frac{S_0}{2h}
+ \begin{pmatrix}\sum_i\cos2\alpha_i&\sum_i\sin2\alpha_i\\
+                 \sum_i\sin2\alpha_i&-\sum_i\cos2\alpha_i\end{pmatrix}.
+\]
+
+Its squared operator norm is \(S_0^2/(4h^2)\) times the sum of the two
+squared trigonometric sums. Independence gives expectation \(h\).
+\(\square\)
+
+The relative root-mean-square operator fluctuation is \(h^{-1/2}\),
+about \(7.1\%\) at \(h=200\). It does not imply that the nonlinear
+reversal time or signed rates have the same relative error, or that the
+continuum equals the finite-seed median.
+
+A sufficient lifting ledger is instead: if
+\(|D_p^{(h,N)}-D_p|\le\epsilon_p\) on the relevant windows, individual
+population sign margins must exceed their respective \(\epsilon_p\), and
+total dominance margins must exceed \(\epsilon_1+\epsilon_2\).
+Data-sampling error and probe-gate uncertainty must be included in these
+budgets. There is no universal 10-percent cutoff.
+
+\subsection{22.3 Distinguish the two
+limits}\label{distinguish-the-two-limits}
+
+At fixed \(S_0\), the continuum limit is \(h\to\infty\) with
+\(\varepsilon_h^2=S_0/h\). A fluctuation contribution proportional to
+\(\varepsilon_h^2\) then vanishes, whereas an \(S_0\)-scale contribution
+need not. A proved lower bound proportional to one of these scales is
+not automatically an exact asymptotic law for the full reversal
+amplitude.
+
+The separate small-initialization limit is \(S_0\downarrow0\) after
+specifying the population model. Its learning times generally move.
+Comparing profiles at the same physical time can therefore confound
+spread with learning stage. Use a measured, explicitly defined
+learning-progress crossing or a stated time shift, and do not assume
+monotonicity or uniqueness of that crossing without checking it. Claims
+of canonical continuum reversal and of a power law for spread remain
+pilot/theorem targets here.
+
+\section{23. Pilot implementation note: eliminate the dense output
+matrix}\label{pilot-implementation-note-eliminate-the-dense-output-matrix}
+
+The population pilot is still a numerical witness search. The following
+identity reduces its per-evaluation cost without changing the finite
+angular quadrature model.
+
+For quadrature labels with reference weights \(w_j^\lambda\), put
+
+\[
+ T_j=w_j^\lambda m_j b_{\psi_j}a_{\theta_j}^\top.
+\]
+
+For any data angle \(\beta\),
+
+\[
+ f(a_\beta)=
+ \left[\sum_{j:\theta_j\in(\beta-\pi/2,\beta+\pi/2)\;({\rm mod}\;2\pi)}T_j\right]a_\beta.
+ \tag{23.1}
+\]
+
+This follows from
+\((a_{\theta_j}^\top a_\beta)_+=\mathbf1_{\rm active}a_{\theta_j}^\top a_\beta\).
+Sort the current input angles, duplicate them periodically, and form
+prefix sums of the four entries of \(T_j\). Each active semicircle is a
+prefix-difference query. Thus the output step can cost
+\(O(L\log L+K\log L)\), or \(O(L\log L+K+L)\) with a sweep, rather than
+\(O(KL)\). This is exact for the chosen discrete label quadrature and
+does not require the label-to-input-angle map to remain ordered.
+
+After the data-grid residual is available, evaluate the
+moving-half-circle integrals for \(R_p\) with periodic cumulative
+integration of \(\omega_p e(a_\beta)a_\beta^\top\). Moving endpoints
+need appropriate interpolation or split-cell quadrature. This still has
+data-angle discretization error; the prefix identity is not a validation
+theorem.
+
+Check data-angle resolution, initial-label resolution, and time step
+separately. Record exact rates through both velocity formulas, and log
+weighted strip masses at both probe boundaries for a ladder of strip
+widths. Also record mass, concept responses, cluster losses, and the
+mean/input-output-covariance quantities actually proposed for Theorem B.
+Dense direct output evaluation on small random test states remains a
+useful implementation cross-check. A scalar exact linear/logistic run
+tests normalization independently.
+
+\section{24. Updated proof status}\label{updated-proof-status}
+
+P10 proves all-probe monotonicity and non-harmful cluster contributions
+for the matched aligned-isotropic linear population model. P10b proves
+immediate creation of a ReLU probe-active off-diagonal response. P11
+supplies explicit wrong-gate and angular-tail estimates. P12 gives the
+signed Cartesian second-variation formula and a conditional one-sided
+tube interface. P13 separates projected strip density from bulk angular
+second moments.
+
+These additions do not establish initialized reachability, the canonical
+population crossover, substantial weak learning along that trajectory,
+or finite-horizon persistence after its rebound. They do not establish
+that a coherent closure is sufficient or that covariance is essential.
+Those alternatives should be tested with the population pilot and then
+resolved by the signed trajectory proof.
+
+\section{25. Additional non-certifying checks for revision
+2}\label{additional-non-certifying-checks-for-revision-2}
+
+The new formulas were independently checked with floating-point Gaussian
+angular quadrature. These checks did not integrate the initialized
+population trajectory and did not run the proposed pilot.
+
+\begin{itemize}
+\tightlist
+\item
+  The explicit \(H(x)\) formula in (17.6) was compared with the original
+  half-circle integral at seven vectors in different quadrants; the
+  largest absolute discrepancy was \(1.2\cdot10^{-16}\).
+\item
+  The exact wrong-gate second moment in (18.4) was compared with
+  independent one-dimensional Gaussian quadrature at four mean
+  orientations; the largest absolute discrepancy was below
+  \(9.1\cdot10^{-15}\).
+\item
+  The gradient-inner-product expression and direct cluster probe
+  velocity were compared at a four-label non-balanced state; the largest
+  absolute discrepancy was below \(5\cdot10^{-19}\).
+\item
+  At that same non-balanced state, the three terms of (20.3) were
+  approximately \(-0.00231318243\), \(-0.01736117047\), and
+  \(-0.00224753606\), summing to \(-0.02192188896\). Centered finite
+  differences of the full Cartesian vector field had absolute error
+  \(5.8\cdot10^{-10}\) at step \(10^{-3}\), \(5.8\cdot10^{-12}\) at
+  \(10^{-4}\), and \(2.7\cdot10^{-13}\) at \(10^{-5}\).
+\end{itemize}
+
+The Hessian check intentionally used a non-balanced state, since
+Cartesian continuation segments need not preserve balance. These are
+transcription and sign/normalization checks, not interval certificates
+or substitutes for the proofs.
+
+\end{document}

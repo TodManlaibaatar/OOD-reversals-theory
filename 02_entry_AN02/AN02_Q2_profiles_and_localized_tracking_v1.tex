@@ -1,0 +1,536 @@
+% Separate proof increment. All supplied inputs and the checkpoint remain unchanged.
+% Unique label prefix: inc:AN02:q2:v1:
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,booktabs,xurl}
+\usepackage[hidelinks]{hyperref}\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small AN02: Q2 profile and localized tracking}
+\fancyhead[R]{\small Review increment v1}\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}\newcommand{\R}{\mathbb R}
+\title{Q2 profiles, analytical transit clocks, and localized tracking\\
+\large Exact target-only results and an original-flow comparison with an explicit defect}
+\author{Analytical increment for independent review}\date{Version 1 --- October 3, 2026}
+\hypersetup{pdftitle={Q2 profiles, analytical transit clocks, and localized tracking},pdfauthor={Analytical increment for independent review}}
+\begin{document}\maketitle
+\begin{abstract}
+The positive-noise target-only system admits an exact scalar quadrature and
+weighted pushforward formula on each nonstationary angular interval. We
+distinguish the Cauchy-squared coordinate-energy profile from total radial
+mass and from the angular chart coordinate. For a fixed Q2 label we prove
+the weak-axis crossing time, including its finite renormalized constant,
+and the leading logarithmic times to a fixed Q1 angle and to the strong
+noise-scaled chart. These are target-only statements, not retention or
+absorption theorems for the nonlinear population. Separately, an exact
+original-flow comparison isolates the principal strong output
+$\mathfrak M X_1e_1$. For a left-facing input, that output contributes only
+$O(q\mathfrak M)$ to the relevant coordinate and alignment errors. All
+remaining output is retained in an explicit $L^2$ defect. The initialized
+bound on this defect through strong learning, and the subsequent transit
+and return, are still open.
+\end{abstract}
+
+\section{Setting and source contract}\label{inc:AN02:q2:v1:setting}
+Use normalized distributions
+\[
+ P_1=\mathcal N(e_1,q^2I_2),\quad
+ P_2=\mathcal N(\rho e_2,q^2I_2),\quad P=(P_1+P_2)/2,
+ \qquad 0<\rho<1,\quad\lambda=\rho^2.
+\]
+Write $\phi,\Phi$ for the standard normal density and distribution function,
+$K(z)=\phi(z)+z\Phi(z)$, and $a_* =1/2+q^2$.
+Initial labels have law $\dd\alpha_0/(2\pi)$ and
+$U_0=W_0=\sqrt{S_0}(\cos\alpha_0,\sin\alpha_0)$.
+The target-only comparison is
+\begin{equation}\label{inc:AN02:q2:v1:target}
+ \widehat U'=\E[X(\widehat U^TX)_+],\qquad
+ \widehat U=\widehat W=\sqrt{\widehat m}\,a_{\widehat\theta}.
+\end{equation}
+This is not the original residual equation. Its exact finite-noise
+coordinate formula, from Gaussian integration, is
+\begin{align}
+ \widehat U_j'&=\frac{\mu_j q\sqrt{\widehat m}}2
+           K(\mu_j\widehat a_j/q)+d_q\widehat U_j,
+           \qquad (\mu_1,\mu_2)=(1,\rho),\nonumber\\
+ d_q&=\frac{q^2}{2}[\Phi(\widehat a_1/q)+\Phi(\rho\widehat a_2/q)].
+ \label{inc:AN02:q2:v1:coordinates}
+\end{align}
+The exact original-flow matrices are
+\[
+ A_\theta=\E[XX^T\mathbf1_{a_\theta^TX>0}],\quad
+ C_f(\theta)=\E[f(X)X^T\mathbf1_{a_\theta^TX>0}],\quad
+ R_f=A_\theta-C_f.
+\]
+The foundations and checkpoint give
+$0\preceq A_\theta\preceq a_*I$, the balanced characteristic equations,
+and the target-only angular derivative cancellations. These equations
+are restated below when used. No saved trajectory, numerical fit, or
+repository data are a proof premise.
+
+\section{Exact scalar quadrature and density}\label{inc:AN02:q2:v1:quadrature}
+Put $s_1=\cos\theta/q$, $s_2=\rho\sin\theta/q$. Equation
+\eqref{inc:AN02:q2:v1:coordinates} gives
+\begin{align}
+ v_q(\theta)&=\frac q2\left[-\sin\theta K(\cos\theta/q)
+                 +\rho\cos\theta K(\rho\sin\theta/q)\right],
+ \label{inc:AN02:q2:v1:angular}\\
+ g_q(\theta)&=q^2\sum_{j=1}^2[s_jK(s_j)+\Phi(s_j)],
+ \label{inc:AN02:q2:v1:radial}\\
+ \widehat\theta'&=v_q(\widehat\theta),\qquad
+ (\log\widehat m)'=g_q(\widehat\theta).\nonumber
+\end{align}
+Here $g_q$ denotes the full logarithmic mass rate, not half that rate.
+
+\begin{proposition}[First integral and exact weighted pushforward]
+\label{inc:AN02:q2:v1:firstintegral}
+On an open angular interval $I$ where $v_q$ has no zero, choose a primitive
+$G_q$ with $G_q'=g_q/v_q$. Along any characteristic remaining in $I$,
+\[
+ \log\widehat m(t)-G_q(\widehat\theta(t))
+                 =\log S_0-G_q(\alpha_0).
+\]
+If $\varphi_t$ is the scalar angular flow, its Jacobian is
+\[
+ \partial_{\alpha_0}\varphi_t(\alpha_0)
+           =\frac{v_q(\varphi_t(\alpha_0))}{v_q(\alpha_0)}>0.
+\]
+Consequently the contribution of such initial labels to the radial
+angle measure has density
+\begin{equation}\label{inc:AN02:q2:v1:density}
+ \frac{\dd\widehat\nu_t}{\dd\theta}
+ =\frac{S_0}{2\pi}
+ e^{G_q(\theta)-G_q(\alpha_0)}
+ \frac{v_q(\alpha_0)}{v_q(\theta)},\qquad
+ \alpha_0=\varphi_{-t}(\theta).
+\end{equation}
+The coordinate-energy density for $\widehat U_2^2$ is
+$\sin^2\theta$ times this density. An initial-label restriction adds
+its indicator under the inverse flow.
+\end{proposition}
+\begin{proof}
+Differentiate the proposed first integral. For the Jacobian, both the
+variational derivative and $v_q(\varphi_t)/v_q(\alpha_0)$ solve
+$J'=v_q'(\varphi_t)J$, $J(0)=1$. Smoothness and uniqueness give the
+formula. The change of variables from initial labels then gives
+\eqref{inc:AN02:q2:v1:density}. All divisions take place on $I$;
+no division by a stationary angular speed is permitted.
+\end{proof}
+
+\section{What the Cauchy-squared profile measures}
+\label{inc:AN02:q2:v1:profile}
+This section defines a different comparison: the \emph{zero-noise}
+target-only flow on Q2. The positive parameter $q$ below sets the
+coordinate scale; it is not noise in this comparison's vector field.
+For $\alpha_0\in(\pi/2,\pi)$ the exact solution is
+\[
+ \overline U_1=\sqrt{S_0}\cos\alpha_0<0,\qquad
+ \overline U_2=\sqrt{S_0}\sin\alpha_0e^{\lambda t/2}>0.
+\]
+Define
+\[
+ b_t=e^{-\lambda t/2}/q,\qquad
+ \upsilon=\frac{\overline U_1}{q\overline U_2}<0,
+ \qquad u=\frac{\pi/2-\arg\overline U}{q}.
+\]
+Thus $\upsilon=\tan(qu)/q$, not exactly $u$.
+
+\begin{proposition}[Coordinate-energy and radial profiles]
+\label{inc:AN02:q2:v1:cauchy}
+The Q2 coordinate-energy measure
+$\overline U_2^2\dd\alpha_0/(2\pi)$ has exact density
+\begin{equation}\label{inc:AN02:q2:v1:cauchydensity}
+ \dd\nu_{2,t}(\upsilon)
+ =\frac{S_0e^{\lambda t}}{2\pi b_t}
+      (1+\upsilon^2/b_t^2)^{-2}\dd\upsilon,
+      \qquad \upsilon<0.
+\end{equation}
+Its total mass is $S_0e^{\lambda t}/8$. The total radial measure is
+\begin{equation}\label{inc:AN02:q2:v1:radialdensity}
+ \dd\nu_{m,t}=(1+q^2\upsilon^2)\dd\nu_{2,t}.
+\end{equation}
+In the angular coordinate $-\pi/(2q)<u<0$, the radial density is
+\begin{equation}\label{inc:AN02:q2:v1:angularprofile}
+ \frac{\dd\nu_{m,t}}{\dd u}
+ =\frac{S_0e^{\lambda t}}{2\pi b_t}
+ \left(1+\frac{\tan^2(qu)}{q^2b_t^2}\right)^{-2}\sec^4(qu).
+\end{equation}
+The coordinate-energy angular density instead has $\sec^2(qu)$.
+At $t=\log(1/S_0)+c$, $b_t=(S_0^{\lambda/2}/q)e^{-\lambda c/2}$
+and the prefactor $S_0e^{\lambda t}=S_0^{1-\lambda}e^{\lambda c}$.
+\end{proposition}
+\begin{proof}
+Write $r_0=-\cot\alpha_0>0$, so
+$\alpha_0=\pi/2+\arctan r_0$, $\sin^2\alpha_0=(1+r_0^2)^{-1}$,
+and $\dd\alpha_0=\dd r_0/(1+r_0^2)$. Since
+$\upsilon=-b_t r_0$, the pushforward of
+$S_0e^{\lambda t}\sin^2\alpha_0\dd\alpha_0/(2\pi)$ is
+\eqref{inc:AN02:q2:v1:cauchydensity}. Its integral uses
+$\int_0^\infty(1+r^2)^{-2}\dd r=\pi/4$.
+The identity $\overline m=\overline U_2^2(1+q^2\upsilon^2)$
+gives \eqref{inc:AN02:q2:v1:radialdensity}, and
+$\dd\upsilon/\dd u=\sec^2(qu)$ gives
+\eqref{inc:AN02:q2:v1:angularprofile}.
+\end{proof}
+
+\paragraph{Finite-noise qualification.}
+The Cauchy-squared law is exact for coordinate energy in a tangent
+coordinate in this specified zero-noise comparison. For the finite-noise
+target-only flow, Proposition \ref{inc:AN02:q2:v1:firstintegral} is the
+exact profile. A fixed negative scaled offset still has a nonzero
+cross-gate correction $K(u)$ as $q\to0$. Consequently the elementary
+profile is not an exact finite-noise law on every $u\le-u_0$ with fixed
+$u_0>0$. Both the gate approximation and the angular/radial factors need
+control before transferring a density statement.
+
+\begin{proposition}[A quantitative outer Q2 comparison]
+\label{inc:AN02:q2:v1:outer}
+For a fixed Q2 label let $(\overline w,\overline z)
+=(-\overline U_1,\overline U_2)$ be the zero-noise solution, and
+$(w,z)=(-\widehat U_1,\widehat U_2)$ the finite-noise target-only one.
+Let $L\ge1$, $T>0$, and
+\[
+ \epsilon_L(T)=\left[\frac{3q^2}{4}+\frac{K(-L)}{2L}\right]T.
+\]
+If the normalized zero-noise coordinates satisfy
+\[
+ \overline c(T)\ge2qL,\qquad \rho\overline s(0)\ge2qL,
+ \qquad \epsilon_L(T)\le\frac{\log2}{4},
+\]
+then the finite-noise label stays in Q2 with $c\ge qL$ and
+$\rho s\ge qL$ through $T$, and
+\[
+ |\log(w/\overline w)|\le\epsilon_L(T),\qquad
+ 0\le\log(z/\overline z)\le\epsilon_L(T).
+\]
+In particular the radial log error is at most $2\epsilon_L(T)$,
+and the log error of $w/z$ is at most $2\epsilon_L(T)$.
+\end{proposition}
+\begin{proof}
+Until a first exit of $c\ge qL$, $\rho s\ge qL$, formula
+\eqref{inc:AN02:q2:v1:coordinates}, with $c=w/(w^2+z^2)^{1/2}$,
+$s=z/(w^2+z^2)^{1/2}$, gives
+\[
+ (\log w)'=d_q-\frac{q}{2c}K(-c/q),\qquad
+ (\log z)'=\frac\lambda2+d_q+\frac{\rho q}{2s}K(-\rho s/q).
+\]
+Here $0\le d_q\le3q^2/4$, and the two extra quotients are bounded
+by $K(-L)/(2L)$, since $K$ is increasing and $\lambda<1$.
+Integrating proves the displayed log bounds up to a first exit.
+The Euclidean radius ratio is between $e^{-\epsilon_L}$ and
+$e^{\epsilon_L}$, so each normalized coordinate is at least
+$e^{-2\epsilon_L}$ times its zero-noise counterpart.
+The latter have $\overline c$ decreasing and $\overline s$ increasing.
+At a proposed exit the actual normalized margins therefore exceed
+$2qL e^{-(\log2)/2}>qL$. This contradiction closes the interval.
+This is a labelwise comparison, not yet a Jacobian or density-error bound.
+\end{proof}
+
+\section{Analytical target-only crossing and transit clocks}
+\label{inc:AN02:q2:v1:clocks}
+All asymptotic statements in this section hold as $q\downarrow0$.
+They concern the exact finite-noise target-only flow, not the original
+population during strong saturation.
+
+\begin{theorem}[Weak-axis crossing with a renormalized constant]
+\label{inc:AN02:q2:v1:cross}
+Fix $\rho\in(0,1)$ and $\alpha_0=\pi/2+d_0$, $0<d_0<\pi/2$.
+The target-only label crosses $\theta=\pi/2$ at a finite time, and
+\begin{equation}\label{inc:AN02:q2:v1:crosstime}
+ T_\times(q,\alpha_0)
+ =\frac2\lambda\log\frac{\tan d_0}{q}+C_\rho+o(1),
+\end{equation}
+where the analytically defined finite constant is
+\begin{align}
+ C_\rho={}&\int_0^1\frac{2\dd z}{K(-z)+\lambda z}\nonumber\\
+ &+\int_1^\infty
+ \left[\frac{2}{K(-z)+\lambda z}-\frac{2}{\lambda z}\right]\dd z.
+ \label{inc:AN02:q2:v1:crossconstant}
+\end{align}
+The convergence is uniform for $\rho$ and $d_0$ in compact subintervals
+of $(0,1)$ and $(0,\pi/2)$, respectively.
+\end{theorem}
+\begin{proof}
+For $d=\theta-\pi/2\in[0,d_0]$,
+\begin{align*}
+ -v_q(\pi/2+d)
+ ={}&\frac\lambda2\sin d\cos d
+ +\frac q2\cos d K(-\sin d/q)\\
+ &+\frac{\rho q}{2}\sin d K(-\rho\cos d/q)>0.
+\end{align*}
+The speed is positive and continuous on this compact interval, including
+$d=0$, where it is $q\phi(0)/2$. The crossing time is finite.
+Set $z=\tan d/q$. Then $z'=-V_q(z)$, with
+\begin{align*}
+ V_q(z)={}&\frac\lambda2z
+ +\frac{\sqrt{1+q^2z^2}}2
+       K\left(-\frac{z}{\sqrt{1+q^2z^2}}\right)\\
+ &+\frac{\rho qz\sqrt{1+q^2z^2}}2
+       K\left(-\frac{\rho}{q\sqrt{1+q^2z^2}}\right).
+\end{align*}
+Consequently $T_\times=\int_0^{\tan d_0/q}V_q(z)^{-1}\dd z$.
+Pointwise $V_q(z)\to[K(-z)+\lambda z]/2$.
+For $0\le z\le1$, the positive $K$ term bounds $V_q$ below uniformly
+for small $q$, so dominated convergence applies.
+
+For the remaining integral, put $A=(1+\tan^2d_0)^{1/2}$.
+On $1\le z\le\tan d_0/q$ write $V_q=\lambda z/2+E_1+E_2$.
+The nonnegative corrections obey
+\[
+ E_1\le\tfrac A2K(-z/A),\qquad
+ E_2\le CqzK(-\rho/(qA)),
+\]
+with $C$ uniformly bounded on the specified parameter compacts. Thus
+\[
+ 0\le\frac2{\lambda z}-\frac1{V_q(z)}
+ \le\frac{4(E_1+E_2)}{\lambda^2z^2}.
+\]
+The $E_1$ majorant is integrable to infinity. The integral of the
+$E_2$ majorant is at most
+$CqK(-\rho/(qA))\log(\tan d_0/q)\to0$.
+Dominated convergence, with the upper-cutoff indicator, proves convergence
+of the subtracted integral. Its limit is the second integral in
+\eqref{inc:AN02:q2:v1:crossconstant}. The first integral is finite
+because $K(0)>0$, and the second is absolutely convergent by the same
+bound. Restoring $\int_1^{\tan d_0/q}2/(\lambda z)$ proves the result.
+All majorants are uniform on the stated compacts, which also proves
+uniformity.
+\end{proof}
+
+\begin{theorem}[Transit through Q1]
+\label{inc:AN02:q2:v1:transit}
+Fix a compact ratio interval $[\rho_-,\rho_+]\subset(0,1)$ and
+choose
+\[
+ R>\frac{4\rho_+\phi(0)}{1-\rho_+^2}.
+\]
+For sufficiently small $q$, the target-only trajectory after crossing
+$e_2$ reaches $\theta=qR$. If $T_R$ is that arrival time measured
+from initialization, then
+\begin{equation}\label{inc:AN02:q2:v1:strongtime}
+ \frac{T_R}{\log(1/q)}\longrightarrow
+          \frac2\lambda+\frac4{1-\lambda}.
+\end{equation}
+For any fixed $\theta_b\in(0,\pi/2)$, its earlier arrival time satisfies
+\begin{equation}\label{inc:AN02:q2:v1:fixedtime}
+ \frac{T_{\theta_b}}{\log(1/q)}\longrightarrow
+          \frac2\lambda+\frac2{1-\lambda}
+          =\frac{2}{\lambda(1-\lambda)}.
+\end{equation}
+Uniformity holds on compact initial Q2 angle intervals, compact ratio
+intervals as above, and compact fixed-angle intervals for $\theta_b$.
+\end{theorem}
+\begin{proof}
+In Q1 the exact clockwise speed is
+\begin{align*}
+ B_q(\theta)=-v_q(\theta)
+ ={}&\frac{1-\lambda}{2}\sin\theta\cos\theta
+ +\frac q2\sin\theta K(-\cos\theta/q)\\
+ &-\frac{\rho q}{2}\cos\theta K(-\rho\sin\theta/q).
+\end{align*}
+For $\theta\in[qR,\pi/2]$ and sufficiently small $q$,
+$\sin\theta\ge qR/2$, so the choice of $R$ implies
+\[
+ B_q(\theta)\ge\frac{1-\lambda}{4}\sin\theta\cos\theta.
+\]
+The speed is strictly positive before the axis and equals
+$q\phi(0)/2>0$ at the axis itself. It therefore has no zero on
+this compact travel interval, proving arrival.
+
+Set $L(q)=\sqrt{\log(1/q)}$. On
+$[qL,\pi/2-qL]$, the ratio of $B_q$ to
+$B_0=(1-\lambda)\sin\theta\cos\theta/2$ tends uniformly to one.
+Indeed the absolute relative correction is at most
+\[
+ \frac{qK(-\cos\theta/q)}{(1-\lambda)\cos\theta}
+ +\frac{\rho qK(-\rho\sin\theta/q)}{(1-\lambda)\sin\theta},
+\]
+and both projected margins grow proportionally to $L$.
+Since $\int\dd\theta/(\sin\theta\cos\theta)=\log\tan\theta$,
+the interior travel time is
+\[
+ \frac4{1-\lambda}\log(1/q)+o(\log(1/q)).
+\]
+The strong-end layer $[qR,qL]$ has time $O(1+\log L)$ by the
+lower speed bound. At the weak end, write $d=\pi/2-\theta$.
+For $q\le d\le qL$ the same lower bound gives time $O(\log L)$.
+For $0\le d\le q$, one has $\sin\theta\ge1/2$ and
+$\cos\theta/q\le1$. The positive $K$ term is at least
+$qK(-1)/4$, whereas the negative term has absolute value at most
+$q^2\phi(0)/2$. Hence, for small $q$, $B_q\ge qK(-1)/8$ on
+this last layer, whose duration is $O(1)$.
+These layers are $o(\log(1/q))$, proving a post-crossing travel
+coefficient $4/(1-\lambda)$. For a fixed $\theta_b$, only the
+weak-end logarithm remains, giving $2/(1-\lambda)$. Add Theorem
+\ref{inc:AN02:q2:v1:cross}. Each bound is uniform on the stated compacts.
+\end{proof}
+
+\paragraph{What these clocks do not imply.}
+These theorems prove logarithmic clock coefficients for the explicitly
+defined target-only flow. They do not establish that the original
+population follows that flow through saturation, that its Q2 retention
+coefficient vanishes, or that no joint parameter regime can satisfy an
+initialized seed bound. The original residual changes when the strong
+concept is learned. A post-saturation return theorem needs that changed
+field; it cannot be inferred from a target-only absorption time.
+
+\section{A localized original-flow comparison on the Q2 side}
+\label{inc:AN02:q2:v1:tracking}
+We now use the \emph{original} balanced population. At any time choose a
+nonnegative locally bounded scalar $\mathfrak M(t)$ and decompose the
+full output exactly as
+\begin{equation}\label{inc:AN02:q2:v1:decomposition}
+ f_t(X)=\mathfrak M(t)X_1e_1+g_t(X),\qquad
+ \mathcal E(t)=\sqrt{a_*}\,\|g_t\|_{L^2(P)}.
+\end{equation}
+The scalar $\mathfrak M$ is an analytical comparator coefficient; it
+is not identified with a chart mass without proof. This decomposition
+retains every neuron through $g_t$. It makes no statement that
+$\mathcal E$ is already small along the initialized trajectory.
+
+\begin{lemma}[Left-facing Gaussian suppression]
+\label{inc:AN02:q2:v1:gaussiansuppression}
+For $q\le1$, $a_1\le0$, and a unit vector $a$,
+\begin{equation}\label{inc:AN02:q2:v1:suppression}
+ |(A_\theta a)_1|\le q,\qquad
+ |a_1|\,\|A_\theta e_1\|\le2q.
+\end{equation}
+Consequently, for $C_f$ in Section 1 and unit $b$,
+\begin{align}
+ \|C_fa\|&\le q\mathfrak M+\mathcal E,\nonumber\\
+ \|C_f^Tb\|&\le2q\mathfrak M
+           +a_*\mathfrak M\|b-a\|+\mathcal E.
+ \label{inc:AN02:q2:v1:Cbound}
+\end{align}
+\end{lemma}
+\begin{proof}
+The coordinate formula gives
+\[
+ (A_\theta a)_1=\frac q2K(a_1/q)
+ +\frac{q^2a_1}{2}[\Phi(a_1/q)+\Phi(\rho a_2/q)].
+\]
+Since $K(a_1/q)\le\phi(0)<1/2$ and the bracket is at most $3/2$,
+its absolute value is at most $q\phi(0)/2+3q^2/4\le q$.
+For the second bound put $\beta=-a_1\ge0$, and use raw cluster
+matrices $A_p=\E_{P_p}[XX^T\mathbf1_{a^TX>0}]$.
+The exact Gaussian trace on cluster 1 is
+\[
+ \operatorname{tr}A_1=(1+2q^2)\Phi(-\beta/q)
+                         -\beta q\phi(\beta/q).
+\]
+Since $\beta\Phi(-\beta/q)\le q\phi(\beta/q)$,
+$\beta\|A_1e_1\|\le3q\phi(0)$. On cluster 2, Cauchy--Schwarz gives
+$\|A_2e_1\|\le q\sqrt{\lambda+2q^2}\le\sqrt3q$.
+Average these bounds and use $\beta\le1$ to obtain
+$\beta\|A_\theta e_1\|\le(3\phi(0)+\sqrt3)q/2<2q$.
+The case $\beta=0$ is included without dividing by $\beta$.
+
+From \eqref{inc:AN02:q2:v1:decomposition},
+$C_f=\mathfrak M e_1e_1^TA_\theta+C_g$, with
+$\|C_g\|\le\sqrt{a_*}\|g_t\|_{L^2(P)}=\mathcal E$ by
+Cauchy--Schwarz. Apply \eqref{inc:AN02:q2:v1:suppression} to
+$C_fa$ and $C_f^Ta$. Replacing $a$ by $b$ in the latter costs at most
+$a_*\mathfrak M\|b-a\|$, giving \eqref{inc:AN02:q2:v1:Cbound}.
+\end{proof}
+
+\begin{theorem}[Exact conditional Q2-side tracking]
+\label{inc:AN02:q2:v1:originaltracking}
+Take the target-only reference with the same initial label as the original
+characteristic. Define nonnegative scalar envelopes, initially zero, by
+\begin{align}
+ \Delta'&=a_*\mathfrak M\Delta+3q\mathfrak M+2\mathcal E,
+ \label{inc:AN02:q2:v1:envelopes}\\
+ H_Q'&=a_*H_Q+a_*(1+\mathfrak M)\Delta
+                       +2q\mathfrak M+\mathcal E,\nonumber\\
+ L_Q'&=2a_*(\Delta+H_Q)+2q\mathfrak M+2\mathcal E.\nonumber
+\end{align}
+On any interval on which the original input satisfies $a_1\le0$
+and $\Delta<\pi$, continuous angular lifts satisfy
+\begin{equation}\label{inc:AN02:q2:v1:trackingbounds}
+ |\psi-\theta|\le\Delta,\quad
+ |\theta-\widehat\theta|\le H_Q,\quad
+ |\psi-\widehat\theta|\le\Delta+H_Q,\quad
+ |\log(m/\widehat m)|\le L_Q.
+\end{equation}
+These bounds include full population feedback through the explicit defect
+$\mathcal E$. They are not an unconditional initialized bound on that
+defect, nor a post-crossing tracking theorem.
+\end{theorem}
+\begin{proof}
+For $\delta=\psi-\theta$, the exact symmetry identity gives
+\[
+ \delta'=-\operatorname{tr}(A_\theta)\sin\delta
+ -(b^\perp)^TC_fa+b^TC_fa^\perp.
+\]
+For $|\delta|<\pi$ the target term points inward. Lemma
+\ref{inc:AN02:q2:v1:gaussiansuppression} and $\|b-a\|\le|\delta|$
+give
+\[
+ D^+|\delta|\le a_*\mathfrak M|\delta|
+                         +3q\mathfrak M+2\mathcal E.
+\]
+Comparison closes the angular-difference guard wherever $\Delta<\pi$.
+Next, the exact input velocity satisfies
+\[
+ |\theta'-v_q(\theta)|
+ \le a_*(1+\mathfrak M)|\delta|+2q\mathfrak M+\mathcal E.
+\]
+The target identity $A_\theta'a_\theta=0$ gives $|v_q'|\le a_*$.
+Comparing with $\widehat\theta'=v_q(\widehat\theta)$ gives the
+$H_Q$ bound. Put $g_0(\theta)=a_\theta^TA_\theta a_\theta$,
+so $(\log\widehat m)'=2g_0(\widehat\theta)$ and
+$|g_0'|\le a_*$. Finally
+\[
+ |b^T(A_\theta-C_f)a-g_0(\widehat\theta)|
+ \le a_*(\Delta+H_Q)+q\mathfrak M+\mathcal E.
+\]
+Integrating twice this bound yields $L_Q$. The output-angle bound is
+triangular. Every estimate holds up to first exit from the left-facing
+input region; its persistence is not assumed beyond that stopping time.
+\end{proof}
+
+\section{What the retention argument still must prove}
+\label{inc:AN02:q2:v1:residue}
+The principal strong output has been separated from the error. To turn
+Theorem \ref{inc:AN02:q2:v1:originaltracking} into a retained-seed law,
+one still needs an initialized, quantitatively useful bound on $g_t$,
+with the time-weighted envelopes in \eqref{inc:AN02:q2:v1:envelopes}
+under control. The theorem pays for strong angular spread, weak output,
+other labels, and any incorrect strong-output approximation through
+this exact defect. It does not assert these contributions are small.
+
+For parameter powers placing bulk Q2 labels across the weak axis before
+strong learning, a Q2-side comparison alone is insufficient. A positive-side
+transit and changed-residual return theorem is then required, at a
+correctly matched later chart-entry time. The coordinate energy
+$\widehat U_2^2$ is useful for that argument but is not the radial chart
+mass $N$ in the leading logistic system until the geometry is controlled.
+
+Likewise, the target-only clock theorems do not prove impossibility of
+an initialized global-rate route or possibility of a local-rate route
+in every suggested parameter window. Those conclusions require uniform
+entry laws, their $q$-powers, tail moments, and finite-noise transfer.
+The companion local-passage increment proves a conditional nonlinear
+rate and collective-mode estimate; it does not fill those entry gaps.
+
+\begin{thebibliography}{9}\small\raggedright
+\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}
+\bibitem{F}\path{RELU_POPULATION_FOUNDATIONS_v2.tex}, supplied exact
+balanced characteristic equations and Gaussian integration identities.
+\bibitem{P}\path{THEOREM_A_ANALYTICAL_PROGRESS.tex}, supplied checkpoint,
+\texttt{pa:earlybounds}, \texttt{pa:targetcomparison}, \texttt{pa:setup}.
+\bibitem{A2}\path{AN02_strong_ancestry_and_tail_transport_v1.tex},
+finite-noise positive-coordinate ancestry inequality and the separate
+zero-noise comparison.
+\bibitem{A3}\path{AN03_two_sided_passage_and_Q2_retention_v2.tex},
+separately repaired original AN03 increment.
+\bibitem{L}\path{AN03_local_rate_mean_tracking_v1.tex}, companion
+local-rate and collective-mode passage theorem.
+\bibitem{R}\path{Pasted markdown.md}, user's current review. Its
+numerical tables and matching conjectures are not proof premises.
+\end{thebibliography}
+\end{document}

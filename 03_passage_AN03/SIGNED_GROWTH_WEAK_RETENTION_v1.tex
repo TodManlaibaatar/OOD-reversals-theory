@@ -1,0 +1,488 @@
+% Separate analytical increment; do not merge without explicit user approval.
+% Label prefix: inc:SGWR:v1:
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=0.95in]{geometry}
+\usepackage{xurl,booktabs,array}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Signed growth and weak-side retention}
+\fancyhead[R]{\small Separate review increment v1}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\,d}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\1}{\mathbf1}
+\title{Signed growth, weak-coordinate amplification,\\and a conditional retention--passage interface}
+\author{Separate analytical increment for independent review}
+\date{Version 1 --- October 3, 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We replace loss-only retention bookkeeping by a signed-growth estimate.
+For the exact balanced population, a weak-coordinate amplitude converts the
+geometric factor in radial growth into an endpoint factor. This identity does
+not require input/output alignment after initialization. An exact Gaussian
+sector estimate gives a sufficient bound on its residual-matrix defect.
+We also prove a uniform contraction estimate for the frozen resident weak
+system on the AN06 ratio interval. Finally, we verify the exponent algebra
+for the global profile multiplier quoted by the user. The cited ancestry/tail
+file was not accessible, so that multiplier is an explicit conditional
+premise, not a theorem verified here. None of these results proves the
+initialized angular guards, weak capture, full two-sided passage, or
+finite-noise Theorems A and B.
+\end{abstract}
+
+\paragraph{Provenance and review contract.}
+The exact original-flow equations and balance are imported from
+\path{RELU_POPULATION_FOUNDATIONS_v2.tex}, P1--P2; global finite-time
+regularity and positive mass are imported from P5. The earlier negative-budget
+retention bound is in \path{LIMIT_LEARNED_PERSISTENCE_RETENTION_v1.tex},
+Proposition 5.1. The resident root is \texttt{pa:weakroot} in
+\path{THEOREM_A_ANALYTICAL_PROGRESS.tex}; the compact ratio bounds are from
+\path{AN06_learned_orbit_witnesses_v2.tex}.
+The user quotes Theorem 5.1 of
+\path{AN02_strong_ancestry_and_tail_transport_v1.tex}, labels
+\texttt{inc:AN02:tail:v1:profiletheorem} and
+\texttt{inc:AN02:tail:v1:globalG}. That file is unavailable in this review.
+Its hypotheses, definition of $b_c$, reference characteristic, and exact
+one-sided conclusion are not reconstructed here.
+All new assertions are displayed with their assumptions and proofs. No saved
+trajectory, floating-point sign test, or interval certificate is a premise.
+No earlier file has been altered, and this increment is not approved for an
+automatic merge.
+
+\section{Signed growth for a fixed label set}
+Use normalized time $\tau=\mu_1^2t_{\rm phys}$ and
+\[
+ P_1=\mathcal N(e_1,q^2I_2),\quad
+ P_2=\mathcal N(\rho e_2,q^2I_2),\quad P=(P_1+P_2)/2,
+ \qquad \lambda=\rho^2.
+\]
+The label law is $\lambda_0(d\alpha)=d\alpha/(2\pi)$.
+Write $U_\alpha=\sqrt{m_\alpha}a_\alpha$,
+$W_\alpha=\sqrt{m_\alpha}b_\alpha$, with unit $a_\alpha,b_\alpha$.
+All output contributions are retained in
+\[
+ R_\tau(a)=\E_P[(X-f_\tau(X))X^\top\1_{\{a^\top X>0\}}].
+\]
+The exact equations are
+\begin{equation}\label{inc:SGWR:v1:flow}
+ U_\alpha'=R_\tau(a_\alpha)^\top W_\alpha,
+ \quad W_\alpha'=R_\tau(a_\alpha)U_\alpha,
+ \quad (\log m_\alpha)'=r_\alpha:=2b_\alpha^\top R_\tau(a_\alpha)a_\alpha.
+\end{equation}
+Let $C$ be a fixed measurable initial-label set, and set
+$N_C(\tau)=\int_Cm_\alpha(\tau)\dd\lambda_0$.
+
+\begin{proposition}[Signed Jensen lower bound]\label{inc:SGWR:v1:jensen}
+Fix finite $\tau_a<\tau_b$ with $N_C(\tau_a)>0$, and suppose the integrals
+below are absolutely integrable with the indicated weights. Define
+\[
+ I_\alpha=\int_{\tau_a}^{\tau_b}r_\alpha(t)\dd t,
+ \qquad d\pi_a(\alpha)=\frac{m_\alpha(\tau_a)\1_C\dd\lambda_0}{N_C(\tau_a)}.
+\]
+Then
+\begin{equation}\label{inc:SGWR:v1:signedjensen}
+ \boxed{N_C(\tau_b)\ge N_C(\tau_a)
+                  \exp\!\left(\int_C I_\alpha\dd\pi_a\right).}
+\end{equation}
+If $\int I_\alpha\dd\pi_a\ge
+\lambda(\tau_b-\tau_a)-B_0-b\log(1/S_0)$ with $0<S_0<1$, then
+\[
+ N_C(\tau_b)\ge e^{-B_0}N_C(\tau_a)
+                 e^{\lambda(\tau_b-\tau_a)}S_0^b.
+\]
+There is also an exact current-weight formula:
+\begin{equation}\label{inc:SGWR:v1:currentweights}
+ \log\frac{N_C(\tau_b)}{N_C(\tau_a)}
+ =\int_{\tau_a}^{\tau_b}\int_C r_\alpha(t)\dd\pi_t(\alpha)\dd t,
+ \qquad d\pi_t=\frac{m_\alpha(t)\1_C\dd\lambda_0}{N_C(t)}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Integrating \eqref{inc:SGWR:v1:flow} gives
+$m_\alpha(\tau_b)=m_\alpha(\tau_a)e^{I_\alpha}$. Integrate over $C$ and
+apply convexity of the exponential to the probability measure $\pi_a$.
+The second assertion is substitution. For \eqref{inc:SGWR:v1:currentweights},
+differentiate the fixed-label integral: $N_C'=\int_Cm_\alpha r_\alpha
+\dd\lambda_0$. Positive mass permits division by $N_C$. The stated
+integrability assumptions, or the finite-horizon bounds of the foundations,
+justify differentiation, Fubini, and integration of the logarithmic derivative.
+\end{proof}
+
+\begin{remark}
+The original negative-budget inequality remains a valid weaker corollary,
+obtained by dropping all positive growth. It is useful after a seed has been
+constructed, but cannot recover amplification that it has discarded. The
+initial-weight signed average and the time-dependent current-weight average
+are different objects: the former supplies an inequality, the latter an
+identity. For a later captured subset $C_{\rm cap}\subset C$, apply the
+proposition to that fixed subset and retain its initial mass fraction.
+Growth of the full reservoir does not prove growth of the captured part.
+\end{remark}
+
+\section{An exact weak-coordinate amplitude}
+The radial approximation $r\simeq\lambda\sin^2\theta$ need not be bounded
+by a fixed angular minimum throughout the interval. A coordinate amplitude
+retains the associated alignment gain exactly.
+Define
+\begin{equation}\label{inc:SGWR:v1:amplitude}
+ z_\alpha=\frac{U_{\alpha,2}+W_{\alpha,2}}2,
+ \qquad h_\alpha=z_\alpha^2,
+ \qquad \chi_\alpha=\frac{a_{\alpha,2}+b_{\alpha,2}}2.
+\end{equation}
+Balance gives $h_\alpha=m_\alpha\chi_\alpha^2\le m_\alpha$.
+Choose an absolutely continuous or measurable scalar $c(\tau)\in[0,1]$,
+and decompose, exactly,
+\begin{equation}\label{inc:SGWR:v1:defect}
+ R_\tau(a_\alpha)
+ =\frac\lambda2(1-c(\tau))e_2e_2^\top+\mathcal B_\alpha(\tau).
+\end{equation}
+The scalar $c$ is a comparison response, not automatically the mass of a
+family. Choosing $c=N$ requires the residual estimate that makes that choice
+useful; the identities do not assume that it is exact.
+
+\begin{proposition}[Signed weak-amplitude equation]\label{inc:SGWR:v1:ampflow}
+On an interval on which $\chi_\alpha>0$,
+\begin{align}
+ (\log h_\alpha)'&=\lambda(1-c)+\varepsilon_\alpha,
+ \label{inc:SGWR:v1:amprate}\\
+ \varepsilon_\alpha
+ &=\frac{(\mathcal B_\alpha^\top W_\alpha)_2
+                    +(\mathcal B_\alpha U_\alpha)_2}{z_\alpha}
+ =2(\mathcal B_\alpha)_{22}
+ +\frac{(\mathcal B_\alpha)_{12}W_{\alpha,1}
+           +(\mathcal B_\alpha)_{21}U_{\alpha,1}}{z_\alpha}.
+ \nonumber
+\end{align}
+If $\chi_\alpha\ge k>0$, then
+\begin{equation}\label{inc:SGWR:v1:amperror}
+ |\varepsilon_\alpha|\le 2\norm{\mathcal B_\alpha}/k.
+\end{equation}
+In particular, input/output alignment after initialization is not required.
+\end{proposition}
+\begin{proof}
+The two Cartesian equations give
+\[
+ z_\alpha'=\frac\lambda2(1-c)z_\alpha
+ +\frac12\big[(\mathcal B_\alpha^\top W_\alpha)_2
+                    +(\mathcal B_\alpha U_\alpha)_2\big].
+\]
+Divide by positive $z_\alpha$ and differentiate $\log h_\alpha=2\log z_\alpha$.
+The entrywise expression follows by grouping the two diagonal terms.
+Each of the two defect contractions has magnitude at most
+$\norm{\mathcal B_\alpha}\sqrt{m_\alpha}$, whereas
+$z_\alpha\ge k\sqrt{m_\alpha}$. This proves the bound.
+\end{proof}
+
+\begin{corollary}[Growth-preserving cohort bound]\label{inc:SGWR:v1:ampcohort}
+Suppose the same fixed set $C$ satisfies $\chi_\alpha\ge k>0$ and
+$\norm{\mathcal B_\alpha(t)}\le d(t)$ for all its labels on
+$[\tau_a,\tau_b]$, where $d$ is integrable. Let
+$H_C(\tau)=\int_Ch_\alpha(\tau)\dd\lambda_0$.
+Then
+\begin{equation}\label{inc:SGWR:v1:ampbound}
+ \boxed{N_C(\tau_b)\ge H_C(\tau_a)
+ \exp\!\left[\lambda(\tau_b-\tau_a)
+       -\lambda\int_{\tau_a}^{\tau_b}c(t)\dd t
+       -\frac2k\int_{\tau_a}^{\tau_b}d(t)\dd t\right].}
+\end{equation}
+Here $H_C(\tau_a)\ge k^2N_C(\tau_a)$. At aligned isotropic initialization,
+\begin{equation}\label{inc:SGWR:v1:ancestry}
+ H_C(0)=S_0\int_C\sin^2\alpha\dd\lambda_0(\alpha).
+\end{equation}
+A sharper signed version replaces $-(2/k)\int d$ by the
+$h_\alpha(\tau_a)$-weighted average of $\int\varepsilon_\alpha$.
+\end{corollary}
+\begin{proof}
+Integrate \eqref{inc:SGWR:v1:amprate}, use the uniform lower bound on its
+defect, and integrate over $C$. Since $h_\alpha\le m_\alpha$, this is a
+lower bound for $N_C(\tau_b)$. The initial identity follows from
+$U_{\alpha,2}(0)=W_{\alpha,2}(0)=\sqrt{S_0}\sin\alpha$.
+The signed version follows by Jensen with the initial $h$ weights.
+\end{proof}
+
+\paragraph{The geometric deficit in the exact reference channel.}
+For illustration, suppose \emph{exactly} that
+$R=(\lambda/2)(1-c)e_2e_2^\top$ and that a label starts aligned at angle
+$\alpha\in(\pi/2,\pi)$. This is an explicitly defined comparison channel,
+not the assertion that the entire SIM residual has this form.
+Let $\Lambda(t)=\lambda\int_{\tau_a}^{t}(1-c)\dd r$. Then
+\[
+ U_1=W_1=\sqrt{m_a}\cos\alpha,\qquad
+ U_2=W_2=\sqrt{m_a}\sin\alpha\,e^{\Lambda/2},
+\]
+so
+\begin{equation}\label{inc:SGWR:v1:channel}
+ \log\frac{m(t)}{m_a}
+ =\Lambda(t)+\log\big[\sin^2\alpha+e^{-\Lambda(t)}\cos^2\alpha\big]
+ \ge\Lambda(t)+\log\sin^2\alpha.
+\end{equation}
+The initial angular misalignment costs only an endpoint constant for a
+compact subarc, not a fixed fraction of the entire growth exponent.
+Equivalently, $m\sin^2\theta=m_a\sin^2\alpha e^{\Lambda}$.
+Equation \eqref{inc:SGWR:v1:amprate} is an exact perturbed two-angle version
+of this observation. It does not prove its angular guards for the real flow.
+
+\section{An exact Gaussian sufficient bound for the matrix defect}
+The following estimate uses the full population output; it does not discard
+background or replace a training cluster by its centroid.
+Put $S=\int m_\alpha\dd\lambda_0$ and
+\[
+ \epsilon_2(c)=\norm{f(X)-cX_2e_2}_{L^2(P_2)}.
+\]
+
+\begin{proposition}[Interior-Q2 defect bound]\label{inc:SGWR:v1:gaussiandefect}
+Suppose a receiving input direction satisfies $a_1\le-\eta<0$ and
+$a_2\ge s_*>0$, and let $0\le c\le1$. For the defect in
+\eqref{inc:SGWR:v1:defect},
+\begin{align}
+ \norm{\mathcal B_\alpha}\le \frac12\Big[&
+ (1+S)(1+2q^2)\Phi(-\eta/q)+q^2\nonumber\\
+ &+(\lambda+2q^2)\Phi(-\rho s_*/q)
+ +\sqrt{\lambda+2q^2}\,\epsilon_2(c)\Big].
+ \label{inc:SGWR:v1:gaussbound}
+\end{align}
+\end{proposition}
+\begin{proof}
+The balanced feature representation gives $\norm{f(X)}\le S|X|$.
+For $X\sim\mathcal N(c_p,q^2I_2)$ and a unit direction $a$, direct
+one-dimensional truncated-Gaussian integration yields, with $\ell=a^\top c_p$,
+\[
+ \E[|X|^2\1_{\{a^\top X>0\}}]
+ =(|c_p|^2+2q^2)\Phi(\ell/q)+\ell q\phi(\ell/q).
+\]
+This follows by resolving $X$ into its projection along $a$ and an
+independent orthogonal Gaussian, and integrating the first two moments
+of a standard normal above $-\ell/q$. If $\ell<0$, its last term is
+nonpositive. Consequently
+\[
+ \norm{R_1(a)}\le(1+S)(1+2q^2)\Phi(-\eta/q).
+\]
+For cluster 2 set $D_c=\operatorname{diag}(1,1-c)$ and
+$e_c(X)=f(X)-cX_2e_2$. Then
+\begin{align*}
+ R_2(a)
+ &=D_c\E_{P_2}[XX^\top]
+   -D_c\E_{P_2}[XX^\top\1_{\{a^\top X\le0\}}]
+   -\E_{P_2}[e_c(X)X^\top\1_{\{a^\top X>0\}}]\\
+ &=\lambda(1-c)e_2e_2^\top+q^2D_c
+   -D_c\E_{P_2}[XX^\top\1_{\{a^\top X\le0\}}]
+   -\E_{P_2}[e_c(X)X^\top\1_{\{a^\top X>0\}}].
+\end{align*}
+Here $\norm{D_c}\le1$. Apply the same trace bound with receiver $-a$ to
+the inactive moment. Cauchy--Schwarz bounds the last term by
+$\sqrt{\lambda+2q^2}\epsilon_2(c)$. Average the two raw cluster fields,
+retaining their mixture weight $1/2$, to obtain
+\eqref{inc:SGWR:v1:gaussbound}.
+\end{proof}
+
+\begin{remark}[What must actually be controlled]
+The norm estimate is only a sufficient budget; the signed contractions in
+\eqref{inc:SGWR:v1:amprate} can be substantially better. For example,
+negative $U_1,W_1$ paired with negative cross entries of $\mathcal B$ give
+\emph{positive} growth corrections. Neither sign is assumed by the norm bound.
+The scalar $\epsilon_2(c)$ includes the strong output, weak non-diagonal
+output, and every uncharted label. It is not automatically $O(q)$ or
+integrable merely because $N$ is small. Even a proved $O(q)$ bound over a
+time of order $\log(1/S_0)$ initially gives an integrated cost of order
+$q\log(1/S_0)$. An improved signed cancellation or a stronger integrated
+bound is needed when that cost matters. Finally, the first tail bound ceases
+to be exponentially small once $-a_1=O(q)$. The weak-chart transition needs
+its own argument, not an extension of the interior-Q2 estimate by assertion.
+\end{remark}
+
+\section{Quantitative attraction in the frozen resident weak system}
+This is a property of the defined scaled system with $M=1,N=0$ and the
+strong atom fixed at $(a,a)$, where $a=\rho K(\rho a)>0$. It is not yet
+capture under a moving population residual. Its equations are
+\begin{equation}\label{inc:SGWR:v1:frozen}
+ u'=F_\rho(u):=\tfrac12[\phi(u)-a\Phi(u)-\lambda u],
+ \qquad v'=\tfrac12(a-\lambda v).
+\end{equation}
+
+\begin{proposition}[Frozen global attraction and a uniform contraction]
+\label{inc:SGWR:v1:contraction}
+For every $0<\rho<1$, the frozen system has a unique globally attracting
+finite equilibrium $(u_*,a/\lambda)$. On the AN06 interval
+$\rho\in[13/20,7/10]$ one has, for all real $u$,
+\begin{equation}\label{inc:SGWR:v1:derivative}
+ F_\rho'(u)\le-\frac{\lambda-1/4}{2}
+ \le-\frac{69}{800}.
+\end{equation}
+Consequently
+\[
+ |u(t)-u_*|\le e^{-69(t-t_0)/800}|u(t_0)-u_*|,
+ \quad
+ |v(t)-a/\lambda|=e^{-\lambda(t-t_0)/2}|v(t_0)-a/\lambda|.
+\]
+For forced versions of \eqref{inc:SGWR:v1:frozen} with additive
+$\epsilon_u,\epsilon_v$, the corresponding bounds have the additional
+variation-of-constants terms
+\[
+ \int_{t_0}^t e^{-69(t-r)/800}|\epsilon_u(r)|\dd r,
+ \qquad
+ \int_{t_0}^t e^{-\lambda(t-r)/2}|\epsilon_v(r)|\dd r.
+\]
+\end{proposition}
+\begin{proof}
+The root lemma in the checkpoint shows that
+$[\phi(u)-a\Phi(u)-\lambda u]/\Phi(u)$ is strictly decreasing from
+positive infinity to negative infinity. Thus the scalar field is positive
+below $u_*$ and negative above. Its solutions approach the unique root
+monotonically from either side. The field has at most linear growth,
+so no finite-time escape occurs. The $v$ equation is explicitly solvable.
+For the uniform estimate,
+\[
+ F_\rho'(u)=\tfrac12[-(u+a)\phi(u)-\lambda].
+\]
+If $u\ge-a$, this is at most $-\lambda/2$. Otherwise put $t=-u>a$;
+then $(t-a)\phi(t)\le t\phi(t)\le\phi(1)<1/4$.
+The maximum follows by differentiating $t\phi(t)$ on $t\ge0$;
+$\phi(1)<1/4$ follows from $\pi>3$ and $e>8/3$.
+Since $\lambda\ge169/400$, \eqref{inc:SGWR:v1:derivative} follows.
+The mean-value formula gives the Dini inequality for the difference from
+the equilibrium. Integrating it, with or without the displayed forcing,
+proves the remaining statements.
+\end{proof}
+
+\begin{remark}
+The global assertion is global in the real coordinate of the \emph{frozen
+scaled ODE}. Applying it to an original angle a fixed distance from $\pi/2$
+would start at $u=O(1/q)$; validity of the scaled field there is not supplied
+by a compact-chart expansion. Similarly, differences of $M$ from one,
+nonzero $N$, strong mean/shape motion, and finite noise all enter the
+forcing in an actual capture argument. They must be bounded, not assumed
+absent because the frozen root is attracting.
+\end{remark}
+
+\section{Conditional use of the quoted global profile multiplier}
+This section verifies algebra from the user's displayed formula only.
+The cited file, its Theorem 5.1, and the definition of $b_c$ must be read
+before marking its application established. In particular a one-sided
+profile bound is not a two-sided bound on the full population distance.
+Let $P_\rho=\Phi(\rho a_\rho)$ and $\alpha=\lambda P_\rho/2$.
+
+\begin{proposition}[Global-multiplier exponent budget]
+\label{inc:SGWR:v1:globalexponent}
+Suppose at one common entry time
+\[
+ N_a\ge c_0S_0^{1-\lambda+b},\qquad
+ \delta_a\le C_sS_0^{1/2-\alpha-b_s},\qquad 0<S_0<1,
+\]
+and suppose the profile quantity under consideration satisfies
+\[
+ \delta_b\le C_p
+ \sqrt{\frac{M_a}{M_b}}\sqrt{\frac{N_b}{N_a}}
+ \exp\!\left(\int_{\tau_a}^{\tau_b}b_c(t)\dd t\right)\delta_a
+ +\epsilon_{\rm pass}.
+\]
+Assume $M_a/M_b\le C_M$, $N_b\le C_N$, and
+\[
+ \int_{\tau_a}^{\tau_b}b_c(t)\dd t\le B_p+b_p\log(1/S_0).
+\]
+Then
+\begin{equation}\label{inc:SGWR:v1:globalpower}
+ \delta_b\le C_pC_s\sqrt{C_MC_N/c_0}\,e^{B_p}
+ S_0^{\eta_{\rm glob}-b/2-b_s-b_p}+\epsilon_{\rm pass},
+ \qquad
+ \eta_{\rm glob}=\frac\lambda2(1-P_\rho)>0.
+\end{equation}
+On $\rho\in[13/20,7/10]$, the AN06 bound $a_\rho<2/5$ gives
+\begin{equation}\label{inc:SGWR:v1:rationalmargin}
+ \eta_{\rm glob}>\frac{16393}{200000}.
+\end{equation}
+With no other exponent costs, the tolerable extra seed power is
+$b<\lambda(1-P_\rho)$. The corresponding frozen-rate budget is
+$b<(1-P_\rho)/P_\rho$.
+\end{proposition}
+\begin{proof}
+Substitute the three bounds into the assumed profile estimate. The power
+before the extra losses is
+\[
+ \frac12-\alpha-\frac{1-\lambda}{2}
+ =\frac\lambda2-\frac{\lambda P_\rho}{2}.
+\]
+The constants retain their stated dependence on $q,\rho$.
+For the rational estimate, $\phi(0)<2/5$ implies
+\[
+ P_\rho<\tfrac12+\tfrac25\tfrac7{10}\tfrac25=\frac{153}{250},
+ \qquad
+ \frac\lambda2(1-P_\rho)>
+ \frac{169}{800}\frac{97}{250}=\frac{16393}{200000}.
+\]
+The extra seed power costs $b/2$ here. Under amplification
+$N_a^{-\alpha/\lambda}$ it instead costs $bP_\rho/2$, against baseline
+$(1-P_\rho)/2$, giving the other budget.
+\end{proof}
+
+\paragraph{Why an integrated center bound is still a premise.}
+For the exact leading logistic masses on an interval ending at $N_b<1$,
+\begin{equation}\label{inc:SGWR:v1:logisticintegrals}
+ \int_{\tau_a}^{\tau_b}N\dd\tau
+ =\frac1\lambda\log\frac{1-N_a}{1-N_b},\qquad
+ \int_{\tau_a}^{\tau_b}(1-M)\dd\tau=\log\frac{M_b}{M_a}.
+\end{equation}
+Thus $\int N\le(\log2)/\lambda$ up to half-mass. If, for example, a
+proved estimate gave
+$(b_c)_+\le C[N+(1-M)]+e_c$ with $\int|e_c|\le B$ and $M_a$ bounded
+away from zero, the exponential multiplier would have an $O(1)$ exponent.
+A similar statement holds for a quantity controlling $b_c$.
+Vanishing at the resident point, or pointwise smallness, alone does not
+supply this integral estimate uniformly as $N_a\to0$. The full $b_c$ or
+$U_c$ definition and its dynamical bound must be supplied by the missing
+source and subsequent analysis.
+
+\section{Precise next initialized target}
+The signed-growth change alters the main retention interface, but it does
+not supply the final seed. A useful next lemma must specify a fixed set of
+initial labels, prove its angular guards through the bulk stage, quantify
+its ancestry amplitude $H_C$, and bound the \emph{signed} growth defect.
+It must then transfer a quantified mass fraction into a bounded weak chart
+while controlling the actual moving strong residual and all background
+labels. The frozen contraction proposition supplies a terminal comparison
+only after its forcing and domain assumptions have been justified.
+
+If $N_C(\tau_a)\ge cS_0^\gamma$ and
+$\tau_b-\tau_a=B_t\log(1/S_0)+O(1)$, a signed lower growth estimate
+with logarithmic loss $b\log(1/S_0)$ gives a seed lower bound with power
+$\gamma-\lambda B_t+b$. One must not count the same amplification both in
+$N_C(\tau_a)$ and in the elapsed time. At finite noise the clock coefficient
+$1/(1+2q^2)$, when proved for the relevant strong clock, changes this power;
+its effect over long delays belongs to the finite-noise budget.
+
+The interior-Q2 bulk route and the earlier backward-selected reservoir
+route use different label sets and parameter regimes. A conservative
+$S_0^{17/16}$ reservoir bound does not become a captured
+$S_0^{1-\lambda}$ bound without an amplification-and-capture argument.
+Nor does the user's direct masked seed measurement prove that the same
+labels are retained.
+
+A total signed deficit $O(1)$ loses only a prefactor. A deficit
+$o(\log(1/S_0))$ permits arbitrarily small power losses but can still have
+an unbounded prefactor. Either can be sufficient if the profile exponent
+margin and all $q$-dependent factors remain controlled. The fitted
+retention cost near $0.006$ is motivation, not a premise of these results.
+
+\paragraph{What is not complete.}
+The initialized angular guards; the original-flow weak seed at the desired
+scale; nonlinear center and two-sided shape control; moving chart capture;
+background and exact probe-rate estimates; canonical finite-parameter
+coverage; and initialized Theorems A and B remain open. The missing
+ancestry/tail theorem must be re-uploaded before its precise hypotheses can
+be incorporated. No new numerical experiments were needed for any displayed
+proof in this increment.
+\end{document}

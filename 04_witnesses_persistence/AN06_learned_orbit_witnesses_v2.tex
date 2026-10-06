@@ -1,0 +1,1109 @@
+% New review increment. No supplied source is modified or included automatically.
+% Label prefix: inc:AN06:v2:
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array,microtype}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={AN06 v2: Learned limiting-orbit witnesses},
+ pdfsubject={Learning-threshold trade-off and canonical-offset witness},
+ pdfauthor={Research proof increment for independent review}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small AN06: learned limiting-orbit witnesses}
+\fancyhead[R]{\small Review increment v2}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\,d}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\title{Learned witnesses on the selected coherent orbit\\
+\large Learning-threshold trade-off, canonical-offset witnesses, and population robustness}
+\author{Research proof increment for independent review}
+\date{Version 2 --- October 2, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+The reviewed half-mass invariant region on the selected coherent weak-growth
+orbit yields a whole family of learned descent witnesses. For every
+$0<n_0\le1/2$, descent holds at weak mass $n_0$ whenever
+$\zeta>3/4+(215698/78125)n_0/(1-n_0)$, uniformly for
+$\rho\in[13/20,7/10]$. In particular, at quarter-mass the scaled rate is
+less than $-1/2000$ throughout $\zeta\in[87/50,7/4]$.
+This interval contains the exact canonical scaled offset $5\pi/9$.
+We retain the half-mass result for $\zeta\in[4,5]$ and recenter the common
+competition windows at $(\rho,\zeta)=(2/3,5\pi/9)$, strictly after
+quarter-mass. Explicit analytical tolerances transfer those witnesses to a
+nearby compact-chart leading population. Its own half-mass clock removes
+the weak-mass phase error exactly in that system. Static Gaussian bounds
+then give exact responses at least $1/4$ and cluster losses at most
+$169/196$ of their isotropic-initialization values, under the stated
+small-noise and fully charted state hypotheses.
+These results do not establish initialized entry, nonlinear long-delay
+passage, a non-small bridge comparison, or finite-noise trajectory/rate
+transfer. The initialized Theorems A and B remain open.
+\end{abstract}
+
+\section{Proof contract and notation}\label{inc:AN06:v2:contract}
+\paragraph{Dependencies.}
+The working base is \path{THEOREM_A_ANALYTICAL_PROGRESS.tex}, version 1.0.
+We use its \texttt{pa:branch} (selected coherent branch),
+\texttt{pa:weakroot} (real resident weak root),
+\texttt{pa:atomiclag} and \texttt{pa:atomicrates} (lag and source identities),
+and \texttt{pa:limitreversal} (global continuation, $v>0$, $v>y$, $v>x$,
+and eventual hit of every finite probe edge greater than $a_\rho$).
+The leading population equations are the defined system in
+\texttt{pa:leading}/\texttt{pa:masslaws}, not an assumed theorem of
+finite-noise convergence. Relevant equations are restated below.
+The original initialization/output identity used only in the static learning
+comparison is $f_0(X)=S_0X/4$.
+
+\paragraph{Scope.}
+Sections 2--7 concern the \emph{defined leading system}.
+Section 8 is a conditional, static result for the exact Gaussian model.
+No source, AN02 increment, or consolidated checkpoint is overwritten.
+The learning-threshold trade-off is the consequence identified in the
+user's review of AN06 v1. The coupled region and its proof are retained.
+The common-window rectangle is now centered at the exact canonical scaled
+offset $5\pi/9$, with quarter-mass as the fixed witness threshold; it is
+local, not the entire descent rectangle. Canonical \emph{offset} coverage
+in the leading system is not coverage of the canonical positive-noise,
+positive-initialization trajectory. The half-mass result for $[4,5]$
+remains a separate corollary.
+
+Set $\lambda=\rho^2$, and let $\phi,\Phi$ be the standard Gaussian density
+and distribution function. Define
+\[
+ K(r)=\phi(r)+r\Phi(r),\qquad g(r)=K(r)-r>0.
+\]
+For the selected coherent orbit write $Z_\rho=(n,x,y,u,v)$, where
+\begin{align}
+ n'&=\lambda n(1-n),\qquad n(s)=(1+e^{-\lambda s})^{-1},
+ \label{inc:AN06:v2:orbit}\\
+ x'&=\tfrac\lambda2[nv-x+(1-n)y]\Phi(\rho x),\nonumber\\
+ y'&=\tfrac12[-y-nK(u)+\rho(1-n)K(\rho x)],\nonumber\\
+ u'&=\tfrac12[(1-n)(\phi(u)-\lambda u)-(nu+y)\Phi(u)],\nonumber\\
+ v'&=\tfrac12[\rho K(\rho x)-\lambda v].\nonumber
+\end{align}
+The branch approaches
+\[
+ (0,a,a,u_*,a/\lambda)\quad(s\to-\infty),\qquad
+ a=\rho K(\rho a),\quad \phi(u_*)-a\Phi(u_*)-\lambda u_*=0.
+\]
+Time $s=0$ means weak half-\emph{mass}; exact finite-noise learning is
+addressed separately in Section 8.
+For $x<\zeta$, put
+\begin{align}
+ \mathcal E_\zeta&=-\tfrac12\zeta^2+\tfrac12x^2+y(\zeta-x),
+ &\mathcal E_\zeta'&=(x-y)x'+(\zeta-x)y',
+ \label{inc:AN06:v2:error}\\
+ L&=y+nK(u)>0,
+ &d_1&=-\tfrac12(\zeta-x)L,\nonumber\\
+ d_2&=(x-y)x'+\tfrac\rho2(\zeta-x)(1-n)K(\rho x),
+ &\mathcal E_\zeta'&=d_1+d_2.\nonumber
+\end{align}
+Throughout, a prime is differentiation in normalized/shifted time, not
+physical time. The latter would multiply an original finite-noise rate by
+$\mu_1^2$; no finite-noise rate approximation is assumed here.
+
+\section{A coupled region through weak half-mass}
+\label{inc:AN06:v2:halfregion}
+Fix
+\begin{equation}\label{inc:AN06:v2:rhointerval}
+ \mathcal K=[13/20,7/10],\qquad
+ 169/400\le\lambda\le49/100.
+\end{equation}
+Use the following elementary Gaussian bounds:
+\begin{equation}\label{inc:AN06:v2:gaussianbounds}
+ \frac38<\phi(0)<\frac25,\qquad
+ \frac15<\phi(1)<\frac14,\qquad
+ K(r)\le\phi(0)+\frac r2+\frac{\phi(0)r^2}{2}\quad(r\ge0).
+\end{equation}
+For completeness, the first two follow from the elementary bounds
+$25/8<\pi<22/7$ and $8/3<e<3$; the last follows by integrating
+$\Phi(r)\le1/2+\phi(0)r$. Also $K(r)\le r_++\phi(0)$ for all real $r$.
+
+\begin{lemma}[Resident bounds]\label{inc:AN06:v2:residentbounds}
+For $\rho\in\mathcal K$, $0<a<\phi(0)<2/5$ and $0<u_*<1$.
+\end{lemma}
+\begin{proof}
+The function $z-\rho K(\rho z)$ is strictly increasing. At $z=\phi(0)$,
+\[
+ \frac{\rho K(\rho\phi(0))}{\phi(0)}
+ \le\rho+\frac{\rho^2}{2}+\frac{\rho^3\phi(0)^2}{2}
+ \le\frac7{10}+\frac{49}{200}+\frac{343}{12500}<1.
+\]
+Its value at zero is negative, proving the first claim. The weak-root
+function is positive at zero since $\phi(0)-a/2>0$, and negative at one
+since $\phi(1)<1/4<\lambda$. Uniqueness of the real weak root proves the
+second claim.
+\end{proof}
+
+Define
+\begin{equation}\label{inc:AN06:v2:TZ}
+ A=\rho K(\rho x),\quad P=\Phi(\rho x),\quad Q=\Phi(u),\quad
+ z=x-y,\quad T=L-(1-n)A=-2y'.
+\end{equation}
+The letter $T$ here is a scalar output-descent observable, not an entry time.
+
+\begin{theorem}[Half-learning region and output descent]
+\label{inc:AN06:v2:regiontheorem}
+On the selected branch, for every $\rho\in\mathcal K$ and every $s\le0$,
+\begin{equation}\label{inc:AN06:v2:region}
+ -n<y<a<\frac25,\quad y<x<\frac34,\quad
+ 0<u<1,\quad 0<v<\frac{11}{10},\quad T>0.
+\end{equation}
+Moreover,
+\begin{equation}\label{inc:AN06:v2:Tlower}
+ T(s)\ge\frac5{62}n(s)(1-n(s)),\qquad
+ y'(0)\le-\frac5{496}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+\emph{Entry at the resident end.}
+The checkpoint's branch calculation gives
+$x=a+X_1n+O(n^2)$ and $y=a+Y_1n+O(n^2)$ with $Y_1<0$.
+Thus $T=-2\lambda Y_1n+O(n^2)>0$ and $y<a$ sufficiently far back.
+Let $\alpha=\lambda\Phi(\rho a)/2$. Subtracting the first-order branch
+relations gives
+\[
+ (\lambda+\alpha)(X_1-Y_1)
+ =\alpha(a/\lambda-a)-\lambda Y_1>0.
+\]
+Thus $z>0$ initially on the positive branch. All other inequalities are
+strict at the resident end by Lemma~\ref{inc:AN06:v2:residentbounds},
+including $v=a/\lambda<(2/5)/(169/400)<11/10$.
+
+\emph{The output-descent differential inequality.}
+The exact lag equation on this orbit is
+\[
+ L'=-\tfrac12(1+nQ^2)L+\tfrac12(1-n)A
+ +\tfrac12n(1-n)[\lambda(K(u)+\phi(u))+Q\phi(u)]
+ +\tfrac12n^2g(u)Q^2.
+\]
+Since $A'=\lambda P x'$, direct differentiation of
+\eqref{inc:AN06:v2:TZ} gives
+\begin{align}
+ T'={}&-\tfrac12(1+nQ^2)T\nonumber\\
+ &+n(1-n)\left[A(\lambda-Q^2/2)
+       +\tfrac\lambda2(K(u)+\phi(u))+\tfrac12Q\phi(u)\right]
+       +\tfrac12n^2g(u)Q^2
+       -\lambda(1-n)P x'.
+ \label{inc:AN06:v2:Tequation}
+\end{align}
+Assume temporarily the closure of \eqref{inc:AN06:v2:region}, with
+$0<n\le1/2$. Then
+\[
+ P\le\tfrac12+\tfrac25\tfrac7{10}\tfrac34=\frac{71}{100},\quad
+ \frac12\le Q\le\frac9{10},\quad v-y\le\frac85.
+\]
+Also $K(u)+\phi(u)\ge2\phi(0)>3/4$, because its derivative is
+$\Phi(u)-u\phi(u)>0$ on $[0,1]$. Since $z\ge0$,
+\[
+ x'=\tfrac\lambda2 P[n(v-y)-z]
+ \le\tfrac\lambda2 nP(v-y).
+\]
+The coefficient $\lambda-Q^2/2$ is at least $7/400>0$.
+Dropping its positive contribution and the positive $g$ term, the remaining
+forcing in \eqref{inc:AN06:v2:Tequation}, divided by $n(1-n)$, is at least
+\begin{align*}
+ c_*&=\frac{169}{400}\frac38+\frac1{20}
+       -\frac12\left(\frac{49}{100}\right)^2
+                \left(\frac{71}{100}\right)^2\frac85\\
+ &=\frac{27902493}{250000000}>\frac1{10}.
+\end{align*}
+Here $Q\phi(u)/2\ge1/20$ follows from $Q\ge1/2$ and
+$\phi(u)\ge\phi(1)>1/5$.
+Consequently, throughout this temporary region,
+\begin{equation}\label{inc:AN06:v2:Tinequality}
+ T'\ge-\tfrac34 T+\tfrac1{10}n(1-n),
+\end{equation}
+where $T\ge0$ and $(1+nQ^2)/2\le3/4$ were used only to simplify the
+negative coefficient. In particular, at $T=0$ the derivative is strictly
+positive.
+
+\emph{Simultaneous first-exit closure.}
+The other boundary checks are as follows; $y\le a$ follows by integrating
+$y'=-T/2\le0$ and the resident limit, rather than being a separate assumed
+boundary sign.
+At $y=-n$,
+\[
+ y'+n'\ge n\left[-\frac{\phi(0)}2+\lambda(1-n)\right]>0,
+\]
+using $K(u)\le1+\phi(0)$ and $\lambda>\phi(0)$.
+At $x=3/4$, its bracket is at most
+$n(11/10)+(1-n)a-3/4<0$ for $n\le1/2$.
+At $v=11/10$, the bracket in $v'$ is negative because
+\[
+ \frac{K(3\rho/4)}\rho
+ \le\frac{8}{13}+\frac38+\frac{63}{800}<\frac{11}{10}.
+\]
+At $u=1$, $nu+y\ge0$ and $\phi(1)<\lambda$ imply $u'<0$.
+At $u=0$,
+\[
+ u'=\tfrac12[(1-n)\phi(0)-y/2]\ge[\phi(0)-a]/4>0.
+\]
+At $z=0$, the already established invariant $v>y$ gives
+$x'=\lambda n(v-y)P/2>0$, whereas $y'=-T/2\le0$; hence $z'>0$.
+Positivity of $v$ is an imported invariant of the selected branch.
+The $T$ boundary was checked above. These strictly inward signs exclude
+any first exit before or at $n=1/2$, starting sufficiently far back on the
+branch. There is no assumption of monotonicity of $x$ or $u$.
+
+\emph{Quantitative integration.}
+Integrating \eqref{inc:AN06:v2:Tinequality} from an earlier time and taking
+that time to $-\infty$ gives
+\[
+ T(s)\ge\frac1{10}\int_{-\infty}^s
+ e^{-3(s-t)/4}n(t)(1-n(t))\,dt.
+\]
+The initial term is nonnegative and tends to zero, since $T=O(n)$ at the
+resident end. The identities $n'/n=\lambda(1-n)\le\lambda$ and the
+monotonicity of $n$ imply, for $t\le s\le0$,
+\[
+ n(t)(1-n(t))\ge n(s)(1-n(s))e^{-\lambda(s-t)}.
+\]
+Thus
+\[
+ T(s)\ge\frac{n(s)(1-n(s))}{10(3/4+\lambda)}
+ \ge\frac5{62}n(s)(1-n(s)).
+\]
+At $s=0$, $n=1/2$ and $y'=-T/2$, proving
+\eqref{inc:AN06:v2:Tlower}.
+\end{proof}
+
+\section{A learning-threshold and probe-offset family}
+\label{inc:AN06:v2:descentfamily}
+Set
+\begin{equation}\label{inc:AN06:v2:tradeoffconstants}
+ c_+=\frac{3479}{31250},\qquad c_-=\frac5{124},\qquad
+ c_{\rm tr}=\frac{c_+}{c_-}=\frac{215698}{78125}.
+\end{equation}
+For $0<n_0\le1/2$, write
+\[
+ s_\rho(n_0)=\frac1{\rho^2}\log\frac{n_0}{1-n_0},\qquad
+ \zeta_{\rm req}(n_0)=\frac34+c_{\rm tr}\frac{n_0}{1-n_0}.
+\]
+The clock remains centered at half-mass, so $s_\rho(1/2)=0$ and
+$s_\rho(1/4)=-\log(3)/\rho^2$.
+
+\begin{theorem}[Uniform descent family]
+\label{inc:AN06:v2:familytheorem}
+For every $\rho\in\mathcal K$, $\zeta>3/4$, and $s\le0$, the selected
+orbit is probe-active, $\mathcal E_\zeta(s)<0$, and
+\begin{equation}\label{inc:AN06:v2:familyrate}
+ \mathcal E_\zeta'(s)
+ \le c_+n(s)^2-c_-(\zeta-3/4)n(s)(1-n(s)).
+\end{equation}
+In particular, fix $0<n_0\le1/2$ and $\zeta>\zeta_{\rm req}(n_0)$.
+Define the strictly positive constants
+\begin{equation}\label{inc:AN06:v2:familymargin}
+ \Delta_0=c_-(\zeta-3/4)-c_+\frac{n_0}{1-n_0},\qquad
+ \Gamma_0=n_0(1-n_0)\Delta_0.
+\end{equation}
+Then
+\[
+ \mathcal E_\zeta'(s)\le-\Delta_0 n(s)(1-n(s))<0
+ \quad(s\le s_\rho(n_0)),\qquad
+ \mathcal E_\zeta'(s_\rho(n_0))\le-\Gamma_0.
+\]
+The constants are independent of initialization. On any closed offset
+interval above $\zeta_{\rm req}(n_0)$, its lower endpoint gives a uniform
+positive rate margin at mass $n_0$.
+\end{theorem}
+\begin{proof}
+Write $B=v-y\le8/5$ and $z=x-y>0$.
+Theorem~\ref{inc:AN06:v2:regiontheorem} and completion of the square give
+\[
+ (x-y)x'=\frac\lambda2Pz(nB-z)
+ \le\frac{\lambda Pn^2B^2}{8}
+ \le\frac18\frac{49}{100}\frac{71}{100}
+                 \left(\frac85\right)^2n^2=c_+n^2.
+\]
+This does not require $x'\ge0$. Also
+$y'=-T/2\le-c_-n(1-n)$ and $\zeta-x>\zeta-3/4>0$.
+Substitution in the error derivative proves
+\eqref{inc:AN06:v2:familyrate}.
+Since $n/(1-n)$ is increasing, its value for $s\le s_\rho(n_0)$ is at
+most $n_0/(1-n_0)$, proving the claimed margin.
+Finally,
+\[
+ \mathcal E_\zeta=(\zeta-x)\left[y-\frac{\zeta+x}{2}\right]<0,
+\]
+because $\zeta>x>y$ throughout this region.
+\end{proof}
+
+\begin{corollary}[Half-mass and canonical-offset witnesses]
+\label{inc:AN06:v2:halfdescenttheorem}
+The following two rational bounds hold uniformly for $\rho\in\mathcal K$:
+\begin{align}
+ \mathcal E_\zeta'(0)&\le-\frac{152833}{31000000}<-\frac1{250}
+       &&(\zeta\in[4,5]),
+       \label{inc:AN06:v2:halfrate}\\
+ \mathcal E_\zeta'(-\log(3)/\rho^2)
+       &\le-\frac{65333}{124000000}<-\frac1{2000}
+       &&(\zeta\in[87/50,7/4]).
+       \label{inc:AN06:v2:quarterrate}
+\end{align}
+The second interval contains $\zeta_c=5\pi/9$, whose probe at $q=1/20$
+has angle $-85^\circ$. At the rounded offset $349/200=1.745$, the
+quarter-mass bound is more specifically
+\begin{equation}\label{inc:AN06:v2:roundedrate}
+ \mathcal E_{349/200}'(-\log(3)/\rho^2)
+ \le-\frac{140041}{248000000}.
+\end{equation}
+These are leading-system witnesses, not assertions of canonical
+finite-noise trajectory coverage.
+\end{corollary}
+\begin{proof}
+Set $n=1/2$, $\zeta=4$ in \eqref{inc:AN06:v2:familyrate} to obtain
+\eqref{inc:AN06:v2:halfrate}. Set $n=1/4$, $\zeta=87/50$ to obtain
+\[
+ \frac{3479}{500000}-\frac{15}{1984}\frac{99}{100}
+ =-\frac{65333}{124000000}<-\frac1{2000}.
+\]
+The bound improves as $\zeta$ increases. Substituting $\zeta=349/200$
+gives \eqref{inc:AN06:v2:roundedrate}.
+To locate the exact offset, the elementary bounds
+$157/50<\pi<22/7$ imply
+\[
+ \frac{87}{50}<\frac{157}{90}<\frac{5\pi}{9}
+ <\frac{110}{63}<\frac74.
+\]
+For an explicit elementary lower bound, the identity
+$\pi=16\arctan(1/5)-4\arctan(1/239)$ and the alternating arctangent
+bounds give
+\[
+ \pi>16\left(\frac15-\frac1{375}\right)-\frac4{239}
+ =\frac{281476}{89625}>\frac{157}{50}.
+\]
+The arctangent identity follows by applying the tangent addition formula;
+$\tan(4\arctan(1/5))=120/119$, and subtracting $\arctan(1/239)$ gives
+tangent one at an angle in $(0,\pi/2)$.
+Finally $q\zeta_c=\pi/36$ at $q=1/20$, and the polar angle of
+$(\sin(q\zeta_c),-\cos(q\zeta_c))$ is $-\pi/2+\pi/36$.
+\end{proof}
+
+The sufficient offset thresholds at $n_0=1/2,1/4,1/10$ are respectively
+\[
+ \frac{1097167}{312500},\qquad
+ \frac{1565917}{937500},\qquad
+ \frac{2972167}{2812500}.
+\]
+They are bounds supplied by this proof, not exact transition locations.
+In particular, the coefficient $2.761$ in the review is a rounded-up
+sufficient value; \eqref{inc:AN06:v2:tradeoffconstants} retains the exact
+rational coefficient.
+
+\begin{corollary}[A crossover strictly after the prescribed mass]
+\label{inc:AN06:v2:postthreshold}
+Fix $\rho\in\mathcal K$, $0<n_0\le1/2$, and
+$\zeta>\zeta_{\rm req}(n_0)$.
+There is a finite negative-to-positive zero of $\mathcal E_\zeta'$ at a
+time $s_*>s_\rho(n_0)$ before the first strong gate hit.
+A sufficiently small closed interval about this zero has $n>n_0$ and
+$d_1<0<d_2$ everywhere, with ordered positive-width subintervals of
+strictly negative and strictly positive total rate.
+No assertion $s_*>0$ is made when $n_0<1/2$.
+\end{corollary}
+\begin{proof}
+The imported gate-hit theorem gives a finite first hit $t_g$ of $x=\zeta$.
+The half-region excludes such a hit for $s\le0$, hence
+$t_g>0\ge s_\rho(n_0)$.
+The error and its derivative are negative at $s_\rho(n_0)$, while the
+error at the hit is zero. There is a point of positive derivative in
+$(s_\rho(n_0),t_g)$.
+On this interval the derivative of the active error is real analytic.
+Its first transition to positivity occurs at an isolated zero strictly
+after $s_\rho(n_0)$, negative just to the left and positive just to the
+right. The zero has finite odd order, but need not be simple.
+At the zero, $d_1=-(\zeta-x)L/2<0$, hence $d_2=-d_1>0$.
+Continuity gives a source-sign neighborhood, and analyticity supplies
+the two total-rate windows. Take its closure inside
+$(s_\rho(n_0),t_g)$; strict increase of $n$ gives $n>n_0$ throughout.
+\end{proof}
+
+\section{A gate-aware population rate estimate}
+\label{inc:AN06:v2:populationrobustness}
+This section supplies the quantitative stability interface used for common
+windows. It does not assume that an initialized population has reached it.
+Let $\mu_s,\mu_w$ be nonnegative finite measures in the scaled charts and put
+\begin{gather*}
+ M=\mu_s(\R^2),\quad N=\mu_w(\R^2),\quad
+ Y=\int y\,d\mu_s,\quad V=\int v\,d\mu_w,\\
+ K_s=\int K(\rho x)\,d\mu_s,\qquad K_w=\int K(u)\,d\mu_w.
+\end{gather*}
+The overlap kernel is
+\[
+ F(t,r)=\phi(\min(t,r))+r\Phi(\min(t,r)),\quad
+ \mathcal S(x)=\int F(\rho x,\rho\widetilde x)\,d\mu_s,
+ \quad \mathcal W(u)=\int F(u,\widetilde u)\,d\mu_w.
+\]
+The strong source velocities and weak velocities are
+\begin{align}
+ x'_1&=-\tfrac12(1-M)x,&
+ y'_1&=-\tfrac12[(1-M)y+Y+K_w],
+ \label{inc:AN06:v2:popsystem}\\
+ x'_2&=\tfrac12[\rho\phi(\rho x)-\rho\mathcal S(x)
+       +\lambda\{V+(1-N)y\}\Phi(\rho x)],&
+ y'_2&=\tfrac\rho2(1-N)K(\rho x),\nonumber\\
+ u'&=\tfrac12[\phi(u)-\mathcal W(u)-\{Y+(1-M)v\}\Phi(u)
+                  -\lambda(1-N)u],\nonumber\\
+ v'&=\tfrac12[\rho K_s-\lambda V-\lambda(1-N)v-(1-M)K(u)].\nonumber
+\end{align}
+Strong reaction is $1-M$ and weak reaction is $\lambda(1-N)$.
+Thus $M'=M(1-M)$ and $N'=\lambda N(1-N)$.
+Use
+\[
+ A_\zeta=\int(\zeta-x)_+\,d\mu_s,\qquad
+ B_\zeta=\int y(\zeta-x)_+\,d\mu_s,\qquad
+ \mathcal E=\tfrac12A_\zeta^2-\zeta A_\zeta+B_\zeta.
+\]
+The use of $A_\zeta$ here is distinct from $A=\rho K(\rho x)$ in Section 2.
+
+\begin{lemma}[Rates including nonunit strong mass]
+\label{inc:AN06:v2:generalrates}
+At points/times where the characteristic chain rule applies, with the
+indicator interpreted as $\1_{x<\zeta}$, the leading source rates satisfy
+\begin{align}
+ d_1={}&-\tfrac12A_\zeta(Y+K_w)+(1-M)\mathcal C,\nonumber\\
+ \mathcal C={}&(A_\zeta-\zeta)A_\zeta+\tfrac12B_\zeta
+ -\tfrac12\int_{x<\zeta}(\zeta-A_\zeta-y)x\,d\mu_s,
+ \label{inc:AN06:v2:generalrates-eq}\\
+ d_2={}&\int_{x<\zeta}(\zeta-A_\zeta-y)x'_2\,d\mu_s
+       +\int(\zeta-x)_+y'_2\,d\mu_s.
+ \nonumber
+\end{align}
+Their sum is $\mathcal E'$ almost everywhere along compact, regular
+characteristic solutions.
+\end{lemma}
+\begin{proof}
+For source 1,
+\[
+ (A_\zeta)'_1=(1-M)A_\zeta-\int_{x<\zeta}x'_1\,d\mu_s,
+\]
+\[
+ (B_\zeta)'_1=(1-M)B_\zeta+
+ \int_{x<\zeta}[(\zeta-x)y'_1-yx'_1]\,d\mu_s.
+\]
+Substitute these expressions into
+$d_1=(A_\zeta-\zeta)(A_\zeta)'_1+(B_\zeta)'_1$ and use
+\eqref{inc:AN06:v2:popsystem}. Source 2 has no strong reaction term and
+gives the displayed $d_2$ directly.
+For the almost-everywhere total identity, apply the positive-part chain
+rule to each characteristic and then Fubini; compact support bounds the
+integrands. At a gate the chosen selector is zero. The set of times at
+which a given absolutely continuous characteristic equals the gate and
+has nonzero total normal velocity has measure zero. No assertion that
+there is no boundary mass at every time is required. These are the
+selector-defined leading source rates, not a claimed pointwise
+finite-noise source-transfer theorem at boundary atoms.
+\end{proof}
+
+Let a comparison state be the coherent measure
+$\delta_{(X,Y_*)}$ and $n_*\delta_{(U,V_*)}$, where $0\le n_*\le1$.
+Define the mass-weighted first-moment distance
+\begin{align}
+ \mathfrak d={}&|M-1|+|N-n_*|\nonumber\\
+ &+\int(|x-X|+|y-Y_*|)\,d\mu_s
+ +\int(|u-U|+|v-V_*|)\,d\mu_w.
+ \label{inc:AN06:v2:distance}
+\end{align}
+The coordinates $Y_*,V_*$ here are atom coordinates, not total moments.
+
+\begin{proposition}[Explicit rate robustness with gate mismatches]
+\label{inc:AN06:v2:ratebound}
+Suppose $R\ge2$, $0<\rho\le1$, $M,N\le2$, both population supports and
+the comparison coordinates lie in $[-R,R]^2$, $|\zeta|\le R$, and
+$\zeta-X\ge g_0>0$. At the same $\rho,\zeta$,
+\begin{equation}\label{inc:AN06:v2:ratebound-eq}
+ |d_p-d_{p,*}|\le C(R,g_0)\mathfrak d\quad(p=1,2),\qquad
+ C(R,g_0)=64R^2(1+g_0^{-1}).
+\end{equation}
+Also $|\mathcal E-\mathcal E_*|\le10R^2\mathfrak d$.
+The population need not have every strong label probe-active.
+\end{proposition}
+\begin{proof}
+Write $D_s,D_w$ for the two integral terms in
+\eqref{inc:AN06:v2:distance}. The elementary bounds
+$K\le2R$, $|\phi'|\le1$, $K'\le1$, and
+$|\partial_tF|\le2R$, $|\partial_rF|\le1$ hold on the relevant arguments.
+They imply
+\begin{gather*}
+ |A_\zeta-(\zeta-X)|\le2R\mathfrak d,\quad
+ |B_\zeta-Y_*(\zeta-X)|\le2R^2\mathfrak d,\\
+ |Y-Y_*|\le R\mathfrak d,\quad
+ |K_w-n_*K(U)|\le2R\mathfrak d,\quad
+ |V-n_*V_*|\le R\mathfrak d.
+\end{gather*}
+For a strong receiver, writing $D=|x-X|+|y-Y_*|$, the donor/receiver split
+of $\mathcal S$ gives
+\[
+ |x'_2-x'_{2,*}|\le2R(D+\mathfrak d),\qquad
+ |y'_2-y'_{2,*}|\le\tfrac12D+R\mathfrak d.
+\]
+Indeed the donor and mass changes in $\mathcal S$ cost at most
+$2R\mathfrak d$, and its reference-receiver change costs at most
+$2R|x-X|$. The other terms follow from the displayed moment bounds and
+$|n_*V_*+(1-n_*)Y_*|\le R$.
+Uniformly $A_\zeta\le4R$, $|Y+K_w|\le6R$, $|x'_2|\le4R$, and
+$|y'_2|\le R$.
+
+For $d_1$, the lag product costs at most $9R^2\mathfrak d$.
+In \eqref{inc:AN06:v2:generalrates-eq},
+$|\mathcal C|\le20R^2+2R^2+6R^2=28R^2$.
+Thus $|d_1-d_{1,*}|\le37R^2\mathfrak d$.
+
+For $d_2$, put $c=\zeta-A_\zeta-y$ and $c_*=X-Y_*$.
+Integrating the smooth difference $cx'_2-c_*x'_{2,*}$ over active
+receivers costs at most $30R^2\mathfrak d$.
+The remaining active-mass difference is bounded using
+\[
+ \mu_s\{x\ge\zeta\}\le D_s/g_0,\qquad
+ |\mu_s\{x<\zeta\}-1|\le|M-1|+D_s/g_0.
+\]
+Since $|c_*x'_{2,*}|\le8R^2$, this costs at most
+$8R^2(1+g_0^{-1})\mathfrak d$.
+The output-rotation term costs at most $7R^2\mathfrak d$:
+its receiver difference is bounded by $2RD+2R^2\mathfrak d$, and its
+reference mass term by $2R^2|M-1|$.
+The total is at most $(45+8/g_0)R^2\mathfrak d$, below the stated constant.
+Finally the error difference is bounded by
+$4R|A_\zeta-(\zeta-X)|+|B_\zeta-Y_*(\zeta-X)|$.
+All integrals have compact support; the inactive-mass estimate includes
+labels exactly on the gate.
+\end{proof}
+
+\begin{lemma}[Coherent parameter sensitivity at a fixed state]
+\label{inc:AN06:v2:paramrate}
+For a fixed coherent state satisfying the bounds of
+Proposition~\ref{inc:AN06:v2:ratebound}, while its strong gate stays active,
+changing only the parameters gives
+\[
+ |\Delta d_p|\le8R^3|\Delta\rho|+2R|\Delta\zeta|\quad(p=1,2).
+\]
+\end{lemma}
+\begin{proof}
+The $d_1$ formula is independent of $\rho$ and has $\zeta$ derivative
+$-L/2$, of absolute value at most $3R/2$.
+In $d_2$ the input-rotation term is independent of $\zeta$ and the
+output-rotation term has $\zeta$ derivative of absolute value at most $R$.
+For the $\rho$ derivative write
+$x'_2=\rho^2\Phi(\rho X)[n_*V_*-X+(1-n_*)Y_*]/2$.
+Its derivative has absolute value at most $2R^2$; multiplying by
+$|X-Y_*|\le2R$ costs $4R^3$.
+The derivative of the output-rotation term costs at most $3R^2$.
+Their sum is below $8R^3$. Integrate along the parameter segment.
+\end{proof}
+
+\begin{lemma}[Own-half-mass clock and the finite-noise distinction]
+\label{inc:AN06:v2:clockalignment}
+Suppose a leading population solution has $0<N(\tau_a)<1$. Set
+\begin{equation}\label{inc:AN06:v2:halfclock}
+ \tau_h=\tau_a+\frac1\lambda\log\frac{1-N(\tau_a)}{N(\tau_a)},
+ \qquad s=\tau-\tau_h.
+\end{equation}
+Then, wherever this solution exists,
+\[
+ N(\tau_h+s)=\frac1{1+e^{-\lambda s}}=n_\rho(s).
+\]
+If the trajectory extends to $\tau_h$, that is its unique half-mass time.
+Thus, at the same $\rho$, its distance to the selected orbit in this clock
+is exactly
+\begin{equation}\label{inc:AN06:v2:aligneddistance}
+ \mathfrak d_{\rm al}=|M-1|
+ +\int(|x-X|+|y-Y_*|)\,d\mu_s
+ +\int(|u-U|+|v-V_*|)\,d\mu_w.
+\end{equation}
+No weak-mass phase-error term has to be estimated.
+
+For comparison, let an arbitrary absolutely continuous mass with
+$0<N<1$ on the interval between zero and $s$ satisfy $N(0)=1/2$ and
+\[
+ N'=\lambda N(1-N)+r_N.
+\]
+Then
+\begin{equation}\label{inc:AN06:v2:logiterror}
+ \log\frac{N(s)}{1-N(s)}-\lambda s
+ =\int_0^s\frac{r_N(t)}{N(t)(1-N(t))}\,dt,
+ \qquad
+ |N(s)-n_\rho(s)|
+ \le\frac14\left|\int_0^s\frac{r_N(t)}{N(t)(1-N(t))}\,dt\right|.
+\end{equation}
+Thus centering alone does not remove a finite-noise mass-law error.
+\end{lemma}
+\begin{proof}
+For the leading system, differentiation of $\log(N/(1-N))$ gives
+$\lambda$, so \eqref{inc:AN06:v2:halfclock} is the integration constant
+that sets the logit to zero. The right-hand side is strictly increasing
+for $0<N<1$, proving uniqueness of the half-mass time where it exists.
+For the perturbed law the same chain rule gives the first identity in
+\eqref{inc:AN06:v2:logiterror}. On any compact interval under consideration,
+continuity and $0<N<1$ bound the denominators away from zero, justifying
+the chain rule and integration. The logistic function has derivative
+at most $1/4$, proving the second bound.
+\end{proof}
+
+The aligned metric is for population-to-orbit comparison at the
+\emph{same} $\rho$. Comparing coherent orbits at different values of $\rho$
+still requires the weak-mass term, since $n_\rho(s)$ depends on $\rho$.
+For an exact finite-noise or moving-family application, $r_N$ must retain
+all mass-law and boundary-flux defects; this lemma does not bound them.
+
+\section{Common time windows and a nonempty parameter rectangle}
+\label{inc:AN06:v2:commonwindows}
+We now define every constant by an analytical operation on the selected
+orbit. No decimal approximation to a crossing, gate time, or minimum is
+used. The resulting widths are positive but are not evaluated numerically
+in this increment.
+
+\begin{lemma}[Smooth parameter dependence of the selected branch]
+\label{inc:AN06:v2:branchsmooth}
+The map $(\rho,s)\mapsto Z_\rho(s)$ is continuously differentiable in
+$\rho$ on $\mathcal K$ and every compact finite time interval. Its
+$\rho$ derivative and the state itself are bounded there.
+\end{lemma}
+\begin{proof}
+The implicit resident roots are smooth since their defining derivatives
+are nonzero. The four angular eigenvalues at the resident are strictly
+negative; on the compact set $\mathcal K$ they are bounded away from zero.
+The unstable mass eigenvalue is $\lambda\ge169/400$.
+Here is a local parameter argument which also fixes the time phase.
+Let $w$ be the angular displacement from the resident, use $n$ as the
+independent variable, and write
+\[
+ n\frac{dw}{dn}=B_\rho w+H_\rho(n,w),\qquad
+ B_\rho=J_{\mathrm{ang},\rho}/\lambda,
+\]
+where $H_\rho(n,w)=O(n)+O(n|w|+|w|^2)$ locally, uniformly in $\rho$.
+The negative spectrum gives constants $C,\kappa>0$ with
+$\|(n/t)^{B_\rho}\|\le C(t/n)^\kappa$ for $0<t\le n$.
+The incoming branch solves
+\[
+ w(n)=\int_0^n(n/t)^{B_\rho}H_\rho(t,w(t))\,\frac{dt}{t}.
+\]
+In a ball $\sup_{0<n\le n_0}|w(n)|/n\le K$, this map preserves the ball
+for sufficiently large fixed $K$ and sufficiently small $n_0$, and its
+Lipschitz constant is $O(n_0)$. This follows directly by integrating
+$(t/n)^\kappa t$ and $(t/n)^\kappa t^2$ against $dt/t$.
+It is therefore a uniform contraction.
+Differentiating the matrix kernel in $\rho$ introduces at most an
+additional constant times $1+|\log(n/t)|$, with a possibly smaller
+positive exponent $\kappa$. This is integrable against the same powers
+of $t$. Differentiation of the contraction equation therefore yields a
+unique continuous parameter derivative, by the inverse of $I-D_w\mathcal T$.
+The resulting solution is the unique incoming branch of
+\texttt{pa:branch}. Starting at $n=n_0$, the ordinary smooth ODE and its
+parameter variational equation continue this dependence to every finite
+$s$, with phase fixed by $n(s)=(1+e^{-\rho^2s})^{-1}$.
+Global forward continuation of the branch is an imported result; local
+ODE continuation and compactness in $\rho$ give the asserted finite-window
+bounds.
+\end{proof}
+
+\paragraph{Central orbit and an analytic zero.}
+Set
+\[
+ \rho_c=\frac23,\qquad \zeta_c=\frac{5\pi}{9},\qquad n_0=\frac14,
+ \qquad s_a=s_{\rho_c}(1/4)=-\frac94\log3,
+\]
+and write $Z_c(s)=Z_{\rho_c}(s)$.
+Let $t_g$ be its first gate hit after $s_a$.
+On $[s_a,t_g]$, define $h(s)$ by the derivative of the active polynomial
+error formula \eqref{inc:AN06:v2:error}; this formula is smooth up to the
+endpoint. Define
+\[
+ s_*:=\inf\{s\in(s_a,t_g):h(s)>0\}.
+\]
+Corollary~\ref{inc:AN06:v2:postthreshold} proves $s_a<s_*<t_g$, with an
+isolated negative-to-positive zero at $s_*$. This construction does not
+assume $s_*>0$. Let $k\ge1$ be its finite odd order and
+\[
+ b=\frac{h^{(k)}(s_*)}{k!}>0,\qquad
+ g_*=\zeta_c-x_c(s_*)>0,\qquad
+ p_*=\frac12g_*L_c(s_*)>0.
+\]
+Define the finite derivative bounds
+\begin{align*}
+ C_g&=1+\sup_{[s_a,t_g]}|x_c'|,\\
+ C_d&=1+\sup_{[s_a,t_g]}(|d_{1,c}'|+|d_{2,c}'|),\\
+ C_h&=1+\frac1{(k+1)!}\sup_{[s_a,t_g]}|h^{(k+1)}|.
+\end{align*}
+All source derivatives in these definitions use the active formulas.
+Set
+\begin{equation}\label{inc:AN06:v2:rdef}
+ r=\min\left\{\frac{s_*-s_a}{4},\frac{t_g-s_*}{4},\frac14,
+ \frac{g_*}{4C_g},\frac{p_*}{4C_d},\frac b{2C_h}\right\}>0,
+\end{equation}
+\begin{equation}\label{inc:AN06:v2:windows}
+ J=[s_*-r,s_*+r],\quad
+ J_-=[s_*-r,s_*-r/2],\quad
+ J_+=[s_*+r/2,s_*+r],\quad
+ \gamma_0=\frac{br^k}{2^{k+1}}>0.
+\end{equation}
+On $J$, the central gap is at least $3g_*/4$,
+$d_{1,c}\le-3p_*/4$, and $d_{2,c}\ge3p_*/4$.
+Taylor's formula and \eqref{inc:AN06:v2:rdef} give
+\begin{equation}\label{inc:AN06:v2:centralmargins}
+ h\le-\gamma_0\text{ on }J_-,\qquad h\ge\gamma_0\text{ on }J_+.
+\end{equation}
+These inequalities are quantitative even when the zero is not simple:
+$|h(s_*+t)-bt^k|\le C_h|t|^{k+1}\le(b/2)|t|^k$.
+
+\paragraph{Explicit local parameter widths.}
+Define
+\begin{align}
+ R&=2+\max\left\{2,\sup_{\rho\in\mathcal K,\,s\in J}
+                  \norm{Z_\rho(s)}_\infty\right\},\nonumber\\
+ S_\rho&=1+\sup_{\rho\in\mathcal K,\,s\in J}
+                  \norm{\partial_\rho Z_\rho(s)}_1,\nonumber\\
+ \sigma&=n_c(s_*-r)-\tfrac14>0,\qquad
+ C_0=C(R,g_*/2),\qquad \eta=\min\{p_*/8,\gamma_0/8\},
+ \label{inc:AN06:v2:constants}\\
+ \delta_\rho&=\min\left\{\frac1{120},
+   \frac{\eta}{2(C_0S_\rho+8R^3)},
+   \frac{\sigma}{2S_\rho},\frac{g_*}{4S_\rho}\right\},\nonumber\\
+ \delta_\zeta&=\min\left\{\frac{\zeta_c-87/50}{2},
+                \frac{7/4-\zeta_c}{2},\frac{g_*}{4},\frac{\eta}{4R}\right\}.
+ \nonumber
+\end{align}
+Lemma~\ref{inc:AN06:v2:branchsmooth} makes $R,S_\rho$ finite. All the
+other constants were proved positive. Thus the closed rectangle
+\begin{equation}\label{inc:AN06:v2:rectangle}
+ \mathcal P_*=[\rho_c-\delta_\rho,\rho_c+\delta_\rho]
+ \times[\zeta_c-\delta_\zeta,\zeta_c+\delta_\zeta]
+\end{equation}
+is nonempty with nonzero side lengths, lies in
+$\mathcal K\times[87/50,7/4]$, and contains $(2/3,5\pi/9)$ in its interior.
+These are orbit-defined analytical endpoints, not numerical enclosures.
+The uniform quarter-mass bound holds on the larger displayed descent
+rectangle; the \emph{common-time-window} assertion is local to
+$\mathcal P_*$. In particular, the unevaluated local width is not asserted
+to include the distinct rounded number $1.745$ as well as $5\pi/9$.
+
+\begin{theorem}[Common learned competition witnesses]
+\label{inc:AN06:v2:uniformtheorem}
+For every $(\rho,\zeta)\in\mathcal P_*$, the \emph{same} windows
+\eqref{inc:AN06:v2:windows} on the half-mass-centered clock satisfy
+\begin{align}
+ n_\rho&\ge\tfrac14+\tfrac\sigma2,
+ &\zeta-x_\rho&\ge\tfrac{g_*}{4} &&\text{on }J,\nonumber\\
+ d_1&\le-\tfrac58p_*,& d_2&\ge\tfrac58p_* &&\text{on }J,
+ \label{inc:AN06:v2:uniformmargins}\\
+ \mathcal E_\zeta'&\le-\tfrac34\gamma_0&&&\text{on }J_-,\nonumber\\
+ \mathcal E_\zeta'&\ge\tfrac34\gamma_0&&&\text{on }J_+.\nonumber
+\end{align}
+\end{theorem}
+\begin{proof}
+For the two coherent states at a fixed $s\in J$, their distance
+\eqref{inc:AN06:v2:distance} is at most $S_\rho|\rho-\rho_c|$,
+since both weak masses are at most one.
+The central comparison gate at the new $\zeta$ is at least $g_*/2$.
+Apply Proposition~\ref{inc:AN06:v2:ratebound} at this new parameter and
+then Lemma~\ref{inc:AN06:v2:paramrate} to the central state. The difference
+of each source rate from its central value is at most
+\[
+ (C_0S_\rho+8R^3)|\rho-\rho_c|+2R|\zeta-\zeta_c|\le\eta.
+\]
+The source margins and the total-rate margins follow from
+\eqref{inc:AN06:v2:centralmargins}, using
+$\eta\le p_*/8$ and $2\eta\le\gamma_0/4$.
+The mass and gate bounds follow directly from the last two restrictions
+in $\delta_\rho$ and the restriction $\delta_\zeta\le g_*/4$.
+\end{proof}
+
+\section{The population tolerance required on these windows}
+\label{inc:AN06:v2:tolerance}
+Define
+\begin{equation}\label{inc:AN06:v2:epsdef}
+ C_1=C(R,g_*/4),\qquad
+ \varepsilon_*=
+ \min\left\{\frac14,\frac\sigma4,\frac{p_*}{8C_1},
+                         \frac{\gamma_0}{8C_1}\right\}>0.
+\end{equation}
+
+\begin{theorem}[Conditional population witness transfer]
+\label{inc:AN06:v2:populationtransfer}
+Fix $(\rho,\zeta)\in\mathcal P_*$. Suppose a solution of the defined
+leading population system has $M,N\le2$ and chart supports in $[-R,R]^2$
+throughout $J$, and its distance to the selected coherent state at the
+same $(\rho,s)$ satisfies
+\begin{equation}\label{inc:AN06:v2:tolerancecondition}
+ \sup_{s\in J}\mathfrak d(s)\le\varepsilon_*.
+\end{equation}
+Then, with the selector convention of
+Lemma~\ref{inc:AN06:v2:generalrates},
+\begin{align}
+ M&\ge\tfrac34,\qquad N\ge\tfrac14+\tfrac\sigma4,
+ &M,N&\le\tfrac54 &&\text{on }J,\nonumber\\
+ d_1&\le-\tfrac12p_*,&d_2&\ge\tfrac12p_* &&\text{on }J,
+ \label{inc:AN06:v2:populationmargins}\\
+ d_1+d_2&\le-\tfrac12\gamma_0&&&\text{on }J_-,\nonumber\\
+ d_1+d_2&\ge\tfrac12\gamma_0&&&\text{on }J_+.\nonumber
+\end{align}
+For a regular characteristic solution, the last two inequalities hold
+for the derivative of $\mathcal E$ almost everywhere. There is an
+interior minimizer $s_{\min}\in(s_*-r,s_*+r)$ such that
+\begin{equation}\label{inc:AN06:v2:rebound}
+ \mathcal E(s_*-r)-\mathcal E(s_{\min})\ge\frac{\gamma_0r}{4},\qquad
+ \mathcal E(s_*+r)-\mathcal E(s_{\min})\ge\frac{\gamma_0r}{4}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+The mass estimates follow from Theorem~\ref{inc:AN06:v2:uniformtheorem}
+and the mass terms in $\mathfrak d$.
+Apply Proposition~\ref{inc:AN06:v2:ratebound} with reference gap $g_*/4$.
+Each source-rate change is at most $C_1\varepsilon_*$, hence at most
+$p_*/8$ and at most $\gamma_0/8$. Subtract these budgets from
+\eqref{inc:AN06:v2:uniformmargins}. Finally each signed subinterval has
+length $r/2$. Integrating proves the two inequalities, and excludes the
+endpoints as minimizers, exactly as in the checkpoint's
+\texttt{pa:assembly}.
+\end{proof}
+
+\begin{remark}[What the metric controls and what it does not]
+The tolerance includes both masses and first absolute moments in
+\emph{both} angular coordinates of both populations. It is not a
+strong-family variance condition alone. A strong input variance bound can
+supply part of it by Cauchy--Schwarz, but the means, weak coordinates,
+and masses must also be controlled. Gate mismatch costs $D_s/g_0$ and is
+not discarded. The compact support condition is substantive; population
+outside these charts is not covered by this theorem. Separate bounds on
+that population's output and rate contributions are still required for
+an initialized application.
+
+In the own-half-mass clock of Lemma~\ref{inc:AN06:v2:clockalignment},
+use $\mathfrak d_{\rm al}$ instead of $\mathfrak d$; the two are exactly
+equal for this same-$\rho$ comparison. This removes a phase-error demand,
+not the angular entry or passage demands.
+For any positive-mass strong subpopulation $B$, Jensen's inequality gives
+\[
+ \mathfrak d\ge\int_B|y-Y_*|\,d\mu_s
+ \ge m_B|\bar y_B-Y_*|,\qquad
+ m_B=\mu_s(B),\quad \bar y_B=m_B^{-1}\int_B y\,d\mu_s.
+\]
+Therefore a bridge whose mass times output-angle displacement exceeds
+$\varepsilon_*$ is excluded by this interface, even if its moments are
+known exactly. This is a small-deviation comparison with a coherent
+reference, not a non-small-bridge theorem. AN4 requires a genuinely split
+reference or different nonperturbative inequalities.
+\end{remark}
+
+\section{A finite-window propagation estimate, not resident passage}
+\label{inc:AN06:v2:finitewindow}
+\begin{proposition}[Conditional propagation in the defined leading system]
+\label{inc:AN06:v2:propagation}
+Let a leading population solution and the selected coherent solution at
+the same $\rho$ remain in the compact class used in
+Proposition~\ref{inc:AN06:v2:ratebound} on $[a,b]$.
+Then their distance \eqref{inc:AN06:v2:distance} satisfies
+\begin{equation}\label{inc:AN06:v2:propagationbound}
+ \mathfrak d(s)\le e^{64R(s-a)}\mathfrak d(a)
+ \quad(a\le s\le b).
+\end{equation}
+Consequently, conditional on chart validity on $J$, an entry tolerance
+$\mathfrak d(s_*-r)\le\varepsilon_*e^{-128Rr}$ suffices for
+\eqref{inc:AN06:v2:tolerancecondition}.
+\end{proposition}
+\begin{proof}
+For masses in $[0,2]$, the difference of the two logistic mass fields is
+bounded by three times the mass difference. Relative weights of fixed
+labels within either family are constant in the leading system.
+The receiver/donor estimates in the proof of
+Proposition~\ref{inc:AN06:v2:ratebound}, also applied to $u',v'$, give
+\[
+ |x'-X'|+|y'-Y_*'|\le8R(|x-X|+|y-Y_*|+\mathfrak d),
+\]
+\[
+ |u'-U'|+|v'-V_*'|\le8R(|u-U|+|v-V_*|+\mathfrak d).
+\]
+For clarity, the weak overlap difference costs at most
+$2R\mathfrak d+2R|u-U|$; the remaining weak terms are controlled by
+$|Y-Y_*|$, $|V-n_*V_*|$, $|M-1|$, and $|N-n_*|$.
+The strong and weak reaction coefficients have absolute value at most
+one. Differentiating the two weighted distance integrals in the
+almost-everywhere/Dini sense therefore gives
+\[
+ D^+D_s\le(1+8R)D_s+16R\mathfrak d,\qquad
+ D^+D_w\le(1+8R)D_w+16R\mathfrak d.
+\]
+The mass terms together are bounded by three times their sum, whereas
+$D_s+D_w$ has coefficient $1+8R$ before adding $32R\mathfrak d$.
+Since $R\ge2$, $\max\{3,1+8R\}=1+8R$, so
+\[
+ D^+\mathfrak d\le(1+40R)\mathfrak d\le64R\mathfrak d.
+\]
+Integration proves the claim. Compactness justifies integration of the
+characteristic inequalities and also covers zero family mass by
+continuity. This argument presupposes, and does not prove, chart validity.
+\end{proof}
+
+The exponent in \eqref{inc:AN06:v2:propagationbound} is deliberately
+coarse and is used only on the fixed witness interval of length $2r$.
+It is \emph{not} a substitute for AN3's competing-rate estimate over a
+delay of order $\log(1/S_0)$, nor does it close strong splitting or entry.
+
+\section{Static exact-Gaussian learning bounds}
+\label{inc:AN06:v2:staticlearning}
+Let the entire state be represented by the same two measures, now embedded
+in the exact finite-noise network as
+\begin{align*}
+ a_s&=(\cos(qx),\sin(qx)),& b_s&=(\cos(qy),\sin(qy)),\\
+ a_w&=(\sin(qu),\cos(qu)),& b_w&=(-\sin(qv),\cos(qv)),\\
+ f(X)&=\int b_s(a_s^\top X)_+\,d\mu_s
+       +\int b_w(a_w^\top X)_+\,d\mu_w.
+\end{align*}
+This is an exact state representation, not an evolution claim.
+Use $P_1=\mathcal N(e_1,q^2I_2)$ and
+$P_2=\mathcal N(\rho e_2,q^2I_2)$,
+$Q_1=1+q^2$, and $Q_2=\rho^2+q^2$.
+
+\begin{proposition}[Responses and losses from a fully charted state]
+\label{inc:AN06:v2:staticproposition}
+Suppose $\rho\in\mathcal K$, $0<q\le1$, both supports lie in $[-R,R]^2$,
+$R\ge2$, and $M,N\le2$. Define the exact observables
+\[
+ \mathsf m_p=\frac{\E_{P_p}[X_pf_p(X)]}{Q_p},\qquad
+ \mathcal L_p=\tfrac12\E_{P_p}\|f(X)-X\|^2.
+\]
+Writing $M_1=M$, $M_2=N$, one has
+\begin{equation}\label{inc:AN06:v2:staticbounds}
+ |\mathsf m_p-M_p|\le25qR,\qquad
+ \sqrt{2\mathcal L_p}\le |1-M_p|\sqrt{Q_p}+17qR.
+\end{equation}
+If the mass conclusions of
+Theorem~\ref{inc:AN06:v2:populationtransfer} hold, $0<S_0\le1/2$, and
+\begin{equation}\label{inc:AN06:v2:qlearn}
+ q\le q_{\rm learn}:=
+ \min\left\{1,\frac{\sigma}{100R},\frac1{100R},
+                  \frac{13/20}{272R}\right\},
+\end{equation}
+then
+\begin{equation}\label{inc:AN06:v2:learningconclusion}
+ \mathsf m_1\ge\frac12,\qquad \mathsf m_2\ge\frac14,\qquad
+ \mathcal L_p\le\frac{169}{196}\mathcal L_p(0),
+\end{equation}
+where $\mathcal L_p(0)$ is the loss of the specified isotropic initial
+output $f_0(X)=S_0X/4$ on the same Gaussian cluster.
+\end{proposition}
+\begin{proof}
+On cluster 1, a strong feature obeys
+\[
+ \|b_s(a_s^\top X)_+-e_1X_1\|_{L^2(P_1)}
+ \le2qR\|X\|_{L^2(P_1)}+\|(-X_1)_+\|_{L^2(P_1)}\le5qR.
+\]
+This uses the Lipschitz property of the positive part,
+$\|a_s-e_1\|,\|b_s-e_1\|\le qR$,
+$\|X\|_{L^2(P_1)}<2$, and
+$(-1-qZ)_+\le q|Z|$.
+A weak feature on cluster 1 has norm at most
+\[
+ |\sin(qu)|\|X_1\|_{L^2}+|\cos(qu)|\|X_2\|_{L^2}\le3qR.
+\]
+Minkowski and $M,N\le2$ yield
+\[
+ \|f-e_1MX_1\|_{L^2(P_1)}\le16qR.
+\]
+The identical calculation with the roles of the axes interchanged gives
+$\|f-e_2NX_2\|_{L^2(P_2)}\le16qR$; here
+$(-\rho-qZ)_+\le q|Z|$.
+Cauchy--Schwarz and $\sqrt{Q_p}\ge13/20$ give the response bound,
+since $16/(13/20)<25$. Adding the unused target coordinate, whose
+$L^2$ norm is $q$, gives the loss bound.
+
+For the last assertion, $M\ge3/4$ and $N\ge1/4+\sigma/4$.
+The restrictions $25qR\le1/4$ and $25qR\le\sigma/4$ prove
+$\mathsf m_1\ge1/2$ and $\mathsf m_2\ge1/4$, respectively.
+Both masses lie between $1/4$ and $5/4$, so $|1-M_p|\le3/4$.
+Also $17qR/\sqrt{Q_p}\le1/16$, hence
+$\sqrt{2\mathcal L_p}\le(13/16)\sqrt{Q_p}$.
+The actual initial cluster residual has norm
+\[
+ \sqrt{2\mathcal L_p(0)}=(1-S_0/4)\sqrt{Q_p+q^2}
+ \ge(7/8)\sqrt{Q_p}.
+\]
+Taking the squared ratio gives $(13/14)^2=169/196$, hence the fixed
+loss-reduction constant $\kappa_p=27/196>0$.
+Gaussian negative tails were bounded, not declared zero.
+\end{proof}
+
+The former half-mass static implication is also retained: if
+$M,N\in[1/2,5/4]$, $0<S_0\le1$, and
+$17qR/\sqrt{Q_p}\le1/8$, the same loss bound gives
+$\mathcal L_p\le(25/36)\mathcal L_p(0)$.
+The newly centered quarter-mass windows do not assert those stronger mass
+premises. Likewise the original response threshold $1/2$ requires its
+own mass slack against the $25qR$ error.
+
+This proposition does not require the exact finite-noise flow to follow
+the leading flow. It only says that a state meeting the displayed
+hypotheses is genuinely learned in the required observables. Proving that
+the initialized trajectory reaches and remains in that state class, and
+that its exact source rates meet the leading signed budgets, remains open.
+
+\section{Open residue and implications for the next increment}
+\label{inc:AN06:v2:residue}
+\paragraph{What is closed in the limiting witness problem.}
+There is now a rational, parameter-uniform family of descent witnesses at
+any fixed prescribed mass $0<n_0\le1/2$ above the sufficient offset curve.
+At quarter-mass this includes the canonical scaled offset $5\pi/9$.
+The subsequent selected crossing is strictly after quarter-mass, not
+proved to be after half-mass at that offset. Source signs hold on the
+whole common interval $J$, and its windows, parameter widths, population
+tolerance, and rebound lower bound are specified by positive analytical
+constants. No crossing uniqueness or transversality is assumed.
+The common-window widths remain unevaluated analytic orbit functionals;
+they are not numerical values or a claim of a large rectangle.
+The population comparison is naturally stated in its own half-mass clock.
+The existing half-mass descent bound for $\zeta\in[4,5]$ remains valid.
+
+\paragraph{What remains open.}
+The initialized argument must still prove coupled strong contraction and
+weak capture; quantify the weak seed and the full strong shape;
+control all population outside the charts; perform nonlinear resident
+passage; and transfer the original finite-noise rates with errors smaller
+than the window margins. The bounded first-moment tolerance is an explicit
+\emph{target}, not an initialized conclusion. It is a small-deviation
+coherent interface, not a treatment of the reported non-small bridge.
+The finite-window estimate does not handle the diverging entry delay.
+The static learning estimate does not supply a finite-noise dynamical
+approximation. Exact leading clock alignment does not remove finite-noise
+mass-law errors, as \eqref{inc:AN06:v2:logiterror} makes explicit.
+Canonical-offset limiting witnesses are now established, but canonical
+positive-noise/initialization coverage and half-mass descent at that
+canonical offset remain unproved.
+
+\paragraph{A joint-scaling correction for the arrival roadmap.}
+The condition $q^2\log(1/S_0)\to0$ does not by itself select the
+third-quadrant reservoir regime described in the user's review.
+For example $S_0=q^3$ satisfies this condition and even $S_0/q^2\to0$,
+but for $\rho=2/3$ it has
+\[
+ \frac{\log(\delta/S_0)}{\log(1/q)}\longrightarrow3<\frac2\lambda=\frac92.
+\]
+It is therefore on the bulk side of the review's proposed arrival
+crossover scaling. The crossover description itself still needs the
+corresponding uniform transport estimates. A sufficient scale separation
+\emph{for that proposed reservoir timing criterion} is
+\[
+ \frac{\log(1/S_0)}{\log(1/q)}\to\infty,\qquad
+ q^2\log(1/S_0)\to0;
+\]
+$S_0=e^{-1/q}$ satisfies both. These scale relations do not prove capture.
+The Riccati refinement of AN02 and its exponentially small exponent loss
+remain a proposed refinement, not a result of this file.
+
+\end{document}

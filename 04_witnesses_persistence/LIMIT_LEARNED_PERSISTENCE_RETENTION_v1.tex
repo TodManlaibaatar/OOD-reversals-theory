@@ -1,0 +1,545 @@
+% Separate analytical increment. Do not merge without explicit approval.
+% Label prefix: inc:LPR:v1:
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=0.95in]{geometry}
+\usepackage{booktabs,array,xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Learned limiting reversal and the retention interface}
+\fancyhead[R]{\small Review increment v1}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\,d}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclareMathOperator{\diag}{diag}
+\title{Learned reversal, limiting persistence, and an analytical retention interface}
+\author{Separate proof increment for independent review}
+\date{Version 1 --- October 3, 2026}
+\begin{document}\maketitle
+
+\begin{abstract}
+We combine the common learned witnesses of AN06 v2 with the selected-orbit
+permanence theorem on the same parameter--probe rectangle. We also prove,
+for the full five-dimensional selected orbit rather than its fully learned
+truncation, that the weak scaled coordinates grow only as
+$\sqrt{\log(2+s)}$. The proof retains the exponentially decaying weak-mass
+transient. Finally, we state an exact fixed-label mass-retention inequality
+for the original population and a conditional seed--shape exponent
+calculation. These last results do not prove capture or isotropic entry.
+The initialized Theorems A and B, canonical finite-noise coverage, and an
+explicit growing-horizon transfer remain open. No numerical trajectory,
+interval arithmetic, or numerical sign test is used as a premise.
+\end{abstract}
+
+\section{Contracts and the selected orbit}\label{inc:LPR:v1:contract}
+This is a new, separate file. The checkpoint, foundations, AN02, AN06, and
+linear/persistence increment are unchanged. The results below are not an
+integration approval and do not replace the initialized proof obligations.
+
+The imported analytical results are:
+\begin{itemize}
+\item \cite{P}, \texttt{pa:branch} and \texttt{pa:limitreversal}: the selected
+coherent orbit, global forward existence, its source identities,
+$\max(|x|,|y|,|u|,|v|)\le C(1+s)$ for $s\ge0$, and the required invariants;
+\item \cite{LP}: the permanence, slow-growth, and uniform-clearing
+results (labels \path{inc:LP:v1:permanence},
+\path{inc:LP:v1:monotonic-theorem}, and
+\path{inc:LP:v1:uniform-clear}). They supply eventual gate inactivity,
+$x=O(\sqrt{\log(2+s)})$, bounded $v-x$, and uniform clearing on compact
+parameter sets;
+\item \cite{W}, \texttt{inc:AN06:v2:uniformtheorem}: learned witnesses on
+its specified closed rectangle $\mathcal P_*$ around $(2/3,5\pi/9)$, with
+positive constants defined analytically from the selected orbit.
+\end{itemize}
+The provenance of these results is their displayed analytical proofs, not
+their numerical evaluation. They remain subject to independent review.
+
+Let $0<\rho<1$, $\lambda=\rho^2$, and let $\phi,\Phi$ denote the standard
+normal density and distribution function. Put
+\[
+ K(z)=\phi(z)+z\Phi(z),\qquad g(z)=K(z)-z>0.
+\]
+The normalized time is $\tau=\mu_1^2t_{\rm phys}$. The leading weak
+half-mass-centered clock is $s$, so
+$n(s)=(1+e^{-\lambda s})^{-1}$. The selected strong-learned coherent orbit
+obeys
+\begin{align}
+ x'&=\frac\lambda2[nv-x+(1-n)y]\Phi(\rho x),\nonumber\\
+ y'&=\frac12[-y-nK(u)+\rho(1-n)K(\rho x)],\nonumber\\
+ u'&=\frac12[(1-n)(\phi(u)-\lambda u)-(nu+y)\Phi(u)],\nonumber\\
+ v'&=\frac12[\rho K(\rho x)-\lambda v].
+ \label{inc:LPR:v1:orbit}
+\end{align}
+It is the analytically specified branch incoming from the resident saddle,
+not a trajectory fitted to empirical coordinates. The strong leading mass
+is identically one. For the probe offset $\zeta$, its observable is
+\begin{equation}\label{inc:LPR:v1:error}
+ \mathcal E_\zeta(s)=\frac12(\zeta-x(s))_+^2
+ -(\zeta-x(s))_+(\zeta-y(s)).
+\end{equation}
+These are statements within the defined limiting system. They do not yet
+assert a uniform approximation to the original positive-noise population.
+
+\section{One limiting theorem on the AN06 rectangle}
+\label{inc:LPR:v1:combined}
+Retain the exact notation of AN06 v2. Its rectangle
+$\mathcal P_*=[\rho_c-\delta_\rho,\rho_c+\delta_\rho]
+\times[\zeta_c-\delta_\zeta,\zeta_c+\delta_\zeta]$ has positive side
+lengths, center $(\rho_c,\zeta_c)=(2/3,5\pi/9)$, and is contained in
+$[13/20,7/10]\times[87/50,7/4]$. Let $p_*,\gamma_0,r,\sigma>0$ and
+\[
+ J=[s_*-r,s_*+r],\quad
+ J_-=[s_*-r,s_*-r/2],\quad
+ J_+=[s_*+r/2,s_*+r]
+\]
+be its common analytical witnesses. The symbol $\sigma$ here is the AN06
+mass slack, not a data-noise parameter; normalized data noise is $q$.
+
+\begin{theorem}[Learned signed reversal followed by eventual zero benefit]
+\label{inc:LPR:v1:combinedtheorem}
+On $\mathcal P_*$, the selected coherent leading orbit has strong mass one,
+weak mass $n\ge1/4+\sigma/2$ on $J$, and
+\begin{align}
+ d_1&\le-5p_*/8, &d_2&\ge5p_*/8 &&\text{on }J,\nonumber\\
+ \mathcal E_\zeta'&\le-3\gamma_0/4&&&\text{on }J_-,\nonumber\\
+ \mathcal E_\zeta'&\ge3\gamma_0/4&&&\text{on }J_+.
+ \label{inc:LPR:v1:combinedmargins}
+\end{align}
+There is an interior minimizer $s_{\min}$ of $\mathcal E_\zeta$ on $J$,
+possibly parameter dependent, with
+\[
+ \mathcal E_\zeta(s_*-r)-\mathcal E_\zeta(s_{\min})
+ \ge\frac{3\gamma_0r}{8},\qquad
+ \mathcal E_\zeta(s_*+r)-\mathcal E_\zeta(s_{\min})
+ \ge\frac{3\gamma_0r}{8}.
+\]
+There is also one finite $S>s_*+r$, independent of $(\rho,\zeta)\in
+\mathcal P_*$, such that
+\[
+ \mathcal E_\zeta(s)=0\qquad(s\ge S).
+\]
+The parameter widths, margins, and clearing time are analytical constants,
+not decimal evaluations of a saved orbit.
+\end{theorem}
+\begin{proof}
+The mass and source-rate assertions are precisely AN06 v2,
+\texttt{uniformtheorem}. Each signed subinterval has length $r/2$.
+Integrating gives the two stated drops relative to the minimum; the same
+inequalities exclude the endpoints of $J$ as minimizers. The selected
+branch is continuous on $J$, so a minimizer exists.
+Apply \cite{LP}, \texttt{uniform-clear}, to the compact projection of
+$\mathcal P_*$ on the $\rho$ axis, using its largest offset as $\zeta_+$.
+AN06's branch-parameter continuity and the uniform forward growth estimate
+supply that proposition's hypotheses. Enlarge the resulting time beyond
+$s_*+r$. After it, $x_\rho>\zeta_+$ for every parameter, and both positive
+parts in \eqref{inc:LPR:v1:error} vanish.
+\end{proof}
+
+\begin{remark}[The range is not enlarged by combining results]
+Permanence alone holds for every fixed $0<\rho<1$ in the selected model.
+The combined learned-witness statement uses the smaller AN06 rectangle.
+A quarter-mass statement in this leading system is not itself a
+finite-noise response/loss theorem: AN06's separate static learning lemma
+has additional hypotheses. This theorem does not cover a non-small
+bridge, prove initialized branch selection, or certify the canonical
+$(q,S_0)=(0.05,2\cdot10^{-4})$ trajectory.
+\end{remark}
+
+\section{Weak-coordinate growth in the full selected system}
+\label{inc:LPR:v1:weakgrowth}
+The full selected system, not the substitution $n=1$, admits a useful
+late-time comparison. Set
+\[
+ c=-y,\qquad w=c-u,\qquad Q=\Phi(u),\qquad r_n=1-n.
+\]
+We reserve $r_n$ for the mass deficit to distinguish it from the AN06
+window radius. Rearranging \eqref{inc:LPR:v1:orbit} gives exactly
+\begin{align}
+ u'&=\tfrac12wQ+f, &
+ f&=\tfrac{r_n}{2}[K(u)-\lambda u],\nonumber\\
+ c'&=\tfrac12[g(u)-w]-e, &
+ e&=\tfrac{r_n}{2}[K(u)+\rho K(\rho x)],\nonumber\\
+ w'&=\tfrac12g(u)-a(s)w-h, &
+ a(s)&=\tfrac12(1+Q),\quad h=e+f.
+ \label{inc:LPR:v1:weakpair}
+\end{align}
+For $0<\lambda<1$, $f,e,h$ are positive at finite states. Indeed
+$K(u)-\lambda u>0$ both for $u\ge0$ and $u<0$.
+The imported linear growth bound and $r_n\le e^{-\lambda s}$ imply
+\begin{equation}\label{inc:LPR:v1:weakforcing}
+ 0\le h(s)\le C_h(1+s)e^{-\lambda s}\quad(s\ge0),
+ \qquad \tfrac12\le a(s)\le1.
+\end{equation}
+
+\begin{proposition}[Weak divergence, logarithmic growth, and eventual drift]
+\label{inc:LPR:v1:weakgrowththeorem}
+On the selected orbit, for every fixed $0<\rho<1$,
+\[
+ u(s)\longrightarrow+\infty,\qquad c(s)=-y(s)\longrightarrow+\infty,
+\]
+\[
+ |c(s)-u(s)|\le C_w\quad(s\ge0),\qquad
+ |u(s)|+|y(s)|=O(\sqrt{\log(2+s)}).
+\]
+Moreover, $c(s)-u(s)>0$ and $u'(s)>0$ for all sufficiently large $s$.
+The constants and starting times can depend on $\rho$. These conclusions
+hold in the full system \eqref{inc:LPR:v1:orbit}; the exponentially small
+mass-deficit terms are not set to zero.
+\end{proposition}
+\begin{proof}
+\emph{1. Finite downward variation and lower boundedness.}
+Let $w_-=\max(-w,0)$. From \eqref{inc:LPR:v1:weakpair}, almost everywhere
+(and in the upper Dini sense at a zero),
+\[
+ D^+w_-\le-\tfrac12w_-+h.
+\]
+Thus
+\[
+ w_-(s)\le e^{-s/2}w_-(0)+\int_0^s e^{-(s-t)/2}h(t)\dd t,
+ \quad
+ \int_0^\infty w_-\dd s\le2w_-(0)+2\int_0^\infty h\dd s<\infty.
+\]
+Since $f\ge0$ and $0<Q<1$, $(u')_-\le w_-/2$. Consequently $u$ has
+finite total downward variation and a finite lower bound $u_-$.
+The same convolution bound shows that $w_-$ is bounded. The function
+$g(u)=K(u)-u$ is decreasing. Whenever $w\ge0$,
+\[
+ w'\le\tfrac12g(u_-)-\tfrac12w.
+\]
+A first-crossing comparison bounds $w_+$ by
+$D_+=\max\{w_+(0),g(u_-)\}$. Combining the bounds gives $|w|\le D$.
+
+\emph{2. The weak input tends to positive infinity.}
+Suppose $u\le U$ for all $s\ge0$. Then $g(u)\ge g(U)>0$ and $h\to0$.
+Choose $s_1$ such that $h\le g(U)/4$ for $s\ge s_1$, and write
+$\gamma=g(U)/4$. The gap equation gives
+$w'\ge\gamma-a(s)w$. For $w\le\gamma/2$ this derivative is at least
+$\gamma/2$ (and at least $\gamma$ if $w\le0$). Thus $w$ reaches and
+thereafter stays above $\gamma/2$ in finite time. It follows that
+\[
+ u'\ge\gamma\Phi(u_-)/4>0
+\]
+eventually, contradicting $u\le U$. Hence $u$ is unbounded above. Local
+boundedness on finite intervals and the finite downward variation imply
+$u(s)\to+\infty$ by \cite{LP}, \texttt{downward}. Since $|w|\le D$, also
+$c=u+w\to+\infty$.
+
+\emph{3. A tail-corrected sum gives logarithmic growth.}
+Adding the first two equations of \eqref{inc:LPR:v1:weakpair} gives
+\[
+ (u+c)'=\tfrac12[g(u)-(1-Q)w]
+       -\tfrac{r_n}{2}[\lambda u+\rho K(\rho x)].
+\]
+For all sufficiently late times $u\ge0$, and hence
+$(u+c)'\le g(u)/2+w_-/2$.
+Define the finite nonnegative tail
+\[
+ B(s)=\frac12\int_s^\infty w_-(t)\dd t,\qquad
+ \widetilde W=u+c+B(s).
+\]
+Then $B\to0$ and $\widetilde W'\le g(u)/2$ at all sufficiently late
+times. Since $\widetilde W=2u+w+B$,
+\[
+ u\ge\frac{\widetilde W-D_+-B(0)}2.
+\]
+Set $z=\widetilde W-D_+-B(0)$ and choose a late $s_0$ such that
+$z\ge1$ for every $s\ge s_0$, possible since $u,c\to\infty$.
+For nonnegative arguments $g(t)\le\phi(t)$, so
+\[
+ z'\le\tfrac12g(u)\le\tfrac{\phi(0)}2e^{-z^2/8}.
+\]
+With $F(z)=\int_0^z e^{r^2/8}\dd r$, the chain rule gives
+\[
+ F(z(s))\le F(z(s_0))+\tfrac{\phi(0)}2(s-s_0)=:\mathcal Q(s).
+\]
+For $z\ge1$, $F(z)\ge e^{(z-1)^2/8}$; therefore
+$z\le1+\sqrt{8\log\mathcal Q(s)}$.
+Using the lower bound $w\ge-D$ and $B\ge0$, we conclude
+\begin{equation}\label{inc:LPR:v1:weakupper}
+ u(s)\le A+\sqrt{2\log\mathcal Q(s)}
+\end{equation}
+for a finite $A>0$. Bounded $w$ gives the corresponding bound for $c$.
+
+\emph{4. Positive gap and positive weak-input velocity.}
+For $u\ge0$, restricting the Gaussian integral to $[u+1,u+2]$ gives
+\[
+ g(u)=\int_u^\infty(t-u)\phi(t)\dd t\ge\phi(u+2).
+\]
+Equation \eqref{inc:LPR:v1:weakupper} and
+$(a+b)^2/2\le a^2+b^2$ show
+\[
+ g(u(s))\ge\phi(0)e^{-(A+2)^2}\mathcal Q(s)^{-2}
+ =:\gamma_w\mathcal Q(s)^{-2}.
+\]
+Here $\gamma_w>0$ is a constant of this weak-coordinate estimate.
+Since $h$ decays exponentially, there is $s_2\ge s_0$ such that
+$h(s)\le g(u(s))/4$ for $s\ge s_2$. Thus
+$w'+a(s)w\ge g(u)/4$.
+Variation of constants, using $1/2\le a\le1$ and restricting its positive
+integral to the last unit time interval, yields for $s\ge s_2+1$
+\[
+ w(s)\ge-|w(s_2)|e^{-(s-s_2)/2}
+       +\frac{\gamma_w(1-e^{-1})}{4\mathcal Q(s)^2}.
+\]
+This is positive for all sufficiently large $s$. Then
+$u'=w\Phi(u)/2+f>0$.
+\end{proof}
+
+\begin{corollary}[All four angular coordinates grow at most logarithmically]
+\label{inc:LPR:v1:allgrowth}
+For every fixed $0<\rho<1$ on the selected coherent orbit,
+\[
+ \max\{|x(s)|,|y(s)|,|u(s)|,|v(s)|\}
+ =O(\sqrt{\log(2+s)}).
+\]
+\end{corollary}
+\begin{proof}
+The weak coordinates are covered by
+Proposition~\ref{inc:LPR:v1:weakgrowththeorem}. The cited strong-coordinate
+result gives $x=O(\sqrt{\log(2+s)})$ and $0<v-x\le D_s$; it therefore gives
+the same upper-growth bound for $v$.
+\end{proof}
+
+\section{What this does and does not imply for growing horizons}
+\label{inc:LPR:v1:horizons}
+A coordinate chart alone is not a dynamical approximation theorem.
+Corollary~\ref{inc:LPR:v1:allgrowth} implies geometrically that
+\[
+ q\max(|x|,|y|,|u|,|v|)\to0\quad\text{up to }s=T_q
+\]
+whenever $q\sqrt{\log(2+T_q)}\to0$ along this orbit (with the fixed
+parameter constants understood). For example, $T_q=\exp(q^{-\beta})$
+with $0<\beta<2$ meets this necessary chart-smallness condition.
+It does not establish that the original flow tracks the limiting flow to
+that horizon, that uniform remainder constants stay bounded, or that
+background output is negligible.
+
+If a neutral quantity accumulates an error bounded only by $Cq^2T$,
+then $T\asymp q^{-2}$ is an order-one-error scale, not a vanishing-error
+conclusion. For an $o(1)$ scaled error from that estimate alone, one needs
+$q^2T_q\to0$, with extra logarithmic factors if $C$ grows with the chart
+radius. Such drift is not automatic for a stable saturated family mass:
+
+\begin{lemma}[A saturated mass defect can be damped]
+\label{inc:LPR:v1:massdamping}
+Suppose an absolutely continuous mass satisfies
+\[
+ N'=\lambda N(1-N)+q^2r(s),\qquad N(s)\ge n_*>0,
+ \qquad |r(s)|\le C_r
+\]
+on $[s_0,T]$. Then
+\[
+ |N(s)-1|\le e^{-\lambda n_*(s-s_0)}|N(s_0)-1|
+       +\frac{q^2C_r}{\lambda n_*}
+          (1-e^{-\lambda n_*(s-s_0)}).
+\]
+\end{lemma}
+\begin{proof}
+Set $\delta=N-1$. Exactly $\delta'=-\lambda N\delta+q^2r$.
+Thus $D^+|\delta|\le-\lambda n_*|\delta|+q^2C_r$. Integrate.
+\end{proof}
+
+\begin{remark}
+The lemma assumes, and does not prove, the lower mass guard and a useful
+finite-noise bound on $r$. Relative label weights can still accumulate
+$q^2T$ errors when their log growth rates differ, since they do not share
+the same scalar restoring mechanism. Consequently neither a certified
+$T_q\asymp q^{-2}$ horizon nor a prohibition on longer horizons follows
+from the current equations. A fixed-$q$ comparison to an experimental
+physical horizon remains separate.
+\end{remark}
+
+\section{An exact retention identity for the original population}
+\label{inc:LPR:v1:retention}
+Return to the original normalized Gaussian population. Let $\lambda_0$
+be the uniform initial-label law, and let
+\[
+ R_\tau(\theta)=\E_P[(X-f_\tau(X))X^\top
+                 \mathbf1_{\{a_\theta^\top X>0\}}].
+\]
+The balanced characteristic mass obeys
+\[
+ (\log m_\alpha)'=r_\alpha(\tau),\qquad
+ r_\alpha(\tau)=2b_{\psi_\alpha}^\top
+                    R_\tau(\theta_\alpha)a_{\theta_\alpha}.
+\]
+All neurons are included in $R_\tau$. Let $C$ be a fixed measurable label
+set, $N_C(\tau)=\int_Cm_\alpha(\tau)\dd\lambda_0(\alpha)$, and assume
+$N_C(\tau_a)>0$.
+
+\begin{proposition}[Fixed-label retention from a negative-growth budget]
+\label{inc:LPR:v1:retentiontheorem}
+For finite $\tau_a<\tau_b$, define
+\[
+ B_\alpha=\int_{\tau_a}^{\tau_b}[-r_\alpha(\tau)]_+\dd\tau,
+ \qquad
+ \overline B_C=\frac1{N_C(\tau_a)}
+      \int_Cm_\alpha(\tau_a)B_\alpha\dd\lambda_0(\alpha).
+\]
+If this average is finite, then
+\[
+ \boxed{N_C(\tau_b)\ge N_C(\tau_a)e^{-\overline B_C}.}
+\]
+In particular a uniform labelwise bound $B_\alpha\le B$ implies
+$N_C(\tau_b)\ge e^{-B}N_C(\tau_a)$.
+\end{proposition}
+\begin{proof}
+Integrating the exact log-mass equation gives
+\[
+ m_\alpha(\tau_b)=m_\alpha(\tau_a)
+       \exp\!\left(\int_{\tau_a}^{\tau_b}r_\alpha\dd\tau\right)
+ \ge m_\alpha(\tau_a)e^{-B_\alpha}.
+\]
+Integrate over the fixed label set. The measure
+$m_\alpha(\tau_a)\dd\lambda_0/N_C(\tau_a)$ is a probability measure.
+Jensen's inequality for $e^{-z}$ gives the stated average-budget bound.
+\end{proof}
+
+\begin{remark}[Retention is not yet capture]
+This elementary exact implication isolates a quantitative target. To use
+it in AN2 one must prove that a fixed set of labels carries a specified
+fraction of the available seed, reaches the weak chart, and has an
+acceptable negative-growth budget under the full evolving residual.
+No such trapping or budget is supplied by this proposition. A large mass
+inside an instantaneous angular mask does not by itself prove a retained
+seed. If an analytically identified captured subset has only a fraction
+$\vartheta$ of the earlier mass, the lower bound is multiplied by
+$\vartheta$. Mass loss through changing a mask must not be conflated with
+radial loss of fixed labels.
+\end{remark}
+
+\section{Conditional exponent cancellation and the next open lemma}
+\label{inc:LPR:v1:exponents}
+Let $a_\rho$ solve $a_\rho=\rho K(\rho a_\rho)$ and put
+\[
+ P_\rho=\Phi(\rho a_\rho),\qquad
+ \alpha=\frac\lambda2P_\rho.
+\]
+The following is a conditional algebraic implication, not an assertion
+that its entry or nonlinear passage hypotheses have been established.
+
+\begin{proposition}[Retained-seed exponent and shape compatibility]
+\label{inc:LPR:v1:exponenttheorem}
+Fix $0<\rho<1$, $0<S_0<1$. Suppose quantities at one common entry time
+satisfy
+\[
+ N_{\rm ent}\ge c S_0^{1-\lambda},\qquad
+ \delta_{\rm ent}\le C_s S_0^{1/2-\alpha},
+\]
+and a later shape measure obeys
+\[
+ \delta_{\rm half}\le C_p\delta_{\rm ent}
+               N_{\rm ent}^{-\alpha/\lambda}+\epsilon_{\rm pass},
+ \qquad \epsilon_{\rm pass}\ge0.
+\]
+Then
+\[
+ \delta_{\rm half}\le C_pC_s c^{-\alpha/\lambda}
+                 S_0^{\eta(\rho)}+\epsilon_{\rm pass},\qquad
+ \boxed{\eta(\rho)=\frac{1-P_\rho}{2}>0.}
+\]
+For a compact $\rho$ interval in $(0,1)$, this exponent has a positive
+minimum. Using AN06's resident bound on $[13/20,7/10]$ gives
+$\eta>97/500$ there.
+More generally, seed exponent $1-\lambda+\epsilon_s+b$ and shape exponent
+$1/2-\alpha-\epsilon_\delta$ produce
+\[
+ \eta_{\rm eff}=\frac{1-P_\rho}{2}
+               -\frac{P_\rho}{2}(\epsilon_s+b)-\epsilon_\delta.
+\]
+\end{proposition}
+\begin{proof}
+Insert the two entry inequalities into the passage bound. The power is
+\[
+ \frac12-\alpha-(1-\lambda)\frac\alpha\lambda
+ =\frac12-\frac\alpha\lambda=\frac{1-P_\rho}{2}.
+\]
+For fixed $\rho<1$, $a_\rho$ is finite, so $P_\rho<1$. Smooth dependence
+of the resident root gives a positive minimum on compact parameter sets.
+On the AN06 interval, $a_\rho<2/5$ and $\phi(0)<2/5$ give
+$P_\rho<1/2+(2/5)(7/10)(2/5)=153/250$, hence
+$(1-P_\rho)/2>97/500$. Including the extra exponents gives the last
+identity.
+\end{proof}
+
+The exponent $b$ has a direct retention interpretation. If a captured
+fraction starts with seed mass $cS_0^{1-\lambda+\epsilon_s}$ and
+$\overline B_C\le B_0+b\log(1/S_0)$, then the preceding retention
+proposition gives a final seed bounded below by
+$c e^{-B_0}S_0^{1-\lambda+\epsilon_s+b}$, with the capture fraction
+included in $c$. A bound independent of $S_0$ loses no initialization
+power. A bound $o(\log(1/S_0))$ preserves the leading exponent, up to
+arbitrarily small losses. Constants and errors depending on $q$ must
+remain visible in any joint scaling.
+
+\paragraph{The measurement does not replace the entry hypothesis.}
+The user's reported exponent near $0.576$ was measured directly for an
+instantaneous weak-family mass at strong half-mass; it was not inferred
+from a response-clock regression. That is relevant evidence for the seed
+scale, but its family mask and entry time must be reconciled with fixed
+captured labels. AN02 currently proves a different incoming reservoir
+with a conservative $S_0^{17/16}$ lower power, not a captured
+$S_0^{1-\lambda}$ seed. Nor does local strong-shape linearization establish
+the original-flow $S_0^{1/2-\alpha}$ upper bound. The two displayed entry
+estimates must apply at the same time, without double-counting the
+preceding strong-learning contraction. This file does not use an
+unavailable statement denoted $G_\infty$ as an implicit assumption.
+
+\paragraph{Next open target: a coupled retention-and-capture lemma.}
+Starting from the specified isotropic initialization, prove a strong-stage
+time and an analytically specified label reservoir with a quantitatively
+useful mass. Then exhibit a captured fixed subset, show its entry into a
+bounded weak chart under the evolving strong residual, and control its
+negative integrated radial growth without an excessive initialization
+power loss. The same interval must supply strong mean/shape and background
+bounds at a common resident entry time. The subsequent nonlinear passage
+must show that its accumulated coefficient errors fit inside the strict
+exponent margin, rather than invoking positivity of the frozen exponent
+alone. No numerical label mask, empirical seed law, or observed capture
+may be inserted as a proved premise of the initialized theorem.
+
+\section*{Scope and review protocol}
+The combined theorem and weak-coordinate theorem are conclusions in the
+selected limiting model. The retention identity is exact for the original
+flow but leaves its sign-budget and capture inputs open. The exponent
+calculation is conditional on unproved original-flow entry and passage
+estimates. No initialized version of A or B is claimed. No canonical
+non-small-bridge theorem or growing-horizon error estimate is claimed.
+Deliver this file and its companion review note for independent checking;
+merge nothing into the checkpoint without explicit user approval.
+
+\begin{thebibliography}{9}
+\bibitem{F} \emph{ReLU Population Foundations}, version 2.
+\path{RELU_POPULATION_FOUNDATIONS_v2.tex}. Exact characteristic flow,
+balance, existence, and mass identities.
+\bibitem{P} \emph{Analytical Progress toward Initialized Population
+Reversal}, checkpoint 1.0. \path{THEOREM_A_ANALYTICAL_PROGRESS.tex}.
+\texttt{pa:branch}, \texttt{pa:limitreversal}.
+\bibitem{W} \emph{Learned Limiting-Orbit Witnesses}, version 2.
+\path{AN06_learned_orbit_witnesses_v2.tex}. Resident bounds and common
+learned-witness rectangle.
+\bibitem{LP} \emph{Linear Contrast and Limit Persistence}, version 1.
+\path{LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex}. Eventual inactivity,
+strong-coordinate growth, and compact-parameter clearing.
+\bibitem{SP} \emph{Scaled Population Splitting Theory}.
+\path{SCALED_POPULATION_SPLITTING_THEORY.md}. Resident shape spectra,
+linear passage multipliers, and finite-noise scope distinctions.
+\bibitem{A2} \emph{Initialized Weak-Side Arrival}, version 1.
+\path{AN02_weak_side_arrival_v1.tex}. Incoming reservoir theorem;
+capture and later retention remain open.
+\end{thebibliography}
+\end{document}

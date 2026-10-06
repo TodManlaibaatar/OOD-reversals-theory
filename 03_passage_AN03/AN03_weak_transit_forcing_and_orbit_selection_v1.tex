@@ -1,0 +1,259 @@
+% Standalone review increment. No previous source is changed.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.9in]{geometry}\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,xurl}
+\usepackage[hidelinks]{hyperref}\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small AN03: weak transit and orbit selection}\fancyhead[R]{\small Review increment v1}\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}\newcommand{\R}{\mathbb R}
+\title{Weak transit forcing, concentration, and coupled selection of the learned orbit}
+\author{Analytical increment for independent review}\date{Version 1}
+\begin{document}\maketitle
+\begin{abstract}
+Within the full leading system at strong mass one, we prove the square-root weak-feedback bound from an incoming first moment, rather than assuming a uniformly bounded weak chart. Returning weak inputs remain nonnegative under an explicit boundary margin and then contract pairwise at the exact multiplier $\sqrt{N_0/N}$. We prove a population-to-selected-orbit inequality and close it simultaneously with the stable strong mean. The resulting error at a fixed small weak mass tends to zero when the weighted incoming weak angular size and the supplied strong shape/tail budget vanish. A large initial weak angular displacement is allowed. This supplies a precise finite-window continuation interface, not original-flow capture, an initialized transverse-energy bound, or a uniform reduction for unbounded scaled charts.
+\end{abstract}
+
+\section{Full leading system and assumptions}\label{inc:AN03:weak:v1:setup}
+Fix $\rho\in[13/20,7/10]$, $\lambda=\rho^2$, and let $K,F$ have the meanings in the checkpoint:
+\[
+ K(u)=\phi(u)+u\Phi(u),\quad
+ F(u,r)=\phi(\min(u,r))+r\Phi(\min(u,r)).
+\]
+This file works on the invariant leading surface $M=1$, with fixed strong and weak family labels. It does not replace $M$ by one in the original flow without a defect. Let $\mu_s$ have total mass one, $\mu_w=N\eta_w$ with $\eta_w$ a probability transported with fixed label weights, and
+\[
+ Y=\int y\dd\mu_s,\quad K_s=\int K(\rho x)\dd\mu_s,\quad
+ V=N\E_{\eta_w}v,\quad K_w=N\E_{\eta_w}K(u).
+\]
+The exact leading weak equations are
+\begin{align}
+ 2u'&=\phi(u)-\mathcal W(u)-Y\Phi(u)-\lambda(1-N)u,
+       &\mathcal W(u)&=N\E_{\eta_w}F(u,\widetilde u),\label{inc:AN03:weak:v1:weakfield}\\
+ 2v'&=\rho K_s-\lambda V-\lambda(1-N)v,
+       &N'&=\lambda N(1-N).\nonumber
+\end{align}
+We consider a characteristic solution on $[t_0,t_b]$, where $0<N_0<n_b\le1/2$ and $N(t_b)=n_b$. Bounded support on compact time intervals suffices for all differentiations below; the estimates do not use a uniform incoming support bound. The theorems are stated for this characteristic class; no separate existence theorem for arbitrary unbounded label laws is asserted. The incoming support may diverge in a parameter limit. No flux from moving masks is omitted.
+
+\section{Square-root forcing from an incoming moment}
+\begin{theorem}[Transit feedback estimate]\label{inc:AN03:weak:v1:forcing}
+Suppose $Y\ge0$ and $|\rho K_s|\le B$ on the interval. Set
+\[
+ U_0^+=\E(u(t_0))_+,\quad V_0^{\rm abs}=\E|v(t_0)|,\quad
+ N_*=N_0(U_0^++3V_0^{\rm abs})^2,
+\]
+\[
+ C_u=\phi(0)+\frac{\phi(0)}{\lambda(1-n_b)},\qquad
+ C_w=C_u+B/\lambda.
+\]
+Then
+\begin{align}
+ K_w&\le C_uN+U_0^+\sqrt{N_0N},\label{inc:AN03:weak:v1:Kbound}\\
+ |V|+K_w&\le C_wN+\sqrt{NN_*}.\label{inc:AN03:weak:v1:forcingbound}
+\end{align}
+Consequently
+\begin{equation}\label{inc:AN03:weak:v1:integral}
+ \int_{t_0}^{t_b}(N+|V|+K_w)
+ \le\frac{1+C_w}{\lambda}\log\frac1{1-n_b}
+       +\frac{2\sqrt{n_bN_*}}{\lambda(1-n_b)}.
+\end{equation}
+The estimate holds even if the initial weak coordinates diverge in a parameter limit.
+\end{theorem}
+\begin{proof}
+The nonnegativity of $F$ and $Y$ gives
+\[
+ D^+u_+\le\phi(0)/2-\lambda(1-N)u_+/2.
+\]
+The homogeneous multiplier is exactly $A(t,s)=\sqrt{N(s)/N(t)}$. Since $\lambda(1-N)\ge\lambda(1-n_b)$, variation of constants yields
+\[
+ \E u_+(t)\le A(t,t_0)U_0^++\frac{\phi(0)}{\lambda(1-n_b)}.
+\]
+Use $K(u)\le u_++\phi(0)$ to obtain \eqref{inc:AN03:weak:v1:Kbound}.
+Write $\bar v=\E v$. Averaging \eqref{inc:AN03:weak:v1:weakfield} gives the exact mean equation $2\bar v'=\rho K_s-\lambda\bar v$; the centered deviation obeys $2(v-\bar v)'=-\lambda(1-N)(v-\bar v)$. Thus
+\[
+ \E|v(t)|\le B/\lambda+A(t,t_0)[|\bar v(t_0)|+\E|v(t_0)-\bar v(t_0)|]
+ \le B/\lambda+3A(t,t_0)V_0^{\rm abs}.
+\]
+This proves \eqref{inc:AN03:weak:v1:forcingbound}. Finally
+\[
+ \int N=\lambda^{-1}\log\frac{1-N_0}{1-n_b},\qquad
+ \int\sqrt N=\lambda^{-1}\int_{N_0}^{n_b}\frac{\dd n}{\sqrt n(1-n)}
+ \le\frac{2\sqrt{n_b}}{\lambda(1-n_b)}.
+\]
+These identities and inequalities prove \eqref{inc:AN03:weak:v1:integral}. All means use fixed normalized label weights; they would have extra terms under recruitment.
+\end{proof}
+
+\begin{proposition}[A nonnegative return region and exact contraction]\label{inc:AN03:weak:v1:concentration}
+Assume in addition $u(t_0)\ge0$ labelwise and $0\le Y\le Y_{\max}<2\phi(0)$. If
+\begin{equation}\label{inc:AN03:weak:v1:barrier}
+ C_un_b+U_0^+\sqrt{N_0n_b}<\phi(0)-Y_{\max}/2,
+\end{equation}
+then every weak input remains nonnegative. Any two weak labels in this same full field satisfy
+\begin{equation}\label{inc:AN03:weak:v1:pair}
+ |u_i(t)-u_j(t)|+|v_i(t)-v_j(t)|
+ \le\sqrt{N_0/N(t)}\,[|u_i(t_0)-u_j(t_0)|+|v_i(t_0)-v_j(t_0)|].
+\end{equation}
+The same inequality holds for every normalized pairwise $L^p$ diameter, $1\le p\le\infty$. In particular the first pairwise diameter at $t_b$ is at most $2\sqrt{N_*/n_b}$.
+\end{proposition}
+\begin{proof}
+At $u=0$, $2u'=\phi(0)-\mathcal W(0)-Y/2$, and $\mathcal W(0)\le K_w$ because $F(0,r)\le K(r)$. The strict margin \eqref{inc:AN03:weak:v1:barrier} and Theorem \ref{inc:AN03:weak:v1:forcing} prevent a crossing below zero. This is a uniform scalar boundary argument, so it applies also without an attained smallest label.
+On $u\ge0$,
+\[
+ \partial_u u'=-\tfrac12[(u+Y)\phi(u)+\mathcal W'(u)+\lambda(1-N)]
+ \le-\lambda(1-N)/2,
+\]
+where $\mathcal W'=N\phi(u)\E(\widetilde u-u)_+\ge0$. The weak input equation has no $v$ dependence at $M=1$, so scalar subtraction gives this contraction for $|u_i-u_j|$. The output difference obeys the same homogeneous rate exactly. Integrating gives \eqref{inc:AN03:weak:v1:pair}. Minkowski or the common labelwise inequality gives the $L^p$ statements. The initial first pairwise diameter is at most $2(U_0^++V_0^{\rm abs})$, which proves the last bound. This is within-field concentration, not yet selection of the coherent mean.
+\end{proof}
+
+\section{Distance to the selected orbit, not only to a mean}
+Let $(X_*,Y_*,U_*,V_*)(N)$ be the selected coherent branch, with the same logistic $N(t)$. This convention uses the population's own half-mass clock. On the reviewed branch $U_*>0$ for $N\le1/2$; the quarter-mass and invariant-region results are in AN06 v2.
+Set, for $1\le p\le\infty$,
+\[
+ W_p(t)=\|\,|u-U_*|+|v-V_*|\,\|_{L^p(\eta_w)},\quad
+ \Delta_s=|Y-Y_*|+\rho|K_s-K(\rho X_*)|.
+\]
+\begin{lemma}[A full-field population-to-orbit inequality]\label{inc:AN03:weak:v1:Wineq}
+Under the nonnegative-input conclusion of Proposition \ref{inc:AN03:weak:v1:concentration},
+\begin{equation}\label{inc:AN03:weak:v1:Wintegral}
+ W_p(t)\le B_b\left[
+ \sqrt{N_0/N(t)}W_p(t_0)+\frac12\int_{t_0}^t\sqrt{N(s)/N(t)}\,\Delta_s(s)\dd s\right],
+ \quad B_b=(1-n_b)^{-1/(2\lambda)}.
+\end{equation}
+In particular
+\[
+ W_p(t_b)\le B_b\left[\sqrt{N_0/n_b}W_p(t_0)
+              +\frac{\|\Delta_s\|_\infty}{\lambda(1-n_b)}\right].
+\]
+\end{lemma}
+\begin{proof}
+Compare an actual receiver first to $U_*$ in its \emph{own} field. The scalar contraction proved above applies on the segment between the two nonnegative inputs. The remaining donor difference at $U_*$ is bounded using $|F(U_*,r)-F(U_*,U_*)|\le|r-U_*|$. Thus
+\[
+ D^+|u-U_*|\le-\tfrac\lambda2(1-N)|u-U_*|
+             +\tfrac N2\E|u-U_*|+\tfrac12|Y-Y_*|.
+\]
+For the output coordinate, exact subtraction gives
+\[
+ D^+|v-V_*|\le-\tfrac\lambda2(1-N)|v-V_*|
+             +\tfrac{\lambda N}2\E|v-V_*|
+             +\tfrac\rho2|K_s-K(\rho X_*)|.
+\]
+Combining the common scalar inequality with Minkowski and $W_1\le W_p$ gives
+\[
+ D^+W_p\le[-\lambda(1-N)/2+N/2]W_p+\Delta_s/2.
+\]
+Its homogeneous multiplier from $s$ to $t$ is
+$\sqrt{N(s)/N(t)}\exp(\frac12\int_s^tN)$, and $\int N\le\lambda^{-1}\log(1/(1-n_b))$. This proves \eqref{inc:AN03:weak:v1:Wintegral}. Finally $\int_{t_0}^{t_b}\sqrt{N(s)/n_b}\dd s\le2/[\lambda(1-n_b)]$. For $p=\infty$ take the essential supremum of the integrated common bound; no differentiation of a maximizer is needed.
+\end{proof}
+
+\section{Closing the strong mean and weak mean simultaneously}
+The source moment error in Lemma \ref{inc:AN03:weak:v1:Wineq} need not be postulated independently. Let $(c_s,d_s)$ be a reference characteristic in the full strong field, and define
+\[
+ D_s(t)=\int(|x-c_s|+|y-d_s|)\dd\mu_s,\qquad
+ E_s=\sqrt{(c_s-X_*)^2+(d_s-Y_*)^2}.
+\]
+A supplied fixed-core radius and weighted strong tail give $D_s\le r+T$. For the theorem below require a pointwise bound $D_s\le d_0$. An integrated tail bound alone does not imply it.
+
+Put $a=a_\rho$, $\alpha=\lambda\Phi(\rho a)/2$, and
+\[
+ \gamma=\frac{\alpha(1/2-\alpha)}{\alpha+1/2}>0.
+\]
+Choose a small $\delta>0$ and then $n_b>0$ as follows. The selected branch lies near $(a,a,u_\rho,a/\lambda)$ when $N$ is small. On that neighborhood, the strong coherent field with the selected weak atom held fixed has symmetric Jacobian
+\[
+ \begin{pmatrix}
+ \frac\lambda2[-\Phi(\rho x)+\rho(NV_*-x+(1-N)y)\phi(\rho x)]
+ &\frac\lambda2(1-N)\Phi(\rho x)\\
+ \frac\lambda2(1-N)\Phi(\rho x)&-1/2
+ \end{pmatrix}.
+\]
+At the resident point with $N=0$ this is $J_1$ with largest eigenvalue at most $-\gamma$. Select $\delta,n_b$ so that on $|x-a|,|y-a|\le2\delta$, $N\le n_b$, the matrix is at most $-gI$, $g=\gamma/2$, and $|X_*-a|,|Y_*-a|\le\delta$. These choices are analytic: for example bound the displayed first derivatives on the compact box and choose the radii by the mean value theorem. Also require $\delta<a/8$ and $a+3\delta<2\phi(0)$. The AN06 bound $a<\phi(0)$ ensures the latter choices are possible on the reviewed ratio interval.
+
+Let $C_s\ge1$ be a uniform bound for the strong donor perturbation estimates on this box. It can be taken as $20(R+1)^2$, with any fixed $R>2+a+|u_\rho|+a/\lambda$ bounding the selected coordinates for sufficiently small $n_b$. Lipschitz continuity of $F$ in its donor coordinate and of $K$ gives, up to first exit of $E_s<\delta$,
+\begin{equation}\label{inc:AN03:weak:v1:strongineq}
+ D^+E_s\le-gE_s+C_s(D_s+NW_p),\qquad
+ \Delta_s\le(1+\lambda)(E_s+D_s).
+\end{equation}
+For the first inequality compare the same-field reference with the coherent strong field at $(c_s,d_s)$ and weak atom $(U_*,V_*)$. Strong donor errors cost at most a constant times $D_s$ and weak moment errors at most a constant times $NW_p$. The stable Jacobian then controls the difference from $(X_*,Y_*)$. For the second use $|Y-d_s|\le D_s$ and the donor Lipschitz constant $\rho$ of $K(\rho x)$. This proves \eqref{inc:AN03:weak:v1:strongineq} without assuming a mean trajectory.
+
+Define
+\[
+ a_0=\lambda(1-n_b)/2,\quad m_0=\min(g/2,a_0/2),\quad C_w^0=(1+\lambda)/2,\quad B_b=(1-n_b)^{-1/(2\lambda)},
+\]
+\[
+ L_0=1+\frac{C_s(1+B_b)}{g-m_0},\qquad K_0=2L_0.
+\]
+Decrease $n_b$ so that
+\begin{equation}\label{inc:AN03:weak:v1:smallgain}
+ \Theta=\frac{C_sB_bC_w^0n_b}{(a_0-m_0)(g-m_0)}\le\frac14.
+\end{equation}
+All denominators are positive; such an $n_b$ exists. These constants depend on the ratio and chosen local box, not on $N_0$.
+
+\begin{theorem}[Selection at fixed weak mass from a large incoming weak spread]\label{inc:AN03:weak:v1:selection}
+Let $D_s\le d_0$ on $[t_0,t_b]$. Assume $u(t_0)\ge0$, the moment boundary condition \eqref{inc:AN03:weak:v1:barrier} with $Y_{\max}=a+3\delta$ and $B=\rho\phi(0)+\lambda(a+3\delta)$, and the constants just chosen. Set
+\[
+ E_0=E_s(t_0),\qquad A_0=\sqrt{N_0}W_p(t_0).
+\]
+If
+\begin{equation}\label{inc:AN03:weak:v1:guard}
+ K_0(E_0+d_0+A_0\sqrt{n_b})\le\delta/2,
+\end{equation}
+then the strong mean and nonnegative-input guards close. For all $t\le t_b$,
+\begin{equation}\label{inc:AN03:weak:v1:Eresult}
+ E_s(t)\le K_0[E_0e^{-m_0(t-t_0)}+d_0+A_0\sqrt{N(t)}].
+\end{equation}
+Writing $T_b=t_b-t_0$, the weak distance at $n_b$ obeys
+\begin{align}
+ W_p(t_b)\le B_b\Bigg[&\frac{A_0}{\sqrt{n_b}}+C_w^0(K_0+1)
+ \bigg\{\frac{E_0e^{-m_0T_b}}{a_0-m_0}
+ +\frac{d_0}{a_0}+\frac{A_0\sqrt{n_b}}{2a_0}\bigg\}\Bigg].
+ \label{inc:AN03:weak:v1:Wresult}
+\end{align}
+In particular, along a family with $N_0\to0$, $A_0\to0$, $d_0\to0$ and uniformly bounded admissible $E_0$, both $E_s(t_b)$ and $W_p(t_b)$ tend to zero. An incoming $W_p(t_0)$ diverging like $N_0^{-1/2}$ times a vanishing amplitude is allowed.
+\end{theorem}
+\begin{proof}
+Until the first guard exit, $D_s\le d_0\le\delta$ and $E_s\le\delta$ imply
+$0<a-3\delta\le Y\le a+3\delta$ and $\rho K_s\le\rho\phi(0)+\lambda(a+3\delta)$. The moment estimates and their boundary margin therefore preserve nonnegative weak inputs. Consequently Lemma \ref{inc:AN03:weak:v1:Wineq} and \eqref{inc:AN03:weak:v1:strongineq} apply.
+Put
+\[
+ D(t)=E_0e^{-m_0(t-t_0)}+d_0+A_0\sqrt{N(t)}.
+\]
+Suppose $E_s\le K_0D$ up to the time under consideration. Then
+\[
+ W_p(t)\le B_b\left[\frac{A_0}{\sqrt{N(t)}}
+       +C_w^0(K_0+1)\int_{t_0}^t\sqrt{N(s)/N(t)}D(s)\dd s\right].
+\]
+Since $\sqrt{N(s)/N(t)}\le e^{-a_0(t-s)}$ and $D(s)\le e^{m_0(t-s)}D(t)$,
+\[
+ NW_p\le B_b A_0\sqrt N+
+ \frac{B_bC_w^0(K_0+1)n_b}{a_0-m_0}D.
+\]
+The stable convolution for \eqref{inc:AN03:weak:v1:strongineq}, together with $\int_{t_0}^te^{-g(t-s)}D(s)\dd s\le D(t)/(g-m_0)$, yields
+\[
+ E_s(t)\le[L_0+\Theta(K_0+1)]D(t)<K_0D(t).
+\]
+The last inequality uses $K_0=2L_0$, $L_0\ge1$, and $\Theta\le1/4$. A first-exit comparison, or strict scalar barriers followed by a limit, proves \eqref{inc:AN03:weak:v1:Eresult}. Its upper bound is at most $\delta/2$ by \eqref{inc:AN03:weak:v1:guard}, strictly improving the mean guard. This closes both guards.
+For the terminal estimate integrate the three components of $D$ separately. The first costs $E_0e^{-m_0T_b}/(a_0-m_0)$ and the second $d_0/a_0$. The third is
+\[
+ \frac{A_0}{\sqrt{n_b}}\int_{t_0}^{t_b}N(s)\dd s
+ \le\frac{A_0\sqrt{n_b}}{\lambda(1-n_b)}
+ =\frac{A_0\sqrt{n_b}}{2a_0}.
+\]
+This proves \eqref{inc:AN03:weak:v1:Wresult}. Finally
+$T_b=\lambda^{-1}\log[n_b(1-N_0)/(N_0(1-n_b))]\to\infty$ as $N_0\to0$, so the stated limits follow. For $p=\infty$ all estimates use integrated common inequalities and the essential supremum; for finite $p$, domination and Minkowski justify the moment comparisons.
+\end{proof}
+
+\section{Interface with finite-window continuation}
+The theorem supplies actual distance to the selected branch, not merely small pairwise spread. At $t_b$, the full leading strong $L^1$ distance to its coherent atom is at most $\sqrt2E_s+d_0$; the weak weighted distance is at most $n_bW_1$. The logistic clock is exactly aligned and $M=1$.
+If the entire relevant strong population and weak population stay in a fixed bounded chart on the remaining finite interval, these errors are inputs to ordinary continuous dependence and the AN06 witness tolerance. Taking $p=\infty$ gives uniform weak-coordinate proximity at $t_b$. A first-moment conclusion alone does not give uniform support or control every higher-order probe observable. Unbounded strong or weak tails still need their own moment and rate budgets.
+
+The theorem is conditional on the supplied strong distance budget $d_0$, but does not assume a controlled strong mean trajectory or weak mean trajectory: those are controlled together. When only $\int D_s$ is known, Lemma \ref{inc:AN03:weak:v1:Wineq} and the stable mean convolution remain valid; one must use their actual weighted integrals rather than infer the pointwise bound required here.
+
+\paragraph{Relation to the amplitude clock.}
+The exact original-flow growing amplitude and response clock can identify a weak-source timescale before radial capture. The quantities $N,N_*$ here instead belong to a closed leading weak family. Their association requires a matching theorem. In particular $N_*\asymp q^{2(1-\lambda)/\lambda}$ is not proved here. What is proved is that if this scale bounds the incoming weak moment, its forcing is integrable and its eventual angular spread vanishes. Using leading equations at coordinates of size $1/q$ as an approximation to the original flow remains a separate, nonuniform-chart issue.
+
+\begin{thebibliography}{9}\small
+\bibitem{P} Supplied checkpoint \texttt{THEOREM\_A\_ANALYTICAL\_PROGRESS.tex}: \texttt{pa:leading}, \texttt{pa:masslaws}, \texttt{pa:overlap}, \texttt{pa:branch}, \texttt{pa:spectra}.
+\bibitem{A} Supplied \texttt{AN06\_learned\_orbit\_witnesses\_v2.tex}: nonnegative selected weak inputs and the fixed-window witness interface.
+\bibitem{L} Supplied \texttt{AN03\_local\_rate\_mean\_tracking\_v1.tex}: stable mean and fixed-core/weighted-tail definitions.
+\end{thebibliography}
+\end{document}

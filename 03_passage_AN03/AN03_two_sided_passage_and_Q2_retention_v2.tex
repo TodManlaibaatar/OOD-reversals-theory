@@ -1,0 +1,827 @@
+% Separate analytical increment. No supplied file is modified.
+% Unique prefix: inc:AN03:ret:v2:
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array,microtype}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\hypersetup{pdftitle={AN03: Two-sided nonlinear passage and Q2 ancestry retention},pdfauthor={Research proof increment for independent review}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small AN02/AN03: retention and two-sided passage}
+\fancyhead[R]{\small Review increment v2}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\,d}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\scope}[1]{\par\noindent\textbf{Scope.} #1\par\smallskip}
+\newcommand{\gap}[1]{\par\noindent\textbf{Open obligation.} #1\par\smallskip}
+\title{Two-sided nonlinear passage and Q2 ancestry retention\\
+\large A mean-feedback budget, corrected entry clocks, and an arrival--retention distinction}
+\author{Research proof increment for independent review}
+\date{Version 2 --- October 3, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For the original finite-noise initialized flow, the reviewed weighted-ancestry
+bound gives Q2 ancestral mass at least a constant times
+$S_0^{1-\lambda}$ at the early envelope time, including its exact
+$q^2\log(1/S_0)$ correction. We express its conversion to captured mass
+through a precise weighted net-retention functional. We also prove an
+upper bound for Q2 labels arriving in the AN02 fixed sector: each such
+label has only $O(S_0)$ mass when $q^2T$ is bounded. Thus growing Q2
+ancestry and a late-arriving Q2 cohort are different quantities.
+For the full leading population we derive upper- and lower-side pair
+identities, retaining both the receiver term and the full donor field.
+The lower-side cancellation yields an all-label $\ell^1$ distance bound,
+without co-ordering. An exact nonlinear comparison closes this bound
+through weak half-mass in terms of the time integral of the positive
+barycentric imbalance. If the entry shape and retained weak seed have
+powers $S_0^{1/2-\alpha}$ and $S_0^{1-\lambda}$, respectively, the resulting
+conditional shape exponent is $\lambda/2-\alpha>0$ for every fixed
+$0<\rho<1$. No initialized retention law, mean-feedback budget, full
+resident passage to the selected orbit, or finite-noise transfer is
+assumed proved. The reported sweep is motivation, not a proof premise.
+\end{abstract}
+
+\section{Contract and notation}\label{inc:AN03:ret:v2:contract}
+The original-flow inputs are foundations P4--P5, the checkpoint labels
+\texttt{pa:earlybounds} and \texttt{pa:targetcomparison}, and the reviewed
+Theorem 2.1 of \path{AN02_strong_ancestry_and_tail_transport_v1.tex}.
+Sections 3--5 use the \emph{defined leading system}
+\texttt{pa:leading}/\texttt{pa:masslaws} and the exact overlap kernel
+\texttt{pa:overlap}. Its relevant equations are restated. The comparison
+characteristic below evolves in the \emph{same population field}, not
+in the field of a fitted or coherent reference. The selected-orbit witness
+target is the reviewed \path{AN06_learned_orbit_witnesses_v2.tex}.
+All original sources and reviewed increments remain unchanged. This version repairs the mixed-order proof and differentiation of the first moment, sharpens one rational bound, and withdraws the earlier regime-planning inference. Its conditional theorems do not establish compatible initialized entry laws.
+
+Write $\lambda=\rho^2\in(0,1)$, normalized time $\tau$, and initial-label
+law $\lambda_0(\dd\alpha_0)=\dd\alpha_0/(2\pi)$. The symbol
+$\alpha_{\rm sh}=\lambda\Phi(\rho a_\rho)/2$ denotes the checkpoint's
+shape rate $\alpha$, not an initial label. As usual,
+\[
+ K(z)=\phi(z)+z\Phi(z),\qquad
+ F(t,r)=\phi(\min(t,r))+r\Phi(\min(t,r)),\qquad
+ a_\rho=\rho K(\rho a_\rho).
+\]
+The unique finite $a_\rho>0$ exists for every fixed $0<\rho<1$.
+All exponents in this note refer to the initialization \emph{mass} $S_0$.
+
+For the original flow, $P=(P_1+P_2)/2$ with
+$P_1=\mathcal N(e_1,q^2I)$ and $P_2=\mathcal N(\rho e_2,q^2I)$.
+The label vectors start at
+$U_0=W_0=\sqrt{S_0}a_{\alpha_0}$. With $m=|U|^2=|W|^2$,
+\[
+ (\log m)'=r_{\rm rad}:=2b^\top R_f(\theta)a,
+ \quad R_f(\theta)=\E_P[(X-f(X))X^\top\1_{\{a^\top X>0\}}].
+\]
+Put $a_*=1/2+q^2$ and
+\[
+ \overline S(\tau)=S_0e^{(1+2q^2)\tau},\quad
+ \epsilon_{\rm al}=\overline S-S_0,\quad
+ H(\tau)=S_0(2e^{2a_*\tau}-3e^{a_*\tau}+1).
+\]
+The exact target-only flow $\widehat U$ starts at the same vectors and has
+$\widehat U'=\E_P[X(\widehat U^\top X)_+]$.
+On $\epsilon_{\rm al}<\pi$, the reviewed comparison gives
+\begin{equation}\label{inc:AN03:ret:v2:earlycomparison}
+ |\theta-\widehat\theta|\le H,
+ \qquad |\log(m/\widehat m)|\le2H,
+ \qquad
+ m_\tau(\alpha_0)\ge e^{-2H}S_0
+ [e^\tau(\cos\alpha_0)_+^2+e^{\lambda\tau}(\sin\alpha_0)_+^2].
+\end{equation}
+This comparison is not continued through order-one strong learning here.
+
+\section{Growing Q2 ancestry is not a late-arriving Q2 cohort}
+\label{inc:AN03:ret:v2:ancestry}
+\scope{Original finite-noise flow on its proved early interval, followed
+by exact conditional retention inequalities. No captured-family law is
+inferred from the name of an ancestral quadrant.}
+Let $Q_2=(\pi/2,\pi)$ in initial-label space, and choose
+$0<S_0<\delta\le1/100$. Define
+\[
+ T_\delta=\frac{\log(\delta/S_0)}{1+2q^2}.
+\]
+Then $S\le\delta$, $H(T_\delta)\le2\delta$, and
+$\epsilon_{\rm al}<\pi$ throughout this interval.
+
+\begin{proposition}[Q2 ancestral amplification at the early clock]
+\label{inc:AN03:ret:v2:Q2mass}
+For every fixed measurable $C\subset Q_2$,
+\begin{equation}\label{inc:AN03:ret:v2:Q2weighted}
+ \int_Cm_{T_\delta}\dd\lambda_0
+ \ge e^{-4\delta}\delta^\lambda S_0^{1-\lambda}
+ e^{-2\lambda q^2T_\delta}
+ \int_C\sin^2\alpha_0\dd\lambda_0.
+\end{equation}
+In particular the total mass carried by Q2 ancestry satisfies
+\begin{equation}\label{inc:AN03:ret:v2:Q2total}
+ \nu^{\rm lab}_{T_\delta}(Q_2)
+ \ge \frac{e^{-4\delta}\delta^\lambda}{8}
+ S_0^{1-\lambda}e^{-2\lambda q^2T_\delta}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Use the positive second-coordinate term in
+\eqref{inc:AN03:ret:v2:earlycomparison} and the exact identity
+$S_0e^{\lambda T_\delta}
+=\delta^\lambda S_0^{1-\lambda}e^{-2\lambda q^2T_\delta}$.
+The integral of $\sin^2\alpha_0$ over Q2 in $\lambda_0$ is $1/8$.
+\end{proof}
+This is a lower bound, not a matching asymptotic equivalence. The labels
+may have crossed toward the strong axis. Their current weak-chart mass
+and their useful weak response are not identified by
+\eqref{inc:AN03:ret:v2:Q2total}.
+
+\subsection{An upper bound on the AN02 arriving cohort}
+Let $\varphi_T$ be the exact target-only angular flow and set
+\[
+ I=[2\pi/3,3\pi/4],\qquad C_T=\varphi_{-T}(I),\qquad
+ C_T^{(2)}=C_T\cap Q_2.
+\]
+These are precisely analytical backward-sector cohorts; no trained
+trajectory is used to choose them.
+
+\begin{theorem}[No uniform weak-growth gain for fixed-sector arrivals]
+\label{inc:AN03:ret:v2:arrivalupper}
+For $T\ge0$ and every initial label in $C_T$,
+\begin{equation}\label{inc:AN03:ret:v2:arrivalmasshat}
+ \widehat m_T(\alpha_0)
+ \le4S_0\cos^2\alpha_0\,e^{3q^2T/2}
+ \le4S_0e^{3q^2T/2}.
+\end{equation}
+For $\alpha_0\in C_T^{(2)}$,
+\begin{equation}\label{inc:AN03:ret:v2:arrivalangle}
+ \tan(\pi-\alpha_0)
+ \le\sqrt3\,e^{-(\lambda/2-3q^2/4)T}.
+\end{equation}
+Consequently,
+\begin{equation}\label{inc:AN03:ret:v2:arrivalmeasure}
+ \lambda_0(C_T^{(2)})
+ \le\frac{\sqrt3}{2\pi}e^{-(\lambda/2-3q^2/4)T}.
+\end{equation}
+If $\epsilon_{\rm al}(T)<\pi$, the original-flow mass obeys
+\begin{align}
+ m_T(\alpha_0)&\le4e^{2H(T)}S_0e^{3q^2T/2}
+ &&(\alpha_0\in C_T),\label{inc:AN03:ret:v2:arrivalmass}\\
+ \int_{C_T^{(2)}}m_T\dd\lambda_0
+ &\le\frac{2\sqrt3}{\pi}e^{2H(T)}S_0
+ e^{-\lambda T/2+9q^2T/4}.\label{inc:AN03:ret:v2:arrivalQ2mass}
+\end{align}
+\end{theorem}
+\begin{proof}
+The exact coordinate formula, with $r=|\widehat U|$ and
+$\widehat a=\widehat U/r$, is
+\begin{equation}\label{inc:AN03:ret:v2:coordinatefield}
+ \widehat U_j'=\frac{\mu_jqr}{2}K(\mu_j\widehat a_j/q)
+ +d_q(\widehat a)\widehat U_j,
+ \quad
+ d_q=\frac{q^2}{2}[\Phi(\widehat a_1/q)+\Phi(\rho\widehat a_2/q)],
+ \quad (\mu_1,\mu_2)=(1,\rho).
+\end{equation}
+The positive-coordinate half-spaces are forward invariant: at a zero
+coordinate its derivative is strictly positive. The radius stays
+positive because $(r^2)'=2\E_P(\widehat U^\top X)_+^2\ge0$.
+For a label ending in $I$, $\widehat U_1(T)<0$, hence
+$\widehat U_1(t)<0$ for every $0\le t\le T$. On this path
+$d_q\le3q^2/4$. For $w=-\widehat U_1>0$,
+\[
+ w'=-\frac{qr}{2}K(\widehat a_1/q)+d_qw
+ \le\frac{3q^2}{4}w,
+ \qquad w(T)\le\sqrt{S_0}|\cos\alpha_0|e^{3q^2T/4}.
+\]
+Since $|\cos\widehat\theta(T)|\ge1/2$, one has $r(T)\le2w(T)$,
+which proves \eqref{inc:AN03:ret:v2:arrivalmasshat}.
+For a Q2 label, the positive second coordinate satisfies
+$\widehat U_2(T)\ge\sqrt{S_0}\sin\alpha_0 e^{\lambda T/2}$.
+At the endpoint $\widehat U_2(T)/w(T)\le\sqrt3$.
+Combining these bounds proves \eqref{inc:AN03:ret:v2:arrivalangle}.
+Thus $C_T^{(2)}$ is contained in the terminal initial-label interval
+of length at most
+$\arctan(\sqrt3 e^{-(\lambda/2-3q^2/4)T})$, which is at most its
+argument. Divide by $2\pi$ to get \eqref{inc:AN03:ret:v2:arrivalmeasure}.
+The logarithmic comparison transfers the pointwise upper bound; multiplying
+by the label-measure bound proves \eqref{inc:AN03:ret:v2:arrivalQ2mass}.
+No initial-to-final angle inverse for the original flow is used.
+\end{proof}
+
+For fixed $\delta$ and $\rho$, at $T=T_\delta$ under
+$q^2T_\delta\to0$, the last bound is
+\begin{equation}\label{inc:AN03:ret:v2:arrivalscale}
+ \int_{C_{T_\delta}^{(2)}}m_{T_\delta}\dd\lambda_0
+ =O_\delta(S_0^{1+\lambda/2}).
+\end{equation}
+Indeed,
+$e^{-\lambda T_\delta/2+9q^2T_\delta/4}
+=(S_0/\delta)^{\lambda/2}
+ e^{(\lambda+9/4)q^2T_\delta}$.
+The equality symbol in \eqref{inc:AN03:ret:v2:arrivalscale} denotes an
+upper-order statement, not an asymptotic equivalence. Compared with the
+lower bound \eqref{inc:AN03:ret:v2:Q2total}, this arriving subset carries
+at most $O_\delta(S_0^{3\lambda/2})$ of total Q2 ancestral mass.
+The reviewed ancestry formula is therefore valuable for \emph{retention
+of earlier Q2 labels}, not a uniform $e^{\lambda T}$ improvement for
+AN02's late-arriving sector cohort. Its initial $\sin^2\alpha_0$ weight
+shrinks with $T$ for that cohort.
+
+\subsection{A precise original-flow retention target}
+Fix a later deterministic time $\tau_e\ge T_\delta$ and a prescribed
+weak-chart set $\mathcal W_R$, defined by
+$\theta=\pi/2-qu$, $\psi=\pi/2+qv$, $|u|,|v|\le R$ (modulo $2\pi$).
+Define, using the true characteristic path,
+\begin{align}
+ A_{\alpha_0}&=\int_{T_\delta}^{\tau_e}r_{\rm rad}(t,\alpha_0)\dd t,
+ \qquad
+ \chi_{\alpha_0}=\min\{1,e^{A_{\alpha_0}}\},\nonumber\\
+ \mathcal R_2(\tau_e)
+ &=\int_{Q_2}\1_{\{(\theta,\psi)(\tau_e,\alpha_0)\in\mathcal W_R\}}
+ \sin^2\alpha_0\,\chi_{\alpha_0}\dd\lambda_0.
+ \label{inc:AN03:ret:v2:retentionfunctional}
+\end{align}
+Here $0\le\mathcal R_2\le1/8$. The net multiplier permits mass loss
+followed by recovery; it does not charge every temporary loss separately.
+
+\begin{proposition}[Exact ancestry-to-capture inequality]
+\label{inc:AN03:ret:v2:retention}
+Let $N_2^{\rm cap}(\tau_e)$ be the true mass in $\mathcal W_R$ with Q2
+ancestry. Then
+\begin{equation}\label{inc:AN03:ret:v2:retentionbound}
+ N_2^{\rm cap}(\tau_e)
+ \ge e^{-4\delta}\delta^\lambda S_0^{1-\lambda}
+ e^{-2\lambda q^2T_\delta}\,\mathcal R_2(\tau_e).
+\end{equation}
+In particular, if a measurably specified initial-label set $C\subset Q_2$
+is inside $\mathcal W_R$ at $\tau_e$ and satisfies
+\[
+ \int_C\sin^2\alpha_0\dd\lambda_0\ge w_2,
+ \qquad A_{\alpha_0}\ge-B_2\quad(\alpha_0\in C),\qquad B_2\ge0,
+\]
+then $\mathcal R_2\ge w_2e^{-B_2}$.
+\end{proposition}
+\begin{proof}
+The exact radial equation gives
+$m_{\tau_e}=m_{T_\delta}e^{A_{\alpha_0}}
+\ge m_{T_\delta}\chi_{\alpha_0}$.
+Apply the pointwise bound underlying
+\eqref{inc:AN03:ret:v2:Q2weighted} and integrate with the displayed
+fixed-time chart indicator. No derivative of that indicator is taken,
+so no moving-mask flux is omitted. The sufficient condition is immediate.
+\end{proof}
+
+There is a crude unconditional bound on the radial part. Loss dissipation
+and Cauchy--Schwarz give
+\begin{equation}\label{inc:AN03:ret:v2:radialfloor}
+ \|R_f(\theta)\|\le C_E,
+ \quad C_E=\left|1-\frac{S_0}{4}\right|
+ \sqrt{\left(\frac12+q^2\right)
+       \left(\frac{1+\lambda}{2}+2q^2\right)},
+ \quad A_{\alpha_0}\ge-2C_E(\tau_e-T_\delta).
+\end{equation}
+For the matrix bound, pair $R_f$ with two unit vectors, use
+$\E\|X-f(X)\|^2\le2\mathcal L(0)$ and
+$\E(z^\top X)^2\le a_*$; here
+$2\mathcal L(0)=(1-S_0/4)^2\operatorname{tr}\E XX^\top$.
+Thus a delay $O(\log(1/q))$ has at worst a polynomial radial-retention
+cost on bounded parameter sets. A delay proportional to $\log(1/S_0)$
+can change the initialization exponent under this crude bound.
+
+\gap{Neither a lower bound on $\mathcal R_2$, nor the chart membership
+of a set with nonvanishing weighted ancestry, is proved here. The capture
+problem is to prove such a bound through transit and return, while
+controlling the competing population. Even if the mass is captured once,
+subsequent chart persistence and recruitment flux remain separate tasks.}
+
+\section{Exact two-sided pair identities in the full leading field}
+\label{inc:AN03:ret:v2:two-sided}
+\scope{The full, self-consistent leading population on a finite
+chart-valid interval. No population ordering is assumed in the final
+all-label bound.}
+Let $0<M\le1$, $0\le N\le1$, $\varepsilon_M=1-M$, and
+\[
+ M'=M(1-M),\qquad N'=\lambda N(1-N),\qquad
+ Y=\int y\dd\mu_s,\quad V=\int v\dd\mu_w,\quad K_w=\int K(u)\dd\mu_w.
+\]
+The exact leading strong characteristic field is
+\begin{align}
+ 2f_x(x,y)&=-\varepsilon_Mx+\rho\phi(\rho x)-\rho\mathcal S(x)
+ +\lambda[V+(1-N)y]\Phi(\rho x),\label{inc:AN03:ret:v2:field}\\
+ 2f_y(x,y)&=-\varepsilon_My-Y-K_w+\rho(1-N)K(\rho x),\nonumber\\
+ \mathcal S(x)&=\int F(\rho x,\rho\widetilde x)\dd\mu_s.
+ \nonumber
+\end{align}
+Use bounded-support characteristic solutions, with fixed family labels
+and their normalized weights. Let $(c,d)$ be any characteristic of this
+\emph{same} time-dependent field. For example, initialize it at the strong
+barycentre; it need not carry positive mass. Define
+\begin{align}
+ X_s&=M^{-1}\int x\dd\mu_s,\qquad Y_s=M^{-1}\int y\dd\mu_s,\nonumber\\
+ \Pi(r)&=\int(\widetilde x-r)_+\dd\mu_s,\qquad
+ \Lambda_-(r)=\int(r-\widetilde x)_+\dd\mu_s,\nonumber\\
+ U_c&=V+(1-N)d-c,\qquad U_c^-=U_c+M(c-X_s),\nonumber\\
+ \mathcal B&=V+(1-N)Y_s-X_s,\qquad
+ c_\rho=\frac{\rho^3\phi(0)}2.
+ \label{inc:AN03:ret:v2:budgets}
+\end{align}
+The total weak moment $V$ is not a normalized weak mean. The notation
+$\mathcal B$ here is the barycentric imbalance, not the passive-diagonal
+average from AN02.
+
+\begin{lemma}[Derivative and donor cancellation identities]
+\label{inc:AN03:ret:v2:jacobian}
+Writing $P(r)=\Phi(\rho r)$, one has exactly
+\begin{align}
+ \mathcal S'(r)&=\rho^2\phi(\rho r)\Pi(r),\nonumber\\
+ 2\partial_xf_x(r,d)&=-\varepsilon_M+
+ \rho^3[V+(1-N)d-r-\Pi(r)]\phi(\rho r),\label{inc:AN03:ret:v2:dx}\\
+ 2\partial_yf_x(r,d)&=2\partial_xf_y(r,d)=\lambda(1-N)P(r),\nonumber\\
+ \Pi(r)-\Lambda_-(r)&=M(X_s-r).\label{inc:AN03:ret:v2:donorcancel}
+\end{align}
+\end{lemma}
+\begin{proof}
+Differentiate the explicit $C^1$ overlap kernel:
+$\partial_tF(t,z)=(z-t)_+\phi(t)$.
+Its derivative is bounded on bounded sets, which justifies differentiating
+under the finite measure. Use $\phi'(\rho r)=-\rho r\phi(\rho r)$
+and $K'=\Phi$ to differentiate \eqref{inc:AN03:ret:v2:field}.
+Finally $(z-r)_+-(r-z)_+=z-r$ proves
+\eqref{inc:AN03:ret:v2:donorcancel} by integration.
+\end{proof}
+
+For $h>0$ define
+\[
+ \overline P_+(h)=\frac1h\int_c^{c+h}P(r)\dd r,
+ \quad P_+=P(c+h),\qquad
+ \overline P_-(h)=\frac1h\int_{c-h}^{c}P(r)\dd r,
+ \quad P_-=P(c-h).
+\]
+At $h=0$ use their continuous values $P(c)$.
+
+\begin{proposition}[Receiver-preserving upper and lower identities]
+\label{inc:AN03:ret:v2:averagedpair}
+For an upper co-ordered pair $x=c+h$, $y=d+k$, $h,k\ge0$, put $D=h+k$.
+Then
+\begin{align}
+ D'={}&\left[-\frac{\varepsilon_M}{2}
+       +\frac\lambda2(1-N)\overline P_+\right]D\nonumber\\
+ &+\frac\lambda2[(1-N)k-h](P_+-\overline P_+)
+ +\frac{\rho^3}{2}\int_c^{c+h}[U_c-\Pi(r)]\phi(\rho r)\dd r.
+ \label{inc:AN03:ret:v2:upperexact}
+\end{align}
+For a lower co-ordered pair $x=c-h$, $y=d-k$, $h,k\ge0$, one has
+\begin{align}
+ D'={}&\left[-\frac{\varepsilon_M}{2}
+       +\frac\lambda2(1-N)\overline P_-\right]D\nonumber\\
+ &+\frac\lambda2[\varepsilon_M h-(1-N)k]
+       (\overline P_--P_-)
+ +\frac{\rho^3}{2}\int_{c-h}^{c}[U_c^--\Lambda_-(r)]\phi(\rho r)\dd r.
+ \label{inc:AN03:ret:v2:lowerexact}
+\end{align}
+The identities apply on any time interval on which the indicated order
+holds; leading same-field cooperativity preserves an initial such order.
+\end{proposition}
+\begin{proof}
+For the upper pair, the fundamental theorem of calculus and
+\eqref{inc:AN03:ret:v2:dx} give
+\begin{align*}
+ 2h'&=-\varepsilon_Mh+
+ \rho^3\int_c^{c+h}[U_c-(r-c)-\Pi(r)]\phi(\rho r)\dd r
+ +\lambda(1-N)kP_+,\\
+ 2k'&=-\varepsilon_Mk+\lambda(1-N)h\overline P_+.
+\end{align*}
+Integration by parts gives
+$\rho\int_c^{c+h}(r-c)\phi(\rho r)\dd r
+=h(P_+-\overline P_+)$.
+Substitute, add, and collect the coefficient of $D$ to obtain
+\eqref{inc:AN03:ret:v2:upperexact}.
+For the lower pair the corresponding first integral is
+$\rho^3\int_{c-h}^{c}[U_c+(c-r)-\Pi(r)]\phi(\rho r)\dd r$,
+with cross term $\lambda(1-N)kP_-$. The donor identity rewrites its
+bracket as
+\[
+ U_c+(c-r)-\Pi(r)=U_c^-+\varepsilon_M(c-r)-\Lambda_-(r).
+\]
+Now
+$\rho\int_{c-h}^{c}(c-r)\phi(\rho r)\dd r
+=h(\overline P_--P_-)$.
+Adding the two component equations proves
+\eqref{inc:AN03:ret:v2:lowerexact}.
+The vanishing-$h$ cases follow by continuity. The cross derivatives in
+Lemma~\ref{inc:AN03:ret:v2:jacobian} are nonnegative for $N\le1$,
+which gives same-field order by a first-contact argument.
+\end{proof}
+
+On the upper diagonal $k=h$ at $N=0$, the mismatch term in
+\eqref{inc:AN03:ret:v2:upperexact} vanishes. In the resident field with
+$c=d=a_\rho$, $\mu_s=M\delta_{(a_\rho,a_\rho)}$, $N=0$, its integral
+term also vanishes for the upper pair. The rate becomes
+$-\varepsilon_M/2+\lambda\overline P_+/2$, exactly the AN02 nonlinear
+average. On the lower side, at $M=1$ the mismatch term is nonpositive
+for every $k\ge0$. Dropping the donor term \emph{before} using
+\eqref{inc:AN03:ret:v2:donorcancel} would lose this cancellation.
+
+\section{An all-label distance bound and nonlinear half-mass passage}
+\label{inc:AN03:ret:v2:passage}
+For an arbitrary strong label, regardless of order, let
+\[
+ D_{\alpha_0}=|x_{\alpha_0}-c|+|y_{\alpha_0}-d|,
+ \quad
+ R_p=\left(\frac1M\int D^p\dd\mu_s\right)^{1/p}\ (1\le p<\infty),
+ \quad R_\infty=\operatorname*{ess\,sup}D.
+\]
+The integrals mean pushforwards of the fixed label law; no one-to-one
+angle map is needed.
+
+\begin{theorem}[Two-sided, mixed-order differential bound]
+\label{inc:AN03:ret:v2:alllabel}
+Every strong label satisfies, in upper Dini form or almost everywhere,
+\begin{equation}\label{inc:AN03:ret:v2:alllabelineq}
+ D^+D\le
+ \left[-\frac{(1-\lambda)(1-M)}2+
+       \frac\lambda2(1-N)+b_c\right]D,
+ \qquad
+ b_c=c_\rho\max\{0,U_c,U_c^-\}.
+\end{equation}
+Moreover
+\begin{equation}\label{inc:AN03:ret:v2:barybudget}
+ b_c\le c_\rho(\mathcal B_++R_1).
+\end{equation}
+In particular, when $N(\tau_0)>0$, a direct integrated bound is
+\begin{equation}\label{inc:AN03:ret:v2:Gdirect}
+ D(t)\le
+ \left(\frac{M(\tau_0)}{M(t)}\right)^{(1-\lambda)/2}
+ \sqrt{\frac{N(t)}{N(\tau_0)}}
+ e^{\int_{\tau_0}^t b_c}\,D(\tau_0).
+\end{equation}
+\end{theorem}
+\begin{proof}
+Let $h=|x-c|$, $k=|y-d|$. Write $P(r)=\Phi(\rho r)$.
+For $x>c$, the fundamental theorem of calculus in the first coordinate,
+followed by the absolute-value bound on the cross term, gives
+\begin{align*}
+ 2D^+h&\le-\varepsilon_Mh+\lambda(1-N)kP(c+h)
+             +2c_\rho(U_c)_+h,\\
+ 2D^+k&\le-\varepsilon_Mk+\lambda(1-N)h\overline P_+.
+\end{align*}
+These inequalities hold for either sign of $y-d$: the exact diagonal
+term in the second equation is $-\varepsilon_M k$, whereas its input
+cross term is bounded in absolute value. In the first equation the
+receiver/donor integral has $-(r-c)-\Pi(r)\le0$.
+For $x<c$, perform the same subtraction in the opposite direction and
+use the donor cancellation before discarding its negative part. This gives
+\begin{align*}
+ 2D^+h&\le-\varepsilon_Mh+\lambda(1-N)kP(c-h)
+  +\lambda\varepsilon_M h(\overline P_--P_-)
+  +2c_\rho(U_c^-)_+h,\\
+ 2D^+k&\le-\varepsilon_Mk+\lambda(1-N)h\overline P_-.
+\end{align*}
+Thus no co-ordered identity is applied as an equality to a mixed-order
+pair. Since $0\le P_\pm,\overline P_\pm\le1$ and
+$0\le\overline P_--P_-\le1$, addition proves
+\eqref{inc:AN03:ret:v2:alllabelineq}. At $x=c$ the upper derivative of
+$|x-c|$ is $\lambda(1-N)P(c)k/2$. At $y=d$ use the absolute value of
+the corresponding input cross velocity. The same estimates hold at both
+coordinate equalities. At $D=0$, same-field uniqueness preserves equality.
+
+By Jensen,
+$|c-X_s|+|d-Y_s|\le R_1$.
+The exact identities
+\[
+ U_c=\mathcal B+(1-N)(d-Y_s)-(c-X_s),\qquad
+ U_c^-=\mathcal B+(1-N)(d-Y_s)-(1-M)(c-X_s)
+\]
+prove \eqref{inc:AN03:ret:v2:barybudget}.
+Finally integrate \eqref{inc:AN03:ret:v2:alllabelineq} and use the two
+logistic identities $\int(1-M)=\log(M(t)/M(\tau_0))$ and
+$\lambda\int(1-N)=\log(N(t)/N(\tau_0))$.
+\end{proof}
+
+The all-label bound is coarser on the lower side during strong learning
+than AN02's upper estimate, but it retains the same global weak-stage
+rate $\lambda/2$. It cannot be used backwards as an initialized
+strong-contraction theorem. It does not require a pointwise small tail,
+only the stated leading-system existence and moment hypotheses.
+
+\begin{theorem}[Nonlinear passage to weak half-mass with a mean budget]
+\label{inc:AN03:ret:v2:halfpassage}
+Assume the leading solution and the same-field reference are defined on
+$[\tau_0,\tau_h]$, where $0<N_0=N(\tau_0)<1/2$ and $N(\tau_h)=1/2$.
+Define
+\begin{align}
+ L(t)&=\sqrt{\frac{N(t)}{N_0}}
+       \exp\left(c_\rho\int_{\tau_0}^t\mathcal B_+(r)\dd r\right),
+ \qquad L(\tau_0)=1,\label{inc:AN03:ret:v2:L}\\
+ J_L(t)&=\int_{\tau_0}^t L(r)\dd r,
+ \qquad Q(t)=1-c_\rho R_1(\tau_0)J_L(t).
+ \label{inc:AN03:ret:v2:denominator}
+\end{align}
+Whenever $Q(t)>0$ throughout the interval,
+\begin{equation}\label{inc:AN03:ret:v2:nonlinearG}
+ D(t,\alpha_0)\le\frac{L(t)}{Q(t)}D(\tau_0,\alpha_0),
+ \qquad
+ R_p(t)\le\frac{L(t)}{Q(t)}R_p(\tau_0)
+ \quad(1\le p\le\infty).
+\end{equation}
+Also
+\begin{equation}\label{inc:AN03:ret:v2:integralL}
+ J_L(t)\le\frac4\lambda[L(t)-1].
+\end{equation}
+Consequently, if
+\begin{equation}\label{inc:AN03:ret:v2:smallness}
+ \frac{4c_\rho}{\lambda}R_1(\tau_0)L(\tau_h)\le\frac12,
+\end{equation}
+then $Q\ge1/2$ and
+\begin{equation}\label{inc:AN03:ret:v2:halfradius}
+ R_p(\tau_h)\le
+ 2\,\frac{e^{c_\rho\int_{\tau_0}^{\tau_h}\mathcal B_+}}
+          {\sqrt{2N_0}}R_p(\tau_0).
+\end{equation}
+The strong radius about its own barycentre is at most $2R_p$.
+\end{theorem}
+\begin{proof}
+Drop the nonpositive strong-mass term in
+\eqref{inc:AN03:ret:v2:alllabelineq} and use
+\eqref{inc:AN03:ret:v2:barybudget}. With
+$a(t)=\lambda(1-N)/2+c_\rho\mathcal B_+$, every label satisfies
+$D^+D\le[a(t)+c_\rho R_1]D$.
+On each compact time interval with bounded support the characteristic
+velocities are uniformly bounded. Thus $D(t,\alpha_0)$ is uniformly
+Lipschitz in time, and so is its integral $R_1$. Fubini's theorem for
+absolutely continuous functions identifies $R_1'$ almost everywhere
+with the integral of the labelwise derivatives; equivalently, bounded
+difference quotients and reverse Fatou pass the upper derivative under
+the integral. The normalized strong weights are constant. Integration gives
+\[
+ R_1'\le a(t)R_1+c_\rho R_1^2
+\]
+almost everywhere. The explicit scalar solution with the same initial
+value is $R_1(\tau_0)L(t)/Q(t)$, as verified by differentiation.
+Scalar comparison on the interval of positive denominator bounds $R_1$
+by this expression. This also covers zero initial radius by uniqueness.
+It follows that
+\[
+ \int_{\tau_0}^t c_\rho R_1(r)\dd r
+ \le-\log Q(t).
+\]
+Integrating the labelwise inequality proves
+\eqref{inc:AN03:ret:v2:nonlinearG}; the $L^p$ bounds follow from the
+constant normalized weights (the essential-supremum case is direct).
+
+Since $N\le1/2$, $a(t)\ge\lambda/4$ and $L'=aL\ge\lambda L/4$.
+Integrate this inequality to prove \eqref{inc:AN03:ret:v2:integralL}.
+Both $L$ and $J_L$ are nondecreasing. Condition
+\eqref{inc:AN03:ret:v2:smallness} therefore keeps $Q\ge1/2$ on the
+whole interval and closes the comparison without a presumed small-shape
+bootstrap. Finally the barycentre-reference distance is at most $R_1$;
+Minkowski and $R_1\le R_p$ give the last claim.
+\end{proof}
+
+\paragraph{A usable sufficient mean budget.}
+If
+$\mathcal B_+\le C_B N+r_B$, $r_B\ge0$, and
+$\int_{\tau_0}^{\tau_h}r_B\le B_{\rm err}$, then
+\begin{equation}\label{inc:AN03:ret:v2:meanbudget}
+ \int_{\tau_0}^{\tau_h}\mathcal B_+
+ \le\frac{C_B}{\lambda}\log[2(1-N_0)]+B_{\rm err}
+ \le\frac{C_B\log2}{\lambda}+B_{\rm err}.
+\end{equation}
+This follows by integrating $N'=\lambda N(1-N)$.
+On the AN06 selected coherent branch before half-mass,
+$\mathcal B=n(v-y)-(x-y)\le(8/5)n$ on its reviewed parameter interval.
+Thus a bounded budget is analytically consistent with that branch.
+The population has \emph{not} been proved to satisfy the same bound:
+its mean tracking and weak moments must be controlled separately.
+
+\begin{corollary}[An all-label first-exit profile]
+\label{inc:AN03:ret:v2:exitprofile}
+Let $G(t)=L(t)/Q(t)$ on a positive-denominator interval. Write
+$\eta_0$ for the normalized fixed strong-label law and
+$\mathcal P_0(r)=\eta_0\{D(\tau_0)\ge r\}$.
+Then, for any $H_*>0$ and $T\le\tau_h$,
+\begin{equation}\label{inc:AN03:ret:v2:exitmass}
+ \eta_0\left\{\sup_{\tau_0\le t\le T}D(t)\ge H_*\right\}
+ \le\mathcal P_0(H_*/G(T)).
+\end{equation}
+Multiplication by $M(T)$ gives the mass of those fixed labels at time
+$T$. If $\mathcal P_0(r)\le C(\varepsilon_0/r)^p$, the right side is
+at most $C(\varepsilon_0G(T)/H_*)^p$.
+\end{corollary}
+\begin{proof}
+$L$ increases and $Q$ decreases, so $G$ is nondecreasing.
+A first hit of $H_*$ implies $D(\tau_0)\ge H_*/G(T)$ by
+\eqref{inc:AN03:ret:v2:nonlinearG}; labels already outside at entry
+satisfy the same implication. Integrate this inclusion in the fixed
+normalized label law. No time-dependent mask is differentiated.
+\end{proof}
+The theorem still requires leading-chart validity until $T$. It does not
+authorize continuing an escaped label in a bounded physical chart or
+ignoring that label's later residual contribution.
+
+\section{Corrected entry clocks and the conditional exponent}
+\label{inc:AN03:ret:v2:clocks}
+\begin{proposition}[Entry-clock conversion with a defect]
+\label{inc:AN03:ret:v2:clockconversion}
+For an absolutely continuous family mass $0<N<1$ with
+$N'=\lambda N(1-N)+r_N$,
+\begin{equation}\label{inc:AN03:ret:v2:logit}
+ \log\frac{N(\tau_e)}{1-N(\tau_e)}
+ =\log\frac{N(0)}{1-N(0)}+\lambda\tau_e+
+ \int_0^{\tau_e}\frac{r_N}{N(1-N)}\dd\tau.
+\end{equation}
+Suppose, at fixed $q$, that
+\[
+ \log\frac{N(0)}{1-N(0)}=-\gamma_0\log(1/S_0)+O_q(1),\quad
+ \tau_e=\chi\log(1/S_0)+O_q(1),\quad
+ \int_0^{\tau_e}\frac{r_N}{N(1-N)}\dd\tau=O_q(1).
+\]
+If $\gamma_e=\gamma_0-\lambda\chi>0$, then
+$N(\tau_e)\asymp_q S_0^{\gamma_e}$.
+For the closed logistic model with $\gamma_0=\chi=1$, this gives
+$\gamma_e=1-\lambda$, not $1$.
+\end{proposition}
+\begin{proof}
+Differentiate the logit and integrate. Under the hypotheses its endpoint
+is $-\gamma_e\log(1/S_0)+O_q(1)$; since $\gamma_e>0$, the endpoint
+mass tends to zero and its odds and mass are comparable.
+\end{proof}
+This conversion cannot be applied to an uncharted or changing family
+without a mass-law/flux budget. The large relative-defect integral near
+zero belongs here in the \emph{entry-law derivation}. Once the actual
+half-mass time is used for the witness clock, the local AN06 mass defect
+is integrated only on the bounded clock-to-witness hull; these are two
+different uses of the same identity.
+
+\begin{corollary}[Positive conditional global-rate shape exponent]
+\label{inc:AN03:ret:v2:exponent}
+Under the hypotheses of Theorem~\ref{inc:AN03:ret:v2:halfpassage}, suppose
+for some $p\ge1$ that the \emph{entry} estimates are
+\begin{equation}\label{inc:AN03:ret:v2:entryhyp}
+ N_0\ge c_w(q)S_0^{1-\lambda},\qquad
+ R_p(\tau_0)\le C_s(q)S_0^{1/2-\alpha_{\rm sh}},\qquad
+ \int_{\tau_0}^{\tau_h}\mathcal B_+\le B_0(q).
+\end{equation}
+Set
+\[
+ A(q)=\frac{C_s(q)e^{c_\rho B_0(q)}}{\sqrt{2c_w(q)}},
+ \qquad
+ \eta_{\rm glob}=\frac\lambda2-\alpha_{\rm sh}
+ =\frac\lambda2\Phi(-\rho a_\rho)>0.
+\]
+If $A(q)S_0^{\eta_{\rm glob}}\le\lambda/(8c_\rho)$, then
+\begin{equation}\label{inc:AN03:ret:v2:exponentbound}
+ R_p(\tau_h)\le2A(q)S_0^{\eta_{\rm glob}}.
+\end{equation}
+On $\rho\in[13/20,7/10]$, one has the explicit uniform inequality
+\begin{equation}\label{inc:AN03:ret:v2:uniformeta}
+ \eta_{\rm glob}>\frac{16393}{200000}>0.
+\end{equation}
+\end{corollary}
+\begin{proof}
+$R_1(\tau_0)\le R_p(\tau_0)$, and
+$L(\tau_h)\le e^{c_\rho B_0}/\sqrt{2c_wS_0^{1-\lambda}}$.
+Their product is at most $A(q)S_0^{\lambda/2-\alpha_{\rm sh}}$.
+The specified inequality implies
+\eqref{inc:AN03:ret:v2:smallness}; apply
+\eqref{inc:AN03:ret:v2:halfradius}.
+Positivity follows from the positive Gaussian tail at every finite
+$\rho a_\rho$. For the sharpening, let $z=\rho a_\rho$, so $z=\lambda K(z)$.
+The function $z-\lambda K(z)$ is strictly increasing. Since $\phi(0)<2/5$
+and $K(z)\le2/5+z/2+z^2/5$ for $z\ge0$,
+\[
+ \frac{49}{100}K(7/25)
+ <\frac{49}{100}\left(\frac25+\frac7{50}+\frac{49}{3125}\right)
+ <\frac7{25}.
+\]
+Hence $z<7/25$ throughout the parameter interval, and
+$\Phi(z)<1/2+(2/5)(7/25)=153/250$. Therefore
+$\eta_{\rm glob}>(169/800)(97/250)=16393/200000$.
+\end{proof}
+
+For comparison, the \emph{frozen resident} multiplier with the same entry
+power has formal exponent
+\begin{equation}\label{inc:AN03:ret:v2:frozeneta}
+ \eta_{\rm frozen}
+ =\frac12-\alpha_{\rm sh}-(1-\lambda)\frac{\alpha_{\rm sh}}\lambda
+ =\frac12\Phi(-\rho a_\rho)>0.
+\end{equation}
+Equation \eqref{inc:AN03:ret:v2:frozeneta} is an algebraic identity for
+that approximation, not a replacement of the moving population field.
+The proved conditional result is \eqref{inc:AN03:ret:v2:exponentbound}.
+No uniform positive exponent is claimed as $\rho\to0$ or $\rho\to1$.
+The old $c_0=1$ balance remains the algebra for a different hypothetical
+entry law; its root is not a proved phase transition of the initialized
+population.
+
+\paragraph{Regime restriction: conditional algebra only.}
+The product that must actually tend to zero is
+$A(q)S_0^{\eta_{\rm glob}}$, together with every entry and chart
+hypothesis above. The sufficient algebraic condition
+$\log A(q)=o(\log(1/S_0))$ does not establish that those hypotheses
+hold on the same sequence. In particular, increasing
+$\log(1/S_0)/\log(1/q)$ can change the source and location of the weak
+seed; it cannot be used to absorb $q$-costs while silently retaining a
+seed law derived in a different transit regime. At fixed $q$, the corollary
+is only an implication if its entry hypotheses hold, not a proof that they
+hold for all sufficiently small $S_0$. No nonempty initialized joint
+regime follows from this corollary. For a finite-power scaling
+$S_0=q^\kappa$, all $q$-powers in the seed, shape, mean budget, and the
+choice of common entry clock must be counted explicitly.
+
+\section{Empirical interpretation and the unresolved initialized link}
+\label{inc:AN03:ret:v2:status}
+The reported pilot sweep gives a weak mass exponent near $0.576$ at
+strong half-mass and a strong input-spread exponent near $0.36$ at an
+earlier learned strong threshold. These marginal input statistics do not
+yet bound the joint input/output $R_p$ used here; percentile widths alone
+also do not bound a high moment or a uniform radius. Those reported values motivate
+\eqref{inc:AN03:ret:v2:entryhyp}; they were not independently recomputed
+for this increment. The reported masks, single-run status, and finite
+range must be retained. The formulas above neither require these data
+nor show that the same scaling persists in the deeper proposed round-trip
+regime. No $\rho=0.85$ sweep was run.
+
+\paragraph{Recruitment comparison.}
+The reviewed zero-noise target-only outer tail has power
+$S_0^{3(1-\lambda)/2}q^{-3}$ at its specified comparison clock.
+Relative to a \emph{hypothetical retained} seed $c_w(q)S_0^{1-\lambda}$,
+its ratio has scale
+\[
+ c_w(q)^{-1}S_0^{(1-\lambda)/2}q^{-3}.
+\]
+At $\lambda=4/9$, the initialization-power advantage is $5/18$.
+The heuristic threshold $\log(1/S_0)/\log(1/q)>54/5$ ignores any
+additional $q$-power in $c_w$; it is exact exponent accounting only when
+that omitted prefactor is controlled accordingly. If
+$c_w(q)\gtrsim q^k$, the corresponding sufficient strict power condition
+is $(1-\lambda)\log(1/S_0)/2>(3+k)\log(1/q)$ with a margin tending
+to infinity. This remains a comparison of proposed source laws, not a
+proof that recruited mass is negligible in the original flow.
+
+\paragraph{What is improved.}
+The global passage estimate covers upper, lower, and mixed-order strong
+labels in one full-field bound. Its nonlinear closure uses $R_1$, the
+mean-imbalance budget, and the weak mass growth without an additional
+$\log(1/N_0)$ factor. Its positive formal $S_0$ exponent is not evidence
+that a compatible initialized joint regime exists. The earlier suggestion
+that local rates are needed only to improve constants is withdrawn:
+local-rate control may be essential once the entry $q$-costs and transit
+regime are matched. Whether the global bound closes anywhere for the
+original flow is not decided here.
+
+\paragraph{What is not improved by changing the exponent alone.}
+The same-field reference can follow the wrong mean trajectory; its
+closeness to the selected coherent branch is not a conclusion of a
+spread estimate. Neither the weak angular distribution nor a complete
+AN06 distance follows from $R_p$ alone. The entry shape law, a useful
+lower bound on $\mathcal R_2$, the mean-feedback budget
+\eqref{inc:AN03:ret:v2:meanbudget}, and persistence/flux estimates for the
+charted families remain to be proved from isotropic initialization.
+The bridge-sized canonical distribution is not shown to meet the
+smallness condition. Finite-noise rates, normalized weight drift,
+uncharted populations, and probe-gate strips remain AN7 obligations.
+
+The next initialized target is therefore explicit: prove, at an
+analytically chosen learned entry time, a lower bound on the
+\emph{weighted net retention} $\mathcal R_2$ with usable $q$-dependence,
+together with a strong mean/shape estimate and a mean-imbalance integral
+budget. The hypotheses in \eqref{inc:AN03:ret:v2:entryhyp} are a proved
+sufficient passage interface, not an initialized theorem. Theorems A
+and B remain open.
+
+\clearpage
+\begin{thebibliography}{9}\footnotesize
+\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}
+\raggedright
+\bibitem{F} \path{RELU_POPULATION_FOUNDATIONS_v2.tex}.
+Frozen supplied foundations, Gaussian and loss identities.
+\bibitem{P} \path{THEOREM_A_ANALYTICAL_PROGRESS.tex}, version 1.0.
+\texttt{pa:earlybounds}, \texttt{pa:targetcomparison}, \texttt{pa:overlap},
+\texttt{pa:leading}, \texttt{pa:masslaws}, \texttt{pa:resident},
+\texttt{pa:multipliers}.
+\bibitem{A2} \path{AN02_strong_ancestry_and_tail_transport_v1.tex}.
+Reviewed weighted ancestry, exact target-only outer law, and upper-tail
+transport; the lower-side and all-label extensions here are new.
+\bibitem{Arr} \path{AN02_weak_side_arrival_v1.tex}.
+Reviewed target-only backward-sector cohort and original-flow arrival.
+\bibitem{A6} \path{AN06_learned_orbit_witnesses_v2.tex}.
+Reviewed learned limiting witnesses, half-mass clock, and small-shape
+population tolerance.
+\bibitem{Rev} User's current review and reported pilot $S_0$-sweep
+measurements. Empirical motivation only; no trajectory data are a proof
+premise.
+\end{thebibliography}
+\end{document}

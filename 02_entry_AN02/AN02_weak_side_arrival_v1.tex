@@ -1,0 +1,639 @@
+% New proof increment. Do not automatically merge into the checkpoint.
+% Unique label prefix: inc:AN02:arrival:v1:
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=0.95in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage{booktabs,array,xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small AN02: initialized weak-side arrival}
+\fancyhead[R]{\small Version 1 --- review increment}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\,d}
+\newcommand{\ind}{\mathbf1}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclareMathOperator{\tr}{tr}
+\title{An initialized weak-side reservoir\\at a deterministic early envelope time}
+\author{Separate analytical proof increment for AN2}
+\date{October 2, 2026 --- version 1, for independent review}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We construct an initial-label interval, specified analytically from the
+parameters rather than selected from a trained trajectory, whose exact
+finite-noise population characteristics lie in an incoming weak-side sector
+at a logarithmic early time. The original-flow mass of this interval has an
+explicit lower bound. In particular, for
+$3/5\le\rho\le3/4$, $0<q\le1/20$, and
+$0<S_0<\delta\le1/100$, at
+$T_\delta=(1+2q^2)^{-1}\log(\delta/S_0)$ it is at least
+$(q/3000)S_0(S_0/\delta)^{1/16}$.
+The construction uses a one-sided Gaussian-tail bound on backward angular
+compression and the checkpoint's exact early comparison. It retains all
+population interactions in transferring to the true flow.
+The cohort is not yet captured in a bounded weak noise-scaled chart, and
+$T_\delta$ is not a strong-learning hitting time. Thus this is a new
+initialized arrival sublemma, not completion of AN2, AN3, or Theorems A/B.
+\end{abstract}
+
+\section{Contract, setting, and main result}
+\label{inc:AN02:arrival:v1:contract}
+
+\paragraph{Dependencies and status.}
+The input model is exactly the aligned-balanced isotropic population in
+\cite{F}, P1--P5, and \cite{P}, \texttt{pa:setup}.
+The early comparison used below is \cite{P},
+\texttt{pa:earlybounds} and \texttt{pa:targetcomparison}; the part needed
+here is restated and verified in Section~\ref{inc:AN02:arrival:v1:early}.
+The Gaussian feature identity comes from \cite{F}, P4, equation (6.7).
+No leading-system approximation, coherent reduction, numerical orbit, or
+assumption of a pre-existing weak attractor is used. Global existence of
+the exact labeled characteristic solution is imported from \cite{F}, P5.
+All new results are for review; the protected source documents are unchanged.
+
+Use normalized time $\tau=\mu_1^2t_{\rm phys}$ and
+\[
+ P_1=\mathcal N(e_1,q^2I_2),\qquad
+ P_2=\mathcal N(\rho e_2,q^2I_2),\qquad P=(P_1+P_2)/2.
+\]
+Let $\lambda=\rho^2$, $a_*=1/2+q^2$, and
+$\lambda_0(d\alpha)=d\alpha/(2\pi)$. With
+$a_\theta=(\cos\theta,\sin\theta)$ and
+$b_\psi=(\cos\psi,\sin\psi)$, the exact population is
+\[
+ f_\tau(X)=\int m_\tau(\alpha)b_{\psi_\tau(\alpha)}
+       (a_{\theta_\tau(\alpha)}^\top X)_+\dd\lambda_0(\alpha),
+ \qquad \theta_0=\psi_0=\alpha,\quad m_0=S_0.
+\]
+Write $S(\tau)=\int m_\tau\dd\lambda_0$ and
+\[
+ R_f(\theta)=\E_P[(X-f(X))X^\top\ind_{\{a_\theta^\top X>0\}}].
+\]
+The full, untied, balanced equations are
+\begin{equation}\label{inc:AN02:arrival:v1:flow}
+ \theta'=b^\top R_fa^\perp,\qquad
+ \psi'=(b^\perp)^\top R_fa,\qquad
+ (\log m)'=2b^\top R_fa.
+\end{equation}
+Let $\phi,\Phi$ be the standard normal density and distribution function,
+and set $K(r)=\phi(r)+r\Phi(r)=\E(Z+r)_+$.
+
+\paragraph{An analytical scalar comparison, not a fitted trajectory.}
+Put
+\[
+ A_\theta=\E_P[XX^\top\ind_{\{a_\theta^\top X>0\}}],\qquad
+ v_0(\theta)=(a_\theta^\perp)^\top A_\theta a_\theta.
+\]
+Denote the scalar flow of $\widehat\theta'=v_0(\widehat\theta)$ by
+$\varphi_\tau(\alpha)$. At positive $q$ this is a smooth flow on the circle;
+we use its real lift. Fix once and for all the terminal sector
+\begin{equation}\label{inc:AN02:arrival:v1:sector}
+ I=[2\pi/3,3\pi/4].
+\end{equation}
+For a prescribed $T\ge0$, the initial-label interval is
+\begin{equation}\label{inc:AN02:arrival:v1:cohort}
+ C_T=\{\varphi_{-T}(\theta):\theta\in I\}.
+\end{equation}
+This interval is specified from $\rho,q,T$ before following the nonlinear
+population. For each fixed $T$ it is held fixed on the whole interval
+$[0,T]$. No empirical specialization labels enter its definition.
+
+\begin{theorem}[Initialized incoming weak-side mass]
+\label{inc:AN02:arrival:v1:main}
+Assume
+\begin{equation}\label{inc:AN02:arrival:v1:parameters}
+ \frac35\le\rho\le\frac34,\qquad 0<q\le\frac1{20},\qquad
+ 0<S_0<\delta\le\frac1{100}.
+\end{equation}
+Choose any $R\ge1$ such that $qR\le\lambda/2$, and define
+\begin{align}
+ T_\delta&=\frac1{2a_*}\log\frac{\delta}{S_0},
+ \label{inc:AN02:arrival:v1:clock}\\
+ \kappa_R(q,\rho)&=\frac12\left[
+ (1+2q^2)\Phi\!\left(-\frac1{2q}\right)
+ +(\lambda+2q^2)\Phi(-R)\right],
+ \qquad \varepsilon_R=\frac{\kappa_R}{2a_*}.
+ \label{inc:AN02:arrival:v1:kappa}
+\end{align}
+For $C=C_{T_\delta}$, let
+$M_{\rm in}=\int_C m_{T_\delta}(\alpha)\dd\lambda_0(\alpha)$.
+Then the following are statements about the exact original flow:
+\begin{align}
+ S(\tau)&\le\delta\quad(0\le\tau\le T_\delta),
+ \label{inc:AN02:arrival:v1:smallmass}\\
+ \theta_{T_\delta}(\alpha),\ \psi_{T_\delta}(\alpha)
+ &\in[7\pi/12,5\pi/6]\quad(\alpha\in C),
+ \label{inc:AN02:arrival:v1:angles}\\
+ m_{T_\delta}(\alpha)&\ge e^{-4\delta}S_0\quad(\alpha\in C),
+ \label{inc:AN02:arrival:v1:labelmass}\\
+ M_{\rm in}&\ge
+ \frac{\rho qK(-R)}{72a_*}e^{-4\delta}
+ S_0\left(\frac{S_0}{\delta}\right)^{\varepsilon_R}.
+ \label{inc:AN02:arrival:v1:sharpseed}
+\end{align}
+In particular $R=1$ is admissible throughout
+\eqref{inc:AN02:arrival:v1:parameters}, and a completely elementary bound is
+\begin{equation}\label{inc:AN02:arrival:v1:rationalseed}
+ \boxed{\displaystyle
+ M_{\rm in}\ge\frac q{3000}\,S_0
+       \left(\frac{S_0}{\delta}\right)^{1/16}.}
+\end{equation}
+The cohort's input and output directions both satisfy
+$a_1,b_1\le-1/4$ and $a_2,b_2\ge1/2$ at $T_\delta$.
+\end{theorem}
+
+\paragraph{What is not in this statement.}
+There is no claim that $S(T_\delta)=\delta$, that either concept is
+substantially learned, or that the full incoming mass remains available
+at a later resident-entry time. In particular $M_{\rm in}$ is not yet
+$N_{\rm ent}$ in AN3. Directions in
+\eqref{inc:AN02:arrival:v1:angles} are outside a bounded weak noise-scaled
+chart as $q\to0$. Capture, subsequent amplification, and the
+strong-population shape estimates are separate open obligations.
+
+\section{The exact early comparison used in the transfer}
+\label{inc:AN02:arrival:v1:early}
+
+\begin{lemma}[Imported comparison, in the required normalization]
+\label{inc:AN02:arrival:v1:comparison}
+Define
+\[
+ \overline S(\tau)=S_0e^{2a_*\tau},\qquad
+ \epsilon_{\rm al}(\tau)=\overline S(\tau)-S_0,
+ \qquad
+ H(\tau)=S_0(2e^{2a_*\tau}-3e^{a_*\tau}+1).
+\]
+While $\epsilon_{\rm al}<\pi$, the exact initialized population and the
+target-only characteristic satisfy
+\begin{align}
+ S&\le\overline S,\qquad |\psi-\theta|\le\epsilon_{\rm al},
+ \label{inc:AN02:arrival:v1:comparison1}\\
+ |\theta-\varphi_\tau(\alpha)|&\le H,\qquad
+ |\psi-\varphi_\tau(\alpha)|\le H+\epsilon_{\rm al},\qquad
+ \left|\log\frac{m}{\widehat m}\right|\le2H,
+ \label{inc:AN02:arrival:v1:comparison2}
+\end{align}
+where $\widehat m_0=S_0$ and
+$(\log\widehat m)'=2g_0(\varphi_\tau(\alpha))$ with
+$g_0(\theta)=a_\theta^\top A_\theta a_\theta\ge0$.
+Consequently $\widehat m\ge S_0$.
+\end{lemma}
+\begin{proof}
+This is \cite{P}, \texttt{pa:earlybounds} and
+\texttt{pa:targetcomparison}; the following verifies the dependencies used
+here. Put
+$C_f(\theta)=\E_P[f(X)X^\top\ind_{\{a_\theta^\top X>0\}}]$.
+The spectral bound $0\preceq A_\theta\preceq a_*I$ and the feature
+representation give $\norm{C_f}\le a_*S$ by Cauchy--Schwarz.
+The exact mass identity yields
+\[
+ S'=2\E_P[X^\top f]-2\E_P|f|^2\le2a_*S,
+\]
+so $S\le\overline S$. If $d=\psi-\theta$, symmetry of $A_\theta$ gives
+\[
+ d'=-\tr(A_\theta)\sin d+\eta,\qquad |\eta|\le2a_*S.
+\]
+Before the first possible exit from $|d|<\pi$, its target term points
+inward, so $D^+|d|\le2a_*\overline S$. Integration closes that first-exit
+condition whenever $\epsilon_{\rm al}<\pi$.
+
+The moving-gate derivative obeys $A_\theta'a_\theta=0$: its boundary
+integrand contains $X^\top a_\theta=0$. Thus
+\[
+ v_0'=(a^\perp)^\top A_\theta a^\perp-a^\top A_\theta a,
+ \quad g_0'=2v_0,\quad |v_0'|,|g_0'|\le a_*.
+\]
+The last bound for $g_0'$ follows by comparing the two quadratic forms
+on $(a+a^\perp)/\sqrt2$ and $(a-a^\perp)/\sqrt2$.
+The true input angular velocity differs from $v_0(\theta)$ by at most
+$a_*(\epsilon_{\rm al}+\overline S)$. The scalar comparison for the
+angular distance is therefore
+\[
+ D^+|\theta-\widehat\theta|
+ \le a_*|\theta-\widehat\theta|
+       +a_*(\epsilon_{\rm al}+\overline S).
+\]
+Its zero-initial-data equality solution is precisely $H$. Moreover
+\[
+ |b^\top R_fa-g_0(\widehat\theta)|
+ \le a_*(\epsilon_{\rm al}+\overline S+H)=H'.
+\]
+Integration proves the logarithmic mass comparison. The output-angle
+comparison follows by adding the alignment error. Finally $g_0\ge0$
+proves $\widehat m\ge S_0$. All remainder estimates include the entire
+population through $C_f$, not merely the chosen cohort.
+\end{proof}
+
+\section{A Gaussian backward-transport estimate}
+\label{inc:AN02:arrival:v1:transport}
+
+\subsection{The scalar field and its upstream interval}
+The exact Gaussian feature formula gives
+\begin{equation}\label{inc:AN02:arrival:v1:vformula}
+ v_0(\theta)=\frac q2\left[
+ -\sin\theta K\!\left(\frac{\cos\theta}{q}\right)
+ +\rho\cos\theta K\!\left(\frac{\rho\sin\theta}{q}\right)
+ \right].
+\end{equation}
+The isotropic $q^2a_\theta$ part of each Gaussian feature vector is
+orthogonal to $a_\theta^\perp$ and contributes nothing to this formula.
+
+\begin{lemma}[An upstream barrier and two quantitative field bounds]
+\label{inc:AN02:arrival:v1:barrier}
+Assume the $\rho,q,R$ hypotheses of Theorem~\ref{inc:AN02:arrival:v1:main}.
+Put
+\[
+ \beta=\pi+\arcsin\frac{qR}{\rho},\qquad
+ B=\frac{4\pi}{3},\qquad
+ b_R=\frac{\rho qK(-R)}6.
+\]
+Then $\pi<\beta<B$,
+\begin{align}
+ -v_0(\theta)&\ge b_R>0
+       &&(2\pi/3\le\theta\le\beta),
+ \label{inc:AN02:arrival:v1:speed}\\
+ v_0' (\theta)&\le\kappa_R
+       &&(\beta\le\theta\le B),
+ \label{inc:AN02:arrival:v1:tailcurvature}\\
+ |v_0(\theta)|&\le a_*/2
+       &&(\theta\in\R),
+ \label{inc:AN02:arrival:v1:maxspeed}
+\end{align}
+and $v_0(B)>0$.
+Consequently there is a first zero $\theta_*\in(\beta,B)$ after $\beta$,
+with $v_0<0$ on $[2\pi/3,\theta_*)$.
+No uniqueness or nondegeneracy of zeros elsewhere is asserted.
+\end{lemma}
+\begin{proof}
+Since $qR/\rho\le\rho/2\le3/8<1/2$, the definition of $\beta$ is valid
+and $\beta<\pi+\pi/6<B$. For
+$2\pi/3\le\theta\le\pi$, put $c=\cos\theta$, $s=\sin\theta$.
+Here $-c\ge1/2$, $s\ge0$, and \eqref{inc:AN02:arrival:v1:vformula} gives
+\[
+ -v_0(\theta)\ge\frac{\rho q(-c)}2 K(\rho s/q)
+ \ge\frac{\rho q}4K(0)\ge b_R.
+\]
+For $\pi\le\theta\le\beta$, write $c=-C$, $s=-d$.
+Then $0\le d\le\rho/2$, $C\ge\sqrt3/2$, and $C\ge\rho d$.
+Since $K$ is increasing and $\rho d/q\le R$,
+\begin{align*}
+ -v_0(\theta)
+ &=\frac q2[\rho C K(-\rho d/q)-dK(-C/q)]\\
+ &\ge\frac q2(\rho C-d)K(-\rho d/q)
+ \ge\frac q2\rho\frac{\sqrt3-1}{2}K(-R)
+ \ge b_R.
+\end{align*}
+The final inequality uses $(\sqrt3-1)/2>1/3$.
+
+For the derivative bound, consider a Gaussian $X=c_p+qZ$ and let
+$\ell=a_\theta^\top c_p$. Resolve $X$ along $a_\theta$ and its
+orthogonal direction. Direct integration of the one-dimensional
+truncated second moment gives
+\begin{equation}\label{inc:AN02:arrival:v1:trace}
+ \E[|X|^2\ind_{\{a_\theta^\top X>0\}}]
+ =(|c_p|^2+2q^2)\Phi(\ell/q)+\ell q\phi(\ell/q).
+\end{equation}
+On $[\beta,B]$ the two projected means satisfy
+$\ell_1=\cos\theta\le-1/2$ and
+$\ell_2=\rho\sin\theta\le-qR$.
+The final term in \eqref{inc:AN02:arrival:v1:trace} is nonpositive.
+Because $v_0'\le\tr(A_\theta)$ by the derivative identity in
+Lemma~\ref{inc:AN02:arrival:v1:comparison}, averaging the two Gaussian
+bounds gives \eqref{inc:AN02:arrival:v1:tailcurvature}.
+This step uses an upper bound on a signed derivative; no absolute
+$1/q$-Lipschitz estimate is introduced.
+
+For \eqref{inc:AN02:arrival:v1:maxspeed}, the difference between the
+quadratic forms of $A_\theta$ on
+$(a+a^\perp)/\sqrt2$ and $(a-a^\perp)/\sqrt2$ is $2v_0$.
+Both forms lie in $[0,a_*]$.
+Finally
+\[
+ v_0(B)=\frac q4\left[
+ \sqrt3 K\!\left(-\frac1{2q}\right)
+ -\rho K\!\left(-\frac{\sqrt3\rho}{2q}\right)\right]>0.
+\]
+Indeed $\sqrt3\rho>1$ on the specified ratio range, $\rho<\sqrt3$,
+and $K$ is strictly increasing and strictly positive.
+Continuity, the strict negative value at $\beta$, and the positive value
+at $B$ yield the claimed first zero and sign interval.
+\end{proof}
+
+\subsection{A lower bound on surviving initial-label length}
+\begin{lemma}[Backward Jacobian and initial interval size]
+\label{inc:AN02:arrival:v1:jacobian}
+For every $T\ge0$ and $\theta\in I$, the backward scalar characteristic
+$\chi(T,\theta)=\varphi_{-T}(\theta)$ lies in
+$[2\pi/3,\theta_*)$ and
+\begin{equation}\label{inc:AN02:arrival:v1:jaclower}
+ \partial_\theta\chi(T,\theta)
+ \ge\frac{\rho qK(-R)}{3a_*}e^{-\kappa_R T}.
+\end{equation}
+Consequently
+\begin{equation}\label{inc:AN02:arrival:v1:labellength}
+ \lambda_0(C_T)\ge
+ \frac{\rho qK(-R)}{72a_*}e^{-\kappa_R T}.
+\end{equation}
+More generally, for a subinterval $J\subset I$, replace $1/24=|I|/(2\pi)$
+in this calculation by $|J|/(2\pi)$.
+\end{lemma}
+\begin{proof}
+Put $w=-v_0$. The backward equation is $\partial_T\chi=w(\chi)$,
+with $w>0$ on $[2\pi/3,\theta_*)$. It is increasing in backward time
+and cannot reach the equilibrium $\theta_*$ at a finite time: otherwise
+uniqueness, applied also backward from the contact time, would identify
+it with the constant equilibrium solution. Thus every denominator below
+is nonzero on the finite interval where it is used.
+
+Differentiating the scalar flow gives
+\begin{equation}\label{inc:AN02:arrival:v1:jacexact}
+ \partial_\theta\chi(T,\theta)
+ =\exp\!\left(-\int_0^T v_0'(\chi(s,\theta))\dd s\right)
+ =\frac{w(\chi(T,\theta))}{w(\theta)}.
+\end{equation}
+The ratio equality follows either by differentiating both sides in $T$
+or by differentiating $\log w(\chi)$; initially both sides equal one.
+If $\chi(T,\theta)\le\beta$, then
+$w(\chi(T,\theta))\ge b_R$ by
+\eqref{inc:AN02:arrival:v1:speed}. If it has crossed $\beta$, let $s_b$
+be that unique backward crossing time. Thereafter
+\[
+ \frac d{ds}\log w(\chi(s,\theta))
+ =-v_0'(\chi(s,\theta))\ge-\kappa_R.
+\]
+Therefore in both cases
+\[
+ w(\chi(T,\theta))\ge b_Re^{-\kappa_R T}.
+\]
+Since $0<w(\theta)\le a_*/2$, substitution into
+\eqref{inc:AN02:arrival:v1:jacexact} proves
+\eqref{inc:AN02:arrival:v1:jaclower}. The flow is strictly increasing in
+its starting coordinate, so the length of $C_T$ is the integral of this
+Jacobian over $I$. Since $|I|=\pi/12$, division by $2\pi$ proves
+\eqref{inc:AN02:arrival:v1:labellength}.
+\end{proof}
+
+\begin{remark}[Why the one-sided upstream bound matters]
+Using only $|v_0'|\le a_*$ in the exponential Jacobian formula would give
+$\lambda_0(C_T)\ge(1/24)e^{-a_*T}$. At $T=T_\delta$ this loses a factor
+$(S_0/\delta)^{1/2}$ before accounting for any later capture.
+Lemma~\ref{inc:AN02:arrival:v1:jacobian} replaces that exponent by
+$\varepsilon_R$, with a displayed $qK(-R)$ prefactor. The finite passage
+through the faster angular region is handled by the exact speed ratio,
+not an exponential bound over the entire delay.
+\end{remark}
+
+\section{Transfer to the initialized nonlinear population}
+\label{inc:AN02:arrival:v1:transfer}
+
+\begin{proof}[Proof of Theorem~\ref{inc:AN02:arrival:v1:main}, except for the rational simplification]
+For $0\le\tau\le T_\delta$, $\overline S(\tau)\le\delta$ and
+$\epsilon_{\rm al}(\tau)\le\delta<\pi$.
+Lemma~\ref{inc:AN02:arrival:v1:comparison} therefore applies on the
+whole interval. At its endpoint,
+\[
+ H(T_\delta)=2\delta-3\sqrt{S_0\delta}+S_0\le2\delta,
+ \qquad H(T_\delta)+\epsilon_{\rm al}(T_\delta)\le3\delta<\pi/12.
+\]
+For each label in the predetermined $C_{T_\delta}$,
+$\varphi_{T_\delta}(\alpha)\in[2\pi/3,3\pi/4]$.
+The comparison places both true angles in
+$[7\pi/12,5\pi/6]$. On this interval sine is at least $1/2$ and cosine
+is at most $-\sin(\pi/12)<-1/4$. Since
+$\widehat m(T_\delta,\alpha)\ge S_0$, the mass comparison gives
+$m(T_\delta,\alpha)\ge e^{-4\delta}S_0$.
+Integrating over the fixed initial-label interval, and applying
+Lemma~\ref{inc:AN02:arrival:v1:jacobian}, yields
+\[
+ M_{\rm in}\ge e^{-4\delta}S_0
+       \frac{\rho qK(-R)}{72a_*}e^{-\kappa_R T_\delta}.
+\]
+The identity
+$e^{-\kappa_R T_\delta}=(S_0/\delta)^{\varepsilon_R}$ completes the
+sharp estimate. No density or monotonicity of the true input-angle
+projection was assumed; its possible folds do not affect the labelwise
+comparison or the fixed-label integral.
+\end{proof}
+
+\begin{proposition}[Elementary uniform constants]
+\label{inc:AN02:arrival:v1:rational}
+Under \eqref{inc:AN02:arrival:v1:parameters}, $R=1$ satisfies the theorem's
+hypotheses, $\varepsilon_1<1/16$, and
+\eqref{inc:AN02:arrival:v1:rationalseed} follows without numerical
+Gaussian evaluation.
+\end{proposition}
+\begin{proof}
+First $q\le1/20<9/50\le\rho^2/2$. The elementary bounds
+\begin{equation}\label{inc:AN02:arrival:v1:elementary}
+ \Phi(-1)<\frac3{16},\qquad K(-1)>\frac3{128},\qquad
+ \Phi\!\left(-\frac1{2q}\right)\le4q^2\le\frac1{100}
+\end{equation}
+have short analytic proofs. Since $\phi(0)>3/8$ (for example using
+$\pi<22/7$) and $e^{-z^2/2}\ge1-z^2/2$ for $0\le z\le1$,
+\[
+ \Phi(-1)=\frac12-\phi(0)\int_0^1e^{-z^2/2}\dd z
+ \le\frac12-\frac56\phi(0)<\frac3{16}.
+\]
+Also
+\[
+ K(-1)=\int_1^\infty(z-1)\phi(z)\dd z
+ \ge\frac12\phi(2)
+ >\frac12\frac38\frac18=\frac3{128}.
+\]
+Here $e^2<8$, for instance by summing the exponential series through
+degree four (sum $7$) and bounding its tail by
+$(4/15)/(1-1/3)=2/5$. The final Gaussian bound in
+\eqref{inc:AN02:arrival:v1:elementary} is Markov's inequality applied
+to $Z^2$, since $\E Z^2=1$.
+
+Because $2a_*=1+2q^2$ and $\lambda+2q^2\le227/400$,
+\[
+ \varepsilon_1
+ =\frac12\Phi\!\left(-\frac1{2q}\right)
+ +\frac{\lambda+2q^2}{2(1+2q^2)}\Phi(-1)
+ \le\frac1{200}+\frac{227}{800}\frac3{16}
+ =\frac{149}{2560}<\frac1{16}.
+\]
+The coefficient in \eqref{inc:AN02:arrival:v1:sharpseed} satisfies
+\[
+ \frac{\rho}{72a_*}e^{-4\delta}K(-1)
+ \ge\frac{80}{67}\frac1{72}\frac{24}{25}\frac3{128}
+ =\frac1{2680}>\frac1{3000},
+\]
+using $a_*\le201/400$ and $e^{-4\delta}\ge1-4\delta\ge24/25$.
+Finally $S_0/\delta<1$, so
+$(S_0/\delta)^{\varepsilon_1}\ge(S_0/\delta)^{1/16}$.
+\end{proof}
+
+\section{Exact training and probe meaning of the incoming cohort}
+\label{inc:AN02:arrival:v1:meaning}
+These conclusions identify what has actually been supplied to the next
+capture problem. They do not replace that problem by a mass label.
+
+At $T=T_\delta$, define the partial output
+\[
+ f_C(X)=\int_C m_T b_{\psi_T}(a_{\theta_T}^\top X)_+\dd\lambda_0,
+ \qquad M_C=M_{\rm in},
+\]
+and its partial weak response
+\[
+ \mathsf m_{2,C}
+ =\frac{\E_{P_2}[X_2(f_C)_2(X)]}{\lambda+q^2}.
+\]
+Let
+\[
+ H_2(r)=\E(Z+r)_+^2=(1+r^2)\Phi(r)+r\phi(r).
+\]
+This nonnegative Gaussian moment is increasing, since $H_2'=2K>0$.
+
+\begin{proposition}[A positive weak contribution with an exact strong-tail bound]
+\label{inc:AN02:arrival:v1:observables}
+For the cohort in Theorem~\ref{inc:AN02:arrival:v1:main},
+\begin{align}
+ \mathsf m_{2,C}
+ &\ge\frac{\lambda}{4(\lambda+q^2)}M_C
+ \ge\frac15M_C,
+ \label{inc:AN02:arrival:v1:partialresponse}\\
+ \norm{f_C}_{L^2(P_1)}
+ &\le M_Cq\sqrt{H_2\!\left(-\frac1{4q}\right)},
+ \label{inc:AN02:arrival:v1:tailoutput}\\
+ 0<\frac{\E_{P_1}(f_C)_2(X)}q
+ &\le M_CK\!\left(-\frac1{4q}\right).
+ \label{inc:AN02:arrival:v1:partiallag}
+\end{align}
+Moreover $(f_C)_1(X)\le0$ and $(f_C)_2(X)\ge0$ for every $X$.
+For every unit probe $\xi=(\sin\omega,-\cos\omega)$ with
+$0\le\omega\le\pi/2$, $f_C(\xi)=0$: this cohort is strictly
+probe-inactive at the stated time.
+\end{proposition}
+\begin{proof}
+The Gaussian feature identity, for $a=a_{\theta_T}$, gives
+\[
+ \E_{P_2}[X_2(a^\top X)_+]
+ =\rho qK(\rho a_2/q)+q^2a_2\Phi(\rho a_2/q)
+ \ge\lambda a_2.
+\]
+The inequality uses $a_2>0$ and $K(r)\ge r$.
+Multiplying by $b_2\ge1/2$ and using $a_2\ge1/2$ proves the first
+bound in \eqref{inc:AN02:arrival:v1:partialresponse}. On the parameter
+range, $\lambda\ge9/25$ and $q^2\le1/400$, so its coefficient is at
+least $36/145>1/5$.
+
+On cluster 1, $a^\top X$ is Gaussian with mean $a_1\le-1/4$ and
+variance $q^2$. Hence
+\[
+ \norm{(a^\top X)_+}_{L^2(P_1)}
+ \le q\sqrt{H_2(-1/(4q))}.
+\]
+Minkowski's inequality and $|b|=1$ give
+\eqref{inc:AN02:arrival:v1:tailoutput}. For its first moment,
+\[
+ \frac{\E_{P_1}(f_C)_2(X)}q
+ =\int_C m_T b_2K(a_1/q)\dd\lambda_0.
+\]
+All factors are positive on a positive-mass set; monotonicity of $K$
+and $b_2\le1$ prove \eqref{inc:AN02:arrival:v1:partiallag}.
+The coordinate signs follow from $b_1<0<b_2$ and nonnegative ReLU
+features. Finally
+$a^\top\xi=a_1\sin\omega-a_2\cos\omega<0$ on the specified closed
+probe quadrant, so every cohort feature vanishes there.
+\end{proof}
+
+\paragraph{Scope of these signs.}
+$\mathsf m_{2,C}$ is an additive contribution, not a lower bound on the
+full $\mathsf m_2$: other labels can contribute with either sign.
+The positive quantity in \eqref{inc:AN02:arrival:v1:partiallag} is only
+this cohort's contribution to the exact mean lag, not positivity of the
+full lag or of any source-resolved update. The bound in
+\eqref{inc:AN02:arrival:v1:tailoutput} keeps the Gaussian tail nonzero.
+Probe inactivity holds at $T_\delta$, not automatically for later times.
+
+\section{The next missing inequality, and limits of this increment}
+\label{inc:AN02:arrival:v1:next}
+
+\paragraph{A concrete capture interface, not a claimed theorem.}
+To turn this reservoir into AN3 data, the next argument must produce a
+later, analytically defined $T_{\rm ent}$ and a subcohort
+$C_{\rm cap}\subset C_{T_\delta}$ such that, for quantitatively controlled
+$c_{\rm cap}>0$ and $R_w<\infty$,
+\begin{align}
+ \int_{C_{\rm cap}}m_{T_{\rm ent}}\dd\lambda_0
+ &\ge c_{\rm cap}M_{\rm in},
+ \label{inc:AN02:arrival:v1:openmass}\\
+ \left|\frac{\pi/2-\theta_{T_{\rm ent}}}{q}\right|
+ +\left|\frac{\psi_{T_{\rm ent}}-\pi/2}{q}\right|
+ &\le R_w\quad\hbox{on }C_{\rm cap}.
+ \label{inc:AN02:arrival:v1:openchart}
+\end{align}
+At the same time it must prove the strong learned-state and shape bounds,
+and control every remaining label's residual contribution. The
+$c_{\rm cap}$ and $R_w$ requirements are targets, not assumptions used to
+prove Theorem~\ref{inc:AN02:arrival:v1:main}.
+Even proving them for a fraction of this particular cohort would be one
+possible route, not a claim that every future weak label must come from it.
+
+If later capture retains mass up to a $q$-dependent factor without an
+additional adverse $S_0$ power, the incoming estimate supplies the candidate
+seed exponent $1+\varepsilon_R$ (or the conservative $17/16$).
+Its use in AN3 would still require a proved strong-shape bound and the
+nonlinear passage estimate. In particular the sign test would be
+$\beta_{\rm shape}-(1+\varepsilon_R)\alpha_{\rm sh}/\lambda>0$,
+with all $q$-dependent prefactors retained; neither that capture premise
+nor an original-flow $\beta_{\rm shape}$ is proved here.
+The displayed $qK(-R)$ prefactor and the fixed positive-$q$ contribution
+$\Phi(-1/(2q))$ to $\varepsilon_R$ must not be suppressed when choosing
+joint limits.
+
+\paragraph{Why the early comparison cannot be extended by assertion.}
+At its endpoint it only controls angular errors by $O(\delta)$, not
+$O(q)$; at a later time with large $\overline S$, it may supply no useful
+comparison at all. The existence of an incoming cohort therefore does
+not prove that the residual field creates and captures it in a weak
+attractor while strong learning proceeds. No state near a resident saddle
+has been assumed or reached in this proof.
+
+\paragraph{Integration proposal.}
+After independent review and explicit approval, this increment can follow
+\texttt{pa:targetcomparison} in the early-escape/AN2 portion of a new
+checkpoint. It does not supersede any existing result. The new ingredients
+are \eqref{inc:AN02:arrival:v1:tailcurvature}, the backward Jacobian bound,
+and the exact initialized reservoir estimate. Do not merge it into the
+current checkpoint automatically.
+
+\begin{thebibliography}{9}
+\bibitem{F}
+\emph{ReLU Population Foundations}, version 2.
+User-supplied \path{RELU_POPULATION_FOUNDATIONS_v2.tex}.
+Dependencies: P1--P5; in particular the Gaussian feature formula (6.7)
+and global characteristic existence in P5.
+\bibitem{P}
+\emph{Analytical progress toward initialized population reversal},
+checkpoint version 1.0.
+User-supplied \path{THEOREM_A_ANALYTICAL_PROGRESS.tex}.
+Dependencies: \texttt{pa:setup}, \texttt{pa:earlybounds},
+\texttt{pa:targetcomparison}; the AN2/AN3 contracts determine scope.
+\bibitem{H}
+\emph{Analytical-only theory handoff: initialized ReLU population reversal}.
+User-supplied \path{THEORY_HANDOFF_ANALYTICAL_A_B.md}.
+Sections 0, 2, and AN2--AN3: analytical-only proof and separate-review
+workflow; prescribed initialization and entry/passage obligations.
+\end{thebibliography}
+\end{document}

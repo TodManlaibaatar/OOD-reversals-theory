@@ -1,0 +1,312 @@
+% Standalone analytical review increment. No preceding source is modified.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,xurl}
+\usepackage[hidelinks]{hyperref}\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\newcommand{\Qtwo}{\mathcal Q_2}
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+
+\fancyhead[L]{\small AN02: Q2 boundary layers and cohort energy}
+\fancyhead[R]{\small Review increment v1}
+\title{Q2 boundary layers, the recruited strong tail, and full-ancestry energy scales}
+\author{Analytical increment for independent review}\date{Version 1}
+\begin{document}\maketitle
+\begin{abstract}
+For the exact positive-noise target-only comparison, we extend weak-axis crossing estimates uniformly to both endpoints of the initial Q2 sector. The negative strong-axis endpoint is regularized by Gaussian leakage; its crossing time is finite and has coefficient $4/\lambda$, not an unbounded initial-angle logarithm at fixed noise. We derive the recruited Q2 strong-chart radial profile and its secondary tail index. At $S_0=q^{10}$ and $T=\log(1/S_0)$, the entire fixed Q2 ancestry has transverse energy comparable to $q^3$ and growing weak-coordinate energy comparable to $q^5$. These aggregate scales differ from those of a compact interior Q2 bulk. All dynamical conclusions in this document concern the target-only comparison. No original residual-flow tracking, capture, or initialized theorem is asserted.
+\end{abstract}
+
+\section{Setting and imported exact formulas}
+Use
+\[
+ P_1=\mathcal N(e_1,q^2I_2),\qquad P_2=\mathcal N(\rho e_2,q^2I_2),\qquad
+ P=(P_1+P_2)/2,\qquad \lambda=\rho^2,
+\]
+with $\rho\in[13/20,7/10]$. Constants are uniform on this interval for sufficiently small $q>0$.
+All hatted quantities belong to
+\[
+ \widehat U'=\E[X(\widehat U^TX)_+],\quad
+ \widehat U(0,\alpha)=\sqrt{S_0}(\cos\alpha,\sin\alpha),\quad
+ \widehat W=\widehat U,\quad \widehat m=|\widehat U|^2.
+\]
+The initial label law is $\dd\alpha/(2\pi)$ and $\Qtwo=[\pi/2,\pi]$.
+Write $K(z)=\phi(z)+z\Phi(z)$, and let
+\[
+ a=\rho K(\rho a),\quad P_\rho=\Phi(\rho a),\quad
+ \omega=(1-\lambda)/2,\quad d=(1-\lambda P_\rho)/2,\quad
+ s=d/\omega,\quad p=3/s.
+\]
+The symbol $d$ here is a rate. For an initial angle in Q2 write
+\[
+ \alpha=\pi/2+d_0,\qquad c_0=-\cos\alpha=\sin d_0,\qquad
+ s_0=\sin\alpha=\cos d_0.
+\]
+Source Q2, equation \texttt{inc:AN02:q2:v1:coordinates}, gives
+\begin{equation}\label{inc:AN02:q2completion:v1:coordinates}
+ \widehat U_j'=\frac{\mu_jq\sqrt{\widehat m}}2K(\mu_j\widehat a_j/q)
+       +d_q\widehat U_j,\qquad
+ d_q=\frac{q^2}{2}[\Phi(\widehat a_1/q)+\Phi(\rho\widehat a_2/q)],
+\end{equation}
+where $(\mu_1,\mu_2)=(1,\rho)$ and $0\le d_q\le q^2$.
+The angular field is
+\begin{equation}\label{inc:AN02:q2completion:v1:angle}
+ v_q(\theta)=\frac q2[-\sin\theta K(\cos\theta/q)
+                  +\rho\cos\theta K(\rho\sin\theta/q)].
+\end{equation}
+Source PROFILE proves an exact attracting center $qa_q$ with $a_q=a+O(q^2)$, local rate $d+O(q^2)$, and uniform Q1-axis arrival time
+\begin{equation}\label{inc:AN02:q2completion:v1:axisarrival}
+ T_A(q):=\inf\{t:\widehat\theta(t,\pi/2)=qL\}
+       =\frac{2}{\omega}\log(1/q)+O(1)
+\end{equation}
+for a fixed sufficiently large $L$. Its exact-center and gate-integral estimates are used below with their stated scopes.
+
+\section{Uniform Q2 crossing, including the negative strong-axis endpoint}
+\begin{lemma}[Two regularized endpoints]\label{inc:AN02:q2completion:v1:crossing}
+Every initial label $\alpha\in\Qtwo$ reaches $\theta=\pi/2$ in finite target-only time $T_\times(\alpha)$. Uniformly in the entire closed sector,
+\begin{equation}\label{inc:AN02:q2completion:v1:crossclock}
+ T_\times(\alpha)=\frac2\lambda
+       \log\frac{c_0+q}{q(s_0+q)}+O(1).
+\end{equation}
+In particular,
+\[
+ \sup_{\alpha\in\Qtwo}T_\times(\alpha)
+       =T_\times(\pi)=\frac4\lambda\log(1/q)+O(1).
+\]
+At crossing,
+\begin{equation}\label{inc:AN02:q2completion:v1:crossamplitude}
+ \widehat U_1(T_\times)=0,\qquad
+ \widehat U_2(T_\times)\asymp\sqrt{S_0}\,\frac{c_0+q}{q}.
+\end{equation}
+There is a fixed positive post-crossing layer time $\tau_1$, independent of $q,\alpha,S_0$, at which
+\[
+ \widehat U_1(T_\times+\tau_1)\asymp\sqrt{S_0}(c_0+q).
+\]
+Thus a positive first-coordinate seed is created \emph{after}, not at, the exact crossing.
+\end{lemma}
+\begin{proof}
+For $d_0\in[0,\pi/2]$, the clockwise speed in Q2 is
+\begin{equation}\label{inc:AN02:q2completion:v1:speed}
+ -v_q(\pi/2+d_0)=\frac\lambda2\sin d_0\cos d_0
+ +\frac q2\cos d_0K(-\sin d_0/q)
+ +\frac{\rho q}{2}\sin d_0K(-\rho\cos d_0/q).
+\end{equation}
+It is strictly positive, including at both endpoints. At fixed $q$ it has a positive minimum on this compact interval. This already proves finite crossing. Scalar uniqueness makes crossing time nondecreasing in the initial angle, so its maximum is at $\pi$.
+
+We record the uniform logarithmic comparison rather than take a fixed-angle asymptotic outside its uniformity range. On $\sin d_0,\cos d_0\ge qL_1$, subtract the reciprocal of $\lambda\sin d_0\cos d_0/2$ from the reciprocal of \eqref{inc:AN02:q2completion:v1:speed}. Both corrections in the speed are nonnegative. On the half nearer $d_0=0$, the nontrivial error is bounded by
+\[
+ C\int_{L_1/2}^{\infty}K(-z)z^{-2}\dd z;
+\]
+on the other half it is bounded by
+\[
+ C\int_{L_1/2}^{\infty}K(-\rho z)z^{-2}\dd z.
+\]
+The opposite-end corrections on these halves are exponentially small times a polynomial in $q^{-1}$. All bounds are uniform and finite. In the weak-axis layer $z=\sin d_0/q$, the positive scaled speed tends to $[K(-z)+\lambda z]/2$. In the negative strong-axis layer $z=\cos d_0/q$, it tends to $\rho K(\rho z)/2$. Both limits have a positive minimum on a fixed compact layer. Each layer has uniformly bounded traversal time.
+
+The bulk primitive is $(2/\lambda)\log\tan d_0$. Cutting it off at both layers, including starts within a layer, gives \eqref{inc:AN02:q2completion:v1:crossclock}: replacing each endpoint coordinate by that coordinate plus $q$ changes a layer logarithm by only $O(1)$. At $d_0=0$ the displayed logarithm can be slightly negative; its bounded error includes the exact zero crossing time. At $d_0=\pi/2$ it equals $2\log(1/q)+O(1)$ before multiplication by $2/\lambda$.
+
+For the radial calculation, $\widehat U_2\ge0$ throughout Q2, and, once it is positive,
+\begin{equation}\label{inc:AN02:q2completion:v1:U2rate}
+ \frac{\widehat U_2'}{\widehat U_2}
+ =\frac\lambda2+d_q+\frac{\rho q}{2\sin\theta}
+                       K(-\rho\sin\theta/q).
+\end{equation}
+If the initial $s_0$ is at most a fixed multiple of $q$, the negative strong-axis layer creates a second coordinate comparable to $q\sqrt{S_0}$ in bounded time: the layer speed above is bounded above and below, and the target-only norm changes by bounded factors over that time. Otherwise use the existing initial second coordinate. Above that layer and while $\sin\theta\le1/\sqrt2$, equation \eqref{inc:AN02:q2completion:v1:speed} gives $(\sin\theta)'\ge (\lambda/4)\sin\theta$. The extra logarithmic rate in \eqref{inc:AN02:q2completion:v1:U2rate} therefore has integral bounded by
+\[
+ C\int_{L_1/2}^{\infty}K(-\rho z)z^{-2}\dd z.
+\]
+When $\sin\theta\ge1/\sqrt2$, it is exponentially small and the remaining crossing time is $O(\log(1/q))$. Also $\int d_q=O(q^2\log(1/q))$. These arguments, including the initial layer if needed, prove
+\[
+ \widehat U_2(T_\times)\asymp
+ \sqrt{S_0}(s_0+q)e^{\lambda T_\times/2}.
+\]
+Substitute \eqref{inc:AN02:q2completion:v1:crossclock} to obtain \eqref{inc:AN02:q2completion:v1:crossamplitude}. At $\alpha=\pi/2$ this is the initial second coordinate, as required.
+
+After crossing, the rescaled cosine $\cos\theta/q$ starts at zero and has limit speed $[K(z)-\lambda z]/2>0$ on a fixed compact layer. At a suitably chosen fixed $\tau_1>0$ it is bounded above and below by positive constants. The norm has changed by bounded factors. Therefore the first coordinate is comparable to $q\widehat U_2(T_\times)$, proving the last assertion.
+\end{proof}
+
+\begin{corollary}[Uncrossed comparison mass and the $\kappa=10$ clock]
+\label{inc:AN02:q2completion:v1:uncrossed}
+Up to crossing, each target-only Q2 label has
+\[
+ \widehat m(t,\alpha)\le C S_0q^{-2}.
+\]
+The instantaneous un-crossed Q2 mass has the same upper bound. At $S_0=q^{10}$, $T=10\log(1/q)$, every Q2 label has already crossed, uniformly in the ratio interval, for sufficiently small $q$.
+\end{corollary}
+\begin{proof}
+While $\widehat U_1\le0$, \eqref{inc:AN02:q2completion:v1:coordinates} implies $(-\widehat U_1)'\le q^2(-\widehat U_1)$. Thus $|\widehat U_1|\le C\sqrt{S_0}$ before crossing. The positive second coordinate is nondecreasing and at crossing is at most $C\sqrt{S_0}/q$. Integrate the labelwise bound if desired. Finally $4/\lambda\le1600/169<10$, with a strict uniform gap in the crossing coefficient.
+\end{proof}
+\begin{remark}
+This mass bound is a \emph{before-crossing} statement. Freezing the set of labels that have not crossed at an earlier time does not keep their later mass below the same bound. A moving crossed-label measure has flux. Nor does this comparison result prove that every Q2 label crosses in the original residual flow.
+\end{remark}
+
+\section{Recruited Q2 strong-chart profile and its tail}
+Fix $T=10\log(1/q)$ and $S_0=q^{10}$ below. Put
+\[
+ \epsilon=q^{-s}e^{-dT},\qquad h_1=\epsilon q^{-s},\qquad
+ h_T(\alpha)=\widehat\theta(T,\alpha)/q-a_q.
+\]
+Here $h_1\to0$ uniformly: $10d-2s=d(10-2/\omega)>0$.
+Let $M_R(T)$ be the target-only radial mass of the initial right half-circle. Source PROFILE gives $M_R(T)\asymp S_0e^T$. Define a \emph{submeasure}, not a probability, by
+\[
+ \eta_T^{2\to s}(A)=\frac1{M_R(T)}
+ \int_{\Qtwo}\widehat m(T,\alpha)
+ \mathbf1_{\{T\ge T_\times(\alpha)+T_A(q)\}}
+ \mathbf1_{\{h_T(\alpha)\in A\}}\frac{\dd\alpha}{2\pi}.
+\]
+The membership indicator is used only in an instantaneous integral, never differentiated.
+
+\begin{proposition}[The secondary tail]\label{inc:AN02:q2completion:v1:profile}
+For every Q2 label already in the strong chart at $T$,
+\begin{align}
+ h_T(\alpha)&\asymp h_1
+       \left[\frac{c_0+q}{q(s_0+q)}\right]^{2d/\lambda},
+       \label{inc:AN02:q2completion:v1:displacement}\\
+ \frac{\widehat m(T,\alpha)}{S_0e^T}
+ &\asymp q^{2/\lambda}(c_0+q)^{2-2/\lambda}(s_0+q)^{2/\lambda}.
+       \label{inc:AN02:q2completion:v1:weight}
+\end{align}
+Its total strong-chart Q2 mass satisfies
+\[
+ \eta_T^{2\to s}(\mathbb R)\asymp q^3.
+\]
+There exist constants $C_1,z_0>0$ independent of $q,\rho$ such that, for
+$C_1h_1\le z\le z_0$,
+\begin{equation}\label{inc:AN02:q2completion:v1:tail}
+ \eta_T^{2\to s}\{h_T>z\}\asymp
+ q^3(z/h_1)^{-p_2},\qquad p_2=\frac{1-3\lambda/2}{d}\in(0,1).
+\end{equation}
+This tail extends beyond the initial-right-half-circle cutoff of order $h_1$. The assertion is not a tail theorem for Q2 labels still outside the strong chart, and the two-sided comparison is not asserted arbitrarily close to the final chart cutoff.
+\end{proposition}
+\begin{proof}
+At crossing the angle is exactly $\pi/2$. Homogeneity and the flow property allow the Q1 axis-start estimates to be applied with initial squared radius $\widehat m(T_\times)$. Local decay from the exact hit of $qL$, together with \eqref{inc:AN02:q2completion:v1:axisarrival}, gives
+\[
+ h_T\asymp q^{-2s}e^{-d(T-T_\times)}.
+\]
+Replacing $d+O(q^2)$ by $d$ costs a bounded factor because all relevant times are $O(\log(1/q))$. The radial estimate after axis crossing is
+\[
+ \widehat m(T)\asymp q^2\widehat m(T_\times)e^{T-T_\times}
+\]
+when the label is in the strong chart. Insert Lemma \ref{inc:AN02:q2completion:v1:crossing}; this proves both displayed profiles.
+
+Only a shrinking initial neighborhood of $\pi/2$ can be in the strong chart at this time. Indeed the arrival condition and the crossing formula imply
+\[
+ c_0\le C q^{\gamma(\lambda)},\qquad
+ \gamma(\lambda)=1-5\lambda+\frac{2\lambda}{1-\lambda}>0.
+\]
+For the positivity, $(1-\lambda)\gamma=1-4\lambda+5\lambda^2>0$; the quadratic has negative discriminant. A lower bound of the same power for the largest arriving $c_0$ follows by reversing the bounded errors and choosing a smaller constant. Thus $s_0$ stays bounded away from zero for these labels.
+
+Write $r=\tan d_0$ in this neighborhood. The label measure is comparable to $\dd r$, and with $y=1+r/q$ the profiles reduce to
+\[
+ h_T\asymp h_1 y^{b},\qquad
+ \frac{\widehat m(T)\dd\alpha}{S_0e^T}\asymp q^3y^{-a_2}\dd y,
+ \quad a_2=2/\lambda-2>1,\quad b=2d/\lambda.
+\]
+The largest arriving $y$ is comparable to $h_1^{-1/b}$. Integration of $y^{-a_2}$ gives total mass $O(q^3)$; a fixed interval of $y$ gives the reverse bound. For the upper tail, $h_T>z$ requires $y\ge c(z/h_1)^{1/b}$, so integration to infinity gives the upper bound in \eqref{inc:AN02:q2completion:v1:tail}. For the reverse bound, integrate over $[A(z/h_1)^{1/b},2A(z/h_1)^{1/b}]$, choosing $A$ large enough to ensure $h_T>z$. Then choose the fixed $z_0$ small enough that this interval stays below the arriving cutoff. This proves a two-sided comparison on the stated range. The exponent is
+\[
+ (a_2-1)/b=\frac{2/\lambda-3}{2d/\lambda}=p_2.
+\]
+It is positive since $\lambda<2/3$. Moreover $p_2<1$ is equivalent to $\lambda(3-P_\rho)>1$. The previously proved bound $P_\rho<153/250$ yields
+\[
+ \lambda(3-P_\rho)>\frac{169}{400}\left(3-\frac{153}{250}\right)
+ =\frac{100893}{100000}>1.
+\]
+\end{proof}
+
+\section{The entire Q2 cohort is not a compact interior bulk}
+Define the exact target-only coordinate energies on the \emph{whole fixed} ancestry:
+\[
+ \widehat J_2(t)=\int_{\Qtwo}\widehat U_1(t,\alpha)^2\frac{\dd\alpha}{2\pi},\qquad
+ \widehat H_2(t)=\int_{\Qtwo}\widehat U_2(t,\alpha)^2\frac{\dd\alpha}{2\pi}.
+\]
+Alignment holds only for this target-only comparison, so these agree with the symmetric/transverse energy definitions there.
+
+\begin{theorem}[Aggregate Q2 energy at strong comparison entry]
+\label{inc:AN02:q2completion:v1:energy}
+For $0\le t\le T=10\log(1/q)$,
+\begin{align}
+ \widehat J_2(t)&\le C S_0(1+q^3e^t),\label{inc:AN02:q2completion:v1:Jupper}\\
+ \widehat H_2(t)&\le C S_0(e^{\lambda t}+q^5e^t).
+ \label{inc:AN02:q2completion:v1:Hupper}
+\end{align}
+At $S_0=q^{10}$ and $t=T$,
+\begin{equation}\label{inc:AN02:q2completion:v1:energylaws}
+ \widehat J_2(T)\asymp q^3,\qquad
+ \widehat H_2(T)\asymp q^5,\qquad
+ \widehat J_2(T)/\widehat H_2(T)\asymp q^{-2}.
+\end{equation}
+Consequently a bound $\widehat J_2(T)\le q^2H_*(q)$ for this entire cohort requires $H_*(q)\gtrsim q$. The smaller compact-bulk candidate $H_*\asymp q^{2/\lambda-2}$ cannot bound the whole Q2 transverse energy.
+\end{theorem}
+\begin{proof}
+Before crossing $|\widehat U_1|\le C\sqrt{S_0}$. After crossing, the first-coordinate variation-of-constants and gate-integral argument in source PROFILE gives, for every elapsed time $0\le v\le T$,
+\begin{equation}\label{inc:AN02:q2completion:v1:axisU1upper}
+ \widehat U_1(T_\times+v)\le C q\sqrt{\widehat m(T_\times)}e^{v/2}.
+\end{equation}
+For completeness, write
+\[
+ \widehat U_1'=(1/2+d_q)\widehat U_1
+       +(q/2)\sqrt{\widehat m}K(-\cos\theta/q).
+\]
+The norm bound $\sqrt{\widehat m(v)}\le\sqrt{\widehat m(0)}e^{(1/2+q^2)v}$ reduces variation of constants to $q\int K(-\cos\theta/q)\dd v$. This integral is uniformly bounded: the initial cosine layer takes bounded time; on $qL_1\le\cos\theta\le1/\sqrt2$ its bound is $C\int_{L_1}^{\infty}K(-z)z^{-1}\dd z$; below angle $\pi/4$ it is exponentially small times $T$. The factor $e^{q^2T}$ is bounded. This proves \eqref{inc:AN02:q2completion:v1:axisU1upper} without assuming that the label has reached the strong chart.
+
+Lemma \ref{inc:AN02:q2completion:v1:crossing} now yields, for all Q2 labels and all the stated times,
+\[
+ \widehat U_1(t,\alpha)^2\le C S_0+
+ C S_0e^t q^{2/\lambda}(c_0+q)^{2-2/\lambda}(s_0+q)^{2/\lambda}.
+\]
+On $c_0\le1/\sqrt2$ the label density is comparable to $\dd c_0$, and
+\[
+ q^{2/\lambda}\int_0^{1/\sqrt2}(c_0+q)^{2-2/\lambda}\dd c_0\le Cq^3
+\]
+since $2/\lambda-3$ is bounded strictly above zero. On the remaining half, the integrand is bounded by $Cq^{2/\lambda}$ before integrating in $\alpha$; this is at most $Cq^3$. This proves \eqref{inc:AN02:q2completion:v1:Jupper}.
+
+The Q2 second coordinate stays nonnegative. Using $K(z)=z+K(-z)$, $K(-z)\le\phi(0)$ for $z\ge0$, and $\sqrt{\widehat m}\le|\widehat U_1|+\widehat U_2$ gives
+\[
+ \widehat U_2'\le \eta_q\widehat U_2+Cq|\widehat U_1|,
+ \qquad \eta_q=\lambda/2+q^2+Cq.
+\]
+For small $q$, $1/2-\eta_q$ is bounded below by a positive constant. Minkowski, variation of constants, and \eqref{inc:AN02:q2completion:v1:Jupper} imply
+\begin{align*}
+ \sqrt{\widehat H_2(t)}
+ &\le C\sqrt{S_0}e^{\eta_qt}
+ +Cq\sqrt{S_0}\int_0^t e^{\eta_q(t-v)}(1+q^{3/2}e^{v/2})\dd v\\
+ &\le C\sqrt{S_0}\big(e^{\lambda t/2}+q^{5/2}e^{t/2}\big).
+\end{align*}
+Here $e^{(q^2+Cq)T}$ is uniformly bounded because $T=10\log(1/q)$. Squaring proves \eqref{inc:AN02:q2completion:v1:Hupper}.
+
+For the reverse endpoint bounds, take the fixed-in-time, $q$-dependent initial strip
+\[
+ R_q=\{\pi/2+d_0:q\le d_0\le2q\}.
+\]
+Its label measure is comparable to $q$, its crossing time is $O(1)$, and at $T$ it has reached the exact attracting strong direction with $h_T=O(h_1)=o(1)$. Proposition \ref{inc:AN02:q2completion:v1:profile} gives $\widehat m(T,\alpha)\asymp S_0e^Tq^2$ there. Since $a_q$ stays bounded above and below by positive constants,
+\[
+ \widehat U_1^2\asymp S_0e^Tq^2,\qquad
+ \widehat U_2^2\asymp S_0e^Tq^4
+ \quad(\alpha\in R_q).
+\]
+Integrate over this strip to obtain the lower bounds $cq^3$ and $cq^5$. The upper bounds at $T$ are $C(q^{10}+q^3)$ and $C(q^{10(1-\lambda)}+q^5)$. Because $10(1-\lambda)\ge51/10>5$, they have the claimed orders. Finally $2/\lambda-2>1$ uniformly, so $q^{2/\lambda-2}=o(q)$.
+\end{proof}
+
+\section{Consequences and exact limits of the increment}
+The whole-Q2 $q^5$ amplitude does not contradict a lower bound of order $S_0^{1-\lambda}$; it contradicts identifying that lower law as a two-sided aggregate comparison at this target-only clock. The strong-captured Q2 strip creates an additional contribution.
+
+For the original-flow cross-energy tool, \emph{if} an original-flow theorem supplies $A_C\lesssim H_C$ and a uniform transit bound $J_C\lesssim q^3$, the admissible full-cohort choice is $H_*\lesssim q$. Its forcing structure is then
+\[
+ H_C+\sqrt{qH_C}+q^3.
+\]
+The exact clock integrates the square-root term with size $O(\sqrt{qH_b})$ under its subinterval defect hypothesis, and the constant term costs $O(q^3\log(1/q))$ on a logarithmic sojourn. The original-flow bounds just stated are \emph{not} proved here. A partition into fixed Q2 subcohorts can permit sharper estimates; applying one aggregate Cauchy--Schwarz inequality may pair transverse energy of one subcohort with weak amplitude of another.
+
+Keeping a Q2 label in an ancestry clock does not prove its outside-field contribution small. The field decomposition must either retain its output explicitly or charge its current mass/output, without counting the same output twice. All original-flow selected-residual, antisymmetric-energy, radial-weight, return, and probe-rate obligations remain.
+
+\begin{thebibliography}{9}\small
+\bibitem{Q2} Supplied \path{AN02_Q2_profiles_and_localized_tracking_v1.tex}. Exact formulas \texttt{coordinates}, \texttt{angular}; fixed-interior crossing/transit results. Prefix \texttt{inc:AN02:q2:v1:}.
+\bibitem{PROFILE} Supplied \path{AN02_strong_entry_profile_and_tail_budget_v1.tex}. Exact center/local decay, Q1 arrival, entry/radial law, gate integral, and right-half-circle normalization. Prefix \texttt{inc:AN02:profile:v1:}.
+\bibitem{CLOCK} Supplied \path{AN03_exact_amplitude_clock_and_c_passage_v1.tex}. Exact amplitude/response ledger, cross-energy bound, and conditional clock integration. Prefix \texttt{inc:AN03:clock:v1:}.
+\end{thebibliography}
+\end{document}

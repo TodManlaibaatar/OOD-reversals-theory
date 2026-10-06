@@ -1,0 +1,1941 @@
+% Analytical checkpoint: post-foundations progress toward Theorems A and B.
+% Version 1.0. Sources are listed in the provenance appendix.
+% Do not append new research directly to this file. Deliver review increments first.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{booktabs,longtable,array,enumitem,microtype}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Analytical progress toward Theorems A and B}
+\fancyhead[R]{\small Review checkpoint 1.0}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{theorem}[proposition]{Theorem}
+\newtheorem{corollary}[proposition]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[proposition]{Definition}
+\newtheorem{target}{Open target}[section]
+\newtheorem{calculation}[proposition]{Calculation}
+\theoremstyle{remark}
+\newtheorem{remark}[proposition]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\dd}{\,d}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\abs}[1]{\left|#1\right|}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\scope}[1]{\par\noindent\textbf{Scope and status:} #1\par\smallskip}
+\newcommand{\openobligation}[1]{\par\noindent\textbf{Open obligation:} #1\par\smallskip}
+\newcommand{\source}[1]{\par\noindent\textit{Source:} #1\par\smallskip}
+\title{Analytical progress toward initialized population reversal\\
+\large Post-foundations checkpoint for Theorems A and B}
+\author{Research working document}
+\date{Version 1.0 --- consolidation for review}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document consolidates the analytical progress made after
+\path{RELU_POPULATION_FOUNDATIONS_v2.tex}. It records exact finite-noise
+identities, initialized early-escape estimates, the noise-scaled population
+system, an analytical reversal theorem for its distinguished two-atom orbit,
+population compensation-lag and splitting results, and the exact-lag and
+inactive-bridge refinements. \textbf{The initialized Theorems A and B for the
+original Gaussian population are not yet proved.} Their entry, nonlinear
+passage, large-bridge comparison, signed finite-noise control, and parameter
+coverage remain explicit open obligations. The proof program is analytical:
+no saved numerical trajectory, interval arithmetic, or numerical sign check
+is a premise of a theorem here. Numerical observations appear only in a
+separate evidence ledger.
+\end{abstract}
+
+\section*{Read-first contract}
+\addcontentsline{toc}{section}{Read-first contract}
+\textbf{This is a review checkpoint, not a submission-ready completed theory.}
+A proof below establishes only its displayed statement under its displayed
+hypotheses. A theorem within the \emph{defined leading system} is not silently
+promoted to a theorem about the exact finite-noise population.
+The source-derived formal reduction and the response calculations are
+identified separately from proved identities and conditional implications.
+
+The foundations, the original research notebook, and the old appendix remain
+unchanged. New work must be delivered in separate, versioned proof-increment
+files and checked before the user authorizes incorporation into a new version
+of this checkpoint. Do not automatically \verb|\input| unreviewed increments.
+Do not access or modify GitHub; the user handles version control.
+
+The analytical parts of \cite{E}, Sections 1--3, are retained. Its numerical
+reference construction and certificate roadmap are \emph{not} part of the
+current proof program. The exact finite-parameter identities of \cite{F,LC}
+remain useful, but their earlier suggestions to certify saved trajectories
+are superseded by the analytical-only handoff.
+
+\tableofcontents
+\clearpage
+
+\section{Sources, theorem objectives, and status ledger}\label{pa:status}
+\source{The foundations \cite{F}; early escape \cite{E}; factorization audit
+\cite{LC}; limiting orbit \cite{TN}; scaled population \cite{SP}; the subsequent
+finite-noise-lag and bridge-feedback discussion \cite{C}.}
+
+Theorem A is the \emph{initialized occurrence and exact attribution} target:
+substantial learning of both concepts, a common learned interval with
+$D_1<0<D_2$, and early-to-late dominance reversal uniformly over an off-cone
+sector and a stated parameter region. Theorem B is the \emph{mechanism}
+target: reciprocal leakage compensation, loss of probe exposure through
+input rotation, and the effect of the probe-inactive bridge account for
+those signs and their changing balance. The same analytical population
+argument should supply both results.
+
+\begin{longtable}{@{}p{0.28\textwidth}p{0.30\textwidth}p{0.35\textwidth}@{}}
+\toprule
+Component & Current mathematical status & Not implied by this component\\
+\midrule
+\endhead
+Finite-noise foundations & Imported from \cite{F}; exact flow, rates,
+regularity, balance, and linear control & Initialized learned-state entry or
+canonical late signs\\
+Early escape, Section~\ref{pa:escape} & Analytical estimates from the actual
+isotropic initialization & Substantial weak learning or late crossover\\
+Exact residual bookkeeping, Section~\ref{pa:bookkeeping} & Identities and
+conditional tracking estimates & Signs of unbounded forcing terms\\
+Scaled population, Section~\ref{pa:scaled} & Leading equations derived;
+internal results proved for that defined system & A uniform finite-$q$
+trajectory approximation theorem\\
+Resident and shape analysis, Section~\ref{pa:shape} & Exact resident curve,
+linearized spectra and multipliers; same-field ordering & Nonlinear saddle
+passage, isotropic capture, or a two-dimensional population unstable manifold\\
+Population lag, Section~\ref{pa:lagpop} & Positive-lag law and helpful sign
+within the leading $M=1$ system & Exact finite-$q$ lag positivity\\
+Selected-orbit reversal, Section~\ref{pa:orbit} & Analytical reversal on the
+coherent weak-growth branch & Selection of that branch by isotropic data,
+canonical constants, or a specified weak-learning threshold\\
+Exact lag and bridge, Section~\ref{pa:finiteq} & Exact finite-$q$ state
+identities and leading-system instantaneous bridge signs & Between-population
+trajectory ordering or canonical signed-rate closure\\
+Small-split response, Section~\ref{pa:response} & Response functional and
+second-order calculation & An analytical proof of $\kappa>0$ or extension to
+the canonical inactive bridge\\
+Initialized A and B & \textbf{Open}; roadmap in Section~\ref{pa:roadmap} & No
+completion claim is made\\
+\bottomrule
+\end{longtable}
+
+\paragraph{Consolidation choices.}
+All derivatives use normalized time $\tau$ unless explicitly marked physical.
+The uniform label law is $\lambda_0$, whereas $\lambda=\rho^2$ is a growth
+rate. The weak resident coordinate is allowed to be real; this incorporates
+the already-discussed removal of the artificial $\rho\le1/\sqrt2$ restriction.
+The mean lag, the $X_1$-weighted lag, and the leading scaled lag receive
+different symbols. The early-escape source's temporary $u/\varepsilon_{
+\rm al}$ naming inconsistency is resolved by defining $\varepsilon_{\rm al}$
+explicitly. These are disclosed notation/scope reconciliations, not new
+initialized proof claims.
+
+\section{Interface imported from the foundations}\label{pa:setup}
+For $0<\rho<1$ and $q>0$, take
+\begin{equation}\label{pa:data}
+ P_1=\mathcal N(e_1,q^2I_2),\qquad
+ P_2=\mathcal N(\rho e_2,q^2I_2),\qquad P=(P_1+P_2)/2.
+\end{equation}
+The task is identity regression, with no origin cluster and no biases.
+Both layers of the ReLU network are trained independently. Put
+\[
+ a_\theta=(\cos\theta,\sin\theta),\quad
+ b_\psi=(\cos\psi,\sin\psi),\quad
+ \lambda_0(d\alpha)=\frac{d\alpha}{2\pi}.
+\]
+The balanced characteristic representation is
+\begin{equation}\label{pa:representation}
+ U_\alpha=\sqrt{m_\alpha}a_{\theta_\alpha},\quad
+ W_\alpha=\sqrt{m_\alpha}b_{\psi_\alpha},\quad
+ \nu=\int m_\alpha\delta_{(\theta_\alpha,\psi_\alpha)}\dd\lambda_0,
+ \qquad f(X)=\int b(a^\top X)_+\dd\nu.
+\end{equation}
+Initialization is exactly
+\begin{equation}\label{pa:init}
+ \theta_0(\alpha)=\psi_0(\alpha)=\alpha,\qquad m_0(\alpha)=S_0.
+\end{equation}
+In finite-width coordinates this corresponds to
+$u_i(0)=w_i(0)=\sqrt{S_0/h}\,a_{\alpha_i}$ and
+$S_0=h\varepsilon_h^2$. Balance means equality of norms; vector alignment
+need not persist. In the continuum,
+\[
+ f_0(X)=\frac{S_0}{4}X,\qquad E_\xi(0)=\frac12(1-S_0/4)^2
+ \quad (|\xi|=1).
+\]
+With $\rho=\mu_2/\mu_1$, $q=\sigma/\mu_1$, use
+$\tau=\mu_1^2t_{\rm phys}$. There is no rescaling of $S_0$ and no additional
+width factor in this continuum time. For a fixed numerical unit probe,
+$D_p^{\rm phys}=\mu_1^2D_p^\tau$. Rescaling the probe itself by $\mu_1$
+would introduce an additional squared-amplitude factor and is not done here.
+
+Set $e_f(X)=X-f(X)$ and
+\begin{equation}\label{pa:residualmatrix}
+ R_{p,f}(\theta)=\E_{P_p}[e_f(X)X^\top\1_{\{a_\theta^\top X>0\}}],
+ \qquad R_f=(R_{1,f}+R_{2,f})/2.
+\end{equation}
+The imported exact equations are
+\begin{equation}\label{pa:exactflow}
+ \theta'=b^\top R_fa^\perp,\qquad
+ \psi'=(b^\perp)^\top R_fa,\qquad
+ (\log m)'=2b^\top R_fa.
+\end{equation}
+For a unit probe $\xi$, let $e_\xi=\xi-f(\xi)$ and
+\begin{align}
+ V_p(\xi)&=\int\left[(a^\top\xi)_+R_pa+
+ \1_{\{a^\top\xi>0\}}bb^\top R_p\xi\right]\dd\nu,\label{pa:rawvelocity}\\
+ D_p^\tau(\xi)&=-\frac12e_\xi^\top V_p(\xi),\qquad
+ E_\xi'=D_1^\tau+D_2^\tau.\label{pa:exactrates}
+\end{align}
+The derivative identity is interpreted almost everywhere in time, with the
+probe-boundary convention and regularity specified in \cite{F}. For pointwise
+strict rate continuity, boundary mass must be excluded or explicitly controlled.
+The training-cluster index does not name a neuron cohort.
+
+Partition-free learning observables are
+\begin{equation}\label{pa:learning}
+ \mathsf m_p=\frac{\E_{P_p}[X_pf_p(X)]}{\E_{P_p}X_p^2},\qquad
+ \mathcal L_p=\frac12\E_{P_p}|f(X)-X|^2.
+\end{equation}
+Neither family mass nor decreasing total loss alone proves the required
+learning and signed-residual conclusions. The exact linear control
+$D_p^{\rm lin}\le0$ is already Proposition P10 of \cite{F}; it is not a new
+result of this checkpoint.
+
+\section{Analytical initialized early escape}\label{pa:escape}
+\source{\cite{E}, Sections 1--3 only. The later numerical-reference construction
+is excluded from the present program.}
+
+\subsection{Spectral and alignment control}
+Put
+\[
+ A=\E_P[XX^\top]=\diag(1/2+q^2,\rho^2/2+q^2),\qquad a_*=1/2+q^2,
+\]
+\[
+ A_\theta=\E_P[XX^\top\1_{\{a^\top X>0\}}],\qquad
+ C_f(\theta)=\E_P[f(X)X^\top\1_{\{a^\top X>0\}}].
+\]
+Thus $R_f=A_\theta-C_f$. Define
+\begin{align}
+ \overline S(\tau)&=S_0e^{2a_*\tau},&
+ \varepsilon_{\rm al}(\tau)&=\overline S(\tau)-S_0,\label{pa:earlyenvelopes}\\
+ I(\tau)&=a_*\int_0^\tau\varepsilon_{\rm al}(s)^2\dd s
+ =S_0^2\left[\frac{e^{4a_*\tau}-1}{4}
+ -(e^{2a_*\tau}-1)+a_*\tau\right].\nonumber
+\end{align}
+
+\begin{proposition}[Initialized spectral, mass, and alignment bounds]
+\label{pa:earlybounds}
+For the exact initialized flow, $S(\tau)=\int m_\alpha\dd\lambda_0\le
+\overline S(\tau)$. On every interval where
+$\varepsilon_{\rm al}(\tau)<\pi$, continuous angular lifts satisfy, uniformly
+in the initial label,
+\begin{equation}\label{pa:earlybounds-eq}
+ |\psi-\theta|\le\varepsilon_{\rm al},\qquad
+ S_0e^{-\varepsilon_{\rm al}-I}\le m_\alpha
+ \le S_0e^{2a_*\tau+\varepsilon_{\rm al}}.
+\end{equation}
+\end{proposition}
+\scope{Exact finite-noise analytical statement, initialized at \eqref{pa:init}.}
+\begin{proof}
+Positivity gives $0\preceq A_\theta\preceq A\preceq a_*I$. For unit vectors
+$v,z$, the feature representation and Cauchy--Schwarz give
+\[
+ |v^\top C_fz|
+ \le\int m_\alpha\E[(a_{\theta_\alpha}^\top X)_+|z^\top X|]
+ \dd\lambda_0\le a_*S.
+\]
+The exact mass identity yields
+\[
+ S'=2\E[X^\top f]-2\E|f|^2\le2a_*S,
+\]
+because $\E[X^\top f]=\int m b^\top A_\theta a\dd\lambda_0\le a_*S$.
+Integrating proves the envelope.
+For $\delta=\psi-\theta$, every symmetric planar matrix $B$ satisfies
+\[
+ (b^\perp)^\top Ba-b^\top Ba^\perp=-\tr(B)\sin\delta.
+\]
+Using $R=A_\theta-C_f$ therefore gives
+\[
+ \delta'=-\tr(A_\theta)\sin\delta+\epsilon_\delta,
+ \qquad |\epsilon_\delta|\le2a_*S.
+\]
+Before a possible first exit from $|\delta|<\pi$, the target term points
+inward and $D^+|\delta|\le2a_*\overline S$. Integration gives
+$|\delta|\le\varepsilon_{\rm al}$, and closes the first-exit condition.
+Finally,
+\[
+ b^\top A_\theta a
+ =\tfrac12\{a^\top A_\theta a+b^\top A_\theta b
+ -(b-a)^\top A_\theta(b-a)\}\ge-\tfrac12a_*\delta^2.
+\]
+Thus $-a_*\delta^2-2a_*S\le(\log m)'\le2a_*+2a_*S$.
+Integrating and substituting the envelopes proves \eqref{pa:earlybounds-eq}.
+\end{proof}
+
+\subsection{Comparison with an exact target-only flow}
+For each initial label define the mathematical comparison solution
+\[
+ \widehat V'=\E_P[X(\widehat V^\top X)_+],\qquad
+ \widehat V_0=\sqrt{S_0}a_\alpha.
+\]
+Set $\widehat U=\widehat W=\widehat V$,
+$\widehat m=|\widehat V|^2$, and let $\widehat\theta$ be its angle.
+This is not a numerically supplied reference and is not asserted to equal
+the nonlinear flow. With
+\[
+ v_0(\theta)=(a^\perp)^\top A_\theta a,\qquad
+ g_0(\theta)=a^\top A_\theta a,
+\]
+its equations are $\widehat\theta'=v_0(\widehat\theta)$ and
+$(\log\widehat m)'=2g_0(\widehat\theta)$.
+
+\begin{proposition}[Target-only comparison]\label{pa:targetcomparison}
+On the interval of Proposition~\ref{pa:earlybounds}, define
+\[
+ H(\tau)=S_0(2e^{2a_*\tau}-3e^{a_*\tau}+1).
+\]
+Then, labelwise,
+\[
+ |\theta-\widehat\theta|\le H,\qquad
+ |\psi-\widehat\theta|\le H+\varepsilon_{\rm al},\qquad
+ \left|\log\frac m{\widehat m}\right|\le2H.
+\]
+\end{proposition}
+\begin{proof}
+The moving-boundary identity gives $A_\theta'a=0$. Consequently
+\[
+ v_0'=(a^\perp)^\top A_\theta a^\perp-a^\top A_\theta a,
+ \qquad g_0'=2(a^\perp)^\top A_\theta a,
+\]
+and $|v_0'|,|g_0'|\le a_*$. For the second bound, compare the quadratic form
+on $(a+a^\perp)/\sqrt2$ and $(a-a^\perp)/\sqrt2$; both values lie in
+$[0,a_*]$. The true velocity satisfies
+\[
+ |\theta'-v_0(\theta)|\le a_*(\varepsilon_{\rm al}+\overline S).
+\]
+The upper Dini derivative of $h=|\theta-\widehat\theta|$ is at most
+$a_*h+a_*(\varepsilon_{\rm al}+\overline S)$. The displayed $H$ solves that
+scalar equality with zero initial value. Moreover,
+\[
+ |b^\top R_fa-g_0(\widehat\theta)|
+ \le a_*(\varepsilon_{\rm al}+\overline S+H)=H'.
+\]
+Integrate the logarithmic mass equations and then use the alignment bound.
+\end{proof}
+
+\subsection{A nontrivial canonical mass escape}
+\begin{proposition}[Canonical early escape]\label{pa:canonicalescape}
+For $\rho=2/3$, $q=1/20$, $S_0=1/5000$, on $0\le\tau\le6$,
+\[
+ S\le0.0832,\quad |\psi-\theta|\le0.0830,\quad
+ 1.83\cdot10^{-4}<m_\alpha<0.091,
+ \quad |U_\alpha|=|W_\alpha|>0.0135.
+\]
+Furthermore $S(6)>16S_0=0.0032$.
+\end{proposition}
+\begin{proof}
+Set $\theta_0=\pi/12$ and select the fixed initial arc
+$C_0=[-\theta_0,\theta_0]$, of label probability $1/12$. Gaussian integration
+expresses the target-only angular field as
+\begin{align*}
+ v_0(\theta)=\tfrac12\big[&-\sin\theta\{\cos\theta\Phi(\cos\theta/q)
+ +q\phi(\cos\theta/q)\}\\
+ &+\rho\cos\theta\{\rho\sin\theta\Phi(\rho\sin\theta/q)
+ +q\phi(\rho\sin\theta/q)\}\big].
+\end{align*}
+At $\theta_0$, use $\Phi(\cos\theta_0/q)\ge1/2$, $\Phi\le1$ and
+$\phi\le2/5$ to obtain
+\[
+ v_0(\theta_0)\le\frac{\cos\theta_0}{2}
+ \left[-\frac{\sin\theta_0}{18}+\frac1{75}\right]<0.
+\]
+The last inequality uses $\sin(\pi/12)>1/4$. At $-\theta_0$, both terms in
+the original expression are positive, so the comparison arc is invariant.
+On it Jensen's inequality gives
+\[
+ g_0(\widehat\theta)=\E_P(a_{\widehat\theta}^\top X)_+^2
+ \ge\tfrac12\cos^2\theta_0.
+\]
+Proposition~\ref{pa:targetcomparison} yields
+\begin{equation}\label{pa:escapelower}
+ S(\tau)\ge\frac{S_0}{12}
+ \exp\{\cos^2(\pi/12)\tau-2H(\tau)\}.
+\end{equation}
+Here $a_*=201/400$. The elementary inequalities
+$e^{6.03}<416$ and $e^{3.015}>20$ imply
+$\overline S(6)<0.0832$, $\varepsilon_{\rm al}(6)<0.0830$, and
+$H(6)<0.1546$. Also
+\[
+ I(6)\le S_0^2(416^2/4+3.015)=0.0017306806.
+\]
+The radius bounds follow from $e^{-r}\ge1-r$ and
+$e^r\le(1-r)^{-1}$ for $0\le r<1$. Finally,
+\[
+ 6\cos^2(\pi/12)-2H(6)>6(0.933)-0.3092=5.2888,
+ \qquad e^{5.2888}>192.
+\]
+Equation~\eqref{pa:escapelower} proves the claim. These exponential
+inequalities may be checked directly by finite rational Taylor sums: for
+$x\ge0$ and $k+2>x$,
+\[
+ \sum_{j=0}^k\frac{x^j}{j!}
+ \le e^x\le
+ \sum_{j=0}^k\frac{x^j}{j!}
+ +\frac{x^{k+1}}{(k+1)!}\frac1{1-x/(k+2)}.
+\]
+For example use $k=30$ for the first upper bound and sufficiently many
+positive terms for the two lower bounds. This is elementary arithmetic in
+the analytical proof, not a trajectory certificate.
+\end{proof}
+\openobligation{This stops at physical time $2/3$ when $\mu_1=3$.
+It proves mass escape, not strong/weak chart entry, substantial weak learning,
+late signed competition, or a parameter region for Theorem A.}
+
+\section{Exact finite-parameter compensation and rate bookkeeping}
+\label{pa:bookkeeping}
+\source{\cite{LC} and the fixed-label compensation-tracking derivation in
+\cite{C}. The equations below use normalized rates; multiply them by
+$\mu_1^2$ for the physical rates in the diagnostic CSVs.}
+
+\subsection{The full motion decomposition}
+For a fixed probe set $z=a^\top\xi$ and $z_\perp=(a^\perp)^\top\xi$.
+Define the source-specific velocities
+\[
+ g_p=\tfrac12b^\top R_pa,\qquad
+ v_{\theta,p}=\tfrac12b^\top R_pa^\perp,\qquad
+ v_{\psi,p}=\tfrac12(b^\perp)^\top R_pa.
+\]
+\begin{proposition}[Source-by-motion decomposition]\label{pa:motion}
+At times for which the probe chain rule holds,
+\begin{align}\label{pa:motion-eq}
+ D_p^\tau=-\int\big[&2g_pz_+(e_\xi^\top b)
+ +v_{\psi,p}z_+(e_\xi^\top b^\perp)\nonumber\\
+ &+v_{\theta,p}\1_{\{z>0\}}z_\perp(e_\xi^\top b)\big]\dd\nu.
+\end{align}
+\end{proposition}
+\begin{proof}
+Differentiate $m b(a^\top\xi)_+$ along each labeled characteristic,
+using $m'_p=2mg_p$, $b'_p=v_{\psi,p}b^\perp$ and
+$a'_p=v_{\theta,p}a^\perp$. Contract the integrated output velocity
+with $-e_\xi$. This also recovers \eqref{pa:exactrates}.
+\end{proof}
+No neuron family has been dropped. A moving cohort may be used to evaluate
+this identity at a fixed time. Differentiating that cohort's mass or training
+output later requires its membership flux, or a fixed-label construction.
+
+\subsection{Gaussian projection compensation}
+Let $A=\{a^\top\xi>0\}$ and $I=A^c$ at the current state, and write
+$f=f^A+f^I$. These $A,I$ are population subsets, not the data moment matrix.
+Put $Q_1=1+q^2$ and
+\[
+ c_A=\frac{\E_{P_1}[X_1f_2^A(X)]}{Q_1},\qquad
+ \ell_I=\frac{\E_{P_1}[X_1f_2^I(X)]}{Q_1},\qquad
+ r_{21}=\frac{\E_{P_1}[X_1(f_2(X)-X_2)]}{Q_1}.
+\]
+\begin{proposition}[Exact compensation projection]\label{pa:projection}
+One has
+\begin{equation}\label{pa:projection-eq}
+ c_A=-\ell_I+r_{21},\qquad
+ |r_{21}|\le
+ \left(\frac{\E_{P_1}(f_2-X_2)^2}{Q_1}\right)^{1/2}.
+\end{equation}
+In particular, $\ell_I>|r_{21}|$ forces $c_A<0$.
+\end{proposition}
+\begin{proof}
+The first identity follows from $f=f^A+f^I$ and
+$\E_{P_1}[X_1X_2]=0$. The bound is Cauchy--Schwarz.
+\end{proof}
+\begin{remark}
+This is a Gaussian-distribution projection, not merely the centroid value
+$f_2(e_1)$. Neither the identity nor a small total loss proves a positive
+signed lower bound on $r_{21}$.
+\end{remark}
+
+There is a useful exact transfer identity. Define
+\[
+ h_1(\theta)=\frac{\E_{P_1}[X_1(a_\theta^\top X)_+]}{Q_1}.
+\]
+For any scalar $k>0$, since $f^I(\xi)=0$,
+\begin{equation}\label{pa:transferprojection}
+ f_2(\xi)=-k\ell_I+kr_{21}
+ +\int_A b_2[a^\top\xi-kh_1(\theta)]\dd\nu.
+\end{equation}
+The last term has absolute value at most
+$\int_A|b_2|\,|a^\top\xi-kh_1(\theta)|\dd\nu$.
+This proves how a compensating training projection can be exposed at a probe,
+provided the displayed geometry error is bounded; it does not by itself
+prove a sign of $E_\xi'$.
+
+\subsection{Exact help and harm factorizations}
+Choose a measurable core $C\subseteq A$ of mass $M_C>0$. A bar and
+$\langle\cdot\rangle_C$ denote normalized mass averages on $C$.
+For this subsection set
+\[
+ v=-z_\perp,\quad d=-e_\xi^\top b^\perp,\quad c=e_\xi^\top b,
+ \quad G_1=R_1a,\quad T_2=R_2a^\perp,\quad
+ \Lambda_1=-(b^\perp)^\top G_1,\quad j=b_1T_{2,1}.
+\]
+The quantities are signed, regardless of the absolute-value column names
+used in diagnostic output. Define
+\begin{align}
+ B&=\frac{M_C}{2}\langle zd\Lambda_1\rangle_C,&
+ H^{(1)}&=\frac{M_C}{2}\langle vcj\rangle_C,\label{pa:BH}\\
+ H^{(2)}&=\frac{M_C}{2}\langle vc\,b_2T_{2,2}\rangle_C,&
+ D_1^\tau&=-B+r_1,\quad
+ D_2^\tau=H^{(1)}+H^{(2)}+r_2.\nonumber
+\end{align}
+The last equations define remainders containing all other motions and all
+labels outside $C$. No smallness is assumed.
+
+\begin{proposition}[Factorizations with complete errors]\label{pa:factorizations}
+Let
+\[
+ B_0=\frac{M_C}{2}Q_1\bar z\,\bar d\,r_{21},\qquad
+ H_{1,0}=\frac{M_C}{2}\bar v\,\bar c\,\bar j.
+\]
+Then $B=B_0+\epsilon_B$, $H^{(1)}=H_{1,0}+\epsilon_H$, where
+\begin{align}
+ \frac{2\epsilon_B}{M_C}
+ &=Q_1r_{21}\Cov_C(z,d)
+ +\langle zd(\Lambda_1-Q_1r_{21})\rangle_C,\label{pa:epsilonB}\\
+ \frac{2\epsilon_H}{M_C}
+ &=\Cov_C(vc,j)+\bar j\Cov_C(v,c).\label{pa:epsilonH}
+\end{align}
+In particular these are controlled by Cauchy--Schwarz and absolute weighted
+moments, without dividing by a possibly vanishing mean residual.
+\end{proposition}
+\begin{proof}
+For the first equation add and subtract
+$Q_1r_{21}\langle zd\rangle_C$ in $\langle zd\Lambda_1\rangle_C$.
+For the second use
+$\langle vcj\rangle_C=\langle vc\rangle_C\bar j+\Cov_C(vc,j)$.
+\end{proof}
+The help reduction error is \emph{not only} within-core covariance. Put
+\[
+ R^{\rm full}_{1,22}=\E_{P_1}[e_2(X)X_2],\qquad
+ \tau_1(\theta)=\E_{P_1}[e_2(X)(-a^\top X)_+].
+\]
+The identity $(a^\top X)_+=a_1X_1+a_2X_2+(-a^\top X)_+$ gives
+\begin{align}\label{pa:helpdefect}
+ \Lambda_1-Q_1r_{21}
+ ={}&Q_1r_{21}(a_1b_1-1)-b_1a_2R^{\rm full}_{1,22}\nonumber\\
+ &-b_1\tau_1(\theta)+b_2G_{1,1}(\theta).
+\end{align}
+This keeps mean tilt, transverse residual, wrong-gate tail, and first-coordinate
+residual separately. For $a_1>0$,
+\[
+ |\tau_1(\theta)|\le\norm{e_2}_{L^2(P_1)}
+ \big[(a_1^2+q^2)\Phi(-a_1/q)-a_1q\phi(a_1/q)\big]^{1/2}.
+\]
+The bound follows by Cauchy--Schwarz and the negative-part second moment of
+a Gaussian with mean $a_1$ and variance $q^2$.
+
+Define
+\begin{equation}\label{pa:GLC}
+ \mathfrak G_{\rm LC}=\bar v\,\bar c\,\langle b_1T_{2,1}\rangle_C
+ -Q_1\bar z\,\bar d\,r_{21}.
+\end{equation}
+Then the exact bookkeeping identity is
+\begin{equation}\label{pa:GLCidentity}
+ E_\xi'=\frac{M_C}{2}\mathfrak G_{\rm LC}+\mathcal R,\qquad
+ \mathcal R=\epsilon_H-\epsilon_B+H^{(2)}+r_1+r_2.
+\end{equation}
+A valid absolute budget is
+$\mathcal E=|\epsilon_H|+|\epsilon_B|+|H^{(2)}|+|r_1|+|r_2|$.
+Separate cluster signs require
+\[
+ B_0>|\epsilon_B|+|r_1|,\qquad
+ H_{1,0}>|\epsilon_H|+|H^{(2)}|+|r_2|.
+\]
+This is not an autonomous reduced ODE, and no equality with the old archived
+normal-form statistic $G$ has been proved.
+
+\subsection{Source, carrier, and residual producer}
+For a partition into output-producing groups $g$, write $f=\sum_g f^g$ and
+\begin{align*}
+ T_{2,1}^{\rm tar}(\theta)&=\E_{P_2}[X_1(a^\perp{}^\top X)
+ \1_{\{a^\top X>0\}}],\\
+ T_{2,1}^{g}(\theta)&=-\E_{P_2}[f_1^g(X)(a^\perp{}^\top X)
+ \1_{\{a^\top X>0\}}].
+\end{align*}
+Linearity gives the exact identities
+\begin{equation}\label{pa:producer}
+ T_{2,1}=T_{2,1}^{\rm tar}+\sum_gT_{2,1}^g,\qquad
+ H^{(1),g}=\frac12\int_C vc\,b_1T_{2,1}^g(\theta)\dd\nu.
+\end{equation}
+Cluster 2 can supply the gradient, the weak family's output can shape its
+residual, and probe-active strong labels can carry the resulting motion.
+These are three different indices. Evaluating $T_{2,1}^g$ at the mean angle
+is not the rate-weighted integral in \eqref{pa:producer}.
+
+\subsection{A conditional analytical compensation-tracking equation}
+\begin{proposition}[Fixed-label tracking identity]\label{pa:tracking}
+Let $A$ now be a \emph{fixed subset of initial labels}, $I=A^c$, and put
+$h(X)=X_1/\sqrt{Q_1}$. Use the $L^2(P_1)$ inner product. Define
+\[
+ c=\langle h,f_2^A\rangle_1,\quad
+ \ell=\langle h,f_2^I\rangle_1,\quad
+ \delta=c+\ell=\langle h,f_2-X_2\rangle_1=\sqrt{Q_1}r_{21}.
+\]
+Let the output-weight kernel operator be
+\[
+ (\mathcal T_A r)(X)=\E_{P_1,X'}\!\left[
+ \int_A(U_\alpha^\top X)_+(U_\alpha^\top X')_+\dd\lambda_0(\alpha)
+ \,r(X')\right].
+\]
+Write the exact motion as
+$\partial_\tau f_2^A=-\tfrac12\mathcal T_A(f_2-X_2)+v_A$, where $v_A$
+contains all input motion of $A$ and its cluster-2 output-weight motion.
+Define
+\[
+ \lambda_A=\langle h,\mathcal T_Ah\rangle_1,\quad
+ k_A=\mathcal T_Ah-\lambda_Ah,\quad
+ f_2-X_2=\delta h+r_\perp.
+\]
+Then
+\begin{align}\label{pa:tracking-eq}
+ \delta'&=-\kappa_A\delta+\eta_A,\qquad \kappa_A=\lambda_A/2\ge0,\\
+ \eta_A&=\ell'+\langle h,v_A\rangle_1
+ -\tfrac12\langle k_A,r_\perp\rangle_1.\nonumber
+\end{align}
+\end{proposition}
+\begin{proof}
+The kernel is self-adjoint positive semidefinite by its feature-integral
+representation. Cluster-1 output-weight descent is exactly the displayed
+$-\mathcal T_A r/2$. Project onto $h$, use
+$\langle h,r_\perp\rangle_1=\langle h,k_A\rangle_1=0$, and add $\ell'$.
+\end{proof}
+If all $A$ inputs satisfy $|\theta|\le\theta_0<\pi/2$ and
+$S_A=\int_A|U|^2\dd\lambda_0$, then
+\begin{equation}\label{pa:trackingdamping}
+ \kappa_A\ge\frac{Q_1}{2}\cos^2\theta_0
+ \Phi(\cos\theta_0/q)^2S_A.
+\end{equation}
+Indeed
+$\E_{P_1}[X_1(a^\top X)_+]=Q_1a_1\Phi(a_1/q)+q\phi(a_1/q)$,
+and $\lambda_A=\int_A\langle h,(U^\top X)_+\rangle_1^2\dd\lambda_0$.
+If $\kappa_A\ge\kappa_*>0$ and $|\eta_A|\le\eta_*$, variation of constants gives
+\[
+ |\delta(\tau)|\le e^{-\kappa_*(\tau-\tau_0)}|\delta(\tau_0)|
+ +\frac{\eta_*}{\kappa_*}(1-e^{-\kappa_*(\tau-\tau_0)}).
+\]
+\openobligation{The useful forcing bound, the entry hypotheses, and a positive
+signed lower bound on the lag are not supplied by this identity. Bounding
+$|\eta_A|$ alone does not prove $\delta>0$. The fixed labels here are not the
+instantaneous moving `main' mask in the diagnostics.}
+
+\section{One noise-scaled population system}\label{pa:scaled}
+\source{\cite{TN}, Sections 3--4, and \cite{SP}, Sections 1--3.}
+\scope{The limiting equations are a derived leading system. Theorems below
+about this system are exact within it. A uniform finite-noise field expansion
+and an initialized trajectory transfer are still open.}
+
+\subsection{Coordinates and Gaussian overlap}
+Write $\lambda=\rho^2$, and define
+\[
+ \phi(r)=\frac{e^{-r^2/2}}{\sqrt{2\pi}},\quad
+ \Phi(r)=\int_{-\infty}^r\phi(s)\dd s,\quad
+ K(r)=\phi(r)+r\Phi(r),\quad g(r)=K(r)-r.
+\]
+For a standard normal $Z$, $K(r)=\E(Z+r)_+$,
+$K'(r)=\Phi(r)$, and $g(r)=\E[-(Z+r)]_+>0$.
+Use strong and weak scaled coordinates
+\begin{align}\label{pa:charts}
+ a_s&=(\cos(qx),\sin(qx)),&b_s&=(\cos(qy),\sin(qy)),\\
+ a_w&=(\sin(qu),\cos(qu)),&b_w&=(-\sin(qv),\cos(qv)).\nonumber
+\end{align}
+A positive $u$ is a weak input tilt below $90^\circ$, toward the strong axis.
+A positive $v$ is a weak output tilt above $90^\circ$.
+
+\begin{lemma}[Overlap kernel]\label{pa:overlap}
+For finite $t,r$,
+\begin{equation}\label{pa:F}
+ F(t,r):=\E[(Z+r)_+\1_{\{Z+t>0\}}]
+ =\phi(\min(t,r))+r\Phi(\min(t,r)).
+\end{equation}
+Its first derivatives are
+\[
+ F_t(t,r)=(r-t)_+\phi(t),\qquad
+ F_r(t,r)=\Phi(\min(t,r)).
+\]
+It is $C^{1,1}$ on compact sets but need not be $C^2$ at $t=r$.
+\end{lemma}
+\begin{proof}
+The integration interval is $Z>-\min(t,r)$. Integrating $Z+r$ on this
+interval gives \eqref{pa:F}. Differentiating its two branches gives the
+stated derivatives, which agree on the diagonal. Their compact-set
+Lipschitz property follows from the positive-part and minimum functions.
+The derivative of $F_t$ changes branch at the diagonal, which prevents a
+general classical second derivative there.
+\end{proof}
+
+Let $\mu_s(dx\,dy)$ and $\mu_w(du\,dv)$ be finite nonnegative squared-radius
+measures, and use \emph{unnormalized} moments
+\begin{align*}
+ M&=\int\dd\mu_s,&N&=\int\dd\mu_w,&Y&=\int y\dd\mu_s,&V&=\int v\dd\mu_w,\\
+ K_s&=\int K(\rho x)\dd\mu_s,&K_w&=\int K(u)\dd\mu_w.
+\end{align*}
+Define
+\[
+ \mathcal S(x)=\int F(\rho x,\rho\widetilde x)\dd\mu_s(\widetilde x,\widetilde y),
+ \qquad
+ \mathcal W(u)=\int F(u,\widetilde u)\dd\mu_w(\widetilde u,\widetilde v).
+\]
+
+\begin{definition}[Leading scaled population equations]\label{pa:leading}
+The characteristic velocities are
+\begin{align}
+ x'={}&\tfrac12[-(1-M)x+\rho\phi(\rho x)-\rho\mathcal S(x)
+ +\lambda\{V+(1-N)y\}\Phi(\rho x)],\label{pa:pop-x}\\
+ y'={}&\tfrac12[-(1-M)y-Y-K_w+\rho(1-N)K(\rho x)],\label{pa:pop-y}\\
+ u'={}&\tfrac12[\phi(u)-\mathcal W(u)-\{Y+(1-M)v\}\Phi(u)
+ -\lambda(1-N)u],\label{pa:pop-u}\\
+ v'={}&\tfrac12[\rho K_s-\lambda V-\lambda(1-N)v-(1-M)K(u)].\label{pa:pop-v}
+\end{align}
+The associated transport--reaction equations are
+\begin{align}
+ \partial_\tau\mu_s+\partial_x(x'\mu_s)+\partial_y(y'\mu_s)&=(1-M)\mu_s,
+ \label{pa:poptransport}\\
+ \partial_\tau\mu_w+\partial_u(u'\mu_w)+\partial_v(v'\mu_w)&=\lambda(1-N)\mu_w.
+ \nonumber
+\end{align}
+We work with characteristic solutions on finite intervals with bounded
+support and finite masses, or with explicitly sufficient moment bounds.
+\end{definition}
+
+\paragraph{Leading-order derivation, with the reduction gap exposed.}
+On cluster 1 write $X=(1+qZ_1,qZ_2)$ and on cluster 2 write
+$X=(qZ_1,\rho+qZ_2)$. For bounded scaled coordinates the own-cluster gates
+are active except for Gaussian tails, while the cross gates remain
+nontrivial. The leading residuals are
+\begin{align*}
+ P_1:\quad e_1(X)&=(1-M)(1+qZ_1)+O(q^2),\\
+ e_2(X)&=q\left[Z_2-Y-\int(Z_2+u)_+\dd\mu_w\right]+O(q^2),\\
+ P_2:\quad e_1(X)&=q\left[Z_1-\int(Z_1+\rho x)_+\dd\mu_s+\rho V\right]+O(q^2),\\
+ e_2(X)&=(1-N)(\rho+qZ_2)+O(q^2).
+\end{align*}
+Insertion into the exact angular/radial field uses
+$\E Z\1_{\{Z+r>0\}}=\phi(r)$ and Lemma~\ref{pa:overlap}.
+It gives \eqref{pa:pop-x}--\eqref{pa:poptransport} as the leading coefficients.
+These residual expansions describe the derivation; they do not alone prove
+an $O(q^2)$ estimate for the \emph{scaled vector field}. In particular,
+angular velocities are divided by $q$, gate indicators must be handled in
+Gaussian coordinates, and long-time errors require a separate argument.
+The tested $O(q^2)$ field accuracy is evidence, not a substitute for that lemma.
+The isotropic population is not initially supported in \eqref{pa:charts};
+uncharted labels and chart-entry flux cannot be omitted.
+
+\begin{proposition}[Mass equations and atomic restrictions]\label{pa:masslaws}
+For a closed pair of family measures satisfying
+\eqref{pa:poptransport},
+\begin{equation}\label{pa:logistic}
+ M'=M(1-M),\qquad N'=\lambda N(1-N).
+\end{equation}
+The relative weights of fixed labels within either family are constant.
+One atom in each family reduces the system to
+\begin{align}
+ m'&=m(1-m),&n'&=\lambda n(1-n),\label{pa:6d}\\
+ x'&=\tfrac12[-(1-m)x+\rho(1-m)\phi(\rho x)
+ +\lambda\{nv-mx+(1-n)y\}\Phi(\rho x)],\nonumber\\
+ y'&=\tfrac12[-y-nK(u)+\rho(1-n)K(\rho x)],\nonumber\\
+ u'&=\tfrac12[(1-n)\phi(u)-\{nu+my+(1-m)v\}\Phi(u)
+ -\lambda(1-n)u],\nonumber\\
+ v'&=\tfrac12[\rho mK(\rho x)-\lambda v-(1-m)K(u)].\nonumber
+\end{align}
+\end{proposition}
+\begin{proof}
+Integrate the transport equations. Every fixed strong label has the same
+relative reaction rate $1-M$, and every fixed weak label has rate
+$\lambda(1-N)$, proving the ratio assertion. For Dirac measures,
+$\mathcal S(x)=mK(\rho x)$, $\mathcal W(u)=nK(u)$,
+$Y=my$, and $V=nv$. Substitution and $K(r)=\phi(r)+r\Phi(r)$ give
+\eqref{pa:6d}.
+\end{proof}
+The ratio assertion is not an exact finite-noise fact and does not hold for
+a family redefined by a time-varying angular mask without flux terms.
+
+The strong-family source decomposition is
+\begin{align}
+ x'_1&=-\tfrac12(1-M)x,&
+ y'_1&=-\tfrac12[(1-M)y+Y+K_w],\label{pa:pop-sources}\\
+ x'_2&=\tfrac12[\rho\phi(\rho x)-\rho\mathcal S(x)
+ +\lambda\{V+(1-N)y\}\Phi(\rho x)],&
+ y'_2&=\tfrac\rho2(1-N)K(\rho x).\nonumber
+\end{align}
+Strong mass growth is cluster-1-sourced and weak mass growth is
+cluster-2-sourced to leading order. The one-half mixture factor is already
+included.
+
+\section{Resident dynamics, shape instability, and entry obstacles}
+\label{pa:shape}
+\source{\cite{SP}, Sections 4--9, including the distinction between coherent
+and centered perturbations.}
+
+\subsection{The invariant strong-learning curve}
+\begin{lemma}[Resident direction]\label{pa:resident}
+For every $0<\rho<1$ there is a unique $a=a_\rho>0$ satisfying
+\begin{equation}\label{pa:root-a}
+ a=\rho K(\rho a).
+\end{equation}
+With $N=0$, $\mu_s=M(\tau)\delta_{(a,a)}$ and $M'=M(1-M)$ form an
+invariant curve of the leading population system.
+\end{lemma}
+\begin{proof}
+The derivative of $a-\rho K(\rho a)$ is
+$1-\rho^2\Phi(\rho a)\ge1-\rho^2>0$. The value at zero is negative and
+it tends to infinity. On the proposed curve, substitution yields
+$x'=(1-M)[-a+\rho K(\rho a)]/2=0$ and
+$y'=[-a+\rho K(\rho a)]/2=0$.
+\end{proof}
+This is a reference solution, not a claim that the full initialized family
+is already at that direction.
+Put $P=\Phi(\rho a)$ and $\alpha=\lambda P/2$.
+
+\begin{proposition}[Coherent and centered linearizations]\label{pa:spectra}
+For normalized mean-zero strong-label offsets
+$x_\beta=a+\varepsilon\xi_\beta$, $y_\beta=a+\varepsilon\eta_\beta$,
+$\E\xi=\E\eta=0$, the first-order shape equation is
+\begin{equation}\label{pa:Jsh-res}
+ \frac{d}{d\tau}\begin{pmatrix}\xi\\\eta\end{pmatrix}
+ =\begin{pmatrix}-(1-M)/2&\alpha\\\alpha&-(1-M)/2\end{pmatrix}
+ \begin{pmatrix}\xi\\\eta\end{pmatrix}.
+\end{equation}
+The coherent mean perturbation instead has matrix
+\begin{equation}\label{pa:Jmean}
+ J_{\rm mean}(M)=
+ \begin{pmatrix}-(1-M)/2-M\alpha&\alpha\\\alpha&-1/2\end{pmatrix}.
+\end{equation}
+At $M=1$ the coherent block is negative definite, while the shape rates
+are $+\alpha$ and $-\alpha$.
+\end{proposition}
+\begin{proof}
+At equal thresholds $F_t(t,t)=0$ and $F_r(t,t)=\Phi(t)$.
+For a centered perturbation the first-order donor-field variation vanishes,
+because it depends only on the mean offsets. Linearizing the receiving
+variables gives \eqref{pa:Jsh-res}. For a coherent displacement, the donor
+mean changes: differentiating the atomic equations in \eqref{pa:6d} at
+$N=0$, $x=y=a$, yields \eqref{pa:Jmean}. At $M=1$ its trace is negative
+and determinant $\alpha(1/2-\alpha)>0$, since $0<\alpha<1/2$.
+The centered eigenvectors are $(1,1)$ and $(1,-1)$.
+\end{proof}
+
+\begin{remark}[Population multiplicity]
+Every admissible centered profile in the $(1,1)$ direction is an unstable
+first-order shape mode at the resident state. Thus ``weak growth and strong
+splitting'' names two \emph{types} of instability, not a proved two-dimensional
+unstable manifold of the measure flow. The coherent finite-dimensional
+saddle spectrum cannot be used to infer stable condensation.
+\end{remark}
+
+\begin{proposition}[Moving shape matrix]\label{pa:moving-shape}
+About a coherent state of masses $M,N$ and coordinates $(x,y,u,v)$, centered
+strong perturbations have matrix
+\begin{equation}\label{pa:Jmoving}
+ J_{\rm sh}=
+ \begin{pmatrix}-(1-M)/2+\beta&A_\mathrm{sh}\\
+ A_\mathrm{sh}&-(1-M)/2\end{pmatrix},
+\end{equation}
+where
+\[
+ A_\mathrm{sh}=\frac\lambda2(1-N)\Phi(\rho x),\qquad
+ \beta=\frac{\rho^3}{2}[Nv+(1-N)y-x]\phi(\rho x).
+\]
+\end{proposition}
+\begin{proof}
+The first-order donor variation vanishes for centered offsets, as above.
+Differentiate the receiving coordinates in \eqref{pa:pop-x}--\eqref{pa:pop-y}.
+At coincident strong inputs the receiver derivative of $\mathcal S$ is zero.
+The derivative of $\rho\phi(\rho x)$ combines with that of the final
+$\Phi(\rho x)$ factor to give $\beta$. The cross derivatives give
+$A_\mathrm{sh}$ and the remaining diagonal term is $-(1-M)/2$.
+\end{proof}
+The frozen coefficient $\alpha(1-N)$ is a resident approximation.
+The angle-dependent coefficient and $\beta$ must be retained during
+weak learning; the eigendirections need not stay at $45^\circ$.
+
+\subsection{Exact linear multipliers, not a nonlinear passage theorem}
+\begin{proposition}[Linear resident passage factors]\label{pa:multipliers}
+Along the resident curve, centered eigenmode amplitudes satisfy
+\begin{align}
+ \frac{h_\pm(\tau_1)}{h_\pm(\tau_0)}
+ &=e^{\pm\alpha(\tau_1-\tau_0)}\sqrt{\frac{M_0}{M_1}},\label{pa:mult-time}\\
+ \frac{h_+(M_1)}{h_+(M_0)}
+ &=\left(\frac{M_1}{M_0}\right)^{\alpha-1/2}
+ \left(\frac{1-M_0}{1-M_1}\right)^\alpha.\label{pa:mult-mass}
+\end{align}
+For the separately defined frozen resident weak-growth approximation
+$h_+'=\alpha(1-N)h_+$, $N'=\lambda N(1-N)$,
+\begin{equation}\label{pa:mult-weak}
+ h_+(N)=h_+(N_0)(N/N_0)^{\alpha/\lambda}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Integrate the eigenvalue $-(1-M)/2\pm\alpha$. Logistic growth gives
+$\int(1-M)\dd\tau=\log(M_1/M_0)$ and
+$\tau_1-\tau_0=\log[M_1(1-M_0)/(M_0(1-M_1))]$.
+For the last equation divide the two scalar differential equations.
+\end{proof}
+\openobligation{A nonlinear passage theorem must bound the moving matrix,
+mean backreaction, weak angular relaxation, and population outside the chart.
+The useful candidate shape parameter is
+$\delta_{\rm ent}N_{\rm ent}^{-\alpha/\lambda}$, not just
+$\delta_{\rm ent}$. If $N_{\rm ent}\asymp S_0^{c_0}$ and a strong-stage
+shape is $O(S_0^{1/2-\alpha})$, the formal exponent is
+$\eta=1/2-\alpha-c_0\alpha/\lambda$. The entry laws and resulting
+phase threshold are not proved by the linear factors.}
+
+\subsection{Ordering within a common population field}
+\begin{proposition}[Same-field order preservation]\label{pa:order}
+Assume $0\le N\le1$. Two strong characteristics in the same evolving
+leading population field that are initially ordered in both coordinates
+remain so on a chart-valid interval. A pairwise co-ordered strong population
+has nonnegative normalized covariance $\Cov(x,y)$.
+\end{proposition}
+\begin{proof}
+Holding the common field fixed,
+\[
+ \partial_y x'=\partial_x y'
+ =\frac\lambda2(1-N)\Phi(\rho x)\ge0.
+\]
+At a first equality of one ordered coordinate, the other ordered coordinate
+cannot make the difference point outward. Local Lipschitz regularity and
+a strict-barrier approximation give the standard comparison argument.
+For normalized label weights,
+\[
+ \Cov(x,y)=\frac12\E_{\beta,\gamma}
+ [(x_\beta-x_\gamma)(y_\beta-y_\gamma)]\ge0.
+\]
+\end{proof}
+This does not prove that isotropic labels have entered such a chart-ordered
+family, or that two different populations are ordered relative to one
+another. The bridge-induced field change is addressed in
+Section~\ref{pa:bridge}.
+
+\subsection{The weak attracting direction is created during learning}
+\begin{proposition}[No initial weak-chart equilibrium]\label{pa:noweakeq}
+For $0<\lambda<1$, the weak test-characteristic system at $M=N=0$ has no
+finite equilibrium.
+\end{proposition}
+\begin{proof}
+The $v$ equation requires $v=-K(u)/\lambda$. The remaining equation would be
+\[
+ \phi(u)+K(u)\Phi(u)/\lambda-\lambda u=0.
+\]
+For $u\le0$ its left side is positive. For $u>0$ it is decreasing in
+$\lambda$, so is at least its value at $\lambda=1$, namely
+$(1+\Phi(u))[K(u)-u]>0$.
+\end{proof}
+For frozen resident strong mass $M$, eliminating the weak output coordinate
+instead gives
+\begin{equation}\label{pa:frozen-weak}
+ F_M(u)=\phi(u)-Ma\left(1+\frac{1-M}{\lambda}\right)\Phi(u)
+ +\frac{(1-M)^2}{\lambda}K(u)\Phi(u)-\lambda u.
+\end{equation}
+The equations $F_M=\partial_uF_M=0$ specify a frozen-parameter saddle-node
+candidate. Its reported numerical value near $M=0.4768$ at $\rho=2/3$ is
+not a proved time-varying capture threshold. The weak seed must be obtained
+from actual arrival/capture of initialized labels, not postulated as an
+already formed atom.
+
+\section{Population compensation lag and probe geometry}\label{pa:lagpop}
+\source{\cite{SP}, Sections 10--12.}
+\scope{The sign law in this section assumes the \emph{leading} surface $M=1$.
+It is not an exact finite-$q$ positivity theorem. Neither family is assumed
+to be a point mass.}
+
+\begin{theorem}[Positive lag for a distributed weak family]\label{pa:lagtheorem}
+Let a bounded-chart characteristic solution of the leading system have
+$M=1$, $0\le N\le1$. Define
+\[
+ L_0=Y+K_w,
+ \quad \eta_w=\mu_w/N\ (N>0),\quad Q(u)=\Phi(u),
+\]
+and interpret terms multiplied by $N$ continuously at $N=0$. Put
+\begin{equation}\label{pa:Xi-def}
+ \Xi=\E_{\eta_w}[Q\phi]+\E_{\eta_w}[K]\E_{\eta_w}[Q^2]
+ -\E_{u,r\sim\eta_w}[Q(u)F(u,r)],
+\end{equation}
+where the two labels in the last expectation are independent. Then
+\begin{align}\label{pa:lag-pop}
+ L_0'={}&-\frac{1+N\E Q^2}{2}L_0
+ +\frac\rho2(1-N)K_s\nonumber\\
+ &+\frac{N(1-N)}2\{\lambda\E(K+\phi)+\E(Q\phi)\}
+ +\frac{N^2}{2}\Xi.
+\end{align}
+For finite coordinates, $\Xi>0$. Hence a positive incoming lag stays positive
+through every finite chart-valid interval.
+\end{theorem}
+\begin{proof}
+The strong weights are stationary at $M=1$, so
+\[
+ Y'=\tfrac12[-Y-K_w+\rho(1-N)K_s].
+\]
+The normalized weak weights are also constant along labels. Differentiate
+$K_w=N\E K(u)$, use $N'=\lambda N(1-N)$, and insert
+\[
+ u'=\tfrac12[\phi(u)-N\E_rF(u,r)-YQ(u)-\lambda(1-N)u].
+\]
+Substitute $Y=L_0-N\E K$. Group the terms in $L_0$, then use
+$u\Phi(u)=K(u)-\phi(u)$; this gives \eqref{pa:lag-pop}.
+
+For the sign, put $r_-=\min(u,r)$ and $r_+=\max(u,r)$.
+Symmetrization of \eqref{pa:Xi-def} gives
+\begin{align}\label{pa:Xi-positive}
+ \Xi=\frac12\E_{u,r}\big[&g(r_+)
+ \{\Phi(r_-)^2+\Phi(r_+)^2\}\nonumber\\
+ &+[K(r_+)-K(r_-)]\Phi(r_+)[1-\Phi(r_+)]\big]>0.
+\end{align}
+To check this equality, take $u\le r$. Then
+$F(u,r)=\phi(u)+r\Phi(u)$ and $F(r,u)=K(u)$.
+Twice the symmetrized integrand reduces to
+\[
+ \Phi(r)\phi(r)+[K(r)-r]\Phi(u)^2
+ -K(u)\Phi(r)[1-\Phi(r)].
+\]
+Adding and subtracting $K(r)\Phi(r)[1-\Phi(r)]$ produces
+\eqref{pa:Xi-positive}. Since $g>0$ and $K$ is increasing, all forcing
+terms in \eqref{pa:lag-pop} are nonnegative. The integrating-factor formula
+preserves a positive initial value.
+\end{proof}
+For a weak Dirac measure the last forcing is
+$\Xi=[K(u)-u]\Phi(u)^2$, recovering the two-atom identity.
+
+\begin{proposition}[Population probe law]\label{pa:probe-pop}
+Assume the entire state is represented by the two scaled-chart measures,
+with compact support, bounded masses, and no outside population. Use $\xi_q=(\sin(q\zeta),-\cos(q\zeta))$ with bounded $\zeta$.
+For sufficiently small positive $q$ the weak population is probe-inactive.
+Set
+\begin{equation}\label{pa:exposure}
+ A_\zeta=\int(\zeta-x)_+\dd\mu_s,\qquad
+ B_\zeta=\int y(\zeta-x)_+\dd\mu_s.
+\end{equation}
+The static expansion is
+\begin{equation}\label{pa:pop-error}
+ E_{\xi_q}-\frac12=q^2\mathcal E_\zeta+O(q^4),\qquad
+ \mathcal E_\zeta=\frac12A_\zeta^2-\zeta A_\zeta+B_\zeta.
+\end{equation}
+Within the leading $M=1$ dynamics, the exact source rates are
+\begin{align}
+ d_1&=-\tfrac12A_\zeta L_0,\label{pa:pop-help}\\
+ d_2&=\int_{x<\zeta}(\zeta-A_\zeta-y)x'_2\dd\mu_s
+ +\frac\rho2(1-N)\int(\zeta-x)_+K(\rho x)\dd\mu_s,\label{pa:pop-harm}
+\end{align}
+and $\mathcal E_\zeta'=d_1+d_2$ wherever the chain rule applies.
+In particular $L_0>0$ and $A_\zeta>0$ imply $d_1<0$.
+\end{proposition}
+\begin{proof}
+For a weak input,
+$a_w^\top\xi_q=-\cos(q(u+\zeta))<0$ on a bounded chart for small $q$.
+For a strong input,
+$a_s^\top\xi_q=\sin(q(\zeta-x))$. Uniform Taylor expansion, retaining the
+positive part, gives
+$f_1(\xi_q)=qA_\zeta+O(q^3)$ and
+$f_2(\xi_q)=q^2B_\zeta+O(q^4)$. Substitution into
+$E_\xi=1/2-\xi^\top f(\xi)+|f(\xi)|^2/2$ gives
+\eqref{pa:pop-error}. At $M=1$ there is no leading strong mass reaction.
+Equation~\eqref{pa:pop-sources} gives $x'_1=0$, $y'_1=-L_0/2$, proving
+\eqref{pa:pop-help}. For source 2, differentiate $A_\zeta$ and $B_\zeta$:
+\[
+ A'_{\zeta,2}=-\int_{x<\zeta}x'_2\dd\mu_s,\quad
+ B'_{\zeta,2}=\int[(\zeta-x)_+y'_2-y\1_{\{x<\zeta\}}x'_2]\dd\mu_s.
+\]
+This yields \eqref{pa:pop-harm}. Absolute continuity supplies the
+almost-everywhere version when labels cross a probe boundary.
+\end{proof}
+If outside labels remain, their output and rate must be retained as separate
+remainders. The $O(q^4)$ assertion is static on the stated bounded chart,
+not a uniform approximation of the initialized trajectory over a
+logarithmically long delay. The second term of $d_2$ is retained until weak saturation.
+No arbitrary-state positivity of $d_2$ is asserted.
+
+\begin{proposition}[Active covariance and inactive compensation]\label{pa:active-error}
+Assume $M=1$. If all strong labels are active,
+\[
+ \mathcal E_\zeta=-\frac12\zeta^2+\frac12\bar x^2
+ +\bar y(\zeta-\bar x)-\Cov(x,y).
+\]
+In general let $A=\{x<\zeta\}$ have mass $M_A>0$, normalized means
+$\bar x_A,\bar y_A$, and normalized covariance $C_A$. Then, with
+$h=\zeta-\bar x_A$,
+\begin{equation}\label{pa:partial-error}
+ \mathcal E_\zeta=\frac12M_A^2h^2
+ -M_Ah(\zeta-\bar y_A)-M_AC_A.
+\end{equation}
+If $B=A^c$ in the strong population and $Y_B=\int_B y\dd\mu_s$, then
+\begin{equation}\label{pa:bridge-error}
+ \mathcal E_\zeta=\frac12A_\zeta^2-\zeta A_\zeta
+ +h(L_0-K_w-Y_B)-M_AC_A.
+\end{equation}
+\end{proposition}
+\begin{proof}
+One has $A_\zeta=M_Ah$ and
+$B_\zeta=M_A\bar y_Ah-M_AC_A$. Substitute into
+\eqref{pa:pop-error}. For the last formula use
+$M_A\bar y_A=Y-Y_B=L_0-K_w-Y_B$.
+\end{proof}
+Positive covariance improves error at fixed mass and barycentre. It does
+not determine the sign of a trained-depth change, because the mean,
+active mass, and weak residual also change. Equation~\eqref{pa:bridge-error}
+shows how a probe-inactive bridge enters compensation without contributing
+direct output at that probe.
+
+\section{The selected coherent orbit and an analytical reversal theorem}
+\label{pa:orbit}
+\source{\cite{TN}, Sections 6--9, with the real-root and integrable-negative-part
+corrections in \cite{SP}, Section 9.}
+\scope{This section proves reversal for an analytically defined orbit of the
+leading system. It does not prove that the isotropic population selects this
+orbit. In particular, centered splitting is absent from this invariant
+coherent restriction, not assumed stable in the full population.}
+
+On the $m=1$ surface of \eqref{pa:6d}, put $n=N$ and retain weak growth:
+\begin{align}
+ n'&=\lambda n(1-n),\label{pa:5d}\\
+ x'&=\tfrac\lambda2[nv-x+(1-n)y]\Phi(\rho x),\nonumber\\
+ y'&=\tfrac12[-y-nK(u)+\rho(1-n)K(\rho x)],\nonumber\\
+ u'&=\tfrac12[(1-n)(\phi(u)-\lambda u)-(nu+y)\Phi(u)],\nonumber\\
+ v'&=\tfrac12[\rho K(\rho x)-\lambda v].\nonumber
+\end{align}
+Setting $n=1$ in advance would remove the weak-learning transition.
+
+\begin{lemma}[Real weak resident coordinate]\label{pa:weakroot}
+For every $0<\rho<1$, the equation
+\begin{equation}\label{pa:weakroot-eq}
+ \phi(u_*)-a_\rho\Phi(u_*)-\lambda u_*=0
+\end{equation}
+has exactly one real root. The derivative of its left-hand side at the root
+is negative. The root need not be positive.
+\end{lemma}
+\begin{proof}
+Divide by $\Phi(u)>0$ and put $r(u)=\phi(u)/\Phi(u)$. Then
+\[
+ r'(u)=-r(u)[u+r(u)]<0,
+\]
+because $u+r(u)=K(u)/\Phi(u)>0$. Also
+\[
+ \left(\frac u{\Phi(u)}\right)'
+ =\frac{\Phi(u)-u\phi(u)}{\Phi(u)^2}>0.
+\]
+For $u<0$ its numerator is positive directly; for $u\ge0$ it equals
+$1/2$ at zero and its derivative is $u^2\phi(u)\ge0$.
+Thus $r(u)-a_\rho-\lambda u/\Phi(u)$ is strictly decreasing from
+$+\infty$ to $-\infty$. At its unique zero the derivative of the original
+left side is $\Phi(u_*)$ times this negative derivative.
+\end{proof}
+
+\begin{proposition}[Analytically specified weak-growth branch]\label{pa:branch}
+The point
+\[
+ P_\rho=(n,x,y,u,v)=(0,a,a,u_*,a/\lambda)
+\]
+is a hyperbolic saddle of \eqref{pa:5d}, with one positive eigenvalue
+$\lambda$ and four negative eigenvalues. Its positive-$n$ unstable branch
+is unique up to time translation. Fix its translation by
+\begin{equation}\label{pa:weakclock}
+ n(s)=\frac1{1+e^{-\lambda s}},
+\end{equation}
+so that $s=0$ is weak half-mass. This specifies the selected coherent orbit
+without fitted entry coordinates.
+\end{proposition}
+\begin{proof}
+The resident equations follow from \eqref{pa:root-a} and
+\eqref{pa:weakroot-eq}. The strong angular block is
+$\bigl(\begin{smallmatrix}-\alpha&\alpha\\\alpha&-1/2\end{smallmatrix}\bigr)$,
+negative definite by Proposition~\ref{pa:spectra}. The remaining angular
+eigenvalues are
+\[
+ -\tfrac12[(u_*+a)\phi(u_*)+\lambda],\qquad -\lambda/2.
+\]
+The first is negative by Lemma~\ref{pa:weakroot}. The Jacobian is block
+triangular when weak mass is ordered first, and its weak-mass eigenvalue is
+$\lambda$. The finite-dimensional unstable-manifold theorem applies to
+this smooth vector field; all its hyperbolicity hypotheses have just been
+checked. The positive branch has logistic weak mass, and
+\eqref{pa:weakclock} fixes its translation. The continued branch stays in
+$0<n<1$. Its forward existence is proved below.
+\end{proof}
+No infinite-dimensional unstable-manifold result is invoked for the full
+measure flow. That flow has the additional shape sector in
+Proposition~\ref{pa:spectra}.
+
+For an active strong atom the exact finite-$q$ error at a two-atom state is
+\begin{equation}\label{pa:atomicexacterror}
+ E_{\xi_q}-\tfrac12
+ =\frac{m^2}{2}\sin^2(q(\zeta-x))
+ -m\sin(q(\zeta-x))\sin(q(\zeta-y)),
+\end{equation}
+provided the weak atom is inactive. It follows simply by taking the norm
+of the single active output. At $m=1$ its leading observable is
+\begin{equation}\label{pa:atomicerror}
+ \mathcal E_\zeta=-\frac12\zeta^2+\frac12x^2+y(\zeta-x),
+ \qquad \mathcal E_\zeta'=(x-y)x'+(\zeta-x)y'.
+\end{equation}
+For all $x$ use
+$\mathcal E_\zeta=\tfrac12(\zeta-x)_+^2-(\zeta-x)_+(\zeta-y)$.
+
+The population lag theorem becomes, with $L=y+nK(u)$ and $Q=\Phi(u)$,
+\begin{align}\label{pa:atomiclag}
+ L'={}&-\tfrac12(1+nQ^2)L+\tfrac\rho2(1-n)K(\rho x)\nonumber\\
+ &+\tfrac{n(1-n)}2[\lambda(K(u)+\phi(u))+Q\phi(u)]
+ +\tfrac{n^2}{2}[K(u)-u]Q^2.
+\end{align}
+Since the resident value is $a>0$, the selected branch has $L>0$. Its
+source rates in the active phase are
+\begin{align}
+ d_1&=-\tfrac12(\zeta-x)L,\label{pa:atomicrates}\\
+ d_2&=\tfrac\lambda2(x-y)[nv-x+(1-n)y]\Phi(\rho x)
+ +\tfrac\rho2(\zeta-x)(1-n)K(\rho x),\nonumber
+\end{align}
+with $\mathcal E_\zeta'=d_1+d_2$. In particular the second source contains
+output rotation before weak saturation.
+
+\begin{theorem}[Analytical reversal on the selected limit orbit]\label{pa:limitreversal}
+Fix $0<\rho<1$ and $\zeta>a_\rho$. On the positive weak-growth branch of
+Proposition~\ref{pa:branch}, there are finite earlier times with
+$\mathcal E_\zeta'<0$ and later times with $\mathcal E_\zeta'>0$, before
+the first hit $x=\zeta$. There is a sign-changing zero of the total rate
+in the active phase, and a neighborhood of that zero on which
+$d_1<0<d_2$. Shorter ordered intervals have strictly negative and strictly
+positive total rates. The error has a positive quantitative rebound; an
+interior late witness can be chosen with rebound at least
+$(\zeta-a_\rho)^2/4$ from an earlier attained minimum.
+\end{theorem}
+\begin{proof}
+\emph{1. Forward growth control.}
+Let $R(s)=\max(|x|,|y|,|u|,|v|)$ after a finite initial time $s_0$ on the
+branch. Use $0<K(r)\le r_++\phi(0)$. At an active maximum of $|x|$, the
+convex combination $nv+(1-n)y$ and the negative self term imply an upper
+Dini derivative at most zero. At a maximum of $|y|$ or $|v|$, the upper
+bound is $\phi(0)/2$. At a maximum of $|u|$, the bound is
+$(1-n)[\phi(0)+(1-\lambda)R]/2$. Therefore
+\[
+ D^+R\le\frac{\phi(0)}2+\frac{1-\lambda}{2}(1-n)R.
+\]
+The coefficient $1-n$ is integrable forward by \eqref{pa:weakclock}.
+Gronwall gives $R(s)=O(1+s-s_0)$, hence no finite-time blowup and
+$(1-n)R\to0$.
+
+\emph{2. Strict initial improvement along the weak branch.}
+Expand the branch at $n=0$:
+\[
+ x=a+X_1n+O(n^2),\qquad y=a+Y_1n+O(n^2).
+\]
+The invariance equation is
+\[
+ \begin{pmatrix}\lambda+\alpha&-\alpha\\-\alpha&\lambda+1/2\end{pmatrix}
+ \begin{pmatrix}X_1\\Y_1\end{pmatrix}
+ =\begin{pmatrix}a(1-\lambda)P/2\\-(a+K(u_*))/2\end{pmatrix}.
+\]
+For $\Delta=(\lambda+\alpha)(\lambda+1/2)-\alpha^2>0$,
+\[
+ Y_1=-\frac{\lambda}{4\Delta}
+ [(2+P)(a+K(u_*))-a(1-\lambda)P^2]<0.
+\]
+The sign follows from $K(u_*)>0$ and $(1-\lambda)P^2<1<2+P$.
+Since $x-y=O(n)$,
+\[
+ \mathcal E_\zeta'=(\zeta-a)\lambda Y_1n+O(n^2)<0
+\]
+for sufficiently small positive $n$. The resident limiting error is
+$-(\zeta-a)^2/2$.
+
+\emph{3. Invariants and a finite gate hit.}
+The inequalities $v>0$, $v-y>0$, and $v-x>0$ hold at the resident point
+and remain strict. At $v=0$, $v'=\rho K(\rho x)/2>0$.
+At a possible boundary $v=y>0$,
+\[
+ (v-y)'=\tfrac12[\rho nK(\rho x)+(1-\lambda)y+nK(u)]>0.
+\]
+At $v=x$, the previous inequality implies $x-y>0$, and
+\[
+ (v-x)'=\tfrac\lambda2
+ [K(\rho x)/\rho-x+(1-n)(x-y)\Phi(\rho x)]>0.
+\]
+Suppose for contradiction that $x<\zeta$ forever. Let $d=v-x>0$.
+The negative part of $x'$ obeys
+\[
+ (x')_-\le\tfrac\lambda2(1-n)(v-y),
+\]
+which is integrable by step 1. Thus $x$ is bounded below, and under the
+contradictory supposition it lies in a compact interval $[x_-,\zeta]$.
+A direct subtraction gives
+\[
+ d'=\tfrac\lambda2\left[
+ g_\rho(x)-(1+\Phi(\rho x))d
+ +(1-n)(v-y)\Phi(\rho x)\right],
+\]
+where $g_\rho(x)=K(\rho x)/\rho-x>0$ is decreasing.
+Consequently $d'\ge\lambda[g_\rho(\zeta)-2d]/2$, which gives an
+eventual strictly positive lower bound on $d$. Since
+$(1-n)(v-y)\to0$,
+\[
+ x'=\tfrac\lambda2[d-(1-n)(v-y)]\Phi(\rho x)
+\]
+eventually has a strictly positive lower bound. This contradicts $x<\zeta$.
+There is therefore a finite first hit.
+
+\emph{4. Reversal and source signs.}
+At the first hit $\mathcal E_\zeta=0$. Before it, the error is negative
+and decreases at some times, so it must increase at a later interior
+point. The finite-dimensional vector field and active-phase observable
+are real analytic in time. Their derivative is not identically zero;
+a sign-changing zero can be chosen between a negative and a positive
+rate. At that zero, $d_1<0$ by the positive-lag theorem, so
+$d_2=-d_1>0$. Continuity gives the common sign neighborhood and two
+strict total-rate subintervals.
+
+Choose a finite early point with error below the resident limit. The
+minimum before the hit is below $-(\zeta-a)^2/2$; continuity as the error
+approaches zero at the hit permits a strictly interior late point with
+rebound greater than $(\zeta-a)^2/4$. This proves the stated lower bound
+without transferring the gate-closing point itself.
+\end{proof}
+
+\paragraph{Limits of this theorem.}
+The weak mass is positive at every finite witness, but a specified numerical
+learning threshold (for example $\mathsf m_2\ge1/2$ near the chosen crossover)
+requires another quantitative argument and a mass-to-response comparison.
+The theorem does not prove a unique or transverse crossing, the numerical
+$1.1$ physical-time delay, common witness times across a large parameter
+box, finite-noise error bounds, or canonical parameter coverage. Strict
+witnesses at a fixed parameter can be extended to a local parameter/probe
+neighborhood once the required continuous dependence and gate margins
+are stated. Positivity of $n$ alone must not be presented as a proof that
+weak learning is nearly complete.
+
+\subsection{The additional fully learned reduction}
+At $m=n=1$, put $c=-y$. Then
+\[
+ x'=\tfrac\lambda2(v-x)\Phi(\rho x),\quad
+ v'=\tfrac\rho2[K(\rho x)-\rho v],\quad
+ u'=\tfrac12(c-u)\Phi(u),\quad c'=\tfrac12[K(u)-c].
+\]
+After rescaling the first pair by $\rho$, both pairs have form
+\[
+ r'=\tfrac\gamma2(z-r)\Phi(r),\qquad
+ z'=\tfrac\gamma2[K(r)-z].
+\]
+The region $0\le r<z<K(r)$ is forward invariant: at $z=r$ the gap
+increases by $\gamma[K(r)-r]/2>0$, while at $z=K(r)$ the other gap
+increases by $\gamma\Phi(r)^2(z-r)/2>0$. Within it, both coordinates
+increase and cannot have a finite common equilibrium. This is a dynamical
+Mills-gap explanation, not an instantaneous substitution $z=K(r)$.
+The weak-learning equations must still retain $1-n$ terms before saturation.
+
+\section{Exact finite-noise lag and non-small bridge refinements}
+\label{pa:finiteq}
+\source{The subsequent feedback and derivations \cite{C}, informed by the
+observables implemented in \cite{D}. The formulas proved in this section
+are mathematical identities or explicitly scoped comparisons, not consequences
+of the numerical tests.}
+
+\subsection{Three distinct compensation coordinates}
+Retain $r_{21}$ from Proposition~\ref{pa:projection}. Define a different,
+exact finite-noise mean lag by
+\begin{equation}\label{pa:Lexdef}
+ L_{1,q}^{\rm mean}:=\frac1q\E_{P_1}[f_2(X)-X_2]
+ =\frac1q\E_{P_1}f_2(X).
+\end{equation}
+This is not $r_{21}/q$ and is not the leading quantity $L_0=Y+K_w$.
+
+\begin{proposition}[Exact finite-noise mean lag]\label{pa:Lex}
+For the full finite-mass angular state of the original population,
+\begin{equation}\label{pa:Lexformula}
+ L_{1,q}^{\rm mean}=\int b_2K(a_1/q)\dd\nu.
+\end{equation}
+Moreover,
+\begin{equation}\label{pa:stein}
+ \frac{1+q^2}{q}r_{21}
+ =L_{1,q}^{\rm mean}+q\E_{P_1}[\partial_1 f_2(X)].
+\end{equation}
+If the state is partitioned into the scaled strong and weak charts plus a
+remainder population, then exactly
+\begin{align}\label{pa:Lexcharts}
+ L_{1,q}^{\rm mean}={}&
+ \int_s\sin(qy)K\!\left(\frac{\cos(qx)}q\right)\dd\mu_s\nonumber\\
+ &+\int_w\cos(qv)K\!\left(\frac{\sin(qu)}q\right)\dd\mu_w
+ +L_{\rm outside}.
+\end{align}
+\end{proposition}
+\begin{proof}
+For a unit direction $a$, $a^\top X\sim\mathcal N(a_1,q^2)$ under $P_1$,
+so $\E(a^\top X)_+=qK(a_1/q)$. Insert the feature integral to prove
+\eqref{pa:Lexformula}. Gaussian integration by parts gives
+$\E[X_1f_2]=\E f_2+q^2\E\partial_1f_2$. The network is Lipschitz with
+integrable weak derivative, so that identity is applicable. Since
+$\E X_1X_2=0$, division by $q$ proves \eqref{pa:stein}. Substitution of
+\eqref{pa:charts} proves \eqref{pa:Lexcharts}, without discarding the
+remaining labels.
+\end{proof}
+
+\begin{proposition}[An explicit lag approximation bound]\label{pa:lagerror}
+For the state partition of \eqref{pa:Lexcharts}, define
+$L_0=\int_s y\dd\mu_s+\int_wK(u)\dd\mu_w$ at this same state.
+Whenever the displayed moments are finite,
+\begin{align}\label{pa:lagerror-eq}
+ |L_{1,q}^{\rm mean}-L_0|\le{}&
+ q^2\int_s\left(\frac{|y|^3}{6}+\frac{|y|x^2}{2}\right)\dd\mu_s\nonumber\\
+ &+q^2\int_w\left(\frac{v^2K(u)}2+\frac{|u|^3}{6}\right)\dd\mu_w\nonumber\\
+ &+\int_s|\sin(qy)|g\!\left(\frac{\cos(qx)}q\right)\dd\mu_s
+ +|L_{\rm outside}|.
+\end{align}
+\end{proposition}
+\begin{proof}
+Use $K(t)=t+g(t)$ for the strong term. Then
+\[
+ \left|\frac{\sin(qy)\cos(qx)}q-y\right|
+ \le q^2\left(|y|^3/6+|y|x^2/2\right).
+\]
+For the weak term, $|K(r)-K(u)|\le|r-u|$ because $0<\Phi<1$.
+Writing $r=\sin(qu)/q$, adding and subtracting $\cos(qv)K(u)$ gives
+\[
+ |\cos(qv)K(r)-K(u)|
+ \le q^2|u|^3/6+q^2v^2K(u)/2.
+\]
+These estimates use $|\sin z-z|\le|z|^3/6$,
+$|1-\cos z|\le z^2/2$, and $|\cos z|\le1$. Integrating and keeping
+the strong $g$ term and outside contribution proves the bound.
+\end{proof}
+The own-gate correction is small when the strong first coordinates are
+uniformly positive, but the $q^2$ coefficients involve high angular
+moments. A small mean or standard deviation alone does not control them.
+Near a cancellation-dominated lag, an error small relative to the separate
+positive and negative outputs may still be much larger than the lag.
+
+\openobligation{The finite-noise helpful-rate target is
+\[
+ \frac{D_1^{\rm phys}}{\mu_1^2q^2}
+ =-\frac12A_{q,\xi}L_{1,q}^{\rm mean}+\mathcal R_{1,q},
+\]
+with a precisely defined exposure, an analytically controlled remainder,
+and a proved positive lag margin exceeding that remainder. The numerical
+success of substituting the exact lag does not make the remainder zero.
+A possible exact exposure convention is
+$A_{q,\xi}=q^{-1}\int_{C_s}(a^\top\xi)_+\dd\nu$ for a specified strong
+population $C_s$; all other labels and all omitted geometric factors must
+then be included in $\mathcal R_{1,q}$. Its needed bound has not been proved.}
+
+\subsection{Exact finite-noise same-field cross derivatives}
+\begin{proposition}[Cross derivatives in the original angular field]
+\label{pa:finiteqorder}
+At a fixed continuous homogeneous residual field,
+\[
+ \partial_\psi\theta'=\partial_\theta\psi'
+ =(b^\perp)^\top R(\theta)a^\perp.
+\]
+\end{proposition}
+\begin{proof}
+Differentiate \eqref{pa:exactflow}. The extra term in
+$\partial_\theta\psi'$ is $(b^\perp)^\top R'(\theta)a$, which vanishes
+because $R'(\theta)a=0$ by the Gaussian gate-boundary formula.
+\end{proof}
+Equality does not imply positivity. A finite-noise ordering or almost-ordering
+argument must establish its sign or bound its negative contribution on a
+region reached from initialization. This proposition fixes the field during
+coordinate differentiation; it does not differentiate all other neurons'
+responses to a state change.
+
+\subsection{A nonperturbative instantaneous bridge-force lemma}
+\label{pa:bridge}
+\begin{proposition}[Upper-right donor displacement]\label{pa:bridge-force}
+Consider the leading population field at a fixed state. Move strong mass
+$\varepsilon>0$ from $(r_0,s_0)$ to $(r_B,s_B)$ with
+$r_B\ge r_0$, $s_B\ge s_0$, keeping the total strong mass and the weak
+measure fixed. Assume the resulting measure is nonnegative. At a fixed
+receiving strong coordinate $(x,y)$,
+\begin{align}
+ \Delta x'&=-\frac{\varepsilon\rho}{2}
+ [F(\rho x,\rho r_B)-F(\rho x,\rho r_0)]\le0,\label{pa:bridge-x}\\
+ \Delta y'&=-\frac\varepsilon2(s_B-s_0)\le0.\label{pa:bridge-y}
+\end{align}
+If $x\le r_0$, then
+\[
+ \Delta x'=-\frac{\varepsilon\lambda}{2}(r_B-r_0)\Phi(\rho x).
+\]
+At a fixed receiving weak coordinate,
+\begin{align}
+ \Delta u'&=-\frac\varepsilon2(s_B-s_0)\Phi(u)\le0,\label{pa:bridge-u}\\
+ \Delta v'&=\frac{\varepsilon\rho}{2}
+ [K(\rho r_B)-K(\rho r_0)]\ge0.\label{pa:bridge-v}
+\end{align}
+\end{proposition}
+\scope{Exact state-to-field comparison in the leading system. No
+small-displacement assumption is made. It is not yet a comparison of two
+self-consistently trained trajectories.}
+\begin{proof}
+In \eqref{pa:pop-x}, only $\mathcal S$ changes at the fixed receiver.
+Lemma~\ref{pa:overlap} gives monotonicity in its donor argument, proving
+\eqref{pa:bridge-x}; when $x\le r_0$ the two minimum arguments coincide
+with $\rho x$, yielding the simpler expression. In \eqref{pa:pop-y},
+only $Y$ changes, by $\varepsilon(s_B-s_0)$. In the two weak equations,
+the changes are in $Y$ and $K_s$, respectively. Substitution proves the
+remaining formulas.
+\end{proof}
+The first two signs implement the proposed exposure push and added output
+compensation. The last two show why a trajectory comparison is coupled:
+weak output compensation changes and feeds back through $V$ into the
+strong input equation. It cannot be frozen for all later times without proof.
+
+For distinct atomic strong labels $i,j$, the full field has donor derivatives
+\begin{equation}\label{pa:donor-negative}
+ \frac{\partial x_i'}{\partial x_j}
+ =-\frac{\lambda m_j}{2}\Phi(\rho\min(x_i,x_j))<0,
+ \qquad
+ \frac{\partial y_i'}{\partial y_j}=-\frac{m_j}{2}<0.
+\end{equation}
+Thus same-field order preservation does not establish an order-preserving
+flow in all particle coordinates. A main-block-versus-coherent-orbit
+comparison needs differential inequalities for the changing common field.
+
+\section{The small-splitting response: exact target functional, open sign}
+\label{pa:response}
+\source{\cite{SP}, Section 13. This is a small centered-shape calculation,
+not a theorem for the canonical inactive bridge.}
+\scope{The response equations and fixed-time coefficient are recorded with
+their perturbative hypotheses. An analytical proof that the selected-orbit
+coefficient is positive is open. Its numerical evaluation is not a proof.}
+
+Let $M=1$, let the weak family be one atom, and let $(X,Y,U,V)$ be the
+selected coherent orbit with prescribed logistic mass $N(s)$. For a bounded
+profile $h_\gamma$ with $\E h=0$, $\E h^2=1$, take a centered strong
+perturbation
+\[
+ x_\gamma=X+\varepsilon p(s)h_\gamma+O(\varepsilon^2),\qquad
+ y_\gamma=Y+\varepsilon r(s)h_\gamma+O(\varepsilon^2).
+\]
+The first response obeys $(p,r)'=J_{\rm sh}(s)(p,r)$ with
+\eqref{pa:Jmoving}. Write second-order means as
+\[
+ \bar x=X+\varepsilon^2X_2+o(\varepsilon^2),\quad
+ \bar y=Y+\varepsilon^2Y_2+o(\varepsilon^2),
+\]
+and likewise $u=U+\varepsilon^2U_2+o(\varepsilon^2)$,
+$v=V+\varepsilon^2V_2+o(\varepsilon^2)$. The perturbation family must specify
+the initial second-order mean response; it is not an arbitrary free term.
+
+Put $F_0=NV+(1-N)Y-X$, $P=\Phi(\rho X)$, $Q=\Phi(U)$. The coherent
+angular Jacobian is
+\begin{equation}\label{pa:Jresponse}
+\setlength{\arraycolsep}{3pt}
+ J_c=\begin{pmatrix}
+ \frac\lambda2[-P+\rho F_0\phi(\rho X)]&\frac\lambda2(1-N)P&0&\frac\lambda2NP\\
+ \frac\lambda2(1-N)P&-1/2&-NQ/2&0\\
+ 0&-Q/2&-\frac12[(U+Y)\phi(U)+NQ+\lambda(1-N)]&0\\
+ \lambda P/2&0&0&-\lambda/2
+ \end{pmatrix}.
+\end{equation}
+
+\begin{calculation}[Second-order mean response]\label{pa:response-eq}
+On a bounded chart-valid finite interval, the second-order response obtained
+by expanding the characteristic equations is
+\begin{equation}\label{pa:response-system}
+ \begin{pmatrix}X_2\\Y_2\\U_2\\V_2\end{pmatrix}'
+ =J_c\begin{pmatrix}X_2\\Y_2\\U_2\\V_2\end{pmatrix}
+ +\frac{\rho^3\phi(\rho X)}4
+ \begin{pmatrix}
+ -[1+\rho^2XF_0]p^2+2(1-N)pr\\
+ (1-N)p^2\\0\\p^2
+ \end{pmatrix}.
+\end{equation}
+\end{calculation}
+\paragraph{Derivation and regularity guard.}
+Do not use an unspecified classical Hessian of $F$ at coincident atoms.
+For $\varepsilon>0$ and bounded offsets $a,b$, its one-sided expansion is
+\[
+ F(t+\varepsilon a,t+\varepsilon b)
+ =K(t)+\varepsilon\Phi(t)b
+ +\frac{\varepsilon^2\phi(t)}2[b^2-(b-a)_+^2]+O(\varepsilon^3).
+\]
+For independent identically distributed centered offsets,
+$\E(b-a)_+^2=\Var(b)$. Hence the second-order double-averaged overlap
+correction cancels at fixed mean. Taylor expanding the remaining smooth
+terms of \eqref{pa:pop-x}--\eqref{pa:pop-v} gives the forcing in
+\eqref{pa:response-system}. On finite bounded intervals, the explicit
+one-sided remainder and locally Lipschitz first derivatives allow a
+variation-of-constants justification. Passing from a finite entry time to
+a selected incoming orbit at $s=-\infty$ additionally requires an incoming
+response normalization and convergence estimate; numerical seeding at a
+large negative time does not supply that estimate.
+
+If all perturbed strong labels stay active and $s_*$ is an interior minimum
+of the coherent observable, Proposition~\ref{pa:active-error} gives
+\begin{equation}\label{pa:response-error}
+ \mathcal E_\varepsilon(s_*)-\mathcal E_0(s_*)
+ =\varepsilon^2[(X-Y)X_2+(\zeta-X)Y_2-pr]_{s_*}
+ +o(\varepsilon^2).
+\end{equation}
+For input variance at weak half-mass
+$\sigma_{\rm half}^2=\varepsilon^2p(0)^2$, define
+\begin{equation}\label{pa:kappa}
+ \kappa(\rho,\zeta)=
+ \frac{[pr-(X-Y)X_2-(\zeta-X)Y_2]_{s_*}}{p(0)^2}.
+\end{equation}
+The direct covariance contribution is $pr$; the mean-response terms are of
+the same order. Positivity does not follow solely from co-ordering or saddle
+hyperbolicity. A negative correction evaluated at $s_*$ gives an improvement
+lower bound at that point. An equality expansion of the \emph{new minimizing
+value} additionally needs controlled minimizer selection, for example an
+isolated nondegenerate minimum and a uniform expansion.
+
+\openobligation{Prove the incoming response limit and $\kappa>0$ analytically
+on a stated parameter region before advertising a positive enhancement
+theorem. The numerical value $1.75053$ is a diagnostic evaluation. It is not
+an exact universal constant, and the local expansion does not cover a
+non-small inactive bridge. Basic reversal in Theorem A does not require
+this optional enhancement result.}
+
+\section{What still has to be proved for initialized A and B}\label{pa:roadmap}
+\subsection{The theorem targets are still open}
+\begin{target}[A: initialized two-concept signed competition]\label{pa:targetA}
+For the exact flow initialized by \eqref{pa:init}, prove a nonempty explicitly
+specified parameter region $\mathcal P$ with $\rho$ bounded away from zero,
+a compact scaled-probe interval $I=[\zeta_-,\zeta_+]$ of positive length,
+and a learned interval $J$ containing ordered positive-length subintervals
+$J_-,J_+$, such that for all parameters and probes in the stated regime:
+\begin{align*}
+ \mathsf m_1,\mathsf m_2&\ge c_{\rm learn}>0,\qquad
+ \mathcal L_p\le(1-\kappa_p)\mathcal L_p(0),\quad \kappa_p>0,\\
+ D_1^\tau&\le-c_1q^2<0,\qquad D_2^\tau\ge c_2q^2>0\quad\text{on }J,\\
+ D_1^\tau+D_2^\tau&\le-\gamma_-q^2\quad\text{on }J_-,\\
+ D_1^\tau+D_2^\tau&\ge\gamma_+q^2\quad\text{on }J_+.
+\end{align*}
+The probe is $\xi_q=(\sin(q\zeta),-\cos(q\zeta))$.
+The learning constants and rate margins must not vanish with $S_0$ or $q$
+within the stated asymptotic regime. Prove a positive $cq^2$ rebound and
+an angular sector of width at least $c_Iq$.
+\end{target}
+The cluster-loss reduction is a useful strengthened learning target; an
+alternative response criterion must be justified as genuinely nontrivial.
+The target does not require all-time opposite cluster signs, a unique
+crossing, eventual recovery, permanent non-recovery, or an exact timing
+constant. Those are separate obligations.
+
+\paragraph{Canonical-facing versus asymptotic coverage.}
+The scientific goal is a unified theory of the canonical parameters
+$(\rho,q,S_0)=(2/3,0.05,2\cdot10^{-4})$ and the small-initialization
+mechanism. An intermediate theorem for a rigorously specified small-noise
+joint regime is valuable, but it must be labeled as intermediate unless
+its estimates cover the canonical point. Do not replace the initialized
+target with a conditional learned-state assumption or a dominant-concept
+regime. The bridge and coherent edge belong to the same population model;
+this fact alone is not a coverage proof.
+
+\begin{target}[B: an initialized reciprocal-compensation explanation]
+\label{pa:targetB}
+Along the same initialized trajectory used for A, prove that Gaussian
+cross-output leakage produces a compensating active response and that the
+exact cluster-1 help admits a signed lag/exposure representation with
+remainder smaller than its margin. Prove that the selected cluster-2
+residual produces harmful input rotation of the probe-active population,
+retaining other motion components. Account for the probe-inactive bridge
+through its overlap and output moments, including the induced weak-family
+feedback. Establish the temporal inequalities that make help dominate
+first and harm dominate later. The identities and bounds in this proof
+must imply A's crossover, rather than being fitted afterward to an
+independently certified reversal.
+\end{target}
+The small-splitting coefficient is an optional refinement of B, not a
+replacement for the large-bridge mechanism. A static covariance advantage
+or donor-displacement sign is not yet the needed trajectory statement.
+
+\subsection{Lemma roadmap with exact status}
+The identifiers AN0--AN9 are roadmap identifiers, distinct from theorem
+numbers in this document. Each new increment must state which identifier
+it advances and which hypotheses remain unproved.
+
+\paragraph{AN0: conventions and existing analytical tools (available).}
+Use Section~\ref{pa:setup}, Propositions~\ref{pa:earlybounds}--\ref{pa:canonicalescape},
+the exact identities in Section~\ref{pa:bookkeeping}, and the internally
+proved leading-system results. The local scaled field is a derived model;
+its finite-noise validity is not an initialized theorem. Read only the
+relevant foundation propositions, not a new broad foundations program.
+
+\paragraph{AN1: exact finite-noise lag and help closure (open).}
+\emph{Input:} the exact flow and a quantitatively specified candidate
+learning regime, without fitted trajectory data.
+\emph{Required conclusion:} a dynamical identity or comparison inequality
+for $L_{1,q}^{\rm mean}$ (or a precisely related exact observable), a positive
+signed margin, and a helpful-rate remainder small relative to that margin.
+\emph{Available:} Propositions~\ref{pa:projection}, \ref{pa:tracking},
+\ref{pa:Lex}, and \ref{pa:lagerror}; the limiting positive-lag theorem.
+\emph{Trap:} small coordinate loss bounds the absolute lag but not its sign;
+$L_0$ may poorly approximate a small finite-$q$ cancellation.
+
+\paragraph{AN2: global isotropic entry and weak capture (open; central gap).}
+\emph{Input:} precisely \eqref{pa:init} and the exact Gaussian flow.
+\emph{Required conclusion:} analytically defined phases/entry times,
+substantial strong progress, a lower and upper bound for the weak incoming
+seed, strong mean and shape bounds, weak angular bounds, and weighted
+control of every population outside the selected charts. Derive ordering
+or a quantified almost-order property when needed.
+\emph{Available:} early escape, the target-only comparison, and the frozen
+weak equilibrium equation. \emph{Trap:} the weak attractor is not present
+in the initial scaled field; mass or angular windows measured from saved
+states do not prove capture. Treat chart entry and moving membership
+rather than assuming fixed two-family support from time zero.
+
+\paragraph{AN3: nonlinear contraction and resident passage (open).}
+\emph{Input:} AN2 entry data, including $N_{\rm ent}$ and the centered
+strong profile. \emph{Required conclusion:} nonlinear bounds through weak
+amplification that preserve a usable shape/residual class, with explicit
+mean feedback, weak relaxation, and finite-noise corrections.
+\emph{Available:} Propositions~\ref{pa:spectra}--\ref{pa:multipliers}.
+\emph{Trap:} the exact linear multiplier is not a nonlinear estimate.
+The conditional exponent
+$1/2-\alpha-c_0\alpha/\lambda$ requires an actual entry law for $c_0$;
+the numerical value near $0.072$ and proposed $\rho_c$ are not premises.
+
+\paragraph{AN4: coupled non-small bridge comparison (open).}
+\emph{Input:} a reached ordered or almost-ordered population class, with
+active and inactive strong mass and weak residual moments.
+\emph{Required conclusion:} evolve active exposure, bridge overlap/output
+forcing, compensation, and weak feedback by coupled inequalities. Prove
+that the regime survives for the needed time, rather than simply that a
+bridge force has the desired sign at an isolated state.
+\emph{Available:} Propositions~\ref{pa:active-error}, \ref{pa:order},
+and \ref{pa:bridge-force}. \emph{Trap:} between-population comparison does
+not follow from the same-field cooperative two-coordinate property.
+The canonical bridge is not assumed to be a small variance perturbation.
+
+\paragraph{AN5: substantial two-concept learning (open at the needed regime).}
+\emph{Input:} the phase and residual estimates of AN2--AN4.
+\emph{Required conclusion:} bounds on the exact observables
+\eqref{pa:learning}, not merely mass labels. Give a positive response threshold
+and a nontrivial loss reduction independent of vanishing initialization.
+Do not infer monotonicity of $\mathsf m_p$ or $\mathcal L_p$ from total-loss
+dissipation. A progress-clock hitting time requires existence and the
+needed ordering/transversality proof.
+
+\paragraph{AN6: harmful source sign and dominance switch (open for the
+reached split population).}
+\emph{Input:} exact lag/help bounds and the reached coupled population class.
+\emph{Required conclusion:} a positive harmful rate, the complete remainder
+budget, and a forced early-to-late crossover before first exit from the
+regime. Preserve the distinction between training source, moving carrier,
+and residual producer. \emph{Available:} the selected coherent reversal,
+\eqref{pa:pop-harm}, \eqref{pa:producer}, and \eqref{pa:GLCidentity}.
+The large-bridge statement is not proved by continuity from an atom without
+a quantitative perturbation bound. Local opposite signs are sufficient;
+the observed weak rate is not positive throughout training.
+
+\paragraph{AN7: uniform finite-noise and long-time matching (open).}
+Prove the needed scaled field and observable errors or work directly with
+the exact finite-noise identities. If using the leading system, control
+\[
+ \frac{E_{q,S_0}-1/2}{q^2}-\mathcal E,
+ \qquad \frac{D_{p,q,S_0}^\tau}{q^2}-d_p
+\]
+on the relevant centered intervals and probe sector, with errors below
+analytic margins. Bound omitted labels and gate-strip contributions.
+A possible joint scaling condition is $q^2\log(1/S_0)\to0$ if the actual
+proved field errors support it; it is not by itself sufficient and is not
+equivalent to $S_0\to0$ at fixed $q$. Preserve exact coincidence of labels
+when estimating noise effects on splitting, instead of adding a spurious
+noise-generated shape source.
+
+\paragraph{AN8: initialized assembly, sector, and parameter region (open).}
+Remove every intermediate entry assumption by composition of the prior
+lemmas. Derive positive-width common time windows and a probe sector with
+sufficient gate control, then integrate the exact rates. Specify the real
+admissible parameter region and whether it includes the canonical point.
+No sampled sign, numerical phase boundary, or unspecified ``small enough''
+constant may be reported as canonical coverage.
+
+\paragraph{AN9: optional refinements (open; not prerequisites for basic A).}
+Analytical positivity of $\kappa$; broad-population enhancement inequalities;
+a simple/unique crossing and a timing-error theorem; finite-horizon
+persistence beyond the first rebound; finite-width/sample lifting;
+ambient-dimension or many-concept extensions. None may be inserted into
+the completed A statement until separately proved.
+
+\subsection{A sufficient final assembly lemma}
+\begin{lemma}[Analytical window-to-reversal implication]\label{pa:assembly}
+Let $E_\xi$ be absolutely continuous and $E_\xi'=D_1^\tau+D_2^\tau$ almost
+everywhere. Suppose a common interval contains
+$J_-=[a,b]$ and $J_+=[c,d]$ with $a<b<c<d$, and, uniformly in the stated
+probe/parameter set,
+\[
+ E_\xi'\le-\gamma_-q^2\ \text{a.e. on }[a,b],\qquad
+ E_\xi'\ge\gamma_+q^2\ \text{a.e. on }[c,d],
+ \quad\gamma_\pm>0.
+\]
+Then $E_\xi$ has a minimizer $\tau_*$ in $(a,d)$ and
+\[
+ E_\xi(a)-E_\xi(\tau_*)\ge\gamma_-q^2(b-a),\qquad
+ E_\xi(d)-E_\xi(\tau_*)\ge\gamma_+q^2(d-c).
+\]
+If the individual signed-rate and learning assumptions of
+Target~\ref{pa:targetA} have also been proved on the common interval, the
+result has that exact attribution and learning content.
+\end{lemma}
+\begin{proof}
+Integrate the derivative inequalities. Continuity on $[a,d]$ gives a
+minimum. Since $E(b)<E(a)$ and $E(c)<E(d)$, a minimum cannot occur at
+an endpoint. Comparing its value with $E(b)$ and $E(c)$ proves the two
+bounds. Individual source signs and learning levels are separate premises;
+the total-rate inequalities do not create them.
+\end{proof}
+This lemma is elementary and proved. Its hypotheses for the initialized
+finite-noise population remain the substantive research task.
+
+\appendix
+\section{Empirical evidence: context only, never proof premises}\label{pa:evidence}
+The following values are recorded to preserve the scientific target and to
+avoid forgetting corrections between chats. They are numerical observations
+or diagnostic evaluations from the supplied files and reports, not analytical
+bounds on an initialized continuum trajectory.
+
+\begin{longtable}{@{}p{0.37\textwidth}p{0.56\textwidth}@{}}
+\toprule
+Observation & Reported value and qualification\\
+\midrule
+\endhead
+Canonical crossover & Fine-trace physical time about $3.675245$ at
+$-85^\circ$; weak response about $0.99$. This does not prove a learning
+threshold or exact timing theorem.\\
+Early/late canonical rate signs & At physical time $3.5$ the total rate is
+about $-7.93\cdot10^{-4}$; at $4$ it is about $+8.41\cdot10^{-4}$.
+The weak rate is briefly negative near $2.75$, so opposite signs are a
+learned-window conclusion, not an all-time claim.\\
+Selected two-atom limit & Numerical scaled minimum about $-2.0092456$,
+physical delay after weak half-mass about $1.10119$ for $\mu_1=3$.
+The analytical result proves existence of reversal, not those decimals.\\
+Split spectrum & At $\rho=2/3$, numerical evaluations give
+$a\simeq0.351285$, $\alpha\simeq0.131685$, split instability threshold
+$M\simeq0.736631$. The exact theorem uses the implicit root and
+$M>1-2\alpha$.\\
+Small-split response & Numerical $\kappa\simeq1.75053$, corroborated by
+two-sub-atom calculations. Analytical positivity and a parameter interval
+are open.\\
+Conditional exponent & If the proposed seed exponent is $c_0=1$, the
+formal $\eta$ is about $0.0720$ and its predicted zero near $\rho=0.7598$.
+These are not proved population phase laws.\\
+Finite-noise lag cancellation & The latest feedback reports canonical
+$L^{\rm mean}_{1,q}\simeq0.059$ versus $L_0\simeq0.363$ at the crossing.
+The exposure product fits far better with the exact lag. Positive and
+negative lag contributions nearly cancel; their relative accuracy must not
+be confused with lag-relative accuracy.\\
+Canonical bridge enhancement & Latest reported canonical scaled error near
+$-7.12$, bridge mass about $0.12$, and bridge output coordinate about $7.2$.
+Direct active covariance accounts for a minority of excess depth in those
+runs. This supports a non-small bridge comparison, not an extrapolation
+of the small-split expansion.\\
+Field and ordering checks & Multi-atom field tests show fourfold error
+reduction under halving $q$ at selected states; sampled strong labels are
+co-ordered. Neither is a uniform finite-noise or initialized-order theorem.\\
+\bottomrule
+\end{longtable}
+
+\paragraph{Reporting guards.}
+The new exact lag in \cite{D} includes all labels, while the leading moments
+use angular masks. Its $u>3$ statistic refers to weak inputs below
+$90^\circ$ by more than $3q$, and records absolute mass rather than a
+normalized fraction. Density bins in old diagnostics are not pointwise
+upper bounds. Median-centered RMS spread is not variance about the mean.
+Counterfactual snapshots are not trained counterfactual trajectories, and
+circular-mean collapse changes mean magnitudes as well as covariance.
+A three-block collapse was found to improve one cluster-1 coordinate loss
+while worsening the other; it does not isolate covariance alone.
+
+The depth conventions also differ:
+\[
+ \frac{1/2-E_0}{q^2}=\frac{S_0/4-S_0^2/32}{q^2}.
+\]
+Thus improvement from initialization and depth below $1/2$ need not agree.
+Nearby saved snapshots and fine-trace minima must not be identified as the
+same time. Floating-point reporting precision is not a uniform sign proof.
+
+\section{Review protocol and integration discipline}\label{pa:review}
+Future work must be supplied as a standalone proof increment, for example
+\path{AN02_isotropic_entry_v1.tex}, accompanied by
+\path{AN02_isotropic_entry_v1_review.md}. The review note must state the
+roadmap item, exact assumptions, conclusion, dependencies by label,
+mathematical status, proof gaps or failed approaches, and proposed insertion
+point in a future checkpoint. Give new labels a unique prefix such as
+\verb|inc:AN02:v1:|. Do not overwrite a previous version or silently change
+its hypotheses.
+
+The current foundations and checkpoint stay read-only. Compilation and
+formatting checks are allowed; they are not mathematical verification.
+Numerical computation may be used only as explicitly labeled diagnostic
+support, not to discharge any proof obligation. Do not introduce a
+trajectory-certificate fallback. After explicit user approval of a checked
+increment, create a new consolidated version with a changelog and an
+old-to-new label map. Merely producing a proof draft does not authorize its
+insertion into the master document.
+
+\section{Source provenance}\label{pa:provenance}
+The next table records source files used for this consolidation. Short hash
+prefixes identify the exact local bytes; the companion handoff records full
+SHA-256 values. Source files were not modified. The latest finite-noise-lag
+and bridge-displacement derivations are taken from the conversation and
+are consolidated here with explicit statements and proofs; their initialized
+applications remain open.
+
+\begin{longtable}{@{}p{0.66\textwidth}p{0.26\textwidth}@{}}
+\toprule Source & SHA-256 prefix\\\midrule\endhead
+\path{RELU_POPULATION_FOUNDATIONS_v2.tex} & \texttt{eefd557e0c725c87}\\
+\path{RELU_POPULATION_FOUNDATIONS_v2.md} & \texttt{fed996786979ed10}\\
+\path{LEAK_COMPENSATION_FACTORIZATION_AUDIT.md} & \texttt{6112f8fd549adab4}\\
+\path{TWO_NEURON_SMALL_NOISE_LIMIT.md} & \texttt{7f4e2f74b83e0c8c}\\
+\path{SCALED_POPULATION_SPLITTING_THEORY.md} & \texttt{68043ab7b75be2b6}\\
+\path{theorem_A_initialized_escape.pdf} & \texttt{d7fedf43821b4cc1}\\
+\path{SIM.md} & \texttt{672a8d492237c050}\\
+\path{population_law_checks.py} & \texttt{32e6f576432c6e2f}\\
+\path{split_mode_checks.py} & \texttt{411081436c9bccf9}\\
+\bottomrule
+\end{longtable}
+
+\begingroup
+\small
+\begin{thebibliography}{99}
+\bibitem[F]{F} \path{RELU_POPULATION_FOUNDATIONS_v2.tex}.
+Existing exact population foundations, P1--P13 and supplements. Imported
+mathematical base; not edited in this checkpoint.
+\bibitem[E]{E} \path{theorem_A_initialized_escape.pdf}.
+Analytical early-phase Propositions 1--3 and their proofs. Sections 4 onward
+pursue the superseded certificate route and are excluded here.
+\bibitem[LC]{LC} \path{LEAK_COMPENSATION_FACTORIZATION_AUDIT.md}.
+Exact finite-parameter residual factorization and diagnostic audit.
+Its numerical-continuation priorities are superseded by the analytical-only
+roadmap; the exact identities are retained.
+\bibitem[TN]{TN} \path{TWO_NEURON_SMALL_NOISE_LIMIT.md}.
+Leading atomic equations and selected-orbit analytical reversal. The later
+real-root and population-splitting corrections are incorporated explicitly.
+\bibitem[SP]{SP} \path{SCALED_POPULATION_SPLITTING_THEORY.md}.
+Leading population equation, resident shape spectrum, positive lag,
+probe identities, and small-shape response calculation.
+\bibitem[C]{C} Subsequent research conversation.
+Fixed-label compensation tracking; exact finite-noise mean lag, Stein
+relation and tail-moment bound; inactive-donor displacement and feedback;
+clarification of within-population ordering versus between-population
+comparison. These arguments are reproduced here, not assumed to establish
+initialized A or B.
+\bibitem[D]{D} \path{population_law_checks.py} and
+\path{split_mode_checks.py}, with the user-supplied results.
+Diagnostics and definitions of measured quantities only.
+\bibitem[SIM]{SIM} \path{SIM.md} and the supplied predecessor paper,
+\emph{Swing-by Dynamics in Concept Learning and Compositional Generalization}.
+SIM task and historical growth--suppression setting. Its tied linear
+matrix dynamics are not imported into the untied ReLU proof.
+\end{thebibliography}
+\endgroup
+\end{document}

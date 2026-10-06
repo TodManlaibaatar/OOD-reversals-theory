@@ -1,0 +1,322 @@
+% Standalone analytical review increment. No preceding source is modified.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,xurl}
+\usepackage[hidelinks]{hyperref}\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\newcommand{\Qtwo}{\mathcal Q_2}
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+
+\fancyhead[L]{\small AN03: mass-charged tails and selection defects}
+\fancyhead[R]{\small Review increment v1}
+\title{Mass-charged tail transport, a uniform $\kappa=10$ margin, and core--outside selection estimates}
+\author{Analytical increment for independent review}\date{Version 1}
+\begin{document}\maketitle
+\begin{abstract}
+We prove an elementary clock-integration lemma for a radial gain that is quadratic before an outer exit and capped afterward. A tail-moment estimate converts such a labelwise gain into a mass bound. For the proposed exponent $r_m=[\kappa(1-\lambda)(1-P)-2-2\chi]_+$, the combined field exponent is uniformly positive at $\kappa=10$, $\chi=1/20$, even with independent bounds $\lambda\in[169/400,49/100]$ and $P\in[1/2,153/250]$. No additional relation between $P$ and $\lambda$ is needed for this algebraic conclusion. We also give a perturbative selection estimate that replaces an undefined full chart first moment by a core moment and explicit outside-field terms. The radial gain hypothesis and all original-flow matching hypotheses remain open.
+\end{abstract}
+
+\section{Exact clock integration of a proposed radial gain}
+Let $H>0$ satisfy the exact aggregate clock
+\[
+ H'=Q(1-c)H+\mathcal D,\qquad Q=\lambda+q^2,\qquad
+ \varepsilon_H=\mathcal D/H,
+\]
+on $[t_0,t_b]$, with $0\le c\le c_b<1$. Define
+\begin{equation}\label{inc:AN03:tailrepair:v1:clock}
+ I(t)=Q\int_{t_0}^t(1-c),\qquad
+ e^{I(t)}=\frac{H(t)}{H_0}\exp\left(-\int_{t_0}^t\varepsilon_H\right).
+\end{equation}
+The function $I$ is increasing even if $H$ is not. In particular an endpoint cap and signed-defect lower bound give
+\[
+ I(t_b)\le\log(H_b/H_0)+D_-
+ \quad\hbox{if } H(t_b)\le H_b,\quad \int_{t_0}^{t_b}\varepsilon_H\ge-D_-.
+\]
+
+\begin{lemma}[Quadratic-before-exit, capped-after-exit integration]
+\label{inc:AN03:tailrepair:v1:gainintegration}
+For $x\ge0$, $\beta>0$, and increasing absolutely continuous $I$ with $I(t_0)=0$,
+\begin{equation}\label{inc:AN03:tailrepair:v1:minintegral}
+ \int_{t_0}^{t_b}\min\{1,xe^{\beta I(t)}\}\,I'(t)\dd t
+ \le\frac{1+\log_+(xe^{\beta I(t_b)})}{\beta}.
+\end{equation}
+Consequently, if a positive mass ratio $R_\alpha(t)$ satisfies
+\[
+ (\log R_\alpha)'\le I'\min\{1,A_0D_0(\alpha)^2e^{\beta I}\}+b_\alpha(t),
+ \qquad \int_{t_0}^{t_b}b_\alpha\le B_\alpha,
+\]
+then
+\begin{equation}\label{inc:AN03:tailrepair:v1:labelgain}
+ \frac{R_\alpha(t_b)}{R_\alpha(t_0)}
+ \le e^{B_\alpha+1/\beta}
+ \max\{1,A_0D_0(\alpha)^2e^{\beta I(t_b)}\}^{1/\beta}.
+\end{equation}
+A common bound $B_\alpha\le B$ makes the estimate uniform in the labels. The same argument works at every intermediate endpoint with a corresponding bound on its integrated defect.
+\end{lemma}
+\begin{proof}
+Substitute $v=I(t)$, permissible also on constant pieces by the absolutely continuous change of variables. If $xe^{\beta I(t_b)}\le1$, the integral is $x(e^{\beta I(t_b)}-1)/\beta\le1/\beta$. If $x\le1<xe^{\beta I(t_b)}$, split at $v=\beta^{-1}\log(1/x)$; the integral is
+\[
+ \frac{1-x}{\beta}+\frac{1}{\beta}\log(xe^{\beta I(t_b)}).
+\]
+If $x>1$, the integral is $I(t_b)\le\beta^{-1}\log(xe^{\beta I(t_b)})$. The case $x=0$ is immediate. Integrating the displayed logarithmic mass inequality proves the consequence.
+\end{proof}
+\begin{remark}
+In the proposed application the distance envelope uses $\beta=\lambda/Q$. Thus $1/\beta=1+q^2/\lambda$, not identically one. On a logarithmic sojourn this correction has no fixed positive $q$-power cost when $q^2\log(1/q)\to0$. Other outer-chart geometric losses, such as a fixed $1+C\delta_0^2$ power, must still be retained. Most importantly, this lemma \emph{does not prove} the displayed differential inequality for an escaping original-flow label. It only closes its time integration once that inequality is established. It uses the monotone compensated clock $e^I$, not an unjustified monotonicity of $H$.
+\end{remark}
+
+\section{Integrating the gain against a strong entry tail}
+\begin{lemma}[Mass rather than displacement charging]
+\label{inc:AN03:tailrepair:v1:moment}
+Let $\eta_0$ be a probability law of $D_0\ge0$ with
+\[
+ \eta_0\{D_0>z\}\le C_T\min\{1,(\epsilon/z)^p\},\qquad z>0.
+\]
+Choose a fixed-in-time core $D_0\le d_c$, and suppose that its complementary ancestry has, uniformly throughout the required interval, current mass bounded by
+\[
+ \mu_B(t)\le C_m\int_{D_0>d_c}\max\{1,A D_0^2\}^{1+\nu}\dd\eta_0,
+ \qquad \nu\ge0,
+\]
+where $p>2(1+\nu)$. Then
+\begin{equation}\label{inc:AN03:tailrepair:v1:massbound}
+ \mu_B(t)\le C\epsilon^p d_c^{-p}
+          \max\{1,A d_c^2\}^{1+\nu}.
+\end{equation}
+The constant is uniform when the original constants, $p$, and the reciprocal of $p-2(1+\nu)$ are uniformly bounded.
+\end{lemma}
+\begin{proof}
+Put $r=2(1+\nu)<p$. Tonelli gives the exact tail-moment formula
+\[
+ \int_{D_0>d_c}D_0^r\dd\eta_0
+ =d_c^r\eta_0\{D_0>d_c\}
+       +\int_{d_c}^{\infty}r z^{r-1}\eta_0\{D_0>z\}\dd z
+ \le C_T\frac{p}{p-r}\epsilon^p d_c^{r-p}.
+\]
+Also $\eta_0\{D_0>d_c\}\le C_T\epsilon^p d_c^{-p}$. Use
+$\max\{1,AD_0^2\}^{1+\nu}\le1+A^{1+\nu}D_0^r$, and then
+$1+y^{1+\nu}\le2\max\{1,y\}^{1+\nu}$. This proves the claim. Atoms at the cutoff cause no difficulty because the complement is strictly $D_0>d_c$.
+\end{proof}
+
+Use the proposed strong-entry and clock powers
+\begin{gather*}
+ S_0=q^\kappa,\qquad s=\frac{1-\lambda P}{1-\lambda},\qquad
+ p=\frac3s,\qquad E=\frac\kappa2(1-P)-s,\\
+ \epsilon G\asymp q^E,\qquad
+ G\asymp q^{-\kappa(1-\lambda)P/2},\qquad
+ d_c\asymp q^\chi/G,\qquad
+ A\asymp q^{2-\kappa(1-\lambda)}.
+\end{gather*}
+Here $P=P_\rho$ in the intended model, but the next algebraic proposition uses only independent interval bounds. Any $Q$-versus-$\lambda$ and bounded-clock factors must be justified before these comparisons are applied to a trajectory. Lemma \ref{inc:AN03:tailrepair:v1:moment} gives
+\begin{align}
+ \mu_B&\le Cq^{p(E-\chi)-(1+\nu)R_+},\label{inc:AN03:tailrepair:v1:power}\\
+ R&=\kappa(1-\lambda)(1-P)-2-2\chi,
+ \qquad R_+=\max\{R,0\}.\nonumber
+\end{align}
+Thus the field exponent, including the exact $1/q$ cost, is
+\begin{equation}\label{inc:AN03:tailrepair:v1:delta}
+ \Delta_\nu=p(E-\chi)-1-(1+\nu)R_+.
+\end{equation}
+The mass gain was integrated before charging the outside field. No displacement-growth factor is added after \eqref{inc:AN03:tailrepair:v1:power}.
+
+\section{A rational uniform margin at $\kappa=10$}
+\begin{proposition}[No opposite-corner loss is necessary]
+\label{inc:AN03:tailrepair:v1:rational}
+On the independent rectangle
+\[
+ \frac{169}{400}\le\lambda\le\frac{49}{100},\qquad
+ \frac12\le P\le\frac{153}{250},
+\]
+set $\kappa=10$, $\chi=1/20$. Then
+\begin{equation}\label{inc:AN03:tailrepair:v1:margin0}
+ \Delta_0\ge\frac{4561}{35006}>0.
+\end{equation}
+Moreover $p\ge306/151$, and if $0\le\nu\le1/100$ then
+\begin{equation}\label{inc:AN03:tailrepair:v1:marginnu}
+ p-2(1+\nu)\ge\frac{49}{7550}>0,\qquad
+ \Delta_\nu\ge\frac{17141311}{140024000}>\frac{3}{25}.
+\end{equation}
+Therefore the conditional mass law in Lemma \ref{inc:AN03:tailrepair:v1:moment} yields an outside field tending uniformly to zero, with a logarithmically integrated cost tending to zero. The original-flow mass law is not established by these inequalities.
+\end{proposition}
+\begin{proof}
+Put
+\[
+ A(\lambda,P)=p(E-\chi)-1,\qquad B(\lambda,P)=A(\lambda,P)-R.
+\]
+Then $\Delta_0=\min\{A,B\}$. Source PROFILE's rational calculation, or direct differentiation of this rational expression, gives
+\[
+ A\ge A(49/100,153/250)=\frac{4561}{35006}.
+\]
+For clarity, $A=3(1-\lambda)[5(1-P)-1/20]/(1-\lambda P)-4$ decreases in $\lambda$ and in $P$ on the rectangle: the $\lambda$ derivative has factor $P-1$, and the $P$ derivative has sign $-(1-\lambda)-\lambda/100<0$ after removal of a positive factor.
+
+The second branch is explicitly
+\[
+ B=\frac{200P^2\lambda^2-200P^2\lambda-200P\lambda^2
+                   +338P\lambda-100P-97\lambda+59}
+              {20(1-P\lambda)}.
+\]
+Its $P$ derivative is
+\[
+ \partial_P B=\frac{1-\lambda}{20(1-P\lambda)^2}
+ [200P^2\lambda^2-400P\lambda+297\lambda-100].
+\]
+The bracket decreases in $P$ since $P\lambda<1$. At $P=1/2$ it is $50\lambda^2+97\lambda-100<0$ for $\lambda\le49/100$. Hence $B(\lambda,P)\ge B(\lambda,153/250)$. At this last value of $P$,
+\[
+ \frac{\dd}{\dd\lambda}B(\lambda,153/250)
+ =\frac{97(46818\lambda^2-153000\lambda+54125)}
+              {50(153\lambda-250)^2}<0.
+\]
+Indeed its numerator polynomial decreases on the ratio rectangle, and its value at $169/400$ is $-172815551/80000<0$. It follows that
+\[
+ B\ge B(49/100,153/250)=\frac{11004659}{43757500}>\frac14.
+\]
+Taking the smaller of the two branch bounds proves \eqref{inc:AN03:tailrepair:v1:margin0}. The combined exponent must be bounded \emph{before} taking separate adverse parameter corners for $A$ and $R_+$.
+
+Since $s=(1-\lambda P)/(1-\lambda)$ increases in $\lambda$ and decreases in $P$,
+\[
+ p\ge\frac{3(1-49/100)}{1-(49/100)/2}=\frac{306}{151}.
+\]
+Also
+\[
+ 0\le R_+\le10(1-169/400)(1-1/2)-\frac{21}{10}=\frac{63}{80}.
+\]
+Consequently, for $\nu\le1/100$,
+\[
+ \Delta_\nu\ge\frac{4561}{35006}-\frac1{100}\frac{63}{80}
+ =\frac{17141311}{140024000}>\frac3{25},
+\]
+and $306/151-101/50=49/7550$. These are exact rational inequalities.
+\end{proof}
+
+\begin{remark}[Uncontrolled radial defects have an explicit remaining price]
+If the unresolved radial-rate comparison supplies an additional factor $q^{-\sigma}$ rather than a bounded factor, subtract $\sigma$ from \eqref{inc:AN03:tailrepair:v1:delta}. The last proposition leaves a conditional allowance $\sigma<17141311/140024000$ when $\nu\le1/100$. It does not prove any such radial defect bound. Likewise the secondary Q2 tail with index below one must not be inserted into Lemma \ref{inc:AN03:tailrepair:v1:moment}; that lemma uses the right-half-circle strong ancestry tail with $p>2(1+\nu)$.
+\end{remark}
+
+\section{A core moment and outside defects in the selection interface}
+Let $K$ now denote a fixed strong core (not the Gaussian function when it is a subscript), and define the charted core distance
+\[
+ D_K(t)=\int_K(|x-c_s|+|y-d_s|)\dd\mu_s.
+\]
+No chart coordinates are assigned to its complement $B$. Write $M_K=\mu_s(K)$. Before assuming $M_K=1$, the elementary donor estimates are
+\begin{align*}
+ |Y_K-Y_*|&\le D_K+M_K E_s+|M_K-1|\,|Y_*|,\\
+ |K_{s,K}-K(\rho X_*)|&\le\rho D_K+\rho M_K E_s
+                  +|M_K-1|\,K(\rho X_*),
+\end{align*}
+where $E_s=|(c_s,d_s)-(X_*,Y_*)|$. These follow by adding and subtracting the core mass times the reference value and using the donor Lipschitz bound for $K$.
+
+Source PROFILE's exact outside-field proposition gives value cost at most $a_*\mu_B/q$ and receiver derivative cost at most $34\mu_B/q$. Once the required original-to-leading field representation is supplied, these can be included in errors of the form
+\begin{align}
+ D^+E_s&\le-gE_s+C_s(d_0+NW_p),\label{inc:AN03:tailrepair:v1:strongerror}\\
+ D^+W_p&\le[-\lambda(1-N)/2+N/2+\ell_B(t)]W_p
+                         +C_w(E_s+d_0).
+ \label{inc:AN03:tailrepair:v1:weakerror}
+\end{align}
+Here $d_0$ bounds the core first moment, normalized field values, any strong mass deficit and other additive errors. The coefficient $\ell_B\ge0$ retains derivative, weight, or linear-in-large-coordinate defects not already bounded additively. For a pure outside-output defect, a globally uniform value bound at actual receivers can instead be used directly in $d_0$, without a derivative loss in population-to-orbit comparison. Pairwise same-field contraction still uses the receiver derivative bound.
+
+An original strong mass deficit contributes both bounded comparator errors and a term proportional to the potentially large incoming weak coordinate. It cannot be deleted by simply naming the charted core the full strong family. Similarly, changing weak label weights or recruitment does not preserve the closed logistic law without extra terms. The next theorem states its actual abstract scope.
+
+\begin{theorem}[Robust selection from the perturbed inequalities]
+\label{inc:AN03:tailrepair:v1:selection}
+Suppose $N'=\lambda N(1-N)$, $0<N_0<n_b<1$, and nonnegative error functions obey \eqref{inc:AN03:tailrepair:v1:strongerror}--\eqref{inc:AN03:tailrepair:v1:weakerror} up to a strong-reference first exit $E_s<\delta$. Assume the weak return-region hypotheses needed for these inequalities are maintained separately. Suppose
+\[
+ \int_{t_0}^{t_b}\ell_B\le L_*,\qquad N(t_b)=n_b.
+\]
+Set
+\begin{gather*}
+ B_*=e^{L_*}(1-n_b)^{-1/(2\lambda)},\quad
+ a_0=\lambda(1-n_b)/2,\quad m_0=\min(g/2,a_0/2),\\
+ L_0=1+\frac{C_s(1+B_*)}{g-m_0},\quad K_0=2L_0,\quad
+ \Theta=\frac{C_sB_*C_wn_b}{(a_0-m_0)(g-m_0)}.
+\end{gather*}
+Choose $n_b$ small enough that $\Theta\le1/4$, and put $E_0=E_s(t_0)$, $A_0=\sqrt{N_0}W_p(t_0)$. If
+\[
+ K_0(E_0+d_0+A_0\sqrt{n_b})\le\delta/2,
+\]
+then the strong-reference guard closes and
+\begin{equation}\label{inc:AN03:tailrepair:v1:Econclusion}
+ E_s(t)\le K_0[E_0e^{-m_0(t-t_0)}+d_0+A_0\sqrt{N(t)}].
+\end{equation}
+Writing $T_b=t_b-t_0$,
+\begin{align}\label{inc:AN03:tailrepair:v1:Wconclusion}
+ W_p(t_b)\le B_*\Bigg[\frac{A_0}{\sqrt{n_b}}
+ +C_w(K_0+1)\bigg\{
+ \frac{E_0e^{-m_0T_b}}{a_0-m_0}+\frac{d_0}{a_0}
+                   +\frac{A_0\sqrt{n_b}}{2a_0}\bigg\}\Bigg].
+\end{align}
+The constants are uniform for a common finite upper bound on $L_*$. Hence $N_0\to0$, $A_0\to0$, and $d_0\to0$ imply terminal selection with uniformly admissible $E_0$. This is an abstract conditional result, not a proof of original weak capture, nonnegative input, or clock matching.
+\end{theorem}
+\begin{proof}
+The homogeneous multiplier in the weak inequality from $v$ to $t$ is
+\[
+ \sqrt{\frac{N(v)}{N(t)}}
+ \exp\left(\frac12\int_v^tN+\int_v^t\ell_B\right)
+ \le B_*\sqrt{\frac{N(v)}{N(t)}}.
+\]
+Here $\int N\le\lambda^{-1}\log(1/(1-n_b))$ is exact logistic integration; no factor $e^{C n_bT_b}$ is inserted. Define
+\[
+ D(t)=E_0e^{-m_0(t-t_0)}+d_0+A_0\sqrt{N(t)}.
+\]
+Under a temporary bound $E_s\le K_0D$, variation of constants gives
+\[
+ W_p(t)\le B_*\left[\frac{A_0}{\sqrt{N(t)}}
+   +C_w(K_0+1)\int_{t_0}^t\sqrt{\frac{N(v)}{N(t)}}D(v)\dd v\right].
+\]
+Use $\sqrt{N(v)/N(t)}\le e^{-a_0(t-v)}$ and $D(v)\le e^{m_0(t-v)}D(t)$ to obtain
+\[
+ NW_p\le B_*A_0\sqrt N+
+ \frac{B_*C_w(K_0+1)n_b}{a_0-m_0}D.
+\]
+The stable strong convolution then improves the temporary bound to
+\[
+ E_s\le[L_0+\Theta(K_0+1)]D<K_0D.
+\]
+A first-exit argument proves \eqref{inc:AN03:tailrepair:v1:Econclusion}; the smallness hypothesis improves the strong guard to $E_s\le\delta/2$. For the terminal weak estimate integrate the three parts of $D$ separately. They cost respectively $E_0e^{-m_0T_b}/(a_0-m_0)$, $d_0/a_0$, and
+\[
+ \frac{A_0}{\sqrt{n_b}}\int_{t_0}^{t_b}N
+ \le\frac{A_0\sqrt{n_b}}{\lambda(1-n_b)}
+ =\frac{A_0\sqrt{n_b}}{2a_0}.
+\]
+This proves \eqref{inc:AN03:tailrepair:v1:Wconclusion}. Finally $T_b\to\infty$ as $N_0\to0$. No assertion about the separately imposed weak return guard is obtained by this last limit.
+\end{proof}
+
+\paragraph{The resulting conditional ledger.}
+Under the mass law of Section 2, a bounded strong core with final radius $O(q^\chi)$ contributes an additive error bounded schematically by
+\[
+ d_0\lesssim q^\chi+q^{\Delta_\nu}
+       +\text{strong mass, finite-noise, and other value errors}.
+\]
+The derivative contribution obeys
+\[
+ \ell_B(t)\lesssim q^{\Delta_\nu},\qquad
+ \int\ell_B\lesssim q^{\Delta_\nu}\log(1/q)=o(1)
+\]
+on a logarithmic sojourn. This counts $r_m$ in the pointwise first-moment replacement as well as in the passage integral. A merely pointwise $\ell_B=o(1)$ with no control of its long-time integral would not give the uniform multiplier used above.
+
+\section{The original-flow inequality still to prove}
+For an exact balanced original-flow label, write
+\[
+ R_\theta=\operatorname{diag}(r_1,Q(1-c)/2)+\mathcal B_\theta.
+\]
+For a reference label with directions $a^{\rm c},b^{\rm c}$, exact subtraction gives
+\begin{align*}
+ \frac{\dd}{\dd t}\log\frac{m_\alpha}{m_{\rm c}}
+ ={}&2r_1(a_1b_1-a_1^{\rm c}b_1^{\rm c})
+ +Q(1-c)(a_2b_2-a_2^{\rm c}b_2^{\rm c})\\
+ &+2b^T\mathcal B_\theta a
+ -2(b^{\rm c})^T\mathcal B_{\theta^{\rm c}}a^{\rm c}.
+\end{align*}
+Deriving Lemma \ref{inc:AN03:tailrepair:v1:gainintegration}'s capped growth inequality from this identity requires the signs or budgets for the strong term, the actual pre-exit angular envelope, and the signed radial defect. None is obtained solely from an upper entry tail. At positive Gaussian noise the lower-side cluster-2 gate is not identically closed; a negligible-gate assertion needs its own projected-margin estimate and integrated tail bound. An endpoint mass bound is also not automatically a bound throughout the sojourn.
+
+\begin{thebibliography}{9}\small
+\bibitem{PROFILE} Supplied \path{AN02_strong_entry_profile_and_tail_budget_v1.tex}, labels \texttt{inc:AN02:profile:v1:cost}, \texttt{badmass}, \texttt{rational}. Exact outside field; conditional strong-tail powers.
+\bibitem{CLOCK} Supplied \path{AN03_exact_amplitude_clock_and_c_passage_v1.tex}, labels \texttt{inc:AN03:clock:v1:identity}, \texttt{passage}, \texttt{forcing}. Exact amplitude clock and its distinct endpoint/subinterval contracts.
+\bibitem{WEAK} Supplied \path{AN03_weak_transit_forcing_and_orbit_selection_v1.tex}, labels \texttt{inc:AN03:weak:v1:Wineq}, \texttt{strongineq}, \texttt{selection}. The unperturbed coupled selection proof.
+\bibitem{RET} Supplied \path{AN03_two_sided_passage_and_Q2_retention_v2.tex}. The all-label strong-chart comparison has its own chart/forcing hypotheses and is not asserted unchanged in the original flow.
+\end{thebibliography}
+\end{document}

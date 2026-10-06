@@ -1,0 +1,264 @@
+% Standalone review increment; prior documents remain unchanged.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.9in]{geometry}\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,xurl}
+\usepackage[hidelinks]{hyperref}\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small AN03: exact amplitude clock}\fancyhead[R]{\small Review increment v1}\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}\newcommand{\R}{\mathbb R}
+\title{An exact weak-amplitude clock and response-based local passage}
+\author{Analytical increment for independent review}\date{Version 1}
+\begin{document}\maketitle
+\begin{abstract}
+For fixed initial ancestry we derive an exact Cartesian amplitude identity, using the symmetric growing coordinate $(U_2+W_2)/2$. It survives angular transit without any chart mask and retains a signed defect. We derive the separate endpoint comparison with exact weak response, and an original-state cross-output bound in terms of growing amplitude, antisymmetric energy and transverse energy. An abstract local-passage theorem then uses the exact response clock instead of an assumed logistic radial mass. The substitution is valid only once the corresponding response-based local shape and mean inequalities, with their field defects, have been established on the same trajectory. Neither the sign of the initialized amplitude defect nor those finite-noise field inequalities is asserted from numerical evidence.
+\end{abstract}
+
+\section{Exact original-flow definitions}\label{inc:AN03:clock:v1:definitions}
+Use the normalized Gaussian mixture of the handoff, $\lambda=\rho^2$,
+$Q=\lambda+q^2$, and the fixed label law $\dd\lambda_0=\dd\theta_0/(2\pi)$.
+The balanced Cartesian characteristics satisfy
+\[
+ U'=R_\theta^TW,\quad W'=R_\theta U,\quad
+ R_\theta=\E_P[(X-f(X))X^T\mathbf1_{U^TX>0}],\quad |U|^2=|W|^2=m.
+\]
+All expectation matrices include the equal cluster weights. Define the exact weak response
+\begin{equation}\label{inc:AN03:clock:v1:c}
+ c(t)=\frac{\E_{P_2}[f_2(X)X_2]}{Q}.
+\end{equation}
+This is not a radial family mass. It need not lie between zero and one at arbitrary states.
+For any chosen scalar $r_1(t)$ decompose, identically,
+\begin{equation}\label{inc:AN03:clock:v1:split}
+ R_\theta=\begin{pmatrix}r_1&0\\0&Q(1-c)/2\end{pmatrix}+B_\theta.
+\end{equation}
+All selector dependence, cluster-1 noise, non-proportional residual, and remaining terms belong to $B_\theta$. No sign is imposed on it.
+Let $C$ be a fixed measurable initial-label set and put
+\begin{align}
+ z&=(U_2+W_2)/2,\quad h=z^2,\quad H_C=\int_C z^2\dd\lambda_0,\label{inc:AN03:clock:v1:H}\\
+ A_C&=\frac14\int_C(U_2-W_2)^2\dd\lambda_0,\quad
+ J_C=\frac12\int_C(U_1^2+W_1^2)\dd\lambda_0.\nonumber
+\end{align}
+Then the total coordinate energy in direction two is $E_C=H_C+A_C$, and the radial mass is exactly $S_C=E_C+J_C$.
+Under the prescribed initialization, $h(0)=S_0\sin^2\theta_0$ and $H_{Q2}(0)=S_0/8$.
+
+\section{The amplitude identity and its signed clock}
+\begin{proposition}[No chart mask and no first-coordinate diagonal term]\label{inc:AN03:clock:v1:identity}
+For the exact original flow,
+\begin{align}
+ H_C'&=Q(1-c)H_C+\mathcal D_C,\label{inc:AN03:clock:v1:Hidentity}\\
+ \mathcal D_C&=\int_C\left[2(B_\theta)_{22}z^2
+       +z\{(B_\theta)_{12}W_1+(B_\theta)_{21}U_1\}\right]\dd\lambda_0.\nonumber
+\end{align}
+On an interval where $H_C>0$, write $\epsilon_C=\mathcal D_C/H_C$. Then
+\begin{equation}\label{inc:AN03:clock:v1:clock}
+ \int_{t_0}^{t}(1-c)
+ =\frac1Q\left[\log\frac{H_C(t)}{H_C(t_0)}-\int_{t_0}^{t}\epsilon_C\right].
+\end{equation}
+The identity is independent of $r_1$ and does not divide by the amplitude of any individual label.
+\end{proposition}
+\begin{proof}
+The second coordinates give
+\[
+ z'=R_{22}z+\tfrac12(R_{12}W_1+R_{21}U_1).
+\]
+Multiply by $2z$, substitute \eqref{inc:AN03:clock:v1:split}, and integrate over the fixed labels. This polynomial identity holds also at $z=0$. Foundational finite-horizon bounds give bounded Cartesian coordinates and derivatives on the initial label space, so differentiation under the integral is justified by domination. Integration of the logarithmic identity for the positive aggregate $H_C$ proves \eqref{inc:AN03:clock:v1:clock}. There is no $B_{11}$ term, but its effects on the evolving first coordinates have not been removed. A moving cohort would add its boundary flux.
+\end{proof}
+
+\begin{corollary}[Strong-entry seed in the amplitude clock]\label{inc:AN03:clock:v1:seed}
+For fixed Q2 ancestry, suppose $t_s=\log(1/S_0)+b_s$, $|b_s|\le B_s$, the amplitude remains positive through $t_s$, and
+\[
+ Q\int_0^{t_s}c-\int_0^{t_s}\epsilon_{Q2}\le D_s.
+\]
+Then
+\[
+ H_{Q2}(t_s)\ge\tfrac18e^{-QB_s-D_s}S_0^{1-\lambda-q^2}.
+\]
+In particular $H_{Q2}(t_s)\ge C S_0^{1-\lambda}$ for $q$ in a bounded range and uniform $B_s,D_s$. A two-sided bounded clock defect gives the corresponding two-sided comparison when $q^2\log(1/S_0)$ is bounded.
+\end{corollary}
+\begin{proof}
+Apply \eqref{inc:AN03:clock:v1:clock} from zero, using $H_{Q2}(0)=S_0/8$. The factor $S_0^{-q^2}$ is at least one. For the two-sided statement it is at most $e^C$ under the stated joint bound.
+\end{proof}
+\noindent This corollary does not prove the required bound on $D_s$. It is precisely the seed-clock target, without a radial weak-chart identification. A finite lower bound on the integrated logarithmic defect up to a possible first zero would also prevent such a zero; positivity cannot be asserted merely because $H_C$ is a square integral.
+
+\section{What is needed to cap amplitude by response}
+Let $f_C(X)=\int_C W(U^TX)_+\dd\lambda_0$ and $f_O=f-f_C$. Define
+\[
+ c_O=\E_{P_2}[X_2(f_O)_2]/Q,\qquad
+ \tau_C=\frac1Q\E_{P_2}\left[X_2\int_CW_2(-U^TX)_+\dd\lambda_0\right].
+\]
+\begin{proposition}[Exact endpoint ledger]\label{inc:AN03:clock:v1:endpoint}
+At every such state,
+\begin{equation}\label{inc:AN03:clock:v1:endpointidentity}
+ H_C=c-c_O-\tau_C+A_C.
+\end{equation}
+Consequently, on a window with $c\le c_b$,
+\begin{equation}\label{inc:AN03:clock:v1:Hcap}
+ H_C\le c_b+(c_O)_-+|\tau_C|+A_C.
+\end{equation}
+Writing $U=\sqrt m\,a$, $W=\sqrt m\,b$, a cancellation-free tail estimate is
+\[
+ |\tau_C|\le\frac q{\sqrt Q}\int_Cm|b_2|
+ \sqrt{H_2(-\rho a_2/q)}\dd\lambda_0,
+ \qquad H_2(t)=\E(Z+t)_+^2.
+\]
+No assumption on the sign of $a_2$ or $b_2$ is needed for this bound.
+\end{proposition}
+\begin{proof}
+Use $(U^TX)_+=U^TX+(-U^TX)_+$ and
+$\E_{P_2}[X_2U^TX]=QU_2$. Thus $c=c_O+\int_CU_2W_2+\tau_C$.
+Since $z^2=U_2W_2+(U_2-W_2)^2/4$, this proves the identity. Cauchy--Schwarz in $P_2$ and the exact one-dimensional Gaussian negative-part second moment prove the tail bound; Tonelli or domination justifies the label integration.
+\end{proof}
+
+\paragraph{A necessary qualification.}
+Even at a nearly active own gate, $H_C\le c$ does not follow from the definition. The symmetric amplitude exceeds $U_2W_2$ by the nonnegative antisymmetric energy $A_C$, other labels can have signed response, and the negative-part Gaussian term is nonzero. A cap $H_C\le H_b$ from any valid energy bound suffices for the passage theorem; the specific choice $H_b=c_b$ requires additional inequalities. The same identity also gives $c\le H_C+(c_O)_++|\tau_C|$, which can be used to budget $\int c$ when the complementary response and tail are controlled. The observed sign of the amplitude defect does not establish these endpoint inequalities.
+
+\section{An original-state square-root cross-output bound}
+\begin{proposition}[Transit energy controls leakage without a bounded weak chart]\label{inc:AN03:clock:v1:crossenergy}
+For every balanced state and fixed cohort $C$, with $0<q\le1$, $0<\rho<1$,
+\begin{equation}\label{inc:AN03:clock:v1:crossbound}
+ \frac{\|(f_C)_2\|_{L^2(P_1)}+\|(f_C)_1\|_{L^2(P_2)}}q
+ \le8\left[E_C+J_C+\frac{\sqrt{E_CJ_C}}q\right].
+\end{equation}
+If $E_C\le C_EH_C$ and $J_C\le q^2H_*$, this is at most
+\[
+ 8\left[C_EH_C+q^2H_*+\sqrt{C_EH_CH_*}\right].
+\]
+The inequalities do not assume that the cohort is in either scaled chart.
+\end{proposition}
+\begin{proof}
+For a Gaussian cluster with mean $\mu e_j$, Minkowski gives
+$\|(U^TX)_+\|_2\le\mu|U_j|+q|U|$.
+Also $\int U_2^2,\int W_2^2\le2E_C$, $\int U_1^2,\int W_1^2\le2J_C$, and $\int|U|^2=S_C=E_C+J_C$ by balance. Hence
+\begin{align*}
+ \|(f_C)_2\|_{P_1}&\le2\sqrt{E_CJ_C}
+        +\sqrt2q\big[E_C+\sqrt{E_CJ_C}\big],\\
+ \|(f_C)_1\|_{P_2}&\le2\rho\sqrt{E_CJ_C}
+        +\sqrt2q\big[J_C+\sqrt{E_CJ_C}\big].
+\end{align*}
+Here the second terms use $\sqrt{E(E+J)}\le E+\sqrt{EJ}$ and its counterpart. Add, divide by $q$, and use $\rho,q\le1$ to obtain the stated constant. The last claim is substitution.
+\end{proof}
+\noindent This gives the square-root structure at the level of the exact cross outputs. To turn it into a complete strong field bound still requires the selected residual moments and first-coordinate diagonal response. The transverse-energy bound $J_C\le q^2H_*$ and the antisymmetric-energy bound are themselves dynamical obligations. The term $q^2H_*$ is displayed rather than discarded; it is absorbable into $H_C$ only with an additional comparison, or separately into an integrated budget.
+
+\section{Response-based local passage with the exact clock}
+\begin{proposition}[A concrete c-form field contract]\label{inc:AN03:clock:v1:cfield}
+Let a fixed strong family have instantaneous mass $0<M\le1$ and measure $\mu_s$. Suppose its common scaled angular field is
+\begin{align*}
+ 2f_x&=-(1-M)x+\rho\phi(\rho x)-\rho\mathcal S(x)
+             +\lambda[V+(1-c)y]\Phi(\rho x)+2\mathcal R_x,\\
+ 2f_y&=-(1-M)y-Y-K_w+\rho(1-c)K(\rho x)+2\mathcal R_y,\\
+ \mathcal S(x)&=\int F(\rho x,\rho\widetilde x)\dd\mu_s,\qquad Y=\int y\dd\mu_s.
+\end{align*}
+Assume $0\le c\le c_b<1$, $K_w\ge0$, and the remainder has value and induced $\ell^1$ receiver-derivative norms at most $\epsilon_F(t)$ on the reference/core neighborhood. For a same-field reference and fixed core, use the reviewed local definitions $e,r,T$, where $T$ is the normalized strong first moment outside the core. With an enlarged uniform constant $C$ the local inequalities are
+\[
+ D^+r\le[\alpha(1-c)+C(e+r+f_*)]r,\qquad
+ D^+e\le-\gamma e+Ce^2+C(r+f_*),
+\]
+where $f_*=c+|V|+K_w+T+\epsilon_F$. Neither a logistic mass law nor constant normalized weights is needed for this instantaneous implication; the core is fixed in initial labels and all radial weights remain positive.
+\end{proposition}
+\begin{proof}
+Repeat the donor cancellation $\Pi(z)-\Lambda_-(z)=M(X_s-z)$ in the reviewed local Lemma 2.1 with $1-c$ in place of $1-N$. Its cross derivatives are nonnegative and its gate bound yields the coefficient $\alpha(1-c)$. The lower-side $1-M$ term has the same favorable cancellation. The two mean imbalances are bounded by $|V|+\sqrt2e+(a+1)c+r+T$. These are pointwise calculations and do not differentiate a radial weight.
+For the reference mean, the comparison field obtained by setting $c=V=K_w=0$ and collapsing the strong measure is the same $G_M$ as in reviewed Lemma 3.1. It is stationary at $(a,a)$ for every $M$ and its symmetric linearization is uniformly negative definite. Its field difference is bounded by a constant times $r+T+c+|V|+K_w$.
+Finally a common remainder contributes at most $\epsilon_F$ to the reference speed and $\epsilon_F(|x-x_c|+|y-y_c|)$ to the pair difference by the mean value theorem. Thus it is multiplicative in shape, not an additive split forcing. Enlarge $C$ and take $e_*\le\gamma/(2C)$ to obtain the subsequent damped mean inequality with $g=\gamma/2$. Essential suprema are taken over fixed labels; the positivity of radial weights makes their null sets equivalent on finite horizons.
+\end{proof}
+
+The following theorem is stated for quantities on \emph{one common trajectory}. It can use the original-flow $H_C,c$ only when its differential-inequality hypotheses are proved for that original flow. Define $e$ as a reference mean error and $r$ as a fixed-core radius, and let $f_*(t)\ge0$ include every weak, tail and field-defect contribution.
+Suppose, up to first exit from $e<e_*$ and $r<1$,
+\begin{align}
+ D^+e&\le-ge+C(r+f_*),\label{inc:AN03:clock:v1:meanineq}\\
+ D^+r&\le[\alpha(1-c)+C(e+r+f_*)]r.\label{inc:AN03:clock:v1:shapeineq}
+\end{align}
+Here $g,C,e_*>0$ are fixed constants. In the reviewed leading theorem these inequalities follow from the stable collective mode and local shape estimates. On the original flow, their finite-noise counterparts require proof.
+
+\begin{theorem}[Clock substitution with a signed defect and no extra logarithm]\label{inc:AN03:clock:v1:passage}
+Assume $0\le c\le c_b<1$ on $[t_0,t_b]$, $H_C>0$ there, and
+\[
+ H_C(t_b)\le H_b,\quad \int_{t_0}^{t_b}\epsilon_C\ge-D_-,\quad
+ \int_{t_0}^{t_b}f_*\le F_b.
+\]
+Set
+\begin{align*}
+ K&=C(1+C/g),\quad a_b=\alpha(1-c_b),\\
+ L_b&=\exp(Ce_0/g+KF_b+\alpha D_-/Q)(H_b/H_0)^{\alpha/Q},\\
+ \mathcal A&=r_0 L_b,\qquad H_0=H_C(t_0)>0.
+\end{align*}
+If
+\[
+ e_0\le e_*/4,\quad F_b\le e_*/(4C),\quad
+ \mathcal A\le\min\{1/4,\ a_b/(2K),\ ge_*/(8C)\},
+\]
+then the first-exit guards close and
+\begin{align}
+ e(t)&\le3e_*/4,\qquad r(t)\le2\mathcal A,\nonumber\\
+ r(t_b)&\le2e^{Ce_0/g+KF_b+\alpha D_-/Q}(H_b/H_0)^{\alpha/Q}r_0,\label{inc:AN03:clock:v1:result}\\
+ \int_{t_0}^{t_b}r&\le2\mathcal A/a_b.\nonumber
+\end{align}
+No logistic radial mass, early phase alignment, or pointwise sign of $\epsilon_C$ is used.
+\end{theorem}
+\begin{proof}
+The mean inequality gives
+$\int e\le e_0/g+(C/g)\int(r+f_*)$ and the usual stable convolution for $e$.
+Integrate the shape inequality to get
+\[
+ r(t)\le r_0L(t)e^{K\int_{t_0}^tr},\quad
+ L(t)=\exp\left[Ce_0/g+\alpha\int_{t_0}^t(1-c)+K\int_{t_0}^tf_*\right].
+\]
+Then $L'\ge a_bL$, and the exact clock yields $L(t_b)\le L_b$. Since $L$ is nondecreasing, this also bounds all its earlier values, without requiring a prefix bound on $\epsilon_C$.
+As in the reviewed Riccati argument,
+\[
+ r(t)\le\frac{r_0L(t)}{1-Kr_0\int_{t_0}^tL},\qquad
+ \int_{t_0}^{t}L\le[L(t)-L(t_0)]/a_b.
+\]
+The denominator is at least $1/2$ under the stated smallness assumption. Consequently $r\le2\mathcal A$, $\int r\le2\mathcal A/a_b$, and the stable mean convolution gives
+$e\le e_0+2C\mathcal A/g+CF_b\le3e_*/4$. These strict improvements close the guards. For $r_0=0$, same-field coincidence or the scalar integral inequality gives $r=0$ directly.
+\end{proof}
+
+\begin{proposition}[Integrating amplitude-based transit forcing]\label{inc:AN03:clock:v1:forcing}
+For the same clock assume the stronger subinterval condition
+\[
+ \int_s^t\epsilon_C\ge-D_{\rm osc}\quad(t_0\le s\le t\le t_b).
+\]
+Then, with $b=Q(1-c_b)$,
+\[
+ \int H_C\le e^{D_{\rm osc}}H_b/b,\qquad
+ \int\sqrt{H_CH_*}\le2e^{D_{\rm osc}/2}\sqrt{H_bH_*}/b
+\]
+for a constant $H_*\ge0$. Thus a forcing bound
+$f_*\le A H_C+B\sqrt{H_CH_*}+w$ has a finite explicit integral budget. A further $q^2H_*$ term costs $q^2H_*(t_b-t_0)$.
+\end{proposition}
+\begin{proof}
+For $s<t_b$, the exact logarithmic clock and $c\le c_b$ give
+$H_C(s)\le e^{D_{\rm osc}}H_C(t_b)e^{-b(t_b-s)}$. Integrating this inequality and its square root proves the claims. A lower bound on only the total defect from $t_0$ to $t_b$ would not prove this subinterval estimate. Pointwise nonnegative defect is one sufficient case, not an established initialized fact.
+\end{proof}
+
+\section{The c-form field is not a notation change}
+Within the closed leading equations, for an arbitrary comparison scalar $c$,
+\begin{align*}
+ 2x'&=-(1-M)x+\rho\phi(\rho x)-\rho\mathcal S(x)
+       +\lambda[V+(1-c)y]\Phi(\rho x)
+       +\lambda(c-N)y\Phi(\rho x),\\
+ 2y'&=-(1-M)y-Y-K_w+\rho(1-c)K(\rho x)
+       +\rho(c-N)K(\rho x).
+\end{align*}
+The leading local shape estimate can therefore be written in c-form by charging $|c-N|$ to the forcing/derivative budget. This proves an algebraic comparison within that leading system, not the substitution of an unrelated original-flow observable.
+
+For the exact Gaussian population write on cluster 2
+\[
+ f_2=cX_2+g_2,\qquad \E_{P_2}[X_2g_2]=0.
+\]
+The selected moment is
+\[
+ \E_{P_2}[(X_2-f_2)X_2\mathbf1_{a^TX>0}]
+ =(1-c)\E_{P_2}[X_2^2\mathbf1_{a^TX>0}]
+ -\E_{P_2}[g_2X_2\mathbf1_{a^TX>0}].
+\]
+Global regression orthogonality does not remove the second term. For example, with $g_2=X_2\operatorname{sign}(X_1)$ under $P_2$, independence and symmetry give $\E[X_2g_2]=0$, whereas at the receiver $a=e_1$ the selected moment $\E[g_2X_2\mathbf1_{X_1>0}]=Q/2$. This example diagnoses the missing implication for an orthogonal residual; it is not asserted to be an initialized network state. Cauchy--Schwarz bounds this selected defect by $\sqrt Q\|g_2\|_{L^2(P_2)}$, but a useful sharp estimate must be established for the reached population.
+
+Accordingly, using Theorem \ref{inc:AN03:clock:v1:passage} for the original flow still requires its same-trajectory mean and multiplicative shape inequalities with these selected residual and outside-field defects included. The exact amplitude clock removes the need to call transiting radial mass a weak logistic family; it does not remove that field-reduction obligation.
+
+\begin{thebibliography}{9}\small
+\bibitem{F} Supplied \texttt{RELU\_POPULATION\_FOUNDATIONS\_v2.tex}: P1, P2, P4 and P7 (exact Cartesian flow, Gaussian projections and response).
+\bibitem{L} Supplied \texttt{AN03\_local\_rate\_mean\_tracking\_v1.tex}: local radius/mean inequalities and Riccati closure.
+\end{thebibliography}
+\end{document}
