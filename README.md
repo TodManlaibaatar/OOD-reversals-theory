@@ -60,6 +60,7 @@ Each proof increment is a `.tex` file with a same-stem `_review.md` (where one e
 | `AN03_mass_charged_tail_and_selection_defects_v1` **[TAILREP]** | Capped-gain clock integration; tail-moment lemma; uniform κ=10 margin; selection theorem with core moment and outside defects. |
 | `AN03_bulk_clock_and_secondary_Q2_energy_v1` **[BULK]** | Cohort-change identity; bulk clock subcohort; conditional original-flow bulk-clock bootstrap; secondary-tail energy from the capped gain; regenerated transverse energy and forcing with a separate clock. |
 | `AN03_residual_closure_and_eta0_transport_v1` **[RCET]** | Small-constant (η=0) bulk transport; endpoint-regularized target-only threshold dichotomy at $c_0\asymp q^\gamma$; output bounds and Volterra residual closure conditional on an independent clock bound; the obstruction that remains (S0). |
+| `AN03_ledger_cap_residual_closure_v1` **[LCRC]** | S0 closed conditionally (Route 3): the response ledger caps the sign-good weak amplitude at every time inside a joint first-exit bootstrap, removing RCET's clock premise and the terminal cap; derived chart-group mass; secondary energy without a future cap. |
 | `SIGNED_GROWTH_WEAK_RETENTION_v1` **[SGWR]** | Signed Jensen retention; weak-coordinate amplitude equation; interior-Q2 defect bound; frozen resident contraction. |
 
 ### `04_witnesses_persistence/` — learned limiting witnesses, persistence, linear contrast
@@ -99,7 +100,7 @@ Each proof increment is a `.tex` file with a same-stem `_review.md` (where one e
 
 ## Reading order
 
-- **To continue the initialized proof:** roadmap → H2 → LOC → CLOCK → BULK → RCET → PROFILE → Q2E → WEAK → TAILREP, consulting F and P only for specific dependencies.
+- **To continue the initialized proof:** roadmap → H2 → LOC → CLOCK → BULK → RCET → LCRC → PROFILE → Q2E → WEAK → TAILREP, consulting F and P only for specific dependencies.
 - **For the completed limiting and linear results:** F (P10) → LP → WIT → LPR.
 
 ## Status labels used in every document

@@ -1,8 +1,10 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.1 — October 6, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.2 — October 6, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
-**Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–10; file map updated.
+**Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
+
+**Revision 1.2 (Oct 6).** Records LCRC (`AN03_ledger_cap_residual_closure_v1`). Route 3 is proved: S0 is closed as a conditional original-flow implication, with no clock premise and no terminal cap. S0 now lists the assembly requirements its retained inputs must meet.
 
 ---
 
@@ -140,7 +142,8 @@ So, **at the level of exponents**, the canonical point lies in the regime where 
 | Left-facing Q2 tracking with explicit full-output defect | Weighted time integral of the defect | Q2 |
 | Bulk-clock bootstrap: $D_{\rm osc}=O(q^\eta+q^2\log(1/q))$, gate margin, relative amplitude transport | Residual norms; Cartesian entry ratios | BULK |
 | Small-constant ($\eta=0$) transport: $D_{\rm osc}=O(C_0+q^2\log(1/q))$, growing margin, relative transport $e^{\pm2D}$, $E\le\frac{10}{9}H$ | Residual norms; Cartesian entry ratio $\le C_0$ | RCET |
-| Residual closure: bounded diagonal norms, $O(q)$ cross norms, $\int\sup\lvert R_{11}\rvert\le C\int\lvert1-\kappa_1\rvert+o(1)$, no $H_b$ smallness | Energy/core/outside budgets; **independent backward clock bound** (see S0) | RCET |
+| Residual closure: bounded diagonal norms, $O(q)$ cross norms, $\int\sup\lvert R_{11}\rvert\le C\int\lvert1-\kappa_1\rvert+o(1)$, no $H_b$ smallness | Energy/core/outside budgets; independent backward clock bound (superseded by LCRC) | RCET |
+| **S0 closed (Route 3):** the same residual conclusions plus $H\le H_{G_+}\le\frac98c_b+o(1)$, $E_{G_+}\le\frac54c_b+o(1)$, $J_G\le Cq^2$, chart-group mass $O(q^3)$. No clock premise, no terminal cap | S1 entry contracts and $\int\lvert1-\kappa_1\rvert\le B_s$; core chart $R$; chart-group retention $Z$; $\mu_B=o(q)$; S2 secondary contracts (distance envelope, capped gain) | LCRC |
 | Mass-charged complement with gain law; κ=10 margin | Capped radial gain; transferred entry profile | TAILREP |
 | Secondary Q2 energy $\lesssim q^5+q^{\Gamma_\nu}H$ | Pre-exit distance envelope; capped gain | BULK |
 | Forcing with a separate clock: $\mathfrak F\lesssim q^3+q^\sigma H+q^{(1+\sigma)/2}\sqrt H$ | Energy inputs; residual norms | BULK |
@@ -153,7 +156,7 @@ So, **at the level of exponents**, the canonical point lies in the regime where 
 
 The steps are listed in dependency order. Each entry states the claim to prove, the tools in hand, a suggested analytic route, and what it unlocks.
 
-### S0. Residual-norm closure (partly proved in RCET; one premise open)
+### S0. Residual-norm closure (closed conditionally: RCET + LCRC)
 
 **Claim.** On the passage interval: diagonal residual norms are bounded; cross norms are $O(q)$; $\int\sup_G|R_{11}|$ is bounded.
 
@@ -164,9 +167,9 @@ The steps are listed in dependency order. Each entry states the claim to prove, 
   $$Y(t)\le A_*+Ce^B\!\int E\,Y+Ce^Bq^2\!\int\sqrt E\,Y^2 .$$
   If $\sup E$, $\int E$ and $\int\sqrt E$ are bounded, Grönwall gives bounded $Y$, $O(q)$ cross norms and $\int\sup|R_{11}|\le C\int|1-\kappa_1|+o(1)$. No smallness of $H_b$ is needed.
 
-**Open premise.** RCET bounds $\int E$ using an *independent* backward clock bound $H(s)\le e^DH(t)e^{-b_0(t-s)}$. Taking it from BULK would use the residual bounds being proved. On a stopped interval $[t_0,t_*]$ the missing inequality is $H(t_*)\le eH_b$ at every first-exit endpoint. The terminal cap $H(t_b)\le H_b$ does not give it, and RCET shows the scalar endpoint-to-integral inference is false.
+**RCET's open premise (now removed by LCRC).** RCET bounds $\int E$ using an *independent* backward clock bound $H(s)\le e^DH(t)e^{-b_0(t-s)}$. Taking it from BULK would use the residual bounds being proved. On a stopped interval $[t_0,t_*]$ the missing inequality is $H(t_*)\le eH_b$ at every first-exit endpoint. The terminal cap $H(t_b)\le H_b$ does not give it, and RCET shows the scalar endpoint-to-integral inference is false.
 
-**Candidate repair: Route 3, a pointwise ledger cap inside a joint guard (not yet attempted).**
+**Route 3, a pointwise ledger cap inside a joint guard: proved (LCRC Theorem 4.1).** The sketch below is what LCRC carries out. LCRC also derives the chart-group mass $\mu_{\rm chart}\le4C_Je^{2B}q^3$ from $(\log m)'\le2r+Cq^2(MZ+Z^2)$, so the mass is not a separate input. It obtains $E_{\rm sec}\le C(q^5+q^{\Gamma_\nu}H)$ from the raw guard $H\le E_{G_+}<E_g$ rather than from a terminal cap.
 - *Exact identity.* $\mathbb E_{P_2}[X_2(U\!\cdot\!X)_+]=QU_2+\mathbb E_{P_2}[X_2(U\!\cdot\!X)_-]$, so for any fixed cohort $S$,
   $$c_S=H_S-A_S+\tau_S,\qquad \tau_S=Q^{-1}\!\int_SW_2\,\mathbb E_{P_2}[X_2(U\!\cdot\!X)_-].$$
   If $W_2\ge0$ on $S$, then $\tau_S\ge-C\mu_Se^{-\rho^2/(4q^2)}$, because the only negative contribution comes from $\{X_2<0\}$. No angular margin is needed.
@@ -181,7 +184,19 @@ The steps are listed in dependency order. Each entry states the claim to prove, 
 
 **Withdrawn.** The v1 shortcut "$\mathfrak F\lesssim H_b+L\sqrt{qH_b}+q^3$, so $L$ has a fixed point" (§8, item 9).
 
-**Unlocks.** Removes the residual-norm hypotheses of BULK Theorems 4.1 and 6.2 except strong-stage learning (S1) and the S1/S2 entry and gain inputs.
+**Retained inputs (LCRC).**
+- S1 entry contracts at $t_0$: $z>0$, $|a|/z\le1/4$, ratio $\le C_0$ on $G_+$ and $\le C_{\rm clk}q^{1/8}$ on the clock, $J_G(t_0)\le C_Jq^3$, $H(t_0)\asymp q^{10(1-\lambda)}$, and the secondary entry profile.
+- $\int|1-\kappa_1|\le B_s$.
+- Core chart $|\theta|+|\psi|\le Rq$ with $\mu_{\mathcal K}\le M_{\mathcal K}$; chart-group retention $|\theta|+|\psi|\le Zq$; $\sup\mu_B/q\to0$.
+- S2 secondary contracts: the distance envelope and the capped gain at every intermediate endpoint.
+
+**Assembly requirements (for S1–S3).** LCRC fixes $(B,E_g,K_Y,M)$ before $C_0$ and $q$. Two conditions keep that order valid once the retained inputs are proved.
+1. *Stopped form.* Every retained trajectory budget (core chart, chart retention, $\int|1-\kappa_1|$, distance envelope, gain) must be proved as an implication on $[t_0,t_*]$ from LCRC's guards, never as a global statement that itself assumes S0. Otherwise RCET's circularity returns one level down.
+2. *Guard-independent $O(1)$ constants.* Only $R$, $M_{\mathcal K}$, $B_s$ and $c_b$ enter LCRC's constants at order one, through $C_x$, $C_r$, $C_v$ and $B=C_rB_s+2$. These must not depend on $(B,M,K_Y)$ except through $o(1)$ terms. Every other constant ($C_J$, $Z$, $F$, $C_\Sigma$, the S2 constants) multiplies a positive power of $q$ and may depend on anything fixed before $q$.
+   - Watch $R$. The core's own cross output feeds $C_x$, and the cross residual drives the core's scaled rotation. A crude bound $R=R(M)$ would create an $R$–$M$ loop. Get $R$ from the leading strong field's fixed point (S3, LOC) instead.
+   - Watch $B_s$. Its strong-learning proof should give $B_s=B_s^0+o(1)$, with the guard-dependent residual entering only through $q^2\log(1/q)$ terms.
+
+**Unlocks.** Removes the residual-norm hypotheses of BULK Theorems 4.1 and 6.2, the independent clock premise, and CLOCK's endpoint amplitude cap. What remains is the S1/S2 entry, chart and gain inputs above.
 
 ### S1. Strong-stage tracking — **the main bottleneck**
 
@@ -328,7 +343,7 @@ Tracks that can run in parallel:
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Start with the overlap-window transfer and the $M$-clock LOC. |
 | II | S2 capped gain + S3 field contract | Share the c-form envelope; S2 closes two tail estimates. |
-| III | S0 + S4 weak return/matching | $\eta=0$ variant and dichotomy done (RCET). S0 needs Route 3 (one bounded session); S4 is then mostly bookkeeping on top of BULK Theorem 4.1. |
+| III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
 | — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. |
@@ -388,6 +403,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | TAILREP | `AN03_mass_charged_tail_and_selection_defects_v1.tex` (+ review) |
 | BULK | `AN03_bulk_clock_and_secondary_Q2_energy_v1.tex` (+ review) |
 | RCET | `AN03_residual_closure_and_eta0_transport_v1.tex` (+ review), prefix `an03rcetv1:` |
+| LCRC | `AN03_ledger_cap_residual_closure_v1.tex` (+ review), prefix `an03lcrcv1:` |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

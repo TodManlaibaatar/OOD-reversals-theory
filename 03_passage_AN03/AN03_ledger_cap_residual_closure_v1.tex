@@ -1,0 +1,514 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf1}
+\newcommand{\Gp}{G_+}
+\newcommand{\Cl}{\mathcal C_q}
+\title{A pointwise response-ledger cap and residual closure\\S0, Route 3}
+\author{Analytical increment for review}
+\date{Version 1; October 6, 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The response ledger bounds the sign-good amplitude at every time
+inside the residual bootstrap. This supplies the missing cap at an
+interior first-exit endpoint and closes RCET's Volterra argument.
+No independent backward clock estimate or terminal amplitude cap is
+assumed. The result is conditional on the existing original-entry,
+strong-learning and secondary-gain contracts, and on explicitly
+listed instantaneous core, chart and outside budgets. A bounded-chart
+mass estimate derives the required small chart mass from the transverse
+entry budget. No Stage 2 transfer or further passage is undertaken.
+\end{abstract}
+
+\section{Setting, partition, and retained inputs}
+Every new label has prefix \texttt{an03lcrcv1:}.
+Use the exact balanced original flow, with
+\[
+ P_1=N(e_1,q^2I_2),\quad P_2=N(\rho e_2,q^2I_2),\quad
+ P=(P_1+P_2)/2,\quad \rho\in[13/20,7/10],\quad
+ \lambda=\rho^2,\quad Q=\lambda+q^2.
+\]
+The equations and energies are those of CLOCK, BULK and RCET:
+\[
+ U'=R_\theta^TW,\quad W'=R_\theta U,\quad
+ R_\theta=\E_P[(X-f)X^T\one_{\{a_\theta^TX>0\}}],\quad
+ |U|^2=|W|^2=m.
+\]
+For any fixed cohort $S$, set
+\begin{align*}
+ z&=(U_2+W_2)/2, & a&=(U_2-W_2)/2,\\
+ H_S&=\int_Sz^2\dd\lambda_0, & A_S&=\int_Sa^2\dd\lambda_0,\\
+ E_S&=H_S+A_S=\tfrac12\int_S(U_2^2+W_2^2)\dd\lambda_0,
+ &J_S&=\tfrac12\int_S(U_1^2+W_1^2)\dd\lambda_0.
+\end{align*}
+Balance gives $\mu_S:=\int_Sm=E_S+J_S$.
+Write $c_S=Q^{-1}\E_{P_2}[X_2(f_S)_2]$, $c=c_{\rm all}$ and
+$I(t)=Q\int_{t_0}^t(1-c)$.
+
+Take a fixed, disjoint partition into core $\mathcal K$, sign-good
+group $\Gp$, bounded-chart group $\mathcal D$, secondary group
+$\Sigma$, and outside group $\mathcal B$.
+The union defining $\Gp$ is counted once: it contains the clock
+$\Cl$ and RCET's primary $\eta=0$ labels.
+Set $G=\Gp\cup\mathcal D\cup\Sigma$, $H=H_{\Cl}$, and
+\[
+ Y=\sqrt{J_G}/q,\qquad
+ r(t)=\sup_\theta|R_{11}(t,\theta)|,\qquad
+ \ell(t)=\sup_\theta\max(|R_{12}|,|R_{21}|).
+\]
+No group is a moving ``currently charted'' mask. Every label is
+charged once. The theorem retains the following inputs on
+$[t_0,t_b]$; none is a residual-norm or clock-defect assumption.
+
+\paragraph{Instantaneous budgets and the prescribed interval.}
+The response satisfies $0\le c\le c_b<1$ and
+$t_b-t_0\le L_T\log(1/q)$. The strong core satisfies
+\begin{equation}\label{an03lcrcv1:core}
+ |\theta|+|\psi|\le Rq\quad\hbox{on }\mathcal K,
+ \qquad \mu_{\mathcal K}\le M_{\mathcal K},\qquad
+ \sup_{[t_0,t_b]}\mu_{\mathcal B}/q\longrightarrow0.
+\end{equation}
+The fixed chart group satisfies
+\begin{equation}\label{an03lcrcv1:chart}
+ |\theta|+|\psi|\le Zq\quad\hbox{on }\mathcal D
+ \quad(t_0\le t\le t_b),\qquad Z\ge1.
+\end{equation}
+This is a retained chart-state budget, not a claim of chart retention
+from an entry cap. A displacement cap about a bounded reference
+is included by increasing $Z$ to include that reference.
+
+\paragraph{Existing S1 contracts.}
+The original joint entry satisfies
+\begin{equation}\label{an03lcrcv1:entry}
+ J_G(t_0)\le C_Jq^3,\qquad E_{\Gp}(t_0)=o(1),\qquad
+ H(t_0)\asymp q^{k},\quad k=10(1-\lambda).
+\end{equation}
+Uniformly on $\Gp$ at entry, $z>0$, $|a|/z\le1/4$ and
+$qj/z\le C_0$, where $j=((U_1^2+W_1^2)/2)^{1/2}$.
+On $\Cl$ the stronger bound $qj/z\le C_{\rm clk}q^{1/8}$ holds.
+These are original-flow entry contracts, not target-only inferences.
+The fixed constant $C_J$ comes from the entire explicit cohort,
+so it is independent of its later subdivision at $C_0$.
+With $\kappa_1=\int_{\mathcal K}W_1U_1\dd\lambda_0$, retain S1's
+\begin{equation}\label{an03lcrcv1:learning}
+ \int_{t_0}^{t_b}|1-\kappa_1|\dd t\le B_s.
+\end{equation}
+Initialization and the foundational dissipation identity give a
+uniform bound on $\mathcal L(0)$, hence on all diagonal residual
+norms; it is not an additional hypothesis.
+
+\paragraph{Existing S1/S2 secondary contracts.}
+Retain BULK Lemma 5.1 and Proposition 5.2's original-entry radial
+profile, bounded reference, pre-exit distance envelope, and actual
+mass-gain bound at every intermediate endpoint. Explicitly, with
+$\dd\eta=m(t_0,\alpha)\dd\lambda_0$, entry displacement
+$\xi_\alpha\le Z_\Sigma$, and $h_1=q^{10d-2s}$,
+\begin{align}
+ \eta([0,Z_\Sigma])&\le Cq^3,\quad
+ \eta\{\xi>u\}\le Cq^3\min\{1,(h_1/u)^{p_2}\},
+ \label{an03lcrcv1:profile}\\
+ D_\alpha(t)&\le C_D\xi_\alpha e^{\beta I(t)/2}
+ \quad\hbox{until the first }qD_\alpha=\delta_0,
+ \label{an03lcrcv1:distance}\\
+ m(t,\alpha)&\le C_m m(t_0,\alpha)
+ \max\{1,C_gq^2\xi_\alpha^2e^{\beta I(t)}\}^{1+\nu}.
+ \label{an03lcrcv1:gain}
+\end{align}
+Here $0<\beta\le1$, $0\le\nu\le1/100$,
+$d=(1-\lambda P_\rho)/2$, $s=2d/(1-\lambda)$ and
+$p_2=(1-3\lambda/2)/d$, as in BULK. The reference has both strong
+coordinates bounded by a fixed $R_\Sigma$; $D_\alpha$ is the joint
+scaled displacement from that same-field reference.
+The same contracts must apply to the chosen fixed secondary group,
+with no omitted labels or moving-mask flux. A fixed entry cap alone
+does not supply \eqref{an03lcrcv1:distance} or \eqref{an03lcrcv1:gain}.
+
+\section{Response ledger, sign convention, and absolute charges}
+\begin{lemma}[Exact ledger and one-sided negative-gate estimate]
+\label{an03lcrcv1:ledger}
+Define the nonnegative negative part $v_-:=(-v)_+$ and
+\[
+ \tau_S=Q^{-1}\int_S W_2\E_{P_2}[X_2(U\cdot X)_-]\dd\lambda_0.
+\]
+For every fixed cohort,
+\begin{equation}\label{an03lcrcv1:identity}
+ c_S=H_S-A_S+\tau_S.
+\end{equation}
+If $W_2\ge0$ on $S$, without any input-angle restriction,
+\begin{equation}\label{an03lcrcv1:taulower}
+ \tau_S\ge-C\mu_S\exp[-\rho^2/(4q^2)].
+\end{equation}
+For arbitrary signs,
+\begin{equation}\label{an03lcrcv1:responsecharge}
+ |c_S|\le E_S+\frac{2q}{\sqrt Q}\sqrt{E_SJ_S}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The identity $v_+=v+v_-$ and the diagonal second moment of $P_2$
+give $\E_{P_2}[X_2(U\cdot X)_+]=QU_2+
+\E_{P_2}[X_2(U\cdot X)_-]$. Integrate against $W_2/Q$ and use
+$U_2W_2=z^2-a^2$. This is exactly CLOCK's convention
+$\tau_S=Q^{-1}\E[X_2\int_S W_2(-U\cdot X)_+]$;
+rearrangement gives its $H_S=c-c_{S^c}-\tau_S+A_S$.
+
+When $W_2\ge0$, only $X_2<0$ can make the tail term negative.
+Since $|W_2||U|\le m$, Cauchy--Schwarz gives
+\begin{align*}
+ \tau_S&\ge-\frac{\mu_S}{Q}
+ \E_{P_2}[|X_2||X|\one_{\{X_2<0\}}]\\
+ &\ge-\frac{\mu_S}{Q}
+ (\E_{P_2}[X_2^2|X|^2])^{1/2}
+ \mathbb P(X_2<0)^{1/2}
+ \ge-C\mu_S e^{-\rho^2/(4q^2)}.
+\end{align*}
+The fourth moment is uniformly bounded, $Q\ge169/400$, and the
+Gaussian Chernoff bound is $\mathbb P(X_2<0)\le e^{-\rho^2/(2q^2)}$.
+No receiver gate or projected angular margin occurs in this proof.
+
+For \eqref{an03lcrcv1:responsecharge}, the positive part is
+1-Lipschitz, so replacing $(U_1X_1+U_2X_2)_+$ by $(U_2X_2)_+$
+costs at most $|U_1X_1|$. Moreover
+$|\E X_2(U_2X_2)_+|\le Q|U_2|$ and
+$\E|X_1X_2|\le q\sqrt Q$. Consequently
+\[
+ |c_S|\le\int_S|W_2U_2|+\frac q{\sqrt Q}\int_S|W_2U_1|
+ \le E_S+\frac{2q}{\sqrt Q}\sqrt{E_SJ_S}.
+\]
+All integrands are dominated by a constant times $m|X|^2$;
+finite mass justifies the label/expectation interchange.
+\end{proof}
+
+\begin{lemma}[Pointwise cap]
+\label{an03lcrcv1:pointcap}
+Suppose $z>0$, $|a|\le z/3$ on $\Gp$ at the time considered.
+Writing ${\rm rest}=\mathcal D\cup\Sigma$, one has
+\begin{equation}\label{an03lcrcv1:cap}
+ \frac89 H_{\Gp}\le c_b+E_{\rm rest}
+ +\frac{2q}{\sqrt Q}\sqrt{E_{\rm rest}J_{\rm rest}}
+ +Cq^2+C\mu_{\mathcal B}
+ +C\mu_{\Gp}e^{-\rho^2/(4q^2)}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Here $W_2=z-a\ge2z/3>0$ and $A_{\Gp}\le H_{\Gp}/9$.
+Apply \eqref{an03lcrcv1:identity}--\eqref{an03lcrcv1:taulower}
+and $c=c_{\Gp}+c_{\rm rest}+c_{\mathcal K}+c_{\mathcal B}\le c_b$.
+Use \eqref{an03lcrcv1:responsecharge} on the combined rest group.
+The core has $E_{\mathcal K}\le C_Rq^2\mu_{\mathcal K}$ and
+$J_{\mathcal K}\le\mu_{\mathcal K}$, so its absolute response is
+$O(q^2)$. Finally $|f_{\mathcal B}(X)|\le\mu_{\mathcal B}|X|$
+gives $|c_{\mathcal B}|\le C\mu_{\mathcal B}$.
+For a different fixed bound $|a|\le y_{\max}z$, $y_{\max}<1$,
+the coefficient $8/9$ becomes $1-y_{\max}^2$.
+\end{proof}
+
+\section{Verification on stopped intervals}
+\begin{lemma}[Local applicability and derived clock estimates]
+\label{an03lcrcv1:localclock}
+Fix $B,M$. On any $[t_0,t_*]\subset[t_0,t_b]$ where the cross
+residual sum is at most $Mq$ and $\int_{t_0}^{t_*}r\le B$,
+BULK Theorem 4.1 and RCET Theorem 2.1 apply with that endpoint.
+For sufficiently small $C_0=C_0(B,M)>0$ and then small $q$,
+\begin{align}
+ z&>0,\quad |a|/z\le1/3\quad\hbox{on }\Gp,
+ \qquad E_{\Gp}\le\tfrac{10}{9}H_{\Gp},
+ \label{an03lcrcv1:signgood}\\
+ \int_s^t|\varepsilon_{\Gp}|&\le D_+\le1,
+ \qquad \int_s^t|\varepsilon_{\Cl}|
+ \le D_{\rm clk}=O(q^{1/8}+q^2\log(1/q))=o(1),
+ \label{an03lcrcv1:defects}\\
+ H_{\Gp}(s)&\le e H_{\Gp}(t)e^{-b_0(t-s)},
+ \qquad b_0=Q(1-c_b),\quad t_0\le s\le t\le t_*.
+ \label{an03lcrcv1:backward}
+\end{align}
+\end{lemma}
+\begin{proof}
+The entry conditions and fixed-label definitions are anchored at
+$t_0$. Response and residual norms are pointwise conditions on the
+interval being used. The nonnegative integral $\int r$ and the
+duration bound restrict to every initial subinterval. Diagonal norms
+come from $\E_{P_i}|e|^2\le4\mathcal L(0)$. None of these source
+theorems requires information after $t_*$, an endpoint amplitude
+cap, or a pre-existing clock defect. Their constants are independent
+of the chosen endpoint.
+
+Use the conservative comparison
+$y\le1/4+2LX/(3b_*)$ in choosing RCET's smaller admissible $C_0$;
+it still gives $y\le1/3$. RCET provides the uniform individual
+defect on all of $\Gp$ after making
+$C_{\rm clk}q^{1/8}\le C_0$. Its weighted average has
+$D_+\le C(B,M)(C_0+q^2\log(1/q))\le1$.
+BULK with $\eta=1/8$ separately gives the sharper clock estimate.
+Integrating the exact logarithmic identity on $[s,t]$ proves
+\eqref{an03lcrcv1:backward}. Positivity and domination are exactly
+those of the reviewed source theorems, so no new division at zero
+or varying-label operation is introduced.
+\end{proof}
+
+\begin{lemma}[Small mass of the fixed chart group]
+\label{an03lcrcv1:chartmass}
+On the stopped interval of Lemma \ref{an03lcrcv1:localclock}, the
+retained chart budget and transverse entry budget imply
+\begin{equation}\label{an03lcrcv1:chartmassbound}
+ \mu_{\mathcal D}(t)\le4C_Je^{2B}q^3,\qquad
+ E_{\mathcal D}(t)\le C Z^2e^{2B}q^5
+\end{equation}
+for sufficiently small $q$, after $Z,M,B$ have been fixed.
+In particular $Z\mu_{\mathcal D}=o(1)$ and
+$Z^2q^2\mu_{\mathcal D}=o(1)$.
+\end{lemma}
+\begin{proof}
+Loss gives a fixed bound $|R_{22}|\le C_{\mathcal L}$ and the
+residual hypothesis gives $\ell\le C Mq$ by BULK's entrywise
+residual estimate. For $U=\sqrt m\,u$, $W=\sqrt m\,w$,
+\[
+ (\log m)'=2w^TR_\theta u
+ \le2r+Cq^2(MZ+Z^2),
+\]
+because $|u_2|,|w_2|\le Zq$ on $\mathcal D$.
+Thus $\mu_{\mathcal D}(t)\le
+ e^{2B+Cq^2(MZ+Z^2)L_T\log(1/q)}\mu_{\mathcal D}(t_0)$.
+For small $q$, both first direction components have squared size
+at least $1/2$, so $\mu_{\mathcal D}(t_0)\le2J_G(t_0)$.
+Make the extra exponential at most two to obtain
+\eqref{an03lcrcv1:chartmassbound}. The energy estimate follows from
+$E_{\mathcal D}\le Z^2q^2\mu_{\mathcal D}$.
+This derives the mass bound; only continued bounded-chart geometry
+remains an input. No unproved strong-stage mass law is used.
+\end{proof}
+
+\begin{lemma}[Secondary energy without a future cap]
+\label{an03lcrcv1:secondary}
+On the same stopped interval, also suppose $E_{\Gp}<E_g$ for a
+fixed $E_g$. Under \eqref{an03lcrcv1:profile}--\eqref{an03lcrcv1:gain},
+\begin{equation}\label{an03lcrcv1:secondarybound}
+ E_\Sigma(t)\le C_\Sigma(q^5+q^{\Gamma_\nu}H(t)),\qquad
+ \Gamma_\nu\ge\frac{289169}{924000}>\frac3{10}.
+\end{equation}
+The constant can depend on $E_g$ and the fixed S1/S2 and geometric
+constants, but not on $q$ or $t_*$.
+\end{lemma}
+\begin{proof}
+Check the hypotheses of BULK's secondary implication on this very
+interval. The original entry profile and seed are retained S1
+contracts. The bounded reference, first-exit distance envelope and
+all-endpoint gain bound are retained S2 contracts. The response
+guard supplies $I'\ge0$ and $I(t_0)=0$. Lemma
+\ref{an03lcrcv1:localclock} supplies the clock defect using only the
+stopped residual bound. There is no need to import a terminal cap:
+before its last simplification, BULK proves
+\[
+ E_\Sigma\le C\{q^5+q^\gamma H+q^{\Gamma_\nu}H^{1+\nu}\},
+ \quad \gamma=1-5\lambda+\frac{2\lambda}{1-\lambda},
+ \quad \Gamma_\nu=\gamma-\nu[10(1-\lambda)-2].
+\]
+Here $e^{I(t)}\le e^{D_{\rm clk}}H(t)/H(t_0)$ is available on
+$[t_0,t]$. The algebraic inequality
+$H\le H_{\Gp}\le E_{\Gp}<E_g$ holds even before proving
+$y\le1/3$. Hence $H^{1+\nu}\le E_g^\nu H$ and
+$q^\gamma\le q^{\Gamma_\nu}$. This proves
+\eqref{an03lcrcv1:secondarybound} using BULK's already proved rational
+margin. At entry its profile and bounded coordinates directly give
+$E_\Sigma(t_0)=O_{Z_\Sigma,R_\Sigma}(q^5)$, without any clock input.
+\end{proof}
+
+\section{Joint closure and its constant order}
+\begin{theorem}[Route 3; conditional original-flow residual closure]
+\label{an03lcrcv1:closure}
+Under the retained inputs of Section 1, choose the constants in
+the order specified below. For sufficiently small $q$, on the whole
+prescribed passage interval,
+\begin{align}
+ \|e_1\|_{P_1}+\|e_2\|_{P_2}&\le C,
+ &\|e_2\|_{P_1}+\|e_1\|_{P_2}&\le Cq,
+ \label{an03lcrcv1:residualconclusion}\\
+ \int_{t_0}^{t_b}\sup_\theta|R_{11}|\dd t
+ &\le C\int_{t_0}^{t_b}|1-\kappa_1|\dd t+o(1),
+ &J_G(t)&\le Cq^2,
+ \label{an03lcrcv1:rconclusion}\\
+ H(t)\le H_{\Gp}(t)&\le\frac98c_b+o(1),
+ &E_{\Gp}(t)&\le\frac54c_b+o(1).
+ \label{an03lcrcv1:amplitudeconclusion}
+\end{align}
+All $o(1)$ terms are uniform in time. In particular
+$H(t_b)\le(9/8)c_b+o(1)$ is a conclusion. The $\eta=1/8$ clock
+has its $o(1)$ defect; $\Gp$ has the bounded defect and relative
+transport of RCET. Neither an independent backward clock premise
+nor a terminal amplitude cap occurs among the assumptions.
+\end{theorem}
+\begin{proof}
+Use the principal guards
+\begin{equation}\label{an03lcrcv1:guards}
+ Y<K_Y,\qquad \int_{t_0}^t r<B,\qquad E_{\Gp}<E_g.
+\end{equation}
+The energy guard is on $E_{\Gp}$, not on $H_{\Gp}$: it bounds
+raw weak-coordinate energy before any control of $a/z$ is known.
+The cross residual constant $M$ will be chosen from these guards.
+For rigorous continuity when the S2 energy is derived rather than
+assumed as an instantaneous budget, temporarily stop also at cross
+residual sum $Mq$. This auxiliary bound is improved below; it is
+neither a retained hypothesis nor a fourth closure route.
+
+\paragraph{Constants chosen before $C_0$.}
+Let $C_r,C_x,C_v$ be fixed enlarged constants in RCET Lemma 4.1,
+its bound for $r$, and its Volterra inequality. They depend only on
+the fixed core and model budgets, not on $C_0,Z$.
+Set
+\[
+ B=C_rB_s+2,\quad E_g=2+2c_b,\quad
+ h_*=(9/8)c_b+1,\quad \underline b=(169/400)(1-c_b)>0.
+\]
+The estimates below will give $E_G\le2H_{\Gp}+Fq^5$, with $F$
+fixed only after the geometry is chosen, and the three uniform bounds
+\begin{equation}\label{an03lcrcv1:integralconstants}
+ \sup E_G\le E_*:=2h_*+1,\quad
+ \int E_G\le K_E:=2eh_*/\underline b+1,\quad
+ \int\sqrt{E_G}\le K_{1/2}:=
+ 2\sqrt{2eh_*}/\underline b+1.
+\end{equation}
+Choose $A_*>1$ larger than
+$e^B[1+C_v(2+E_*)K_{1/2}]$ and
+$K_Y=4A_*\exp(C_ve^BK_E)$.
+Finally choose $M$ more than twice the diagonal norm bound and twice
+\[
+ C_x\{3+E_g+K_Y\sqrt{E_g+1}\}.
+\]
+These choices depend on no $C_0$ or geometric cutoff. Now choose
+$C_0<C_{\rm adm}(B,M)$ small enough that the conservative
+$y$ comparison gives $y\le1/3$ and the $C_0$ part of $D_+$ is
+at most $1/2$. Choose RCET's fixed threshold $K=K(C_0)$ and
+the resulting finite $Z,Z_\Sigma,R_\Sigma$ and secondary constants.
+Finally decrease $q$ to make every fixed geometric constant times
+the displayed positive powers of $q$ small. This is the order
+$(B,E_g,K_Y,M)$, then $C_0$, then $K,Z$, then $q$.
+
+\paragraph{Estimates on a joint stopped interval.}
+Lemma \ref{an03lcrcv1:localclock} gives the sign and defect estimates.
+The chart-mass and secondary lemmas give, uniformly up to $t_*$,
+\begin{equation}\label{an03lcrcv1:restsmall}
+ E_{\rm rest}\le Fq^5+C_\Sigma q^{\Gamma_\nu}H
+ \le Fq^5+C_\Sigma q^{\Gamma_\nu}E_g=o(1).
+\end{equation}
+Here and below $F$ may depend on the now fixed geometric constants.
+Also $J_{\rm rest}\le J_G<q^2K_Y^2$ and
+$\mu_{\Gp}=E_{\Gp}+J_{\Gp}\le E_g+q^2K_Y^2$.
+The pointwise ledger cap therefore implies
+\[
+ H_{\Gp}(t)\le(9/8)c_b+o(1),\qquad
+ E_{\Gp}(t)\le(5/4)c_b+o(1)<E_g-1/2.
+\]
+In particular $H_{\Gp}(t_*)\le h_*$ follows from the state at
+$t_*$ itself, with no reference to $t_b$.
+
+For every $s\le t\le t_*$, the sign-good group's own defect gives
+\[
+ H_{\Gp}(s)\le eH_{\Gp}(t)e^{-b_0(t-s)},\quad
+ \int_{t_0}^{t_*}H_{\Gp}\le eh_*/\underline b,\quad
+ \int_{t_0}^{t_*}\sqrt{H_{\Gp}}
+ \le2\sqrt{eh_*}/\underline b.
+\]
+The bound uses bounded distortion, not a vanishing $\eta=0$ defect.
+By \eqref{an03lcrcv1:signgood} and \eqref{an03lcrcv1:restsmall},
+$E_G\le2H_{\Gp}+Fq^5$ after taking
+$C_\Sigma q^{\Gamma_\nu}\le 8/9$.
+Since $Fq^5L_T\log(1/q)$ and
+$\sqrt Fq^{5/2}L_T\log(1/q)$ tend to zero, all bounds in
+\eqref{an03lcrcv1:integralconstants} follow, uniformly in $t_*$.
+
+\paragraph{The unchanged Volterra step and the other guards.}
+RCET's instantaneous estimates apply to the whole explicit group $G$:
+\begin{align*}
+ \frac{\|e_2\|_{P_1}+\|e_1\|_{P_2}}q
+ &\le C_x(1+E_G+q^2Y^2+\sqrt{E_G}Y+\mu_{\mathcal B}/q),\\
+ r&\le C_r|1-\kappa_1|+
+ C_r\{q^2(1+E_G+Y^2+\sqrt{E_G}Y)+\mu_{\mathcal B}\}.
+\end{align*}
+In particular \eqref{an03lcrcv1:restsmall} gives $E_G\le E_g+1$
+under the original guards, so for small $q$ the cross residual sum
+is at most $Mq/2$ by the already fixed choice of $M$.
+This improves the auxiliary residual stop, without using the
+$E_{\Gp}/H_{\Gp}$ comparison to choose $M$.
+
+Reuse RCET Theorem 4.2's Volterra step without changing its kernel:
+\begin{equation}\label{an03lcrcv1:volterra}
+ Y(t)\le A_*+C_ve^B\int_{t_0}^t E_GY
+             +C_ve^Bq^2\int_{t_0}^t\sqrt{E_G}Y^2.
+\end{equation}
+The choice of $A_*$ dominates the entry term $e^B\sqrt{C_Jq}$
+and $C_ve^B\int\sqrt{E_G}(1+E_G+\mu_{\mathcal B}/q)$.
+Under $Y<K_Y$, make the last term at most $A_*$ by small $q$.
+Gronwall and \eqref{an03lcrcv1:integralconstants} then give
+$Y\le2A_*e^{C_ve^BK_E}=K_Y/2$.
+Integrating the bound for $r$ gives
+\[
+ \int_{t_0}^{t_*}r\le C_rB_s+
+ O(q^2\log(1/q))+O(\sup\mu_{\mathcal B}\log(1/q))
+ =C_rB_s+o(1)<B-1.
+\]
+Here $\sup\mu_{\mathcal B}=o(q)$ is sufficient.
+
+At entry, $Y=O(q^{1/2})$, $E_{\Gp}=o(1)$ and $\int r=0$.
+The chart and secondary entry bounds give $E_{\rm rest}(t_0)=o(1)$,
+so RCET's instantaneous estimate also starts the auxiliary residual
+bound strictly. All three principal guards and that auxiliary bound
+improve with strict slack. Finite-horizon continuity of the norms
+and moment integrals, or their standard essential-supremum
+continuation form, excludes a first exit before $t_b$.
+The displayed estimates thus hold on the entire interval.
+Equations \eqref{an03lcrcv1:residualconclusion}--
+\eqref{an03lcrcv1:amplitudeconclusion} and the clock claims follow.
+\end{proof}
+
+\section{What has been removed, and where this increment stops}
+The pointwise response ledger supplies the cap at every stopped
+endpoint. Thus the independent backward clock premise in RCET
+Theorem 4.2 and its externally supplied terminal amplitude cap are
+removed. The backward estimates are now deductions on the same
+controlled interval on which they are used.
+
+The result remains conditional on the exact Section 1 budgets.
+In particular the original entry and strong-learning estimate are
+S1 contracts, and the secondary profile/distance/gain package remains
+S1/S2 work. Continued chart geometry is an instantaneous-state
+budget; this increment derives its small mass, not its retention.
+The constants $Z(C_0)$ in chart cross pressures are harmless:
+$\mathfrak F_{\mathcal D}\le C(Z+Z^2q)\mu_{\mathcal D}=o(1)$,
+and $E_{\mathcal D}\le Z^2q^2\mu_{\mathcal D}=o(1)$.
+More generally, geometric constants from the secondary contracts
+multiply only $q^5$ or $q^{\Gamma_\nu}$ here. They are made small
+after, not before, fixing the geometry. No smallness of $c_b$ other
+than the stipulated fixed inequality $c_b<1$ is required.
+
+All four preliminary checks therefore hold with the stated retained
+inputs. Route 3 is complete in this conditional scope. No overlap
+profile transfer, $M$-clock passage, capped-gain proof, or bridge
+problem is started.
+
+\begin{thebibliography}{9}\small
+\bibitem{RCET} RCET, \emph{AN03 residual closure and eta0 transport v1}.
+Prefix \texttt{an03rcetv1:}; Theorems 2.1 and 4.2,
+Lemma 4.1; labels \texttt{eta0}, \texttt{outputs}, \texttt{closure},
+\texttt{volterra}, \texttt{failingendpoint}.
+\bibitem{BULK} BULK, \emph{AN03 bulk clock and secondary Q2 energy v1}.
+Prefix \texttt{inc:AN03:bulkclock:v1:}; labels
+\texttt{bulkclockclosure}, \texttt{moments}, \texttt{gainenergy},
+\texttt{secondary}, \texttt{secondarydetail}, \texttt{gammamargin},
+\texttt{transverse}, \texttt{residualinputs}.
+\bibitem{CLOCK} CLOCK, \emph{AN03 exact amplitude clock and c passage v1}.
+Prefix \texttt{inc:AN03:clock:v1:}; labels \texttt{identity},
+\texttt{endpoint}, \texttt{endpointidentity}, \texttt{Hcap}.
+\bibitem{F} \emph{RELU population foundations v2}, P5:
+balance, characteristic regularity and loss dissipation.
+\bibitem{ROADMAP} \emph{Unified analytic theory roadmap}, v1.1,
+October 6, 2026: S0 Route 3 and ledger items 9--11.
+\end{thebibliography}
+\end{document}
