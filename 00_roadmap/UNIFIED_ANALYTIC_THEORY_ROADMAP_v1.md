@@ -1,6 +1,8 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1 — October 5, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.1 — October 6, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+
+**Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–10; file map updated.
 
 ---
 
@@ -116,6 +118,7 @@ So, **at the level of exponents**, the canonical point lies in the regime where 
 | Exact attracting strong center $a_q=a_\rho+O(q^2)$; uniform Q1 arrival with $(c_0+q)$ regularization; entry profile $h_T\asymp\epsilon(c_0+q)^{-s}$, weight $\asymp S_0e^T(c_0+q)^2$; tail index $3/s$ with finite cutoff; Q4 companion | PROFILE |
 | Uniform Q2 crossing through both endpoints; secondary recruited tail with index $p_2=(1-3\lambda/2)/d\in(0,1)$; whole-Q2 energies $J\asymp q^3$, $H\asymp q^5$ at κ=10 | Q2E |
 | Bulk clock cohort $\{c_0\ge q^{1/4}\}$: seed $\asymp q^{10(1-\lambda)}$, angular margin $\sin\theta/q\ge cq^{-1/8}$; intermediate band | BULK |
+| Threshold dichotomy before chart arrival: $q\cot\widehat\theta(T)\asymp[q^\gamma(s_0+q)/(c_0+q)]^{(1-\lambda)/\lambda}$; $c_0\ge Kq^\gamma$ gives $q\hat j/\hat z\le C_0$; the rest are in the chart with displacement $\le Z(C_0)$ | RCET |
 
 ### 3.3 Results within the defined leading system
 
@@ -136,6 +139,8 @@ So, **at the level of exponents**, the canonical point lies in the regime where 
 | c-form local passage with exact response clock, multiplier $(H_b/H_0)^{\alpha/Q}$ | c-form field contract on the trajectory; endpoint amplitude cap; signed defect bound | CLOCK |
 | Left-facing Q2 tracking with explicit full-output defect | Weighted time integral of the defect | Q2 |
 | Bulk-clock bootstrap: $D_{\rm osc}=O(q^\eta+q^2\log(1/q))$, gate margin, relative amplitude transport | Residual norms; Cartesian entry ratios | BULK |
+| Small-constant ($\eta=0$) transport: $D_{\rm osc}=O(C_0+q^2\log(1/q))$, growing margin, relative transport $e^{\pm2D}$, $E\le\frac{10}{9}H$ | Residual norms; Cartesian entry ratio $\le C_0$ | RCET |
+| Residual closure: bounded diagonal norms, $O(q)$ cross norms, $\int\sup\lvert R_{11}\rvert\le C\int\lvert1-\kappa_1\rvert+o(1)$, no $H_b$ smallness | Energy/core/outside budgets; **independent backward clock bound** (see S0) | RCET |
 | Mass-charged complement with gain law; κ=10 margin | Capped radial gain; transferred entry profile | TAILREP |
 | Secondary Q2 energy $\lesssim q^5+q^{\Gamma_\nu}H$ | Pre-exit distance envelope; capped gain | BULK |
 | Forcing with a separate clock: $\mathfrak F\lesssim q^3+q^\sigma H+q^{(1+\sigma)/2}\sqrt H$ | Energy inputs; residual norms | BULK |
@@ -148,16 +153,35 @@ So, **at the level of exponents**, the canonical point lies in the regime where 
 
 The steps are listed in dependency order. Each entry states the claim to prove, the tools in hand, a suggested analytic route, and what it unlocks.
 
-### S0. Residual-norm closure (largely bookkeeping)
+### S0. Residual-norm closure (partly proved in RCET; one premise open)
 
 **Claim.** On the passage interval: diagonal residual norms are bounded; cross norms are $O(q)$; $\int\sup_G|R_{11}|$ is bounded.
 
-**Route.**
-- *Diagonal norms are free.* The loss is nonincreasing, so $\|e\|_{L^2(P_p)}^2\le4\mathcal L(0)$.
-- *Cross norms come from the output budgets.* $\|e_2\|_{L^2(P_1)}\le q+\|f_2\|_{L^2(P_1)}$, and the output norm is at most an $O(q)$ strong-core term, plus $q\sum_G\mathfrak F_G$ over transit/weak cohorts, plus $C\mu_B$. Similarly for $\|e_1\|_{L^2(P_2)}$. Since $\mathfrak F\lesssim H_b+L\sqrt{qH_b}+q^3$ and $\mu_B/q\to0$, the constant $L$ has a consistent fixed point for small $q$.
-- *The $R_{11}$ input reduces to strong learning.* Write $f_1=\kappa_1X_1+g_1$ on $P_1$. Strong-chart outputs give $g_1=O(q^2)$; the Q2 diagonal output is $\lesssim J+q\sqrt{J(E+J)}=O(q^2)$ under the corrected $J$ budget. So $\int\sup|R_{11}|\le C\int|1-\kappa_1|+o(1)$.
+**Proved in RCET.**
+- *Diagonal norms.* The loss is nonincreasing, so $\|e\|_{L^2(P_p)}^2\le4\mathcal L(0)$.
+- *Instantaneous output bounds* (RCET Lemma 4.1). With $Y=\sqrt{J_G}/q$: cross norms$/q\le C\{1+E_G+q^2Y^2+\sqrt{E_G}\,Y+\mu_B/q\}$, and $f_1=\kappa_1X_1+g_1$ on $P_1$ with $\|g_1\|\le C\{q^2+q^2Y^2+q^2Y\sqrt{E_G}+\mu_B\}$.
+- *Volterra closure* (RCET Theorem 4.2). BULK's transverse inequality gives
+  $$Y(t)\le A_*+Ce^B\!\int E\,Y+Ce^Bq^2\!\int\sqrt E\,Y^2 .$$
+  If $\sup E$, $\int E$ and $\int\sqrt E$ are bounded, Grönwall gives bounded $Y$, $O(q)$ cross norms and $\int\sup|R_{11}|\le C\int|1-\kappa_1|+o(1)$. No smallness of $H_b$ is needed.
 
-**Unlocks.** Removes the residual-norm hypotheses of BULK Theorems 4.1 and 6.2 except strong-stage learning, which is S1.
+**Open premise.** RCET bounds $\int E$ using an *independent* backward clock bound $H(s)\le e^DH(t)e^{-b_0(t-s)}$. Taking it from BULK would use the residual bounds being proved. On a stopped interval $[t_0,t_*]$ the missing inequality is $H(t_*)\le eH_b$ at every first-exit endpoint. The terminal cap $H(t_b)\le H_b$ does not give it, and RCET shows the scalar endpoint-to-integral inference is false.
+
+**Candidate repair: Route 3, a pointwise ledger cap inside a joint guard (not yet attempted).**
+- *Exact identity.* $\mathbb E_{P_2}[X_2(U\!\cdot\!X)_+]=QU_2+\mathbb E_{P_2}[X_2(U\!\cdot\!X)_-]$, so for any fixed cohort $S$,
+  $$c_S=H_S-A_S+\tau_S,\qquad \tau_S=Q^{-1}\!\int_SW_2\,\mathbb E_{P_2}[X_2(U\!\cdot\!X)_-].$$
+  If $W_2\ge0$ on $S$, then $\tau_S\ge-C\mu_Se^{-\rho^2/(4q^2)}$, because the only negative contribution comes from $\{X_2<0\}$. No angular margin is needed.
+- *Sign-good group.* Let $G_+$ be the clock cohort together with RCET's $\eta=0$ group ($c_0\ge Kq^\gamma$). Under the stopped guards, BULK 4.1 and RCET Theorem 2.1 hold on $[t_0,t_*]$ and give $|a|\le z/3$ on $G_+$. So $W_2\ge\frac23z>0$ and $A_{G_+}\le H_{G_+}/9$.
+- *Charge everything else in absolute value.* $|c_S|\le E_S+Cq\sqrt{E_SJ_S}$ for any cohort; $|c_K|=O(q^2)$; $|c_B|\le C\mu_B$.
+- *Resulting cap.* With $c\le c_b$, this gives, at every $t\le t_*$,
+  $$\tfrac89H_{G_+}\le c_b+E_{\rm rest}+Cq\sqrt{E_{\rm rest}J_{\rm rest}}+Cq^2+C\mu_B+\text{exp. small}.$$
+  Here rest $=$ chart group $\cup$ secondary tail. If $E_{\rm chart}\le CZ^2q^2\mu_{\rm chart}=o(1)$ and $E_{\rm sec}\le C(q^5+q^{\Gamma_\nu}H)$ (BULK's secondary implication), then $H\le H_{G_+}\le\frac98c_b+o(1)$.
+- *Closing the bootstrap.* Use joint guards $Y<K_Y$, $\int r<B$, $E_{G_+}<E_g$. The cap improves the third guard. Every $G_+$ label has a defect bound on $[t_0,t_*]$, so $\int_{t_0}^{t_*}H_{G_+}\le eH_{G_+}(t_*)/b_0$. RCET's Volterra step then improves the first two guards.
+- *What it removes and what it costs.* It removes both the independent clock premise and the terminal cap, which becomes a conclusion. The only inputs left are instantaneous-state budgets (chart-group mass and displacement; secondary energy), of the same type as those already open.
+- *Constant order.* Fix $(B,E_g,K_Y,M)$ before $C_0$. Then $C_0<C_{\rm adm}(M,B)$, and $K,Z$ depend on $C_0$. $Z(C_0)$, which grows as $C_0\to0$, enters only through $Z\mu_{\rm chart}$ (cross outputs) and $Z^2q^2\mu_{\rm chart}$. So no loop arises provided $\mu_{\rm chart}=o(1)$ along the passage.
+
+**Withdrawn.** The v1 shortcut "$\mathfrak F\lesssim H_b+L\sqrt{qH_b}+q^3$, so $L$ has a fixed point" (§8, item 9).
+
+**Unlocks.** Removes the residual-norm hypotheses of BULK Theorems 4.1 and 6.2 except strong-stage learning (S1) and the S1/S2 entry and gain inputs.
 
 ### S1. Strong-stage tracking — **the main bottleneck**
 
@@ -206,12 +230,14 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
 - (c) Closed-family approximation. Use the fixed bulk cohort; by BULK Corollary 4.2 its relative amplitudes, hence normalized weights, drift only by $e^{O(q^\eta)}$.
 - (d) $N\leftrightarrow H\leftrightarrow c$. In the chart $m=U_2^2(1+O(q^2))$, so $N_{\rm cohort}=H_{\rm cohort}(1+O(q^2))$. The logistic law then follows from the response ledger with the $o(1)$ bulk defect.
 
-**Primary-band bookkeeping (from the last review).**
-- BULK Theorem 4.1 also closes with $\eta=0$ if the entry ratio is a small constant $C_0$. Keep the guard $x<X\asymp C_0$, then use the growing margin $a_{\theta,2}/q\gtrsim\min\{q^{-1},e^{b_*\tau/2}/C_0\}$ in the gate tail. This gives $D_{\rm osc}=O(C_0+q^2\log(1/q))$: bounded, not $o(1)$.
-- In the target-only flow, before chart arrival, $q\cot\widehat\theta(T)\asymp(q^\gamma/c_0)^{(1-\lambda)/\lambda}$. So Q2 splits at $c_0\asymp q^\gamma$:
-  - labels with $c_0\ge C'q^\gamma$ are $\eta=0$ bootstrap-transported, giving $E\le CH_{\mathcal C_q}$;
-  - labels with $c_0<C'q^\gamma$ are in the chart with displacement $\le Z$ and fall under BULK Prop 5.2.
-- Keep $\mathcal C_q$ ($\eta=1/8$, $o(1)$ defect) as the clock, because phase matching for A-error-transfer needs $o(1)$; use $\eta=0$ only for transport.
+**Primary-band bookkeeping.**
+- **Proved (RCET Theorem 2.1, conditional original flow).** BULK Theorem 4.1 closes with $\eta=0$ when the entry ratio is at most a small constant $C_0$. Keep the guard $x<X=4e^BC_0$, then use the growing margin $a_{\theta,2}/q\ge c\min\{q^{-1},e^{b_*\tau/2}/C_0\}$ in the gate tail. This gives $D_{\rm osc}=O(C_0+q^2\log(1/q))$: bounded, not $o(1)$.
+- **Proved (RCET Prop 3.1, comparison scope).** Before chart arrival,
+  $$q\cot\widehat\theta(T)\asymp\Big[q^\gamma\,\frac{s_0+q}{c_0+q}\Big]^{(1-\lambda)/\lambda}.$$
+  This reduces to $(q^\gamma/c_0)^{(1-\lambda)/\lambda}$ when $c_0\gg q$ and $s_0\asymp1$, in particular at the threshold. At $\alpha=\pi$ there is an extra factor $q^{(1-\lambda)/\lambda}$; the v1 unregularized formula is not uniform over Q2. Q2 splits at $c_0\asymp q^\gamma$:
+  - labels with $c_0\ge K(C_0)q^\gamma$ have $q\hat j/\hat z\le C_0$ and are $\eta=0$ transported once entry is transferred (S1), giving $E\le CH_{\mathcal C_q}$ through the entry ratio;
+  - labels with $c_0<K(C_0)q^\gamma$ are in the chart with displacement $\le Z(C_0)$. A displacement cap alone does not supply BULK Prop 5.2's distance envelope or capped gain.
+- Keep $\mathcal C_q$ ($\eta=1/8$, $o(1)$ defect) as the clock, because phase matching for A-error-transfer needs $o(1)$; use $\eta=0$ only for transport (and in S0 Route 3, where bounded distortion suffices).
 
 ### S5. Finite-noise matching on compact windows (AN7)
 
@@ -302,7 +328,7 @@ Tracks that can run in parallel:
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Start with the overlap-window transfer and the $M$-clock LOC. |
 | II | S2 capped gain + S3 field contract | Share the c-form envelope; S2 closes two tail estimates. |
-| III | S0 + S4 weak return/matching | Mostly bookkeeping on top of BULK Theorem 4.1. Add the $\eta=0$ variant. |
+| III | S0 + S4 weak return/matching | $\eta=0$ variant and dichotomy done (RCET). S0 needs Route 3 (one bounded session); S4 is then mostly bookkeeping on top of BULK Theorem 4.1. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
 | — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. |
@@ -327,7 +353,7 @@ S8 ──> S7 (AN4) ──> B-bridge, canonical mechanism ───────�
 
 ## 8. Carry-forward ledger: withdrawn claims and invalid shortcuts
 
-H2 §13 remains in force. Additional items from the October 3–5 increments:
+H2 §13 remains in force. Additional items from the October 3–6 increments and reviews:
 
 1. **Withdrawn:** using the whole Q2 cohort as the amplitude clock. Its strong-captured strip makes the subinterval defect of order $(\kappa(1-\lambda)-5)\log(1/q)$ in the frozen-floor picture. Use a bulk subcohort; the clock $I=Q\int(1-c)$ is cohort-independent.
 2. **Withdrawn:** a raw future target $J_{Q2}\lesssim q^3$ through weak learning. The correct allowance is $J\lesssim q^3+q^2H$ (weak-chart regeneration); the forcing estimate is unchanged.
@@ -337,6 +363,9 @@ H2 §13 remains in force. Additional items from the October 3–5 increments:
 6. **Invalid:** freezing labels uncrossed at $t_0$ and keeping their before-crossing mass bound afterwards, or selecting "currently crossed" labels without flux.
 7. **Invalid:** inferring a transport bound from clock-cohort membership. Membership in $H_C$ or $c$ does not remove a label's transverse output or selected-residual contribution.
 8. **Invalid:** treating an upper growth bound as proof that labels outside the safe core escape. The complement is charged as potentially adverse, with no lower escape claim.
+9. **Withdrawn (roadmap v1, S0):** "$\mathfrak F\lesssim H_b+L\sqrt{qH_b}+q^3$, so the residual constant $L$ has a fixed point for small $q$." The regenerated transverse energy gives $\mathfrak F\lesssim q^3+H+\sqrt{qH}+LH+L^2q^2H$. The $CLH_b$ term is not absorbed by small $q$, and the balanced donor $U=W=(qL\sqrt E,\sqrt E)$ shows the $LE$ scale is real (RCET). Use the Volterra form instead.
+10. **Domain correction:** the two-sided formula $q\cot\widehat\theta(T)\asymp(q^\gamma/c_0)^{(1-\lambda)/\lambda}$ holds only for $c_0\gg q$, $s_0\asymp1$. Use RCET's $(c_0+q)$, $(s_0+q)$ regularized form over all of Q2.
+11. **Invalid:** inferring $H(t_*)\lesssim H_b$ at an interior first-exit time from the terminal cap $H(t_b)\le H_b$ without clock control on $[t_*,t_b]$ (RCET's scalar counterexample).
 
 ---
 
@@ -358,10 +387,11 @@ H2 §13 remains in force. Additional items from the October 3–5 increments:
 | WEAK | `AN03_weak_transit_forcing_and_orbit_selection_v1.tex` (+ review) |
 | TAILREP | `AN03_mass_charged_tail_and_selection_defects_v1.tex` (+ review) |
 | BULK | `AN03_bulk_clock_and_secondary_Q2_energy_v1.tex` (+ review) |
+| RCET | `AN03_residual_closure_and_eta0_transport_v1.tex` (+ review), prefix `an03rcetv1:` |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |
 | LPR | `LIMIT_LEARNED_PERSISTENCE_RETENTION_v1.tex` |
 | Support | `SCALED_POPULATION_SPLITTING_THEORY.md`, `TWO_NEURON_SMALL_NOISE_LIMIT.md`, `LEAK_COMPENSATION_FACTORIZATION_AUDIT.md`, `SIM.md`, `main-15.tex`, frozen appendix, `theorem_A_initialized_escape.pdf` (Sections 1–3 only) |
 
-**Workflow (unchanged).** Each new result goes in a separate versioned `.tex` with a same-stem review note. Nothing is merged into the checkpoint without explicit approval. No GitHub access, no new experiments by default, no computer-assisted certificates.
+**Workflow.** Each new result goes in a separate versioned `.tex` with a same-stem review note. Nothing is merged into the checkpoint without explicit approval. GitHub is read-only, and only when the user asks; Tod makes all commits. No new experiments by default, no computer-assisted certificates.

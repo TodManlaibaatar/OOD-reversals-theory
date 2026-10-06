@@ -1,0 +1,479 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf1}
+\title{Residual closure and small-constant Q2 transport}
+\author{Analytical proof increment for review}
+\date{Version 1; October 5, 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We extend BULK's conditional ratio bootstrap to a small constant entry
+ratio and prove the target-only threshold dichotomy with its necessary
+endpoint regularization. We also prove a narrower residual estimate
+conditional on an independently controlled clock. Stage 1 is not
+closed: the scalar fixed point proposed in S0 drops a regenerated-energy
+term, and the attempted Volterra repair cannot yet remove the clock
+premise without a circular argument. We display both failures and stop;
+Stage 2 is not started. No original-flow entry, capped gain, or
+strong-learning estimate is asserted here.
+\end{abstract}
+
+\section{Conventions and scope}
+All labels in this increment have prefix \texttt{an03rcetv1:}.
+Use $P_1=N(e_1,q^2I)$, $P_2=N(\rho e_2,q^2I)$,
+$P=(P_1+P_2)/2$, $\rho\in[13/20,7/10]$, $\lambda=\rho^2$,
+$Q=\lambda+q^2$, and fixed initial label measure $\dd\lambda_0$.
+The original equations are
+\[
+ U'=R_\theta^TW,\quad W'=R_\theta U,\quad
+ R_\theta=\E_P[(X-f(X))X^T\one_{\{a_\theta^TX>0\}}],\quad |U|=|W|.
+\]
+For a fixed cohort, use BULK's $H,A,E=H+A,J$, with
+$z=(U_2+W_2)/2$, $a=(U_2-W_2)/2$ and
+$j=((U_1^2+W_1^2)/2)^{1/2}$. Thus $H=\int z^2$,
+$A=\int a^2$, and $J=\int j^2$.
+The response is $c=\E_{P_2}[X_2f_2]/Q$, and $I'=Q(1-c)$.
+Constants may depend on fixed source-contract constants, but not on
+$q$ or the labels. Original-flow conclusions below are conditional
+implications removing residual hypotheses; the target-only result has
+its separate exact-comparison scope.
+
+\section{The small-constant bootstrap}
+\begin{theorem}[Conditional original-flow transport]
+\label{an03rcetv1:eta0}
+Retain every hypothesis of BULK Theorem 4.1 except its entry power:
+on $[t_0,t_b]$, $0\le c\le c_b<1$, $t_b-t_0\le L_T\log(1/q)$,
+the diagonal residual norms are bounded by $M$, the sum of cross
+residual norms is bounded by $Mq$, and
+$\int r\le B$, where $r=\operatorname*{ess\,sup}_G|R_{11}|$.
+At entry suppose $z>0$, $|a|/z\le1/4$ and $qj/z\le C_0$.
+There is $C_{\rm adm}>0$, depending only on the stated constants,
+such that for $0<C_0<C_{\rm adm}$ and sufficiently small $q$
+the following hold. With $b_*=Q(1-c_b)/2$ and $\tau=t-t_0$,
+\begin{align}
+ x:=qj/z&\le C(C_0e^{-b_*\tau/2}+q^2),
+ \qquad |a|/z\le1/3, \label{an03rcetv1:ratio}\\
+ \frac{a_{\theta,2}}q&\ge c\min\{q^{-1},C_0^{-1}e^{b_*\tau/2}\},
+ \label{an03rcetv1:margin}\\
+ \int_s^t|\varepsilon_\alpha(v)|\dd v,
+ \ \int_s^t|\varepsilon_G(v)|\dd v
+ &\le C\{C_0e^{-b_*(s-t_0)/2}+q^2(t-s)\},
+ \label{an03rcetv1:defect}
+\end{align}
+where $\varepsilon_\alpha=(\log z_\alpha^2)'-I'$ and
+$\varepsilon_G=(\log H_G)'-I'$. In particular
+$D_{\rm osc}\le C(C_0+q^2\log(1/q))$.
+If $G_1,G_2$ are positive-amplitude fixed subsets of the guarded
+cohort and $D=C(C_0+q^2\log(1/q))$, then
+\begin{equation}\label{an03rcetv1:transport}
+ e^{-2D}\le
+ \frac{H_{G_2}(t)/H_{G_1}(t)}{H_{G_2}(t_0)/H_{G_1}(t_0)}
+ \le e^{2D},\qquad H_{G_i}\le E_{G_i}\le(10/9)H_{G_i}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+We use the exact differential inequalities and Gaussian estimate
+already proved in BULK, rather than reprove their coordinate algebra.
+For a fixed $L$ supplied by its residual-norm bounds, $y=|a|/z$ and
+$\Delta=|R_{22}-Q(1-c)/2|$ satisfy, while $z>0$,
+\begin{align*}
+ D^+x&\le(r-b+\Delta+Lx)x+Lq^2\sqrt{1+y^2},\\
+ D^+y&\le(-2b+2\Delta+Lx)y+Lx,
+ \qquad z'/z\ge b-\Delta-Lx,\\
+ \Delta&\le Cq^2+C\exp[-\rho^2a_{\theta,2}^2/(8q^2)],
+ \qquad b=Q(1-c)/2\ge b_*.
+\end{align*}
+Take the fixed guard $X=4e^BC_0$, $x<X$, $y<1/2$, $z>0$.
+Under it, $U_2\ge z/2$ and
+$|q\cot\theta|\le2\sqrt2x$, hence
+$a_{\theta,2}/q\ge(q^2+8X^2)^{-1/2}$.
+Choose $C_0$ first so that $LX\le b_*/4$ and the resulting
+Gaussian tail is at most $b_*/16$, uniformly for small $q$.
+Then decrease $q$ so that $\Delta\le b_*/8$. The inequalities give
+\[
+ D^+x\le(r-b_*/2)x+2Lq^2,
+ \quad x(t)\le e^BC_0e^{-b_*\tau/2}+4Le^Bq^2/b_*<X/2.
+\]
+Also $D^+y\le-3b_*y/2+Lx$ gives
+$y\le1/4+LX/(3b_*)<1/3$ after decreasing $C_0$.
+Finally $z'/z\ge b_*/2$, excluding a zero of $z$.
+All first-exit guards improve strictly.
+
+The improved $x$ estimate, not the initial constant guard, now gives
+\eqref{an03rcetv1:margin}. More precisely, with fixed $A,c>0$,
+\[
+ \Delta\le Cq^2+C\exp\!\left[-\frac{c}{q^2+A^2C_0^2e^{-b_*\tau}}\right]
+ \le Cq^2+C C_0e^{-b_*\tau/2}.
+\]
+For the second inequality split the exponential using
+$(u+v)^{-1}\ge\frac12\min(u^{-1},v^{-1})$ and
+$e^{-c/w^2}\le C_c w$ for $w>0$; the $q$-only exponential
+is at most $Cq^2$. These are analytic inequalities, uniform in time.
+Thus the initially constant gate error has an integrable tail.
+The exact $z$ equation yields
+$|\varepsilon_\alpha|\le2\Delta+2Lx$, proving
+\eqref{an03rcetv1:defect}. The aggregate defect is its current
+$z_\alpha^2$-weighted average. Integrating the difference of two
+aggregate clock identities proves \eqref{an03rcetv1:transport}.
+Only $z>0$ is divided by; derivatives of $j$ at zero are norm Dini
+derivatives. Finite coordinate energy supplies domination for the
+fixed-cohort integrals.
+\end{proof}
+
+\begin{remark}\label{an03rcetv1:clock}
+For fixed $C_0$, this gives bounded transport distortion, not an
+$o(1)$ clock defect. Retain BULK's $\eta=1/8$ cohort
+$\mathcal C_q=\{c_0\ge q^{1/4}\}$ as the phase clock.
+No $o(1)$ phase conclusion follows from \eqref{an03rcetv1:defect} alone.
+\end{remark}
+
+\section{The target-only threshold and its endpoint correction}
+Set $T=10\log(1/q)$, $\omega=(1-\lambda)/2$,
+$r_\lambda=(1-\lambda)/\lambda$, and
+$\gamma=1-5\lambda+2\lambda/(1-\lambda)$.
+For an initial Q2 label $\alpha$, put $c_0=-\cos\alpha$,
+$s_0=\sin\alpha$. Hats refer exclusively to the aligned target-only
+comparison.
+\begin{proposition}[Exact comparison dichotomy]
+\label{an03rcetv1:dichotomy}
+For labels not yet in a fixed sufficiently large strong chart at $T$,
+\begin{equation}\label{an03rcetv1:regularized}
+ q\cot\widehat\theta(T,\alpha)
+ \asymp\left[q^\gamma\frac{s_0+q}{c_0+q}\right]^{r_\lambda}.
+\end{equation}
+In the threshold region $c_0\asymp q^\gamma$, and more generally
+when $c_0\gg q$ and $s_0$ is bounded below, this becomes
+\begin{equation}\label{an03rcetv1:thresholdpower}
+ q\cot\widehat\theta(T,\alpha)
+ \asymp(q^\gamma/c_0)^{r_\lambda}.
+\end{equation}
+Given any fixed small $C_0>0$, choose a fixed $K$ sufficiently large.
+Every label with $c_0\ge Kq^\gamma$ has, at $T$,
+$q\widehat j/\widehat z\le C_0$ and $\widehat a=0$.
+Every remaining label has both aligned scaled coordinates in a
+fixed strong chart, with displacement from $a_q$ bounded by a
+constant $Z=Z(C_0)$ independent of $q$.
+\end{proposition}
+\begin{proof}
+Q2E's uniform crossing formula gives
+\[
+ T_\times=\frac2\lambda\log\frac{c_0+q}{q(s_0+q)}+O(1),
+ \quad \sup T_\times=\frac4\lambda\log(1/q)+O(1).
+\]
+Hence $v=T-T_\times\to\infty$ uniformly, since
+$4/\lambda\le1600/169<10$. After a fixed positive layer time,
+Q2E's created first-coordinate seed and its upper bound imply
+\[
+ \widehat U_1(T_\times+v)\asymp
+ q\widehat U_2(T_\times)e^{v/2}.
+\]
+The lower bound follows by retaining the positive seed and the
+exact inequality $\widehat U_1'\ge\widehat U_1/2$.
+Before arrival at $qL$, the extra second-coordinate logarithmic
+rate above $\lambda/2$ has bounded integral. Indeed in the part
+$\theta\ge\pi/4$ it is exponentially small over an $O(\log(1/q))$
+time, and on $qL\le\theta\le\pi/4$ PROFILE's reciprocal-speed
+estimate bounds it by
+$C\int_{L/2}^\infty K(-\rho z)z^{-2}\dd z$.
+The $d_q$ contribution is $O(q^2\log(1/q))$.
+Consequently $\widehat U_2\asymp
+\widehat U_2(T_\times)e^{\lambda v/2}$ there. Taking the ratio
+and inserting $T_\times$ proves \eqref{an03rcetv1:regularized}, since
+$2-10\omega+2\omega/\lambda=\gamma r_\lambda$.
+
+For the large-$c_0$ group the one-sided estimate
+$q\cot\widehat\theta(T)\le Cq^2e^{\omega(T-T_\times)}$
+holds even without a pre-arrival assumption (BULK's proof of its
+bulk-seed theorem). It is at most $CK^{-r_\lambda}$.
+Choose $K$ so this is at most $C_0$. Here $\widehat j=\widehat U_1$
+and $\widehat z=\widehat U_2$, so no alignment factor is needed.
+For the other group, $c_0\le Kq^\gamma$ implies $s_0\asymp1$,
+and the crossing formula gives
+\[
+ T-T_\times\ge(2/\omega)\log(1/q)-C_K.
+\]
+PROFILE's axis-start arrival time differs from the first term by
+$O(1)$. At most a fixed time remains until arrival. On the reverse
+segment above $qL$, its outer decomposition gives
+$|\theta'|\le C\theta$ on $[qL,\pi/4]$. Starting at $qL$ and
+integrating backwards for this fixed time keeps $\theta/q$ bounded;
+for small $q$ it cannot reach $\pi/4$. Already-arrived labels stay
+in the invariant chart. This proves the fixed cap $Z$.
+\end{proof}
+
+\begin{remark}\label{an03rcetv1:endpoint}
+The unregularized two-sided formula is not uniform over all Q2.
+At $\alpha=\pi$, \eqref{an03rcetv1:regularized} contains the extra
+factor $q^{r_\lambda}$; this label is still outside the strong chart
+at $T$. The threshold dichotomy is unaffected because near its
+cutoff $s_0\asymp1$ and $c_0\gg q$. The proposition supplies
+comparison entry geometry only. Applying Theorem
+\ref{an03rcetv1:eta0} or BULK Proposition 5.2 to original labels still
+requires original joint-entry transfer and, for Proposition 5.2,
+its pre-exit distance and capped-gain contracts. A fixed displacement
+cap does not prove those contracts.
+\end{remark}
+
+\section{Residual closure from the stated output budgets}
+Let fixed disjoint groups $K,G,B$ partition the population on the
+passage interval: a strong core, the explicit-output cohorts (in
+particular the whole Q2 ancestry), and the outside population.
+Use the following existing S0/BULK input budgets:
+\begin{align}
+ |\theta_\alpha|+|\psi_\alpha|&\le Rq\quad(\alpha\in K),
+ \quad \mu_K\le M_K,\quad
+ \sup_t\mu_B(t)/q=o(1), \label{an03rcetv1:coreinputs}\\
+ E_G(t)&\le C_E(q^5+H(t)),\quad J_G(t_0)\le C_Jq^3,
+ \label{an03rcetv1:energyinputs}\\
+ H(t_b)&\le H_b,\quad
+ H(s)\le e^D H(t)e^{-b_0(t-s)}\quad(s\le t),
+ \quad b_0=Q(1-c_b),\quad D\le1, \label{an03rcetv1:clockinput}\\
+ \kappa_1(t)&=\int_K W_1U_1\dd\lambda_0,\quad
+ \int_{t_0}^{t_b}|1-\kappa_1|\dd t\le B_s.
+ \label{an03rcetv1:learninginput}
+\end{align}
+Here $H$ is the $\eta=1/8$ clock. The backward estimate
+\eqref{an03rcetv1:clockinput} is precisely the consequence of
+BULK Theorem 4.1 used in its Theorem 6.2. Here it must be an
+\emph{independently supplied premise}: deriving it from the residual
+conclusion below would be circular. This retained clock premise is
+why the following theorem does not complete the requested S0 closure.
+The energy budget is an existing
+conditional input. It follows from primary relative-amplitude
+transport with an entry-energy comparison to the clock, together
+with BULK's secondary-energy implication if its contracts hold.
+No derivation of these entry or gain contracts is included here.
+
+\begin{lemma}[Instantaneous output bounds and the strong remainder]
+\label{an03rcetv1:outputs}
+Under \eqref{an03rcetv1:coreinputs}, write $f_1=\kappa_1X_1+g_1$
+on $P_1$ and put $Y=\sqrt{J_G}/q$. Uniformly over receivers,
+\begin{align}
+ \frac{\|e_2\|_{P_1}+\|e_1\|_{P_2}}q
+ &\le C\{1+E_G+q^2Y^2+\sqrt{E_G}Y+\mu_B/q\},
+ \label{an03rcetv1:crossnorm}\\
+ \|g_1\|_{P_1}&\le C\{q^2+q^2Y^2+q^2Y\sqrt{E_G}+\mu_B\}.
+ \label{an03rcetv1:g1}
+\end{align}
+Here $\|\cdot\|_{P_i}$ denotes the $L^2(P_i)$ norm.
+\end{lemma}
+\begin{proof}
+The target cross-coordinate norms are $q$. For a core donor the
+second output component is $O(q\sqrt m)$; on $P_2$ its input
+feature has norm $O(q\sqrt m)$. Minkowski therefore bounds each
+core cross output by $Cq\mu_K$.
+On $P_1$, replace the core ReLU by its linear feature. The coefficient
+of $X_2$ is $\int_K W_1U_2=O(q\mu_K)$ and $\|X_2\|_{P_1}=q$.
+The replacement error is exponentially small: the core input
+projection has mean bounded below and variance $q^2$ after dividing
+by $\sqrt m$, and its negative-part second moment is bounded by
+Gaussian fourth moments times the square root of its tail probability.
+It is at most $Cq^2\mu_K$ for small $q$.
+
+BULK's exact cross-output inequality is
+$\mathfrak F_G\le8(E_G+J_G+\sqrt{E_GJ_G}/q)$.
+Also Minkowski and Cauchy--Schwarz give directly
+\[
+ \|(f_G)_1\|_{P_1}
+ \le\sqrt{1+q^2}\int_G|W_1U_1|
+       +q\int_G|W_1U_2|
+ \le C(J_G+q\sqrt{J_GE_G}).
+\]
+Finally $|f_B(X)|\le\mu_B|X|$ bounds every outside norm by
+$C\mu_B$. Summing proves both claims. These estimates involve no
+moving label sets or cancellation assumptions.
+\end{proof}
+
+\begin{theorem}[Narrow residual estimate with an independent clock bound]
+\label{an03rcetv1:closure}
+Under the budgets above and the logarithmic duration bound,
+diagonal residual norms are uniformly bounded, cross residual norms
+are $O(q)$, and
+\begin{equation}\label{an03rcetv1:r11}
+ \int_{t_0}^{t_b}\sup_\theta|R_{11}(t,\theta)|\dd t
+ \le C\int_{t_0}^{t_b}|1-\kappa_1(t)|\dd t+o(1).
+\end{equation}
+There is no smallness requirement on the fixed cap $H_b$.
+The independent clock hypothesis \eqref{an03rcetv1:clockinput}
+is essential to the scope of this statement; its removal is not proved.
+\end{theorem}
+\begin{proof}
+Loss monotonicity gives $\E_{P_i}|e|^2\le4\mathcal L(0)$.
+The initialized loss is uniformly bounded, so the diagonal estimates
+are immediate. BULK's residual-entry inequalities and
+\eqref{an03rcetv1:crossnorm} give
+\[
+ \ell/q\le C(1+E+q^2Y^2+\sqrt E Y+\mu_B/q),
+ \quad \ell=\sup_\theta\max(|R_{12}|,|R_{21}|).
+\]
+Its $R_{11}$ inequality, with $e_1=(1-\kappa_1)X_1-g_1$ on $P_1$,
+also gives
+\begin{equation}\label{an03rcetv1:rpoint}
+ r\le C|1-\kappa_1|+
+ C\{q^2(1+E+Y^2+\sqrt E Y)+\mu_B\},\qquad
+ r=\sup_\theta|R_{11}|.
+\end{equation}
+From the backward clock bound and the energy budget,
+\[
+ \sup E\le C_*,\quad \int E\le K_E,\quad
+ \int\sqrt E\le K_{1/2},
+\]
+with fixed constants, since
+$\int H\le eH_b/b_0$, $\int\sqrt H\le2\sqrt{eH_b}/b_0$,
+and $q^{5/2}(t_b-t_0)=o(1)$.
+
+Here is the fixed point with its constants retained. Stop at $Y<K$
+and $\int r<B$, where $B=CB_s+1$ with the coefficient from
+\eqref{an03rcetv1:rpoint}. BULK's exact transverse inequality gives
+\begin{equation}\label{an03rcetv1:volterra}
+ Y(t)\le A_*+C e^B\int_{t_0}^t E(s)Y(s)\dd s
+       +C e^Bq^2\int_{t_0}^t\sqrt{E(s)}Y(s)^2\dd s.
+\end{equation}
+One can take a fixed $A_*>1$ dominating
+$e^B[\sqrt{C_Jq}+C\int\sqrt E(1+E+\mu_B/q)]$ for all small $q$.
+Choose $K=4A_*\exp(Ce^BK_E)$. For sufficiently small $q$ the last
+term under the guard is at most $A_*$, so Gronwall gives $Y\le K/2$.
+Equation \eqref{an03rcetv1:rpoint} then gives $\int r\le CB_s+o(1)<B$.
+Indeed $q^2\log(1/q)=o(1)$ and
+$\sup\mu_B\log(1/q)=o(q\log(1/q))=o(1)$.
+Both guards close, proving bounded $Y$, the cross estimate, and
+\eqref{an03rcetv1:r11}.
+
+This proof uses the global backward bound as an input even when
+the $Y,r$ guards are stopped. Consequently it contains no step
+claiming to close that clock input simultaneously.
+\end{proof}
+
+\begin{remark}[Why the direct scalar shortcut is insufficient]
+\label{an03rcetv1:scalar}
+Keeping the trial bound $\ell\le Lq$ in the transverse estimate yields
+\[
+ \sqrt J\lesssim q^{3/2}+Lq\sqrt H,
+ \qquad \mathfrak F_G\lesssim
+ q^3+H+\sqrt{qH}+LH+L^2q^2H.
+\]
+Thus a scalar supremum fixed point has the term $CLH_b$, which
+small $q$ does not absorb. The expression
+$H_b+L\sqrt{qH_b}+q^3$ in the proposed S0 shortcut omits this term.
+It is not a valid consequence of BULK's regenerated-energy estimate
+with constants uniform in the trial $L$. In
+\eqref{an03rcetv1:volterra}, that same feedback is retained as the
+integrable coefficient $CE(t)$. The resulting exponential depends
+on $H_b$ but is finite for every fixed $H_b$. Only the remaining
+quadratic term needs small $q$. This repairs the feedback estimate
+conditional on clock control; it does not supply that control.
+\end{remark}
+
+\section{Obstruction: two unsuccessful closure routes}
+\label{an03rcetv1:obstruction}
+\paragraph{First route: a scalar constant fixed point.}
+The proposed absorption would need
+\[
+ L_{\rm new}\le A+C H_b L+o_q(1)L<L.
+\]
+The last inequality does not follow by decreasing $q$: it would
+require additional control such as $CH_b<1$. No such smallness
+is supplied. Remark \ref{an03rcetv1:scalar} identifies the retained
+term. Its scale is real at the level of the available energy data.
+For example, a balanced aligned donor with
+$U=W=(qL\sqrt E,\sqrt E)$ has $J=q^2L^2E$ and
+\[
+ \|(f_G)_2\|_{P_1}/q
+ \ge\E_{P_1}(f_G)_2/q\ge LE,
+\]
+by convexity of the positive part. Thus the cross-output estimate
+cannot uniformly replace this scale by $E+L\sqrt{qE}$ for arbitrary
+trial $L$. This is an instantaneous-state example, not a population
+trajectory or an initialized counterexample.
+
+\paragraph{Second route: Volterra feedback with a stopped clock.}
+Equation \eqref{an03rcetv1:volterra} produces a uniform constant only
+if $\int E$, hence its supplied upper budget in terms of $\int H$,
+is uniformly bounded. On a stopped interval ending at $t_*<t_b$,
+BULK gives only
+\[
+ \int_{t_0}^{t_*}H(s)\dd s\le e H(t_*)/b_0.
+\]
+The required next inequality is
+\begin{equation}\label{an03rcetv1:failingendpoint}
+ H(t_*)\le e H_b\quad\text{uniformly at every first-exit endpoint}.
+\end{equation}
+The supplied cap is $H(t_b)\le H_b$. Inferring
+\eqref{an03rcetv1:failingendpoint} from it requires the clock defect
+bound on $[t_*,t_b]$, the as-yet-uncontrolled future interval.
+Imposing a guard $H\le eH_b$ does not improve that guard: positivity
+of $H'$ on the controlled past does not prevent a later fall to the
+capped endpoint after other guards have failed.
+
+The scalar endpoint-to-integral implication is false without clock
+control. Let $\mathcal T=L_T\log(1/q)$, fix $k>0$, and define
+\[
+ H(t)=
+ \begin{cases}
+ H_b\exp[(2k/L_T)(t-\mathcal T/2)],&0\le t\le\mathcal T/2,\\
+ H_b,&\mathcal T/2\le t\le\mathcal T.
+ \end{cases}
+\]
+Then $H(0)=H_bq^k$, $H(\mathcal T)=H_b$, but
+$\int H\ge(H_bL_T/2)\log(1/q)$.
+With constant permitted $c$, the exact scalar clock identity holds
+almost everywhere with $\varepsilon=(\log H)'-Q(1-c)$.
+The plateau has a negative defect of logarithmic size.
+This is a counterexample to the scalar inference, not a claimed
+trajectory of the original flow. Loss monotonicity supplies diagonal
+residual bounds, not a bound on this particular symmetric amplitude:
+CLOCK's exact ledger $H=c-c_O-\tau+A$ retains signed complementary
+response, antisymmetric energy, and a negative-gate term.
+
+An independent uniform amplitude/response-ledger bound, an independent
+all-subinterval clock estimate, or an appropriate signed transverse
+estimate could repair the missing step. None is silently supplied
+here. These two routes do not establish S0 from the requested inputs,
+so the stop rule applies and Stage 2 is not begun. This obstruction
+does not assert that the desired original-flow estimate is false.
+
+\section{Precisely retained inputs}
+The narrow theorem uses the following already open budgets:
+(i) the original fixed-core chart and mass bounds and outside
+$\mu_B=o(q)$; (ii) original Cartesian entry for the clock and
+primary labels, their entry-amplitude comparison, and
+$J_G(t_0)=O(q^3)$; (iii) the whole explicit-output energy bound
+$E_G\le C(q^5+H)$, including all primary labels and secondary labels
+(the latter still requires the transferred finite-cutoff profile,
+pre-exit distance envelope, and capped gain of BULK Proposition 5.2);
+(iv) the response guard, logarithmic duration and amplitude cap;
+and (v) $\int|1-\kappa_1|\le B_s$.
+It additionally retains the independent backward clock bound
+\eqref{an03rcetv1:clockinput}. Removing that premise is unresolved.
+None of (i)--(v) is claimed from initialization here. In particular
+the comparison dichotomy does not silently transfer entry geometry.
+No small terminal amplitude, raw $J=O(q^3)$ passage bound, or
+vanishing defect for the $\eta=0$ transport cohort is claimed.
+
+\begin{thebibliography}{9}
+\bibitem{BULK} BULK, \textit{AN03\_bulk\_clock\_and\_secondary\_Q2\_energy\_v1}.
+Source prefix \texttt{inc:AN03:bulkclock:v1:}; labels
+\texttt{bulkclockclosure}, \texttt{R22tail}, \texttt{bulkweights},
+\texttt{gainenergy}, \texttt{secondary}, \texttt{transverse},
+\texttt{forcing}, \texttt{residualinputs}.
+\bibitem{Q2E} Q2E, \textit{AN02\_Q2\_boundary\_layers\_and\_cohort\_energy\_v1}.
+Prefix \texttt{inc:AN02:q2completion:v1:}; labels
+\texttt{crossing}, \texttt{axisU1upper}, \texttt{profile}.
+\bibitem{PROFILE} PROFILE, \textit{AN02\_strong\_entry\_profile\_and\_tail\_budget\_v1}.
+Prefix \texttt{inc:AN02:profile:v1:}; labels \texttt{root},
+\texttt{arrival}, \texttt{outerdecomposition}, \texttt{cost}.
+\bibitem{F} \textit{RELU\_POPULATION\_FOUNDATIONS\_v2}, P5:
+loss dissipation, balance, and characteristic regularity.
+\bibitem{CLOCK} CLOCK,
+\textit{AN03\_exact\_amplitude\_clock\_and\_c\_passage\_v1},
+prefix \texttt{inc:AN03:clock:v1:}; labels
+\texttt{endpoint}, \texttt{Hcap}, \texttt{crossenergy}.
+\end{thebibliography}
+\end{document}
