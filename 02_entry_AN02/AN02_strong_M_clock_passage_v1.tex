@@ -1,0 +1,362 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Rhalf}{\mathcal R}
+\newcommand{\ones}{\boldsymbol 1}
+\title{Strong $M$-clock passage: a fixed-cutoff obstruction}
+\author{Analytical increment for review}
+\date{Version 1; October 6, 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The proposed uniform $e^{o(1)}$ transfer by the linear centered
+$M$-clock multiplier does not follow from the overlap data.
+At fixed overlap offset $C_m$, its outer Q1 labels have scaled
+displacement comparable to $e^{-dC_m}$, not $o(1)$.
+We prove, for the initialized original flow on $[t_m,t_m+1]$, a
+strict positive correction of that order to the logarithm of the
+linear shape multiplier. The corresponding normalized-tangent
+coefficient has an integral bounded away from zero as $q\to0$.
+An exact cooperative leading-field example retains this correction
+all the way to $M=1/2$. This example is a test of the proposed
+leading comparison, not a substitute initialized population.
+We give the corrected handoff normalization and stop at the
+central tangent obstruction. No original-flow half-mass theorem
+is asserted.
+\end{abstract}
+
+\section{Scope and the overlap data}
+All new labels have prefix \texttt{an02smcpv1:}.
+Use the initialized model and fixed right-half-circle ancestry
+$\Rhalf=[-\pi/2,\pi/2]$ of OWPT, with label variable $\beta$,
+initial radial mass $q^{10}$, and $\rho\in[13/20,7/10]$.
+Write
+\[
+ \lambda=\rho^2,\quad \omega=(1-\lambda)/2,\quad
+ a=\rho K(\rho a),\quad \alpha=\lambda\Phi(\rho a)/2,
+ \quad d=1/2-\alpha,\quad s=d/\omega,
+\]
+where $K(z)=\phi(z)+z\Phi(z)$.
+The source bound $\alpha<7497/50000<3/20$ implies
+\begin{equation}\label{an02smcpv1:rate}
+ r_0(M):=-\frac{1-M}{2}+\alpha=-d+M/2<-1/10
+ \qquad (0\le M\le1/2).
+\end{equation}
+Fix OWPT's sufficiently large, \emph{$q$-independent} $C_m$ and put
+\begin{align}
+ t_m&=(2/\omega)\log(1/q)+C_m,&
+ \sigma&=10-2/\omega,& \zeta&=\sigma-1,\nonumber\\
+ E_m&=e^{-dC_m},& \epsilon_m&=E_mq^s,&
+ M(t)&=\int_{\Rhalf}m(t,\beta)\frac{\dd\beta}{2\pi}.
+ \label{an02smcpv1:scales}
+\end{align}
+Here $110/51\le\sigma\le710/231$ and $\zeta\ge59/51$.
+The same-field reference is always the actual label
+$\beta_c=qa_q$, where $a_q=a+O(q^2)$ is PROFILE's exact
+target-only root. Set
+\[
+ h_x(t,\beta)=\frac{\theta(t,\beta)-\theta(t,\beta_c)}q,
+ \qquad
+ h_y(t,\beta)=\frac{\psi(t,\beta)-\psi(t,\beta_c)}q,
+ \qquad
+ \widehat h(t,\beta)=\widehat\theta(t,\beta)/q-a_q.
+\]
+Hats denote the exact target-only flow.
+OWPT compares $h_x,h_y$ to the \emph{nonlinear} exact
+$\widehat h$, not to its linearization at $a_q$.
+
+Apply that already proved result with the fixed terminal offset
+$C_m+1$. Its estimates then hold throughout $[t_m,t_m+1]$:
+\begin{align}
+ h_x(t,\beta)&=\widehat h(t,\beta)e^{O(q^\zeta)},&
+ h_y(t,\beta)&=\widehat h(t,\beta)e^{O(q^\zeta)},
+ \label{an02smcpv1:shorttransfer}\\
+ m(t,\beta)&=\widehat m(t,\beta)e^{O(q^\sigma)},&
+ S(t)&\le q^{10}e^{(1+2q^2)t}=O(q^\sigma).
+ \label{an02smcpv1:shortmass}
+\end{align}
+All constants are uniform in the label and in $\rho$ for fixed
+$C_m$. This fixed-length extension uses exactly the existing
+overlap proof; it is not a continuation into $S\gtrsim q$.
+The actual reference is not reset to $a_q$.
+
+\section{A closed original-flow obstruction on the first unit interval}
+Choose PROFILE's common chart constant $L$, enlarged once if
+needed. Its proved expansion is
+\begin{equation}\label{an02smcpv1:scalar}
+ f_q(x):=v_q(qx)/q=f_0(x)+O_{C^2}(q^2),\qquad
+ f_0(x)=\tfrac12[\rho K(\rho x)-x],\qquad
+ f_0''(x)=\tfrac12\rho^3\phi(\rho x)>0.
+\end{equation}
+Define the analytically specified positive constant
+\begin{equation}\label{an02smcpv1:curvature}
+ b=\frac14\min_{\substack{13/20\le\rho\le7/10\\|x|\le L+2}}
+                \rho^3\phi(\rho x)>0.
+\end{equation}
+Thus $f_q''\ge b$ on the relevant positive chart, for small $q$.
+Also $-1\le f_q'\le-\omega/2$ there, and
+$f_q'(a_q)=-d+O(q^2)$, by the same source expansion.
+
+Let $c_P>0$ be PROFILE's uniform lower comparison constant in
+its Q1 displacement law. For the positive-measure initial band
+\[
+ I_q=\{\beta\in[\pi/4,\pi/2]:0\le\cos\beta\le q\},
+\]
+the overlap law gives
+\begin{equation}\label{an02smcpv1:outerlower}
+ \widehat h(t_m,\beta)\ge c_*E_m,\qquad c_*:=c_P/4>0.
+\end{equation}
+Indeed $(\cos\beta+q)/q\le2$ and
+$s<100/51<2$. In particular this lower bound is not an
+assertion only about the single endpoint label.
+
+For positive masses define the proposed linear multiplier
+\begin{equation}\label{an02smcpv1:multiplier}
+ \mathcal G(M_1,M_0)=
+ (M_1/M_0)^{-d}\left(\frac{1-M_0}{1-M_1}\right)^\alpha.
+\end{equation}
+
+\begin{theorem}[Nonvanishing short-interval correction; original flow]
+\label{an02smcpv1:shortobstruction}
+Put $M_0=M(t_m)$ and $M_+=M(t_m+1)$. For sufficiently small $q$,
+\begin{equation}\label{an02smcpv1:shortclock}
+ \log(M_+/M_0)=1+O(q^2+q^\sigma).
+\end{equation}
+There is $k>0$, independent of $q$, $C_m$, and LCRC's guards,
+such that, for every $\beta\in I_q$ and $j=x,y$,
+\begin{equation}\label{an02smcpv1:strictshape}
+ \log\frac{h_j(t_m+1,\beta)}
+ {h_j(t_m,\beta)\mathcal G(M_+,M_0)}
+ \ge k E_m>0.
+\end{equation}
+The small-$q$ threshold may depend on the fixed $C_m$.
+
+Let $\mathcal A_q(t,\beta)$ be the receiver Jacobian of the actual field
+in the scaled coordinates $(\theta/q,\psi/q)$, evaluated along
+the label $\beta$. Set
+\[
+ J_{\rm sh}(M)=
+ \begin{pmatrix}-(1-M)/2&\alpha\\\alpha&-(1-M)/2\end{pmatrix}.
+\]
+Possibly decreasing $k$, one has
+\begin{equation}\label{an02smcpv1:failedintegral}
+ \int_{t_m}^{t_m+1}
+ \sup_{\beta\in\Rhalf}\|\mathcal A_q(t,\beta)-J_{\rm sh}(M(t))\|_\infty\dd t
+ \ge k E_m.
+\end{equation}
+The matrix norm is the maximum absolute row sum.
+\end{theorem}
+\begin{proof}
+For $\beta\in I_q$, write $h(u)=\widehat h(t_m+u,\beta)$.
+It stays positive by scalar uniqueness and obeys
+\[
+ h'=f_q(a_q+h),\qquad h(0)e^{-u}\le h(u)\le h(0)
+ \quad(0\le u\le1).
+\]
+The derivative bounds above prove these inequalities, within
+PROFILE's invariant chart. Taylor's formula with integral remainder
+therefore gives
+\begin{align}
+ \log\frac{h(1)}{h(0)}+d
+ &=\int_0^1\left(\frac{f_q(a_q+h(u))}{h(u)}+d\right)\dd u
+ \nonumber\\
+ &\ge\frac b2\int_0^1h(u)\dd u-Cq^2
+ \ge\frac{bc_*}{2}(1-e^{-1})E_m-Cq^2.
+ \label{an02smcpv1:convexdefect}
+\end{align}
+Division is only by strictly positive displacements. Equation
+\eqref{an02smcpv1:shorttransfer} changes the left side by
+$O(q^\zeta)$ when $h$ is replaced by either original displacement.
+
+For completeness, the mass statement needs no future logistic
+contract. On the target-only chart $|\widehat\theta|\le qL$,
+\[
+ (\log\widehat m)'=2g(\widehat\theta),\qquad
+ 2g(\vartheta)=
+ \E[(\cos\vartheta+qZ)_+^2]
+ +\E[(\rho\sin\vartheta+qZ)_+^2]=1+O_L(q^2).
+\]
+For the first expectation subtract its negative-part second
+moment from $\cos^2\vartheta+q^2$; that moment is at most $q^2$
+when $\cos\vartheta\ge0$. The second expectation is $O_L(q^2)$.
+Integrate over the unit interval, then use
+\eqref{an02smcpv1:shortmass} at its two endpoints. The resulting
+pointwise bounds integrate over the fixed positive label measure,
+proving \eqref{an02smcpv1:shortclock}. Since $M_0,M_+=O(q^\sigma)$,
+\[
+ \log\mathcal G(M_+,M_0)=-d+O(q^2+q^\sigma).
+\]
+This and \eqref{an02smcpv1:convexdefect} prove
+\eqref{an02smcpv1:strictshape}, for example with
+$k=bc_*(1-e^{-1})/4$ after decreasing $q$.
+
+For the tangent assertion, OWPT's receiver-Jacobian lemma gives
+\[
+ \mathcal A_q(t,\beta)=
+ \begin{pmatrix}-g&\ell\\\ell&-g\end{pmatrix}
+ +O_{\ell^\infty}(q^\zeta),\qquad
+ \ell-g=f_q'(a_q+\widehat h(t,\beta)),\quad \ell\ge0.
+\]
+Scaling both coordinates and their velocities by the same $q$
+does not change this Jacobian. In particular each component of
+$(\mathcal A_q-J_{\rm sh})\ones$ is at least
+\[
+ b\widehat h(t,\beta)-C(q^2+q^\zeta)-M(t)/2.
+\]
+Use $M(t)=O(q^\sigma)$, the preceding lower bound for $h(u)$,
+and $\|E\|_\infty\ge\|E\ones\|_\infty$.
+Integration for any $\beta\in I_q$ proves
+\eqref{an02smcpv1:failedintegral}. All errors vanish with $q$;
+$E_m$ does not. No finite-noise cooperativity assumption was used.
+\end{proof}
+
+\section{Why cooperativity cannot remove this correction}
+The failing step in the proposed tangent argument is
+\begin{equation}\label{an02smcpv1:requiredfalse}
+ \int_{t_m}^{t_{1/2}}\sup_{\beta\in\Rhalf}
+ \|\mathcal A_q(t,\beta)-J_{\rm sh}(M(t))\|_\infty\dd t=o(1),
+\end{equation}
+or an $o(1)$ integral of its row-sum errors that would give the
+same uniform normalized-tangent comparison. If the half-mass
+hit exists, it is later than $t_m+1$ by
+\eqref{an02smcpv1:shortmass}; hence
+\eqref{an02smcpv1:failedintegral} contradicts
+\eqref{an02smcpv1:requiredfalse}. Even the row sums already
+have a positive error on the first unit interval. Allowing a
+different Metzler off-diagonal splitting cannot change those
+row sums after normalization by the specified scalar multiplier.
+
+This is not merely a poor use of an absolute-value estimate.
+The following exact leading calculation shows the nonlinear
+effect can persist to the requested endpoint under perfect
+cooperativity, zero outside mass, and no finite-$q$ error.
+
+\begin{proposition}[Exact leading-field test at half mass]
+\label{an02smcpv1:leadingtest}
+In P's resident leading field $\mu_s=M\delta_{(a,a)}$, $N=0$,
+let a same-field test characteristic start at
+$(a+h_0,a+h_0)$, where $0<h_0\le1/4$ is fixed, and let the
+reference be $(a,a)$. With $M'=M(1-M)$ and $M(0)=M_0\to0$,
+write $T$ for the first hit of $M=1/2$.
+The test characteristic remains aligned and in the fixed chart
+$a\le x=y\le a+1/4$. For constants $k_->0$ and $k_+=1/8$,
+\begin{equation}\label{an02smcpv1:leadingratio}
+ 2k_-h_0(1-e^{-1/2})
+ \le\log\frac{x(T)-a}{h_0\mathcal G(1/2,M_0)}
+ \le20k_+h_0
+ \qquad(T\ge1).
+\end{equation}
+Thus the ratio is not $e^{o(1)}$ as $M_0\to0$.
+\end{proposition}
+\begin{proof}
+P's overlap kernel has
+$F(\rho x,\rho a)=K(\rho a)$ for $x\ge a$.
+Insert this and $Y=Ma$ into its strong receiver field. At
+$x=y=a+h$, the two velocities agree and
+\begin{equation}\label{an02smcpv1:nonlinearleading}
+ h'=r_0(M)h+R(h),\qquad
+ R(h)=\frac\rho2\{K(\rho(a+h))-K(\rho a)
+                         -\rho\Phi(\rho a)h\}.
+\end{equation}
+Strict convexity and Taylor's formula give
+$k_-h^2\le R(h)\le k_+h^2$ on $0\le h\le1/4$, where
+\[
+ k_-:=\frac14\min_{\substack{13/20\le\rho\le7/10\\0\le v\le1/4}}
+              \rho^3\phi(\rho(a_\rho+v))>0.
+\]
+The upper choice $k_+=1/8$ uses only $\rho<1$ and
+$\phi(0)<1/2$. By \eqref{an02smcpv1:rate},
+$h'\le(-1/10+1/32)h\le-h/20$, while $h'\ge-h/2$.
+These inward inequalities prove the chart and
+$h_0e^{-t/2}\le h(t)\le h_0e^{-t/20}$ up to $T$.
+The logistic substitution, already used in P, gives
+$\exp\int_0^T r_0(M)\dd t=\mathcal G(1/2,M_0)$.
+Consequently the logarithm in \eqref{an02smcpv1:leadingratio}
+is exactly $\int_0^T R(h)/h\dd t$.
+Its lower bound follows by integrating on $[0,1]$ and its upper
+bound by integrating the exponential upper bound on $[0,\infty)$.
+Only the latter scalar integral extends to infinity; the
+characteristic is not continued beyond $M=1/2$.
+\end{proof}
+
+The test characteristic need not carry mass, as in LOC's
+same-field-reference formalism. This is an exact leading-system
+example, not a claim that its atomic donor law equals OWPT's
+initialized profile. The original-flow conclusion proved here is
+Theorem~\ref{an02smcpv1:shortobstruction}; no unproved long-time
+limit from the initialized population to this example is taken.
+
+\section{Clock normalization, mean-mode audit, and stopping point}
+Define, rather than suppress, the overlap mass coefficient
+\begin{equation}\label{an02smcpv1:coefficient}
+ A_q:=\frac{M_0}{e^{C_m}q^\sigma},\qquad 0<c\le A_q\le C.
+\end{equation}
+OWPT proves these bounds, not $A_q=1+o(1)$.
+The exact handoff algebra is
+\begin{equation}\label{an02smcpv1:handoff}
+ \epsilon_mM_0^d=A_q^d q^{s+\sigma d}
+ =A_q^d q^{10d-s}.
+\end{equation}
+The explicit exponentials in $C_m$ cancel. Equality without
+$A_q^d$ applies to the mass scale $e^{C_m}q^\sigma$, not to the
+actual mass as presently normalized. This preserves the proposed
+$q$-power but retains an order-one shape prefactor.
+For the defined leading logistic law only, the half-mass duration is
+\begin{equation}\label{an02smcpv1:duration}
+ T=\log\frac{1-M_0}{M_0}
+ =\sigma\log(1/q)-C_m-\log A_q+\log(1-M_0).
+\end{equation}
+Adding $t_m$ gives $10\log(1/q)-\log A_q+O(q^\sigma)$.
+This is algebra in the leading law, not a proved original-flow
+duration or an assertion of its integrated mass defect.
+
+LOC Lemma 3.1 and P's resident lemma use a \emph{stationary}
+coherent leading center $(a,a)$ for every $M$ when $N=0$;
+$J_M\preceq J_1$ concerns its collective attraction.
+They do not specify a leading equilibrium moving with $M$ and
+equal to $a_q$ at zero mass. The actual reference can move under
+population forcing; a finite-$q$ coherent equilibrium, if used,
+requires a separate definition and estimate. Nothing here resets
+the actual reference or transfers shape through an additive error.
+
+The stopped result is the central obstruction
+\eqref{an02smcpv1:failedintegral}--\eqref{an02smcpv1:requiredfalse}.
+The outer width $E_m$ is small if $C_m$ is large, but is not
+$o_q(1)$ when $C_m$ is fixed. A shrinking-core restriction or
+a new moving-overlap choice with $C_m\to\infty$, or a nonlinear
+profile multiplier retaining the finite correction, would change
+the requested contract. None is assumed or developed here.
+In particular this note does not rule out an initialized theorem
+with a bounded nonlinear shape factor, or prove that an endpoint-only
+cancellation is impossible in that initialized flow. Such a
+cancellation is not supplied by LOC's linear rate or same-field
+ordering. Work stops without a half-mass original-flow theorem,
+later radial-weight or off-chart propagation, or any later S1/S2
+passage.
+
+\begin{thebibliography}{9}\small
+\bibitem{OWPT} OWPT, \emph{AN02 overlap window profile transfer v1}.
+Labels \texttt{an02owptv1:jacobian}, \texttt{tangents},
+\texttt{transfer}, \texttt{tail}, with that prefix throughout.
+\bibitem{PROFILE} PROFILE, \emph{AN02 strong entry profile and tail
+budget v1}. Prefix \texttt{inc:AN02:profile:v1:};
+\texttt{root}, \texttt{entry}, \texttt{rightcircle}, \texttt{cost}.
+\bibitem{LOC} LOC, \emph{AN03 local rate mean tracking v1}.
+Prefix \texttt{inc:AN03:local:v1:}; \texttt{field},
+\texttt{localineq}, \texttt{meanineq} (Lemma 3.1).
+\bibitem{P} P, \emph{THEOREM A ANALYTICAL PROGRESS}, checkpoint 1.0.
+\texttt{pa:leading}, \texttt{pa:masslaws}, \texttt{pa:resident},
+\texttt{pa:spectra}, \texttt{pa:order}, and the exact early comparison.
+\bibitem{ROADMAP} \emph{Unified analytic theory roadmap}, v1.3,
+S0 assembly requirements and S1 step 2. Read-only source;
+the roadmap's proposed route is not a proof premise.
+\end{thebibliography}
+\end{document}
