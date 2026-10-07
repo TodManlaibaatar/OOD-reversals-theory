@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.5 — October 7, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.6 — October 7, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -11,6 +11,8 @@
 **Revision 1.4 (Oct 7).** Records SMCP (`AN02_strong_M_clock_passage_v1`), an obstruction increment. At fixed $C_m$ the linear multiplier fails on the outer band. Step 2 now records: the stationary leading center, the $A_q^d$ handoff and its clock shift, the moving-overlap repair, and the exact $J_{\rm sh}$ tangent structure. New ledger items 12–14.
 
 **Revision 1.5 (Oct 7).** Records MOMC (`AN02_moving_overlap_M_clock_passage_v1`): S1 step 2a is proved unconditionally through strong half mass. Proposes $t_0:=t_h$. Adds S1 step 6 (Q2 entry at $t_0$) as next. Moves $B_s=\log2+o(1)$ and core retention to the weak-passage bootstrap.
+
+**Revision 1.6 (Oct 7).** Records Q2EP (`AN02_Q2_entry_through_strong_passage_v1`): the Q2 entry energy is proved. The $e^{o(1)}$ universal-factor obstruction is reclassified as a contract overreach, because LCRC needs only fixed constants. Ledger item 15 adds the accuracy rule for contracts.
 
 ---
 
@@ -252,7 +254,13 @@ The steps are listed in dependency order. Each entry states the claim to prove, 
    - in the leading law $\int_{t_0}^\infty(1-M)=\log2$, so the expected guard-independent constant is $B_s=\log2+o(1)$;
    - its proof belongs to the stopped-form weak-passage bootstrap, i.e. with S3;
    - the c-form field contract (S3) must then carry the $-(1-M)/2$ contraction explicitly, not as a small remainder. Dropping it only for an upper bound costs a factor $e^{\int(1-M)/2}=2^{1/2}$.
-6. *Q2 entry at $t_0=t_h$ (next).* Supply LCRC's left-half entry contracts in the original flow:
+6. *Q2 entry at $t_0=t_h$ (in progress).*
+   - **Proved (Q2EP Theorem 2.1, exact original flow):** $N_2/M\le8e^7C_QA_q^{-1}q^3$ on $[t_m,t_h]$. Hence $J_G(t_0)\le C_Jq^3$ and $E_{G_+}(t_0)=o(1)$ for every subcohort of the initial Q2 ancestry.
+   - **Obstruction to the $e^{o(1)}$ form (Q2EP Prop 4.1, leading system).** Off the chart the strong cross drive contributes $-Ma_\rho/2$ in scaled units. On the aligned ray, $x'=f_0(x)+\frac M2(x-a_\rho)$, so the universal factor $D_h^{-1}=[2(1-M_0)]^{-1/2}$ carries a relative correction $\int Ma_\rho/(2x)$. That correction is bounded below by $a_\rho\log3/(8\sqrt6L)$ for a receiver ending at scaled angle L.
+   - **This does not obstruct LCRC.** LCRC's Q2 contracts are fixed-constant inequalities. The same identity bounds the correction above by $\frac34a_\rho/x_{\min}$ plus a Gaussian-small term. So $q\cot\theta(t_0)=D_h^{-1}q\cot\hat\theta(t_0)\,e^{O(1/x_{\min})+o(1)}$, where $1/x_{\min}\asymp q\cot\theta\lesssim C_0$ on the $\eta=0$ group: a bounded factor, absorbed by enlarging K.
+   - Late crossers near $\alpha=\pi$ have BULK's $x\gg1$ before crossing, so their antisymmetric drive $\sim M\cdot x$ is controlled only by $M(T_\times)=O(q^{90/169})$. The margin comes from $T_\times\le\frac{1600}{169}\log(1/q)+O(1)$.
+
+   Original specification — supply LCRC's left-half entry contracts in the original flow:
    - the $\eta=0$ group and clock: $z>0$, $|a|/z\le\frac14$, $x=qj/z\le C_0$ (resp. $\le C_{\rm clk}q^{1/8}$);
    - $H_{\mathcal C_q}(t_0)\asymp q^{10(1-\lambda)}$ with its $A_q$ dependence;
    - the chart group in the strong chart;
@@ -390,7 +398,7 @@ Tracks that can run in parallel:
 
 | Track | Steps | Notes |
 |---|---|---|
-| I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Next: step 6, Q2 entry at $t_0=t_h$; then the secondary tail. $B_s$ and core retention move to the weak-passage bootstrap (S3). |
+| I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Step 6: entry energy done (Q2EP); next, the fixed-constant Q2 entry contracts (ratios, signs, clock seed, chart entry); then the secondary tail. $B_s$ and core retention move to the weak-passage bootstrap (S3). |
 | II | S2 capped gain + S3 field contract | Share the c-form envelope; S2 closes two tail estimates. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
@@ -433,6 +441,9 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 12. **Invalid:** a uniform-over-labels strong shape transfer by the *linear* $M$-clock multiplier from a fixed overlap offset $C_m$. Outer labels with $h\asymp e^{-dC_m}$ pick up a nonvanishing convex correction (SMCP Theorem 2.1; leading-field persistence in SMCP Prop 3.1). Use a moving overlap $C_m(q)\to\infty$ or a nonlinear same-field comparison.
 13. **Withdrawn (SMCP prompt):** "the leading strong center moves with $M$ and equals $a_q$ at $M=0$." At $N=0$ the leading coherent center is stationary at $(a_\rho,a_\rho)$ for every $M$.
 14. **Correction:** the overlap handoff is $\epsilon_mM_0^d=A_q^dq^{10d-s}$ with an order-one $A_q\in[c,C]$, not exactly $q^{10d-s}$. The half-mass clock carries the shift $-\log A_q$.
+15. **Invalid (Q2EP prompt):** an $e^{o(1)}$ universal angular factor for Q2 labels at a fixed threshold. The strong cross drive $-Ma_\rho/2$ gives a relative correction $\Theta(Ma_\rho/x)$ (Q2EP Prop 4.1).
+    - *General rule for contracts:* request $e^{o(1)}$ accuracy only where the consumer needs it, i.e. the response-clock phase and core shape transfer. Q2 entry ratios, signs and seeds are fixed-constant contracts, and $e^{O(C_0)}$ is acceptable there.
+    - SMCP (item 12) was the same overreach.
 
 ---
 
@@ -459,6 +470,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | OWPT | `AN02_overlap_window_profile_transfer_v1.tex` (+ review), prefix `an02owptv1:` |
 | SMCP | `AN02_strong_M_clock_passage_v1.tex` (+ review), prefix `an02smcpv1:` — obstruction increment |
 | MOMC | `AN02_moving_overlap_M_clock_passage_v1.tex` (+ review), prefix `an02momcv1:` |
+| Q2EP | `AN02_Q2_entry_through_strong_passage_v1.tex` (+ review), prefix `an02q2epv1:` — part (e) proved; obstruction to the $e^{o(1)}$ form |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

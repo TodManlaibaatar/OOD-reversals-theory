@@ -1,0 +1,434 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}
+\newcommand{\Qtwo}{\mathcal Q_2}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\eps}{\varepsilon}
+\title{Q2 entry through strong passage:\\aggregate energy and a fixed-threshold obstruction}
+\author{Analytical increment for review}
+\date{Version 1; October 6, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+At the first strong half-mass time, the entire initial Q2 ancestry
+has original-flow radial mass at most $C A_q^{-1}q^3$.
+Consequently the requested $J_G\le C_Jq^3$ and $E_{G_+}=o(1)$
+entry bounds hold for every subdivision of that ancestry.
+The proposed universal target-only angular multiplier does not
+follow from the suggested diagonal-drive reduction: a fixed signed
+cross drive survives at the fixed $\eta=0$ threshold.
+We identify this term in the already proved original-field reduction
+and give an exact coherent-leading comparison in which the omitted
+relative integral is bounded below by a positive constant.
+This is an obstruction to that uniform $e^{o(1)}$ route, not a
+counterexample proved for the initialized Q2 population.
+Parts (a)--(d) remain open here. Work stops at this obstruction and
+at $t_0=t_h$; no additional hypothesis is imposed.
+\end{abstract}
+
+\section{Scope and notation}
+All new labels use prefix \texttt{an02q2epv1:}.
+We use the original balanced untied flow and initialization of MOMC:
+\[
+ P=\tfrac12N(e_1,q^2I_2)+\tfrac12N(\rho e_2,q^2I_2),\quad
+ \rho\in[13/20,7/10],\quad
+ m(0,\beta)=q^{10},\quad\theta(0,\beta)=\psi(0,\beta)=\beta .
+\]
+The label measure is $\dd\lambda_0=\dd\beta/(2\pi)$.
+Put $\lambda=\rho^2$, $\omega=(1-\lambda)/2$, $\ell=\log(1/q)$.
+Let $\mathcal R=[-\pi/2,\pi/2]$ be the fixed strong ancestry,
+$M=\int_{\mathcal R}m\,\dd\lambda_0$, and $\mu$ the mass of its
+whole initial left-half-circle complement. Let
+\[
+ \Qtwo=[\pi/2,\pi],\qquad N_2(t)=\int_{\Qtwo}m(t,\beta)\dd\lambda_0 .
+\]
+The endpoints have label measure zero. All cohort integrals below
+refer to initial labels, not moving angular masks.
+
+Retain MOMC's actual quantities
+\begin{align}
+ c_m&=2/\omega+\tfrac12,\quad t_m=c_m\ell,\quad
+ u=10-c_m,\quad v=u-1,\quad M_0=A_q q^u,\nonumber\\
+ 0<c_A&\le A_q\le C_A,\qquad
+ t_h=10\ell-\log A_q+O(q^2\ell^2+q^u),\qquad M(t_h)=\tfrac12 .
+ \label{an02q2epv1:clock}
+\end{align}
+Here $u\ge169/102>0$ and $v\ge67/102>0$.
+Write $\phi,\Phi$ for the standard Gaussian density and cdf,
+$\mathcal K(z)=\phi(z)+z\Phi(z)$, and $a_\rho>0$ for the unique root
+\[
+ a_\rho=\rho\mathcal K(\rho a_\rho).
+\]
+Also set $d=(1-\lambda\Phi(\rho a_\rho))/2$ and $s=d/\omega$,
+as in MOMC.
+Using $a_\rho$ for the resident avoids confusing it with LCRC's
+antisymmetric coordinate $a_{\rm as}=(U_2-W_2)/2$.
+For a measurable subcohort $I\subseteq\Qtwo$, use LCRC's
+\[
+ J_I=\tfrac12\int_I(U_1^2+W_1^2)\dd\lambda_0,\quad
+ E_I=\tfrac12\int_I(U_2^2+W_2^2)\dd\lambda_0,\quad
+ E_I+J_I=\int_I m\dd\lambda_0 .
+\]
+The last equality is exact balance, and needs no sign or alignment.
+
+\section{The closed entry-energy bounds}
+\begin{theorem}[Exact original-flow aggregate entry bound]
+\label{an02q2epv1:energy}
+Choose one uniform constant $C_Q$ for Q2E's two target-only bounds
+\[
+ \widehat J_2(t)\le C_Qq^{10}(1+q^3e^t),\qquad
+ \widehat H_2(t)\le C_Qq^{10}(e^{\lambda t}+q^5e^t),
+ \qquad 0\le t\le10\ell .
+\]
+For all sufficiently small $q$, throughout $[t_m,t_h]$,
+\begin{equation}
+ \frac{N_2(t)}{M(t)}
+ \le \frac{8e^7C_Q}{A_q}q^3 .
+ \label{an02q2epv1:massratio}
+\end{equation}
+In particular, at $t_0=t_h$,
+\begin{equation}
+ E_I(t_0)+J_I(t_0)\le
+ \frac{4e^7C_Q}{A_q}q^3
+ \le C_Jq^3,\qquad C_J=\frac{4e^7C_Q}{c_A},
+ \quad I\subseteq\Qtwo .
+ \label{an02q2epv1:entryenergy}
+\end{equation}
+Thus part (e) holds for the whole explicit Q2 cohort and every
+subdivision of it: $J_G(t_0)\le C_Jq^3$ and
+$E_{G_+}(t_0)\le C_Jq^3=o(1)$.
+The constant is independent of $C_0$, the subdivision threshold,
+and every LCRC guard.
+No conclusion is made for additional labels outside $\Qtwo$ if
+a different definition of $G$ were to include them.
+\end{theorem}
+\begin{proof}
+Q2E's \texttt{energy}, \texttt{Jupper}, and \texttt{Hupper}
+are whole-ancestry estimates and retain both endpoint layers.
+The comparison is aligned, so
+$\widehat N_2=\widehat J_2+\widehat H_2$.
+P's \texttt{pa:targetcomparison}, used uniformly over all labels
+in MOMC, gives at $t_m$
+\[
+ \left|\log\frac{m}{\widehat m}\right|
+ \le4\overline S(t_m)=O(q^u),\qquad
+ \overline S(t)=q^{10}e^{(1+2q^2)t}.
+\]
+Consequently $N_2(t_m)\le2\widehat N_2(t_m)$ for small $q$.
+This uses a radial comparison, not relative transfer of a small angle.
+Since $t_m<10\ell$ and $M_0=A_q q^{10}e^{t_m}$,
+\begin{align}
+ \frac{N_2(t_m)}{M_0}
+ &\le \frac{2C_Q}{A_q}
+ \left(q^{c_m}+q^3+q^{(1-\lambda)c_m}+q^5\right)\nonumber\\
+ &=\frac{2C_Q}{A_q}
+ \left(q^{2/\omega+1/2}+q^3+
+             q^{4+(1-\lambda)/2}+q^5\right)
+ \le\frac{8C_Q}{A_q}q^3 .
+ \label{an02q2epv1:earlyenergy}
+\end{align}
+Both noninteger exponents here exceed $3$ on the entire ratio box.
+
+For propagation use only MOMC's already closed passage.
+The exact global matrix estimates give, labelwise and without
+an angle restriction,
+\[
+ (\log m)'\le(1+2q^2)(1+M+\mu).
+\]
+Its strong-mass equation has the pointwise form
+\[
+ M'/M=1-M+\delta_M,\qquad
+ |\delta_M|\le C_Rq^2+3\mu,\qquad R=79/51.
+\]
+MOMC proves $\mu/M\le Cq^2\ell^2=o(1)$ and
+$\int_{t_m}^{t_h}M\dd t\le3/2$.
+Apply the labelwise inequality to $N_2$ and subtract the
+strong equation. With $b_2=N_2/M>0$ this yields
+\begin{align*}
+ (\log b_2)'
+ &\le (1+2q^2)(1+M+\mu)-(1-M+\delta_M)\\
+ &\le 2M+4\mu+2q^2(1+M+\mu)+C_Rq^2
+ \le4M+C_*q^2 .
+\end{align*}
+All constants here are inherited from the completed MOMC theorem.
+For sufficiently small $q$, $C_*q^2(t_h-t_m)\le1$, and hence
+\[
+ b_2(t)\le e^7 b_2(t_m).
+\]
+This proves \eqref{an02q2epv1:massratio}.
+At half mass divide its right side by two and use
+$E_I+J_I\le N_2$. Positivity and integrability follow from the
+finite-time radial flow and its global mass envelope; integration
+of the pointwise radial inequality is therefore valid.
+\end{proof}
+
+\begin{remark}\label{an02q2epv1:energyscope}
+This improves the coarse whole-left-ancestry charge only for Q2.
+It is not a secondary radial-profile or tail theorem, a sign-good
+entry theorem, or a weak clock lower bound. In particular
+$E_{G_+}=o(1)$ does not imply $z>0$, $|a_{\rm as}|/z\le1/4$,
+or a nonzero clock seed.
+\end{remark}
+
+\section{The strong field contains a non-negligible cross drive}
+This section isolates the central obstruction before attempting
+the Q2 crossing or chart-entry assertions.
+
+\begin{lemma}[Exact original-field consequence of MOMC]
+\label{an02q2epv1:field}
+For any fixed $L\ge R=79/51$, evaluate the original scaled
+receiver field on $[-L,L]^2$, using the actual population.
+Define
+\[
+ F(t,r)=\phi(\min(t,r))+r\Phi(\min(t,r)).
+\]
+Up to an error $\mathcal E_q(t,x,y)$, that field is
+\begin{align}
+ 2f_x^M(x,y)&=-(1-M)x+\rho\phi(\rho x)
+       -\rho M F(\rho x,\rho a_\rho)+\lambda y\Phi(\rho x),
+       \nonumber\\
+ 2f_y^M(x,y)&=-(1-M)y-Ma_\rho+\rho\mathcal K(\rho x).
+ \label{an02q2epv1:coherentfield}
+\end{align}
+Uniformly over this receiver square,
+\begin{align}
+ |\mathcal E_q(t,x,y)|
+ &\le C_L\{q^2+\mu(t)/q+M(t)[e(t)+\overline D(t)]\},\nonumber\\
+ \int_{t_m}^{t_h}\sup_{[-L,L]^2}|\mathcal E_q|\dd t
+ &\le C_L\{q^v+\eps_m+q^2(1+\ell)+q\ell^2\}=o(1),
+ \label{an02q2epv1:fieldbudget}
+\end{align}
+where $e$ is MOMC's actual-reference offset from $(a_\rho,a_\rho)$,
+$\overline D$ its normalized strong first absolute moment, and
+$\eps_m=q^{s+d/2}$. This is a statement about the field on a fixed
+square; it does not assert that an untracked Q2 receiver lies there.
+\end{lemma}
+\begin{proof}
+MOMC's \texttt{reduction} lemma holds for every fixed finite
+receiver/donor radius; use radius $L$ and strong donors in its
+smaller square of radius $R$. It gives the finite-noise and
+complement terms $C_Lq^2+160\mu/q$. In the leading field it gives
+\[
+ Y=\int\eta\,\dd\mu_s,\qquad
+ \mathcal S(x)=\int F(\rho x,\rho\xi)\dd\mu_s
+\]
+in place of $Ma_\rho$ and $M F(\rho x,\rho a_\rho)$.
+For fixed $t$, $r\mapsto F(t,r)$ is globally $1$-Lipschitz:
+its derivative is $\Phi(\min(t,r))$, including the common
+one-sided derivative at $r=t$.
+Thus the replacement costs at most $C M(e+\overline D)$.
+MOMC supplies
+\[
+ \int e\le C(q^2+q^v+\eps_m+q^2\ell+q\ell^2),\qquad
+ \overline D(t)\le C\eps_m e^{-(t-t_m)/20},\qquad
+ \int\mu/q\le Cq\ell^2 .
+\]
+Together with $M\le1/2$ and $t_h-t_m=O(\ell)$ these prove
+\eqref{an02q2epv1:fieldbudget}.
+\end{proof}
+
+On the aligned ray $x=y\ge a_\rho$,
+$F(\rho x,\rho a_\rho)=\mathcal K(\rho a_\rho)$.
+Both rows of \eqref{an02q2epv1:coherentfield} therefore equal
+\begin{equation}
+ x'=f_0(x)+\frac M2(x-a_\rho),\qquad
+ f_0(x)=\frac{\rho\mathcal K(\rho x)-x}{2}
+       =-\omega x+g(x),\quad
+ g(x)=\frac{\rho}{2}\mathcal K(-\rho x)>0 .
+ \label{an02q2epv1:scalar}
+\end{equation}
+In particular the $y$-row contains $-Ma_\rho/2$.
+This is part of the leading field, not the error in
+\eqref{an02q2epv1:fieldbudget}. In physical coordinates its source
+includes the strong second output, of size $qMa_\rho$.
+An $O(q)$ Cartesian cross drive has relative size $O(M/x)$
+when the receiver has $\theta=qx$.
+For fixed $x$, this is not a vanishing quantity as $q\to0$.
+
+\section{Exact failing inequality for the universal factor}
+\begin{proposition}[Comparison obstruction within the defined leading system]
+\label{an02q2epv1:obstruction}
+Fix $\rho$ in the ratio box, any $L>a_\rho$, and $0<M_0<1/4$.
+Let $M'=M(1-M)$, $M(0)=M_0$, and
+\[
+ T=\log\frac{1-M_0}{M_0},\qquad M(T)=1/2,\qquad
+ D(t)=\exp\!\left(\frac12\int_0^t M(w)\dd w\right)
+     =\sqrt{\frac{1-M_0}{1-M(t)}}.
+\]
+Choose the target-only solution $\widehat x'=f_0(\widehat x)$
+with $\widehat x(T)=L$, and solve \eqref{an02q2epv1:scalar}
+from $x(0)=\widehat x(0)$.
+Then
+\begin{equation}
+ \frac{\,1/x(T)\,}{D(T)^{-1}/\widehat x(T)}
+ \ge \exp\!\left(\frac{a_\rho\log3}{8\sqrt6\,L}\right)>1 .
+ \label{an02q2epv1:failure}
+\end{equation}
+In particular this discrepancy does not tend to one when
+$M_0=A_q q^u\to0$ and $L$ is fixed. It occurs for aligned receivers
+and an exactly atomic resident, without finite-noise, donor-spread,
+outside-mass, or antisymmetric errors.
+\end{proposition}
+\begin{proof}
+The identity $\mathcal K(z)-\mathcal K(-z)=z$ gives the last
+formula in \eqref{an02q2epv1:scalar}. Its derivative satisfies
+\[
+ g'(x)=-\frac{\lambda}{2}\Phi(-\rho x)<0,\qquad
+ f_0'(x)=-\omega+g'(x)\le-\omega .
+\]
+Since $f_0(a_\rho)=0$, the backwards target solution from $L>a_\rho$
+exists uniquely on every finite interval and stays above $a_\rho$.
+There is no finite-time explosion, since $f_0$ is globally Lipschitz.
+The trained scalar field also vanishes at $a_\rho$ and has derivative
+at most $-\omega+M/2\le-1/200<0$, using $\omega\ge51/200$.
+Its solution stays above $a_\rho$.
+
+Scalar comparison now gives $x\ge\widehat x$, because on this ray
+the added drive is $M(x-a_\rho)/2\ge0$.
+The function $g(x)/x$ is strictly decreasing for $x>0$.
+A direct logarithmic differentiation, with positive denominators,
+gives the exact identity
+\begin{equation}
+ \frac{\dd}{\dd t}\log\frac{D\widehat x}{x}
+ =\frac{g(\widehat x)}{\widehat x}-\frac{g(x)}x
+       +\frac{Ma_\rho}{2x}
+ \ge\frac{Ma_\rho}{2x}>0 .
+ \label{an02q2epv1:logidentity}
+\end{equation}
+At time zero the logarithm is zero. Thus also
+$x(t)\le D(t)\widehat x(t)\le\sqrt2\,\widehat x(t)$.
+
+On the terminal interval $[T-\log3,T]$, logistic mass is
+between $1/4$ and $1/2$. Since $f_0(x)\ge-\omega x$,
+\[
+ \widehat x(t)\le L e^{\omega(T-t)}\le\sqrt3\,L,\qquad
+ x(t)\le\sqrt6\,L .
+\]
+Integration of \eqref{an02q2epv1:logidentity} on that interval yields
+\begin{equation}
+ \int_0^T\frac{Ma_\rho}{2x}\dd t
+ \ge\frac{a_\rho\log3}{8\sqrt6\,L}.
+ \label{an02q2epv1:missingbudget}
+\end{equation}
+All terms dropped from \eqref{an02q2epv1:logidentity} are
+nonnegative, so there is no cancellation. This proves
+\eqref{an02q2epv1:failure}.
+\end{proof}
+
+\paragraph{Where the proposed route stops.}
+Tracking only the two diagonal drives suggests the desired law
+\begin{equation}
+ q\cot\theta(t_h)=
+ [2(1-M_0)]^{-1/2}\,
+ q\cot\widehat\theta(t_h)\,e^{o(1)} .
+ \label{an02q2epv1:requested}
+\end{equation}
+MOMC does justify the mass integral behind this factor:
+\[
+ \int_{t_m}^{t_h}M\dd t=
+ \log[2(1-M_0)]+O(q^2\ell^2).
+\]
+Indeed integrate
+$(\log(1-M))'=-M-M\delta_M/(1-M)$ and use
+$M/(1-M)\le1$ and $\int|\delta_M|=O(q^2\ell^2)$.
+The error is in treating the remaining receiver drive as relatively
+$o(1)$ uniformly at a \emph{fixed} threshold.
+
+For a compact positive scaled angle, $q\cot(qx)=x^{-1}
+[1+O_L(q^2)]$. Thus the missing central estimate, even in the
+aligned coherent test, is
+\begin{equation}
+ \sup_{\text{fixed-threshold receivers}}
+ \int \frac{M a_\rho}{2x}\dd t=o_q(1).
+ \tag{F}\label{an02q2epv1:failedinequality}
+\end{equation}
+Equation \eqref{an02q2epv1:missingbudget} proves that (F) is false
+for the defined leading comparison family. A crude perturbation
+estimate only bounds this cost by a constant of order the
+terminal inverse scaled angle. Keeping the sign and the exact
+leading field does not remove it:
+\eqref{an02q2epv1:logidentity} makes the correction positive.
+
+This is exactly the scale allowed at the $\eta=0$ boundary.
+RCET's endpoint-regularized target-only dichotomy is
+\[
+ q\cot\widehat\theta(10\ell)\asymp
+ \left[\frac{q^\gamma(s_0+q)}{c_0+q}\right]^{(1-\lambda)/\lambda},
+ \qquad
+ \gamma=1-5\lambda+\frac{2\lambda}{1-\lambda},
+\]
+before arrival in a fixed strong chart.
+At $c_0=Kq^\gamma$ with fixed sufficiently large $K$,
+$s_0\asymp1$, $\gamma<1$, and the inverse scaled angle has
+fixed order $K^{-(1-\lambda)/\lambda}$.
+The bounded time shift $-\log A_q+o(1)$ changes comparison
+constants, not this fixed-versus-vanishing distinction.
+Neither $(s_0+q)$ nor $(c_0+q)$ has been dropped at an endpoint.
+A fixed large $K$, or a fixed small $C_0$, does not make (F)
+an $o_q(1)$ bound. A margin tending to infinity would be an
+additional restriction on this group. The clock has a different,
+vanishing-ratio margin, but that alone does not prove its crossing,
+sign, or amplitude contracts.
+
+\begin{remark}[Precise status and stop]\label{an02q2epv1:stop}
+The proposition is an exact result in the stated leading system.
+We do not assert that its specially chosen receiver has already
+been matched to an actual initialized Q2 characteristic; proving
+that matching is part of the missing entry analysis.
+The original-field lemma shows that the omitted term is present
+in the field furnished by MOMC on each fixed receiver chart.
+Therefore the proposed universal-factor proof cannot discard it
+using MOMC's vanishing error budget.
+
+A label-dependent nonlinear transition factor could in principle
+replace \eqref{an02q2epv1:requested}. Such a replacement would need
+a proved original-flow matching through the off-chart and
+weak-axis crossing layers; it is not supplied by the diagonal
+argument and is not silently taken as a new hypothesis here.
+We stop at (F). No values for a valid new $K$, $Z$, or $C_{\rm clk}$
+are certified; no claim is made for (a)--(d), including the
+clock seed and its proposed $A_q^{-\lambda}$ factor.
+Only \eqref{an02q2epv1:entryenergy} supplies LCRC entry data.
+\end{remark}
+
+\begin{thebibliography}{9}\small
+\bibitem{P} P, \path{THEOREM_A_ANALYTICAL_PROGRESS.tex},
+\texttt{pa:earlybounds}, \texttt{pa:targetcomparison};
+leading scaled population field and \texttt{pa:resident}.
+\bibitem{Q2E} Q2E, \path{AN02_Q2_boundary_layers_and_cohort_energy_v1.tex},
+prefix \texttt{inc:AN02:q2completion:v1:},
+labels \texttt{energy}, \texttt{Jupper}, \texttt{Hupper}, \texttt{crossing}.
+\bibitem{RCET} RCET,
+\path{AN03_residual_closure_and_eta0_transport_v1.tex},
+Theorem 2.1 and Proposition 3.1. Its fixed-$C_0$ transport defect
+is $O(C_0+q^2\log(1/q))$, not $o_q(1)$ at fixed $C_0$.
+\bibitem{LCRC} LCRC, \path{AN03_ledger_cap_residual_closure_v1.tex},
+Section 1, entry contracts and balance definitions.
+\bibitem{BULK} BULK,
+\path{AN03_bulk_clock_and_secondary_Q2_energy_v1.tex},
+Theorem 4.1. Its bounded residual-integral hypothesis is not used here.
+\bibitem{PROFILE} PROFILE,
+\path{AN02_strong_entry_profile_and_tail_budget_v1.tex},
+Proposition 4.1 and exact target-only equations.
+\bibitem{OWPT} OWPT, \path{AN02_overlap_window_profile_transfer_v1.tex},
+\texttt{an02owptv1:early}; no right-half pairwise theorem is
+applied to left-ancestry labels.
+\bibitem{MOMC} MOMC,
+\path{AN02_moving_overlap_M_clock_passage_v1.tex},
+prefix \texttt{an02momcv1:}; \texttt{main}, \texttt{reduction},
+\texttt{massintegral}, \texttt{meanintegral}, \texttt{decay},
+\texttt{outsideclaim}. User-reviewed local source; retrieval
+provenance is recorded in the companion review note.
+\bibitem{Q2} Q2, \path{AN02_Q2_profiles_and_localized_tracking_v1.tex},
+target-only laws and conditional original-flow left-facing tracking.
+Its conditional output-defect contract is not assumed.
+\end{thebibliography}
+\end{document}
