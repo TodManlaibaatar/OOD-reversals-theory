@@ -1,10 +1,12 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.2 — October 6, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.3 — October 7, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
 **Revision 1.2 (Oct 6).** Records LCRC (`AN03_ledger_cap_residual_closure_v1`). Route 3 is proved: S0 is closed as a conditional original-flow implication, with no clock premise and no terminal cap. S0 now lists the assembly requirements its retained inputs must meet.
+
+**Revision 1.3 (Oct 7).** Records OWPT (`AN02_overlap_window_profile_transfer_v1`): S1 step 1 is proved as an exact original-flow result. S1 step 2 now starts at $M_0=M(t_m)\asymp e^{C_m}q^\sigma$ rather than $M\approx\delta$, and the $C_m$-free handoff identity is recorded.
 
 ---
 
@@ -111,6 +113,7 @@ So, **at the level of exponents**, the canonical point lies in the regime where 
 | Cohort-change identity; transverse inequality $D^+\sqrt{J_G}\le r_G\sqrt{J_G}+\ell_G\sqrt{E_G}$; residual-norm entry bounds | BULK |
 | Outside-group cost: value $a_*\mu_B/q$, receiver derivative $\le 34\mu_B/q$ | PROFILE |
 | Signed Jensen and weak-amplitude equation | SGWR |
+| Overlap-window strong profile at $t_m=(2/\omega)\log(1/q)+C_m$: full right-half-circle chart; shapes $\widehat h\,e^{O(q^{\zeta})}$ and weights $\widehat m\,e^{O(q^{\sigma})}$ relative to the same-field reference at $\alpha_c=qa_q$; reference offset $O(q^\zeta)$; normalized tail sandwich with cutoff | OWPT |
 
 ### 3.2 Exact comparison results (positive-noise target-only flow)
 
@@ -205,13 +208,20 @@ The steps are listed in dependency order. Each entry states the claim to prove, 
 **Why it is the bottleneck.** Every downstream theorem (c-passage, mass charging, bulk clock, secondary energy, selection) consumes this entry state.
 
 **Suggested route (matched comparisons).**
-1. *Overlap window.* At κ=10, all right-half-circle labels are in the strong chart by $(2/\omega)\log(1/q)\le 7.85\log(1/q)$. At that time $S\lesssim S_0e^{(1+2q^2)t}=q^{\kappa-2/\omega+o(1)}\ll\delta$. So there is a window where the early original-to-target comparison is still valid **and** the population is already charted. Transfer the PROFILE entry state to the original flow there.
-2. *Leading strong system in $M$.* From $M\approx\delta$ to $M\to1$, with $N\approx0$, run an $M$-clock version of LOC: fixed core, same-field reference, collective block $J_M$. **LOC Lemma 3.1 already proves $J_M\preceq J_1$ uniformly for $0\le M\le1$**, and the centered shape rate is $-(1-M)/2+\alpha$. The multiplier is $(M_1/M_0)^{\alpha-1/2}((1-M_0)/(1-M_1))^{\alpha}$, reproducing $\epsilon\asymp q^{-s}S_0^{1/2-\alpha}$ with no double counting of contraction.
+1. *Overlap window — **proved (OWPT Theorem 3.1), exact original-flow result.*** At $t_m=(2/\omega)\log(1/q)+C_m$ every right-half-circle label is charted, $S(t_m)\asymp e^{C_m}q^\sigma$ with $\sigma=10-2/\omega\in[110/51,710/231]$, and relative to the actual characteristic launched at $\alpha_c=qa_q$:
+   - pairwise shapes are $\widehat h\,e^{O(q^\zeta)}$, $\zeta=\sigma-1\ge59/51$;
+   - radial weights are $\widehat m\,e^{O(q^\sigma)}$;
+   - the reference itself is $a_q+O(q^\zeta)$ (mean-mode data, kept separate from shape).
+
+   The proof normalizes the label tangent by the target-only tangent. The unperturbed generator $h\begin{pmatrix}-1&1\\1&-1\end{pmatrix}$ has a row-stochastic propagator, so there is no logarithmic-time loss. The $O(S/q)$ coupling to the network output enters only through $\int S/q=O(q^\zeta)$.
+2. *Leading strong system in $M$.* **Start at $M_0=M(t_m)\asymp e^{C_m}q^\sigma$, not at $M\approx\delta$.** Step 1's crude bound on the network-output coupling, $O(S/q)$ in scaled units, is useful only while $S\ll q$. On $q\lesssim S\lesssim\delta$, only the structured $O(M)$ coupling of the leading field is accurate enough. Run an $M$-clock version of LOC to $M\to1$ with $N\approx0$: fixed core, same-field reference, collective block $J_M$. **LOC Lemma 3.1 already proves $J_M\preceq J_1$ uniformly for $0\le M\le1$**, and the centered shape rate is $-(1-M)/2+\alpha$. The multiplier is $(M_1/M_0)^{-d}((1-M_0)/(1-M_1))^{\alpha}$.
+   - *Handoff check.* $\epsilon_mM_0^d=e^{-dC_m}q^s\cdot e^{dC_m}q^{\sigma d}=q^{10d-s}$, using $\sigma d=10d-2s$. So $C_m$ cancels, and the step 2 multiplier from $M_0$ reproduces the target-only entry scale $\epsilon\asymp q^{-s}S_0^d$ with no double counting.
+   - *Possible route.* Same-field cooperativity (`pa:order`, $\partial_yx'=\partial_xy'\ge0$) is the Metzler property that made OWPT's normalized tangent positive. With a Metzler generator, $\ell^\infty$ control reduces to the row-sum spread, which LOC's centered shape rate supplies. The finite-$q$, gate-derivative and outside terms must be checked as perturbations.
 3. *Finite-noise field in the strong chart.* Prove the original-to-leading field error is $O(q^2)$ in value and receiver derivative on bounded scaled charts. Accumulated relative-weight drift is then $O(q^2\log(1/S_0))=O(q^2\kappa\log(1/q))\to0$.
 4. *Labels outside the chart.* Charge them by mass with the PROFILE $\mu/q$ cost, as in S2.
 5. *Strong-learning integrability.* $\int(1-M)=\log(M_1/M_0)$ in the leading law, plus the $O(q^2\log)$ defect.
 
-**Pitfalls.** An $O(\delta)$ early-comparison error is not $O(q)$; the target-only profile beyond $S\sim\delta$ is not a valid description of the trained flow; the center is $a_q$, not $a_\rho$.
+**Pitfalls.** An $O(\delta)$ early-comparison error is not $O(q)$. The target-only profile is not a valid description of the trained flow once $S\gtrsim q$, and transfer through the absolute early-comparison error fails even sooner: at the box corner its scaled size $q^\zeta$ exceeds the core scale $q^s$ (OWPT Remark 4.1). The center is $a_q$, not $a_\rho$, and the original core sits at the actual reference $a_q+O(q^\zeta)$, which must not be reset to $a_q$ when measuring shape.
 
 ### S2. Capped signed radial gain along escaping labels
 
@@ -341,7 +351,7 @@ Tracks that can run in parallel:
 
 | Track | Steps | Notes |
 |---|---|---|
-| I | S1 strong-stage tracking | Bottleneck for Theorem A. Start with the overlap-window transfer and the $M$-clock LOC. |
+| I | S1 strong-stage tracking | Bottleneck for Theorem A. Step 1 (overlap transfer) done (OWPT). Next: the $M$-clock passage from $M_0=M(t_m)$. |
 | II | S2 capped gain + S3 field contract | Share the c-form envelope; S2 closes two tail estimates. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
@@ -404,6 +414,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | BULK | `AN03_bulk_clock_and_secondary_Q2_energy_v1.tex` (+ review) |
 | RCET | `AN03_residual_closure_and_eta0_transport_v1.tex` (+ review), prefix `an03rcetv1:` |
 | LCRC | `AN03_ledger_cap_residual_closure_v1.tex` (+ review), prefix `an03lcrcv1:` |
+| OWPT | `AN02_overlap_window_profile_transfer_v1.tex` (+ review), prefix `an02owptv1:` |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

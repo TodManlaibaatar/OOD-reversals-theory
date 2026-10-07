@@ -1,0 +1,437 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf1}
+\newcommand{\Rhalf}{\mathcal R}
+\title{Multiplicative strong-profile transfer in the overlap window}
+\author{Analytical increment for review}
+\date{Version 1; October 6, 2026}
+\begin{document}\maketitle
+\begin{abstract}
+At the common right-half-circle arrival time, the original initialized
+flow reproduces the exact target-only joint angular profile relative
+to a same-field reference, with multiplicative error
+$\exp[O(q^{10-2/\omega-1})]$. Radial weights have multiplicative
+error $\exp[O(q^{10-2/\omega})]$. The proof normalizes the label
+tangent by the target-only tangent. Its unperturbed generator is a
+two-state contraction, preventing a logarithmic-time loss even for
+arbitrarily small pair separations. The additive reference shift
+is kept separate from shape. All results here concern only S1,
+step 1; no strong-learning passage or LCRC entry at the later time
+$t_0$ is claimed.
+\end{abstract}
+
+\section{Setting and the explicit overlap scales}
+All new labels use prefix \texttt{an02owptv1:}.
+Use the original balanced, untied initialized population of the
+foundations and checkpoint P:
+\[
+ P_1=N(e_1,q^2I_2),\quad P_2=N(\rho e_2,q^2I_2),\quad
+ P=(P_1+P_2)/2,\quad \rho\in[13/20,7/10],\quad S_0=q^{10}.
+\]
+The fixed initial label law is $\dd\alpha/(2\pi)$ and
+$\theta(0,\alpha)=\psi(0,\alpha)=\alpha$, $m(0,\alpha)=S_0$.
+Let $\Rhalf=[-\pi/2,\pi/2]$. Hats denote the exact aligned
+target-only flow with the same initialization; they do not denote
+the trained population.
+Retain PROFILE's notation
+\[
+ \lambda=\rho^2,\quad \omega=(1-\lambda)/2,\quad
+ a_\rho=\rho K(\rho a_\rho),\quad P_\rho=\Phi(\rho a_\rho),\quad
+ d=(1-\lambda P_\rho)/2,\quad s=d/\omega,\quad p=3/s.
+\]
+Its exact target-only attracting angle is $qa_q$, with
+$a_q=a_\rho+O(q^2)$. Fix a sufficiently large constant $C_m$
+from PROFILE's uniform arrival/time guard, independent of all later
+LCRC residual guards. Define
+\begin{align}
+ t_m&=\frac2\omega\log(1/q)+C_m,
+ &\sigma&=10-\frac2\omega,
+ &\zeta&=\sigma-1,\label{an02owptv1:time}\\
+ \overline S(t)&=q^{10}e^{(1+2q^2)t},
+ &\Lambda(t)&=\frac1q\int_0^t\overline S(v)\dd v.
+ \label{an02owptv1:envelope}
+\end{align}
+The powers obey, by substituting the endpoints of the monotone
+function $4/(1-\lambda)$,
+\begin{equation}\label{an02owptv1:powers}
+ \frac{110}{51}\le\sigma\le\frac{710}{231},\qquad
+ \frac{59}{51}\le\zeta\le\frac{479}{231}.
+\end{equation}
+In particular, uniformly on the ratio box,
+\begin{align}
+ \overline S(t_m)&=e^{C_m}q^\sigma
+                  \exp[2q^2t_m]=O(q^\sigma),
+ \label{an02owptv1:massscale}\\
+ \Lambda(t_m)&=
+ \frac{\overline S(t_m)-q^{10}}{q(1+2q^2)}
+ =O(q^\zeta)=o(1),\qquad q^2t_m=o(1).
+ \label{an02owptv1:defectscale}
+\end{align}
+All constants below are uniform in $\rho$ for the fixed choice of
+$C_m$. The source comparisons ensure $S(t)\le\overline S(t)$,
+so for every fixed $\delta>0$, $S(t_m)/\delta\to0$.
+
+\section{A multiplicative tangent estimate before and inside the chart}
+Write $a_\theta=(\cos\theta,\sin\theta)$,
+$b_\psi=(\cos\psi,\sin\psi)$, and use perpendicular unit vectors
+with the usual positive orientation. At time $t$ fix the actual
+population field and set
+\[
+ A_\theta=\E_P[XX^T\one_{\{a_\theta^TX>0\}}],\quad
+ C_f(t,\theta)=\E_P[f_t(X)X^T\one_{\{a_\theta^TX>0\}}].
+\]
+Then $R=A_\theta-C_f$ and the angular receiver field is
+\begin{equation}\label{an02owptv1:field}
+ F(t,\theta,\psi)=
+ \begin{pmatrix}b_\psi^TRa_\theta^\perp\\
+ (b_\psi^\perp)^TRa_\theta\end{pmatrix}
+ =F^0(\theta,\psi)-F^f(t,\theta,\psi).
+\end{equation}
+Here $F^0$ uses $A_\theta$ in place of $R$, and $F^f$ uses $C_f$.
+The field is held fixed when differentiating a receiver or an initial
+label: one is not varying the initial population measure.
+
+\begin{lemma}[Receiver Jacobian comparison]
+\label{an02owptv1:jacobian}
+For $0\le t\le t_m$, uniformly in $\alpha\in\Rhalf$,
+\begin{equation}\label{an02owptv1:jacobiandecomp}
+ D F(t,\theta(t,\alpha),\psi(t,\alpha))
+ =\begin{pmatrix}-g&h\\h&-g\end{pmatrix}+\mathcal E_\alpha(t),
+ \qquad \|\mathcal E_\alpha(t)\|_\infty
+ \le C\overline S(t)/q,
+\end{equation}
+where, at $\vartheta=\widehat\theta(t,\alpha)$,
+\[
+ g=a_\vartheta^TA_\vartheta a_\vartheta,\qquad
+ h=(a_\vartheta^\perp)^TA_\vartheta a_\vartheta^\perp\ge0.
+\]
+The bound does not require that the receiver is already charted.
+\end{lemma}
+\begin{proof}
+P's proved early comparison, applicable because
+$\overline S(t_m)=o(1)$, gives
+\begin{equation}\label{an02owptv1:early}
+ |\theta-\widehat\theta|+|\psi-\widehat\theta|
+ \le C\overline S(t),\qquad
+ \left|\log\frac{m}{\widehat m}\right|\le4\overline S(t).
+\end{equation}
+PROFILE Proposition 4.1 applied to the whole population gives
+$\|C_f\|\le a_*S$, $\|\partial_\theta C_f\|\le32S/q$,
+where $a_*=1/2+q^2$. Its first, unscaled matrix bounds are global
+in receiver angle. Differentiating \eqref{an02owptv1:field} therefore
+gives $\|DF^f\|_\infty\le CS/q$ globally. In scaled angular
+coordinates the velocity value is $O(S/q)$, and its receiver
+derivative is still $O(S/q)$.
+
+For the target matrix, $0\preceq A_\theta\preceq a_*I$ and
+$A_\theta'a_\theta=0$. Also $\|A_\theta'\|\le32/q$:
+the same two-endpoint polar formula used in PROFILE bounds each
+degree-two angular weight by $16/q$, now with matrix integrand
+$ee^T$. This proves the needed derivative bound without an
+assumption on the input angle. Symmetry gives
+$a_\theta^TA_\theta'=0$ as well.
+
+Direct receiver differentiation gives
+\[
+ DF^0(\theta,\psi)=
+ \begin{pmatrix}
+ -b^TA_\theta a+b^TA_\theta'a^\perp & (b^\perp)^TA_\theta a^\perp\\
+ (b^\perp)^TA_\theta a^\perp & -b^TA_\theta a
+ \end{pmatrix}.
+\]
+The boundary term in the lower-left entry vanishes by $A_\theta'a=0$.
+At $\theta=\psi=\vartheta$, the upper-left boundary term vanishes
+too, and the matrix is precisely the one in
+\eqref{an02owptv1:jacobiandecomp}. At the actual angles,
+$b^TA_\theta'a^\perp=(b-a)^TA_\theta'a^\perp$ is bounded by
+$C|\psi-\theta|/q$. All other differences are bounded by
+$C(|\theta-\vartheta|+|\psi-\vartheta|)/q$, using the displayed
+first derivative of $A$, not a second derivative. Combine these
+bounds with \eqref{an02owptv1:early} and $S\le\overline S$.
+The Gaussian boundary formula and continuity of the network on the
+circle justify the receiver derivatives at fixed $q>0$.
+\end{proof}
+
+\begin{lemma}[Relative tangents and pairwise separations]
+\label{an02owptv1:tangents}
+There is a fixed $C$ such that, with $\eta(t)=C\Lambda(t)$ and
+sufficiently small $q$, for every $0\le t\le t_m$,
+\begin{equation}\label{an02owptv1:tangentrange}
+ e^{-\eta(t)}\le
+ \frac{\partial_\alpha\theta(t,\alpha)}{
+       \partial_\alpha\widehat\theta(t,\alpha)},\quad
+ \frac{\partial_\alpha\psi(t,\alpha)}{
+       \partial_\alpha\widehat\theta(t,\alpha)}
+ \le e^{\eta(t)}.
+\end{equation}
+Both ratios lie in the stated interval. For any $\alpha>\beta$
+in $\Rhalf$, each of
+\begin{equation}\label{an02owptv1:pairs}
+ \frac{\theta(t,\alpha)-\theta(t,\beta)}{
+       \widehat\theta(t,\alpha)-\widehat\theta(t,\beta)},\qquad
+ \frac{\psi(t,\alpha)-\psi(t,\beta)}{
+       \widehat\theta(t,\alpha)-\widehat\theta(t,\beta)}
+\end{equation}
+lies in $[e^{-\eta(t)},e^{\eta(t)}]$ as well.
+\end{lemma}
+\begin{proof}
+Put $\widehat p=\partial_\alpha\widehat\theta$.
+The exact target-only scalar field has
+$v_q'=h-g$ (P's boundary identity), so
+\[
+ \widehat p(t,\alpha)=\exp\!\left(\int_0^t(h-g)\dd v\right)>0.
+\]
+For $p=(\partial_\alpha\theta,\partial_\alpha\psi)^T$,
+differentiate the same-field characteristic with respect to its
+initial label. The initial tangent is $(1,1)^T$, and
+$p'=DF\,p$. Define $w=p/\widehat p$. By Lemma
+\ref{an02owptv1:jacobian},
+\begin{equation}\label{an02owptv1:normalized}
+ w'=h\begin{pmatrix}-1&1\\1&-1\end{pmatrix}w+
+ \mathcal E_\alpha w,\qquad w(0)=\boldsymbol1.
+\end{equation}
+The propagator of the first term has nonnegative entries, row sums
+one, and operator norm one in $\ell^\infty$: explicitly its entries
+are $(1\pm e^{-2\int_s^t h})/2$ in the two alternating positions.
+It fixes $\boldsymbol1$. Variation of constants thus gives, with
+$D(t)=\int_0^t\|\mathcal E_\alpha(v)\|_\infty\dd v$,
+\[
+ \|w(t)\|_\infty\le e^{D(t)},\qquad
+ \|w(t)-\boldsymbol1\|_\infty\le e^{D(t)}-1.
+\]
+For $D(t)\le1/4$, the last bound is at most $2D(t)$ and
+$1-2D(t)\ge e^{-4D(t)}$ (integrate
+$2/(1-2u)\le4$ for $0\le u\le1/4$).
+Hence every component lies between $e^{-4D(t)}$ and $e^{4D(t)}$.
+Since $D(t)\le C\Lambda(t)=o(1)$ uniformly, this proves
+\eqref{an02owptv1:tangentrange} after enlarging $C$.
+Integrate the two positive derivative inequalities in the initial
+label from $\beta$ to $\alpha$ to obtain
+\eqref{an02owptv1:pairs}. There is no lower bound assumption on the
+size of the pairwise separation. The denominator is positive by
+scalar uniqueness and the displayed expression for $\widehat p$.
+
+For fixed $q$, the receiver field is continuously differentiable
+in its angular arguments and continuous in time on this compact
+interval; the usual variational equation is therefore legitimate.
+This differentiates labels in one fixed population, not the donor
+field as the population varies. No sign of the original cross
+derivatives is assumed: positivity is obtained from
+\eqref{an02owptv1:normalized} and its small perturbation.
+\end{proof}
+
+\begin{remark}[Relation to the suggested $\int S/q$ budget]
+\label{an02owptv1:actualmass}
+The result has $\eta=O(\int\overline S/q)$ directly from the proved
+early envelope. It also has $\eta=O(\int S/q)$ on this interval.
+Indeed PROFILE's positive-coordinate lower growth gives
+$\widehat U_1(t,\alpha)\ge\sqrt{S_0}\cos\alpha\,e^{t/2}$ on
+$[0,\pi/4]$. Integrating its square and using
+\eqref{an02owptv1:early},
+\[
+ S(t)\ge \frac1{16}e^{-4\overline S(t)}S_0e^t.
+\]
+Since $\sup_{t\le t_m}(4\overline S(t)+2q^2t)=o(1)$,
+$\overline S(t)\le32 S(t)$ for small $q$. Thus the suggested
+integrated scale is valid, without using an assumed future mass law.
+The absolute comparison in \eqref{an02owptv1:early} is used to
+estimate Jacobian coefficients, not as an additive shape error.
+\end{remark}
+
+\section{Overlap theorem and explicit transferred profiles}
+Choose the reference label
+\[
+ \alpha_c=qa_q,\qquad
+ (\theta_c(t),\psi_c(t))=(\theta(t,\alpha_c),\psi(t,\alpha_c)).
+\]
+This is an actual characteristic of the original field. Its target-only
+comparison is stationary in angle: $\widehat\theta(t,\alpha_c)=qa_q$.
+It is not forced to remain aligned in the original flow.
+At time $t_m$, define
+\[
+ h_x(\alpha)=\frac{\theta(t_m,\alpha)-\theta_c(t_m)}q,
+ \quad h_y(\alpha)=\frac{\psi(t_m,\alpha)-\psi_c(t_m)}q,
+ \quad\widehat h(\alpha)=\widehat\theta(t_m,\alpha)/q-a_q,
+ \quad D(\alpha)=|h_x(\alpha)|+|h_y(\alpha)|.
+\]
+
+\begin{theorem}[Exact original-flow overlap profile]
+\label{an02owptv1:transfer}
+Under only the initialized model and the proved PROFILE and early
+comparison results used above, the following assertions hold for
+all sufficiently small $q$.
+
+Every label of $\Rhalf$ is in a bounded joint strong chart at $t_m$:
+for a fixed $L$ from PROFILE,
+\begin{equation}\label{an02owptv1:charted}
+ |\theta(t_m,\alpha)|,|\psi(t_m,\alpha)|\le q(L+1),\qquad
+ S(t_m)\le e^{C_m}q^\sigma e^{2q^2t_m}\ll\delta.
+\end{equation}
+The reference and shape errors satisfy
+\begin{align}
+ |\theta_c(t_m)/q-a_q|+|\psi_c(t_m)/q-a_q|
+ &\le Cq^\zeta,\label{an02owptv1:reference}\\
+ h_x(\alpha)&=\widehat h(\alpha)e^{\varepsilon_x(\alpha)},\quad
+ h_y(\alpha)=\widehat h(\alpha)e^{\varepsilon_y(\alpha)},\quad
+ |\varepsilon_x|,|\varepsilon_y|\le\eta_m:=Cq^\zeta,
+ \label{an02owptv1:shape}\\
+ m(t_m,\alpha)&=\widehat m(t_m,\alpha)e^{\varepsilon_m(\alpha)},
+ \qquad |\varepsilon_m|\le r_m:=Cq^\sigma.
+ \label{an02owptv1:weights}
+\end{align}
+At $\alpha_c$ both displacements are exactly zero; no ratio at zero
+is needed. The pairwise version \eqref{an02owptv1:pairs} holds
+for all other pairs, not only pairs involving the reference.
+
+Put $c_0=\cos\alpha\ge0$. In PROFILE's two-sided Q1 region
+$\alpha\in[\pi/4,\pi/2]$, both $h_x,h_y$ are positive and
+\begin{equation}\label{an02owptv1:q1profile}
+ h_x,h_y\asymp e^{-dC_m}q^s(c_0+q)^{-s}.
+\end{equation}
+On $[0,\pi/4]$ their absolute values are at most
+$C e^{-dC_m}q^s$. On the Q4 region
+$\alpha\in[-\pi/2,-\pi/4]$, both are negative and
+\begin{equation}\label{an02owptv1:q4profile}
+ -h_x,-h_y\asymp
+ e^{-dC_m}q^{(1+\lambda)s}(c_0+q)^{-(1-\lambda)s}.
+\end{equation}
+On $[-\pi/4,0]$ the absolute values are at most
+$C e^{-dC_m}q^{(1+\lambda)s}$.
+On the entire right half-circle the radial profile is
+\begin{equation}\label{an02owptv1:radialprofile}
+ m(t_m,\alpha)\asymp e^{C_m}q^\sigma(c_0+q)^2,
+ \qquad M_{\Rhalf}(t_m)\asymp e^{C_m}q^\sigma.
+\end{equation}
+The multiplicative error relative to each exact target-only quantity
+is that in \eqref{an02owptv1:shape}--\eqref{an02owptv1:weights};
+the power-law displays retain PROFILE's fixed comparison constants.
+They do not assert that those constants become one.
+\end{theorem}
+\begin{proof}
+PROFILE's entry theorem and right-half-circle corollary put all
+target-only right-half-circle labels in $[-qL,qL]$ at $t_m$, after
+fixing $C_m$ sufficiently large. Since
+$\overline S(t_m)/q=O(q^\zeta)=o(1)$, the early comparison gives
+\eqref{an02owptv1:charted} and \eqref{an02owptv1:reference}.
+These are valid uses of an absolute error for a bounded chart and
+the reference position, not for small relative shapes.
+
+Apply the pairwise theorem to $\alpha$ and $\alpha_c$, reversing
+their order when necessary. This proves the signed multiplicative
+relations \eqref{an02owptv1:shape} even when the displacements are
+much smaller than the reference shift. The radial estimate in
+\eqref{an02owptv1:early} proves \eqref{an02owptv1:weights}.
+The exact substitutions in PROFILE are
+\begin{align*}
+ \epsilon_m=q^{-s}e^{-dt_m}&=e^{-dC_m}q^s,\\
+ s_-=2d=(1-\lambda)s,\qquad
+ \epsilon_{-,m}=q^{-s_-}e^{-dt_m}
+ &=e^{-dC_m}q^{(1+\lambda)s},\\
+ S_0e^{t_m}&=e^{C_m}q^\sigma.
+\end{align*}
+Insert these into its already proved displacements and weights,
+and use \eqref{an02owptv1:shape}--\eqref{an02owptv1:weights}.
+Integrating the weight comparison over the fixed half-circle gives
+the mass statement. No new entry or residual hypothesis has been
+introduced.
+\end{proof}
+
+\begin{corollary}[Normalized radial profile and finite cutoff]
+\label{an02owptv1:tail}
+Let $\nu_m$ and $\widehat\nu_m$ be the original and target-only
+radial probability measures on the initial labels $\Rhalf$, and put
+$\widehat D=2|\widehat h|$. For every $z>0$,
+\begin{equation}\label{an02owptv1:tailsandwich}
+ e^{-2r_m}\widehat\nu_m\{\widehat D>e^{\eta_m}z\}
+ \le\nu_m\{D>z\}
+ \le e^{2r_m}\widehat\nu_m\{\widehat D>e^{-\eta_m}z\}.
+\end{equation}
+In particular, with $\epsilon_m=e^{-dC_m}q^s$ and $p=3/s$,
+\begin{equation}\label{an02owptv1:tailpowers}
+ \nu_m\{D>z\}\le C\min\{1,(\epsilon_m/z)^p\},
+ \qquad
+ \nu_m\{D>z\}\ge c(\epsilon_m/z)^p
+ \quad(C_1\epsilon_m\le z\le c_1\epsilon_m q^{-s}).
+\end{equation}
+There is no tail beyond $C\epsilon_m q^{-s}=Ce^{-dC_m}$.
+The Q4 cutoff is the smaller scale
+$C\epsilon_{-,m}q^{-s_-}=Ce^{-dC_m}q^{2\lambda s}$,
+and its own upper tail index is $3/[(1-\lambda)s]$.
+\end{corollary}
+\begin{proof}
+Equation \eqref{an02owptv1:weights} also bounds the two normalizing
+masses by $e^{\pm r_m}$, so the normalized density ratio on labels
+lies in $[e^{-2r_m},e^{2r_m}]$.
+Equation \eqref{an02owptv1:shape} gives
+$e^{-\eta_m}\widehat D\le D\le e^{\eta_m}\widehat D$.
+These two inequalities prove \eqref{an02owptv1:tailsandwich}.
+Apply PROFILE's full-right-half-circle tail and cutoff result;
+shrink and enlarge its fixed range constants once to accommodate
+the factors tending to one. The Q4 claims follow from its separate
+profile and $s_-=(1-\lambda)s$. This transfers a finite-cutoff
+profile, not an untruncated asymptotic density.
+\end{proof}
+
+\section{Reference shift, scope, and stopping point}
+\begin{remark}[Why the absolute angular comparison is insufficient]
+\label{an02owptv1:absolutepitfall}
+At $\rho=7/10$, $\zeta=59/51$. PROFILE's analytic bound
+$P_\rho<153/250$ gives
+\[
+ s=\frac{1-(49/100)P_\rho}{51/100}
+ >\frac{17503}{12750}
+ >\frac{14750}{12750}=\frac{59}{51}.
+\]
+Thus the available scaled absolute-error budget $O(q^\zeta)$
+decays more slowly than the core scale $q^s$. This does not claim a
+lower bound on the actual angular error; it shows why that budget
+cannot prove relative core accuracy. The tangent argument instead
+places it in the coefficient defect and centers at the actual
+same-field characteristic. The reference is $a_q+O(q^\zeta)$ in
+each scaled coordinate, not identically $a_q$.
+\end{remark}
+
+This increment supplies the original strong family's joint profile,
+radial weighting, full right-half-circle chart, and reference data
+at $t_m$, with explicit powers. The mass there is still
+$\asymp q^\sigma\ll1$. It does not identify $t_m$ with LCRC's later
+passage entry $t_0$, prove strong learning or its guard-independent
+integral $B_s$, or supply Q2 Cartesian entry, seed, transverse energy,
+or secondary profile at $t_0$. Nor does it prove subsequent core or
+chart retention, outside mass, or any S2 distance/gain contract.
+The overlap chart constant is fixed by PROFILE and $C_m$, independent
+of LCRC's $(B,M,K_Y)$. Its later continuation is still unproved.
+
+The requested first link closes using the already proved sources
+and the displayed variational argument. Work stops here: no
+$M$-clock passage, capped radial-gain proof, bridge argument, or
+consolidation is performed.
+
+\begin{thebibliography}{9}\small
+\bibitem{PROFILE} PROFILE,
+\emph{AN02 strong entry profile and tail budget v1}.
+Prefix \texttt{inc:AN02:profile:v1:}; labels \texttt{root},
+\texttt{arrival}, \texttt{entry}, \texttt{rightcircle}, \texttt{cost}.
+\bibitem{P} P, \emph{THEOREM A ANALYTICAL PROGRESS}, checkpoint 1.0.
+Labels \texttt{pa:earlybounds}, \texttt{pa:targetcomparison},
+\texttt{pa:finiteqorder}; only the exact analytic portions are used.
+\bibitem{F} \emph{RELU population foundations v2}, exact balanced
+characteristic equations, Gaussian gate-boundary regularity and P5.
+\bibitem{LCRC} LCRC, \emph{AN03 ledger cap residual closure v1}.
+Section 1 and Theorem 4.1 define the later contracts; none is used
+as a premise to this overlap proof.
+\bibitem{ROADMAP} \emph{Unified analytic theory roadmap}, v1.2,
+October 6, 2026: S0 retained inputs and assembly requirements;
+S1, step 1.
+\end{thebibliography}
+\end{document}
