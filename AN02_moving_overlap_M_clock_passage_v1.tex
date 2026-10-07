@@ -1,0 +1,744 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\newcommand{\Rhalf}{\mathcal R}
+\newcommand{\Lhalf}{\mathcal B}
+\newcommand{\one}{\mathbf1}
+\newcommand{\ones}{\boldsymbol1}
+\newcommand{\eps}{\varepsilon}
+\title{Moving-overlap strong passage to half mass}
+\author{Analytical increment for review}
+\date{Version 1; October 6, 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For the original initialized flow with $S_0=q^{10}$, a moving
+overlap makes every right-half-circle displacement small.
+We prove its passage to strong mass $1/2$, with a logistic clock
+defect $O(q^2\log^2(1/q))$, uniform relative shape transport,
+and relative radial-weight control. The fixed initial left half-circle
+has mass at most $Cq^2\log^2(1/q)$ times the strong mass, so its
+integrated scaled field cost is $O(q\log^2(1/q))$.
+Two ingredients are proved here: a bounded-chart finite-noise
+value-and-receiver-derivative reduction, and a left-ancestry
+mass estimate. Neither is an additional retained hypothesis.
+The chart comes from the stationary leading center, independently
+of LCRC's guards. All conclusions stop at strong half mass.
+\end{abstract}
+
+\section{Model, notation and statement}
+All new labels use prefix \texttt{an02momcv1:}.
+Use the exact balanced, untied initialized model of P and OWPT:
+$P=(P_1+P_2)/2$, $P_1=N(e_1,q^2I_2)$,
+$P_2=N(\rho e_2,q^2I_2)$, $\rho\in[13/20,7/10]$.
+Initial labels $\beta$ have law $\dd\beta/(2\pi)$,
+$m(0,\beta)=q^{10}$ and $\theta(0,\beta)=\psi(0,\beta)=\beta$.
+The fixed strong ancestry is $\Rhalf=[-\pi/2,\pi/2]$;
+$\Lhalf$ is its complement in the label circle. Write
+\[
+ M(t)=\int_{\Rhalf}m(t,\beta)\frac{\dd\beta}{2\pi},\qquad
+ \mu(t)=\int_{\Lhalf}m(t,\beta)\frac{\dd\beta}{2\pi},
+ \qquad S=M+\mu .
+\]
+These are fixed-label masses, not moving chart masks.
+Set
+\[
+ K(z)=\phi(z)+z\Phi(z),\quad \lambda=\rho^2,\quad
+ a=\rho K(\rho a),\quad \alpha=\lambda\Phi(\rho a)/2,\quad
+ d=1/2-\alpha,\quad \omega=(1-\lambda)/2,\quad s=d/\omega .
+\]
+The exact target-only root is $a_q=a+O(q^2)$.
+Hats always mean that exact comparison flow.
+For $\ell=\log(1/q)\ge1$ define
+\begin{align}
+ t_m&=(2/\omega+1/2)\ell,\quad C_m=\ell/2,\quad
+ \sigma=10-2/\omega,\quad \zeta=\sigma-1,\nonumber\\
+ u&=\sigma-\tfrac12,\qquad v=\zeta-\tfrac12=u-1,\qquad
+ \eps_m=q^{s+d/2},\qquad M_0=M(t_m),\qquad
+ A_q=M_0/q^u. \label{an02momcv1:scales}
+\end{align}
+Here $u\ge169/102$, $v\ge67/102$, $s<2$, and
+$d>17503/50000$. All estimates are uniform on the ratio box.
+The reference is the actual original characteristic with label
+$\beta_c=qa_q$. In the strong chart write
+\[
+ (c(t),z(t))=(\theta(t,\beta_c)/q,\psi(t,\beta_c)/q),\quad
+ h_x(t,\beta)=\theta(t,\beta)/q-c(t),\quad
+ h_y(t,\beta)=\psi(t,\beta)/q-z(t).
+\]
+It is never reset. Define two error scales
+\begin{align}
+ \mathcal W_q&=q^2\ell^2,\nonumber\\
+ \mathcal D_q&=q^{d/2}+\eps_m+q^v+q^2(1+\ell)+q\ell^2=o(1),
+ \qquad
+ \mathcal G(M_1,M_0)=
+ (M_1/M_0)^{-d}\left(\frac{1-M_0}{1-M_1}\right)^\alpha .
+ \label{an02momcv1:errors}
+\end{align}
+
+\begin{theorem}[Original-flow moving overlap and half-mass passage]
+\label{an02momcv1:main}
+For sufficiently small $q$, the following hold with no additional
+entry, outside-mass, clock, or residual assumptions.
+
+At $t_m$, OWPT's multiplicative comparisons hold with
+\[
+ \eta_m=O(q^v),\qquad r_m=O(q^u),\qquad
+ \max_{\beta\in\Rhalf}(|h_x|+|h_y|)\le Cq^{d/2}.
+\]
+The normalized tail has index $3/s$, parameter $\eps_m$, and
+cutoff $Cq^{d/2}$. Moreover $0<c_A\le A_q\le C_A$.
+
+There is a first time $t_h>t_m$ with $M(t_h)=1/2$.
+For every $t\in[t_m,t_h]$,
+\begin{align}
+ \frac{M'}M&=1-M+\delta_M,\qquad
+ \int_{t_m}^{t_h}|\delta_M|\,\dd t\le C\mathcal W_q,
+ \label{an02momcv1:massclaim}\\
+ t_h&=10\ell-\log A_q+O(\mathcal W_q+q^u),
+ \label{an02momcv1:timeclaim}\\
+ |\theta(t,\beta)/q|,\ |\psi(t,\beta)/q|
+ &<R:=79/51 \quad(\beta\in\Rhalf).
+ \label{an02momcv1:chartclaim}
+\end{align}
+The reference satisfies, with a fixed $g>0$ and $\tau=t-t_m$,
+\begin{align}
+ |(c,z)-(a,a)|_2
+ &\le C(q^2+q^v)e^{-g\tau}
+   +C\eps_m\int_0^\tau e^{-g(\tau-w)}e^{-w/20}\dd w
+   +Cq^2+Cq\ell^2M(t), \label{an02momcv1:meanclaim}\\
+ \int_{t_m}^{t_h}|(c,z)-(a,a)|_2\dd t
+ &\le C\big(q^2+q^v+\eps_m+q^2\ell+q\ell^2\big).
+ \label{an02momcv1:meanintegral}
+\end{align}
+
+For every pair $\beta>\gamma$ in $\Rhalf$, for $j=x,y$,
+the ratio of its positive coordinate separation at $t$ to that at
+$t_m$ is
+\begin{equation}\label{an02momcv1:pairclaim}
+ \mathcal G(M(t),M_0)\exp[O(\mathcal D_q)],
+\end{equation}
+uniformly in the pair and time, including arbitrarily close pairs.
+This includes signed displacements relative to $\beta_c$;
+the zero displacement stays zero.
+For all $\beta,\gamma\in\Rhalf$,
+\begin{equation}\label{an02momcv1:weightclaim}
+ \left|\log\frac{m(t,\beta)/m(t_m,\beta)}
+                    {m(t,\gamma)/m(t_m,\gamma)}\right|
+ \le C\mathcal W_q.
+\end{equation}
+The precise normalized tail sandwich is given in
+\eqref{an02momcv1:tailsandwich} below. Finally,
+\begin{equation}\label{an02momcv1:outsideclaim}
+ \mu(t)\le Cq^2\ell^2M(t),\qquad
+ \int_{t_m}^{t_h}\frac{\mu(t)}q\dd t\le Cq\ell^2.
+\end{equation}
+In particular the whole left ancestry, whether charted or not,
+has mass $o(q)$ throughout this interval.
+\end{theorem}
+
+\section{Part A: uniformity and the moving overlap}
+\begin{lemma}[Uniformity in the post-arrival time]
+\label{an02momcv1:uniformity}
+PROFILE's displacement, cutoff and radial comparisons have constants
+independent of the terminal offset throughout their stated domain
+\[
+ T\ge (2/\omega)\ell+C,\qquad q^2T\le1 .
+\]
+For the moving time in \eqref{an02momcv1:scales}, they and OWPT
+give the conclusions of Part A in Theorem~\ref{an02momcv1:main}.
+\end{lemma}
+\begin{proof}
+Here is the needed time-uniformity audit; the completed arrival
+and tail arguments are not repeated. PROFILE's local equation is
+$h'=-b_q(h)h$, with $b_q(0)=\sigma_q=d+O(q^2)$,
+$b_q\ge\omega/2$ and $|b_q(h)-\sigma_q|\le C|h|$ on its fixed
+chart. Thus after arrival
+\[
+ \int_0^\infty |h(w)|\dd w\le2|h(0)|/\omega,\qquad
+ h(T)=h(T_L)e^{-\sigma_q(T-T_L)}e^{O(1)}
+\]
+with constants independent of $T-T_L$. The root and finite chart
+are uniform in $\rho$. Its Q1 arrival formula then gives
+\[
+ \widehat h(T,\beta)\asymp
+ e^{-\sigma_q T}[q(\cos\beta+q)]^{-\sigma_q/\omega}.
+\]
+Replacing $\sigma_q$ by $d$ costs
+$\exp\{O(q^2[T+\ell])\}$, uniformly bounded on the stated domain.
+The Q4 formula uses arrival rate $1/2$ and the same local argument.
+The radial proof has only the time costs
+$\int_0^T d_q\le q^2T$ and
+$T K(-1/(\sqrt2q))$ after the outer layer; both are uniformly
+bounded for $T\le q^{-2}$. Hence the radial comparison constants
+also do not depend on the offset. Normalization and the tail
+change of variables preserve this uniformity.
+
+There is no assertion that the formulas with exponent $d$ and
+radial factor $e^T$ are uniform for arbitrarily large $T$ at
+fixed $q$. An all-future version keeps the exact rates:
+$\sigma_q$ for shape and
+$\kappa_q=2g(qa_q)=1+O(q^2)$ for radial mass. Indeed
+$\partial_x[2g(qx)]=4q^2 f_q(x)$, so in the local chart
+$|2g(q(a_q+h))-\kappa_q|\le Cq^2h^2$.
+Its time integral is bounded independently of the elapsed
+post-arrival time. This also explains exactly the $q^2T$ cost
+of using the leading rates. The moving logarithmic time is
+strictly within PROFILE's proved domain.
+
+At that time
+\[
+ \overline S(t_m)=q^u e^{2q^2t_m}=O(q^u),\qquad
+ \frac1q\int_0^{t_m}\overline S(t)\dd t
+ =\frac{\overline S(t_m)-q^{10}}{q(1+2q^2)}=O(q^v).
+\]
+OWPT's Jacobian bound and normalized-tangent proof have absolute
+constants multiplying these expressions, with no separate factor
+depending on the terminal offset. Reuse that proof, rather than
+substitute a growing number into its fixed-offset $O$ notation.
+It gives all pairwise angular comparisons with exponent $O(q^v)$,
+the radial comparison with exponent $O(q^u)$, and reference
+offset $|(c,z)-(a_q,a_q)|_2=O(q^v)$.
+
+Explicitly, putting $c_0=\cos\beta$, the upper Q1 region has
+\begin{equation}\label{an02momcv1:entryprofile}
+ h_x,h_y\asymp \eps_m(c_0+q)^{-s},\qquad
+ m(t_m,\beta)\asymp q^u(c_0+q)^2 .
+\end{equation}
+The weight formula holds on all $\Rhalf$. On the lower Q1 part
+$|h_j|\le C\eps_m$. For Q4 the corresponding parameter is
+$\eps_{-,m}=q^{(1+\lambda)s+d/2}$ with exponent
+$s_-=(1-\lambda)s=2d$; its cutoff is
+$Cq^{2\lambda s+d/2}$.
+The Q1 cutoff is $\eps_mq^{-s}=q^{d/2}$.
+These give the uniform all-label bound, the tail index $p=3/s$,
+and $c_A\le M_0/q^u\le C_A$.
+Let $\nu_m$ be the original normalized strong radial law. Integration
+of the tail bound, using $p>3/2$, also gives the useful mean budget
+\begin{equation}\label{an02momcv1:entrymoment}
+ \int_{\Rhalf}(|h_x|+|h_y|)\dd\nu_m\le C\eps_m .
+\end{equation}
+All divisions for pair comparisons are by positive target
+separations; no absolute error is divided by a small shape.
+\end{proof}
+
+\section{Left-ancestry entry mass}
+\begin{lemma}[A whole-left-circle bound at overlap]
+\label{an02momcv1:leftentry}
+For $b_0:=\mu(t_m)/M_0$ one has
+\begin{equation}\label{an02momcv1:bzero}
+ 0<b_0\le Cq^2\ell^2 .
+\end{equation}
+\end{lemma}
+\begin{proof}
+Use PROFILE's exact target-only Cartesian equations, valid for all
+angles. Set $p_j=(\widehat U_j)_+$ and
+$n_j=(-\widehat U_j)_+$. On $\Lhalf$, $p_1(0)=0$ and
+$p_2(0),n_j(0)\le q^5$. Since $K(w)\le w_++\phi(0)$ and
+$0\le d_q\le q^2$, their upper Dini derivatives satisfy
+\[
+ D^+p_1\le(1/2+q^2)p_1+Cq\sqrt{\widehat m},\qquad
+ D^+p_2\le(\lambda/2+q^2)p_2+Cq\sqrt{\widehat m},\qquad
+ D^+n_j\le q^2 n_j .
+\]
+These also hold at coordinate zero. The target spectral bound
+$\sqrt{\widehat m}\le q^5e^{(1/2+q^2)t}$ yields
+\[
+ p_1\le Cqt\,q^5e^{(1/2+q^2)t},\quad
+ p_2\le q^5e^{(\lambda/2+q^2)t}
+          +Cq\,q^5e^{(1/2+q^2)t},\quad
+ n_j\le q^5e^{q^2t}.
+\]
+The second integral uses $1-\lambda\ge51/100$.
+Therefore, labelwise on the whole left circle,
+\begin{equation}\label{an02momcv1:lefttarget}
+ \widehat m(t,\beta)\le
+ Cq^{10}e^{2q^2t}\{1+e^{\lambda t}
+                     +q^2(1+t)^2e^t\}.
+\end{equation}
+P's early radial comparison is uniform over all initial labels,
+not only $\Rhalf$, and applies up to $t_m$ since
+$\overline S(t_m)=o(1)$. It changes this bound by $e^{O(q^u)}$.
+Divide its integral at $t_m$ by $M_0\asymp q^{10}e^{t_m}$.
+The three resulting terms are
+$q^{2/\omega+1/2}$,
+$q^{4+(1-\lambda)/2}$ and $Cq^2\ell^2$.
+This proves \eqref{an02momcv1:bzero}. Positivity follows from
+positive initial radial mass and the exact multiplicative radial
+ODE on finite time intervals.
+\end{proof}
+
+\section{A finite-noise strong-chart reduction}
+This section proves the reduction needed here; P's leading-order
+derivation is not used as a remainder theorem.
+For a measure of strong states $(\xi,\eta)$ with mass $M$ supported
+in $[-R,R]^2$, write
+\[
+ Y=\int\eta\dd\mu_s,\quad
+ F(t,r)=\phi(\min(t,r))+r\Phi(\min(t,r)),\quad
+ \mathcal S(x)=\int F(\rho x,\rho\xi)\dd\mu_s .
+\]
+The measure and its weights are held fixed in receiver derivatives.
+Define
+\begin{align}
+ f_x(x,y)&=\tfrac12[-(1-M)x+\rho\phi(\rho x)
+                         -\rho\mathcal S(x)+\lambda y\Phi(\rho x)],
+ \nonumber\\
+ f_y(x,y)&=\tfrac12[-(1-M)y-Y+\rho K(\rho x)].
+ \label{an02momcv1:leadingfield}
+\end{align}
+
+\begin{lemma}[Uniform value, receiver derivative and radial remainder]
+\label{an02momcv1:reduction}
+For any fixed finite $R$, $M\le1$, and arbitrary complementary
+population of radial mass $\mu$, the exact original strong receiver
+velocity $\mathcal F_q$ obeys, on $[-R,R]^2$,
+\begin{align}
+ \|\mathcal F_q-f\|_{C^1_{x,y}}
+ &\le C_Rq^2+160\mu/q, \label{an02momcv1:c1}\\
+ (\log m)'&=1-M+\delta_\beta,\qquad
+ |\delta_\beta|\le C_Rq^2+3\mu . \label{an02momcv1:radial}
+\end{align}
+Here $160$ accommodates PROFILE's componentwise constant $40$
+in the vector/matrix norms and their sum. The constants
+depend only on $R$ and the ratio box.
+\end{lemma}
+\begin{proof}
+Put $a_x=(\cos qx,\sin qx)$ and $b_y=(\cos qy,\sin qy)$;
+$L_x=a_x\cdot X$. The target angular terms are
+\[
+ q^{-1}\E[(b_y\cdot X)(a_x^\perp\cdot X)\one_{L_x>0}],
+ \qquad q^{-1}\E[(b_y^\perp\cdot X)(L_x)_+].
+\]
+A unit-mass strong donor $(\xi,\eta)$ subtracts
+\begin{equation}\label{an02momcv1:donorkernels}
+ \frac{b_y\cdot b_\eta}{q}
+   \E[(L_\xi)_+(a_x^\perp\cdot X)\one_{L_x>0}],
+ \qquad
+ \frac{b_y^\perp\cdot b_\eta}{q}
+   \E[(L_\xi)_+(L_x)_+].
+\end{equation}
+The target radial rate is $2\E[(b_y\cdot X)(L_x)_+]$;
+the donor subtracts
+$2(b_y\cdot b_\eta)\E[(L_\xi)_+(L_x)_+]$.
+
+On $P_1$, all these gates can be removed with exponentially small
+errors in value and first receiver derivative. To see the derivative
+claim, differentiation creates a boundary integral on $L_x=0$.
+For $|x|\le R$ and small $q$, its Gaussian mean-to-standard-deviation
+ratio is at least $1/(2q)$. Conditional Gaussian moments of any
+fixed degree on this boundary are bounded by a polynomial in
+$q^{-1}$ times $e^{-1/(8q^2)}$. The same bound controls gate-removal
+errors by Gaussian tail integration. A donor positive part is
+bounded by $|X|$ and causes no worse estimate. These quantities,
+even after the displayed division by $q$, are $O_R(q^2)$.
+Using $\E_{P_1}XX^T=\operatorname{diag}(1+q^2,q^2)$ and retaining
+the mixture factor $1/2$, the target angular terms are
+$(-x,-y)/2+O_{C^1}(q^2)$, the donor terms in
+\eqref{an02momcv1:donorkernels} are
+$(-x,\eta-y)/2+O_{C^1}(q^2)$, and the target/donor radial
+terms are $1+O(q^2)$ and $1+O(q^2)$ respectively.
+
+For $P_2$ write $X=(qZ,V)$, $V=\rho+qZ_2$, with independent
+standard normals. Let $c_x=\cos(qx)$ and $t_x=\tan(qx)/q$.
+Then
+\[
+ L_x=qc_x(Z+t_xV),\quad
+ a_x^\perp\cdot X=c_xV-q\sin(qx)Z,\quad
+ b_y\cdot X=qc_y(Z+t_yV).
+\]
+Uniformly on the chart, $c_x=1+O_{C^1}(q^2)$,
+$t_x=x+O_{C^1}(q^2)$ and $q\sin(qx)=O_{C^1}(q^2)$.
+The exact one-dimensional Gaussian identities are
+\[
+ \E_Z[Z\one_{Z+t>0}]=\phi(t),\quad
+ \E_Z[(Z+t)_+]=K(t),\quad
+ \E_Z[(Z+r)_+\one_{Z+t>0}]=F(t,r).
+\]
+They reduce the two target angular terms to
+\[
+ \tfrac12\E_V[V\phi(t_xV)+t_yV^2\Phi(t_xV)],
+ \qquad \tfrac12\E_V[V K(t_xV)],
+\]
+up to $O_{C^1}(q^2)$. All discarded Gaussian moments and their
+first receiver derivatives have polynomial bounds in $|V|$,
+uniformly in the compact parameters, so this error assertion
+follows directly from the displayed trigonometric remainders.
+Taylor expansion in $V$ at $\rho$, with
+$\E(V-\rho)=0$ and $\E(V-\rho)^2=q^2$, gives
+$[\rho\phi(\rho x)+\lambda y\Phi(\rho x)]/2$
+and $\rho K(\rho x)/2$, with $O_{C^1}(q^2)$ errors.
+
+For the first donor term the same calculation gives
+$\tfrac12\E_V[V F(t_xV,t_\xi V)]$.
+Its replacement by $\rho F(\rho x,\rho\xi)/2$ has uniform
+$C^1_x$ error $O(q^2)$ even at $x=\xi$.
+Here is the threshold audit. On $V\ge\rho/2$ the smaller threshold
+is $V\min(t_x,t_\xi)$ and
+\[
+ \partial_x[V F(t_xV,t_\xi V)]
+   =t_x' V^3(t_\xi-t_x)_+\phi(t_xV).
+\]
+This expression and its first two $V$ derivatives have uniform
+polynomial bounds, including at equality of the thresholds.
+The value has the same bounds. Taylor in $V$ is therefore uniform.
+The event $V<\rho/2$ has exponentially small polynomial moments;
+its contribution, including the receiver derivative, is negligible.
+For replacing $t_x,t_\xi$ by $x,\xi$, use
+$F_t(t,r)=(r-t)_+\phi(t)$ and its locally Lipschitz dependence
+on $(t,r)$, together with the trigonometric bounds.
+Thus no differentiation across an unbounded gate density or
+unjustified second receiver derivative is used.
+
+For the second donor angular term,
+$b_y^\perp\cdot b_\eta=\sin(q(\eta-y))=O_{C^1}(q)$
+and $\E_{P_2}(L_\xi)_+(L_x)_+=O_{C^1}(q^2)$.
+Its divided contribution is $O_{C^1}(q^2)$.
+The $P_2$ radial terms are likewise $O_R(q^2)$.
+Integration over the donor measure multiplies remainders by $M\le1$.
+Combining the two clusters proves the strong-only claims.
+Finally PROFILE Proposition 4.1 bounds the arbitrary complement's
+scaled value and derivative by $40\mu/q$ per component, and its
+radial contribution by $2a_*\mu\le3\mu$, where $a_*=1/2+q^2$.
+This proves both estimates.
+\end{proof}
+
+In particular the exact leading receiver Jacobian is
+\begin{equation}\label{an02momcv1:jacobian}
+ Df(x,y)=
+ \begin{pmatrix}
+ -(1-M)/2+\frac{\rho^3}{2}(y-x-\Pi(x))\phi(\rho x)
+       &\frac\lambda2\Phi(\rho x)\\
+ \frac\lambda2\Phi(\rho x)&-(1-M)/2
+ \end{pmatrix},
+ \qquad \Pi(x)=\int(\xi-x)_+\dd\mu_s.
+\end{equation}
+This verifies the $y$-row explicitly. Its diagonal is
+$-(1-M)/2$, not $-1/2$; the latter appears only after varying the
+donor mean in the collective block. At the coherent center this
+is $J_{\rm sh}(M)$, with diagonal $-(1-M)/2$ and off-diagonal
+$\alpha$. Hence
+\[
+ J_{\rm sh}(M)-r_0(M)I=
+ \alpha\begin{pmatrix}-1&1\\1&-1\end{pmatrix},\qquad
+ r_0(M)=-(1-M)/2+\alpha<-1/10\quad(M\le1/2).
+\]
+
+\section{Part B: a joint first-exit proof}
+\subsection{Constants fixed from the leading center}
+The root bound
+$a\le\rho\phi(0)/(1-\lambda)<28/51$ follows from
+$K(\rho a)\le\phi(0)+\rho a$ and $\phi(0)<2/5$.
+Fix $R=79/51$ before choosing any bootstrap constants.
+This is the only chart radius used in Lemma~\ref{an02momcv1:reduction}.
+LOC's collective field $G_M$, obtained by collapsing the strong
+measure at $(c,z)$, has the stationary point $(a,a)$ and
+\[
+ J_M=J_1-\operatorname{diag}((1-M)d,0)\preceq J_1,\qquad
+ \gamma=\frac{\alpha d}{\alpha+1/2}
+ \ge\gamma_*:=\frac{1183}{20800}>0.
+\]
+For the last bound use $\alpha\ge169/1600$, $d>7/20$ and
+$\alpha+1/2<13/20$. This invokes LOC's proved mean attraction,
+not a re-proof of it. Put $g=\gamma_*/2$ and
+$C_0^*=724/51$, an upper bound for LOC's $4(a+3)$.
+
+Let $C\ge1$ be a fixed enlargement of the bounded-chart constants
+in Lemma~\ref{an02momcv1:reduction}, the Gaussian Lipschitz constants,
+and the norm-conversion constants below. Its choice depends only
+on $R$ and the ratio box. Put
+\begin{equation}\label{an02momcv1:guards}
+ \eps_*=\min\{1/4,\gamma_*/(4C_0^*),1/(80C)\},
+ \qquad K_B=e^8 .
+\end{equation}
+For the actual strong family set
+\[
+ e(t)=|(c,z)-(a,a)|_2,\quad
+ r(t)=\sup_{\beta\in\Rhalf}\max(|h_x|,|h_y|),\quad
+ \overline D(t)=\int_{\Rhalf}(|h_x|+|h_y|)\dd\nu_t,\quad
+ b(t)=\mu(t)/M(t).
+\]
+Here $\nu_t$ is the normalized strong radial measure on fixed labels.
+Part A gives $e(t_m)=O(q^2+q^v)$, $r(t_m)=O(q^{d/2})$,
+$\overline D(t_m)=O(\eps_m)$ and $b(t_m)=b_0=O(q^2\ell^2)$.
+
+Stop at the first of $M=1/2$, $e=\eps_*$, $r=\eps_*$,
+$b=K_Bb_0$, or the time
+$t_m+T_*^0$, where
+\[
+ T_*^0=3\log(1/(2M_0))=O(\ell).
+\]
+All initial inequalities are strict for small $q$.
+On this stopped interval $e+r\le1/2$, so every receiver and donor
+lies strictly inside $[-R,R]^2$. No guard from LCRC is used.
+
+\subsection{Mass, outside population and radial weights}
+Average \eqref{an02momcv1:radial} over the strong radial measure:
+\[
+ M'/M=1-M+\delta_M,\qquad
+ |\delta_M|\le Cq^2+3\mu .
+\]
+The outside guard makes this error $o(1)$ pointwise.
+Consequently $M'/M\ge1/3$ on the stopped interval, and
+\begin{equation}\label{an02momcv1:massintegral}
+ \int_{t_m}^{t}M(w)\dd w\le3(M(t)-M_0)\le3/2.
+\end{equation}
+The exact global matrix estimates
+$\|A_\theta\|\le a_*$ and $\|C_f\|\le a_*S$ give, for every
+label without an angular restriction,
+$(\log m)'\le(1+2q^2)(1+S)$.
+Thus
+\[
+ (\log b)'\le (1+2q^2)(1+M+\mu)-(1-M+\delta_M)
+ \le4M+Cq^2
+\]
+for small $q$ under $b\le K_Bb_0$.
+Integrating, using \eqref{an02momcv1:massintegral} and
+$q^2T_*^0=o(1)$, yields
+\begin{equation}\label{an02momcv1:bimprove}
+ b(t)\le e^7b_0<K_Bb_0,\quad
+ \int_{t_m}^{t}\mu\le\tfrac32 K_Bb_0,\quad
+ \int_{t_m}^{t}\mu/q\le\tfrac32 K_Bb_0/q .
+\end{equation}
+This is a generic mass comparison; it is not a capped-gain
+assumption or a post-escape radial transport theorem.
+In particular the outside guard improves by a fixed factor.
+
+For every strong label the integral of the radial error is at most
+$C(q^2\ell+b_0)=O(\mathcal W_q)$.
+Subtract the two label equations to prove
+\eqref{an02momcv1:weightclaim} on the stopped interval.
+It follows also that
+\begin{equation}\label{an02momcv1:normalizedweights}
+ \frac{\dd\nu_t}{\dd\nu_m}=\exp[O(\mathcal W_q)]
+\end{equation}
+uniformly on labels. All these estimates are valid at every
+stopped endpoint, not inferred backwards from a terminal cap.
+
+\subsection{Mean attraction and shape contraction}
+For a receiver on any segment between a strong label and the reference,
+\eqref{an02momcv1:jacobian} gives
+\begin{equation}\label{an02momcv1:jacdef}
+ D\mathcal F_q(t,x,y)=J_{\rm sh}(M(t))+\mathcal E(t,x,y),\qquad
+ \|\mathcal E\|_\infty
+ \le C\{e+r+M\overline D+q^2+\mu/q\}.
+\end{equation}
+Indeed $|x-a|,|y-a|\le e+r$,
+$\Pi(x)\le M(r+\overline D)$, and $\Phi$ is uniformly
+Lipschitz. On the guards $\overline D\le2r$,
+$M\le1/2$, so by the choice of $\eps_*$ the right side is at
+most $1/20$ for small $q$, since
+$\mu/q\le K_Bb_0/(2q)=o(1)$.
+The base matrix $J_{\rm sh}$ is Metzler with row sums
+$r_0(M)<-1/10$. The induced infinity-norm inequality for the
+difference of any label and the reference is therefore
+\[
+ D^+\max(|h_x|,|h_y|)\le
+ -\tfrac1{20}\max(|h_x|,|h_y|).
+\]
+This follows by the integral of the receiver Jacobian along the
+joining segment and the norm inequality for $J_{\rm sh}+\mathcal E$;
+no sign of the finite-$q$ off-diagonal entries is presumed.
+Hence
+\begin{align}
+ r(t)&\le r(t_m)e^{-\tau/20},&
+ \int_{t_m}^{t}r&\le20r(t_m),\nonumber\\
+ \overline D(t)&\le C\eps_m e^{-\tau/20}.
+ \label{an02momcv1:decay}
+\end{align}
+The last inequality uses \eqref{an02momcv1:normalizedweights}
+and \eqref{an02momcv1:entrymoment}: each label's maximum norm
+contracts, and the sum norm is bounded by twice that maximum.
+It is a normalized moment estimate, not a bound replacing the
+largest width by $\eps_m$.
+
+The original reference satisfies, by LOC's collective estimate
+and the finite-noise lemma,
+\begin{equation}\label{an02momcv1:meanode}
+ D^+e\le-\gamma_* e+C_0^*e^2
+                    +C M\overline D+Cq^2+C\mu/q
+ \le-ge+C M\overline D+Cq^2+C\mu/q .
+\end{equation}
+For clarity, the strong donor discrepancy at the reference is
+bounded by $CM\overline D$: use
+$|F(t,r)-F(t,\widetilde r)|\le|r-\widetilde r|$ and
+$|Y-Mz|\le M\int|y-z|\dd\nu_t$.
+The full complementary population is in the separately bounded
+$\mu/q$ term. There is no assumed weak-family chart.
+
+Convolution in \eqref{an02momcv1:meanode}, followed by
+\eqref{an02momcv1:decay} and \eqref{an02momcv1:bimprove}, gives
+\eqref{an02momcv1:meanclaim}. To obtain its last pointwise term,
+use $M(w)\le M(t)e^{-(t-w)/3}$ for $w\le t$ and
+$\mu(w)/q\le Cq\ell^2M(w)$.
+Tonelli applied to the positive convolution kernel also gives
+\eqref{an02momcv1:meanintegral}. In particular $e=o(1)$ uniformly,
+improving its guard to $e<\eps_*/2$ for small $q$.
+The radius guard improves by \eqref{an02momcv1:decay}.
+
+None of the three auxiliary guards can be the first exit.
+If the explicit time bound were reached first, $M'/M\ge1/3$
+would force $M\ge1/2$. Thus the first exit is the half-mass hit.
+The bounds also prevent finite-time breakdown before this hit;
+the exact fixed-$q$ characteristic equations have bounded fields
+on this bounded-mass finite interval. This proves existence,
+the chart, the mean estimates and \eqref{an02momcv1:outsideclaim}.
+All later statements remain restricted to this interval.
+
+\section{The mass clock, relative tangents and the tail sandwich}
+The mass defect estimate just proved is \eqref{an02momcv1:massclaim}.
+Since $1-M\ge1/2$, the exact logit identity is
+\[
+ \frac{\dd}{\dd t}\log\frac{M}{1-M}
+ =1+\frac{\delta_M}{1-M}.
+\]
+It implies
+\begin{equation}\label{an02momcv1:duration}
+ t_h-t_m=\log\frac{1-M_0}{M_0}+O(\mathcal W_q)
+ =u\ell-\log A_q+\log(1-M_0)+O(\mathcal W_q).
+\end{equation}
+Adding $t_m$ proves \eqref{an02momcv1:timeclaim}.
+Similarly, at every intermediate endpoint,
+\begin{equation}\label{an02momcv1:clockconvert}
+ \exp\!\left(\int_{t_m}^{t}r_0(M(w))\dd w\right)
+ =\mathcal G(M(t),M_0)e^{O(\mathcal W_q)}.
+\end{equation}
+Indeed the time derivative of $\log\mathcal G(M(t),M_0)$ is
+$r_0(M)[1+\delta_M/(1-M)]$; its additional integral is
+$O(\mathcal W_q)$.
+
+To get relative, uniform-in-pair shape control, integrate
+\eqref{an02momcv1:jacdef} using the already closed budgets:
+\begin{align}
+ \int_{t_m}^{t_h}\sup_{\beta\in\Rhalf}\|\mathcal E(t,\beta)\|_\infty
+ \dd t
+ &\le C\left\{
+ \underbrace{q^{d/2}}_{\text{largest width}}+
+ \underbrace{\eps_m}_{\text{donor moment}}+
+ \underbrace{q^2+q^v}_{\text{initial reference}}+
+ \underbrace{q^2\ell}_{\text{finite noise}}+
+ \underbrace{q\ell^2}_{\text{left ancestry}}\right\}.
+ \label{an02momcv1:integratedtangent}
+\end{align}
+Let $p(t,\beta)=(\partial_\beta(\theta/q),
+\partial_\beta(\psi/q))^T$ and
+$\widehat p_m(\beta)=\partial_\beta(\widehat\theta(t_m,\beta)/q)>0$.
+The moving-overlap extension of OWPT gives
+$p(t_m,\beta)/\widehat p_m(\beta)=\ones+O(q^v)$
+componentwise, uniformly in $\beta$.
+Define
+\[
+ w(t,\beta)=
+ \frac{p(t,\beta)}
+ {\widehat p_m(\beta)\exp(\int_{t_m}^{t}r_0(M)\dd w)} .
+\]
+Holding the common population field fixed in the receiver derivative,
+\begin{equation}\label{an02momcv1:normalizedtangent}
+ w'=\alpha\begin{pmatrix}-1&1\\1&-1\end{pmatrix}w
+       +\mathcal E(t,\beta)w .
+\end{equation}
+The propagator of the first matrix is nonnegative, fixes $\ones$,
+and has infinity norm one. Variation of constants and Gronwall give
+$\|w-\ones\|_\infty\le C(q^v+\int\|\mathcal E\|)e^{\int\|\mathcal E\|}$.
+By \eqref{an02momcv1:integratedtangent}, both components are
+$e^{O(\mathcal D_q)}$ and strictly positive.
+This proves positivity without assuming finite-$q$ cooperativity.
+Integrate the tangent over $[\gamma,\beta]$ and compare with its
+initial integral. Then use \eqref{an02momcv1:clockconvert}.
+This proves \eqref{an02momcv1:pairclaim}, without a lower bound
+on a pair separation. Smooth dependence on a receiver's initial
+label is justified by the fixed-$q$ Gaussian first-derivative
+formulas above; the population is never differentiated with
+respect to an individual label.
+
+Let $D_t=|h_x(t,\beta)|+|h_y(t,\beta)|$ and
+$\widehat D_m=2|\widehat\theta(t_m,\beta)/q-a_q|$.
+Let $\widehat\nu_m$ be the exact target-only normalized radial law
+at $t_m$. There are
+$\eta=C\mathcal D_q$ and
+$r=C(q^u+\mathcal W_q)$ such that, with $G=\mathcal G(M(t),M_0)$,
+\begin{equation}\label{an02momcv1:tailsandwich}
+ e^{-r}\widehat\nu_m\{\widehat D_m>e^\eta z/G\}
+ \le\nu_t\{D_t>z\}
+ \le e^r\widehat\nu_m\{\widehat D_m>e^{-\eta}z/G\}
+ \quad(z>0).
+\end{equation}
+Indeed $D_t=G\widehat D_m e^{O(\mathcal D_q)}$ pointwise,
+and the normalized density ratio
+$\dd\nu_t/\dd\widehat\nu_m=e^{O(q^u+\mathcal W_q)}$
+by Part A and \eqref{an02momcv1:normalizedweights}.
+This proves the claimed sandwich, including the finite cutoff.
+In particular the tail parameter at time $t$ is $\eps_m G$,
+its index remains $3/s$, and its cutoff is $Cq^{d/2}G$,
+with the same two-sided power-law range up to uniform constants.
+The exponentials tending to one concern the exact normalized
+comparison profile; PROFILE's power-law comparison constants
+are not asserted to tend to one.
+
+The exact handoff and half-mass scales are
+\begin{align}
+ \eps_mM_0^d&=A_q^d q^{10d-s},
+ \label{an02momcv1:handoff}\\
+ \eps_m\mathcal G(1/2,M_0)
+ &=\sqrt2\,A_q^d(1-M_0)^\alpha q^{10d-s},\nonumber\\
+ q^{d/2}\mathcal G(1/2,M_0)
+ &=\sqrt2\,A_q^d(1-M_0)^\alpha q^{10d-2s}.
+ \label{an02momcv1:terminalscales}
+\end{align}
+Here $s+\sigma d=10d-s$ and $d+\alpha=1/2$.
+Thus the explicit moving-offset factors cancel, while $A_q$
+and its clock shift remain. This completes all assertions of
+Theorem~\ref{an02momcv1:main}.
+
+\section{Scope and stopping point}
+This is an exact original-flow theorem through $M=1/2$ only.
+Its ingredients beyond the previously proved overlap and local
+attraction results are displayed above, including the finite-noise
+receiver reduction and the left-ancestry mass estimate.
+No retained input is added. In particular, a small outside entry
+mass was not assumed to stay small: \eqref{an02momcv1:bimprove}
+proves that fact jointly with the strong passage.
+No original-flow comparison is extended using a crude $S/q$ bound
+after the moving overlap; only the separately bounded complement
+is charged at $\mu/q$.
+
+The order-one constants are functions of the fixed ratio box and
+the analytically selected leading center and Gaussian kernels.
+They do not depend on LCRC's guards. The chart is the explicit
+$R=79/51$, and $A_q\in[c_A,C_A]$ is the actual overlap
+normalization, not a freely selected constant.
+No saturation tail, later $\int|1-\kappa_1|$ estimate,
+Q2 entry contract, capped radial gain, or bridge theorem is claimed.
+Work stops at the first strong half-mass time.
+
+\begin{thebibliography}{9}\small
+\bibitem{P} P, \emph{THEOREM A ANALYTICAL PROGRESS}.
+\texttt{pa:earlybounds}, \texttt{pa:targetcomparison},
+\texttt{pa:leading}, \texttt{pa:resident}, \texttt{pa:spectra},
+\texttt{pa:order}. Its formal reduction is not used as a remainder bound.
+\bibitem{PROFILE} PROFILE, \emph{AN02 strong entry profile and tail budget v1}.
+Prefix \texttt{inc:AN02:profile:v1:}; \texttt{coordinate},
+\texttt{root}, \texttt{arrival}, \texttt{entry}, \texttt{rightcircle},
+\texttt{cost} (Proposition 4.1).
+\bibitem{OWPT} OWPT, \emph{AN02 overlap window profile transfer v1}.
+Prefix \texttt{an02owptv1:}; \texttt{jacobian}, \texttt{tangents},
+\texttt{transfer}, \texttt{tail}.
+\bibitem{SMCP} SMCP, \emph{AN02 strong M clock passage v1}.
+Prefix \texttt{an02smcpv1:}; \texttt{shortobstruction},
+\texttt{leadingtest}, \texttt{handoff}.
+\bibitem{LOC} LOC, \emph{AN03 local rate mean tracking v1}.
+Prefix \texttt{inc:AN03:local:v1:}; \texttt{field},
+\texttt{meanineq} (Lemma 3.1), and its displayed collective field.
+\bibitem{ROADMAP} \emph{Unified analytic theory roadmap}, v1.4,
+S0 assembly requirements; S1 step 2; ledger items 12--14.
+Read-only source, not a proof premise.
+\end{thebibliography}
+\end{document}

@@ -49,6 +49,7 @@ Each proof increment is a `.tex` file with a same-stem `_review.md` (where one e
 | `AN02_strong_entry_profile_and_tail_budget_v1` **[PROFILE]** | Exact attracting strong center $a_q$; uniform Q1 arrival; strong entry profile with tail index $3/s$ and finite cutoff; Q4 companion; outside-population cost $O(\mu/q)$; tail-inclusive κ=10 power test. |
 | `AN02_overlap_window_profile_transfer_v1` **[OWPT]** | Exact original-flow transfer of PROFILE's strong profile at the overlap time $t_m=(2/\omega)\log(1/q)+C_m$: shapes within $e^{O(q^{\zeta})}$ and weights within $e^{O(q^{\sigma})}$ relative to a same-field reference; normalized tail sandwich (S1 step 1). |
 | `AN02_strong_M_clock_passage_v1` **[SMCP]** | Obstruction increment for S1 step 2a: at fixed overlap offset, outer strong labels carry a nonvanishing nonlinear factor, so the linear M-clock multiplier cannot transfer the profile uniformly; exact leading-field test to half mass; corrected handoff normalization $A_q$. |
+| `AN02_moving_overlap_M_clock_passage_v1` **[MOMC]** | Exact original-flow strong passage from a moving overlap ($C_m=\tfrac12\log(1/q)$) to strong half mass: logistic clock with shift $-\log A_q$, guard-independent chart $R=79/51$, uniform pairwise shape transport by the linear M-clock multiplier, radial weights, tail sandwich, left-ancestry mass budget; finite-noise $C^1$ field reduction (S1 step 2a). |
 | `AN02_Q2_boundary_layers_and_cohort_energy_v1` **[Q2E]** | Uniform Q2 crossing through both endpoints; secondary recruited Q2 tail (index $p_2<1$); whole-Q2 transverse and amplitude energies at κ=10. |
 
 ### `03_passage_AN03/` — nonlinear passage, response clock, weak selection
@@ -102,7 +103,7 @@ Each proof increment is a `.tex` file with a same-stem `_review.md` (where one e
 
 ## Reading order
 
-- **To continue the initialized proof:** roadmap → H2 → LOC → CLOCK → BULK → RCET → LCRC → PROFILE → OWPT → Q2E → WEAK → TAILREP, consulting F and P only for specific dependencies.
+- **To continue the initialized proof:** roadmap → H2 → LOC → CLOCK → BULK → RCET → LCRC → PROFILE → OWPT → MOMC → Q2E → WEAK → TAILREP, consulting F and P only for specific dependencies.
 - **For the completed limiting and linear results:** F (P10) → LP → WIT → LPR.
 
 ## Status labels used in every document
