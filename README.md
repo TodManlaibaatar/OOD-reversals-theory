@@ -67,6 +67,7 @@ Each proof increment is a `.tex` file with a same-stem `_review.md` (where one e
 | `AN03_bulk_clock_and_secondary_Q2_energy_v1` **[BULK]** | Cohort-change identity; bulk clock subcohort; conditional original-flow bulk-clock bootstrap; secondary-tail energy from the capped gain; regenerated transverse energy and forcing with a separate clock. |
 | `AN03_residual_closure_and_eta0_transport_v1` **[RCET]** | Small-constant (η=0) bulk transport; endpoint-regularized target-only threshold dichotomy at $c_0\asymp q^\gamma$; output bounds and Volterra residual closure conditional on an independent clock bound; the obstruction that remains (S0). |
 | `AN03_ledger_cap_residual_closure_v1` **[LCRC]** | S0 closed conditionally (Route 3): the response ledger caps the sign-good weak amplitude at every time inside a joint first-exit bootstrap, removing RCET's clock premise and the terminal cap; derived chart-group mass; secondary energy without a future cap. |
+| `AN03_c_form_field_reduction_v1` **[CFR]** | Partial S3: selected-moment lemma for any cohort (value and scaled receiver derivative), closed primary selected-defect budget, exact non-core moments $V_O,K_O$ with a negative-part bound, core radial identity; stops at the S2 dependency (secondary energy, integrated outside mass). |
 | `SIGNED_GROWTH_WEAK_RETENTION_v1` **[SGWR]** | Signed Jensen retention; weak-coordinate amplitude equation; interior-Q2 defect bound; frozen resident contraction. |
 
 ### `04_witnesses_persistence/` — learned limiting witnesses, persistence, linear contrast
