@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.7 — October 7, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.8 — October 21, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -15,6 +15,8 @@
 **Revision 1.6 (Oct 7).** Records Q2EP (`AN02_Q2_entry_through_strong_passage_v1`): the Q2 entry energy is proved. The $e^{o(1)}$ universal-factor obstruction is reclassified as a contract overreach, because LCRC needs only fixed constants. Ledger item 15 adds the accuracy rule for contracts.
 
 **Revision 1.7 (Oct 7).** Records Q2EC (`AN02_Q2_entry_contracts_v1`): the primary Q2 entry contracts at $t_0$ are proved with fixed constants. Adds S1 step 7 (secondary entry profile) with the suggested partition $\Sigma=\{c_0<Kq^\gamma\}$, $\mathcal D=\emptyset$.
+
+**Revision 1.8 (Oct 21).** Records SEP (`AN02_secondary_entry_profile_v1`): S1's entry contracts are complete and unconditional. S3 gains a refined route, which uses the linearity of $G_+$ on $P_2$ and treats the c-form passage as a local passage to a small fixed $c_b$. S3a, the c-form field reduction, is next.
 
 ---
 
@@ -125,6 +127,7 @@ So, **at the level of exponents**, the canonical point lies in the regime where 
 | Strong passage from the moving overlap to half mass: logistic clock defect $O(q^2\ell^2)$, $t_h=10\ell-\log A_q+o(1)$, chart $R=79/51$, reference $\to(a_\rho,a_\rho)$, uniform pairwise shapes $\mathcal G\,e^{o(1)}$, relative weights $e^{O(q^2\ell^2)}$, tail sandwich, left-ancestry mass $\le Cq^2\ell^2M$; finite-noise $C^1$ reduction on the chart | MOMC |
 | Whole-Q2 entry energy at strong half mass: $N_2/M\le CA_q^{-1}q^3$, hence $J_G(t_0)\le C_Jq^3$, $E_{G_+}(t_0)=o(1)$ | Q2EP |
 | Primary Q2 entry at $t_0=t_h$ with fixed constants: signs, $|a|/z\le\frac14$, $qj/z\le C_0$ (clock $\le C_{\rm clk}q^{1/8}$), clock seed $\asymp A_q^{-\lambda}q^{10(1-\lambda)}$, chart cap Z for $c_0<Kq^\gamma$; weak-axis band matching of late crossers | Q2EC |
+| Secondary (recruited) Q2 entry profile at $t_0$: positive displacement $\asymp h_A[(c_0+q)/(q(s_0+q))]^{2d/\lambda}$ about the actual reference, weights $D_h^{-2}\hat m\,e^{o(1)}$, tail $\le CB_qq^3\min\{1,(h_A/w)^{p_2}\}$; homogeneous same-field chart comparison | SEP |
 
 ### 3.2 Exact comparison results (positive-noise target-only flow)
 
@@ -282,7 +285,17 @@ The steps are listed in dependency order. Each entry states the claim to prove, 
    - $J_G(t_0)\le C_Jq^3$ and $E_{G_+}(t_0)=o(1)$.
 
    Route: at $t_m$, labels at angle $\theta\gg q$ transfer by the absolute early comparison, since the relative error $\overline S/\theta\to0$. Chart-scale labels need OWPT's multiplicative transfer. On $[t_m,t_h]$ a Q2 receiver off the chart sees P1 drive $\approx(1-\kappa_1)/2$ on $U_1$, P2 drive $\approx\lambda/2$ on $U_2$, and cross terms $O(q)$. So $q\cot\theta$ equals its target-only value times $e^{-\int M/2}=(2(1-M_0))^{-1/2}$, up to $e^{o(1)}$, together with the $-\log A_q$ time shift. The dichotomy threshold $K$ moves by an explicit order-one factor. $\int_{t_m}^{t_h}r$ is **not** bounded, because $r\approx(1-M)/2$ for most of the interval, so the $U_1$ growth must be tracked explicitly rather than through BULK's $\int r\le B$. The secondary recruited tail is a separate later step.
-7. *Secondary (recruited) entry profile at $t_0$ (next — the last S1 entry contract).* Q2E's recruited set consists of the Q2 labels already in the strong chart at strong entry, i.e. $c_0\lesssim q^\gamma$. This is the same set as Q2EC's $c_0<Kq^\gamma$ group.
+7. *Secondary (recruited) entry profile at $t_0$ — **proved (SEP Theorem 1.1), exact original flow, fixed constants.*** The partition is $\Sigma=\{c_0<Kq^\gamma\}$ and $\mathcal D=\emptyset$. Displacements are measured from MOMC's actual reference, with $h_A=A_q^dq^{10d-2s}$ and $B_q=A_q^{-1}D_h^{-2}$:
+   - $\xi\le Z+2R$;
+   - each component $V_i\asymp h_A[(c_0+q)/(q(s_0+q))]^{2d/\lambda}$;
+   - $m/\hat m=D_h^{-2}e^{o(1)}$;
+   - $\eta\{\xi>w\}\le CB_qq^3\min\{1,(h_A/w)^{p_2}\}$, two-sided on Q2E's interior range.
+
+   Key device: the same-field subtraction makes the chart error homogeneous, $V'=f^M((a,a)+V)-f^M(a,a)+E\,V$, with no additive floor. A cooperative secant propagator then gives bounded two-sided distortion, $e^{\frac12\int M}\in[1,\sqrt2]$ times fixed factors. The coefficient $p_2<1$ follows from $\lambda(3-P_\rho)>100893/100000$ **[rational]**.
+
+   **With this, S1 supplies every LCRC entry contract at $t_0=t_h$** (OWPT, MOMC, Q2EP, Q2EC, SEP), unconditionally. What remains of LCRC's inputs are trajectory budgets on $[t_0,t_b]$: core retention, $\mu_B=o(q)$, $B_s$, and the S2 distance/gain contracts for Σ and for the strong complement. All of them must be proved in stopped form.
+
+   Original specification of step 7 (historical): Q2E's recruited set consists of the Q2 labels already in the strong chart at strong entry, i.e. $c_0\lesssim q^\gamma$. This is the same set as Q2EC's $c_0<Kq^\gamma$ group.
    - *Suggested partition.* Put all of it in LCRC's $\Sigma$ and take $\mathcal D=\emptyset$. Its later control is then by the S2 contracts (distance envelope, capped gain) that the strong complement needs anyway, and LCRC's separate chart-retention budget for $\mathcal D$ disappears.
    - *Contract (fixed constants, relative to MOMC's actual reference):*
      - entry displacement $\xi\le Z_\Sigma$ (from Q2EC);
@@ -314,6 +327,14 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
 **Claim.** The original strong field has CLOCK's c-form with a remainder controlled in value and receiver derivative, including the selected-residual term $\mathbb E_{P_2}[g_2X_2\mathbf 1_{\{a^\top X>0\}}]$, the outside population, and the $M-1$ terms.
 
 **Suggested route.** On $P_2$, the charted weak output is $f_2=N X_2+O(q^2)$. So the selected defect reduces to $(c-N_{\rm chart})\,\mathbb E[X_2^2\mathbf 1]$ (CLOCK §6 identity), plus transit-cohort cross outputs (BULK forcing bound), plus $\mu_B/q$ from the complement. The task is then $|c-N_{\rm chart}|$ small, which follows from the response ledger once transit and complement responses are bounded.
+
+**Refined route (Oct 21; next session).** No weak chart is needed. Use LCRC's partition $\mathcal K,G_+,\Sigma,\mathcal B$ (with $\mathcal D=\emptyset$).
+- *$G_+$ is linear on $P_2$.* $G_+$ labels have angular margin, so their $P_2$ gates are full up to RCET's gate tail, whose integral is $O(C_0+q^2\ell)$. There $f_{G_+,2}=(\sum W_2U_2)X_2+(\sum W_2U_1)X_1$.
+  - Its $X_1$ part has selected moment $O(q\sqrt{E_GJ_G})=O(q^2Y\sqrt{E_G})$.
+  - Its $X_2$ coefficient differs from c only by $c_\Sigma+c_{\mathcal K}+c_{\mathcal B}+\tau$, all of which LCRC's ledger already charges in absolute value.
+- *The other groups.* Σ is charged through $E_\Sigma\le C(q^5+q^{\Gamma_\nu}H)$. The core's own output stays in the strong donor terms (MOMC's reduction). $\mathcal B$ is charged at $\mu_B/q$.
+- *Target accuracy is small-fixed, not $o(1)$.* CLOCK's passage needs $\int f_*\le F_b\le e_*/(4C)$, and $f_*=c+|V|+K_w+T+\epsilon_F$ contains c itself. So the c-form passage is a **local** passage to a small fixed $c_b$; there $\int c\lesssim c_b/b_0$. Beyond $c_b$ the selection stage (WEAK, TAILREP) takes over. So $\int\epsilon_F\le\kappa(C_0,c_b)+o_q(1)$ with $\kappa\to0$ is the right contract.
+- *Not in S3.* The term T (the strong first moment outside the fixed core) needs the S2 capped gain for the complement.
 
 ### S4. Weak return and matching to the leading weak family
 
@@ -423,7 +444,7 @@ Tracks that can run in parallel:
 
 | Track | Steps | Notes |
 |---|---|---|
-| I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Step 6 done (Q2EP, Q2EC). Next: step 7, the secondary entry profile, which is the last S1 entry contract. $B_s$ and core retention move to the weak-passage bootstrap (S3). |
+| I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
 | II | S2 capped gain + S3 field contract | Share the c-form envelope; S2 closes two tail estimates. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
@@ -497,6 +518,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | MOMC | `AN02_moving_overlap_M_clock_passage_v1.tex` (+ review), prefix `an02momcv1:` |
 | Q2EP | `AN02_Q2_entry_through_strong_passage_v1.tex` (+ review), prefix `an02q2epv1:` — part (e) proved; obstruction to the $e^{o(1)}$ form |
 | Q2EC | `AN02_Q2_entry_contracts_v1.tex` (+ review), prefix `an02q2ecv1:` |
+| SEP | `AN02_secondary_entry_profile_v1.tex` (+ review), prefix `an02sepv1:` |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

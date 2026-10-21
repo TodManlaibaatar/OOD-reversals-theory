@@ -1,0 +1,619 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf1}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Kfun}{\mathcal K}
+\title{Secondary Q2 entry profile at strong half mass}
+\author{Analytical increment for review}
+\date{Version 1; October 21, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For the exact original initialized flow, the whole fixed Q2 group
+$c_0<Kq^\gamma$ has a bounded-displacement entry profile about
+the actual strong reference at the first strong half-mass time.
+Its raw radial mass is of order $A_q^{-1}q^3$ and its secondary
+tail has index $(1-3\lambda/2)/d$, with displacement scale
+$A_q^d q^{10d-2s}$. The angular comparison has fixed two-sided
+constants; no universal asymptotically exact angular multiplier
+is asserted. Same-field subtraction makes the chart error
+homogeneous in displacement, including for the smallest labels.
+Only the entry profile is supplied. The later distance envelope
+and capped gain remain separate S2 inputs.
+\end{abstract}
+
+\section{Setting and exact original-flow result}
+All new labels have prefix \texttt{an02sepv1:}.
+Use the model and initialization of MOMC and Q2EC:
+\[
+ P=\tfrac12N(e_1,q^2I_2)+\tfrac12N(\rho e_2,q^2I_2),\qquad
+ \rho\in[13/20,7/10],\qquad
+ U(0,\beta)=W(0,\beta)=q^5(\cos\beta,\sin\beta),
+ \quad\dd\lambda_0=\dd\beta/(2\pi).
+\]
+Balance gives $U=\sqrt m\,a_\theta$, $W=\sqrt m\,a_\psi$.
+Put $\lambda=\rho^2$, $\omega=(1-\lambda)/2$, $\ell=\log(1/q)$,
+\[
+ \Kfun(z)=\phi(z)+z\Phi(z),\quad a=\rho\Kfun(\rho a),\quad
+ \alpha=\lambda\Phi(\rho a)/2,\quad d=1/2-\alpha,\quad s=d/\omega,
+ \qquad \gamma=1-5\lambda+2\lambda/(1-\lambda).
+\]
+PROFILE's exact target-only root is $a_q=a+O(q^2)$.
+Hats always denote the exact target-only characteristic with
+the same initial label and at the same physical time.
+Let $M$ be the mass of the fixed initial right half-circle.
+Use MOMC's proved clock, without changing its normalization:
+\begin{align}
+ t_m&=(2/\omega+1/2)\ell,\quad
+ u_m=10-2/\omega-1/2,\quad v_m=u_m-1,\nonumber\\
+ M_0&=M(t_m)=A_q q^{u_m},\quad c_A\le A_q\le C_A,\nonumber\\
+ t_0=t_h&=10\ell-\log A_q+O(q^2\ell^2+q^{u_m}),\quad M(t_h)=1/2.
+ \label{an02sepv1:clock}
+\end{align}
+Here $u_m\ge169/102$ and $v_m\ge67/102$.
+The actual reference is the characteristic launched at
+$\beta_c=qa_q$. Write
+\[
+ C(t)=(\theta_c(t)/q,\psi_c(t)/q),\qquad
+ V_\beta(t)=((\theta_\beta-\theta_c)/q,
+                    (\psi_\beta-\psi_c)/q),\qquad
+ \xi_\beta=\|V_\beta(t_h)\|_1.
+\]
+In particular $C$ is never reset to $(a,a)$ or $(a_q,a_q)$.
+MOMC gives $|C_i|\le R=79/51$ up to $t_h$.
+
+Fix Q2EC's $C_0$, and its already chosen $K=K(C_0)$ and $Z$.
+For $\beta\in[\pi/2,\pi]$ put $c_0=-\cos\beta$, $s_0=\sin\beta$.
+The fixed group and its raw entry measure are
+\[
+ \Sigma=\{\beta\in[\pi/2,\pi]:c_0<Kq^\gamma\},\qquad
+ \eta(B)=\int_\Sigma m(t_h,\beta)\one_{\{\xi_\beta\in B\}}\dd\lambda_0.
+\]
+There is no normalization by a target-only strong mass and no
+moving membership indicator in this definition. Define
+\begin{equation}
+ b=2d/\lambda,\quad a_2=2/\lambda-2,\quad
+ p_2=(a_2-1)/b=\frac{1-3\lambda/2}{d},\quad
+ h_A=A_q^d q^{10d-2s},\quad
+ D_h=\sqrt{2(1-M_0)},\quad B_q=A_q^{-1}D_h^{-2}.
+ \label{an02sepv1:scales}
+\end{equation}
+All $\asymp$ constants below are uniform in $q$ and $\rho$;
+they can depend on the fixed $K,Z,c_A,C_A$ and proved source
+constants. In particular they are independent of LCRC's guards.
+
+\begin{theorem}[Recruited entry with fixed constants]
+\label{an02sepv1:main}
+For sufficiently small $q$, every label in $\Sigma$ satisfies
+$V_{\beta,1}(t_h)>0$, $V_{\beta,2}(t_h)>0$, and
+\begin{align}
+ \xi_\beta&\le Z_\Sigma:=Z+2R,\qquad
+       \eta([0,Z_\Sigma])\le C_{\rm ent} A_q^{-1}q^3,\label{an02sepv1:cap}\\
+ V_{\beta,i}(t_h)&\asymp h_A
+       \left[\frac{c_0+q}{q(s_0+q)}\right]^b\quad(i=1,2),
+       \label{an02sepv1:labelshape}\\
+ m(t_h,\beta)&\asymp B_q q^{2/\lambda}
+       (c_0+q)^{2-2/\lambda}(s_0+q)^{2/\lambda}.
+       \label{an02sepv1:labelweight}
+\end{align}
+One can retain the more precise radial comparison
+\begin{equation}
+ \frac{m(t_h,\beta)}{\widehat m(t_h,\beta)}
+   =D_h^{-2}\exp\{O(\mathcal R_q)\},\qquad
+ \mathcal R_q=q^{1/1000}+q^{4/51}+q^{v_m}+q\ell^2+q^2\ell^2=o(1).
+ \label{an02sepv1:radialfactor}
+\end{equation}
+The constants in this error are allowed to depend on the fixed
+receiver chart used in the proof.
+The total mass is in fact $\asymp B_q q^3$. For every $w>0$,
+\begin{equation}
+ \eta\{\xi>w\}\le C B_q q^3
+             \min\{1,(h_A/w)^{p_2}\}.
+ \label{an02sepv1:tailupper}
+\end{equation}
+There are fixed $C_1,z_0>0$ such that
+\begin{equation}
+ \eta\{\xi>w\}\asymp B_q q^3(h_A/w)^{p_2}
+       \quad(C_1h_A\le w\le z_0).
+ \label{an02sepv1:taillower}
+\end{equation}
+This is Q2E's interior tail range; no lower tail is asserted
+arbitrarily close to the last-label cutoff.
+Since $A_q,D_h$ are bounded above and below, these estimates
+supply LCRC's entry-profile contract with $h_1=q^{10d-2s}$.
+\end{theorem}
+
+One may take $C_{\rm ent}=4e^7C_Q$, where $C_Q$ is the
+target energy constant specified in Q2EP Theorem 2.1.
+The cap and its upper mass estimate in \eqref{an02sepv1:cap}
+are immediate from Q2EC and Q2EP, respectively: subtract the
+reference, whose coordinate sum is at most $2R$, and restrict
+the whole-Q2 mass estimate to $\Sigma$. We do not reprove those
+results. The work below proves the label laws and their tail.
+
+\section{Two domain checks for the source comparisons}
+\begin{lemma}[Early relative comparison on the required label arc]
+\label{an02sepv1:early}
+At $t_m$, for every $\beta\in[\pi/2,\pi]$,
+\[
+ V_{\beta,i}(t_m)=
+   (\widehat\theta(t_m,\beta)/q-a_q)e^{O(q^{v_m})}\quad(i=1,2),
+ \qquad m(t_m,\beta)/\widehat m(t_m,\beta)=e^{O(q^{u_m})}.
+\]
+This extends OWPT's early tangent argument to the arc
+$[qa_q,\pi]$; it does not extend a target profile beyond its domain.
+\end{lemma}
+\begin{proof}
+Here is the domain check, since OWPT states its pairwise lemma
+on the right half-circle. P's early angle/radial comparison is
+global in the initial label. With
+$\overline S=q^{10}e^{(1+2q^2)t}$ it gives angular error
+$O(\overline S)$ and radial logarithmic error $O(\overline S)$.
+Every estimate in OWPT's receiver-Jacobian proof is global in
+receiver angle: $0\preceq A_\theta\preceq a_*I$,
+$A_\theta'a_\theta=0$, $\|A_\theta'\|\le32/q$, and
+$\|DF^f\|\le C\overline S/q$ by PROFILE Proposition 4.1.
+Consequently the same calculation gives, on the entire arc,
+\[
+ DF=\begin{pmatrix}-g&h\\h&-g\end{pmatrix}+E_\beta,
+ \quad h\ge0,\quad \|E_\beta\|_\infty\le C\overline S/q.
+\]
+The positive exact target tangent $\widehat p$ solves
+$\widehat p'=(h-g)\widehat p$. Thus $w=p/\widehat p$ solves
+\[
+ w'=h\begin{pmatrix}-1&1\\1&-1\end{pmatrix}w+E_\beta w,
+ \qquad w(0)=\one.
+\]
+The first propagator is nonnegative, fixes $\one$, and has
+$\ell^\infty$ norm one. Its variation-of-constants estimate
+is $\|w-\one\|_\infty\le e^{\int\|E\|}-1$.
+Now $\int_0^{t_m}\overline S/q=O(q^{v_m})=o(1)$.
+Each tangent component is therefore in $e^{\pm Cq^{v_m}}$.
+Integrating in the initial label from $qa_q$ to $\beta$, and
+using the stationary target reference, proves the assertion.
+This divides by a positive tangent, never by a small absolute
+angle error. The radial assertion is P's early estimate.
+\end{proof}
+
+\begin{lemma}[Target profile on any fixed entry chart]
+\label{an02sepv1:target}
+At $t_h$, every $\beta\in\Sigma$ has positive
+$\widehat h=\widehat\theta/q-a_q$, and
+\begin{align*}
+ \widehat h(t_h,\beta)&\asymp h_A
+          [(c_0+q)/(q(s_0+q))]^b,\\
+ \widehat m(t_h,\beta)&\asymp A_q^{-1}q^{2/\lambda}
+          (c_0+q)^{2-2/\lambda}(s_0+q)^{2/\lambda}.
+\end{align*}
+Moreover every such target label is below $\pi/4$ at $t_m$,
+for small $q$.
+\end{lemma}
+\begin{proof}
+Q2EC's target-contract equation gives
+$0<\widehat\theta(t_h,\beta)/q\le Z_T(K)$.
+Choose a fixed chart threshold $L_T>Z_T(K)+a+1$, uniformly
+over the ratio box. Q2E's profile proof remains valid for
+this enlarged fixed chart and a bounded shift of $10\ell$.
+To verify this assertion rather than importing its displayed
+$T=10\ell$ literally, PROFILE's expansion
+$f_q=f_0+O_{C^2}(q^2)$ holds on every fixed interval, where
+\[
+ f_0(x)=\tfrac12[\rho\Kfun(\rho x)-x],\quad
+ f_0'\le-\omega,\quad f_0'(a)=-d.
+\]
+From the first hit of $qL_T$ write
+$\widehat h'=-b_q(\widehat h)\widehat h$.
+On this fixed chart $b_q\ge\omega/2$ and
+$|b_q(\widehat h)-d|\le C_{L_T}\widehat h+C_{L_T}q^2$.
+Thus $\int\widehat h\le2(L_T-a_q)/\omega$ and
+\begin{equation}
+ \widehat h(t)\asymp e^{-d(t-T_{L_T})},\qquad
+ \widehat m(t)\asymp q^2\widehat m(T_\times)e^{t-T_\times}
+ \quad(T_{L_T}\le t\le t_h).
+ \label{an02sepv1:targetchart}
+\end{equation}
+The arrival formula is still
+$T_{L_T}=T_\times+(2/\omega)\ell+O_{L_T}(1)$:
+PROFILE's outer integral may be stopped at any larger fixed
+$L_T$, changing only its bounded endpoint term. Its axis-start
+first-coordinate and gate-integral proof gives the radial
+formula in \eqref{an02sepv1:targetchart}. These observations
+check the chart-size and time domains of Q2E, not a new
+unproved comparison assumption.
+
+Inserting Q2E's endpoint-regularized formulas
+\[
+ T_\times=\frac2\lambda\log\frac{c_0+q}{q(s_0+q)}+O(1),\qquad
+ \widehat m(T_\times)\asymp q^{10}(c_0+q)^2/q^2
+\]
+gives its two label laws with $q^{-2s}e^{-dt_h}$ and
+$q^{10}e^{t_h}$ in place of $q^{10d-2s}$ and one.
+Equation \eqref{an02sepv1:clock} gives precisely the stated
+$A_q^d$ and $A_q^{-1}$ factors. The finite-noise exponent
+replacement costs $O(q^2\ell)$ in logarithms. Scalar uniqueness
+keeps $\widehat h>0$ for these initial labels.
+
+Finally $s_0\asymp1$ on $\Sigma$, and
+$c_0+q\le (K+1)q^\gamma$, since $0<\gamma<1$.
+The same crossing formula gives
+$T_\times\le(10-2/\omega)\ell+O_K(1)$.
+PROFILE's axis-to-$\pi/4$ part of the arrival proof takes
+$\omega^{-1}\ell+O(1)$. Hence all these labels are below
+$\pi/4$ by $(10-1/\omega)\ell+O_K(1)$, earlier than $t_m$:
+\[
+ 3/\omega-19/2\ge 2400/231-19/2=137/154>0.
+\]
+No new late weak-axis crossing estimate is needed for $\Sigma$.
+\end{proof}
+
+\section{Homogeneous chart comparison about the actual reference}
+Let $f^M$ be the coherent leading receiver field with strong
+donors at $(a,a)$ and mass $M$:
+\begin{align}
+ 2f_x^M(x,y)&=-(1-M)x+\rho\phi(\rho x)
+       -\rho M F(\rho x,\rho a)+\lambda y\Phi(\rho x),\nonumber\\
+ 2f_y^M(x,y)&=-(1-M)y-Ma+\rho\Kfun(\rho x),\nonumber\\
+ F(t,r)&=\phi(\min(t,r))+r\Phi(\min(t,r)).
+ \label{an02sepv1:coherent}
+\end{align}
+This is a comparison vector field; it is not substituted for
+the actual reference. It vanishes at $(a,a)$.
+Its two off-diagonal receiver derivatives are
+$\lambda\Phi(\rho x)/2\ge0$. On the positive aligned ray,
+\begin{equation}
+ f^M(a+h,a+h)=g_M(h)\one,\qquad
+ g_M(h)=f_0(a+h)+Mh/2\le-h/200\quad(h\ge0,M\le1/2).
+ \label{an02sepv1:ray}
+\end{equation}
+Indeed $F(\rho(a+h),\rho a)=\Kfun(\rho a)$ and
+$\omega-M/2\ge51/200-1/4=1/200$.
+The Jacobian at the center is
+\[
+ J_{\rm sh}(M)=\begin{pmatrix}-(1-M)/2&\alpha\\
+                      \alpha&-(1-M)/2\end{pmatrix},\qquad
+ r_0(M)=-d+M/2.
+\]
+In particular the $y$-diagonal is $-(1-M)/2$.
+
+\begin{lemma}[Relative, rather than additive, chart error]
+\label{an02sepv1:c1}
+On any fixed receiver chart containing $C(t)$ and $C(t)+V$,
+\begin{equation}
+ V'=f^{M(t)}((a,a)+V)-f^{M(t)}(a,a)+E(t,V)V,
+ \qquad \|E(t,V)\|_\infty\le\varepsilon_B(t),
+ \label{an02sepv1:homogeneous}
+\end{equation}
+where $\sup\varepsilon_B=o(1)$ and
+\begin{equation}
+ \int_{t_m}^{t_h}\varepsilon_B\le C_B\mathcal E_q=o(1),\qquad
+ \mathcal E_q=q^{v_m}+q^{s+d/2}+q^2(1+\ell)+q\ell^2.
+ \label{an02sepv1:error}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Let $e=\|C-(a,a)\|_\infty$, and let $\overline D$ be MOMC's
+normalized first moment of donor displacement from $C$.
+MOMC proves $\sup(e+\overline D)=o(1)$ and
+$\int(e+\overline D)\le C\mathcal E_q$.
+Its complementary ancestry mass obeys
+$\mu\le Cq^2\ell^2M$ and $\int\mu/q\le Cq\ell^2$.
+The finite-noise reduction is valid for any fixed finite receiver
+radius, not only $79/51$; the donor chart remains $R=79/51$.
+It bounds the value and first receiver derivative error by
+$C_Bq^2+160\mu/q$.
+
+Replacing the donor measure by $M\delta_{(a,a)}$ costs
+$C_B M(e+\overline D)$ in $C^1$. Explicitly, the output donor
+moment changes by that amount, and both $F(t,r)$ and
+$F_t(t,r)=(r-t)_+\phi(t)$ are uniformly Lipschitz in $r$ on
+the compact chart. This also handles equality of thresholds.
+The coherent field is $C^{1,1}$ there.
+Subtract the actual receiver velocity at $C$ from that at
+$C+V$, and apply the mean-value formula to their difference.
+Then shift both arguments of the coherent derivative by
+$C-(a,a)$. This proves \eqref{an02sepv1:homogeneous} with
+\[
+ \varepsilon_B=C_B(q^2+\mu/q+e+\overline D).
+\]
+Its supremum and integral have the asserted bounds. Crucially
+there is no additive $O(q^2+\mu/q+e)$ forcing in the equation
+for $V$.
+\end{proof}
+
+\begin{lemma}[Positive displacement with bounded nonlinear distortion]
+\label{an02sepv1:chartlemma}
+Fix $H_*>0$ and $c_*>0$. Suppose at a time
+$t_a\in[t_m,t_h]$ the actual displacement has
+\[
+ 0<c_* H_a\le V_i(t_a)\le H_a\le H_*\quad(i=1,2).
+\]
+Choose a fixed chart larger than $R+H_*+1$.
+Then both components stay positive to $t_h$, and, uniformly
+for $t_a\le t\le t_h$,
+\begin{equation}
+ c_*'H_a e^{-d(t-t_a)+\frac12\int_{t_a}^tM}
+ \le V_i(t)\le
+ C_*'H_a e^{-d(t-t_a)+\frac12\int_{t_a}^tM}.
+ \label{an02sepv1:charttransport}
+\end{equation}
+The positive constants depend only on the fixed chart,
+$H_*,c_*$ and the ratio box. They do not require $H_a=o(1)$.
+\end{lemma}
+\begin{proof}
+Stop at the first loss of positivity or exit from the fixed
+chart. Put $H(t)=\max_i V_i(t)$. Cooperativity of
+\emph{the coherent field}, not of the exact finite-noise field,
+and \eqref{an02sepv1:ray} imply at a maximal component
+\[
+ D^+H\le-H/200+\varepsilon_B H\le-H/400.
+\]
+Thus $H\le H_a e^{-(t-t_a)/400}$ and
+$\int_{t_a}^t H\le400H_*$. The chart cannot be exited.
+Set
+\[
+ A(t)=\int_0^1 Df^{M(t)}((a,a)+rV(t))\dd r,\qquad
+ P_0(t)=\exp[-d(t-t_a)+\tfrac12\int_{t_a}^t M].
+\]
+The matrix $A(t)$ is Metzler. Its row sums differ from $r_0(M)$
+by at most $C_BH(t)$, by the local Lipschitz bound on $Df^M$.
+The propagator $Q(t,s)$ for $A-r_0I$ is therefore positive and
+\begin{equation}
+ e^{-\int_s^t C_BH}\one\le Q(t,s)\one
+       \le e^{\int_s^t C_BH}\one,
+ \qquad\|Q(t,s)\|_\infty\le e^{\int_s^t C_BH}.
+ \label{an02sepv1:positiveprop}
+\end{equation}
+These bounds follow by comparison with scalar multiples of
+$\one$ in a cooperative linear system. They are analytic
+row-sum bounds, not assumptions about exact-flow order.
+
+Let $W=V/P_0$, $L_*=400C_BH_*$, and
+$E_* =\int_{t_a}^{t_h}\varepsilon_B=o(1)$.
+Variation of constants in $W'=(A-r_0I+E)W$ gives
+\[
+ \|W(t)\|_\infty\le H_a e^{L_*+E_*},\qquad
+ \|W(t)-Q(t,t_a)V(t_a)\|_\infty
+       \le H_a E_*e^{2L_*+E_*}.
+\]
+The unperturbed vector has each component at least
+$c_*H_a e^{-L_*}$. For small $q$ the last error is less than
+half this number. Hence $W_i\ge c_*H_a e^{-L_*}/2>0$,
+uniformly up to the stopped endpoint. This excludes loss of
+positivity and proves continuation. One may take
+$c_*'=c_*e^{-L_*}/2$, $C_*'=e^{L_*+1}$.
+All constants are fixed before choosing $q$. Large but finite
+$e^{L_*}$ is allowed at the accuracy required here.
+\end{proof}
+
+\section{Matching every secondary label and its radial weight}
+\begin{proof}[Proof of the label laws in Theorem \ref{an02sepv1:main}]
+Choose a fixed $L$ at least as large as Q2EC's off-chart
+threshold and $Z_T(K)+1$, and sufficiently large that
+\[
+ L\ge4(C_\Delta+R+a_{\max}+2),\qquad a_{\max}=28/51.
+\]
+Here $C_\Delta$ is Q2EC's fixed constant in
+$|\psi-\theta|\le C_\Delta[q^{u_m}e^{-c_\Delta(t-t_m)}+qM(t)]$.
+Increasing this auxiliary receiver threshold does not change
+the already fixed group $\Sigma$ or Q2EC's $K$.
+Use $H_*=8L$, $c_*=1/8$ and receiver radius
+$B=R+8L+2$ in Lemma \ref{an02sepv1:chartlemma}.
+
+If $\widehat\theta(t_m,\beta)\le2qL$, let $t_a=t_m$.
+Lemma \ref{an02sepv1:early} gives positive initial components,
+each equal to $\widehat h(t_m,\beta)e^{O(q^{v_m})}$.
+Thus the chart lemma applies even when that displacement is
+much smaller than the absolute reference offset.
+The exact target is already in a fixed chart, where the
+logarithmic decay calculation in Lemma \ref{an02sepv1:target}
+gives
+\[
+ \widehat h(t,\beta)\asymp
+       \widehat h(t_a,\beta)e^{-d(t-t_a)}.
+\]
+Its distortion constant is uniform in the initial displacement,
+since its nonlinear integral is bounded by its initial size.
+
+Otherwise the target and original input angles exceed $qL$
+at $t_m$. By Lemma \ref{an02sepv1:target}, the target is already
+below $\pi/4$ there. P's early comparison supplies positive
+Cartesian matches with relative error $O(q^{v_m})$; in
+particular the first-coordinate margin is fixed and the
+second-coordinate margin is at least $qL$.
+Apply Q2EC's two-sided off-chart transport with $t_s=t_m$
+until the first time either input angle hits $qL$.
+Such a $t_a\le t_h$ exists because the target endpoint is at
+most $Z_T(K)q<Lq$.
+The cotangent ratio in $[1/(2\sqrt2),2]$ implies that at this
+first hit both input angles lie in $[qL,4qL]$ for small $q$.
+The difference estimate and $|C_i|\le R$ put each component
+of $V(t_a)$ between $L-C_\Delta-R-1$ and
+$4L+C_\Delta+R+1$. These bounds imply the chosen
+$H_*,c_*$ conditions, and also
+\[
+ V_i(t_a)\asymp\widehat h(t_a,\beta)\asymp L.
+\]
+The actual and target receivers are now on fixed charts;
+apply the preceding chart comparisons.
+
+In both cases we have proved the useful intermediate statement
+\begin{equation}
+ V_i(t_h)\asymp\widehat h(t_h,\beta)
+      \exp\left(\frac12\int_{t_a}^{t_h}M\right).
+ \label{an02sepv1:matchedshape}
+\end{equation}
+MOMC's mass clock gives
+\begin{equation}
+ \int_{t_m}^{t_h}M=\log[2(1-M_0)]+O(q^2\ell^2).
+ \label{an02sepv1:massintegral}
+\end{equation}
+Thus the exponential in \eqref{an02sepv1:matchedshape} is
+between $1$ and $\sqrt2\,e^{O(q^2\ell^2)}$.
+All additional nonlinear factors in that equation are bounded
+two-sided constants, as proved in the chart lemma.
+Lemma \ref{an02sepv1:target} proves \eqref{an02sepv1:labelshape},
+and positivity has been proved about the actual reference.
+
+For completeness the radial comparison retains more accuracy.
+In the early-chart case, P gives
+$\log(m/\widehat m)(t_a)=O(q^{u_m})$.
+In the late-chart case, Q2EC's first-coordinate estimate gives
+\[
+ \log\frac{U_1(t_a)}{\widehat U_1(t_a)}
+       =-\tfrac12\int_{t_m}^{t_a}M+O(\mathcal R_q).
+\]
+At the hit, both angles are in a fixed scaled chart, so
+$m=U_1^2/\cos^2\theta$ and its target version imply
+\[
+ \log\frac{m(t_a)}{\widehat m(t_a)}
+       =-\int_{t_m}^{t_a}M+O(\mathcal R_q).
+\]
+After $t_a$, MOMC's radial reduction on the enlarged fixed chart
+and its target version give
+\[
+ (\log m)'=1-M+O(C_Bq^2+3\mu),\qquad
+ (\log\widehat m)'=1+O(C_Bq^2).
+\]
+The integrated error is $O(C_Bq^2\ell^2)$ because
+$\int\mu\le Cq^2\ell^2\int M$.
+Combining the two pieces and \eqref{an02sepv1:massintegral}
+proves \eqref{an02sepv1:radialfactor}, uniformly in the label.
+Inserting the target weight law proves
+\eqref{an02sepv1:labelweight}. No post-$t_h$ gain law was used.
+\end{proof}
+
+\section{The tail, its cutoff, and the LCRC handoff}
+\begin{proof}[Proof of the measure assertions]
+Use the exact variable $y=1+c_0/q$ on $\Sigma$.
+Its range is $1\le y<Y_q=1+Kq^{\gamma-1}$, and
+$\dd\beta=q\dd y/s_0$.
+Since $\gamma>0$, $s_0\asymp1$ uniformly on this group.
+The two label laws yield fixed positive constants
+$c_h,C_h,c_w,C_w$ such that
+\begin{align}
+ c_h h_A y^b&\le\xi\le C_h h_A y^b,\nonumber\\
+ c_w B_q q^3y^{-a_2}\dd y
+    &\le m(t_h,\beta)\dd\lambda_0
+       \le C_w B_q q^3y^{-a_2}\dd y.
+ \label{an02sepv1:density}
+\end{align}
+These are inequalities for the density in the initial variable;
+monotonicity of the actual final displacement is not needed.
+The endpoint regularizations $(c_0+q)$ and $(s_0+q)$ were
+retained until this change of variables on the shrinking group.
+
+Here $a_2>1$ uniformly. Integration over $[1,Y_q)$ gives
+the upper total mass; integration over $[1,2]$ gives its
+lower bound for small $q$. If $\xi>w$ then
+$y>(w/(C_hh_A))^{1/b}$. Integrating the upper density to
+infinity, and using the total mass for $w\lesssim h_A$, proves
+\eqref{an02sepv1:tailupper}.
+
+To specify the interior lower range, let $b_-=\min b>0$ on
+the box and choose
+$A_*=\max\{2,(2/c_h)^{1/b_-}\}$.
+For $w\ge2h_A$ the interval
+\[
+ A_*(w/h_A)^{1/b}\le y\le2A_*(w/h_A)^{1/b}
+\]
+has $\xi>w$ throughout. It lies below $Y_q$ for $w\le z_0$,
+where one permissible fixed choice is
+\begin{equation}
+ z_0=\min\left\{1,\frac12
+    \min_{\rho\in[13/20,7/10],\ A\in[c_A,C_A]}
+                      A^d\left(\frac K{4A_*}\right)^b\right\}>0.
+ \label{an02sepv1:lowerrange}
+\end{equation}
+Indeed the exponent identity
+\begin{equation}
+ 10d-2s+b(\gamma-1)=0
+ \label{an02sepv1:cutoffidentity}
+\end{equation}
+gives $h_A(Kq^{\gamma-1})^b=A_q^dK^b$.
+The minimum in \eqref{an02sepv1:lowerrange} is positive by
+continuity on a compact parameter set, not by numerical
+evaluation. Integrating the lower density on this interval
+proves \eqref{an02sepv1:taillower}, with $C_1=2$ (or any
+larger fixed constant). The integral factor
+$(1-2^{1-a_2})/(a_2-1)$ is uniformly positive.
+This argument also displays why the lower estimate must stop
+below the endpoint cutoff.
+
+The tail exponent equals $(a_2-1)/b=p_2$.
+Q2E's analytic box estimate $P_\rho<153/250$ implies
+\[
+ \lambda(3-P_\rho)>
+ \frac{169}{400}\left(3-\frac{153}{250}\right)
+ =\frac{100893}{100000}>1;
+\]
+therefore $p_2<1$, while $\lambda<2/3$ gives $p_2>0$.
+All powers of $A_q$ can be read without absorbing them:
+in the power-tail range its coefficient is
+\begin{equation}
+ B_q h_A^{p_2}
+ =D_h^{-2}A_q^{dp_2-1}q^{(10d-2s)p_2}
+ =D_h^{-2}A_q^{-3\lambda/2}q^{(10d-2s)p_2}.
+ \label{an02sepv1:Apower}
+\end{equation}
+The profile and radial comparison constants remain two-sided
+fixed constants; this identity does not assert an exact tail
+prefactor. This completes the theorem.
+\end{proof}
+
+Take LCRC's $\Sigma$ to be this entire fixed group, and take
+$\mathcal D=\emptyset$, as in roadmap v1.7. The entry cap,
+raw-mass budget and upper tail supply exactly
+\texttt{an03lcrcv1:profile}, including the joint displacement
+and same-field reference required by BULK Lemma 5.1 and
+Proposition 5.2. BULK's entry moment lemma can consequently
+be applied to this measure. Q2EC and Q2EP supply the separate
+primary and whole-Q2 entry contracts; they were not changed.
+The reference has entry coordinate bound $R_\Sigma=79/51$.
+
+Nothing here supplies \texttt{an03lcrcv1:distance} or
+\texttt{an03lcrcv1:gain} on a later stopped interval, nor
+later boundedness of the reference. Those remain S2 obligations
+for this same fixed $\Sigma$, at every intermediate endpoint.
+In particular BULK's secondary energy corollary remains
+conditional on its later distance/gain and clock inputs.
+With $\mathcal D=\emptyset$ its separate chart-retention budget
+is vacuous; retention of other groups is not established here.
+No estimate beyond $t_h$ has been proved or invoked.
+
+\begin{thebibliography}{9}\small
+\bibitem{Q2E} Q2E, \path{AN02_Q2_boundary_layers_and_cohort_energy_v1.tex},
+\texttt{inc:AN02:q2completion:v1:profile}, crossing and axis-arrival formulas.
+\bibitem{PROFILE} PROFILE,
+\path{AN02_strong_entry_profile_and_tail_budget_v1.tex},
+exact root, uniform arrival, gate integral, Proposition 4.1.
+\bibitem{OWPT} OWPT,
+\path{AN02_overlap_window_profile_transfer_v1.tex},
+\texttt{an02owptv1:jacobian} and \texttt{tangents}; P's global early comparison as used there.
+\bibitem{MOMC} MOMC,
+\path{AN02_moving_overlap_M_clock_passage_v1.tex},
+\texttt{an02momcv1:main}, \texttt{reduction}, \texttt{jacobian},
+mass and mean-integral estimates.
+\bibitem{Q2EP} Q2EP,
+\path{AN02_Q2_entry_through_strong_passage_v1.tex},
+whole-Q2 energy theorem.
+\bibitem{Q2EC} Q2EC, \path{AN02_Q2_entry_contracts_v1.tex},
+\texttt{an02q2ecv1:main}, \texttt{offtransport},
+\texttt{delta}, \texttt{targetcontracts}; read from the updated repository.
+\bibitem{BULK} BULK,
+\path{AN03_bulk_clock_and_secondary_Q2_energy_v1.tex},
+Lemma 5.1, Proposition 5.2, secondary corollary.
+\bibitem{LCRC} LCRC,
+\path{AN03_ledger_cap_residual_closure_v1.tex}, Section 1,
+\texttt{an03lcrcv1:profile}, \texttt{distance}, \texttt{gain}.
+\bibitem{Roadmap} \path{UNIFIED_ANALYTIC_THEORY_ROADMAP_v1.md},
+version 1.7, S0 retained inputs and S1 step 7.
+\end{thebibliography}
+\end{document}
