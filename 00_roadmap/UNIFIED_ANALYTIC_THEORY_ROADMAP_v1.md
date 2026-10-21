@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.6 — October 7, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.7 — October 7, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -13,6 +13,8 @@
 **Revision 1.5 (Oct 7).** Records MOMC (`AN02_moving_overlap_M_clock_passage_v1`): S1 step 2a is proved unconditionally through strong half mass. Proposes $t_0:=t_h$. Adds S1 step 6 (Q2 entry at $t_0$) as next. Moves $B_s=\log2+o(1)$ and core retention to the weak-passage bootstrap.
 
 **Revision 1.6 (Oct 7).** Records Q2EP (`AN02_Q2_entry_through_strong_passage_v1`): the Q2 entry energy is proved. The $e^{o(1)}$ universal-factor obstruction is reclassified as a contract overreach, because LCRC needs only fixed constants. Ledger item 15 adds the accuracy rule for contracts.
+
+**Revision 1.7 (Oct 7).** Records Q2EC (`AN02_Q2_entry_contracts_v1`): the primary Q2 entry contracts at $t_0$ are proved with fixed constants. Adds S1 step 7 (secondary entry profile) with the suggested partition $\Sigma=\{c_0<Kq^\gamma\}$, $\mathcal D=\emptyset$.
 
 ---
 
@@ -121,6 +123,8 @@ So, **at the level of exponents**, the canonical point lies in the regime where 
 | Signed Jensen and weak-amplitude equation | SGWR |
 | Overlap-window strong profile at $t_m=(2/\omega)\log(1/q)+C_m$: full right-half-circle chart; shapes $\widehat h\,e^{O(q^{\zeta})}$ and weights $\widehat m\,e^{O(q^{\sigma})}$ relative to the same-field reference at $\alpha_c=qa_q$; reference offset $O(q^\zeta)$; normalized tail sandwich with cutoff | OWPT |
 | Strong passage from the moving overlap to half mass: logistic clock defect $O(q^2\ell^2)$, $t_h=10\ell-\log A_q+o(1)$, chart $R=79/51$, reference $\to(a_\rho,a_\rho)$, uniform pairwise shapes $\mathcal G\,e^{o(1)}$, relative weights $e^{O(q^2\ell^2)}$, tail sandwich, left-ancestry mass $\le Cq^2\ell^2M$; finite-noise $C^1$ reduction on the chart | MOMC |
+| Whole-Q2 entry energy at strong half mass: $N_2/M\le CA_q^{-1}q^3$, hence $J_G(t_0)\le C_Jq^3$, $E_{G_+}(t_0)=o(1)$ | Q2EP |
+| Primary Q2 entry at $t_0=t_h$ with fixed constants: signs, $|a|/z\le\frac14$, $qj/z\le C_0$ (clock $\le C_{\rm clk}q^{1/8}$), clock seed $\asymp A_q^{-\lambda}q^{10(1-\lambda)}$, chart cap Z for $c_0<Kq^\gamma$; weak-axis band matching of late crossers | Q2EC |
 
 ### 3.2 Exact comparison results (positive-noise target-only flow)
 
@@ -254,19 +258,40 @@ The steps are listed in dependency order. Each entry states the claim to prove, 
    - in the leading law $\int_{t_0}^\infty(1-M)=\log2$, so the expected guard-independent constant is $B_s=\log2+o(1)$;
    - its proof belongs to the stopped-form weak-passage bootstrap, i.e. with S3;
    - the c-form field contract (S3) must then carry the $-(1-M)/2$ contraction explicitly, not as a small remainder. Dropping it only for an upper bound costs a factor $e^{\int(1-M)/2}=2^{1/2}$.
-6. *Q2 entry at $t_0=t_h$ (in progress).*
+6. *Q2 entry at $t_0=t_h$ — **proved for the primary group (Q2EP + Q2EC), exact original flow, fixed constants.***
+   - **Q2EC Theorem 1.1.** For the primary group $c_0\ge K(C_0)q^\gamma$:
+     - $z>0$, $|a|/z\le\frac14$ and $qj/z\le C_0$;
+     - the clock lies inside the primary group, with $qj/z\le C_{\rm clk}q^{1/8}$;
+     - two-sided transport $q\cot\theta=D_h^{-1}q\cot\hat\theta\,e^{O(1/x_{\min})+o(1)}$;
+     - clock seed $H_{\mathcal C_q}(t_0)=A_q^{-\lambda}\hat H_{\mathcal C_q}(10\ell)e^{o(1)}\asymp A_q^{-\lambda}q^{10(1-\lambda)}$;
+     - every $c_0<Kq^\gamma$ label lies in the chart, $|\theta|+|\psi|\le Zq$, at $t_0$.
+
+     Key devices:
+     - a weak-axis band of physical width $q^{1-\varepsilon}$, crossed while $M=O(q^{1/2})$, giving a relative Cartesian match before diagonal transport;
+     - the exact angle-difference equation $\Delta'=-\mathrm{tr}R\sin\Delta+(C_{12}-C_{21})\cos\Delta$, so that $|a|/z$ is controlled through angles, not through Cartesian ratios;
+     - an inward-pointing fixed receiver square. The bulk clock exponent is $\delta_*=\min_{\rm box}[\frac3{4\lambda}+5\lambda-\frac{15}4]=\frac{1861}{13520}>\frac18$ **[rational]**, attained at $\lambda=169/400$.
    - **Proved (Q2EP Theorem 2.1, exact original flow):** $N_2/M\le8e^7C_QA_q^{-1}q^3$ on $[t_m,t_h]$. Hence $J_G(t_0)\le C_Jq^3$ and $E_{G_+}(t_0)=o(1)$ for every subcohort of the initial Q2 ancestry.
    - **Obstruction to the $e^{o(1)}$ form (Q2EP Prop 4.1, leading system).** Off the chart the strong cross drive contributes $-Ma_\rho/2$ in scaled units. On the aligned ray, $x'=f_0(x)+\frac M2(x-a_\rho)$, so the universal factor $D_h^{-1}=[2(1-M_0)]^{-1/2}$ carries a relative correction $\int Ma_\rho/(2x)$. That correction is bounded below by $a_\rho\log3/(8\sqrt6L)$ for a receiver ending at scaled angle L.
    - **This does not obstruct LCRC.** LCRC's Q2 contracts are fixed-constant inequalities. The same identity bounds the correction above by $\frac34a_\rho/x_{\min}$ plus a Gaussian-small term. So $q\cot\theta(t_0)=D_h^{-1}q\cot\hat\theta(t_0)\,e^{O(1/x_{\min})+o(1)}$, where $1/x_{\min}\asymp q\cot\theta\lesssim C_0$ on the $\eta=0$ group: a bounded factor, absorbed by enlarging K.
-   - Late crossers near $\alpha=\pi$ have BULK's $x\gg1$ before crossing, so their antisymmetric drive $\sim M\cdot x$ is controlled only by $M(T_\times)=O(q^{90/169})$. The margin comes from $T_\times\le\frac{1600}{169}\log(1/q)+O(1)$.
+   - Late crossers: Q2EC matches them through the weak-axis band, using $T_\times\le\frac{1600}{169}\log(1/q)+O(1)$ and $M(T_\times)=O(A_qq^{90/169})$. The worry recorded in v1.6, that the antisymmetric drive scales like $M\cdot x$ before crossing, is moot: $|a|/z=|\sin\theta-\sin\psi|/(\sin\theta+\sin\psi)$ with $|\Delta|\le C(q^u+qM)$.
 
-   Original specification — supply LCRC's left-half entry contracts in the original flow:
+   Original specification (historical; its "$e^{o(1)}$" claim is withdrawn by ledger item 15) — supply LCRC's left-half entry contracts in the original flow:
    - the $\eta=0$ group and clock: $z>0$, $|a|/z\le\frac14$, $x=qj/z\le C_0$ (resp. $\le C_{\rm clk}q^{1/8}$);
    - $H_{\mathcal C_q}(t_0)\asymp q^{10(1-\lambda)}$ with its $A_q$ dependence;
    - the chart group in the strong chart;
    - $J_G(t_0)\le C_Jq^3$ and $E_{G_+}(t_0)=o(1)$.
 
    Route: at $t_m$, labels at angle $\theta\gg q$ transfer by the absolute early comparison, since the relative error $\overline S/\theta\to0$. Chart-scale labels need OWPT's multiplicative transfer. On $[t_m,t_h]$ a Q2 receiver off the chart sees P1 drive $\approx(1-\kappa_1)/2$ on $U_1$, P2 drive $\approx\lambda/2$ on $U_2$, and cross terms $O(q)$. So $q\cot\theta$ equals its target-only value times $e^{-\int M/2}=(2(1-M_0))^{-1/2}$, up to $e^{o(1)}$, together with the $-\log A_q$ time shift. The dichotomy threshold $K$ moves by an explicit order-one factor. $\int_{t_m}^{t_h}r$ is **not** bounded, because $r\approx(1-M)/2$ for most of the interval, so the $U_1$ growth must be tracked explicitly rather than through BULK's $\int r\le B$. The secondary recruited tail is a separate later step.
+7. *Secondary (recruited) entry profile at $t_0$ (next — the last S1 entry contract).* Q2E's recruited set consists of the Q2 labels already in the strong chart at strong entry, i.e. $c_0\lesssim q^\gamma$. This is the same set as Q2EC's $c_0<Kq^\gamma$ group.
+   - *Suggested partition.* Put all of it in LCRC's $\Sigma$ and take $\mathcal D=\emptyset$. Its later control is then by the S2 contracts (distance envelope, capped gain) that the strong complement needs anyway, and LCRC's separate chart-retention budget for $\mathcal D$ disappears.
+   - *Contract (fixed constants, relative to MOMC's actual reference):*
+     - entry displacement $\xi\le Z_\Sigma$ (from Q2EC);
+     - total mass $\eta([0,Z_\Sigma])\le Cq^3$ (from Q2EP);
+     - the tail $\eta\{\xi>u\}\le Cq^3\min\{1,(h_1/u)^{p_2}\}$, with $h_1\asymp q^{10d-2s}$ and the $A_q$ factors made explicit, plus a two-sided version on Q2E's range.
+   - *Route.* Transfer Q2E's two-sided displacement $h\asymp h_1[(c_0+q)/(q(s_0+q))]^{2d/\lambda}$ and weight laws with bounded factors:
+     - inside the chart, compare $h'=f_0(a+h)+\frac M2h$ with the target equation. The ratio changes by $e^{\int M/2}\in[1,\sqrt2]$ times $e^{O(\int h)}$;
+     - radial weights change by $e^{-\int M\cos^2\theta}$, which is bounded;
+     - Q2EC's band matching and off-chart transport cover the labels before arrival.
 
 **Pitfalls.** An $O(\delta)$ early-comparison error is not $O(q)$. The target-only profile is not a valid description of the trained flow once $S\gtrsim q$, and transfer through the absolute early-comparison error fails even sooner: at the box corner its scaled size $q^\zeta$ exceeds the core scale $q^s$ (OWPT Remark 4.1). Before strong learning the finite-$q$ target-only center is $a_q=a_\rho+O(q^2)$, not $a_\rho$. The original core sits at the actual reference $a_q+O(q^\zeta)$, which must not be reset when measuring shape. During the $M$-passage the leading coherent center is stationary at $a_\rho$; it does not move with $M$. Order-one displacements at fixed $C_m$ make linear-multiplier statements fail on the outer band (SMCP).
 
@@ -398,7 +423,7 @@ Tracks that can run in parallel:
 
 | Track | Steps | Notes |
 |---|---|---|
-| I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Step 6: entry energy done (Q2EP); next, the fixed-constant Q2 entry contracts (ratios, signs, clock seed, chart entry); then the secondary tail. $B_s$ and core retention move to the weak-passage bootstrap (S3). |
+| I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Step 6 done (Q2EP, Q2EC). Next: step 7, the secondary entry profile, which is the last S1 entry contract. $B_s$ and core retention move to the weak-passage bootstrap (S3). |
 | II | S2 capped gain + S3 field contract | Share the c-form envelope; S2 closes two tail estimates. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
@@ -471,6 +496,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | SMCP | `AN02_strong_M_clock_passage_v1.tex` (+ review), prefix `an02smcpv1:` — obstruction increment |
 | MOMC | `AN02_moving_overlap_M_clock_passage_v1.tex` (+ review), prefix `an02momcv1:` |
 | Q2EP | `AN02_Q2_entry_through_strong_passage_v1.tex` (+ review), prefix `an02q2epv1:` — part (e) proved; obstruction to the $e^{o(1)}$ form |
+| Q2EC | `AN02_Q2_entry_contracts_v1.tex` (+ review), prefix `an02q2ecv1:` |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

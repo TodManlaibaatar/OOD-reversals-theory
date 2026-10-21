@@ -1,0 +1,775 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}
+\newcommand{\E}{\mathbb E}
+\newcommand{\one}{\mathbf1}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Cl}{\mathcal C_q}
+\newcommand{\Qtwo}{\mathcal Q_2}
+\newcommand{\Kfun}{\mathcal K}
+\title{Fixed-constant Q2 entry contracts at strong half mass}
+\author{Analytical increment for review}
+\date{Version 1; October 7, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For the original initialized untied flow, we supply the primary
+Q2 entry ratios, signs, antisymmetric bound, clock seed and fixed
+chart cap at the first strong half-mass time.
+A narrow, growing-in-scaled-units weak-axis band is traversed while
+strong mass is still $O(q^{1/2})$. This gives a relative Cartesian
+match to the exact target-only flow before diagonal transport is
+used. The strong cross drive is retained: its transport cost is
+$O(1/x_{\min})$, bounded at a fixed primary threshold and vanishing
+on the clock. No bounded residual-integral premise is used.
+The previously proved whole-Q2 energy bound is cited, not reproved.
+All conclusions stop at half mass; secondary profiles and later
+passage contracts are not supplied.
+\end{abstract}
+
+\section{Setting and result}
+All new labels use prefix \texttt{an02q2ecv1:}.
+Use the original model and initialization of MOMC:
+\[
+ P=\tfrac12P_1+\tfrac12P_2,\quad
+ P_1=N(e_1,q^2I_2),\quad P_2=N(\rho e_2,q^2I_2),\quad
+ \rho\in[13/20,7/10],
+\]
+\[
+ U(0,\beta)=W(0,\beta)=q^5(\cos\beta,\sin\beta),\qquad
+ \dd\lambda_0=\dd\beta/(2\pi).
+\]
+Write $U=\sqrt m\,a_\theta$, $W=\sqrt m\,a_\psi$,
+$a_\theta=(\cos\theta,\sin\theta)$.
+Angles are continuous lifts on the intervals used below.
+Balance $|U|^2=|W|^2=m$ is exact. The equations are
+\[
+ U'=R_\theta^TW,\quad W'=R_\theta U,\quad
+ R_\theta=A_\theta-C_\theta,\quad
+ A_\theta=\E_P[XX^T\one_{a_\theta\cdot X>0}],\quad
+ C_\theta=\E_P[fX^T\one_{a_\theta\cdot X>0}].
+\]
+Hats denote the exact aligned target-only characteristic with
+the same initial label, evaluated at the same physical time unless
+stated otherwise.
+
+Let $\lambda=\rho^2$, $\omega=(1-\lambda)/2$, $\ell=\log(1/q)$,
+$\Kfun(z)=\phi(z)+z\Phi(z)$, and
+$a_\rho=\rho\Kfun(\rho a_\rho)>0$.
+The fixed strong ancestry is $\mathcal R=[-\pi/2,\pi/2]$,
+with mass $M$; its entire complementary ancestry has mass $\mu$.
+Use MOMC's normalization
+\begin{align}
+ c_m&=2/\omega+\tfrac12,\quad t_m=c_m\ell,\quad
+ u=10-c_m,\quad v=u-1,\quad M_0=M(t_m)=A_q q^u,\nonumber\\
+ c_A&\le A_q\le C_A,\quad u\ge169/102,\quad v\ge67/102,\nonumber\\
+ t_0=t_h&=10\ell-\log A_q+O(q^2\ell^2+q^u),\quad M(t_h)=1/2.
+ \label{an02q2ecv1:clock}
+\end{align}
+In particular $t_h-t_m=O(\ell)$.
+All constants below are uniform on the ratio box.
+
+Set $c_0=-\cos\beta$, $s_0=\sin\beta$ for $\beta\in\Qtwo=[\pi/2,\pi]$,
+and
+\[
+ \gamma=1-5\lambda+\frac{2\lambda}{1-\lambda},\quad
+ r_\lambda=\frac{1-\lambda}{\lambda},\quad
+ \Cl=\{c_0\ge q^{1/4}\}.
+\]
+Keep LCRC's notation
+\[
+ z=(U_2+W_2)/2,\quad a_{\rm as}=(U_2-W_2)/2,\quad
+ j=((U_1^2+W_1^2)/2)^{1/2},\quad X_B=qj/z.
+\]
+The letter $x$ in a scaled-angle expression means $\theta/q$,
+not $X_B$.
+
+\begin{theorem}[Exact original-flow primary entry]
+\label{an02q2ecv1:main}
+Fix $C_0>0$. There are fixed constants $K=K(C_0)$,
+$Z=Z(C_0)$ and $C_{\rm clk}$, independent of every LCRC guard,
+such that for sufficiently small $q$ the following hold.
+For the fixed primary group
+$\mathcal P_q=\{\beta\in\Qtwo:c_0\ge Kq^\gamma\}$,
+\begin{equation}
+ z(t_h)>0,\qquad |a_{\rm as}(t_h)|/z(t_h)\le1/4,\qquad
+ X_B(t_h)\le C_0 .
+ \label{an02q2ecv1:primary}
+\end{equation}
+The clock $\Cl$ is contained in $\mathcal P_q$ for small $q$ and
+\begin{equation}
+ X_B(t_h)\le C_{\rm clk}q^{1/8}.
+ \label{an02q2ecv1:clockratio}
+\end{equation}
+Uniformly on $\mathcal P_q$, with
+$x_{\min}=\min_{t_m\le t\le t_h}\theta(t,\beta)/q$,
+\begin{equation}
+ q\cot\theta(t_h)=D_h^{-1}q\cot\widehat\theta(t_h)
+       \exp\{O(x_{\min}^{-1})+O(\eta_q)\},\qquad
+ D_h=\sqrt{2(1-M_0)},
+ \label{an02q2ecv1:transport}
+\end{equation}
+where, for $\eps=1/1000$,
+\[
+ \eta_q=q^\eps+q^{4/51}+q^{u-1}+q\ell^2+q^2\ell=o(1).
+\]
+The exponent in \eqref{an02q2ecv1:transport} is two-sided;
+its absolute value is bounded by the stated expression.
+Moreover
+\begin{equation}
+ H_{\Cl}(t_h)=A_q^{-\lambda}\widehat H_{\Cl}(10\ell)
+       \exp\{O(q^{1861/13520}+\eta_q+q^u+q^2\ell^2)\}
+ \asymp A_q^{-\lambda}q^{10(1-\lambda)}.
+ \label{an02q2ecv1:seed}
+\end{equation}
+For every remaining Q2 label $c_0<Kq^\gamma$,
+\begin{equation}
+ |\theta(t_h)|+|\psi(t_h)|\le Zq .
+ \label{an02q2ecv1:chartentry}
+\end{equation}
+Q2EP already supplies $J_G(t_h)\le C_Jq^3$ and
+$E_{G_+}(t_h)=o(1)$ for every subdivision of the initial Q2 ancestry;
+those results are not reproved here.
+\end{theorem}
+
+\section{Already proved inputs and a full-gate field estimate}
+MOMC proves, on $[t_m,t_h]$,
+\begin{align}
+ M'/M&=1-M+\delta_M,\quad
+ |\delta_M|\le Cq^2+3\mu,\quad \int|\delta_M|\le Cq^2\ell^2,\nonumber\\
+ M'/M&\ge1/3,\quad \int M\le3/2,\quad
+ \mu\le Cq^2\ell^2M,\quad \int\mu/q\le Cq\ell^2 .
+ \label{an02q2ecv1:inputs}
+\end{align}
+Its strong input and output scaled angles lie in $[-R,R]$,
+$R=79/51$. Its reference offset $e$ and normalized donor
+first moment $\overline D$ satisfy
+\begin{equation}
+ \sup(e+\overline D)=o(1),\qquad
+ \int(e+\overline D)\le
+ C(q^v+\eps_m+q^2(1+\ell)+q\ell^2)=o(1),
+ \label{an02q2ecv1:donors}
+\end{equation}
+where $\eps_m=q^{s+d/2}$, $d=(1-\lambda\Phi(\rho a_\rho))/2$,
+$s=d/\omega$. P's early comparison, valid for every label, gives
+\begin{equation}
+ |\theta-\widehat\theta|+|\psi-\widehat\theta|
+   +|\log(m/\widehat m)|\le Cq^u\quad\hbox{at }t_m.
+ \label{an02q2ecv1:early}
+\end{equation}
+No right-half-circle pairwise theorem is applied to Q2 here.
+
+Put $T_s=\int_{\mathcal R}m a_\psi a_\theta^T\dd\lambda_0$ and
+$\kappa_1=(T_s)_{11}$. Then
+\begin{equation}
+ |\kappa_1-M|\le Cq^2M,\quad
+ |(T_s)_{12}|+|(T_s)_{21}|\le CqM,\quad |(T_s)_{22}|\le Cq^2M.
+ \label{an02q2ecv1:matrixmoments}
+\end{equation}
+
+\begin{lemma}[Full gates, cross drive and relative remainders]
+\label{an02q2ecv1:field}
+Let $A^{(i)}_\theta=\E_{P_i}[XX^T\one_{a_\theta\cdot X>0}]$.
+For every receiver angle,
+\begin{equation}
+ R_\theta=\tfrac12\{(I-T_s)A^{(1)}_\theta+
+                         A^{(2)}_\theta-B^{(2)}_\theta\}+\mathcal R_\theta,
+ \quad
+ B^{(2)}_\theta=\E_{P_2}[f_{\mathcal R}X^T\one_{a_\theta\cdot X>0}],
+ \quad
+ \|\mathcal R_\theta\|\le C\mu+CM e^{-c/q^2}.
+ \label{an02q2ecv1:fullgates}
+\end{equation}
+Write $t_1=\cos\theta/q$, $t_2=\rho\sin\theta/q$, and
+$\mathcal T(w)=(1+w^6)e^{-w^2/16}$ for $w\ge0$.
+On $0\le\theta\le\pi/2$,
+\begin{align}
+ |R_{11}-(1-\kappa_1)/2|&\le C(q^2+\mu+\mathcal T(t_1)),\nonumber\\
+ |R_{22}-\lambda/2|&\le C(q^2+\mu+\mathcal T(t_2)),\nonumber\\
+ |R_{12}-a_{12}|+|R_{21}-a_{12}|&\le C(qM+\mu+M e^{-c/q^2}),\nonumber\\
+ a_{12}&=\tfrac q2\{\sin^3\theta\,\phi(t_1)
+                      +\rho\cos^3\theta\,\phi(t_2)\}.
+ \label{an02q2ecv1:entries}
+\end{align}
+The target gate cross terms $a_{12}$ are retained, not called
+$O(qM)$. More precisely on this quadrant,
+\begin{equation}
+ R_{12},R_{21}
+ =a_{12}-\tfrac12qMa_\rho+
+ O\!\left(qM[e+\overline D+q^2+\mathcal T(t_1)+\mathcal T(t_2)]
+             +\mu+M e^{-c/q^2}\right).
+ \label{an02q2ecv1:signedcross}
+\end{equation}
+For $\Delta=\psi-\theta$, while $\theta\in[0,3\pi/4]$ and
+$|\Delta|\le1/10$,
+\begin{equation}
+ D^+|\Delta|\le-c_\Delta|\Delta|+CqM+C\mu,\qquad
+ c_\Delta=169/6400.
+ \label{an02q2ecv1:deltaineq}
+\end{equation}
+Consequently, on any such stopped interval starting at $t_m$,
+\begin{equation}
+ |\Delta(t)|\le C_\Delta(q^u e^{-c_\Delta(t-t_m)}+qM(t)).
+ \label{an02q2ecv1:delta}
+\end{equation}
+\end{lemma}
+\begin{proof}
+For a Gaussian with mean $b$ and covariance $q^2I$, direct
+one-dimensional truncation along $a=a_\theta$ gives, with
+$t=b\cdot a/q$,
+\[
+ A_b=(bb^T+q^2I)\Phi(t)+q\phi(t)(ba^T+ab^T)
+                     -q^2t\phi(t)aa^T .
+\]
+On $P_1$, each strong donor has mean-to-noise margin at least
+$1/(2q)$ for small $q$. Replacing its ReLU by its linear feature
+therefore costs $CM e^{-c/q^2}$ in the selected matrix norm,
+uniformly over receivers: Cauchy--Schwarz bounds the selected
+expectation by the ungated negative-part second moment times a
+Gaussian second moment. Polynomial factors are absorbed by a
+smaller positive $c$. This proves \eqref{an02q2ecv1:fullgates};
+the complement is bounded by $C\mu$ as in PROFILE Proposition 4.1.
+
+On $P_2$, set $X=(qZ_1,\rho+qZ_2)$. For a strong donor,
+its feature is bounded by $Cq(|Z_1|+1+q|Z_2|)$ and its second
+output direction is $O(q)$. Gaussian moments give
+\[
+ |B^{(2)}_{11}|\le Cq^2M,\quad |B^{(2)}_{12}|\le CqM,\quad
+ |B^{(2)}_{21}|\le Cq^3M,\quad |B^{(2)}_{22}|\le Cq^2M .
+\]
+Inserting these bounds and the exact truncated matrices gives
+\eqref{an02q2ecv1:entries}. For example the off-diagonal entry
+of $A^{(1)}$ is $q\sin^3\theta\,\phi(t_1)$; that of $A^{(2)}$
+is $\rho q\cos^3\theta\,\phi(t_2)$.
+All second moments lost beyond a projection threshold $w\ge0$
+are bounded by $C\mathcal T(w)$. This follows by integrating
+Gaussian monomials on a half-line; degree at most six suffices,
+and the exponent $1/16$ is a common weaker bound.
+
+For \eqref{an02q2ecv1:signedcross}, the ungated $P_2$ Stein formula is
+\[
+ \E_{P_2}[X_2(a_{q\xi}\cdot X)_+]
+ =\rho q\Kfun(\rho\xi)+O_R(q^3).
+\]
+Thus $B^{(2)}_{12}=qMa_\rho+
+O(qM[e+\overline D+q^2+\mathcal T(t_2)])$.
+Here the selected negative-gate error is bounded by the same
+Gaussian monomial estimate after extracting the factor $q$.
+Also $(T_s)_{21}=qMa_\rho+
+O(qM[e+\overline D+q^2])$. Substitution in
+\eqref{an02q2ecv1:fullgates} proves the signed formula.
+
+The exact angle-difference equation is
+\[
+ \Delta'=-\operatorname{tr}(R_\theta)\sin\Delta
+                      +(C_{\theta,12}-C_{\theta,21})\cos\Delta .
+\]
+The preceding moment bounds give
+$|C_{\theta,12}-C_{\theta,21}|\le CqM+C\mu$ on the whole
+upper sector, including negative $t_1$.
+Furthermore $\operatorname{tr}R_\theta\ge169/1600$ for small $q$
+on $[0,3\pi/4]$: on $[0,\pi/4]$ the $P_1$ diagonal contributes
+at least $1/4-o(1)$, and on $[\pi/4,3\pi/4]$ the $P_2$ diagonal
+contributes at least $\lambda/2-o(1)$; the remaining $P_1$
+term is nonnegative up to $O(qM+q^2+\mu)$.
+Use $\sin|\Delta|\ge|\Delta|/2$ and weaken the coefficient
+to $c_\Delta$. Then \eqref{an02q2ecv1:deltaineq} follows.
+Since $\mu\le Cq^2\ell^2M\le CqM$ and
+$M(s)\le M(t)e^{-(t-s)/3}$, convolution proves
+\eqref{an02q2ecv1:delta}. It strictly improves the difference
+guard for small $q$. No sign of a finite-noise off-diagonal
+Jacobian has been assumed.
+\end{proof}
+
+\section{Late crossers: matching through a weak-axis band}
+Fix
+\[
+ \eps=1/1000,\qquad r_q=q^{1-\eps},\qquad
+ T_b=\tfrac{19}{2}\ell+C_b^0,\qquad
+ \chi_q=q^{4/51}+q^{1/2-\eps}.
+\]
+The fixed $C_b^0$ below is a target crossing/band constant, not
+LCRC's response cap. For small $q$, $t_m<T_b<t_h$.
+From \eqref{an02q2ecv1:inputs},
+\begin{equation}
+ M(t)\le A_q q^{10}e^t e^{Cq^2\ell^2},\quad
+ M(T_b)\le C A_q q^{1/2},\quad M'/M\ge3/4\quad(t\le T_b).
+ \label{an02q2ecv1:earlymass}
+\end{equation}
+
+\begin{lemma}[Uniform crossing and relative Cartesian matching]
+\label{an02q2ecv1:crossing}
+Every Q2 label whose crossing has not already occurred at $t_m$
+crosses in the original flow at
+$T_\times^{\rm o}=\widehat T_\times+O(\chi_q)$.
+The same conclusion follows from P's early comparison for earlier
+crossings, with error $O(q^{u-1})$; the initial endpoint
+$\beta=\pi/2$ crosses at time zero. In particular late crossers obey
+\begin{equation}
+ T_\times^{\rm o}\le(1600/169)\ell+O(1),\qquad
+ M(T_\times^{\rm o})\le C A_q q^{90/169}
+ \quad\hbox{if }T_\times^{\rm o}\ge t_m.
+ \label{an02q2ecv1:latemass}
+\end{equation}
+For each label not initially in a fixed strong chart, choose
+$t_s=t_m$ if $\cos\widehat\theta(t_m)\ge r_q$.
+Otherwise choose $t_s$ by $\cos\widehat\theta(t_s)=2r_q$.
+Then $t_s\le T_b$, both first coordinates are positive, and
+\begin{equation}
+ \left|\log\frac{U_i(t_s)}{\widehat U_i(t_s)}\right|
+ +\left|\log\frac{W_i(t_s)}{\widehat U_i(t_s)}\right|
+ \le C(\chi_q+q^{u-1}),\quad i=1,2,
+ \qquad
+ \cos\theta(t_s),\cos\widehat\theta(t_s)\ge r_q/2.
+ \label{an02q2ecv1:match}
+\end{equation}
+The assertion for $t_s=t_m$ is used only when both second
+coordinates have a fixed positive scaled margin.
+\end{lemma}
+\begin{proof}
+First, every target-only Q2 angle at $t_m$ lies between $qa_q$
+and $\pi/2+Cq^{1/2}$.
+For the upper bound, before crossing the negative first coordinate
+has magnitude at most $Cq^5$. The exact target equation creates
+$\widehat U_2(1)\ge cq^6$, including $\beta=\pi$, and
+$\widehat U_2'\ge\lambda\widehat U_2/2$ thereafter.
+Thus the negative cotangent is at most $Cq^{-1}e^{-\lambda t_m/2}$.
+Its exponent $\lambda c_m/2-1=\lambda/\omega+\lambda/4-1$
+is greater than $1/2$: use $\lambda/\omega\ge338/231>7/5$
+and $\lambda/4\ge169/1600>1/10$.
+The lower angle bound is PROFILE's attracting target direction.
+Equation \eqref{an02q2ecv1:early} transfers these rough locations.
+
+For a target still in the weak-axis band, stop the original
+receiver at $\theta=3\pi/4$, $\cos\theta=3r_q$, or $T_b$.
+On this band the selected strong angular contribution satisfies
+\begin{equation}
+ |a_\theta^\perp{}^T C_\theta^T a_\psi|
+ \le C M\{(\cos\theta)_++q+|\Delta|\}+C\mu .
+ \label{an02q2ecv1:weakangular}
+\end{equation}
+To check this bound, on $P_1$ use $T_s A^{(1)}$ and the
+truncated formula above. Its first output projection is
+$O(M(|\cos\theta|+q+|\Delta|))$;
+for $\cos\theta<0$, the product
+$|\cos\theta|\Phi(\cos\theta/q)$ is at most $Cq$.
+The $q\phi$ terms are also $O(qM)$.
+On $P_2$ the whole strong selected matrix has norm $O(qM)$.
+The complement costs $C\mu$. This proves \eqref{an02q2ecv1:weakangular}
+with full gates, even on the Q2 side.
+
+P gives $|v_0'|\le a_*=1/2+q^2$ for the exact target angular field.
+For $h=|\theta-\widehat\theta|$, equations
+\eqref{an02q2ecv1:delta} and \eqref{an02q2ecv1:weakangular}
+therefore give
+\[
+ D^+h\le a_*h+Cq^u e^{-c_\Delta(t-t_m)}
+                  +Cr_q M+C\mu .
+\]
+Use $M'/M\ge3/4>a_*$ in the convolution.
+Uniformly up to the target exit $\cos\widehat\theta=2r_q$,
+\begin{equation}
+ h\le Cq^u e^{a_*(t-t_m)}+Cr_q M(t),\qquad
+ h/q\le C\chi_q .
+ \label{an02q2ecv1:weakh}
+\end{equation}
+Indeed $c_m\le851/102$ and
+\[
+ u-1-\tfrac12(19/2-c_m)=17/4-c_m/2\ge4/51.
+\]
+Also $r_q M(T_b)/q=O(q^{1/2-\eps})$.
+The target stays below $\pi/2+Cq^{1/2}$, so the upper angle
+guard improves. Since $h=o(q)=o(r_q)$, the original cosine
+cannot reach $3r_q$ before the target reaches $2r_q$.
+The difference guard improves by \eqref{an02q2ecv1:delta}.
+Thus these are stopped estimates with a verified continuation.
+
+The target crosses by $(1600/169)\ell+O(1)$ by Q2E.
+After a fixed layer time, its positive cosine is at least $qL_1$,
+where $L_1$ is fixed. On $qL_1\le\cos\widehat\theta\le2r_q$,
+the exact target angular equation gives
+$(\log\cos\widehat\theta)'\ge\omega/2$ for small $q$.
+The opposite-cluster negative-gate term is exponentially small;
+the $P_1$ leakage has the helpful sign.
+The additional time is at most $(2\eps/\omega)\ell+O(1)$.
+The strict rational margin
+\[
+ \frac{1600}{169}+\frac{400\eps}{51}
+ =\frac{1600}{169}+\frac2{255}<\frac{19}{2}
+\]
+puts this exit before $T_b$, with one fixed choice of $C_b^0$.
+
+In a fixed crossing layer $\theta=\pi/2+qw$, the target velocity is
+\[
+ q^{-1}v_0(\pi/2+qw)
+ =-\tfrac12[\Kfun(-w)+\lambda w]+O(q^2).
+\]
+The bracket has a positive minimum on each fixed compact $w$-interval:
+for $w\ge0$ both summands are nonnegative and do not vanish together;
+for $w<0$ it is $\phi(w)+|w|[\Phi(|w|)-\lambda]>0$.
+Equations \eqref{an02q2ecv1:delta}, \eqref{an02q2ecv1:weakangular}
+and \eqref{an02q2ecv1:weakh} transfer the crossings with time error
+$O(\chi_q)$. For crossings before $t_m$, P's angular and alignment
+errors are $O(q^u)=o(q)$ and give the stated early error by the
+same transverse-speed bound. There is only one crossing in the
+layer, since its original velocity is strictly negative there.
+Substitution in \eqref{an02q2ecv1:earlymass} proves
+\eqref{an02q2ecv1:latemass}, since $10-1600/169=90/169$.
+Thus the reduced $P_1$ push delays a late crossing by at most
+$o(1)$ here, in particular by $O(1)$.
+
+Finally compare radial equations on the band:
+\[
+ \left|(\log(m/\widehat m))'\right|
+       \le C(h+|\Delta|+M+\mu).
+\]
+Its integral is $O(\chi_q)$, using \eqref{an02q2ecv1:earlymass}
+and \eqref{an02q2ecv1:weakh}. At exit the first direction
+coordinate is comparable to $r_q$ and the second to one;
+the angle error is $O(q\chi_q)$. Balance proves
+\eqref{an02q2ecv1:match}. For $t_s=t_m$, use
+\eqref{an02q2ecv1:early} directly, dividing only by coordinates
+at least a fixed multiple of $q$.
+\end{proof}
+
+\section{Transport with a fixed strong-side margin}
+Constants $C_1,C_{\rm tr},C_\Delta$ below depend only on the
+fixed donor chart and ratio box, and are chosen before the
+large receiver margin $L$. Enlarge $L\ge32$ so that all the
+pointwise errors bounded by $C_1/L+C_1\mathcal T(2\rho L/\pi)$
+are below $1/2000$, $C_\Delta/L$ is sufficiently small, and
+$C_{\rm tr}/L<\log2/4$. These requirements are compatible:
+Gaussian tails vanish, and all displayed coefficients are fixed.
+
+\begin{lemma}[Two-sided off-chart coordinate transport]
+\label{an02q2ecv1:offtransport}
+Starting with \eqref{an02q2ecv1:match}, stop at $t_h$ or the first
+time either $\theta$ or $\widehat\theta$ equals $qL$.
+Assume both angles at the start exceed $qL$.
+On this interval both first coordinates stay positive,
+$\theta$ decreases, and $\cos\theta\ge r_q/2$.
+Writing
+\[
+ \underline x(t)=q^{-1}\min_{t_s\le w\le t}
+                    \{\theta(w),\widehat\theta(w)\},
+\]
+one has
+\begin{align}
+ \log\frac{U_1(t)}{\widehat U_1(t)}
+       &=-\tfrac12\int_{t_m}^t M+O(\eta_q),\nonumber\\
+ \left|\log\frac{U_2(t)}{\widehat U_2(t)}\right|
+       &\le C_{\rm tr}/\underline x(t)+C\eta_q .
+ \label{an02q2ecv1:coordinatetransport}
+\end{align}
+In particular the cotangent quotient lies between
+$1/(2\sqrt2)$ and $2$ for small $q$, after increasing $L$ if
+necessary. The same estimate can then be written with
+$\underline x$ replaced by the actual minimum scaled angle,
+at the cost of a fixed factor in $C_{\rm tr}$.
+\end{lemma}
+\begin{proof}
+On the stopped region, $\sin\theta\ge2qL/\pi$.
+Equation \eqref{an02q2ecv1:delta} shows that $\sin\psi>0$ and
+that $\cos\psi/\cos\theta=1+o(1)$ whenever
+$\cos\theta\ge r_q/2$. Thus all four coordinates used in the
+following logarithms are positive. This can initially be
+imposed as a guard; the ensuing estimates improve it.
+
+Here are explicit relative error bounds following from
+\eqref{an02q2ecv1:entries}, balance, and
+$|\cos\psi-\cos\theta|,|\sin\psi-\sin\theta|\le|\Delta|$.
+For $d_1=(1-\kappa_1)/2$ and $d_2=\lambda/2$,
+\begin{align}
+ \left|U_1'/U_1-d_1\right|
+ &\le C\left[q^2+\mathcal T(t_1)
+       +\frac{|\Delta|+qM+\mu}{\cos\theta}
+       +q|\phi(t_2)|\tan\theta\right],\nonumber\\
+ \left|U_2'/U_2-d_2\right|
+ &\le C\left[q^2+\mathcal T(t_2)
+       +\frac{|\Delta|+qM+\mu}{\sin\theta}
+       +q|\phi(t_1)|\cot\theta\right].
+ \label{an02q2ecv1:relative}
+\end{align}
+The harmless factors $\sin\theta,\cos\theta\le1$ have been
+discarded in the strong cross terms. The corresponding target
+bounds hold with $\Delta,M,\mu=0$.
+
+For small $q$, the first right side has pointwise bound
+$o(1)+Cq^\eps M$. The last term there is $O(q^2)$ on
+$\theta\le\pi/4$, because $w\phi(\rho w)$ is bounded; on
+$\theta\ge\pi/4$ it is exponentially small divided by
+$\cos\theta\ge r_q/2$.
+The second right side is at most
+$C_1/L+C_1\mathcal T(2\rho L/\pi)+o(1)$.
+Thus
+\[
+ (\log\cot\theta)'=
+ U_1'/U_1-U_2'/U_2\ge b,\qquad b=1/1000,
+\]
+using $\omega-M/2\ge1/200$ and \eqref{an02q2ecv1:matrixmoments}.
+Choose the large-$L$ bounds with room for both errors.
+The target has the same positive lower bound.
+These inequalities exclude a decrease of either cosine below
+its entry lower bound, and justify the stopped coordinate guards.
+
+Integration of the first line of \eqref{an02q2ecv1:relative}
+costs $O(\eta_q)$. In detail,
+\[
+ \int\frac{|\Delta|}{\cos\theta}
+ \le C(q^{u-1+\eps}+q^\eps\!\int M),\quad
+ \int\frac{\mu}{\cos\theta}\le Cq^\eps\!\int\mu/q,
+ \quad \int\mathcal T(t_1)=o(q^2).
+\]
+The finite-time Gaussian assertion follows from
+$t_1\ge q^{-\eps}/2$ and duration $O(\ell)$.
+For the second line, with $x_*=\min\theta/q$ on this interval,
+\[
+ \int\frac{|\Delta|+qM+\mu}{\sin\theta}
+ \le\frac C{x_*}
+       \left(q^{u-1}+\int M+\int\mu/q\right).
+\]
+The gate cost is also bounded by $C/x_*$:
+on $\theta\ge\pi/4$ it is exponentially small, while on
+$\theta\le\pi/4$,
+\[
+ -(\log\sin\theta)'\ge b/2,\qquad
+ \int\mathcal T(\rho\sin\theta/q)
+ \le \frac2b\int_{2\rho x_*/\pi}^{\infty}
+                         \mathcal T(w)\frac{\dd w}{w}
+       +O(\ell e^{-c/q^2})\le C/x_*.
+\]
+The last inequality is a Gaussian half-line integral bound,
+uniform for $x_*\ge L$. The target calculation uses its own
+minimum. Subtract the two coordinate logarithmic integrals and
+use \eqref{an02q2ecv1:match}. If $t_s>t_m$, the omitted
+$\int_{t_m}^{t_s}M$ is $O(q^{1/2})$.
+Also $\int|\kappa_1-M|=O(q^2)$.
+This proves \eqref{an02q2ecv1:coordinatetransport}.
+
+The factor $\exp(-\int M/2)$ lies between
+$2^{-1/2}e^{-O(q^2\ell^2)}$ and $1$:
+integrate $(\log(1-M))'=-M-M\delta_M/(1-M)$.
+After the fixed choice of $L$, the claimed cotangent bounds
+follow. For positive cotangents whose ratio lies in
+$[1/(2\sqrt2),2]$, their angles have ratio in
+$[1/2,2\sqrt2]$, since $\arctan(cv)/\arctan(v)$ lies between
+$\min(1,c)$ and $\max(1,c)$.
+Their minima are therefore comparable, proving the last assertion.
+\end{proof}
+
+\section{Fixed charts and assembly of the entry contracts}
+\begin{lemma}[A fixed receiver square up to half mass]
+\label{an02q2ecv1:square}
+For any fixed sufficiently large $B$, the square
+$|\theta/q|,|\psi/q|\le B$ is forward invariant on $[t_m,t_h]$
+once entered. The allowed smallness of $q$ may depend on $B$.
+\end{lemma}
+\begin{proof}
+Q2EP's field lemma, derived from MOMC's finite-noise reduction,
+gives a uniformly $o(1)$ perturbation on this square of
+\begin{align*}
+ 2f_x&=-(1-M)x+\rho\phi(\rho x)
+         -\rho M F(\rho x,\rho a_\rho)+\lambda y\Phi(\rho x),\\
+ 2f_y&=-(1-M)y-Ma_\rho+\rho\Kfun(\rho x),\\
+ F(t,r)&=\phi(\min(t,r))+r\Phi(\min(t,r)).
+\end{align*}
+The error is bounded pointwise by
+$C_B[q^2+\mu/q+M(e+\overline D)]=o(1)$.
+Both off-diagonal derivatives of this leading field equal
+$\lambda\Phi(\rho x)/2\ge0$.
+At $(B,B)$, $B>a_\rho$, both components are
+$f_0(B)+M(B-a_\rho)/2$, where
+$f_0' \le-\omega$ and $f_0(a_\rho)=0$.
+They are at most $-(B-a_\rho)/200$.
+At $(-B,-B)$,
+\[
+ 2f_x\ge\omega B-a_\rho/2,\qquad
+ 2f_y\ge B/2-a_\rho/2 .
+\]
+Here $F(-\rho B,\rho a_\rho)\le\Kfun(\rho a_\rho)$,
+$\Phi(-\rho B)\le1/2$, and $\phi\ge0$ suffice.
+Choose $B>1+a_{\max}/\omega_{\min}$, where
+$a_{\max}=28/51$ and $\omega_{\min}=51/200$ are MOMC's
+analytic bounds. Monotonicity in the other coordinate makes
+each face strictly inward. The $o(1)$ perturbation preserves
+the strict inequalities. A first-exit argument proves invariance
+without assuming finite-noise cooperativity.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{an02q2ecv1:main}]
+We specify the target constants used in choosing the groups.
+Let $B_A=1+\max(|\log c_A|,|\log C_A|)$.
+RCET Proposition 3.1 and BULK's target bulk-seed theorem, with
+their endpoint-regularized proofs, give uniform constants $C_T,C_B^T$
+and a fixed chart bound $Z_T(K)$ such that, at $t_h$,
+\begin{align}
+ q\cot\widehat\theta&\le C_T(2/K)^{r_\lambda}
+       &&(c_0\ge Kq^\gamma),\nonumber\\
+ q\cot\widehat\theta&\le C_B^T q^{\delta_*}
+       &&(\beta\in\Cl),\qquad \delta_*=1861/13520>1/8,\nonumber\\
+ 0<\widehat\theta/q&\le Z_T(K)
+       &&(c_0<Kq^\gamma).
+ \label{an02q2ecv1:targetcontracts}
+\end{align}
+These are fixed-time-shift extensions of the source conclusions,
+not new original-flow premises. Here is the time-domain check.
+The sources' post-crossing formulas and gate-integral bounds
+hold until any fixed chart, with errors uniform on
+$[10\ell-B_A,10\ell+B_A]$. Outside that chart,
+$|(\log\cot\widehat\theta)'|\le C$ once the weak-axis band
+has been left, so a bounded time shift multiplies the one-sided
+ratio constant by at most $e^{CB_A}$.
+For the chart cap, the target speed bound $|v_0(\theta)|\le C\theta$
+on $[qL,\pi/4]$ extends the cap backwards by at most $e^{CB_A}$;
+forward invariance supplies the other direction.
+Thus enlarge the source constants by these fixed factors.
+The regularized factors remain $(s_0+q)$ and $(c_0+q)$;
+only at the cutoff is $s_0\asymp1$ used.
+
+Choose, explicitly in terms of these analytic source constants,
+\begin{equation}
+ K=2\left[\max\left\{1,\frac{16C_T}{C_0},32C_TL\right\}
+       \right]^{49/51},\qquad
+ C_{\rm clk}=4C_B^T .
+ \label{an02q2ecv1:constants}
+\end{equation}
+Because $r_\lambda\ge51/49$, the first target ratio in
+\eqref{an02q2ecv1:targetcontracts} is at most
+$\min(C_0/16,1/(32L))$.
+The target angle decreases from Q2 towards $qa_q$;
+hence primary target angles exceed $16qL$ throughout
+$[t_m,t_h]$ for small $q$.
+They cannot enter the original $qL$ boundary either:
+at a first hit, Lemma \ref{an02q2ecv1:offtransport} would give
+$q\cot\theta\le2q\cot\widehat\theta\le1/(16L)$,
+contradicting $q\cot(qL)\ge1/(2L)$.
+The weak-axis matching already covers the part before $t_s$.
+Thus all primary labels stay in the controlled sector through $t_h$.
+
+Equation \eqref{an02q2ecv1:coordinatetransport} and
+\[
+ \int_{t_m}^{t_h}M=\log[2(1-M_0)]+O(q^2\ell^2)
+\]
+prove \eqref{an02q2ecv1:transport}. On the pre-band segment the
+scaled angle is of order $q^{-1}$; the actual minimum over
+$[t_m,t_h]$ is comparable to that on the post-band segment.
+This justifies the definition of $x_{\min}$ in the statement.
+
+The difference estimate gives
+$|\Delta|/\sin\theta\le C/L+o(1)$ on the primary labels,
+and $|\Delta|/\cos\theta=o(1)$ after matching.
+Choose $L$ large enough that the former is at most $1/8$.
+Then $U_2,W_2>0$ and
+\[
+ \frac{|a_{\rm as}|}{z}
+ =\frac{|\sin\theta-\sin\psi|}{\sin\theta+\sin\psi}
+ \le\frac{|\Delta|}{2\sin\theta-|\Delta|}\le1/4,\qquad
+ \frac{qj}{z}\le2q\cot\theta .
+\]
+Equations \eqref{an02q2ecv1:targetcontracts} and the cotangent
+factor bound now prove \eqref{an02q2ecv1:primary}.
+Since $\gamma-1/4$ has a strictly positive box minimum, $\Cl$
+is contained in $\mathcal P_q$ for small $q$.
+The second target estimate gives
+$X_B\le4C_B^Tq^{\delta_*}\le C_{\rm clk}q^{1/8}$.
+
+On $\Cl$, the actual and target minimum scaled angles are at least
+$cq^{-\delta_*}$ (the part before matching has angle near the
+weak axis). Lemma \ref{an02q2ecv1:offtransport} therefore gives
+$U_2/\widehat U_2=\exp[O(q^{\delta_*}+\eta_q)]$,
+and \eqref{an02q2ecv1:delta} gives the same for $z/\widehat U_2$.
+On $[10\ell-B_A,10\ell+B_A]$, the exact target identity is
+\[
+ (\log\widehat U_2)'=
+ \lambda/2+d_q+\frac{\rho q}{2\sin\widehat\theta}
+          \Kfun(-\rho\sin\widehat\theta/q),\qquad 0\le d_q\le q^2 .
+\]
+The last term is uniformly superpolynomially small on $\Cl$.
+Insert \eqref{an02q2ecv1:clock}, square, and integrate over the
+fixed clock cohort. BULK's point-seed estimate
+$\widehat U_2(10\ell,\beta)^2\asymp
+q^{10(1-\lambda)}(s_0+q)^2$ proves
+\eqref{an02q2ecv1:seed}; the integral of $(s_0+q)^2$ is bounded
+above and below, the latter on a fixed interior Q2 subinterval.
+
+It remains to give the chart cap, without transferring tiny shapes.
+Labels with $\widehat\theta(t_m)\le2qL$ enter a fixed square
+immediately by \eqref{an02q2ecv1:early}.
+For the others apply the crossing and transport lemmas until
+the first $qL$ hit by either receiver.
+At such a hit the cotangent factor bound puts both input angles
+below $4qL$, and \eqref{an02q2ecv1:delta} bounds the original
+output angle by a further $C_\Delta q$.
+They can then be retained in the square of Lemma
+\ref{an02q2ecv1:square} through $t_h$.
+If there is no hit, the same factor bound and
+\eqref{an02q2ecv1:targetcontracts} give
+$\theta(t_h)\le3Z_T(K)q$ and
+$|\psi(t_h)-\theta(t_h)|\le(C_\Delta+1)q$.
+One admissible choice is
+\begin{equation}
+ B=8\left[L+Z_T(K)+C_\Delta+1+a_{\max}/\omega_{\min}\right],
+ \qquad Z=2B .
+ \label{an02q2ecv1:Z}
+\end{equation}
+Both coordinates are in $[-Bq,Bq]$ at $t_h$, proving
+\eqref{an02q2ecv1:chartentry}. All constants were chosen from
+the ratio box, MOMC/P/PROFILE/Q2E target constants and $C_0$,
+before imposing any LCRC residual or passage guard.
+\end{proof}
+
+\section{Scope of the handoff}
+The new results supply the primary Cartesian entry, clock seed,
+and fixed Q2 chart cap at $t_0=t_h$. Q2EP supplies the common
+whole-Q2 energy constant independently of this subdivision.
+The $O(x_{\min}^{-1})$ correction is retained; at a fixed
+threshold it is a bounded factor, not an obstruction.
+The proof of signs does not integrate $M X_B$ backwards through
+a nearly zero weak seed. The weak-axis matching handles the
+late-crossing layer while $M=o(1)$; the Cartesian ratio argument
+begins only after positive first-coordinate seeds are matched.
+
+No result here supplies the secondary displacement/radial tail,
+a subsequent distance or gain bound, core or chart retention
+after $t_h$, or $\int_{t_h}^{t_b}|1-\kappa_1|$.
+LCRC remains a conditional implication until those separate
+contracts are assembled. No theorem from BULK or RCET requiring
+$\int r\le B$ has been applied on $[t_m,t_h]$.
+
+\begin{thebibliography}{9}\small
+\bibitem{P} P, \path{THEOREM_A_ANALYTICAL_PROGRESS.tex},
+\texttt{pa:targetcomparison}, exact angle and radial equations.
+\bibitem{Q2} Q2, \path{AN02_Q2_profiles_and_localized_tracking_v1.tex};
+target-only equations. Its conditional left-facing output-defect
+contract is not an assumption of this increment.
+\bibitem{Q2E} Q2E, \path{AN02_Q2_boundary_layers_and_cohort_energy_v1.tex},
+prefix \texttt{inc:AN02:q2completion:v1:}, \texttt{crossing},
+\texttt{crossclock}, \texttt{U2rate}.
+\bibitem{PROFILE} PROFILE,
+\path{AN02_strong_entry_profile_and_tail_budget_v1.tex},
+Proposition 4.1, target root and arrival/gate-integral estimates.
+\bibitem{OWPT} OWPT, \path{AN02_overlap_window_profile_transfer_v1.tex};
+scope of early versus pairwise comparison.
+\bibitem{MOMC} MOMC, \path{AN02_moving_overlap_M_clock_passage_v1.tex},
+prefix \texttt{an02momcv1:}, \texttt{main}, \texttt{reduction},
+\texttt{massclaim}, \texttt{massintegral}, \texttt{outsideclaim},
+\texttt{meanintegral}, \texttt{decay}.
+\bibitem{Q2EP} Q2EP, \path{AN02_Q2_entry_through_strong_passage_v1.tex},
+\texttt{an02q2epv1:energy}, \texttt{field}, \texttt{obstruction}.
+\bibitem{RCET} RCET,
+\path{AN03_residual_closure_and_eta0_transport_v1.tex},
+Theorem 2.1 and Proposition 3.1;
+BULK, \path{AN03_bulk_clock_and_secondary_Q2_energy_v1.tex},
+\texttt{inc:AN03:bulkclock:v1:bulkseed} and Theorem 4.1.
+\bibitem{LCRC} LCRC,
+\path{AN03_ledger_cap_residual_closure_v1.tex}, Section 1.
+\end{thebibliography}
+\end{document}
