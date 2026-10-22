@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.10 — October 21, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.11 — October 22, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -21,6 +21,12 @@
 **Revision 1.9 (Oct 21).** Records CFR (`AN03_c_form_field_reduction_v1`), which proves part of S3 and stops at the S2 dependency. Ledger 16 records the sequencing error and the integrated outside budget. S2 is reordered: S2a (envelope and gain from a c-form hypothesis) comes next, then the joint weak-passage assembly. The strong diagonal term is downgraded from a sign problem to a budget controlled by LCRC's $\int r$ guard.
 
 **Revision 1.10 (Oct 21).** Records DECG (`AN03_distance_envelope_and_capped_gain_v1`): the chart envelope, the signed radial bound and the conditional gain are proved. Ledger 17 records the over-restricted contract. S2a' (global ℓ¹ envelope with signed gate cancellation; Q3 split) is next.
+
+**Revision 1.11 (Oct 22).** Records GESG (`AN03_global_envelope_signed_gate_v1`).
+- Proved: the global sine envelope and its splice onto the chart lemma, the signed gate identity (without the proposed cap), the constant audit, lower-side no-gain, and a Q3 interior frozen from initialization.
+- Stopped at the integrated gate budget $\int(Qc+N_-)$.
+- The review finds that this budget is payable from proved sources, LCRC's backward clock and GESG's own cohort charge, under one joint guard on $E_\Sigma$. S2's closure package is next.
+- Ledger 18 records the wrong budget sources in my prompt.
 
 ---
 
@@ -360,6 +366,34 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
     - In the Q3 interior, $|R_{11}(\theta)|$ and $|R_{22}|$ are $O(M_{\rm res}q^2)$ up to Gaussian tails, so labels there barely move. Their cost is $\int\mu/q\le Ce^{2B}q\ell^3$, provided they are in the interior at $t_0$, which needs a pre-$t_0$ version of the same speed bound.
     - The strips near π and 3π/2 are not leakage. They belong to the weak (Q2-like) family and the strong family (late joiners), so SEP's and MOMC's entry contracts must be extended to them.
 
+**Update (Oct 22, after GESG `AN03_global_envelope_signed_gate_v1`).**
+- *Proved:*
+  - the **global sine envelope** $D^+N\le(r+d_2+X+a_*q)N+a_*q$ and its Duhamel form. Comparability with D is checked on the physical strong branch ($|\theta|,|\psi|\le1/2$).
+  - the **one-exit splice**, with explicit $\mathcal C_D(t_*)=\sec(1/2)\,p_*^{-1}e^{C_T\overline F_F}e^{B+\mathfrak X+\varepsilon_q}(1+W_*/(L_c-R_c))$, where $\mathfrak X=\int\sup_\theta(|R_{22}|-I'/2)_+$. Re-entries cost nothing.
+  - the **signed gate bound** $X\le\tfrac12M_{\rm res}q^2+\tfrac12(Qc+N_-)$. It holds without the cap $N_-\le Q(1-2c)$, because the lower-side bound is smaller by $Q(1-c)/2$.
+  - the **cohort charge** $N_-\le C[q^2\mu_{\mathcal K}+E_\Sigma+q\sqrt{E_\Sigma J_\Sigma}+\mu_{\mathcal B}+\mu_{G_+}e^{-k_1/q^2}]$.
+  - the **constant audit:** a fixed $M_{\rm res}$-dependent $C_D$ is harmless downstream, and $L_c=R_c+1$ suffices.
+  - **Q3:** the lower-side no-gain lemma, and a frozen interior proved from initialization. When both gates are closed, every $|R_{ij}|\le Ce^{-k\Lambda^2}$, with $k=169/3200$; taking $\Lambda_q=\sqrt{3\ell/k}$ gives $\int\mu_{\rm int}/q\le Cq^9\ell$. Only two initial strips of width $2\arcsin(q\Lambda_q)=O(q\sqrt\ell)$ remain, and their consumer contracts are stated.
+- *Stopped at:* $\int_{t_0}^{t_*}(Qc+N_-)\le B_{\rm gate}$, uniformly in q.
+- *Resolution found in review (verified against the cited proved statements):*
+  - The proved source for $\int c$ is **LCRC's backward clock** (eq. `an03lcrcv1:backward` in Lemma `an03lcrcv1:localclock`), $H_{G_+}(s)\le eH_{G_+}(t)e^{-b_0(t-s)}$ with $b_0=Q(1-c_b)$. It needs only the hypotheses of BULK Theorem 4.1 and RCET Theorem 2.1: response, duration, residual norms, $\int r\le B$ and the entry ratios. It needs neither $E_\Sigma$ nor the terminal cap.
+  - Hence $\int H_{G_+}\le eE_g/b_0$. With LCRC's response charge and $E_{G_+}\le\tfrac{10}9H_{G_+}$, this gives $\int|c_{G_+}|\le\tfrac{10e}9E_g/b_0+o(1)$.
+  - The $\Sigma$, core and $\mathcal B$ parts of c and of $N_-$ are $o(1)$ after integration. This needs a **joint guard** $E_\Sigma<2C_\Sigma(q^5+q^{\Gamma_\nu}H)$ and LCRC's retained core geometry and $\sup\mu_{\mathcal B}/q\to0$.
+  - Therefore $\mathfrak X\le\tfrac{5e}9E_g/(1-c_b)+o(1)$, and $C_D$ is fixed.
+  - The joint guard then closes by strict improvement through LCRC's secondary lemma, because $C_\Sigma$ depends on $C_D$ but not on the guard's own constant.
+- *Side benefit for CLOCK.* The same bound gives $\int c\le\tfrac{10e}9E_g/(1-c_b)+o(1)$. With $E_g=2c_b$, this is $O(c_b)$, which is the small passage budget CLOCK needs.
+- *Next (S2 closure package):* write the gate-budget lemma and the S2 package as one stopped-guard theorem, covering:
+  - the envelope;
+  - the capped gain;
+  - $E_\Sigma$, with the joint guard closed;
+  - the complement mass via TAILREP.
+
+  Then tabulate what the joint weak-passage bootstrap still retains:
+  - the fixed-chart c-form remainder;
+  - $\int\mu_{\mathcal B}/q$ by ancestry cohort, including the strips;
+  - core geometry via CLOCK;
+  - $B_s$.
+
 ### S3. The c-form field contract
 
 **Claim.** The original strong field has CLOCK's c-form with a remainder controlled in value and receiver derivative, including the selected-residual term $\mathbb E_{P_2}[g_2X_2\mathbf 1_{\{a^\top X>0\}}]$, the outside population, and the $M-1$ terms.
@@ -491,7 +525,7 @@ Tracks that can run in parallel:
 | Track | Steps | Notes |
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
-| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. Next: S2a', the off-chart envelope and Q3 budget; then the joint weak-passage assembly. |
+| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope with $\mathfrak X$ exposed and the Q3 interior. Its gate budget is payable via LCRC's backward clock. Next: the S2 closure package; then the joint weak-passage assembly. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
@@ -546,6 +580,12 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
     - *My first v1.10 repair sketch was also wrong, and was corrected the same day.*
       - The single-label $\log\tan\theta$ bound with good and bad periods hid the gate-layer excess: the gate tail enters $\theta'$ multiplied by $\sin\psi$, not $\sin\theta$. This is DECG's obstruction, which the signed-cancellation bound now targets.
       - The sketch's Q3 sentence missed the 3π/2 side. It also treated the π strip as leakage, but it belongs to the weak family.
+18. **Wrong budget sources (GESG prompt).**
+    - I pointed $\int c$ at CLOCK's passage budget $\int f_*\le F_b$. That is a *hypothesis* of the passage theorem, not a stopped guard.
+    - I pointed $\int N_-$ at CFR's negative-part bound. That bound concerns $K_O$, a $P_1$ moment of output 2, which is a different quantity.
+    - GESG correctly refused both. The proved sources are LCRC's backward clock (for $\int c$) and GESG's cohort charge (for $N_-$).
+    - The pointwise cap $N_-\le Q(1-2c)$ I proposed was unnecessary.
+    - *Rule:* before naming a budget source in a prompt, check that it is a proved conclusion under the current guards, not a hypothesis of a later theorem.
 
 ---
 
@@ -577,6 +617,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | SEP | `AN02_secondary_entry_profile_v1.tex` (+ review), prefix `an02sepv1:` |
 | CFR | `AN03_c_form_field_reduction_v1.tex` (+ review), prefix `an03cfrv1:` — partial; stops at the S2 dependency |
 | DECG | `AN03_distance_envelope_and_capped_gain_v1.tex` (+ review), prefix `an03decgv1:` — partial; stops at the off-chart envelope |
+| GESG | `AN03_global_envelope_signed_gate_v1.tex` (+ review), prefix `an03gesgv1:` — partial; stops at the integrated gate budget, which the review resolves via LCRC's backward clock |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

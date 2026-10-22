@@ -1,0 +1,663 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{3em}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\theoremstyle{remark}\newtheorem{remark}[proposition]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf1}
+\newcommand{\Gp}{G_+}
+\title{Global matrix-value envelope, signed gate excess,\\
+and the two-sided Q3 split}
+\author{Analytical increment for review}
+\date{Version 1; October 22, 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The proposed matrix-value comparison closes the off-chart
+angular calculation without a receiver derivative. Its constant
+is explicit in the integrated weak-diagonal excess. A signed
+identity bounds that excess by the positive output moment,+$\frac12\int(Qc+N_-)$, without a pointwise smallness assumption
+on $N_-$. The stated stopped guards do not supply this integrated
+budget: CLOCK's full passage forcing budget is distinct from
+the c-form remainder budget, and CFR's negative-part estimate
+concerns a different moment. Thus no uniform global-envelope
+or full S2 theorem is claimed. Fixed residual-guard dependence
+of an eventual distance constant is admissible in the tail
+consumers. Separately, Q3 labels away from two initial strips
+of width $O(q\sqrt{\log(1/q)})$ remain nearly frozen through
+the stopped endpoint. Their integrated mass divided by $q$
+is $O(q^9\log(1/q))$. The two strips' entry obligations are
+stated without assuming recruitment or changing prior cohorts.
+\end{abstract}
+
+\section{Setting and scope of the four tasks}
+All new labels have prefix \texttt{an03gesgv1:}.
+We use DECG's original balanced flow, not a comparison trajectory:
+\[
+ P=\tfrac12P_1+\tfrac12P_2,\quad
+ P_1=N(e_1,q^2I_2),\quad P_2=N(\rho e_2,q^2I_2),\quad
+ \rho\in[13/20,7/10],\quad \lambda=\rho^2,\quad Q=\lambda+q^2,
+\]
+\[
+ R_\theta=\E_P[(X-f)X^T\one_{A_\theta}],\quad
+ A_\theta=\{a_\theta\cdot X>0\},\quad
+ U=\sqrt m\,a_\theta,\quad W=\sqrt m\,a_\psi,
+ \quad a_v=(\cos v,\sin v).
+\]
+The exact equations are
+\begin{equation}
+ \theta'=a_\psi^TR_\theta a_\theta^\perp,\qquad
+ \psi'=(a_\psi^\perp)^TR_\theta a_\theta,\qquad
+ (\log m)'=2a_\psi^TR_\theta a_\theta.
+ \label{an03gesgv1:exact}
+\end{equation}
+Write $e_j=X_j-f_j$, $c=Q^{-1}\E_{P_2}[f_2X_2]$,
+$I(t)=Q\int_{t_0}^t(1-c)$, $\beta=\lambda/Q$, and
+$\ell=\log(1/q)$. Work on the stated stopped interval,
+$t_0=t_h$, $t_*-t_0\le L_T\ell$, with
+\begin{equation}
+ 0\le c\le c_b<1,\quad \int_{t_0}^{t_*}r<B,\quad
+ r=\sup_\theta|R_{11}|,\quad
+ \|e_2\|_{P_1}+\|e_1\|_{P_2}\le M_{\rm res}q,
+ \quad Y<K_Y,\quad E_{\Gp}<E_g.
+ \label{an03gesgv1:guards}
+\end{equation}
+Loss monotonicity gives a fixed bound $C_{\mathcal L}$ on
+\emph{all} component residual $L^2(P_i)$ norms, also before
+$t_0$. The cross-residual guard improves two of these bounds
+on the stopped interval. Hence, as in BULK and DECG,
+\begin{equation}
+ |R_{12}|+|R_{21}|\le a_*q,\qquad
+ a_*:=C_R(1+M_{\rm res}),
+ \label{an03gesgv1:cross}
+\end{equation}
+where $C_R$ depends only on the loss bound and ratio box.
+
+The same-field reference is never reset. Assume its stopped
+bound $|\theta_c|,|\psi_c|\le qR_c$, $R_c=79/51$, and
+the fixed-chart c-form hypothesis used by DECG. To distinguish
+two genuinely different quantities, write
+\[
+ F_F:=\int_{t_0}^{t_*}\epsilon_F\le\overline F_F,
+ \qquad F_{\rm pass}:=\int_{t_0}^{t_*}f_*.
+\]
+Only the first budget is part of the inherited DECG field
+guard. The second is an assumption in CLOCK's passage theorem;
+reading that theorem does not supply the assumption.
+Section~\ref{an03gesgv1:budgetsection} also records what follows
+if a later bootstrap explicitly guards $F_{\rm pass}$.
+
+Put $D=(|\theta-\theta_c|+|\psi-\psi_c|)/q$, $\xi=D(t_0)$.
+Angles use continuous lifts on the strong branch. Before the
+first $qD=\delta_0$, take $0<\delta_0<1/4$ and $qR_c\le1/4$;
+then $|\theta|,|\psi|\le1/2$. These comparisons concern strong
+complement and SEP labels initially on that branch, not Q3
+angles near $\pi$. Their fixed S1 entry caps give
+$q\xi<\delta_0$ for small $q$. Task 4 uses a separate argument for Q3.
+
+\section{Task 1: the global matrix-value comparison}
+Define the nonnegative, receiver-uniform excess
+\begin{equation}
+ d_2=I'/2,\qquad
+ X(t)=\sup_\theta\bigl(|R_{22}(t,\theta)|-d_2(t)\bigr)_+,
+ \quad \mathfrak X(s,t)=\int_s^t X.
+ \label{an03gesgv1:X}
+\end{equation}
+It is finite on compact time intervals by the residual bounds.
+No uniform-in-$q$ bound on its time integral is presumed.
+
+\begin{proposition}[Global sine envelope and Duhamel estimate]
+\label{an03gesgv1:sine}
+For every receiver, $N=|\sin\theta|+|\sin\psi|$ satisfies
+\begin{equation}
+ D^+N\le (r+d_2+X+a_*q)N+a_*q.
+ \label{an03gesgv1:N}
+\end{equation}
+Set $a_0=\lambda(1-c_b)/2>0$ and
+$\varepsilon_q=(a_*q+q^2/2)L_T\ell=o(1)$ for fixed guards.
+For any $t_0\le s\le t\le t_*$,
+\begin{equation}
+ \frac{N(t)}q\le
+ e^{\beta[I(t)-I(s)]/2+\int_s^tr+\mathfrak X(s,t)+\varepsilon_q}
+ \left[\frac{N(s)}q+\frac{a_*}{a_0}\right].
+ \label{an03gesgv1:duhamel}
+\end{equation}
+While both endpoint angles are on the physical strong branch
+specified above,
+\begin{equation}
+ D(t)\le C_\delta
+ e^{\beta[I(t)-I(s)]/2+\int_s^tr+\mathfrak X(s,t)+\varepsilon_q}
+ [D(s)+W_*],\quad
+ C_\delta=\sec(1/2),\quad W_*=4R_c+a_*/a_0.
+ \label{an03gesgv1:globalD}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Expanding \eqref{an03gesgv1:exact}, and writing
+$v=|\sin\theta|$, $w=|\sin\psi|$, gives
+\begin{align*}
+ D^+v&\le |R_{11}|v+|R_{22}|w+|R_{12}|+|R_{21}|vw,\\
+ D^+w&\le |R_{11}|w+|R_{22}|v+|R_{21}|+|R_{12}|vw.
+\end{align*}
+These upper Dini bounds also hold at a zero of a sine.
+Since $vw\le v+w$, summation proves \eqref{an03gesgv1:N}.
+No receiver derivative of $R_\theta$ occurs.
+
+Keep the $Q$--$\lambda$ difference explicitly:
+$d_2=\beta I'/2+q^2(1-c)/2$.
+Variation of constants for $N/q$, with the nonnegative
+coefficient $r+X+a_*q+q^2(1-c)/2$ separated out, bounds
+the inhomogeneous integral by
+\[
+ a_*\int_s^t e^{-\beta[I(v)-I(s)]/2}\dd v
+ \le a_*\int_s^t e^{-a_0(v-s)}\dd v\le a_*/a_0.
+\]
+The remaining small coefficient integrates to at most
+$\varepsilon_q$. This proves \eqref{an03gesgv1:duhamel}.
+
+For $|\theta|,|\psi|\le1/2$, the mean value theorem gives
+$|\theta|\le C_\delta|\sin\theta|$ and the analogous
+bound for $\psi$. Also sine is globally 1-Lipschitz. Thus
+\[
+ D\le C_\delta N/q+2R_c,\qquad N/q\le D+2R_c.
+\]
+Insert these inequalities at the two endpoints of
+\eqref{an03gesgv1:duhamel}, and use that its exponential
+is at least one, to obtain \eqref{an03gesgv1:globalD}.
+Comparability would be false for arbitrary angle lifts near
+$\pi$; that case is not used in this argument.
+\end{proof}
+
+\begin{proposition}[One chart exit suffices; reentry causes no loss]
+\label{an03gesgv1:splice}
+Choose a fixed $L_c>R_c$ and put $d_L=L_c-R_c$.
+Let
+\[
+ C_{\rm loc}=p_*^{-1}e^{C_T\overline F_F},\quad
+ p_* =\Phi(-7L_c/10),\quad
+ C_T=2+p_*^{-1}+(7/10)\phi(0)/p_*,
+\]
+as in DECG Proposition 2.1. For every originally charted or
+initially exterior strong-branch receiver, up to physical exit,
+\begin{equation}
+ D(t)\le \mathcal C_D(t_*)\,\xi e^{\beta I(t)/2},\qquad
+ \mathcal C_D(t_*)=
+ C_\delta C_{\rm loc}
+ e^{B+\mathfrak X(t_0,t_*)+\varepsilon_q}
+       (1+W_*/d_L).
+ \label{an03gesgv1:spliced}
+\end{equation}
+This is an estimate with its unpaid time integral visible,
+not a fixed-constant global-envelope theorem.
+\end{proposition}
+\begin{proof}
+Until the first exit $\tau_L$ from the scaled square use
+DECG's proved local lemma. If there is no exit, it already
+implies \eqref{an03gesgv1:spliced}. At an exit,
+$D(\tau_L)\ge L_c-R_c=d_L$. Consequently
+$D(\tau_L)+W_*\le(1+W_*/d_L)D(\tau_L)$.
+Apply \eqref{an03gesgv1:globalD} from that time onwards and
+substitute the local bound at $\tau_L$. This estimate holds
+through every later reentry; it is not restarted at each chart
+crossing. An initially exterior receiver has $\xi\ge d_L$,
+so apply the same argument from $t_0$, without a local stage.
+Coincidence with the reference is covered by the local lemma.
+The equality case $L_c=R_c$ supplies no separation $d_L$;
+one can take, for example, $L_c=R_c+1$ instead. No derivative
+contract beyond this fixed square is used.
+\end{proof}
+
+\section{Task 2: signed gate excess and its unpaid budget}
+\begin{lemma}[The signed cancellation is valid without the proposed cap]
+\label{an03gesgv1:signed}
+Put $N_-=\E_{P_2}[(f_2X_2)_-]$, with $z_-=(-z)_+$.
+For every receiver, exactly
+\begin{equation}
+ R_{22}-d_2=\tfrac12\E_{P_1}[e_2X_2\one_A]
+              -\tfrac12\E_{P_2}[e_2X_2\one_{A^c}].
+ \label{an03gesgv1:identity}
+\end{equation}
+The following inequalities hold:
+\begin{align}
+ R_{22}-d_2
+ &\le \tfrac12 M_{\rm res}q^2+
+             \tfrac12\E_{P_2}[(f_2X_2)_+\one_{A^c}],
+ \label{an03gesgv1:upper}\\
+ -R_{22}-d_2
+ &\le \tfrac12 M_{\rm res}q^2-	frac12Q(1-2c)+\tfrac12N_-.
+ \label{an03gesgv1:lower}
+\end{align}
+In particular, without requiring $N_-\le Q(1-2c)$,
+\begin{equation}
+ X(t)\le\tfrac12M_{\rm res}q^2+\tfrac12(Qc+N_-),\qquad
+ \mathfrak X(t_0,t_*)\le
+ \tfrac Q2\int c+\tfrac12\int N_-+	frac12M_{\rm res}q^2L_T\ell.
+ \label{an03gesgv1:Xbound}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The global identity $\E_{P_2}[e_2X_2]=Q(1-c)$ proves
+\eqref{an03gesgv1:identity}. The $P_1$ term has absolute
+value at most $M_{\rm res}q^2/2$.
+Since $e_2X_2=X_2^2-f_2X_2$, dropping the nonpositive
+$-X_2^2$ term on $A^c$ proves \eqref{an03gesgv1:upper}.
+Also
+\[
+ -R_{22}-d_2\le\tfrac12M_{\rm res}q^2
+       +\tfrac12\E_{P_2}[(f_2X_2)_+]-d_2.
+\]
+The positive moment equals $Qc+N_-$, yielding
+\eqref{an03gesgv1:lower}. Its right side is smaller than
+$M_{\rm res}q^2/2+(Qc+N_-)/2$ by $Q(1-c)/2$.
+Thus that latter nonnegative expression bounds both signs
+of $R_{22}$ above $d_2$. Take the supremum and integrate.
+The proposed pointwise restriction on $N_-$ is unnecessary.
+\end{proof}
+
+\subsection*{Which integral is actually available?}
+\label{an03gesgv1:budgetsection}
+CLOCK defines
+$f_*=c+|V|+K_w+T+\epsilon_F$, with nonnegative terms in its
+passage contract. Therefore an \emph{explicitly assumed}
+$F_{\rm pass}\le\overline F_{\rm pass}$ would give
+$\int c\le\overline F_{\rm pass}$ immediately, without
+applying its passage theorem. The inherited remainder guard
+$F_F\le\overline F_F$ does not give that inequality.
+From the response guard alone the bound is only
+\begin{equation}
+ \int_{t_0}^{t_*}c\le c_bL_T\ell,
+ \label{an03gesgv1:responseonly}
+\end{equation}
+which is not a fixed budget. No conclusion of CLOCK's
+passage theorem is imported to supply its own input.
+
+CFR's negative-part lemma controls
+\[
+ (K_O)_-,\qquad K_O=q^{-1}\E_{P_1}[(f_O)_2X_1],
+ \qquad V_O=-(qQ)^{-1}\E_{P_2}[(f_O)_1X_2].
+\]
+Neither quantity is $N_-$: the former uses a signed integral
+on $P_1$, the latter uses output component 1, while $N_-$
+is the negative part \emph{before} integration of component
+2 on $P_2$. Replacing $K_O$ by $(K_O)_+$ does not control it.
+Nor does the signed moment $\E_{P_2}[f_2X_2]=Qc$ bound its
+negative part. Loss gives only a pointwise $N_-\le C$, whose
+direct time integral is $O(\ell)$.
+
+One can expose the remaining cohort charges without a sign
+guess. Whenever the instantaneous LCRC core geometry and
+mass bound hold, RCET's positive $W_2$ on $\Gp$ gives
+\begin{equation}
+ N_-\le C\left[
+ q^2\mu_{\mathcal K}+E_\Sigma+q\sqrt{E_\Sigma J_\Sigma}
+       +\mu_{\mathcal B}
+       +\mu_{\Gp}e^{-k_1/q^2}\right].
+ \label{an03gesgv1:Ncohorts}
+\end{equation}
+Indeed $(\sum z_i)_-\le\sum(z_i)_-$, and
+$f_{\Gp,2}\ge0$, so its negative product with $X_2$ is
+supported on $X_2<0$. Gaussian tails pay that term.
+For a general cohort,
+$|f_{S,2}|\le2\sqrt{E_SJ_S}|X_1|+2E_S|X_2|$;
+integration against $|X_2|$ proves the secondary charge.
+Charted core donors give $Cq^2\mu_{\mathcal K}$ on $P_2$,
+and $|f_{\mathcal B}|\le\mu_{\mathcal B}|X|$ pays the last
+population. These arguments are state estimates only.
+Under $J_\Sigma\le q^2K_Y^2$, the secondary part is
+$E_\Sigma+q^2K_Y\sqrt{E_\Sigma}$, still unpaid by the
+current guards. A bounded core mass and LCRC's retained
+$\sup\mu_{\mathcal B}/q=o(1)$ would pay their contributions
+to \emph{this} integral, since $q\ell=o(1)$; they do not
+pay $\int\mu_{\mathcal B}/q$ in the field reduction.
+
+The exact sufficient budget missing from this route is
+\begin{equation}
+ \boxed{\quad
+ \int_{t_0}^{t_*}(Qc+N_-)\dd t\le B_{\rm gate}<\infty
+ \quad\hbox{uniformly in }q,t_* .\quad}
+ \label{an03gesgv1:missing}
+\end{equation}
+If the full CLOCK forcing integral is separately guarded,
+the remaining item is precisely
+\begin{equation}
+ \boxed{\qquad\int_{t_0}^{t_*}N_-\dd t\le B_-<\infty
+       \quad\hbox{uniformly in }q,t_* .\qquad}
+ \label{an03gesgv1:missingnegative}
+\end{equation}
+A bounded constant, not $o(1)$, suffices for the distance
+consumer. Neither boxed display is added to a claimed full
+theorem. Task 2 stops at this budget check; accordingly
+Task 1 has not produced a $q$-uniform $C_D$.
+This is a missing estimate from the stated inputs, not an
+assertion that an initialized trajectory violates it.
+
+\section{Task 3: the constant audit}
+An eventual finite budget in \eqref{an03gesgv1:missing} would
+replace $\mathfrak X$ in \eqref{an03gesgv1:spliced} by a
+fixed number. Denote the resulting distance constant by $C_D$.
+The following audit concerns its downstream use; it does not
+prove that budget.
+
+\paragraph{Gain and secondary energy.}
+DECG Corollary 3.3 uses
+\[
+ A_0=C_D^2\max(1,\delta_0^{-2}),\quad
+ C_m=e^{6B+1/\beta+o(1)},\quad
+ m(t,\alpha)\le C_m m(t_0,\alpha)
+       \max(1,A_0q^2\xi_\alpha^2e^{\beta I})^{1+\nu},
+ \quad \nu=q^2/\lambda.
+\]
+BULK Proposition 5.2 chooses a positive fixed threshold
+$\eta_*<(\delta_0/(2C_D))^2$. Its energy constants depend
+on $C_D,A_0,C_m,\eta_*^{-1}$ and the fixed entry cap. After
+the SEP moments and stopped clock are inserted, these multiply
+$q^5$ and $q^{\Gamma_\nu}H$, with
+$\Gamma_\nu\ge289169/924000>3/10$.
+There is no additional order-one weak energy term proportional
+to $C_D$.
+
+\paragraph{Strong-complement mass.}
+In TAILREP's tail-moment lemma put
+$A=A_0q^2e^{\beta I}$ in its scaled-displacement convention.
+The result is proportional to
+\[
+ C_m\epsilon^p d_c^{-p}\max(1,A d_c^2)^{1+\nu},\qquad p=3/s.
+\]
+The fixed factor $A_0$ changes its constant, not its power of
+$q$. The previously proved margin is
+$\Delta_\nu\ge17141311/140024000>3/25$.
+Consequently its prospective integrated field contribution is
+$C(C_D,A_0,C_m)q^{\Delta_\nu}\ell=o(1)$.
+No second displacement-growth factor is charged after this
+mass calculation.
+
+\paragraph{Return to LCRC.}
+Its primary constant choices use the fixed core radius, core
+mass bound, $B_s,c_b$ and model constants. The secondary and
+complement terms just listed enter with positive powers of
+$q$ (also after square roots and the fixed $K_Y$ factors in
+CFR/LCRC). Thus a fixed $M_{\rm res}$ dependence of $C_D$
+is admissible. For example the explicit
+$1+W_*/(L_c-R_c)$ in \eqref{an03gesgv1:spliced} need not
+be bounded independently of $M_{\rm res}$ before the guards
+are chosen. Once they are fixed, decrease $q$ afterwards.
+One must not replace $\mathfrak X$ by an unproved
+$q$-dependent budget and then call its exponential a fixed
+constant. That, rather than the fixed $M_{\rm res}$ factor,
+is the current obstruction.
+
+\paragraph{Chart choice and forcing smallness.}
+No enlargement after the guards is needed for this audit;
+$L_c=R_c+1$ suffices, and initially exterior labels are covered
+by Proposition~\ref{an03gesgv1:splice}.
+Alternatively one may choose a larger fixed $L_c$ after
+$(B,E_g,K_Y,M_{\rm res})$ and before $C_0$, as permitted by
+roadmap ledger 17. The c-form guard must hold on the chosen
+square; validity on a smaller square does not itself extend it.
+The constants $p_*^{-1},C_T$ then grow
+but remain fixed. They enter the envelope only through
+$C_{\rm loc}=p_*^{-1}e^{C_T\overline F_F}$.
+Boundedness, not smallness of $C_T\overline F_F$, is enough
+for these tail consumers. If a multiplier at most $e$ is
+desired, the extra choice is $\overline F_F\le1/C_T$;
+it is not required by the distance estimate.
+CLOCK's separate passage condition is
+$\overline F_{\rm pass}\le e_*/(4C_{\rm pass})$.
+If a later construction uses a common budget for both
+purposes, it may choose the minimum of these two bounds.
+Any chart-dependent coefficient multiplying $C_0$ in CFR
+is handled by choosing $C_0$ later. None of these choices
+proves the unpaid forcing integrals. No order-one LCRC core
+constant is redefined here.
+
+\section{Task 4: lower-side no-gain and a frozen Q3 interior}
+\begin{lemma}[Lower-side no-gain]
+\label{an03gesgv1:lowernogain}
+On any subinterval $[s,t]$ of the stopped interval on which
+$\sin\theta<0$, independently of the sign of $\sin\psi$,
+\begin{equation}
+ 2R_{22}\sin\theta\sin\psi\le Cq+CM_{\rm res}q^2,
+ \qquad
+ m(t)\le m(s)\exp\!\left(2\int_s^tr+
+                   C(1+M_{\rm res})q(t-s)\right).
+ \label{an03gesgv1:nogain}
+\end{equation}
+In particular the multiplier is at most $e^{2B+o(1)}$.
+\end{lemma}
+\begin{proof}
+DECG's negative-gate estimate is
+$|R_{22}|\le CM_{\rm res}q^2+Ce^{-k\sin^2\theta/q^2}$.
+Multiply it by $2|\sin\theta\sin\psi|\le2|\sin\theta|$;
+$\sup_{v\ge0}ve^{-kv^2/q^2}=q/\sqrt{2ke}$ proves the first
+inequality. In \eqref{an03gesgv1:exact} the strong diagonal
+costs $2r$ and cross terms cost $2a_*q$. Integrate.
+The estimate applies while the input sine stays negative;
+no assertion is made across a subsequent upper-side interval.
+\end{proof}
+
+\begin{lemma}[Both closed input gates: a stronger speed estimate]
+\label{an03gesgv1:interiorspeed}
+At any time, including before $t_0$, if
+$\cos\theta\le-\Lambda q$ and $\sin\theta\le-\Lambda q$,
+then
+\begin{equation}
+ \max_{i,j}|R_{ij}(\theta)|\le C_L e^{-k\Lambda^2},\qquad
+ |\theta'|+|\psi'|+| (\log m)'|\le C_L' e^{-k\Lambda^2},
+ \quad k=169/3200.
+ \label{an03gesgv1:interiorspeedbound}
+\end{equation}
+The constants depend only on initial loss, Gaussian moments
+and the ratio box, not on residual guards.
+\end{lemma}
+\begin{proof}
+The two gate probabilities are at most
+$e^{-\Lambda^2/2}$ and $e^{-\rho^2\Lambda^2/2}$.
+For either cluster and any $i,j$, loss monotonicity and
+Cauchy--Schwarz followed by Holder give
+\[
+ |\E_{P_k}[e_iX_j\one_A]|
+ \le\|e_i\|_{P_k}(\E_{P_k}X_j^4)^{1/4}
+                         \mathbb P_{P_k}(A)^{1/4}
+ \le C_L e^{-k\Lambda^2}.
+\]
+All fourth moments are uniformly bounded for $q\le1$.
+This proves the matrix estimate and then the three equations
+in \eqref{an03gesgv1:exact} prove the speed estimate.
+It strengthens the proposed $O(M_{\rm res}q^2)$ plus tails:
+there is no need to discard either closed gate. In particular
+no pre-$t_0$ cross-residual guard is needed.
+\end{proof}
+
+\begin{proposition}[Two initial strips isolate all Q3 recruitment]
+\label{an03gesgv1:Q3split}
+Let
+\[
+ \Lambda_q=\sqrt{3\ell/k},\qquad w_q=\arcsin(q\Lambda_q),\qquad
+ \mathcal Q_{3,\mathrm{int}}^0
+   =\{b\in Q3:\pi+2w_q\le b\le3\pi/2-2w_q\}.
+\]
+For sufficiently small $q$, on the entire interval $[0,t_*]$
+these fixed initial labels stay in
+$\pi+w_q<\theta<3\pi/2-w_q$, and
+\begin{equation}
+ |\theta(t,b)-b|+|\psi(t,b)-b|\le Cq^3\ell,\qquad
+ m(t,b)=q^{10}e^{O(q^3\ell)}.
+ \label{an03gesgv1:frozen}
+\end{equation}
+Consequently
+\begin{equation}
+ \int_{t_0}^{t_*}\frac{\mu_{\mathcal Q_{3,\mathrm{int}}^0}}q\dd t
+ \le Cq^9\ell=o(1).
+ \label{an03gesgv1:interiorcoststrong}
+\end{equation}
+More generally fix the subset of Q3 ancestry whose input
+angle at $t_0$ lies in the same $2w_q$ interior. Its mass
+satisfies the requested bound
+\begin{equation}
+ \int_{t_0}^{t_*}\frac{\mu_{\mathcal Q_{3,\mathrm{int}}(t_0)}}q\dd t
+ \le C e^{2B}q\ell^3=o(1).
+ \label{an03gesgv1:interiorcost}
+\end{equation}
+The set in this last display is fixed by its state at $t_0$;
+it is not a moving angular mask.
+\end{proposition}
+\begin{proof}
+MOMC's half-mass time and bounded $A_q$ give
+$t_*\le C_{\rm dur}\ell$. Until the first exit from the
+$w_q$ interior both projected margins exceed $q\Lambda_q$.
+Lemma~\ref{an03gesgv1:interiorspeed} then bounds all speeds
+by $Cq^3$, since $e^{-k\Lambda_q^2}=q^3$ exactly.
+The available travel is $Cq^3C_{\rm dur}\ell=o(w_q)$,
+because $w_q\ge q\Lambda_q$. It cannot consume the initial
+angular buffer $w_q$. The first exit is therefore excluded.
+Integrating the two angular speeds and the absolute radial
+rate proves \eqref{an03gesgv1:frozen}, using the prescribed
+initial mass $q^{10}$. Integration over the fixed label set
+and over time proves \eqref{an03gesgv1:interiorcoststrong}.
+
+Starting the same buffer argument at $t_0$ proves the analogous
+retention for the entry-defined subset, independently of its
+output angle. MOMC supplies its entry mass bound by the whole
+left-ancestry mass $Cq^2\ell^2$. Its mass then changes by
+$e^{O(q^3\ell)}$, giving $Cq\ell^3$ for the integrated
+mass divided by $q$, and hence the weaker stated
+$Ce^{2B}q\ell^3$ bound. Alternatively use
+Lemma~\ref{an03gesgv1:lowernogain} on that retained set.
+MOMC's mass bound alone would not locate these angles;
+the preceding pre-$t_0$ speed proof supplies location for
+the original-label interior.
+\end{proof}
+
+The only initial Q3 labels not covered by the stronger bound
+are the two strips
+\begin{equation}
+ \mathcal S_\pi=[\pi,\pi+2w_q),\qquad
+ \mathcal S_{3\pi/2}=(3\pi/2-2w_q,3\pi/2].
+ \label{an03gesgv1:strips}
+\end{equation}
+Their widths are $2w_q=O(q\sqrt\ell)$. Neither strip has been
+proved to join a specified family by $t_0$; naming them weak
+or strong is a proposed classification, not a consequence of
+the speed estimate. Endpoints are immaterial to the label
+measure but can be included in their respective strip.
+
+\section{Strip contracts in the form required by their consumers}
+\label{an03gesgv1:stripcontracts}
+The following are outstanding obligations, not extra hypotheses
+of a claimed theorem. The two strips have not been folded into
+the existing fixed partition.
+
+\paragraph{The $\pi$ side: weak-family extension.}
+An extension must first assign its labels to primary weak,
+recruited secondary, or a separately paid remainder. For the
+part assigned to $\Gp$, LCRC consumes at $t_0$
+\[
+ z>0,\quad |a|/z\le1/4,\quad qj/z\le C_0,\quad
+ J(t_0)\le Cq^3,\quad E(t_0)=o(1),
+\]
+with the existing clock kept as a subset; enlarging the
+clock is not required. For any part assigned to the recruited
+group, the SEP/BULK consumer requires the raw radial submeasure
+$\dd\eta_\pi=m(t_0,b)\dd\lambda_0$ and the actual-reference
+displacement $\xi$ to satisfy
+\begin{equation}
+ \xi\le Z_\pi,\quad \eta_\pi(\mathbb R_+)\le Cq^3,\quad
+ \eta_\pi\{\xi>u\}\le Cq^3\min\{1,(h_A/u)^{p_2}\},
+ \quad h_A=A_q^dq^{10d-2s},\quad p_2=(1-3\lambda/2)/d.
+ \label{an03gesgv1:pistripcontract}
+\end{equation}
+Here $A_q$ is bounded above and below, $d=(1-\lambda P_\rho)/2$
+and $s=2d/(1-\lambda)$. Fixed constants suffice; BULK needs
+the upper tail, not a two-sided asymptotic law. SEP presently
+proves this contract only for its Q2 secondary group near
+$\pi/2$, not for all labels near $\pi$. In particular a
+primary weak label need not have bounded strong-chart
+displacement. The proposed extension cannot assume that
+every label in $\mathcal S_\pi$ belongs to that secondary group.
+Any unassigned set needs an integrated outside-mass budget,
+or retained negative-input geometry to use
+\eqref{an03gesgv1:nogain}; strip membership alone is insufficient.
+
+\paragraph{The $3\pi/2$ side: strong late-joiner extension.}
+For the part assigned to the strong entry family, the useful
+MOMC/PROFILE contract is a bounded actual-reference entry
+chart and the mass-weighted upper tail
+\begin{equation}
+ \eta_{\rm late}\{\xi>u\}\le C
+       \min\{1,(\epsilon_h/u)^{3/s}\},\qquad
+ \epsilon_h\asymp A_q^d q^{10d-s},
+ \quad \eta_{\rm late}=m(t_0,b)\dd\lambda_0,
+ \label{an03gesgv1:latestripcontract}
+\end{equation}
+with a fixed total-mass bound and the same normalization as
+the strong entry measure (MOMC's strong mass at $t_0$ is
+$1/2$). If late labels are admitted to the safe core, their
+entry displacement must also obey its cutoff. Otherwise
+TAILREP applies to their complementary tail once the
+all-endpoint gain is available. An equivalent alternative
+is to prove directly the weighted tail moments
+\[
+ \int_{\{\xi>d_c\}}\max\{1,A\xi^2\}^{1+\nu}\dd\eta_{\rm late}
+ \le C\epsilon_h^{3/s}d_c^{-3/s}
+                  \max\{1,A d_c^2\}^{1+\nu}
+\]
+at the values of $A$ used by TAILREP. A label joining only
+after $t_0$ is not covered by a fictitious charted entry at
+$t_0$; it needs a rigorously matched arrival-time version or
+a separate outside budget. We prove neither strip extension
+in this increment.
+
+\section{Outcome and explicit stopping point}
+Task 1's matrix-value and splice calculations are closed,
+but its fixed-constant conclusion stops at the visible
+$\mathfrak X$ integral. Task 2's signed identities are closed,
+including the removal of the unnecessary pointwise cap on
+$N_-$. Its integrated-budget inference stops at
+\eqref{an03gesgv1:missing}, or at
+\eqref{an03gesgv1:missingnegative} if the full forcing budget
+is explicitly guarded. Task 3 closes the constant-dependency
+audit: fixed $M_{\rm res}$ dependence of the eventual envelope
+constant is harmless in the specified consumers. Task 4's
+lower-side, interior speed, pre-entry location and interior
+mass bounds are closed; its two strip entry contracts remain
+exactly as listed in Section~\ref{an03gesgv1:stripcontracts}.
+
+The constants $C_R,C_L,C_L',k,R_c,C_{\rm dur}$ use only
+initial loss, the ratio box and existing time/reference bounds.
+$a_*,W_*,\varepsilon_q$ have the displayed residual-guard
+dependence. $p_*,C_T,C_{\rm loc}$ depend on the fixed chart
+and remainder budget. $B$ enters the envelope and no-gain
+estimates exponentially. $K_Y$ enters only the diagnostic
+cohort charge and the already specified downstream contracts.
+No $q$-uniform value is assigned to $\int N_-$ or
+$\mathfrak X$. The Gaussian choice of $\Lambda_q$ is an
+explicit analytic formula, not a numerical tail test.
+
+No joint weak-passage bootstrap, CLOCK passage theorem,
+selected-field closure, selection, or consolidation is performed.
+The completed gain integration and tail-moment results are
+cited rather than reproved. Prior increments remain unchanged.
+
+\begin{thebibliography}{9}\small
+\bibitem{ROAD} Unified analytic theory roadmap v1.10:
+S2 update after DECG and ledger items 15--17.
+\bibitem{DECG} DECG, \texttt{AN03\_distance\_envelope\_and\_capped\_gain\_v1}:
+Proposition 2.1, Lemma 3.1, Proposition 3.2, Corollary 3.3.
+\bibitem{CLOCK} CLOCK, \texttt{AN03\_exact\_amplitude\_clock\_and\_c\_passage\_v1}:
+c-form contract, forcing budget and exact clock.
+\bibitem{CFR} CFR, \texttt{AN03\_c\_form\_field\_reduction\_v1}:
+selected moments, non-core forcing, and negative-part lemma.
+\bibitem{LCRC} LCRC, \texttt{AN03\_ledger\_cap\_residual\_closure\_v1}:
+retained contracts and constant order.
+\bibitem{TAIL} TAILREP and BULK: gain integration, tail moment,
+secondary-energy implication and stopped clock.
+\bibitem{ENTRY} MOMC and SEP: original strong half-mass entry,
+left-ancestry mass and the recruited entry profile.
+\bibitem{PROFILE} PROFILE: strong entry tail and exact
+mass-charged outside field estimate.
+\end{thebibliography}
+\end{document}
