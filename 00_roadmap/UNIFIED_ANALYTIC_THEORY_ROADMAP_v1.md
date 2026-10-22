@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.9 — October 21, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.10 — October 21, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -19,6 +19,8 @@
 **Revision 1.8 (Oct 21).** Records SEP (`AN02_secondary_entry_profile_v1`): S1's entry contracts are complete and unconditional. S3 gains a refined route, which uses the linearity of $G_+$ on $P_2$ and treats the c-form passage as a local passage to a small fixed $c_b$. S3a, the c-form field reduction, is next.
 
 **Revision 1.9 (Oct 21).** Records CFR (`AN03_c_form_field_reduction_v1`), which proves part of S3 and stops at the S2 dependency. Ledger 16 records the sequencing error and the integrated outside budget. S2 is reordered: S2a (envelope and gain from a c-form hypothesis) comes next, then the joint weak-passage assembly. The strong diagonal term is downgraded from a sign problem to a budget controlled by LCRC's $\int r$ guard.
+
+**Revision 1.10 (Oct 21).** Records DECG (`AN03_distance_envelope_and_capped_gain_v1`): the chart envelope, the signed radial bound and the conditional gain are proved. Ledger 17 records the over-restricted contract. S2a' (global ℓ¹ envelope with signed gate cancellation; Q3 split) is next.
 
 ---
 
@@ -336,6 +338,28 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - **S2a (next):** prove the envelope and the gain as stopped implications from a **c-form hypothesis**, i.e. CFR's field with remainder $\int\epsilon_F\le F_b$ taken as a guard. Then derive $E_\Sigma\le C(q^5+q^{\Gamma_\nu}H)$ (BULK) and the complement mass with $\int\mu_{\mathcal B}/q=o(1)$ (TAILREP).
   - **Weak-passage assembly:** one joint first-exit bootstrap. Its guards are LCRC's guards plus $E_\Sigma$, $\int\mu_{\mathcal B}/q$, the core radius and $\int\epsilon_F$, and its ingredients are CFR, S2a, CLOCK's passage, LCRC and BULK.
 
+**Update (Oct 21, after DECG `AN03_distance_envelope_and_capped_gain_v1`).**
+- *Proved, all of it reusable:*
+  - the **chart envelope** $D(t)\le p_*^{-1}e^{C_TF_b}D(s)e^{\beta\Delta I/2}$, via $u=\int_0^x\Phi(\rho v)^{-1}dv$. This change of coordinate removes the V forcing and makes the leading Jacobian Metzler with column sums at most $\lambda(1-c)/2$;
+  - a **global signed radial bound**, $(\log m_\alpha/m_c)'\le I'\min\{1,q^2D^2\}+4r+C(1+M_{\rm res})q$, with lower-side gates handled by projected margin times $|\sin\theta|$;
+  - the **capped gain conditional on the envelope**, with prefactor $e^{6B+1/\beta}$.
+- *Stopped at:* the envelope between scaled-chart exit and physical exit ($L_cq\le|\theta|\le\delta_0$), and $\int\mu_{Q3}/q$.
+- *Repair (S2a', next). Proposed, not proved.* Part of each stop comes from restrictions the assembly does not need (ledger 17).
+  - *A global envelope needs no chart.* Let $N=|\sin\theta|+|\sin\psi|$.
+    - The exact angle equations give $N'\le(|R_{11}|+|R_{22}|+C(1+M_{\rm res})q)N+C(1+M_{\rm res})q$. Only matrix values enter, so no boundary trace is needed.
+    - Write $|R_{22}|\le d_2+X(t)$ with $d_2=I'/2$. Apply Duhamel against $e^{-\beta\Delta I/2}$, which decays at rate at least $\lambda(1-c_b)/2$. The cross forcing then costs only an additive $C(1+M_{\rm res})/(\lambda(1-c_b))$ in D.
+    - Use DECG's chart lemma up to the first exit $\tau_L$ and this bound afterwards, re-entries included, so no chart switching is needed. This gives $C_D\le p_*^{-1}e^{C_TF_b}e^{B+\int X+o(1)}(1+C(1+M_{\rm res})/(L_c-R_c))$.
+  - *Gate excess by signed cancellation.* The only off-chart unknown is $\int X$, with $X=(|R_{22}|-d_2)_+$. Exactly:
+    - $R_{22}-d_2=\tfrac12E_{P_1}[e_2X_2\mathbf 1_A]-\tfrac12E_{P_2}[e_2X_2\mathbf 1_{A^c}]\le\tfrac12M_{\rm res}q^2+\tfrac12E_{P_2}[(f_2X_2)_+]$;
+    - $-R_{22}-d_2\le\tfrac12M_{\rm res}q^2-\tfrac12Q(1-2c)+\tfrac12N_-$, where $N_-=E_{P_2}[(f_2X_2)_-]$.
+    - So $X\le\tfrac12(Qc+N_-)+o(1)$ uniformly in θ, and $\int X\le\tfrac Q2\int c+\tfrac12\int N_-+o(1)$.
+    - To check: whether CLOCK's passage budget $\int f^*\le F_b$ (it contains c) and CFR's negative-part bound control $\int N_-$.
+  - *$M_{\rm res}$ in $C_{\rm ext}$.* Either show that $C_D$ multiplies only vanishing powers of q downstream (tail moments, $E_\Sigma$, $\int\mu_{\rm comp}/q$), or choose $L_c$ after $M_{\rm res}$ and audit every $L_c$-dependent constant.
+  - *Q3.*
+    - While $\sigma<0$, DECG's negative gate gives $2R_{22}\sin\theta\sin\psi\le Cq+CM_{\rm res}q^2$, with no $I'$. DECG's coarse bound used the positive-part form, which charges $e^{I}$ when both sines are negative.
+    - In the Q3 interior, $|R_{11}(\theta)|$ and $|R_{22}|$ are $O(M_{\rm res}q^2)$ up to Gaussian tails, so labels there barely move. Their cost is $\int\mu/q\le Ce^{2B}q\ell^3$, provided they are in the interior at $t_0$, which needs a pre-$t_0$ version of the same speed bound.
+    - The strips near π and 3π/2 are not leakage. They belong to the weak (Q2-like) family and the strong family (late joiners), so SEP's and MOMC's entry contracts must be extended to them.
+
 ### S3. The c-form field contract
 
 **Claim.** The original strong field has CLOCK's c-form with a remainder controlled in value and receiver derivative, including the selected-residual term $\mathbb E_{P_2}[g_2X_2\mathbf 1_{\{a^\top X>0\}}]$, the outside population, and the $M-1$ terms.
@@ -467,7 +491,7 @@ Tracks that can run in parallel:
 | Track | Steps | Notes |
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
-| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. Next: S2a, the envelope and gain from a c-form hypothesis; then the joint weak-passage assembly. |
+| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. Next: S2a', the off-chart envelope and Q3 budget; then the joint weak-passage assembly. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
@@ -515,6 +539,13 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 16. **Sequencing error (CFR prompt):** S3's refined route charged Σ through $E_\Sigma\le C(q^5+q^{\Gamma_\nu}H)$. That bound is LCRC's `secondary` lemma, which itself assumes the S2 distance and gain contracts. So S3 cannot close before S2.
     - *Outside budget.* The c-form remainder needs $\int\mu_{\mathcal B}/q$ small. LCRC's retained $\sup\mu_{\mathcal B}/q=o(1)$ does not give this on a logarithmic interval: $\mu/q=\ell^{-1/2}$ over length ℓ integrates to $\sqrt\ell$. LCRC itself needs only the supremum.
     - *Consequence.* S2 and S3 are mutually dependent and must close in one joint stopped bootstrap (see S2).
+17. **Over-restricted contract (DECG prompt):** two restrictions in the S2a prompt were not needed.
+    - *The c-form chart was fixed before the guards.* Only R, $M_{\mathcal K}$, $B_s$ and $c_b$ must be guard-independent, and chart-dependent constants multiply only $C_0$ or powers of q.
+    - *A pair comparison off the chart.* Once the reference is $O(q)$ away, a global bound that uses only matrix values suffices (S2 update after DECG).
+    - DECG's off-chart stop and its Q3 estimate both follow from these restrictions, plus applying the generic gain to lower-side labels. *Rule:* fix a constant before the guards only when it enters an order-one LCRC constant.
+    - *My first v1.10 repair sketch was also wrong, and was corrected the same day.*
+      - The single-label $\log\tan\theta$ bound with good and bad periods hid the gate-layer excess: the gate tail enters $\theta'$ multiplied by $\sin\psi$, not $\sin\theta$. This is DECG's obstruction, which the signed-cancellation bound now targets.
+      - The sketch's Q3 sentence missed the 3π/2 side. It also treated the π strip as leakage, but it belongs to the weak family.
 
 ---
 
@@ -545,6 +576,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | Q2EC | `AN02_Q2_entry_contracts_v1.tex` (+ review), prefix `an02q2ecv1:` |
 | SEP | `AN02_secondary_entry_profile_v1.tex` (+ review), prefix `an02sepv1:` |
 | CFR | `AN03_c_form_field_reduction_v1.tex` (+ review), prefix `an03cfrv1:` — partial; stops at the S2 dependency |
+| DECG | `AN03_distance_envelope_and_capped_gain_v1.tex` (+ review), prefix `an03decgv1:` — partial; stops at the off-chart envelope |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

@@ -1,0 +1,525 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{corollary}[proposition]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[proposition]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf1}
+\newcommand{\cR}{\mathcal R}
+\title{Distance control on the c-form chart and signed radial gain\\
+S2a: a partial stopped implication and the extension obstruction}
+\author{Analytical increment for review}
+\date{Version 1; October 21, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A Gaussian change of the input coordinate proves the requested
+distance rate on the fixed c-form chart, without an integral
+assumption on the reference offset or the common forcing.
+For every original-flow receiver we also prove a signed radial
+upper bound with integrated error $4B+o(1)$. This includes
+the lower-side weak gate and gives the capped mass gain as soon
+as the distance envelope is available up to physical exit.
+The full requested implication is not closed: the fixed-chart
+hypothesis does not provide the off-chart pair comparison used
+between scaled-chart exit and fixed physical exit. We display
+the unpaid inequality and the precise failure of substituting
+the existing full-gate estimates for it. The secondary energy
+and complement mass conclusions are consequently not asserted.
+\end{abstract}
+
+\section{Scope, normalization, and stopped assumptions}
+All new labels have prefix \texttt{an03decgv1:}.
+Use the exact original balanced flow and label measure of CLOCK,
+TAILREP and LCRC:
+\[
+ P=\tfrac12P_1+\tfrac12P_2,\quad
+ P_1=N(e_1,q^2I_2),\quad P_2=N(\rho e_2,q^2I_2),\quad
+ \rho\in[13/20,7/10],\quad \lambda=\rho^2,\quad Q=\lambda+q^2,
+\]
+\[
+ U'=R_\theta^TW,\quad W'=R_\theta U,\quad
+ R_\theta=\E_P[(X-f)X^T\one_{\{a_\theta\cdot X>0\}}],
+ \quad U=\sqrt m\,a_\theta,\quad W=\sqrt m\,a_\psi.
+\]
+Write $e_j=X_j-f_j$, $c=Q^{-1}\E_{P_2}[X_2f_2]$,
+$I(t)=Q\int_{t_0}^t(1-c)$, $\beta=\lambda/Q$ and
+$\ell=\log(1/q)$. Here $t_0=t_h$ and
+$t_*-t_0\le L_T\ell$, as in the prescribed LCRC interval.
+The original reference is retained throughout. Its scaled
+coordinates are $(x_c,y_c)=(\theta_c/q,\psi_c/q)$.
+Its radial variable $m_c$ solves the same radial equation; it
+need not represent an atom of positive population mass.
+
+Assume the question's stopped guards, in particular
+\begin{equation}
+ 0\le c\le c_b<1,\quad
+ r(t):=\sup_\theta|R_{11}(t,\theta)|,\quad \int_{t_0}^{t_*}r<B,
+ \quad \|e_2\|_{P_1}+\|e_1\|_{P_2}\le M_{\rm res}q.
+ \label{an03decgv1:guards}
+\end{equation}
+The notation $M_{\rm res}$ distinguishes the residual guard from
+strong mass. Loss monotonicity gives
+$\|e_1\|_{P_1}+\|e_2\|_{P_2}\le C_{\mathcal L}$, with a
+fixed initial-loss constant. The other stopped guards
+$Y<K_Y$ and $E_{G_+}<E_g$ are retained but are not needed
+in the two new estimates below.
+
+On $[-L_c,L_c]^2$ assume exactly CLOCK's c-form contract:
+\begin{align}
+ 2f_x&=-(1-M_s)x+\rho\phi(\rho x)-\rho\mathcal S(x)
+       +\lambda[V+(1-c)y]\Phi(\rho x)+2\cR_x,\nonumber\\
+ 2f_y&=-(1-M_s)y-Y_s-K_w+\rho(1-c)\mathcal K(\rho x)
+       +2\cR_y,\label{an03decgv1:cform}\\
+ \mathcal S(x)&=\int F(\rho x,\rho r_0)\dd\mu_s(r_0,y_0),\quad
+ F(z,w)=\phi(\min(z,w))+w\Phi(\min(z,w)),\nonumber\\
+ \mathcal K(z)&=\phi(z)+z\Phi(z),\quad
+ \mu_s\ge0,\quad \mu_s(\mathbb R^2)=M_s\le1.\nonumber
+\end{align}
+The mass restriction is part of CLOCK's stated c-form contract,
+not a conclusion about the population in this increment.
+The donor measure and $V,Y_s,K_w,c,M_s$ are held fixed when
+differentiating with respect to a receiver. Assume
+\[
+ |\cR|_1\le\epsilon_F,\quad
+ \|D_{x,y}\cR\|_{1\to1}\le\epsilon_F,\qquad
+ \int_{t_0}^{t_*}\epsilon_F\le F_b.
+\]
+Changing equivalent value-norm conventions only enlarges a fixed
+constant. $L_c\ge79/51$ is fixed before the residual guards.
+CLOCK's offset guard, with its allowed $e_*\le1$, and
+$a_\rho<28/51$ imply
+\begin{equation}
+ |x_c|,|y_c|\le R_c:=79/51\le L_c.
+ \label{an03decgv1:reference}
+\end{equation}
+We do not apply CLOCK's passage theorem or improve this guard.
+
+Use the fixed core/complement ancestry of TAILREP, and SEP's
+$\Sigma=\{c_0<Kq^\gamma\}$, with $\mathcal D=\emptyset$.
+For a receiver define, using continuous angle lifts,
+\[
+ D_\alpha(t)=\frac{|\theta_\alpha-\theta_c|
+                         +|\psi_\alpha-\psi_c|}{q},\quad
+ \xi_\alpha=D_\alpha(t_0),\quad D_{0,\alpha}=q\xi_\alpha.
+\]
+Thus $\xi$ is scaled displacement, whereas $D_0$ in the
+gain-integration formula below is physical displacement.
+No label is removed when it leaves a chart.
+
+\section{A distance envelope on the fixed c-form chart}
+\begin{proposition}[A coordinate change removes the common forcing]
+\label{an03decgv1:local}
+Let a receiver and the reference stay in $[-L_c,L_c]^2$
+on $[s,t]$. Under \eqref{an03decgv1:cform},
+\begin{equation}
+ D_\alpha(t)\le C_{D,\mathrm{loc}}D_\alpha(s)
+        \exp\!\left(\frac\beta2[I(t)-I(s)]\right),\qquad
+ C_{D,\mathrm{loc}}=p_*^{-1}e^{C_TF_b}.
+ \label{an03decgv1:localdistance}
+\end{equation}
+Here $p_*:=\Phi(-7L_c/10)>0$ and one may take
+$C_T=2+p_*^{-1}+h_*$, where
+$h_*=(7/10)\phi(0)/p_*$.
+These constants are independent of $B,M_{\rm res},K_Y,E_g$,
+and of the values of $V,Y_s,K_w$.
+\end{proposition}
+\begin{proof}
+Put $p(x)=\Phi(\rho x)$ and change only the input coordinate:
+\[
+ u=\mathcal T_\rho(x):=\int_0^x\frac{\dd v}{p(v)},
+ \qquad \widetilde f_u=f_x/p(x),\qquad \widetilde f_y=f_y.
+\]
+For the leading field, the $V$ term is the additive constant
+$\lambda V/2$. The off-diagonal derivatives are exactly
+\begin{equation}
+ \partial_y\widetilde f_u=\lambda(1-c)/2,\qquad
+ \partial_u\widetilde f_y=\lambda(1-c)p(x)^2/2,
+ \qquad \partial_y\widetilde f_y=-(1-M_s)/2\le0.
+ \label{an03decgv1:offdiagonals}
+\end{equation}
+To check the remaining diagonal, decompose the scalar part as
+\begin{equation}
+ \frac{-(1-M_s)x+\rho\phi(\rho x)-\rho\mathcal S(x)}{2p(x)}
+ =(1-M_s)\frac{-x+\rho\phi(\rho x)}{2p(x)}
+ +\int\frac{\rho[\phi(\rho x)-F(\rho x,\rho r_0)]}{2p(x)}
+       \dd\mu_s.
+ \label{an03decgv1:decomposition}
+\end{equation}
+For $z=\rho x$ and $h=\phi(z)/\Phi(z)$, differentiation
+with respect to $u$ of the free term gives
+\[
+ -\tfrac12\{1-zh+\lambda\phi(z)(z+h)\}<0.
+\]
+Indeed $z+h=\mathcal K(z)/\Phi(z)>0$. For $z<0$, $1-zh>0$;
+for $z\ge0$, $\Phi(z)-z\phi(z)>0$, since its value at zero
+is $1/2$ and its derivative is $z^2\phi(z)\ge0$.
+
+For one donor, the last integrand in
+\eqref{an03decgv1:decomposition} is constant $-\lambda r_0/2$
+when $x\le r_0$. When $x>r_0$, its $u$ derivative is
+\[
+ \frac{\lambda\phi(\rho x)}{2p(x)}
+       [\mathcal K(\rho r_0)-\mathcal K(\rho x)]\le0,
+\]
+because $\mathcal K'=\Phi>0$. The one-sided derivatives agree
+at equality. Positivity of $\mu_s$ and $M_s\le1$ therefore
+give $\partial_u\widetilde f_u\le0$.
+The leading transformed Jacobian is Metzler and each column
+sum is at most $\lambda(1-c)/2$. Its induced $\ell^1$
+logarithmic norm has that same bound. This sign assertion is
+for the leading field only; no finite-noise cooperativity is assumed.
+
+The transformed remainder is $(\cR_x/p,\cR_y)$. Its derivatives
+are
+\[
+ \begin{pmatrix}
+  \partial_x\cR_x-(p'/p)\cR_x&\partial_y\cR_x/p\\
+  p\partial_x\cR_y&\partial_y\cR_y
+ \end{pmatrix}.
+\]
+Since $p_*\le p\le1$ and $0\le p'/p\le h_*$ on the chart,
+its induced $\ell^1$ norm is at most $C_T\epsilon_F$.
+The transformed chart is a rectangle. The segment joining
+the two transformed receivers lies in that rectangle, so the
+mean-value formula and the logarithmic-norm inequality give
+\[
+ D^+\bigl(|u-u_c|+|y-y_c|\bigr)
+ \le[\lambda(1-c)/2+C_T\epsilon_F]
+                 \bigl(|u-u_c|+|y-y_c|\bigr).
+\]
+Finally $1\le\mathcal T_\rho'\le p_*^{-1}$ and
+$\lambda\int(1-c)=\beta\Delta I$. Gronwall proves
+\eqref{an03decgv1:localdistance}, including coincident receivers.
+All estimates are instantaneous in the donor measure; no donor
+weight or complement moment is differentiated.
+\end{proof}
+
+\section{A global signed radial estimate}
+\begin{lemma}[Projected gates with a radial weight]
+\label{an03decgv1:projected}
+Under \eqref{an03decgv1:guards}, for every receiver let
+$\sigma=\sin\theta$ and $d_2=Q(1-c)/2=I'/2$.
+There are constants $C,k>0$, depending only on the ratio box
+and initial loss, such that
+\begin{align}
+ |R_{22}-d_2|&\le CM_{\rm res}q^2+Ce^{-k\sigma^2/q^2}
+       &&(\sigma\ge0),\label{an03decgv1:positivegate}\\
+ |R_{22}|&\le CM_{\rm res}q^2+Ce^{-k\sigma^2/q^2}
+       &&(\sigma<0).\label{an03decgv1:negativegate}
+\end{align}
+Consequently, for all output directions, without a quadrant
+assumption,
+\begin{equation}
+ 2R_{22}\sin\theta\sin\psi
+ \le I'(\sin\theta\sin\psi)_++Cq+CM_{\rm res}q^2.
+ \label{an03decgv1:signedweak}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The $P_1$ part of $R_{22}$ is bounded by
+$\frac12\|e_2\|_{P_1}\|X_2\|_{P_1}\le M_{\rm res}q^2/2$.
+On $P_2$, $a_\theta\cdot X$ has mean $\rho\sigma$ and
+variance $q^2$. The wrong-side probability is at most
+$\exp(-\rho^2\sigma^2/(2q^2))$. For that side $A$,
+\[
+ |\E_{P_2}[e_2X_2\one_A]|
+ \le\|e_2\|_{P_2}(\E_{P_2}X_2^4)^{1/4}
+                         \mathbb P_{P_2}(A)^{1/4}
+ \le C e^{-k\sigma^2/q^2},\qquad k=(13/20)^2/8.
+\]
+For $\sigma\ge0$, subtract the lost gate from the exact
+global moment $\E_{P_2}[e_2X_2]=Q(1-c)$.
+For $\sigma<0$, bound the selected gate itself. This proves
+\eqref{an03decgv1:positivegate}--\eqref{an03decgv1:negativegate}.
+Multiplication by $|\sin\theta\sin\psi|\le|\sigma|$ costs
+at most $Cq$, because
+$\sup_{v\ge0}v e^{-kv^2/q^2}=q/\sqrt{2ke}$.
+Since $I'\ge0$, replacing $\sin\theta\sin\psi$ by its
+positive part is an upper bound. This proves
+\eqref{an03decgv1:signedweak} on both sides of the weak gate.
+\end{proof}
+
+\begin{proposition}[Radial bound with the actual displacement]
+\label{an03decgv1:radial}
+Uniformly for every label and every endpoint of the stopped interval,
+\begin{equation}
+ \left(\log\frac{m_\alpha}{m_c}\right)'
+ \le I'\min\{1,q^2D_\alpha(t)^2\}+b_q(t),\qquad
+ b_q(t)=4r(t)+C(1+M_{\rm res})q,
+ \label{an03decgv1:actualgain}
+\end{equation}
+where $C$ depends only on $C_{\mathcal L}$, the ratio box and
+$R_c$. In particular
+\begin{equation}
+ \int_{t_0}^t b_q\le4B+C(1+M_{\rm res})qL_T\ell=4B+o(1),
+ \qquad \frac{m_c(t)}{m_c(t_0)}\le e^{2B+o(1)}.
+ \label{an03decgv1:radialbudget}
+\end{equation}
+These bounds do not require a c-form representation away from
+the reference, a lower-side projected-margin evolution, or a
+sign for $R_{11}$.
+\end{proposition}
+\begin{proof}
+For any selector, the residual norms and Gaussian second moments
+give
+\[
+ |R_{12}|+|R_{21}|\le C(1+M_{\rm res})q,\qquad
+ |R_{22}|\le C+CM_{\rm res}q^2.
+\]
+The exact balanced radial identity is
+$(\log m)'=2a_\psi^TR_\theta a_\theta$.
+The two strong-diagonal terms in the difference between a label
+and the reference are bounded in absolute value by $4r$;
+the cross terms by $C(1+M_{\rm res})q$.
+By \eqref{an03decgv1:reference}, the reference weak radial
+term is bounded in absolute value by $Cq^2+CM_{\rm res}q^4$.
+Apply Lemma \ref{an03decgv1:projected} to the other weak term.
+
+For completeness, TAILREP's scalar $r_1$ is arbitrary in the
+exact splitting $R_\theta=\operatorname{diag}(r_1,d_2)
++\mathcal B_\theta$. Taking $r_1=R_{11}(\theta_c)$, its
+$11$ splitting defect must be recombined with the displayed
+$2r_1$ term. Their sum is exactly
+\[
+ 2R_{11}(\theta)a_1b_1
+      -2R_{11}(\theta_c)a_1^cb_1^c,
+\]
+which is bounded by $4r$. Bounding both split contributions
+separately is unnecessary; omitting the $11$ defect would be
+incorrect.
+
+The elementary Lipschitz bound for sine gives
+\[
+ (\sin\theta\sin\psi)_+
+ \le\tfrac12(\sin^2\theta+\sin^2\psi)
+ \le q^2D_\alpha^2+2R_c^2q^2.
+\]
+It is also at most one. Use
+$\min(1,A+b)\le\min(1,A)+b$ and $0\le I'\le Q$;
+absorb the resulting $O(q^2)$ term into $b_q$.
+This proves \eqref{an03decgv1:actualgain} even after angular
+transit. Its integrated bound follows from the duration guard.
+For the reference alone the cross products are $O(q)$ and
+the weak product is $O(q^2)$, so
+$(\log m_c)'\le2r+C(1+M_{\rm res})q^2$.
+This gives the last bound in \eqref{an03decgv1:radialbudget}.
+\end{proof}
+
+\begin{corollary}[The remaining premise for capped gain is distance]
+\label{an03decgv1:conditionalgain}
+For a specified label, suppose in addition that
+\begin{equation}
+ D_\alpha(t)\le C_D\xi_\alpha e^{\beta I(t)/2}
+ \quad\text{until its first }qD_\alpha=\delta_0,
+ \label{an03decgv1:missingdistance}
+\end{equation}
+where $0<\delta_0<1$ is fixed. This premise has only been proved
+here while the receiver stays in the fixed scaled chart.
+Set $A_0=C_D^2\max(1,\delta_0^{-2})$, increasing $C_D$ to at
+least one. Then at every endpoint, including after physical exit,
+\begin{align}
+ \left(\log\frac{m_\alpha}{m_c}\right)'
+ &\le I'\min\{1,A_0D_{0,\alpha}^2e^{\beta I}\}+b_q,
+ \label{an03decgv1:capped}\\
+ \frac{m_\alpha(t)}{m_\alpha(t_0)}
+ &\le e^{6B+1/\beta+o(1)}
+       \max\{1,A_0q^2\xi_\alpha^2e^{\beta I(t)}\}^{1/\beta}.
+ \label{an03decgv1:massgain}
+\end{align}
+The exponent is $1/\beta=1+q^2/\lambda\le1+1/100$ when
+$q^2\le\lambda/100$.
+\end{corollary}
+\begin{proof}
+Before exit use \eqref{an03decgv1:missingdistance} in
+\eqref{an03decgv1:actualgain}. At exit continuity gives
+$C_D^2q^2\xi_\alpha^2e^{\beta I}\ge\delta_0^2$.
+Monotonicity of $I$ makes the minimum in
+\eqref{an03decgv1:capped} equal to one at all subsequent times,
+even if the label reenters. A label initially past the physical
+cutoff is handled in the same way at entry.
+Apply TAILREP's already proved gain-integration lemma at each
+endpoint, then multiply by the reference gain in
+\eqref{an03decgv1:radialbudget}. This proves
+\eqref{an03decgv1:massgain}. In this radial estimate the geometric
+cost is $\delta_0^{-2}$ in $A_0$, not an extra gain exponent.
+Any loss in an eventual proof of the missing distance premise
+would still have to be retained; it has not been set to zero here.
+\end{proof}
+
+\section{Exact stopping point: fixed scaled chart versus physical exit}
+\label{an03decgv1:obstructionsection}
+For an initially charted label let $\tau_L$ be its first exit
+from $[-L_c,L_c]^2$ and $\tau_\delta$ its first physical exit.
+At the former time
+\[
+ qD_\alpha(\tau_L)\le2q(L_c+R_c)=O(q),
+\]
+which is smaller than $\delta_0$ for small $q$. Proposition
+\ref{an03decgv1:local} therefore does not cover
+$[\tau_L,\tau_\delta]$. Some of SEP's labels can also start
+outside the specified square: SEP supplies a fixed cap
+$Z_\Sigma(K)$, not the assertion that this cap fits the prescribed
+$L_c$.
+
+The exact comparison still needed for a chart-exiting label is
+\begin{equation}
+ \boxed{\quad
+ \sup_{\tau_L\le t\le\tau_\delta\wedge t_*}
+ \frac{D_\alpha(t)}{D_\alpha(\tau_L)}
+ \exp\!\left[-\frac\beta2(I(t)-I(\tau_L))\right]
+ \le C_{\rm ext}e^{CB}.
+ \quad}
+ \label{an03decgv1:unpaid}
+\end{equation}
+Here $C_{\rm ext}$ must be fixed independently of
+$M_{\rm res},K_Y$ and $q$; fixed chart and remainder-budget
+dependence is allowed. An initially exterior label needs the
+corresponding comparison starting at $t_0$. Neither comparison
+is added as a hypothesis of a claimed full S2a theorem.
+
+\paragraph{What the off-chart calculation supplies, and where it fails.}
+Adding weak output to the full-gate calculation does give
+\eqref{an03decgv1:positivegate}. It gives a matrix \emph{value}
+estimate, not the required same-field distance comparison.
+If a positive receiver has only a fixed projected margin
+$\sin\theta/q\ge L>0$, using its exponential tail by absolute
+value in a Lipschitz comparison costs at best
+\begin{equation}
+ \int_{\tau_L}^{t_*}Ce^{-kL^2}\dd t
+ \le CL_Te^{-kL^2}\ell.
+ \label{an03decgv1:fixedmargin}
+\end{equation}
+For fixed $L$ this bound is not uniform as $q\downarrow0$.
+It cannot be substituted for a fixed error budget in
+\eqref{an03decgv1:unpaid}. A growing projected margin, a signed
+cancellation, or another off-chart pair estimate must be proved.
+The factor $|\sin\theta|$ that paid this tail in the radial
+lemma does not automatically occur in an angular derivative.
+On the lower side even the leading full-gate value is different:
+\eqref{an03decgv1:negativegate} replaces
+\eqref{an03decgv1:positivegate}.
+
+More explicitly, differentiation of the selected residual matrix
+at a fixed population state gives the boundary moment
+\begin{equation}
+ \partial_\theta R_\theta
+ =\E_P\!\left[(X-f)X^T(a_\theta^\perp\!\cdot X)
+                         \delta(a_\theta\cdot X)\right].
+ \label{an03decgv1:boundary}
+\end{equation}
+The formula may equivalently be written as a Gaussian integral
+over the projection hyperplane. An $L^2$ residual bound is not
+by itself a trace bound on that hyperplane. The c-form derivative
+guard estimates its contribution on the fixed square only.
+This is the precise derivative gap in trying to use a full-gate
+value estimate as an off-chart logarithmic-norm estimate.
+
+Q2EC's full-gate and transport lemmas do not fill that gap after
+$t_h$. Their proof uses, on $[t_m,t_h]$, strong donors in
+$[-R,R]^2$, $M\le1/2$, $M'/M\ge1/3$,
+$\mu\le Cq^2\ell^2M$, and integrated donor-spread and outside
+budgets. Those time-restricted controls cannot be extended past
+$t_h$ by changing the endpoint in the lemma. In particular its
+integrated $O(M/x)$ transport error uses this structured mass
+and angular evolution. Substituting the residual-guard constant
+$M_{\rm res}$ for that mass proves neither the requisite
+integrability nor guard-independent constants.
+
+Finally, directly extending the coordinate-change proof would
+require \eqref{an03decgv1:cform}, including its derivative
+remainder budget, on the receiver region out to distance
+$\delta_0/q$. That is an additional field hypothesis, not the
+given fixed-chart hypothesis. The result is stopped at
+\eqref{an03decgv1:unpaid}; no such extension is assumed.
+This is a failure to close the stated implication from the
+available estimates, not a counterexample to the initialized flow.
+
+\section{Consequences not claimed, outside ancestry, and constants}
+\paragraph{Secondary and strong-complement contracts.}
+SEP supplies LCRC's entry-profile contract, and MOMC supplies
+the strong entry profile. Neither is reproved. The new radial
+bound closes the signed radial-defect part of S2 and reduces its
+gain contract to \eqref{an03decgv1:missingdistance}.
+It does not establish that missing contract for every label.
+Consequently BULK Proposition 5.2 and its secondary corollary,
+and TAILREP's tail-moment lemma, cannot yet be applied to claim
+\[
+ E_\Sigma(t)\le C_\Sigma(q^5+q^{\Gamma_\nu}H(t)),\qquad
+ \int_{t_0}^{t_*}\mu_{\rm comp}/q\le Cq^{\Delta_\nu}\ell.
+\]
+Their already proved conditional margins remain
+$\Gamma_\nu\ge289169/924000>3/10$ and
+$\Delta_\nu\ge17141311/140024000>3/25$ for $\nu\le1/100$.
+These rational margins are not new original-flow conclusions.
+No extra displacement-growth charge is inserted into the
+mass-charged tail calculation.
+
+\paragraph{Q3 leakage is a separate unpaid outside contribution.}
+The initial Q3 interval $(\pi,3\pi/2)$ is neither MOMC's
+right-half strong ancestry nor SEP's Q2 group. It cannot be
+included in either entry tail by a change of name. The available
+coarse MOMC left-ancestry estimate gives only
+$\mu_{Q3}(t_0)\le Cq^2\ell^2$. The same proof as the radial
+lemma, without subtracting the reference, gives
+\[
+ \mu_{Q3}(t)\le\mu_{Q3}(t_0)e^{2B+I(t)+o(1)}.
+\]
+Even if one uses the stopped clock estimate from BULK and the
+seed $H(t_0)\asymp A_q^{-\lambda}q^k$, $k=10(1-\lambda)$,
+this rough estimate gives only
+\[
+ \int_{t_0}^{t_*}\mu_{Q3}/q
+ \le C e^{2B}E_g A_q^{\lambda}q^{1-k}\ell^3.
+\]
+Since $k\ge51/10$, this upper bound does not tend to zero.
+It is not a lower bound on the actual leakage. For this ancestry,
+including the neighborhoods of both $\pi$ and $3\pi/2$, one
+still needs a proved stopped integrated-mass bound
+$\int\mu_{Q3}/q=o(1)$, or a sharper entry/gain argument implying
+it. Neither entry tail used above supplies that argument.
+
+\paragraph{Constant audit.}
+The fixed constants are the ratio box, initial-loss bound,
+$L_T,L_c,R_c$, the positive Gaussian minimum $p_*$,
+$h_*,C_T,k$, and the remainder budget $F_b$.
+The local distance constant is exactly
+$p_*^{-1}e^{C_TF_b}$. The radial error integral is
+$4B+C(1+M_{\rm res})qL_T\ell$; the reference gain is
+$e^{2B+C(1+M_{\rm res})q^2L_T\ell}$.
+Conditional on the unpaid envelope, the mass-gain constant is
+$e^{6B+1/\beta+o(1)}$ and
+$A_0=C_D^2\max(1,\delta_0^{-2})$.
+Thus $B$ appears only through a fixed exponential and the
+displayed additive budget; $M_{\rm res}$ only multiplies
+vanishing scales. There is no $K_Y$ dependence in the proved
+lemmas. $E_g,A_q,K,Z_\Sigma$ occur only in the cited entry/clock
+audit, not in the local distance or radial constants.
+The missing $C_{\rm ext}$ has not been declared finite.
+
+\begin{thebibliography}{9}\small
+\bibitem{ROAD} Unified analytic theory roadmap, revision 1.9,
+S0 assembly, S2 October 21 update, S3 status and ledger 16.
+\bibitem{TAIL} TAILREP, \texttt{AN03\_mass\_charged\_tail\_and\_selection\_defects\_v1}:
+gain integration, tail moment, rational margins, and final exact radial identity.
+\bibitem{BULK} BULK, \texttt{AN03\_bulk\_clock\_and\_secondary\_Q2\_energy\_v1}:
+stopped clock, Lemma 5.1, Proposition 5.2 and secondary corollary.
+\bibitem{CLOCK} CLOCK, \texttt{AN03\_exact\_amplitude\_clock\_and\_c\_passage\_v1}:
+exact response clock and c-form contract.
+\bibitem{LCRC} LCRC, \texttt{AN03\_ledger\_cap\_residual\_closure\_v1},
+Section 1 contracts and stopped clock lemma.
+\bibitem{CFR} CFR, \texttt{AN03\_c\_form\_field\_reduction\_v1}:
+reviewed local source; selected moments and outstanding S2 dependencies.
+\bibitem{ENTRY} Q2EC, SEP and MOMC: original entry contracts,
+recruited profile, and moving-overlap strong passage. Exact paths
+and source hashes are recorded in the accompanying review note.
+\bibitem{PROFILE} PROFILE, \texttt{AN02\_strong\_entry\_profile\_and\_tail\_budget\_v1},
+Proposition 4.1: outside output costs $\mu/q$, including receiver derivative.
+\end{thebibliography}
+\end{document}
