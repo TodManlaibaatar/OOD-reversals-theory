@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.11 — October 22, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.12 — October 23, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -27,6 +27,12 @@
 - Stopped at the integrated gate budget $\int(Qc+N_-)$.
 - The review finds that this budget is payable from proved sources, LCRC's backward clock and GESG's own cohort charge, under one joint guard on $E_\Sigma$. S2's closure package is next.
 - Ledger 18 records the wrong budget sources in my prompt.
+
+**Revision 1.12 (Oct 23).** Records S2CP (`AN03_S2_closure_package_v1`).
+- S2 is closed in stopped-guard form: gate budget, fixed $C_D$, all-endpoint capped gain, $E_\Sigma$ with the joint guard strictly improved, and complement mass $\int\mu_{\mathcal C}/q\le Cq^{\Delta_\nu}\ell$.
+- Also proved: CFR's secondary obstruction $\mathcal U_\Sigma=o(1)$, and $\int|1-\kappa_1|\le\log2+o(1)$ under retained core geometry.
+- The outside population is exactly $\mathcal C\cup\mathcal Q_{3,\rm int}\cup\mathcal S_\pi\cup\mathcal S_{3\pi/2}$. Only the strips are unpaid.
+- Ledger 19 records two coefficient and order errors in my prompt. S3b (full c-form assembly, then the CLOCK budget) is next.
 
 ---
 
@@ -381,7 +387,7 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - The $\Sigma$, core and $\mathcal B$ parts of c and of $N_-$ are $o(1)$ after integration. This needs a **joint guard** $E_\Sigma<2C_\Sigma(q^5+q^{\Gamma_\nu}H)$ and LCRC's retained core geometry and $\sup\mu_{\mathcal B}/q\to0$.
   - Therefore $\mathfrak X\le\tfrac{5e}9E_g/(1-c_b)+o(1)$, and $C_D$ is fixed.
   - The joint guard then closes by strict improvement through LCRC's secondary lemma, because $C_\Sigma$ depends on $C_D$ but not on the guard's own constant.
-- *Side benefit for CLOCK.* The same bound gives $\int c\le\tfrac{10e}9E_g/(1-c_b)+o(1)$. With $E_g=2c_b$, this is $O(c_b)$, which is the small passage budget CLOCK needs.
+- *Side benefit for CLOCK.* The same bound gives $\int c\le\tfrac{10e}9E_g/(Q(1-c_b))+o(1)$; the factor $1/Q$ was missing in v1.11 (ledger 19). With $E_g=2c_b$, this is $O(c_b)$, which is the small passage budget CLOCK needs.
 - *Next (S2 closure package):* write the gate-budget lemma and the S2 package as one stopped-guard theorem, covering:
   - the envelope;
   - the capped gain;
@@ -393,6 +399,22 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - $\int\mu_{\mathcal B}/q$ by ancestry cohort, including the strips;
   - core geometry via CLOCK;
   - $B_s$.
+
+**Status (Oct 23, after S2CP `AN03_S2_closure_package_v1`): closed in stopped-guard form.**
+- *Hypotheses retained:*
+  - the stopped guards $c\le c_b$, duration, $\int r<B$, $J_G<q^2K_Y^2$, $E_{G_+}<E_g$ and cross residual $\le M_{\rm res}q$;
+  - LCRC's core chart and mass bound, and $\sup\mu_{\mathcal B}/q=o(1)$;
+  - the S1 entry contracts;
+  - for distance and gain only, the fixed-chart c-form guard $\int\epsilon_F\le\overline F_F$ on $[-L_c,L_c]^2$, $L_c=R_c+1$.
+- *Proved:*
+  - the gate budget $\int(Qc+N_-)\le\tfrac{10e}9E_g/(1-c_b)+o(1)$;
+  - the fixed constant $C_D=\sec(1/2)\,C_{\rm loc}\exp(B+\tfrac{5eE_g}{9(1-c_b)}+1)(1+W_*/(L_c-R_c))$;
+  - the envelope through re-entries;
+  - the gain $m_b\le e^{6B+3}m_b(t_0)\max\{1,A_0q^2\xi^2e^{\beta I}\}^{1+\nu}$ at every endpoint;
+  - $E_\Sigma\le C_\Sigma(q^5+q^{\Gamma_\nu}H)$, with the joint guard strictly improved;
+  - $\sup\mu_{\mathcal C}/q\le Cq^{\Delta_\nu}$ and $\int\mu_{\mathcal C}/q\le Cq^{\Delta_\nu}\ell$, with $\Delta_\nu>3/25$.
+- *Constant order (corrected by S2CP):* $(\text{model},R,M_K,B_s,c_b,\nu,\delta_0,c_*)\to(B,E_g,K_Y,M_{\rm res})\to(L_c,\overline F_F,C_D,A_0,C_m)\to C_0\to(K(C_0),Z_\Sigma,\text{entry})\to C_\Sigma\to q$. $C_\Sigma$ must come after $K(C_0)$ because SEP's constants depend on it.
+- *$E_g=2c_b$ is admissible.* After the secondary bound, pointcap gives $E_{G_+}\le\tfrac54c_b+o(1)<2c_b$.
 
 ### S3. The c-form field contract
 
@@ -415,6 +437,25 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - the exact moments $V_O=-\mathbb E_{P_2}[(f_O)_1X_2]/(qQ)$ and $K_O=\mathbb E_{P_1}[(f_O)_2X_1]/q$, with a negative-part bound for $K_O$;
   - the core radial identity $(\log m)'=1-\kappa_1+\delta_m$, which is the input for $B_s$.
 - *Stopped at:* the Σ charge needs S2 (ledger 16), and $\int\mu_{\mathcal B}/q$ is unpaid. Everything else needed for the c-form is in hand, given those two budgets.
+
+**Status after S2CP (Oct 23).**
+- *Paid:*
+  - the secondary charge, $\mathcal U_\Sigma=o(1)$;
+  - the complement and the Q3 interior, at PROFILE's $\mu/q$ cost including the receiver derivative;
+  - $B_s=\log2+o(1)$, under retained core geometry;
+  - the candidate moments, $\int(|V_O|+(K_O)_+)\le C(E_g+K_Y\sqrt{E_g})/b_0+C\int\mu_{\mathcal B}/q+o(1)$ and $\int(K_O)_-\le C\mathcal U_\Sigma+C\int\mu_{\mathcal B}/q+o(1)$.
+- *Retained:*
+  - the full fixed-chart contract, $\int\sup_{[-L_c,L_c]^2}(|F_{\rm orig}-F_c|_1+\|DF_{\rm orig}-DF_c\|_{1\to1})\le\overline F_F$;
+  - pointwise $M_s\le1$;
+  - the T representation;
+  - the strip budgets.
+- *Proposed route for S3b (reviewer; not yet proved):*
+  - *Take the c-form's strong family to be the fixed core $\mathcal K$.* Then $T\equiv0$ by definition, and the complement and Q3 interior go into $\epsilon_F$ at their paid $\mu/q$ cost. CLOCK's `cfield` allows any fixed strong family.
+  - *Renormalize the donor measure.* Use $\tilde\mu_s=\mu_s\min(1,1/\mu_{\mathcal K})$, and charge the overshoot $(\mu_{\mathcal K}-1)_+$ in value and derivative. S2CP's $B_s$ proof gives $\int(\mu_{\mathcal K}-1)_+\le d_q=o(1)$, so pointwise $M_s\le1$ holds for the renormalized family.
+  - *Take $V:=V_O$ and $K_w:=(K_O)_+$,* with $(K_O)_-$ in $\epsilon_F$.
+  - Expected result: $\int\epsilon_F\le C\,C_{L_c}C_{\rm RCET}C_0E_g+C\int\mu_{\mathcal S}/q+o(1)$, where $\mathcal S$ is the two strips.
+  - Then $\int f_*\le\tfrac{10e}9\tfrac{E_g}{Q(1-c_b)}+\tfrac C{b_0}(E_g+K_Y\sqrt{E_g})+C\,C_0E_g+C\int\mu_{\mathcal S}/q+o(1)$. With $E_g=2c_b$ and $K_Y$ fixed uniformly over small $c_b$ (S2CP), this is below $e_*/(4C)$ once $c_b$ and $C_0$ are small, provided $e_*$ and C do not depend on them (to check).
+- *CLOCK's passage then needs* $e_0\le e_*/4$ at $t_0$ and $r_0L_b\le\min\{1/4,a_b/(2K),ge_*/(8C)\}$, with $L_b\propto(H_b/H_0)^{\alpha/Q}\asymp q^{-k\alpha/Q}$. TAILREP's cutoff $d_c=c_*q^{\chi+kP/2}$ is designed to supply that margin.
 
 ### S4. Weak return and matching to the leading weak family
 
@@ -525,7 +566,7 @@ Tracks that can run in parallel:
 | Track | Steps | Notes |
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
-| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope with $\mathfrak X$ exposed and the Q3 interior. Its gate budget is payable via LCRC's backward clock. Next: the S2 closure package; then the joint weak-passage assembly. |
+| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 in stopped-guard form.** Next: S3b, the full c-form assembly and CLOCK budget. In parallel: the two Q3 strip entry contracts (S1-type). Then the joint weak-passage assembly. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
@@ -586,6 +627,9 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
     - GESG correctly refused both. The proved sources are LCRC's backward clock (for $\int c$) and GESG's cohort charge (for $N_-$).
     - The pointwise cap $N_-\le Q(1-2c)$ I proposed was unnecessary.
     - *Rule:* before naming a budget source in a prompt, check that it is a proved conclusion under the current guards, not a hypothesis of a later theorem.
+19. **Coefficient and order slips (S2CP prompt).** S2CP corrected both.
+    - The v1.11 side benefit wrote $\int c\le\tfrac{10e}9E_g/(1-c_b)$. Dividing the $\int Qc$ budget gives $\tfrac{10e}9E_g/(Q(1-c_b))$. The $O(c_b)$ conclusion survives, since $Q\ge169/400$.
+    - The suggested order put $C_\Sigma$ before $C_0$. SEP's cap and tail constants depend on $K(C_0)$, so $C_\Sigma$ must come after them. This is acyclic, because $C_\Sigma$ enters the gate only at vanishing scales.
 
 ---
 
@@ -618,6 +662,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | CFR | `AN03_c_form_field_reduction_v1.tex` (+ review), prefix `an03cfrv1:` — partial; stops at the S2 dependency |
 | DECG | `AN03_distance_envelope_and_capped_gain_v1.tex` (+ review), prefix `an03decgv1:` — partial; stops at the off-chart envelope |
 | GESG | `AN03_global_envelope_signed_gate_v1.tex` (+ review), prefix `an03gesgv1:` — partial; stops at the integrated gate budget, which the review resolves via LCRC's backward clock |
+| S2CP | `AN03_S2_closure_package_v1.tex` (+ review), prefix `an03s2cpv1:` — S2 closed in stopped-guard form; $\mathcal U_\Sigma$ and $B_s$ paid; retained-input audit |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

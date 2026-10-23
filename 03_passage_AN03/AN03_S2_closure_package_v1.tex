@@ -1,0 +1,676 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,longtable,array}
+\usepackage[hidelinks]{hyperref}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\newcommand{\Gp}{G_+}
+\newcommand{\KK}{\mathcal K}
+\newcommand{\BB}{\mathcal B}
+\newcommand{\RR}{\mathcal R}
+\newcommand{\eps}{\varepsilon}
+\title{S2 closure package: gate budget, secondary energy,\\and retained weak-passage inputs}
+\author{Analytical increment for review}
+\date{Version 1; October 22, 2026}
+\begin{document}\maketitle
+\begin{abstract}
+On the prescribed stopped interval, a temporary secondary-energy
+guard pays the signed gate excess. Its coefficient enters only
+vanishing errors. The resulting fixed global distance constant and
+all-endpoint capped gain strictly improve that same guard through
+the proved secondary lemma. TAILREP then pays the fixed strong
+complement by mass. These are stopped-form original-flow results:
+the fixed-chart c-form, core geometry and outside supremum remain
+retained inputs. We compute the formerly unpaid secondary field
+budget, and obtain a guard-independent strong learning-integral
+budget from CFR's radial identity under the retained geometry.
+The two Q3 strips and the complete c-form/passage assembly remain
+open. No CLOCK passage theorem is applied.
+\end{abstract}
+
+\section{Setting, sources and retained guards}
+All labels in this increment have prefix \texttt{an03s2cpv1:}.
+Source abbreviations are those of roadmap v1.11: LCRC, GESG,
+DECG, CFR, BULK, RCET, TAILREP, SEP, MOMC, PROFILE and CLOCK.
+References to their named statements are external references;
+none is reproved here. Exact paths and blob identifiers are in
+the companion review note.
+
+Use the initialized original flow, $P=(P_1+P_2)/2$,
+$P_1=N(e_1,q^2I_2)$, $P_2=N(\rho e_2,q^2I_2)$, and set
+\[
+ \lambda=\rho^2\in[169/400,49/100],\quad Q=\lambda+q^2,
+ \quad\ell=\log(1/q),\quad t_0=t_h.
+\]
+All cohorts are fixed label sets. The partition is
+$\KK,\Gp,\Sigma,\BB$, with $\mathcal D=\varnothing$ and
+$G=\Gp\cup\Sigma$. LCRC's balanced-coordinate convention gives
+$E_S=H_S+A_S$, $\mu_S=E_S+J_S$. In particular
+$H=H_{\mathcal C_q}\le H_+:=H_{\Gp}\le E_+:=E_{\Gp}$.
+Write
+\begin{equation}
+ I(t)=Q\int_{t_0}^t(1-c),\qquad \beta=\lambda/Q,
+ \quad r(t)=\sup_\theta|R_{11}(\theta,t)|,
+ \quad b_0=Q(1-c_b).
+ \label{an03s2cpv1:clock}
+\end{equation}
+The stopped guards on $[t_0,t_*]$ are
+\begin{equation}
+ \begin{gathered}
+ 0\le c\le c_b<1,\quad T_*:=t_*-t_0\le L_T\ell,\quad \int r\le B,\\
+ J_G<q^2K_Y^2,\quad E_+<E_g,\quad
+ \|e_2\|_{P_1}+\|e_1\|_{P_2}\le M_{\rm res}q.
+ \end{gathered}
+ \label{an03s2cpv1:guards}
+\end{equation}
+The diagonal loss bounds are the proved loss-monotonicity bounds.
+Retain LCRC's instantaneous core chart $|\theta|,|\psi|\le Rq$,
+mass bound $\mu_{\KK}\le M_K$, and the uniform outside budget
+\begin{equation}
+ b_B(q):=\sup_{t_0\le t\le t_*}\mu_{\BB}(t)/q=o(1).
+ \label{an03s2cpv1:outsideguard}
+\end{equation}
+The constants $R,M_K$ are independent of the residual guards.
+The proved S1 entry contracts are used with their actual reference:
+MOMC for the right-half strong ancestry, Q2EC/Q2EP as incorporated
+in SEP for $\Gp,\Sigma$, and the clock seed
+$H(t_0)\asymp A_q^{-\lambda}q^k$, $k=10(1-\lambda)$.
+Here $0<c_A\le A_q\le C_A$ are MOMC's fixed constants.
+In particular $E_\Sigma(t_0)\le C_{\rm ent}q^5$.
+
+\paragraph{The inherited local field guard.}
+For the distance and gain conclusions, retain precisely the
+DECG/GESG fixed-chart hypotheses: the same original reference is
+in $[-R_c,R_c]^2$, $R_c=79/51$, with CLOCK offset $e<e_*$;
+on $[-L_c,L_c]^2$, $L_c=R_c+1$, its receiver field has CLOCK's
+c-form and its donor/sign hypotheses (in particular positive
+donor measure and $M_s\le1$), with remainder
+\begin{equation}
+ \int_{t_0}^{t_*}\eps_F\le\overline F_F,
+ \qquad \eps_F\text{ controls value and the induced }
+ \ell^1\text{ receiver-derivative norm}.
+ \label{an03s2cpv1:fieldguard}
+\end{equation}
+This is a retained original-flow field hypothesis, not a result
+of this increment. The full budget $\int f_*$ from CLOCK is
+\emph{not} assumed. The gate lemma below does not require
+\eqref{an03s2cpv1:fieldguard}.
+
+Fix $0<\nu\le1/100$, subsequently taking $q^2/\lambda\le\nu$.
+Put
+\begin{equation}
+ \gamma=1-5\lambda+\frac{2\lambda}{1-\lambda},\qquad
+ \Gamma_\nu=\gamma-\nu(k-2)
+ \ge\frac{289169}{924000}>\frac3{10}.
+ \label{an03s2cpv1:gamma}
+\end{equation}
+The inequality is BULK/LCRC's proved rational margin.
+
+\section{The signed gate budget}
+\begin{lemma}[A temporary coefficient occurs only in vanishing terms]
+\label{an03s2cpv1:gate}
+For any fixed $A<\infty$, supplement
+\eqref{an03s2cpv1:guards}--\eqref{an03s2cpv1:outsideguard} by
+\begin{equation}
+ E_\Sigma(t)\le2A\{q^5+q^{\Gamma_\nu}H(t)\}.
+ \label{an03s2cpv1:temporary}
+\end{equation}
+Choose $C_0<C_{\rm adm}(B,M_{\rm res})$ as in LCRC's localclock
+lemma and then $q$ small. Uniformly over stopped endpoints,
+\begin{align}
+ \int_{t_0}^{t_*}(Qc+N_-)\dd t
+ &\le \frac{10e}{9}\frac{E_g}{1-c_b}+o_A(1),
+ \label{an03s2cpv1:gatebudget}\\
+ \mathfrak X(t_0,t_*)&\le
+ \frac{5e}{9}\frac{E_g}{1-c_b}+o_A(1),
+ \label{an03s2cpv1:excess}
+\end{align}
+where $N_-=\E_{P_2}[(f_2X_2)_-]$ and
+$\mathfrak X=\int\sup_\theta(|R_{22}|-I'/2)_+$.
+The leading constants do not depend on $A$.
+\end{lemma}
+\begin{proof}
+LCRC's localclock lemma uses the entry ratios and signs, response,
+duration, diagonal loss bounds, cross residual and $\int r\le B$.
+Its proof invokes neither $E_\Sigma$ nor any terminal amplitude
+cap. It applies on this stopped interval and gives
+\[
+ z>0,\quad |a|\le z/3,\quad E_+\le(10/9)H_+,
+ \quad H_+(s)\le eH_+(t)e^{-b_0(t-s)}.
+\]
+The primary defect is at most
+$C(B,M_{\rm res})(C_0+q^2\ell)\le1$; the clock defect is
+$D_{\rm clk}=O(q^{1/8}+q^2\ell)=o(1)$ separately. Hence
+\begin{equation}
+ \int E_+\le\frac{10eE_g}{9b_0},\qquad
+ \int\sqrt{E_+}\le\frac{2\sqrt{10e/9}\sqrt{E_g}}{b_0}.
+ \label{an03s2cpv1:primaryintegrals}
+\end{equation}
+No use of the secondary guard was made in these inequalities.
+
+LCRC's exact response decomposition and responsecharge give
+\[
+ c=c_{\Gp}+c_\Sigma+c_{\KK}+c_{\BB},\qquad
+ |c_S|\le E_S+\frac{2q}{\sqrt Q}\sqrt{E_SJ_S}.
+\]
+For the core and outside, pointcap's proof gives
+$|c_{\KK}|\le Cq^2M_K$ and $|c_{\BB}|\le C\mu_{\BB}$.
+Let $S_q=2A(q^5+q^{\Gamma_\nu}E_g)$. Then
+$E_\Sigma\le S_q$, $J_\Sigma\le q^2K_Y^2$, and
+\[
+ \int Q|c_{\Gp}|\le\frac{10eE_g}{9(1-c_b)}
+       +Cq^2K_Y\sqrt{E_g}/b_0,
+ \qquad |c_\Sigma|\le S_q+Cq^2K_Y\sqrt{S_q}.
+\]
+GESG's proved equation \texttt{Ncohorts} is applicable because
+the primary signs have just been obtained. It gives
+\[
+ N_-\le C\{q^2M_K+S_q+q^2K_Y\sqrt{S_q}
+       +q b_B(q)+(E_g+q^2K_Y^2)e^{-k_1/q^2}\}.
+\]
+Thus an explicit upper bound on the vanishing error in
+\eqref{an03s2cpv1:gatebudget}, after enlargement of a fixed $C$, is
+\begin{align}
+ \mathcal E_q(A)=C\bigg\{&\frac{q^2K_Y\sqrt{E_g}}{b_0}
+ +L_T\ell\big[q^2M_K+S_q+q^2K_Y\sqrt{S_q}
+ +q b_B(q)\nonumber\\[-2pt]
+ &\hspace{42mm}+(E_g+q^2K_Y^2)e^{-k_1/q^2}\big]\bigg\}=o_A(1).
+ \label{an03s2cpv1:error}
+\end{align}
+Finally GESG's signed lemma gives, without a pointwise cap on
+$N_-$,
+$\mathfrak X\le\tfrac12\int(Qc+N_-)
++\tfrac12M_{\rm res}q^2L_T\ell$.
+This proves \eqref{an03s2cpv1:excess}.
+\end{proof}
+
+\begin{remark}[The factor $Q$ must be retained]
+\label{an03s2cpv1:Qcorrection}
+The direct consequence for the unweighted response is
+\begin{equation}
+ \int c\le \frac{10e}{9}\frac{E_g}{Q(1-c_b)}+o(1).
+ \label{an03s2cpv1:cbudget}
+\end{equation}
+The same numerical expression without $1/Q$ does not follow
+by dividing \eqref{an03s2cpv1:gatebudget}; $Q<1$ for small $q$.
+This corrects the proposed side-benefit inference in the roadmap.
+It leaves the needed $O(c_b)$ conclusion intact when $E_g=2c_b$,
+since $Q\ge169/400$. No incorrect coefficient is used below.
+\end{remark}
+
+\section{The stopped S2 theorem and strict energy improvement}
+Use continuous angle lifts and define the actual-reference distance
+\[
+ D_b(t)=q^{-1}(|\theta_b(t)-\theta_c(t)|+|\psi_b(t)-\psi_c(t)|),
+ \qquad \xi_b=D_b(t_0).
+\]
+Thus $q\xi_b$ is the physical entry displacement in TAILREP's
+gain-integration convention. For the strong tail use the fixed
+right-half ancestry $\RR$.
+Write $P=P_\rho=\Phi(\rho a_\rho)$,
+$d=(1-\lambda P)/2$, $s=2d/(1-\lambda)$, $p=3/s$, and
+$\alpha=\lambda P/2$. MOMC and PROFILE give, for
+$\xi=D(t_0)$ and $\dd\eta_0=2m(t_0,b)\dd\lambda_0(b)$ on $\RR$,
+\begin{equation}
+ \eta_0\{\xi>u\}\le C\min\{1,(\epsilon_h/u)^p\},\qquad
+ \epsilon_h=\sqrt2 A_q^d(1-M_0)^\alpha q^{10d-s},
+ \quad\mu_{\RR}(t_0)=\tfrac12.
+ \label{an03s2cpv1:strongentry}
+\end{equation}
+Here fixed multiplicative changes in $\epsilon_h$ are absorbed
+in $C$, consistently with the normalized sandwich statements.
+Take TAILREP's fixed-label core and complement
+\begin{equation}
+ \KK=\{b\in\RR:\xi_b\le d_c\},\quad
+ d_c=c_*q^{\chi+kP/2},\quad \chi=1/20,\ c_*>0\text{ fixed},
+ \quad \mathcal C=\RR\setminus\KK.
+ \label{an03s2cpv1:cutoff}
+\end{equation}
+The future geometry of this core is still the retained state
+input in Section 1; choosing this set does not establish it.
+
+\begin{theorem}[S2 closure under the other stopped guards]
+\label{an03s2cpv1:S2}
+Under Section 1's retained guards, S1 entries and
+\eqref{an03s2cpv1:cutoff}, there is a fixed $C_\Sigma$ such that
+the temporary guard
+\begin{equation}
+ G_\Sigma:\quad E_\Sigma<2C_\Sigma(q^5+q^{\Gamma_\nu}H)
+ \label{an03s2cpv1:jointguard}
+\end{equation}
+cannot be the first guard to fail. On the stopped interval the
+following hold for all strong-complement and $\Sigma$ receivers.
+
+Let $a_*=C_R(1+M_{\rm res})$ be GESG's cross-entry coefficient,
+$a_0=\lambda(1-c_b)/2$, and $W_*=4R_c+a_*/a_0$. Set
+\begin{align}
+ p_*&=\Phi(-7L_c/10),\qquad
+ C_T=2+p_*^{-1}+(7/10)\phi(0)/p_*,\nonumber\\
+ C_{\rm loc}&=p_*^{-1}\exp(C_T\overline F_F),\nonumber\\
+ C_D&=\sec(1/2)C_{\rm loc}
+ \exp\left(B+\frac{5eE_g}{9(1-c_b)}+1\right)
+ \left(1+\frac{W_*}{L_c-R_c}\right).
+ \label{an03s2cpv1:CD}
+\end{align}
+For a fixed $0<\delta_0<1/4$, before the first physical exit
+$qD=\delta_0$,
+\begin{equation}
+ D_b(t)\le C_D\xi_b e^{\beta I(t)/2}.
+ \label{an03s2cpv1:distance}
+\end{equation}
+This includes initially exterior labels and later chart reentries.
+At every endpoint, including after physical exit,
+\begin{align}
+ \left(\log\frac{m_b}{m_c}\right)'
+ &\le I'\min\{1,A_0q^2\xi_b^2e^{\beta I}\}+b_q,
+ &\int_{t_0}^t b_q&\le4B+o(1),\nonumber\\
+ m_b(t)&\le C_m m_b(t_0)
+       \max\{1,A_0q^2\xi_b^2e^{\beta I(t)}\}^{1+\nu},
+ &A_0&=C_D^2\max(1,\delta_0^{-2}),\quad C_m=e^{6B+3}.
+ \label{an03s2cpv1:gain}
+\end{align}
+Moreover
+\begin{align}
+ E_\Sigma(t)&\le C_\Sigma(q^5+q^{\Gamma_\nu}H(t)),
+ \label{an03s2cpv1:energy}\\
+ \sup_{[t_0,t_*]}\mu_{\mathcal C}/q&\le Cq^{\Delta_\nu},
+ \qquad \int_{t_0}^{t_*}\mu_{\mathcal C}/q\le Cq^{\Delta_\nu}\ell=o(1),
+ \label{an03s2cpv1:compmass}\\
+ \Delta_\nu&=p(5(1-P)-s-\chi)-1
+ -(1+\nu)[k(1-P)-2-2\chi]_+
+ \ge\frac{17141311}{140024000}>\frac3{25}.
+ \label{an03s2cpv1:Delta}
+\end{align}
+The theorem improves only $G_\Sigma$; it does not close the
+field, core, reference, residual or full outside guards.
+\end{theorem}
+\begin{proof}
+Apply Lemma \ref{an03s2cpv1:gate} with an arbitrary fixed $A$.
+GESG's one-exit splice has coefficient
+$\sec(1/2)C_{\rm loc}e^{B+\mathfrak X+\eps_q}
+(1+W_*/(L_c-R_c))$, where $\eps_q=o(1)$ for fixed guards.
+Choose $q$ last so that the combined vanishing errors are at
+most one. This gives \eqref{an03s2cpv1:distance} with
+\eqref{an03s2cpv1:CD}, independent of $A$.
+Before physical exit the initially strong branch remains in
+$|\theta|,|\psi|<1/2$ for small $q$, because the reference is
+$O(q)$ and $\delta_0<1/4$. This checks GESG's sine-distance
+comparability. The local c-form derivative is used only before
+the first fixed-chart exit; the matrix-value estimate covers
+all subsequent reentries. SEP's fixed entry cap need not fit
+inside $L_c$.
+
+DECG Corollary 3.3 now applies with its formerly missing distance
+premise proved. It gives the first line of
+\eqref{an03s2cpv1:gain} and the raw mass multiplier
+$e^{6B+1/\beta+o(1)}\max(1,A_0q^2\xi^2e^{\beta I})^{1/\beta}$.
+Since $1/\beta=1+q^2/\lambda\le1+\nu$, the displayed fixed
+$C_m$ suffices for small $q$. This includes the radial reference
+gain, so no additional radial mass factor is omitted.
+
+The entry profile is SEP's proved raw radial submeasure, with
+fixed cap $Z_\Sigma(K(C_0))$, total mass $O(q^3)$ and tail index
+$(1-3\lambda/2)/d$. The reference, distance, gain, response,
+duration and stopped clock hypotheses of LCRC's secondary lemma
+are now all available. The lemma first gives
+\[
+ E_\Sigma\le C\{q^5+q^\gamma H+q^{\Gamma_\nu}H^{1+\nu}\}.
+\]
+Here $H\le E_+<E_g$ before any secondary improvement. Thus it
+gives \eqref{an03s2cpv1:energy} with a constant $C_{\rm out}$
+depending on $C_D,A_0,C_m,E_g$ and the fixed entry constants,
+not on $A$. Fix
+\begin{equation}
+ C_\Sigma\ge\max\{1,C_{\rm out},C_{\rm ent}+1\},\qquad A=C_\Sigma,
+ \label{an03s2cpv1:chooseSigma}
+\end{equation}
+and only now choose $q$ small in the gate lemma. At entry,
+$E_\Sigma(t_0)<2C_\Sigma q^5$. For fixed $q$ the cohorts are
+fixed, their energies are continuous, and
+$E_\Sigma/(q^5+q^{\Gamma_\nu}H)$ has a strictly positive
+denominator. At a proposed first equality $2C_\Sigma$, the
+proved bound is at most $C_\Sigma$, a contradiction. This
+is strict improvement without importing any other guard's
+future conclusion.
+
+For the strong complement, the stopped clock supplies
+\[
+ e^{I(t)}\le e^{D_{\rm clk}}H(t)/H(t_0)
+       \le C E_g A_q^\lambda q^{-k}.
+\]
+Since $I\ge0$ and $\beta\le1$, $A_0q^2e^{\beta I}\le Cq^{2-k}$.
+Apply TAILREP's tail-moment lemma to
+\eqref{an03s2cpv1:strongentry} and the already proved
+\eqref{an03s2cpv1:gain}; the raw entry mass is $\eta_0/2$.
+It yields
+\[
+ \mu_{\mathcal C}\le
+ C\epsilon_h^p d_c^{-p}
+       \max\{1,Cq^{2-k}d_c^2\}^{1+\nu}.
+\]
+Writing $E=5(1-P)-s$ gives
+$\epsilon_h/d_c\asymp q^{E-\chi}$ and
+$q^{2-k}d_c^2\asymp q^{-[k(1-P)-2-2\chi]}$.
+The two resulting powers are exactly
+\eqref{an03s2cpv1:Delta}. TAILREP proves both its rational
+lower bound and $p-2(1+\nu)\ge49/7550>0$; these are analytic
+margins, not numerical premises. Integrating the uniform mass
+bound over $T_*\le L_T\ell$ proves
+\eqref{an03s2cpv1:compmass}. No second distance-growth factor
+is charged after this mass calculation.
+\end{proof}
+
+\section{Constant order and the small energy guard}
+\label{an03s2cpv1:order}
+One valid acyclic order is
+\begin{equation}
+ \begin{gathered}
+ (\text{model},R,M_K,B_s,c_b,\nu,\delta_0,c_*)
+ \longrightarrow(B,E_g,K_Y,M_{\rm res})\\
+ \longrightarrow(L_c,\overline F_F,C_D,A_0,C_m)
+ \longrightarrow C_0
+ \longrightarrow(K(C_0),Z_\Sigma,\text{entry constants})
+ \longrightarrow C_\Sigma\longrightarrow q.
+ \end{gathered}
+ \label{an03s2cpv1:orderdisplay}
+\end{equation}
+Here $L_c=R_c+1$ may already be fixed at the first step.
+The choice of $\overline F_F$ specifies a retained budget; it
+does not prove that the original field meets it. $C_0$ satisfies
+LCRC's original $C_0<C_{\rm adm}(B,M_{\rm res})$ and, when CFR's
+primary derivative estimate is used, its receiver-boundary
+margin for this $L_c$. Shrinking it is permitted.
+
+The suggested order $C_\Sigma\to C_0$ cannot be read as
+independence of $C_\Sigma$ from $C_0$: SEP's cap and tail constants
+depend on $K(C_0)$. Moving $C_\Sigma$ after those constants fixes
+this without a loop, because $C_D$ is independent of
+$C_\Sigma$ and its appearance in \eqref{an03s2cpv1:error} is
+vanishing. $M_{\rm res}$ dependence in $C_D$ is harmless in
+the secondary and complementary mass consumers: it multiplies
+$q^5,q^{\Gamma_\nu}H,q^{\Delta_\nu}$, not an order-one weak
+energy. BULK's fixed threshold can be any
+$0<\eta_*<(\delta_0/(2C_D))^2$.
+
+The fixed factors $p_*^{-1}$ and $C_T$ enter through
+$C_{\rm loc}=p_*^{-1}e^{C_T\overline F_F}$. S2 needs this to be
+finite; it does not need $C_T\overline F_F=o(1)$. CLOCK has a
+separate small forcing budget. Neither $R$ nor $M_K$, $B_s$ or
+$c_b$ is enlarged in response to the secondary constant.
+
+\paragraph{Using $E_g=2c_b$.}
+LCRC's written proof uses the more conservative
+$E_g^{\rm old}=2+2c_b$; it does not literally prescribe $2c_b$.
+The latter choice has the required slack: after
+\eqref{an03s2cpv1:energy}, its proved pointcap lemma gives
+\begin{equation}
+ H_+\le(9/8)c_b+o(1),\qquad E_+\le(5/4)c_b+o(1)<2c_b
+ \label{an03s2cpv1:smallEg}
+\end{equation}
+for each fixed $c_b>0$ and then small $q$. All remaining charges
+in that pointwise lemma vanish by the current guards and
+\eqref{an03s2cpv1:energy}. One may retain the conservative
+$B,K_Y,M_{\rm res}$ choices obtained with $E_g^{\rm old}$;
+they are still upper bounds for the smaller energy guard.
+The slack is $3c_b/4+o(1)$, not an arbitrary fixed $1/2$.
+This verifies compatibility; it is not a new execution of
+LCRC's joint residual bootstrap.
+
+\section{Quick consequences for the retained-input audit}
+\begin{corollary}[CFR's secondary obstruction is paid]
+\label{an03s2cpv1:U}
+On the interval of Theorem \ref{an03s2cpv1:S2},
+\begin{align}
+ \mathcal U_\Sigma
+ :=\int(E_\Sigma+K_Y\sqrt{E_\Sigma})
+ \le L_T\ell\big[&C_\Sigma(q^5+q^{\Gamma_\nu}E_g)\nonumber\\
+ &+K_Y\sqrt{C_\Sigma}
+       (q^{5/2}+q^{\Gamma_\nu/2}\sqrt{E_g})\big]=o(1).
+ \label{an03s2cpv1:Ubound}
+\end{align}
+Thus CFR's stated secondary selected-moment and negative-part
+charges, including its scaled receiver derivative, have
+vanishing integrated cost. This conclusion does not assert
+the complete field guard \eqref{an03s2cpv1:fieldguard}.
+\end{corollary}
+\begin{proof}
+Use \eqref{an03s2cpv1:energy}, $H<E_g$ and
+$\sqrt{x+y}\le\sqrt x+\sqrt y$. The positive margin in
+\eqref{an03s2cpv1:gamma} pays the logarithm. CFR's displayed
+secondary terms are bounded by this integrand, with additional
+$q^2K_Y^2$ terms whose integrals also vanish.
+\end{proof}
+
+\begin{proposition}[The learning integral under retained core geometry]
+\label{an03s2cpv1:Bs}
+For the core \eqref{an03s2cpv1:cutoff}, under the same stopped
+guards and retained core geometry,
+\begin{equation}
+ \int_{t_0}^{t_*}|1-\kappa_1|\dd t\le\log2+o(1).
+ \label{an03s2cpv1:Bsbound}
+\end{equation}
+In particular a fixed $B_s=\log2+1$ is admissible, independently
+of $(B,E_g,K_Y,M_{\rm res})$. This is not a proof of continued
+core geometry.
+\end{proposition}
+\begin{proof}
+CFR's proved radial state identity, for each core label, is
+\[
+ (\log m)'=1-\kappa_1+\delta_m,\qquad
+ |\delta_m|\le C_{R,L_c}\{q^2(1+M_K+M_{\rm res})
+                   +J_G+q\sqrt{E_GJ_G}+\mu_{\BB}\}.
+\]
+If needed take the fixed receiver radius in this identity to be
+$\max(R,L_c)$; this does not enlarge the c-form guard's square.
+Using $E_G\le E_g+o(1)$, its uniform integrated error is at most
+\begin{equation}
+ C\{q^2(1+M_K+M_{\rm res}+K_Y^2+K_Y\sqrt{E_g+1})L_T\ell
+                +q b_B(q)L_T\ell\}=o(1).
+ \label{an03s2cpv1:radialerror}
+\end{equation}
+Let $\mu=\mu_{\KK}$. Fixed chart geometry gives
+$|\kappa_1-\mu|\le C_Rq^2\mu$, with vanishing integral.
+Average the radial identity against the current core mass:
+\[
+ (\log\mu)'=1-\mu+\eta(t),\qquad
+ d_q:=\int|\eta|=o(1).
+\]
+The entry tail \eqref{an03s2cpv1:strongentry} gives
+$\mu(t_0)=1/2-O((\epsilon_h/d_c)^p)=1/2-o(1)$;
+indeed $p(5(1-P)-s-\chi)>1$ by
+\eqref{an03s2cpv1:Delta}. Put $w=\log\mu$, so $w(t_0)<0$.
+The absolutely continuous positive-part identity yields
+\[
+ w_+(t)+\int_{t_0}^t(\mu-1)_+
+       =\int_{t_0}^t\mathbf1_{\{\mu>1\}}\eta\le d_q.
+\]
+Therefore, using the integrated equation for $w$,
+\[
+ \int_{t_0}^t|1-\mu|
+ =w(t)-w(t_0)-\int_{t_0}^t\eta
+                   +2\int_{t_0}^t(\mu-1)_+
+ \le-\log\mu(t_0)+4d_q.
+\]
+Adding $\int|\mu-\kappa_1|=o(1)$ proves
+\eqref{an03s2cpv1:Bsbound}. All error coefficients may depend
+on the fixed guards, but only multiply vanishing scales.
+Thus $B_s$ may be fixed first, and $B=C_rB_s+2$ subsequently,
+without circularity. If a previously chosen $B_s>\log2$ is
+already in use, it need not be changed.
+\end{proof}
+
+\section{Retained-input table and exact remaining inequalities}
+\label{an03s2cpv1:audit}
+The following statuses refer to the stopped setting above,
+not to an unconditional joint weak passage.
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{.18\textwidth}
+ >{\raggedright\arraybackslash}p{.20\textwidth}
+ >{\raggedright\arraybackslash}p{.54\textwidth}}
+\textbf{Input}&\textbf{Status/source}&\textbf{Exact budget or remaining obligation}\\\hline
+Secondary field charge&Paid here; CFR and Corollary \ref{an03s2cpv1:U}&
+$\mathcal U_\Sigma=o(1)$, equation \eqref{an03s2cpv1:Ubound}.\\[4pt]
+Fixed-chart c-form&Retained; CFR gives only pieces&
+Full value and induced $\ell^1$ receiver-derivative remainder must satisfy
+$\int\eps_F\le\overline F_F$. The exact norm is in
+\eqref{an03s2cpv1:fullnorm} below.\\[4pt]
+Strong-complement outside&Paid here; MOMC/PROFILE, TAILREP&
+$\sup\mu_{\mathcal C}/q\le Cq^{\Delta_\nu}$ and
+$\int\mu_{\mathcal C}/q\le Cq^{\Delta_\nu}\ell$.\\[4pt]
+Original Q3 interior&Paid by GESG&
+$\sup\mu_{\mathrm{int}}/q=O(q^9)$ and
+$\int\mu_{\mathrm{int}}/q=O(q^9\ell)$.\\[4pt]
+Two Q3 strips&Unpaid; GESG strip contracts&
+Need both $\sup(\mu_{\mathcal S_\pi}+\mu_{\mathcal S_{3\pi/2}})/q=o(1)$
+and their integrated counterpart, or a proved family reassignment
+with the consumer contracts below.\\[4pt]
+Core geometry/reference&Retained; CLOCK not applied&
+Need $e<e_*$ and the core chart, with CLOCK's full forcing bound
+$\int(c+|V|+K_w+T+\eps_F)\le\overline F_{\rm pass}
+\le e_*/(4C_{\rm pass})$, as well as its core-entry conditions.\\[4pt]
+Strong learning integral&Paid under retained geometry; CFR, Proposition \ref{an03s2cpv1:Bs}&
+$\int|1-\kappa_1|\le\log2+o(1)$; a fixed $B_s>\log2$ works.\\
+\end{longtable}
+
+\subsection*{What has, and has not, been paid in the field}
+CFR's primary selected term has integrated value/derivative cost
+$C_{L_c}C_{\rm RCET}E_gC_0+o(1)$. Its secondary term now costs
+$o(1)$ by \eqref{an03s2cpv1:Ubound}. The core second-output
+charge is $O(q^2M_K\ell)$; the order-one core first output must
+remain in the strong donor field. The complement and Q3 interior
+outside charges are now integrable at PROFILE's $\mu/q$ cost.
+The strip charges are not. In particular the remaining full
+contract is genuinely
+\begin{equation}
+ \int_{t_0}^{t_*}\sup_{u\in[-L_c,L_c]^2}
+ \left\{|F_{\rm orig}(u,t)-F_c(u,t)|_1
+ +\|D_uF_{\rm orig}(u,t)-D_uF_c(u,t)\|_{1\to1}\right\}\dd t
+ \le\overline F_F,
+ \label{an03s2cpv1:fullnorm}
+\end{equation}
+with the specified donor representation and nonnegative $K_w$.
+Naming non-core moments is not a proof of this entire estimate.
+Any mass normalization, $M_s-1$ contribution and selected residual
+left by that representation must be included. Proposition
+\ref{an03s2cpv1:Bs} gives integrated core overshoot $o(1)$, not
+the pointwise assertion $M_s\le1$ used by the local c-form lemma.
+The latter is still part of the explicitly retained field contract.
+
+\subsection*{Fixed ancestry decomposition of the outside population}
+Up to null endpoints the initialized circle consists of the
+right-half ancestry $\RR$, Q2 and Q3. Q2 is $\Gp\cup\Sigma$.
+Consequently the present outside population is exactly
+\[
+ \BB=\mathcal C\ \dot\cup\ \mathcal Q_{3,\mathrm{int}}^0
+          \ \dot\cup\ \mathcal S_\pi\ \dot\cup\ \mathcal S_{3\pi/2}.
+\]
+GESG takes $k_G=169/3200$,
+$\Lambda_q=\sqrt{3\ell/k_G}$, $w_q=\arcsin(q\Lambda_q)$,
+with initial interior $[\pi+2w_q,3\pi/2-2w_q]$ and the two
+remaining strips of width $2w_q$. Its initialization-based
+speed proof pays that fixed interior, not just an entry-time
+moving mask. There is no other ancestry in this initialization.
+The whole supremum \eqref{an03s2cpv1:outsideguard} remains a
+guard until the strips are dealt with. Even that supremum
+does not pay their time integral on an $O(\ell)$ interval.
+
+For a $\pi$-strip extension, first classify its labels. A primary
+part needs, at $t_0$, $z>0$, $|a|/z\le1/4$, $qj/z\le C_0$,
+$J\le Cq^3$ and $E=o(1)$. A recruited part needs the raw measure
+and actual-reference displacement to obey
+\begin{equation}
+ \begin{gathered}
+ \xi\le Z_\pi,\quad \eta_\pi(\mathbb R_+)\le Cq^3,\quad
+ \eta_\pi\{\xi>u\}\le Cq^3\min\{1,(h_A/u)^{p_2}\},\\
+ h_A=A_q^dq^{10d-2s},\quad p_2=(1-3\lambda/2)/d.
+ \end{gathered}
+ \label{an03s2cpv1:pistrip}
+\end{equation}
+It is not legitimate to assign every label near $\pi$ to
+the secondary family. A $3\pi/2$-strip strong extension needs
+a bounded actual-reference entry chart and
+\begin{equation}
+ \eta_{\rm late}\{\xi>u\}\le C\min\{1,(\epsilon_h/u)^{3/s}\},
+ \qquad \dd\eta_{\rm late}=m(t_0,b)\dd\lambda_0(b),
+ \label{an03s2cpv1:latestrip}
+\end{equation}
+with the corresponding core cutoff or TAILREP tail moment.
+Joining only after $t_0$ requires an arrival-matched version
+with pre-arrival gain paid; a fictitious entry at $t_0$ is not
+allowed. Any remainder still needs its own supremum and
+integrated $\mu/q$ budget. Neither extension is proved here.
+
+\subsection*{The remaining CLOCK forcing budget}
+The $c$ term is now small: with $E_g=2c_b$,
+\eqref{an03s2cpv1:cbudget} is at most
+$20e c_b/[9(169/400)(1-c_b)]+o(1)$. This is a proved source
+for that term; CLOCK's conclusion is not used as its premise.
+For the candidate moments of CFR, with $O=\Gp\cup\Sigma\cup\BB$,
+\[
+ V_O=-\frac{\E_{P_2}[(f_O)_1X_2]}{qQ},\qquad
+ K_O=\frac{\E_{P_1}[(f_O)_2X_1]}q,
+\]
+BULK's cancellation-free cross-output bound and
+\eqref{an03s2cpv1:primaryintegrals} imply
+\begin{equation}
+ \int(|V_O|+(K_O)_+)
+ \le \frac{C}{b_0}(E_g+K_Y\sqrt{E_g})
+            +C\int\mu_{\BB}/q+o(1).
+ \label{an03s2cpv1:VKbudget}
+\end{equation}
+Indeed each primary moment is bounded by
+$C(E_++J_++\sqrt{E_+J_+}/q)$; integrate using
+$J_+\le q^2K_Y^2$. The secondary part is bounded by
+\eqref{an03s2cpv1:Ubound} and $q^2K_Y^2T_*$, and the outside
+part costs $C\mu_{\BB}/q$. CFR also gives
+\[
+ \int(K_O)_-\le C\mathcal U_\Sigma
+                   +C\int\mu_{\BB}/q+o(1).
+\]
+Thus choosing $K_w=(K_O)_+$ still requires paying the negative
+part in the remainder. Equation \eqref{an03s2cpv1:VKbudget}
+is a moment budget, not the missing full c-form identification.
+
+For $T$, CLOCK/LOC consumes the first distance moment of the
+strong complement in its strong donor measure. The new mass
+bound pays the original angular field of that complement at
+$\mu_{\mathcal C}/q$ cost. To use it as the literal $T$ term,
+one must also identify that measure, its normalization and the
+coordinates assigned to escaped labels. The exact consumer is
+\begin{equation}
+ \int_{t_0}^{t_*}T(t)\dd t\le F_T,
+ \qquad T(t)=\int_{\KK^c}D\dd\eta_t
+ \quad\hbox{in the chosen CLOCK donor representation}.
+ \label{an03s2cpv1:Tremaining}
+\end{equation}
+Alternatively the complement can be charged to the field
+remainder, but that requires explicitly constructing that
+representation. We do not silently exchange these conventions
+or evolve $T$.
+
+The primary part of \eqref{an03s2cpv1:VKbudget} is
+$O(c_b+K_Y\sqrt{c_b})$ with $E_g=2c_b$. Conservative LCRC
+guard constants can be fixed uniformly for $c_b$ in a sufficiently
+small fixed interval by using the larger old energy budget.
+Thus $c$ and the primary candidate moments are compatible with
+an arbitrarily small forcing allowance. But the exact outstanding
+joint requirement is still
+\begin{equation}
+ \int(c+|V|+K_w+T+\eps_F)
+ \le\overline F_{\rm pass}\le e_*/(4C_{\rm pass}),
+ \label{an03s2cpv1:passremaining}
+\end{equation}
+including the strip budgets, \eqref{an03s2cpv1:fullnorm} and
+the representation in \eqref{an03s2cpv1:Tremaining}.
+This increment proves compatibility of the newly paid terms,
+not \eqref{an03s2cpv1:passremaining}. It stops before applying
+CLOCK, improving the core/reference guards, or running the
+joint weak-passage assembly.
+\end{document}
