@@ -1,0 +1,566 @@
+% New analytic increment only. Prior files are not modified.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype,booktabs,xurl}
+\usepackage[margin=.9in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\newtheorem{corollary}[proposition]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[proposition]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\Sm}{\mathcal S}
+\newcommand{\Qthree}{\mathcal Q_3}
+\title{Q3 strip budgets: pre-entry estimates and two stopping obstructions}
+\author{Analytical increment for independent review}
+\date{Version 1; October 22, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+The S1 results imply the previously unstated pre-entry cross-residual
+bound and a vanishing pre-entry signed gate budget. They yield a global
+sine envelope from the $\pi$ axis with the necessary initial
+$q$-regularization, and an explicit total-clock bound.
+The proposed unregularized absolute radial gain is false for the
+initialized original flow, already at the axis label. That stops Part A.
+For Part B, neither remaining on the lower side nor uniform chart entry
+of the whole $3\pi/2$ strip is true. A positive-width outer substrip stays
+frozen and has a negligible mass budget; the remaining recruitment
+requires an arrival-weighted estimate not supplied by the cited entry
+theorems. No complete strip budget or weak-passage assembly is claimed.
+\end{abstract}
+
+\section{Setting, sources and scope}
+All labels introduced here have prefix \texttt{an03q3sbv1:}.
+We use the original balanced initialization and residual equations
+\[
+ U(0,b)=W(0,b)=q^5(\cos b,\sin b),\qquad
+ U=\sqrt m\,a_\theta,\quad W=\sqrt m\,a_\psi,
+\]
+\[
+ \dd\lambda_0=\dd b/(2\pi),\qquad
+ f(X)=\int W(U\cdot X)_+\dd\lambda_0 .
+\]
+Here $P=(P_1+P_2)/2$, $P_1=N(e_1,q^2I)$,
+$P_2=N(\rho e_2,q^2I)$, $\rho\in[13/20,7/10]$,
+$e_i=X_i-f_i$, and
+$R_{ij}(\theta)=\E_P[e_iX_j\one_{\{a_\theta\cdot X>0\}}]$.
+The letter $b$ is an initial label, not a current angle.
+Set
+\begin{align}
+ \lambda&=\rho^2,\quad Q=\lambda+q^2,\quad
+ \omega=(1-\lambda)/2,\quad \ell=\log(1/q),\nonumber\\
+ c_m&=2/\omega+1/2,\quad t_m=c_m\ell,\quad
+ u=10-c_m\ge169/102,\nonumber\\
+ t_0&=t_h=10\ell-\log A_q+O(q^2\ell^2+q^u),\qquad
+ 0<c_A\le A_q\le C_A .                         \label{an03q3sbv1:times}
+\end{align}
+The symbol $c_m$ is a time coefficient; $c(t)=Q^{-1}\E_{P_2}[f_2X_2]$
+is the response. Define
+\[
+ I_{\rm tot}(t)=Q\int_0^t(1-c),\qquad
+ \beta=\lambda/Q,\quad k=10(1-\lambda),\quad
+ N=|\sin\theta|+|\sin\psi|,\quad
+ N_-=\E_{P_2}[(f_2X_2)_-].
+\]
+Use the proved resident root $a_\rho=\rho K(\rho a_\rho)$ and put
+$P_\rho=\Phi(\rho a_\rho)$, $d=(1-\lambda P_\rho)/2$,
+$s=d/\omega$ and $\alpha=\lambda P_\rho/2$.
+For the two strips use exactly GESG's constants:
+\begin{equation}
+ \begin{gathered}
+ k_G=169/3200,\quad \Lambda_q=\sqrt{3\ell/k_G},\quad
+ w_q=\arcsin(q\Lambda_q),\\
+ \Sm_\pi=[\pi,\pi+2w_q),\qquad
+ \Sm_{3\pi/2}=(3\pi/2-2w_q,3\pi/2].
+ \end{gathered}
+ \label{an03q3sbv1:strips}
+\end{equation}
+
+On $[t_0,t_*]$ retain the stopped hypotheses of S2CP/CFA, including
+the instantaneous core hypotheses, cross residual $M_{\rm res}q$,
+$\int r<B$, duration $t_*-t_0\le L_T\ell$, and the S2 joint secondary
+guard or its proved improvement. Whenever its gate or clock conclusion
+is used, its retained outside supremum is still a stopped input; it is
+not proved here for the two strips. We do not assume CFA's additional
+integrated strip input or invoke its conditional passage conclusion.
+In particular $t_*\le C_{\rm dur}\ell$.
+
+Source abbreviations are those of roadmap v1.13. The specific inputs
+are OWPT's early mass bound; MOMC Theorem main, its mass, chart and
+left-ancestry conclusions; Q2EC equations early, match and
+coordinatetransport; PROFILE's exact target coordinate equation;
+GESG's sine, signed and interiorspeed results; S2CP's gate lemma and
+stopped clock; and TAILREP's gain-integration and tail-moment lemmas.
+The review file records repository blob hashes. All arguments below
+are analytic.
+
+\section{Part A: estimates that do close before the radial step}
+\begin{lemma}[Pre-entry cross residual and response budget]
+\label{an03q3sbv1:pre}
+For the original flow, without a new pre-entry guard,
+\begin{align}
+ \sup_{0\le t\le t_0}
+   \big(\|e_1\|_{P_2}+\|e_2\|_{P_1}\big)&\le C_{\rm pre}q,
+                                                   \label{an03q3sbv1:crosspre}\\
+ \sup_{0\le t\le t_0}(|c|+N_-)
+   +\int_0^{t_0}(|c|+N_-)\dd t
+   &\le C(q^u+q^2\ell^2)=o(1).                     \label{an03q3sbv1:gatepre}
+\end{align}
+The constants depend only on the model box and the proved S1 constants,
+not on LCRC's guards.
+\end{lemma}
+\begin{proof}
+Let $S=\int m\dd\lambda_0$. OWPT gives
+$S(t)\le\overline S(t)=q^{10}e^{(1+2q^2)t}$.
+Thus on $[0,t_m]$ both $\sup S$ and $\int S$ are $O(q^u)=o(q)$.
+The elementary bound $|f(X)|\le S|X|$ gives
+$\|f_i\|_{P_j}\le CS$ and
+$\E_{P_2}|f_2X_2|\le CS$.
+The cross target coordinates have norm $q$.
+
+On $[t_m,t_0]$, split into MOMC's right-half strong ancestry
+$\mathcal R$ and its entire complementary ancestry. Write their masses
+as $M$ and $\mu$. MOMC gives
+\[
+ M\le1/2,\quad \int_{t_m}^{t_0}M\le3/2,\quad
+ \mu\le Cq^2\ell^2M,\quad
+ |\theta|,|\psi|\le Rq\ \text{on }\mathcal R,\quad R=79/51.
+\]
+Consequently
+\[
+ \|(f_{\mathcal R})_1\|_{P_2}
+ +\|(f_{\mathcal R})_2\|_{P_1}\le C_RqM,\qquad
+ \|(f_{\mathcal R^c})_i\|_{P_j}\le C\mu.
+\]
+For the sharper response estimate, write $X=(qZ,V)$ under $P_2$,
+where $V=\rho+qZ_2$. Each strong donor has
+$|W_2|\le Rq\sqrt m$ and
+$|U\cdot X|\le C_Rq\sqrt m(|Z|+|V|)$, whence
+\[
+ \E_{P_2}|(f_{\mathcal R})_2X_2|\le C_Rq^2M,\qquad
+ \E_{P_2}|(f_{\mathcal R^c})_2X_2|\le C\mu .
+\]
+Since $Q$ is bounded below, these inequalities prove both claims.
+They include all left ancestry and do not use an entry theorem for
+either Q3 strip.
+\end{proof}
+
+\begin{lemma}[Local $\pi$-axis field and the signed excess]
+\label{an03q3sbv1:local}
+Fix $c_*>0$. Whenever $\cos\theta\le-c_*$, loss monotonicity alone
+gives $|R_{11}|+|R_{21}|\le C_{c_*}q$. A bound
+$\|e_1\|_{P_2}\le Cq$ additionally gives $|R_{12}|\le Cq$.
+Before $t_0$ this bound follows from Lemma~\ref{an03q3sbv1:pre}.
+For every receiver, before and after $t_0$, the cross entries satisfy
+\[
+ |R_{12}|+|R_{21}|\le a_*q,\qquad
+ a_*=C(1+\max(C_{\rm pre},M_{\rm res})).
+\]
+Put $X(t)=\sup_\theta(|R_{22}(\theta)|-Q(1-c)/2)_+$.
+For small $q$, $1-c>0$ on $[0,t_*]$ and
+\begin{align}
+ X(t)&\le \tfrac12 C_{\rm cross}q^2
+               +\tfrac12(Qc+N_-),                 \label{an03q3sbv1:X}\\
+ \int_0^{t_0}X&=o(1),\qquad
+ \int_0^{t_*}X\le \frac{5e}{9}\frac{E_g}{1-c_b}+o(1).
+                                                     \label{an03q3sbv1:Xint}
+\end{align}
+Here $C_{\rm cross}=C_{\rm pre}$ before $t_0$, and can be replaced
+by a fixed multiple of $M_{\rm res}$ afterwards.
+\end{lemma}
+\begin{proof}
+The $P_1$ gate has probability at most $e^{-c_*^2/(2q^2)}$.
+Loss monotonicity and a fourth-moment bound make its selected moments
+exponentially small. On $P_2$, $X_1$ has norm $q$, which pays
+$R_{11},R_{21}$ using only the loss bounds. In $R_{12}$, $X_2$ has
+order-one norm; this is precisely where the cross-residual bound is
+needed. Clusterwise Cauchy--Schwarz also proves the global cross-entry
+bound.
+
+GESG's exact signed identities imply
+\[
+ \begin{split}
+ R_{22}-Q(1-c)/2
+   &\le C_{\rm cross}q^2/2+(Qc+N_-)/2,\\
+ -R_{22}-Q(1-c)/2
+   &\le C_{\rm cross}q^2/2-Q(1-2c)/2+N_-/2.
+ \end{split}
+\]
+Here $Qc+N_-=\E_{P_2}[(f_2X_2)_+]\ge0$.
+Since $c\le1$, the second right side is no larger than the first.
+This proves \eqref{an03q3sbv1:X}, even if $c$ is slightly negative
+before $t_0$; pre-entry nonnegativity was not assumed.
+Use \eqref{an03q3sbv1:gatepre}, $q^2t_*=o(1)$ and S2CP's gate
+lemma to obtain \eqref{an03q3sbv1:Xint}.
+\end{proof}
+
+For completeness, the local drift proposal has the following precise
+validity. In the fixed near-$\pi$ chart
+$\theta=\pi+qx,\ \psi=\pi+qy$, $|x|+|y|\le L$, the original field on
+$[0,t_m]$ is
+\begin{equation}
+ \begin{split}
+ 2x'&=-\rho\phi(\rho x)+\lambda y\Phi(-\rho x)
+                      +O_L(q^2+S/q),\\
+ 2y'&=-\rho K(-\rho x)+O_L(q^2+S/q),\qquad
+ K(z)=\phi(z)+z\Phi(z).
+ \end{split}                                      \label{an03q3sbv1:pifield}
+\end{equation}
+Indeed the $P_1$ gate is exponentially small. Under $P_2$, its leading
+gate is $Z+xV<0$, giving
+$R_{12}=R_{21}=-q\rho\phi(\rho x)/2+O_L(q^3)$ and
+$R_{22}=\lambda\Phi(-\rho x)/2+O_L(q^2)$ for the target field.
+Insert these in the exact two angular equations. The output part
+costs $C_LS/q$ after scaling, as in PROFILE Proposition 4.1.
+On the aligned ray $y=x$, both leading velocities equal
+$-\rho K(-\rho x)/2<0$: the drift is toward Q2.
+Early comparison gives $|x-y|=O(S/q)=o(1)$ on this fixed chart, so
+the sign persists there for small $q$. This is not a uniform sign
+estimate on $|x|\le2\Lambda_q$: there the negative Gaussian drive
+can be arbitrarily small. No such growing-chart assertion is used.
+
+\begin{proposition}[The regularized sine envelope from initialization]
+\label{an03q3sbv1:envelope}
+For every label in $\Sm_\pi$ and $0\le t\le t_*$,
+\begin{equation}
+ N(t)\le \min\{2,C_{\rm env}(N(0)+q)
+                         e^{\beta I_{\rm tot}(t)/2}\}.
+ \label{an03q3sbv1:Nenv}
+\end{equation}
+One may take, enlarging fixed constants,
+\[
+ a_0=\frac{\lambda_{\min}}2\min(1/2,1-c_b),\quad
+ G=\frac{5eE_g}{9(1-c_b)},\quad
+ C_{\rm env}=4e^{G+1}\max(1,a_*/a_0).
+\]
+This constant has no dependence on a strip profile or on $q$.
+Moreover, at every stopped endpoint,
+\begin{equation}
+ e^{I_{\rm tot}(t_*)}
+   \le C E_g A_q^{-q^2}q^{-10-10q^2}.
+ \label{an03q3sbv1:totalclock}
+\end{equation}
+The constant in this last inequality is the fixed stopped-clock
+constant with the S1 seed constants.
+\end{proposition}
+\begin{proof}
+Stop first when $N=1/2$. Before this event, continuity from the
+$\pi$ axis ensures $\cos\theta\le-\sqrt3/2$. GESG's matrix-value
+sine inequality and the local estimate give, in upper-Dini form,
+\[
+ D^+N\le\{\beta I_{\rm tot}'/2+X+Cq+Cq^2\}N+a_*q.
+\]
+The replacement of $I_{\rm tot}'/2$ by $\beta I_{\rm tot}'/2$
+costs $q^2(1-c)/2$, whose integral is $o(1)$. Also
+$\beta I_{\rm tot}'/2\ge a_0$.
+Duhamel and \eqref{an03q3sbv1:Xint} give
+\[
+ N(t)\le e^{G+1}e^{\beta I_{\rm tot}(t)/2}
+                         \{N(0)+a_*q/a_0\}.
+\]
+If the stopping event occurs at $\tau$, its right side at $\tau$
+is at least $1/2$. Since $I_{\rm tot}$ increases and $N\le2$
+always, multiplying by four extends the estimate to all subsequent
+times, including re-entries. This argument never uses a pre-$t_0$
+integral of the global strong residual after leaving the neighborhood.
+
+By \eqref{an03q3sbv1:gatepre} and \eqref{an03q3sbv1:times},
+\[
+ e^{I_{\rm tot}(t_0)}
+      =A_q^{-Q}q^{-10Q}e^{o(1)}.
+\]
+S2CP's stopped clock, using the Q2EC/SEP seed
+$H(t_0)\asymp A_q^{-\lambda}q^k$, gives
+$e^{I_{\rm tot}(t_*)-I_{\rm tot}(t_0)}
+ \le C E_g A_q^\lambda q^{-k}$.
+Multiply; $10Q+k=10+10q^2$ and $\lambda-Q=-q^2$.
+\end{proof}
+
+\section{Part A stopping point: the proposed radial gain is false}
+\begin{proposition}[An initialized-flow obstruction]
+\label{an03q3sbv1:radialfailure}
+There is no fixed $C$ for the proposed uniform estimate
+\begin{equation}
+ m(t,b)\le C m(0,b)
+    \max\{1,CN(0,b)^2e^{\beta I_{\rm tot}(t)}\}^{1/\beta}
+ \qquad (b\in\Sm_\pi).
+ \label{an03q3sbv1:falsegain}
+\end{equation}
+It already fails at $b=\pi$, $t=t_m$.
+The failure is an unbounded factor as $q\downarrow0$, not a
+fixed-constant accuracy issue.
+\end{proposition}
+\begin{proof}
+The exact aligned target-only flow from $b=\pi$ starts at
+$\widehat U(0)=q^5(-1,0)$ and satisfies PROFILE's equation
+\[
+ \widehat U_2'
+   =\frac{\rho q|\widehat U|}{2}
+          K\left(\frac{\rho\widehat U_2}{q|\widehat U|}\right)
+       +d_q\widehat U_2,\qquad 0\le d_q\le q^2.
+\]
+Its norm is nondecreasing, because
+$(|\widehat U|^2)'=2\E_P[(\widehat U\cdot X)_+^2]\ge0$.
+Also $\widehat U_2\ge0$, $K(z)\ge K(0)$ for $z\ge0$, and
+$K(z)\ge z$ there. It follows that
+\[
+ \widehat U_2(1)\ge c q^6,\qquad
+ \widehat U_2(t)\ge c q^6 e^{\lambda(t-1)/2}\quad(t\ge1).
+\]
+Thus
+\begin{equation}
+ \frac{\widehat m(t_m,\pi)}{q^{10}}
+       \ge c q^{2-\lambda c_m}\longrightarrow\infty,\qquad
+ \lambda c_m-2\ge\frac{210239}{184800}>0.
+ \label{an03q3sbv1:seedcounter}
+\end{equation}
+The rational lower bound follows by monotonicity in $\lambda$ and
+substitution of $\lambda=169/400$; no numerical premise is used.
+Q2EC's equation early, explicitly valid for every label, gives
+$|\log(m/\widehat m)|(t_m,\pi)\le Cq^u$.
+But $N(0,\pi)=0$, so \eqref{an03q3sbv1:falsegain} would give
+$m(t_m,\pi)\le Cq^{10}$, contradicting
+\eqref{an03q3sbv1:seedcounter}.
+
+The issue is not an irrelevant isolated endpoint. For any proposed
+fixed constants and sufficiently small fixed $q$, continuous
+dependence on $b$ preserves the large mass ratio on an interval
+immediately to the right of $\pi$. Shrink this interval so that
+$CN(0,b)^2e^{\beta I_{\rm tot}(t_m)}<1$ throughout it.
+Then the same inequality fails on a positive-measure subset of Q3.
+\end{proof}
+
+The obstruction also persists if the proposed bound is requested
+only at $t_0$. At the common boundary label $b=\pi$, Q2EC's band
+matching and two-sided second-coordinate transport apply. This label
+is in its clock cohort; the regularized RCET dichotomy and Q2EC
+transport keep it off the fixed strong chart through $t_0$.
+Consequently $U_2(t_0,\pi)\ge c\widehat U_2(t_0,\pi)$ and
+\begin{equation}
+ \frac{m(t_0,\pi)}{m(0,\pi)}
+       \ge c A_q^{-\lambda}q^{2-10\lambda}\longrightarrow\infty.
+ \label{an03q3sbv1:endpointcounter}
+\end{equation}
+Here $10\lambda-2\ge89/40>0$. This use of Q2EC concerns its
+included Q2 boundary label, not an extension of its theorem to Q3.
+
+The missing $q$ seed agrees with RCET's explicit $(s_0+q)$,
+$(c_0+q)$ regularization. A repaired candidate must at least replace
+$N(0)^2$ by $(N(0)+q)^2$ (or a comparable regularization).
+We do not assert the repaired radial estimate.
+
+For clarity about the remaining radial issue, the exact identity is
+\[
+ (\log m)'=2R_{11}\cos\theta\cos\psi
+       +2R_{22}\sin\theta\sin\psi
+       +2R_{12}\cos\psi\sin\theta
+       +2R_{21}\sin\psi\cos\theta .
+\]
+DECG's projected-margin estimate, including its lower-input-side
+case, and the cross bounds above give
+\begin{equation}
+ (\log m)'\le2|R_{11}\cos\theta\cos\psi|
+       +(I_{\rm tot}'+2X)(\sin\theta\sin\psi)_+
+       +C(1+\max(C_{\rm pre},M_{\rm res}))q .
+ \label{an03q3sbv1:radialvalid}
+\end{equation}
+For negative input sine, its possible positive weak contribution is
+$O(q)+O(M_{\rm res}q^2)$, as in GESG lowernogain; the $O(q)$ term
+must not be omitted. Before $t_0$, use $C_{\rm pre}$ in that estimate.
+This differential bound and TAILREP do not remove the inhomogeneous
+seed in \eqref{an03q3sbv1:Nenv}.
+
+After departure from a fixed $\pi$ neighborhood, the small local
+$R_{11}$ estimate also no longer follows from a closed $P_1$ gate.
+The post-$t_0$ contribution is paid by $\int r<B$.
+A direct absolute-value radial proof from initialization would
+still need, for its remaining pre-entry times, the uniform bound
+\begin{equation}
+ \sup_{b\in\Sm_\pi}
+ \int_{\substack{0\le t\le t_0\\ \cos\theta(t,b)>-c_*}}
+ |R_{11}(\theta(t,b))\cos\theta(t,b)\cos\psi(t,b)|\dd t
+ \le C_{\pi,\rm rad}.
+ \label{an03q3sbv1:unpaidradial}
+\end{equation}
+A signed substitute sufficient for the radial upper bound would also
+do. This display is an unpaid consumer inequality, not an added
+hypothesis of a theorem. The envelope's trivial bound $N\le2$ after
+exit does not pay it. Part A stops at the false central estimate
+\eqref{an03q3sbv1:falsegain}; neither A4's radial extension nor A5's
+full-strip mass target is claimed.
+
+\section{Part B: joined labels and a paid frozen substrip}
+\begin{proposition}[The lower-side shortcut fails]
+\label{an03q3sbv1:lowerfailure}
+It is false that every $\Sm_{3\pi/2}$ label has
+$\sin\theta<0$ throughout $[t_0,t_*]$.
+For each sufficiently small fixed $q$, a positive-measure interval
+of this strip adjacent to $3\pi/2$ has $\sin\theta(t_0)>0$.
+\end{proposition}
+\begin{proof}
+The label $b=3\pi/2$ is the same initialized characteristic as
+$b=-\pi/2$ by periodicity. MOMC includes the latter endpoint in its
+right-half ancestry. At $t_m$ its scaled displacement from the actual
+reference is $O(q^{d/2})$ and that reference is $(a_\rho,a_\rho)+o(1)$,
+with $a_\rho>0$. MOMC's mean and shape conclusions retain this
+positive chart at $t_0$. Thus
+$\theta(t_0,3\pi/2)/q=a_\rho+o(1)>0$, using the lift near zero.
+Continuous dependence on the initial label, for fixed $q>0$, gives
+the asserted neighboring interval. No width uniform in $q$ is
+inferred from this continuity argument.
+\end{proof}
+
+\begin{proposition}[A positive-width frozen part of the same strip]
+\label{an03q3sbv1:frozen}
+Let the fixed initial substrip be
+\[
+ F_q=[3\pi/2-7w_q/4,\;3\pi/2-3w_q/2].
+\]
+Uniformly for $b\in F_q$ and $0\le t\le t_*$,
+\begin{align}
+ |\theta(t,b)-b|+|\psi(t,b)-b|&\le Cq^3\ell,\nonumber\\
+ m(t,b)&=q^{10}e^{O(q^3\ell)}.                    \label{an03q3sbv1:freeze}
+\end{align}
+In particular
+\begin{align}
+ \sup_{[t_0,t_*]}\mu_{F_q}/q&\le Cq^{10}\ell^{1/2},\nonumber\\
+ \int_{t_0}^{t_*}\mu_{F_q}/q&\le Cq^{10}\ell^{3/2}=o(1).
+                                                        \label{an03q3sbv1:Fpaid}
+\end{align}
+Nevertheless these labels are outside every fixed scaled strong chart
+at $t_m$ and $t_0$. Their joint scaled displacement from the actual
+strong reference at $t_0$ is at least $c/q$.
+\end{proposition}
+\begin{proof}
+Write $\delta=3\pi/2-\theta$. Until the first exit from
+$w_q<\delta<3w_q$, one has, for small $q$,
+$\cos\theta=-\sin\delta\le-q\Lambda_q$ and
+$\sin\theta=-\cos\delta\le-q\Lambda_q$.
+GESG interiorspeed is valid before $t_0$ as well as afterwards,
+using loss alone. All angular and logarithmic radial speeds
+are at most
+$C e^{-k_G\Lambda_q^2}=Cq^3$.
+The distance of each initial angle in $F_q$ from either buffer
+boundary is at least $w_q/2$. The available travel
+$CC_{\rm dur}q^3\ell=o(w_q)$ rules out the first exit.
+Integration proves \eqref{an03q3sbv1:freeze}.
+
+The initial angular width is $w_q/4\asymp q\ell^{1/2}$ and
+$\dd\lambda_0=\dd b/(2\pi)$, which proves \eqref{an03q3sbv1:Fpaid}.
+The actual strong reference at $t_0$ has both angles $O(q)$,
+whereas these input and output angles remain within $O(w_q)$
+of $-\pi/2$ modulo $2\pi$. Even the shortest angular distance
+to that reference is bounded below by a fixed positive number.
+Division by $q$ proves the last claim.
+\end{proof}
+
+Thus the proposed extension of MOMC's \emph{whole-family bounded chart}
+to $\mathcal R\cup\Sm_{3\pi/2}$ is false:
+\begin{equation}
+ \text{there is no fixed }Z\text{ with }
+ \sup_{b\in\Sm_{3\pi/2}}\xi(t_0,b)\le Z .
+ \label{an03q3sbv1:falsechart}
+\end{equation}
+The same obstruction occurs at $t_m$. It is not a bounded-factor
+loss in a comparison constant. PROFILE's right-half formulas do not
+assert uniform arrival for these negative-cosine labels.
+
+This does \emph{not} disprove a raw mass-weighted tail or the desired
+mass budget: the frozen labels just exhibited have negligible mass.
+The two failed premises are the lower-side shortcut and whole-strip
+chart extension. The remaining joined/transition population needs the
+arrival-matched alternative named in the question, which is not a
+conclusion of MOMC's left-mass estimate.
+
+\section{Exact remaining consumer and constant audit}
+For clarity we record what has not been supplied, without assuming it
+in a claimed full theorem. For already charted labels $J_0$ in the
+unpaid part of $\Sm_{3\pi/2}$, S2CP's consumer is the raw law
+\begin{equation}
+ \eta_{J_0}\{\xi>v\}\le C_T\min\{1,(\epsilon_h/v)^p\},
+ \quad \dd\eta_{J_0}=m(t_0,b)\dd\lambda_0,\quad
+ p=3/s,\quad
+ \epsilon_h=\sqrt2 A_q^d(1-M_0)^\alpha q^{10d-s},
+ \label{an03q3sbv1:missingtail}
+\end{equation}
+together with the appropriate core cutoff and a budget for the
+remaining labels. Equivalently, TAILREP consumes a bound of the form
+\begin{equation}
+ \int_{J_0\cap\{\xi>d_c\}}
+       \max\{1,A(t)\xi^2\}^{1+\nu}\dd\eta_{J_0}
+ \le C_T'\epsilon_h^p d_c^{-p}
+       \max\{1,A(t)d_c^2\}^{1+\nu},\quad
+ A(t)=A_0q^2e^{\beta[I_{\rm tot}(t)-I_{\rm tot}(t_0)]}.
+ \label{an03q3sbv1:missingmoment}
+\end{equation}
+Here $d_c$ is TAILREP's fixed core cutoff. This is a mass-weighted
+inequality, not a count of labels; it is not proved by
+$\mu_{\rm left}(t_0)\le Cq^2\ell^2$.
+
+An arrival-matched formulation for the unpaid population
+$J=\Sm_{3\pi/2}\setminus F_q$ can be made exact as follows.
+Let $\tau_b\ge t_0$ be its first joint entry into the chosen bounded
+actual-reference chart, taking $\tau_b=t_0$ for labels already there
+and $\tau_b=\infty$ for those not arriving. Denote its scaled
+entry distance by $\xi_b$. Define
+\begin{align}
+ \mathcal W_J(t)={}&
+   \int_{J\cap\{\tau_b>t\}}m(t,b)\dd\lambda_0(b)\nonumber\\
+ &+C_m\int_{J\cap\{\tau_b\le t\}}m(\tau_b,b)
+    \max\{1,A_0q^2\xi_b^2
+       e^{\beta[I_{\rm tot}(t)-I_{\rm tot}(\tau_b)]}\}^{1+\nu}
+          \dd\lambda_0(b).                         \label{an03q3sbv1:arrival}
+\end{align}
+For the second term to dominate current mass one must establish the
+DECG-type gain from the actual arrival, with the remaining stopped
+budgets; it cannot be assigned a fictitious $t_0$ entry.
+The still-needed aggregate estimates are
+\begin{equation}
+ \sup_{[t_0,t_*]}\mathcal W_J(t)/q=o(1),\qquad
+ \int_{t_0}^{t_*}\mathcal W_J(t)/q\dd t=o(1),
+ \label{an03q3sbv1:missingarrival}
+\end{equation}
+or the second estimate with CFA's specified small fixed allowance.
+They state the required correlation of arrival delay, entry mass and
+entry displacement. Neither the right-half normalized tail nor the
+unweighted left-ancestry mass gives that correlation.
+No arrival theorem or additional hypothesis is asserted here.
+
+The order-one constants in the closed results are as follows.
+The loss/Gaussian constants, $k_G$, $R=79/51$, $c_A,C_A$,
+$C_{\rm pre}$, and the fixed-chart coefficients in
+\eqref{an03q3sbv1:pifield} are independent of LCRC guards.
+$C_{\rm dur}$ uses the retained duration and the bounded $A_q$ shift.
+The sine constant uses $a_*=C(1+\max(C_{\rm pre},M_{\rm res}))$,
+$c_b$, and the already proved gate budget $5eE_g/[9(1-c_b)]$.
+Dependence on $B$ is not needed in that sine proof; the unpaid radial
+route uses $B$ only after $t_0$. The total-clock constant is inherited
+from the stopped clock and S1 seed, with the explicit remaining
+$A_q^{-q^2}$ in \eqref{an03q3sbv1:totalclock}.
+The constants $C_T',A_0,C_m$ in the unpaid consumer are not newly
+constructed or improved here. When available, their order is the
+S2CP/CFA order, and the gain exponent retains
+$1/\beta=1+q^2/\lambda$ (or its fixed upper bound $1+\nu$).
+
+For $F_q$, \eqref{an03q3sbv1:Fpaid} is smaller than any fixed CFA strip
+allowance for small $q$. For the \emph{whole} strips we have not supplied
+CFA's bounds
+\[
+ \sup\mu_{\Sm}/q=o(1),\qquad
+ C_{\Sm}\int\mu_{\Sm}/q
+   \le\min(P_{\rm allow}/4,\overline F_F/4).
+\]
+Accordingly their placement in CFA's constant order is unchanged.
+Part A is partial and stopped at \eqref{an03q3sbv1:falsegain}.
+Part B is partial and stopped at \eqref{an03q3sbv1:falsechart}
+and the unpaid arrival consumer \eqref{an03q3sbv1:missingarrival}.
+There is no full strip theorem, no application of CLOCK passage,
+and no joint weak-passage bootstrap in this increment.
+\end{document}
+

@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.13 — October 23, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.14 — October 23, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -42,6 +42,15 @@
   - CLOCK constants independent of $c_b$ and $C_0$, and the forcing budget;
   - a conditional CLOCK passage.
 - Every guard of the weak-passage bootstrap is now strictly improvable except the **Q3 strip budget**, which is the only external input left. The strips come next, then the joint assembly.
+
+**Revision 1.14 (Oct 23).** Records Q3SB (`AN03_Q3_strip_budgets_v1`). It is partial and stopped on two false premises in my prompt (ledger 20).
+- *Proved:*
+  - the pre-entry cross residual $\le C_{\rm pre}q$ on $[0,t_0]$, a new S1 conclusion;
+  - the pre-entry gate budget;
+  - the regularized sine envelope $N\le C(N(0)+q)e^{\beta I_{\rm tot}/2}$;
+  - the total-clock bound $e^{I_{\rm tot}(t_*)}\le CE_gA_q^{-q^2}q^{-10-10q^2}$;
+  - a frozen 3π/2 substrip.
+- *Revised strip route:* split each strip by scaled offset into an outer frozen zone, a middle zone (frozen in scaled coordinates), and an inner zone of physical width $O(q\sqrt{\log\ell})$. Do the π strip first, then 3π/2.
 
 ---
 
@@ -489,7 +498,7 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
 - The only external input is the **strip budget** $\sup\mu_{\mathcal S}/q=o(1)$ and $C_{\mathcal S}\int\mu_{\mathcal S}/q\le$ a small fixed allowance.
 - The joint assembly must also show that $c$ reaches $c_b$ within $L_T\ell$. This needs the lower clock bound $c\ge\tfrac89H_{G_+}-o(1)$ and $H_{G_+}\ge e^{-D}H_0e^{I}$.
 
-**Q3 strips (next). The route is a reviewer proposal, not yet verified.**
+**Q3 strips: first proposal (superseded by the status after Q3SB below).**
 - *π strip, $[\pi,\pi+2w_q)$.* Near π the scaled field mirrors the c-form, with gate factor $\Phi(-\rho x)$ and drift toward Q2. Q3-side labels either stay frozen or cross into Q2 as late weak recruits that lag the bulk.
   - Proposed *direct lag bound:* GESG's global sine envelope is axis-agnostic and also measures distance from the π axis. On the left half, the P1 gate is closed, so the local $|R_{11}|$ is $O(q)$ by loss alone.
   - Combine it with the absolute radial identity, the signed gate excess and the weak clock from initialization. Expected result: $\mu_{\mathcal S_\pi}\lesssim q^{10}|\mathcal S_\pi|\cdot q^2\Lambda_q^2e^{I_{\rm tot}}\approx O(q^3\ell^{3/2})$, hence $\mu/q=o(1)$.
@@ -497,6 +506,34 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
 - *3π/2 strip, $(3\pi/2-2w_q,3\pi/2]$.* These labels are strong late joiners. MOMC's chart claim collapses the whole right half into the strong chart by $t_m$, and these labels likely follow.
   - Near the strong axis, their post-$t_0$ weak gain is of order $q^2\xi^2e^{\beta I}$. The crude left mass $Cq^2\ell^2$, or even a lag bound $q^3\ell^{3/2}$, is therefore not enough.
   - They need the joint mass–displacement tail `latestrip`, obtained by extending MOMC and PROFILE across $\beta=-\pi/2$. The cheap alternative, proving that they stay on the lower side, should be checked first but probably fails.
+
+**Q3 strips: status after Q3SB (`AN03_Q3_strip_budgets_v1`, Oct 23) and revised route.**
+- *Proved:*
+  - **The pre-entry cross residual,** $\sup_{[0,t_0]}(\|e_1\|_{P_2}+\|e_2\|_{P_1})\le C_{\rm pre}q$. It follows from OWPT's mass bound on $[0,t_m]$, and on $[t_m,t_0]$ from MOMC's chart, its $\int M\le3/2$, and its left mass $\le Cq^2\ell^2M$.
+  - **The pre-entry gate budget,** $\sup+\int_0^{t_0}(|c|+N_-)=O(q^u+q^2\ell^2)$.
+  - **The regularized envelope** from the π axis, $N(t)\le\min\{2,C_{\rm env}(N(0)+q)e^{\beta I_{\rm tot}/2}\}$.
+  - **The total clock,** $e^{I_{\rm tot}(t_*)}\le CE_gA_q^{-q^2}q^{-10-10q^2}$.
+  - **A frozen substrip** $F_q\subset\mathcal S_{3\pi/2}$, with $\int\mu_{F_q}/q=O(q^{10}\ell^{3/2})$.
+- *Refuted (premises from my prompt; ledger 20):*
+  - **The unregularized gain** $m\le Cm(0)\max\{1,CN(0)^2e^{\beta I}\}^{1/\beta}$ fails at $b=\pi$. That label lies in Q2EC's clock cohort and grows by $q^{2-\lambda c_m}\to\infty$ by $t_m$.
+  - **Lower-side retention of the whole 3π/2 strip** fails: $b=3\pi/2\equiv-\pi/2$ is MOMC's right-half endpoint and lies in the positive strong chart at $t_0$.
+  - **A whole-strip chart extension** fails: $F_q$ stays at angular distance of order one from the strong axis.
+- *Unpaid:*
+  - before $t_0$, the radial term $\int_{\cos\theta>-c_*}|R_{11}\cos\theta\cos\psi|$ for π-strip labels that leave the π neighborhood;
+  - for the joined part of the 3π/2 strip, the arrival-weighted mass–displacement law.
+- *Revised route (reviewer proposal, to verify).* Split each strip by its scaled offset s from the boundary (π, resp. 3π/2) into three zones.
+  - **Outer zone, $s\ge(1+\epsilon)\Lambda_q$.** GESG's both-gates-closed buffer argument applies, since travel is $O(q^3\ell)\ll w_q$, so these labels are frozen. This covers each strip's outer part, not only $F_q$.
+  - **Middle zone, $s_q\le s\le(1+\epsilon)\Lambda_q$ with $s_q\asymp\sqrt{\log\ell/k_G}$.** In the gate layer every term of θ′ and ψ′ carries an explicit factor q:
+    - near π: $X_1=qZ$ on $P_2$, $\|e_1\|_{P_2}=O(q)$ (crosspre or the guard), and $\sin\theta,\sin\psi=O(q)$;
+    - near 3π/2: $\cos\theta,\cos\psi=O(q)$, $X_2=qZ$ on $P_1$, and $\|e_2\|_{P_1}=O(q)$;
+    - times a Hölder gate tail $e^{-k_Gs^2}$.
+    So the scaled travel is $\lesssim\ell(1+s)e^{-k_Gs^2}=o(1)$ and the radial rate is $o(1/\ell)$. These labels are frozen in scaled coordinates with mass $q^{10}e^{o(1)}$.
+  - **Inner zone, $s<s_q$ (physical width $O(q\sqrt{\log\ell})$).**
+    - **π side.** Transfer to the target-only flow at $t_m$ via Q2EC's all-label early comparison, and compute from PROFILE's exact equation with seed regularization $(N(0)+q)$. On $[t_m,t_0]$, use Q2EC/RCET transport or the regularized radial bound while $\cos\theta\le-c_*$, and settle the unpaid radial term. After $t_0$ the regularized absolute gain from $t_0$ holds, since $\int r\le B$ pays the strong diagonal. Expected: $\mu_{\mathcal S_\pi}=O(q^3(\log\ell)^{3/2})$. Alternatively, show the inner zone meets $G_+$'s entry contracts (extending Q2EC's boundary label $b=\pi$) and reassign it.
+    - **3π/2 side.** The joined labels continue the right half's endpoint. Compute their target-only state at $t_m$, including mass lag and actual-reference displacement, and transport the charted ones with MOMC.
+      - After $t_0$, the λ-rate envelope may be too lossy. A single-receiver version of CLOCK's α-rate shape inequality near the reference would make them cheap.
+      - Expected: inner-zone mass $\approx q^3$ and displacement $\ll1$, giving a post-$t_0$ cost of order $q^{1+}$ under the α-rate.
+- *Order:* the π strip (one session), then the 3π/2 strip (one or two), then the joint weak-passage assembly.
 
 ### S4. Weak return and matching to the leading weak family
 
@@ -607,7 +644,7 @@ Tracks that can run in parallel:
 | Track | Steps | Notes |
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
-| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Next: the strips (π side by a direct lag bound; 3π/2 side by the late-joiner tail), then the joint weak-passage assembly. |
+| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, the regularized envelope and a frozen substrip. Next: the π strip by the three-zone route, then the 3π/2 strip, then the joint weak-passage assembly. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
@@ -671,6 +708,12 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 19. **Coefficient and order slips (S2CP prompt).** S2CP corrected both.
     - The v1.11 side benefit wrote $\int c\le\tfrac{10e}9E_g/(1-c_b)$. Dividing the $\int Qc$ budget gives $\tfrac{10e}9E_g/(Q(1-c_b))$. The $O(c_b)$ conclusion survives, since $Q\ge169/400$.
     - The suggested order put $C_\Sigma$ before $C_0$. SEP's cap and tail constants depend on $K(C_0)$, so $C_\Sigma$ must come after them. This is acyclic, because $C_\Sigma$ enters the gate only at vanishing scales.
+20. **False premises (Q3SB prompt).**
+    - *The unregularized gain.* I proposed $m\le Cm(0)\max\{1,CN(0)^2e^{\beta I}\}^{1/\beta}$ and dropped the additive seed. GESG's own Duhamel exhibits that seed, and RCET's $(s_0+q)$ regularization signals it. The bound fails at $b=\pi$, which grows by $q^{2-\lambda c_m}$. The correct form uses $(N(0)+q)^2$, and my expected order $q^3\ell^{3/2}$ had implicitly used it.
+    - *Whole-strip contracts.* I proposed lower-side retention, then a whole-strip chart extension, for the 3π/2 strip. Both fail because the strip contains both a joined endpoint ($b=-\pi/2\in\mathcal R$) and a frozen substrip.
+    - *Rules:*
+      - near a boundary or separatrix, include the regularization seed and check the endpoint label explicitly;
+      - before extending a family contract to a boundary layer, split the layer into frozen, transitional and joined parts.
 
 ---
 
@@ -705,6 +748,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | GESG | `AN03_global_envelope_signed_gate_v1.tex` (+ review), prefix `an03gesgv1:` — partial; stops at the integrated gate budget, which the review resolves via LCRC's backward clock |
 | S2CP | `AN03_S2_closure_package_v1.tex` (+ review), prefix `an03s2cpv1:` — S2 closed in stopped-guard form; $\mathcal U_\Sigma$ and $B_s$ paid; retained-input audit |
 | CFA | `AN03_c_form_assembly_v1.tex` (+ review), prefix `an03cfav1:` — S3 closed in stopped-guard form; core-only c-form, full remainder, CLOCK forcing, conditional passage |
+| Q3SB | `AN03_Q3_strip_budgets_v1.tex` (+ review), prefix `an03q3sbv1:` — partial; pre-entry cross residual and gate budget, regularized envelope, total clock, frozen 3π/2 substrip; refutes three proposed premises |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |
