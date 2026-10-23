@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.12 — October 23, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.13 — October 23, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -33,6 +33,15 @@
 - Also proved: CFR's secondary obstruction $\mathcal U_\Sigma=o(1)$, and $\int|1-\kappa_1|\le\log2+o(1)$ under retained core geometry.
 - The outside population is exactly $\mathcal C\cup\mathcal Q_{3,\rm int}\cup\mathcal S_\pi\cup\mathcal S_{3\pi/2}$. Only the strips are unpaid.
 - Ledger 19 records two coefficient and order errors in my prompt. S3b (full c-form assembly, then the CLOCK budget) is next.
+
+**Revision 1.13 (Oct 23).** Records CFA (`AN03_c_form_assembly_v1`).
+- S3 is closed in stopped-guard form:
+  - the core-only c-form ($T\equiv0$) with donor mass capped at one;
+  - two new selected moments, $A_1$ and $B_2$;
+  - the full value-and-derivative remainder $\int\epsilon_F\le C\,C_0E_g+C_{\rm out}F_{\mathcal S}+o(1)$;
+  - CLOCK constants independent of $c_b$ and $C_0$, and the forcing budget;
+  - a conditional CLOCK passage.
+- Every guard of the weak-passage bootstrap is now strictly improvable except the **Q3 strip budget**, which is the only external input left. The strips come next, then the joint assembly.
 
 ---
 
@@ -457,6 +466,38 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - Then $\int f_*\le\tfrac{10e}9\tfrac{E_g}{Q(1-c_b)}+\tfrac C{b_0}(E_g+K_Y\sqrt{E_g})+C\,C_0E_g+C\int\mu_{\mathcal S}/q+o(1)$. With $E_g=2c_b$ and $K_Y$ fixed uniformly over small $c_b$ (S2CP), this is below $e_*/(4C)$ once $c_b$ and $C_0$ are small, provided $e_*$ and C do not depend on them (to check).
 - *CLOCK's passage then needs* $e_0\le e_*/4$ at $t_0$ and $r_0L_b\le\min\{1/4,a_b/(2K),ge_*/(8C)\}$, with $L_b\propto(H_b/H_0)^{\alpha/Q}\asymp q^{-k\alpha/Q}$. TAILREP's cutoff $d_c=c_*q^{\chi+kP/2}$ is designed to supply that margin.
 
+**Status after CFA (`AN03_c_form_assembly_v1`, Oct 23): closed in stopped-guard form.**
+- *Representation.* The strong family is the fixed core $\mathcal K$, so $T\equiv0$. The capped donor measure $\tilde\mu_s=\mu_s\min(1,1/\mu_{\mathcal K})$ costs $C_{L_c,R}(\mu_{\mathcal K}-1)_+$, whose integral is at most $C\,d_q=o(1)$.
+- *Selected moments.* Besides CFR's $A_2$, the full angular expansion needs $A_1=q^{-1}E[g_1VI_x]$ and $B_2=E[g_2ZI_x]$. Both are proved:
+  - generic bounds $C(J+\sqrt{EJ}/q)$ and $C(E+q\sqrt{EJ})$;
+  - the primary cost $C\,C_{L_c}C_{\rm RCET}C_0E_g$, using the $q$ factor in $E(u\cdot X)_-^2$ and RCET's growing margin.
+- *Full remainder.* $\int\epsilon_F\le C_FC_{L_c}C_{\rm RCET}C_0E_g+C_{\rm out}F_{\mathcal S}+o(1)$. A term-by-term ledger includes the $P_1$ Stein identities, the $P_2$ expansion $T_1+xT_2=\rho K(\rho x)+O_{C^1}(q^2)$, and the outside moment substitutions. No selected residual is removed by orthogonality.
+- *Forcing.*
+  - $\int f_*\le\tfrac{10e}9\tfrac{E_g}{Q(1-c_b)}+\tfrac{C_V(E_g+K_Y\sqrt{E_g})}{Q(1-c_b)}+C\,C_0E_g+C_{\mathcal S}F_{\mathcal S}+o(1)$.
+  - CLOCK's constants are $g=\gamma_*/2$ with $\gamma_*=1183/20800$, and $e_*=\min\{1/4,\gamma_*/(2C_{\rm pass})\}$. They do not depend on $c_b$, $C_0$ or the guards.
+  - LCRC's constants can be fixed uniformly for $c_b\le\bar c=1/4$. Its formulas are monotone in $c_b$ with no $1/c_b$, which I checked against LCRC's closure proof.
+- *Conditional passage.* $e_0=o(1)$ (MOMC's mean claim at $t_h$), $r_0\le d_c$, $H_b=\tfrac54c_b$ and $D_-=o(1)$ give $r_0L_b\le Cq^{\chi+kPq^2/(2Q)}=O(q^\chi)$. CLOCK then gives $e\le3e_*/4$ and $r_{\mathcal K}\le2\mathcal A=O(q^\chi)$. This strictly improves the retained core-geometry and reference guards.
+- *Constant order:* $(\text{model},R,M_K,B_s,L_c,\bar c,C_{\rm pass},g,e_*)\to(B,K_Y,M_{\rm res})\to(\overline F_F,c_b,E_g=2c_b,C_D,A_0,C_m)\to C_0\to(K(C_0),Z_\Sigma,\text{entry},C_\Sigma)\to q$, with a small fixed $F_{\mathcal S}$ chosen before q.
+
+**Weak-passage bootstrap: what is left.**
+- Every guard now has a proved strict improvement, conditional on the others:
+  - LCRC: $Y$, $\int r$, $E_{G_+}$ and the cross residual;
+  - S2CP: $E_\Sigma$;
+  - CFA: $\int\epsilon_F$, core geometry and the reference;
+  - S2CP's $B_s$ argument: core mass, since $\mu_{\mathcal K}\le e^{d_q}$;
+  - $\sup\mu_{\mathcal B}/q$, except for the strips.
+- The only external input is the **strip budget** $\sup\mu_{\mathcal S}/q=o(1)$ and $C_{\mathcal S}\int\mu_{\mathcal S}/q\le$ a small fixed allowance.
+- The joint assembly must also show that $c$ reaches $c_b$ within $L_T\ell$. This needs the lower clock bound $c\ge\tfrac89H_{G_+}-o(1)$ and $H_{G_+}\ge e^{-D}H_0e^{I}$.
+
+**Q3 strips (next). The route is a reviewer proposal, not yet verified.**
+- *π strip, $[\pi,\pi+2w_q)$.* Near π the scaled field mirrors the c-form, with gate factor $\Phi(-\rho x)$ and drift toward Q2. Q3-side labels either stay frozen or cross into Q2 as late weak recruits that lag the bulk.
+  - Proposed *direct lag bound:* GESG's global sine envelope is axis-agnostic and also measures distance from the π axis. On the left half, the P1 gate is closed, so the local $|R_{11}|$ is $O(q)$ by loss alone.
+  - Combine it with the absolute radial identity, the signed gate excess and the weak clock from initialization. Expected result: $\mu_{\mathcal S_\pi}\lesssim q^{10}|\mathcal S_\pi|\cdot q^2\Lambda_q^2e^{I_{\rm tot}}\approx O(q^3\ell^{3/2})$, hence $\mu/q=o(1)$.
+  - Inputs to verify: a cross-residual bound $\|e_1\|_{P_2}=O(q)$ before $t_0$, which no S1 file states explicitly, and the handling of labels after they rotate toward π/2.
+- *3π/2 strip, $(3\pi/2-2w_q,3\pi/2]$.* These labels are strong late joiners. MOMC's chart claim collapses the whole right half into the strong chart by $t_m$, and these labels likely follow.
+  - Near the strong axis, their post-$t_0$ weak gain is of order $q^2\xi^2e^{\beta I}$. The crude left mass $Cq^2\ell^2$, or even a lag bound $q^3\ell^{3/2}$, is therefore not enough.
+  - They need the joint mass–displacement tail `latestrip`, obtained by extending MOMC and PROFILE across $\beta=-\pi/2$. The cheap alternative, proving that they stay on the lower side, should be checked first but probably fails.
+
 ### S4. Weak return and matching to the leading weak family
 
 **Claim.** The Q2 bulk, which is on the strong side at angle $\approx q^{0.52}$ at κ=10 strong entry (target-only), returns into a bounded weak chart with $u\ge0$. Its evolution there matches a closed leading weak family with $\sqrt{N_0}\,W_p(t_0)\to0$, and its response clock matches the logistic half-mass phase to $o(1)$.
@@ -566,7 +607,7 @@ Tracks that can run in parallel:
 | Track | Steps | Notes |
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
-| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 in stopped-guard form.** Next: S3b, the full c-form assembly and CLOCK budget. In parallel: the two Q3 strip entry contracts (S1-type). Then the joint weak-passage assembly. |
+| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Next: the strips (π side by a direct lag bound; 3π/2 side by the late-joiner tail), then the joint weak-passage assembly. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
@@ -663,6 +704,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | DECG | `AN03_distance_envelope_and_capped_gain_v1.tex` (+ review), prefix `an03decgv1:` — partial; stops at the off-chart envelope |
 | GESG | `AN03_global_envelope_signed_gate_v1.tex` (+ review), prefix `an03gesgv1:` — partial; stops at the integrated gate budget, which the review resolves via LCRC's backward clock |
 | S2CP | `AN03_S2_closure_package_v1.tex` (+ review), prefix `an03s2cpv1:` — S2 closed in stopped-guard form; $\mathcal U_\Sigma$ and $B_s$ paid; retained-input audit |
+| CFA | `AN03_c_form_assembly_v1.tex` (+ review), prefix `an03cfav1:` — S3 closed in stopped-guard form; core-only c-form, full remainder, CLOCK forcing, conditional passage |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

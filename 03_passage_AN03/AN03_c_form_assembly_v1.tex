@@ -1,0 +1,756 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,longtable,array}
+\usepackage[hidelinks]{hyperref}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\newcommand{\KK}{\mathcal K}
+\newcommand{\BB}{\mathcal B}
+\newcommand{\Gp}{G_+}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\one}{\mathbf1}
+\title{Full fixed-chart c-form assembly\\and a conditional CLOCK passage}
+\author{Analytical increment for review}
+\date{Version 1}
+\begin{document}\maketitle
+\begin{abstract}
+On S2CP's stopped interval, with the two Q3 strips explicitly
+budgeted, the original receiver field admits CLOCK's c-form with
+the fixed core as its entire strong donor family. Capping its
+donor mass at one costs the integrable core overshoot; its
+normalized outside-core moment is identically zero. Two additional
+selected-moment estimates complete CFR's field calculation.
+The resulting value and induced receiver-derivative remainder
+has integral at most a fixed multiple of $C_0E_g$ plus the strip
+budget and a vanishing error. The full CLOCK forcing is small
+for $E_g=2c_b$, small fixed $c_b,C_0$, and a small retained strip
+budget. The actual entry reference, core cutoff and clock satisfy
+CLOCK's passage hypotheses. The conclusion is conditional on
+the other stopped inputs; no joint weak-passage bootstrap or
+strip-entry theorem is claimed.
+\end{abstract}
+
+\section{Scope and precise stopped inputs}
+All new labels have prefix \texttt{an03cfav1:}.
+Use the original initialized flow and the notation of S2CP,
+CFR and CLOCK:
+\[
+ \begin{gathered}
+ P=\tfrac12(P_1+P_2),\quad P_1=N(e_1,q^2I_2),\quad
+ P_2=N(\rho e_2,q^2I_2),\\
+ \lambda=\rho^2,\quad Q=\lambda+q^2,\quad
+ \rho\in[13/20,7/10],\quad\ell=\log(1/q).
+ \end{gathered}
+\]
+Write $U=\sqrt m\,a_\theta$, $W=\sqrt m\,a_\psi$,
+$f_S=\int_S W(U\cdot X)_+\dd\lambda_0$, and
+\[
+ \begin{gathered}
+ E_S=\tfrac12\int_S(U_2^2+W_2^2),\qquad
+ J_S=\tfrac12\int_S(U_1^2+W_1^2),\\
+ \mu_S=E_S+J_S,\qquad
+ c_S=Q^{-1}\E_{P_2}[(f_S)_2X_2].
+ \end{gathered}
+\]
+The fixed partition is $\KK,\Gp,\Sigma,\BB$, with
+$G=\Gp\cup\Sigma$ and $\mathcal D=\varnothing$.
+Here $\KK$ is S2CP/TAILREP's fixed right-half core,
+\begin{equation}
+ \KK=\{\xi\le d_c\},\qquad
+ d_c=c_*q^{\chi+kP/2},\quad \chi=1/20,\quad
+ k=10(1-\lambda),\quad P=\Phi(\rho a),\quad a=\rho K(\rho a),
+ \label{an03cfav1:cutoff}
+\end{equation}
+within the right-half ancestry, where
+$K(z)=\phi(z)+z\Phi(z)$ and $\xi$ is actual-reference scaled
+$\ell^1$ displacement at $t_0=t_h$.
+
+On $[t_0,t_*]\subset[t_0,t_b]$ retain S2CP's stopped inputs:
+\begin{equation}
+ \begin{gathered}
+ 0\le c\le c_b<1,\qquad t_*-t_0\le L_T\ell,\qquad
+ \int r_{\rm res}\le B,\quad r_{\rm res}=\sup_\theta|R_{11}|,\\
+ J_G<q^2K_Y^2,\qquad E_{\Gp}<E_g,\qquad
+ \|e_2\|_{P_1}+\|e_1\|_{P_2}\le M_{\rm res}q.
+ \end{gathered}
+ \label{an03cfav1:guards}
+\end{equation}
+Keep the core geometry $|\theta|,|\psi|\le Rq$,
+$\mu_{\KK}\le M_K$, the actual same-field reference guard,
+the S1 entries and the outside supremum of S2CP. Its fixed
+receiver square is $[-L_c,L_c]^2$, with
+$L_c=79/51+1$. The coarse fixed-chart c-form/remainder guard
+used in S2CP is retained while its theorem is invoked. This
+increment derives an explicit representation and a sharper
+budget for that guard; it does not assume its own sharper
+conclusion to prove S2CP's energy or mass statements.
+
+Let $\mathcal S=\mathcal S_\pi\cup\mathcal S_{3\pi/2}$ be the
+two fixed initial Q3 strips of GESG. The additional input is
+exactly
+\begin{equation}
+ \sup_{[t_0,t_*]}\mu_{\mathcal S}/q\le b_{\mathcal S}(q)=o(1),
+ \qquad \int_{t_0}^{t_*}\mu_{\mathcal S}/q\le F_{\mathcal S}.
+ \label{an03cfav1:strips}
+\end{equation}
+For the field theorem $F_{\mathcal S}$ is any fixed finite
+constant; the passage corollary requires its explicit smallness.
+It is not proved here. No labels are reassigned.
+
+The following are proved conclusions under these stopped inputs:
+\begin{align}
+ E_\Sigma&\le C_\Sigma(q^5+q^{\Gamma_\nu}H),&
+ \mathcal U_\Sigma:=\int(E_\Sigma+K_Y\sqrt{E_\Sigma})&=o(1),
+ \label{an03cfav1:S2inputs}\\
+ \int\mu_{\BB}/q&\le F_{\mathcal S}
+           +Cq^{\Delta_\nu}\ell+Cq^9\ell
+           =F_{\mathcal S}+o(1),&
+ \sup\mu_{\BB}/q&=o(1).\nonumber
+\end{align}
+They use S2CP Theorem S2, Corollary U and GESG's original-label
+Q3 interior, with $\Gamma_\nu>3/10$, $\Delta_\nu>3/25$.
+The outside decomposition is the strong complement, that
+interior and the two strips. S2CP Proposition Bs also gives
+\begin{equation}
+ \mu_{\KK}(t_0)=\tfrac12-o(1),\quad
+ w_+(t)+\int_{t_0}^t(\mu_{\KK}-1)_+\le d_q=o(1),
+ \qquad w=\log\mu_{\KK}.
+ \label{an03cfav1:overshootinput}
+\end{equation}
+These conclusions still retain core geometry. All errors are
+uniform over stopped endpoints after the fixed constants are
+chosen.
+
+\section{Core-only donors and their mass normalization}
+Let $\mu_s$ be the current radial measure of the fixed core,
+pushed to $(\theta/q,\psi/q)$. Set
+\begin{equation}
+ \widetilde\mu_s=\mu_s\min(1,\mu_{\KK}^{-1}),\qquad
+ \widetilde M=\min(\mu_{\KK},1),\qquad
+ \widetilde Y=\int\eta\dd\widetilde\mu_s(\xi,\eta),\qquad
+ \widetilde{\mathcal S}(x)
+       =\int F(\rho x,\rho\xi)\dd\widetilde\mu_s,
+ \label{an03cfav1:representation}
+\end{equation}
+where $F(z,w)=\phi(\min(z,w))+w\Phi(\min(z,w))$.
+The reference is the original characteristic used by MOMC;
+it is never reset or evolved in a collapsed field. Define
+\[
+ e=|(x_c,y_c)-(a,a)|_2,\qquad
+ r_{\KK}=\mathop{\rm ess\,sup}_{b\in\KK}
+ (|x_b-x_c|+|y_b-y_c|).
+\]
+
+\begin{lemma}[Permitted family choice and overshoot cost]
+\label{an03cfav1:representationlemma}
+CLOCK's cfield applies to the fixed strong family $\KK$ with
+measure $\widetilde\mu_s$, once the field identity and remainder
+below are proved. Its normalized tail moment is $T\equiv0$.
+Replacing $\mu_s$ by $\widetilde\mu_s$ in the strong donor part
+costs, in value plus induced $\ell^1$ receiver derivative,
+\begin{equation}
+ C_{L_c,R}(\mu_{\KK}-1)_+,\qquad
+ \int C_{L_c,R}(\mu_{\KK}-1)_+\le C_{L_c,R}d_q=o(1).
+ \label{an03cfav1:overshootcost}
+\end{equation}
+\end{lemma}
+\begin{proof}
+CLOCK cfield explicitly allows a fixed strong family with
+positive instantaneous weights and requires no mass law or
+constant normalized weights. Its proof is the pointwise donor
+cancellation and the $G_M$ comparison of LOC; neither
+differentiates those weights. Here $\widetilde M>0$, since
+the entry core has positive mass and radial weights remain
+positive on finite horizons. Uniform multiplication leaves the
+normalized core law unchanged:
+$\widetilde\mu_s/\widetilde M=\mu_s/\mu_{\KK}$.
+The entire chosen family is the fixed core. Its complement in
+that family is empty, so $T=0$ exactly. Physical labels outside
+$\KK$ remain in the original field and must be paid separately.
+
+Write $\delta=(\mu_{\KK}-1)_+$ and
+$\nu_s=\mu_s/\mu_{\KK}$. The difference between unnormalized
+and normalized strong fields, multiplied by two, is
+\[
+ \left(\delta x-\rho\delta\int F(\rho x,\rho\xi)\dd\nu_s,\quad
+       \delta y-\delta\int\eta\dd\nu_s\right).
+\]
+On $|x|,|y|\le L_c$, $|\xi|,|\eta|\le R$, both the kernel
+and its first receiver derivative
+$\rho(\rho\xi-\rho x)_+\phi(\rho x)$ are uniformly bounded.
+The displayed vector and its derivative matrix therefore
+have the bound \eqref{an03cfav1:overshootcost}. Integrate
+using \eqref{an03cfav1:overshootinput}. No derivative of the
+time-dependent normalization factor is taken.
+\end{proof}
+
+\section{The additional selected moments needed for full assembly}
+All norms in this section are
+$\|h\|_{1,\infty}=\sup_{|x|\le L_c}(|h|+|h'|)$.
+Under $P_2$ write $X=(qZ,V)$, with $Z$ standard Gaussian and
+$V\sim N(\rho,q^2)$ independent. Let
+$t_x=\tan(qx)/q$ and $I_x=\one_{\{Z+t_xV>0\}}$.
+For a fixed cohort put
+\[
+ p_{1,S}=Q^{-1}\E[(f_S)_1V],\quad p_{2,S}=c_S,\qquad
+ g_{i,S}=(f_S)_i-p_{i,S}V,
+\]
+\begin{equation}
+ A_{1,S}=q^{-1}\E[g_{1,S}VI_x],\quad
+ A_{2,S}=\E[g_{2,S}VI_x],\quad
+ B_{2,S}=\E[g_{2,S}ZI_x].
+ \label{an03cfav1:selecteddefs}
+\end{equation}
+$A_{2,S}$ is CFR's selected moment. The other two cannot be
+discarded merely by global regression orthogonality.
+
+\begin{lemma}[Full selected-moment budgets]
+\label{an03cfav1:selected}
+For an arbitrary cohort,
+\begin{align}
+ \|A_{1,S}\|_{1,\infty}
+   &\le C_{L_c}(J_S+q^{-1}\sqrt{E_SJ_S}),\nonumber\\
+ \|A_{2,S}\|_{1,\infty}+\|B_{2,S}\|_{1,\infty}
+   &\le C_{L_c}(E_S+q\sqrt{E_SJ_S}).
+ \label{an03cfav1:genericselected}
+\end{align}
+For $\Gp$, after the same fixed-chart decrease of $C_0$ as
+in CFR, there is a nonnegative $\mathcal T$ such that
+\begin{align}
+ \|A_{1,\Gp}\|_{1,\infty}
+ +\|A_{2,\Gp}\|_{1,\infty}+\|B_{2,\Gp}\|_{1,\infty}
+ &\le C_{L_c}\{J_{\Gp}+q\sqrt{E_{\Gp}J_{\Gp}}
+                         +\mu_{\Gp}\mathcal T\},\nonumber\\
+ \int\mathcal T&\le C_{\rm RCET}(C_0+q^2L_T\ell).
+ \label{an03cfav1:primaryselected}
+\end{align}
+An enlargement of the fixed Gaussian/RCET constants is understood.
+In particular the primary integral is at most
+$C_{L_c}C_{\rm RCET}C_0E_g+o(1)$, and the $\Sigma$ integral
+is $C\mathcal U_\Sigma+o(1)=o(1)$.
+\end{lemma}
+\begin{proof}
+Balance and label Cauchy--Schwarz give the pointwise bounds
+\begin{align*}
+ |(f_S)_1(qZ,V)|&\le2qJ_S|Z|+2\sqrt{E_SJ_S}|V|,\\
+ |(f_S)_2(qZ,V)|&\le2q\sqrt{E_SJ_S}|Z|+2E_S|V|.
+\end{align*}
+These also control their regression coefficients. For any
+continuous fixed function $h$ with these growth bounds,
+boundary differentiation gives
+\begin{align}
+ \partial_x\E[hVI_x]
+ &=t_x'\E_V[V^2h(-qt_xV,V)\phi(t_xV)],\nonumber\\
+ \partial_x\E[hZI_x]
+ &=-t_xt_x'\E_V[V^2h(-qt_xV,V)\phi(t_xV)].
+ \label{an03cfav1:boundary}
+\end{align}
+The bounds $|t_x|\le2L_c$, $|t_x'|\le2$ and Gaussian moments
+prove \eqref{an03cfav1:genericselected}, including the
+$1/q$ in $A_{1,S}$. Polynomial domination justifies the
+boundary formulas; the network output is continuous.
+
+For the sharper primary bound write, exactly for $i=1,2$,
+\[
+ (f_{\Gp})_i=L_{i1}X_1+L_{i2}V+N_i,\quad
+ L_{ij}=\int_{\Gp}W_iU_j,\quad
+ N_i=\int_{\Gp}W_i(U\cdot X)_-.
+\]
+Here $|L_{11}|\le J_{\Gp}$ and
+$|L_{21}|\le2\sqrt{E_{\Gp}J_{\Gp}}$.
+Subtracting the regression removes $L_{i2}V$; the $X_1$
+term has the stated $J_{\Gp}$ or $q\sqrt{E_{\Gp}J_{\Gp}}$
+bound. We do not assume a sign for $W_1$.
+
+For a unit input direction $u$ with $u_2>0$,
+\[
+ \E(u\cdot X)_-^2=q^2H_2(-\rho u_2/q)
+       \le Cq^2e^{-c(u_2/q)^2}.
+\]
+Cauchy--Schwarz against $V$ or $Z$ and
+$|W_i||U|\le m$ imply
+\begin{equation}
+ q^{-1}\E|N_iV|+q^{-1}\E|N_iZ|
+ \le C\int_{\Gp}m e^{-c(u_2/q)^2}\dd\lambda_0.
+ \label{an03cfav1:negativevalue}
+\end{equation}
+The same bound pays the subtracted regression. This explicit
+factor $q$ in the negative-part moment is essential for
+$A_{1,\Gp}$; an unscaled loss bound would not suffice.
+
+RCET supplies $U_2>0$ and
+$q|U_1|/U_2\le C(C_0e^{-b_*(t-t_0)/2}+q^2)$.
+Choose $C_0$ so that $q|t_xU_1|\le U_2/2$ on this fixed
+receiver square. On the boundary in \eqref{an03cfav1:boundary},
+\[
+ (U\cdot X)_-=[-(U_2-qt_xU_1)V]_+,
+\]
+which vanishes for $V\ge0$. For $V<0$ its contribution
+to a first derivative is at most
+$C_{L_c}\mu_{\Gp}q^{-1}\E[|V|^3\one_{\{V<0\}}]$,
+where the factor $q^{-1}$ is only needed for $A_1$.
+This is $C\mu_{\Gp}e^{-c'/q^2}$ after decreasing $c'$.
+The regression part has the preceding value bound times
+a bounded differentiated Gaussian moment.
+
+RCET's growing margin therefore gives the same integrable
+tail as CFR, with possibly smaller fixed exponential constant:
+\[
+ \mathcal T\le C\exp\!\left[
+  -\frac{c}{q^2+C_*^2C_0^2e^{-b_*(t-t_0)}}\right]
+                +Ce^{-c/q^2},\qquad b_*=Q(1-c_b)/2.
+\]
+Its integral is the second line of
+\eqref{an03cfav1:primaryselected}, by the same Gaussian
+inequality $e^{-c/v^2}\le C_cv$ and elementary exponential
+integration used in CFR. Now use
+$\mu_{\Gp}\le E_g+q^2K_Y^2$, $J_G\le q^2K_Y^2$ and
+\eqref{an03cfav1:S2inputs}. This proves the final claims.
+\end{proof}
+
+\section{Full original-flow field assembly}
+Let $O=\Gp\cup\Sigma\cup\BB$ and define the exact moments
+\begin{equation}
+ V_O=-\frac{\E_{P_2}[(f_O)_1X_2]}{qQ},\qquad
+ K_O=\frac{\E_{P_1}[(f_O)_2X_1]}q,\qquad
+ V=V_O,\quad K_w=(K_O)_+.
+ \label{an03cfav1:VK}
+\end{equation}
+Use the normalized core in \eqref{an03cfav1:representation}.
+The desired leading field is
+\begin{align}
+ 2(F_c)_x&=-(1-\widetilde M)x+\rho\phi(\rho x)
+       -\rho\widetilde{\mathcal S}(x)
+       +\lambda[V+(1-c)y]\Phi(\rho x),\nonumber\\
+ 2(F_c)_y&=-(1-\widetilde M)y-\widetilde Y-K_w
+                         +\rho(1-c)K(\rho x).
+ \label{an03cfav1:cform}
+\end{align}
+Write $\|F\|_*=\sup_{[-L_c,L_c]^2}
+(|F|_1+\|D_{x,y}F\|_{1\to1})$. This convention pays both
+norms, including their sum in S2CP's fullnorm.
+
+\begin{theorem}[Full fixed-chart remainder]
+\label{an03cfav1:assembly}
+Under the stopped inputs of Section 1 the exact scaled
+receiver velocity satisfies
+$F_{\rm orig}=F_c+\mathcal R$, with
+$\eps_F(t)=\|\mathcal R(t)\|_*$ and
+\begin{equation}
+ \int_{t_0}^{t_*}\eps_F
+ \le C_F C_{L_c}C_{\rm RCET}C_0E_g
+                    +C_{\rm out}F_{\mathcal S}+o(1).
+ \label{an03cfav1:fullbudget}
+\end{equation}
+$C_F,C_{L_c},C_{\rm out}$ depend only on the fixed chart,
+core radius/mass and model/Gaussian constants.
+Residual-guard dependence is allowed in $C_{\rm RCET}$ and
+in coefficients of vanishing scales. No selected residual
+is removed by regression orthogonality.
+\end{theorem}
+\begin{proof}
+We give a componentwise assembly, including the moments
+not present in CFR's second-output selected estimate.
+The exact formulas are
+\[
+ 2q(F_{\rm orig})_x
+ =\sum_{j=1}^2\E_{P_j}[(b_y\cdot(X-f))
+                    (a_x^\perp\cdot X)I_x],\qquad
+ 2q(F_{\rm orig})_y
+ =\sum_{j=1}^2\E_{P_j}[(b_y^\perp\cdot(X-f))(a_x\cdot X)I_x],
+\]
+where $a_x=(\cos qx,\sin qx)$ and similarly for $b_y$.
+The gates here are interpreted under the relevant cluster.
+The mixture factor is accounted for by the left factor two.
+
+First retain only target and core output. MOMC's reduction
+proof is linear in the donor measure; replacing its bound
+$M\le1$ by the retained $M_K$ simply changes its error to
+$C_{L_c,R}q^2(1+M_K)$ (use $\max(L_c,R)$ for its two compact
+radii). It gives
+\[
+ \begin{split}
+ 2(F_{\rm core})_x&=-(1-\mu_{\KK})x+\rho\phi(\rho x)
+              -\rho\mathcal S(x)+\lambda y\Phi(\rho x),\\
+ 2(F_{\rm core})_y&=-(1-\mu_{\KK})y-Y+\rho K(\rho x),
+ \end{split}
+\]
+with this error in value and first receiver derivatives.
+In particular the full order-one core overlap is kept.
+The core's second output on $P_2$ is
+$O_{C^1}(q^2\mu_{\KK})$ by the same kernel proof and CFR
+moment; $|c_{\KK}|\le C_Rq^2\mu_{\KK}$.
+
+For $G=\Gp\cup\Sigma$, first consider $P_1$.
+Receiver gates can be removed in value and first derivative
+at cost $C\mu_G q^{-N}e^{-c/q^2}$ for a fixed $N$.
+This follows from the bounded-chart boundary argument in
+MOMC: the output bound is $\mu_G|X|$, and its boundary
+moments have a Gaussian factor $e^{-c/q^2}$.
+The exact Stein identities and elementary output bound give
+\begin{align}
+ \E_{P_1}[(f_G)_iX_2]
+ &=q^2\int_GW_iU_2\,\mathbb P_{P_1}(U\cdot X>0)\dd\lambda_0,
+ \nonumber\\
+ |\E_{P_1}[(f_G)_1X_1]|
+ &\le C(J_G+q\sqrt{E_GJ_G}).
+ \label{an03cfav1:P1stein}
+\end{align}
+Consequently the leading $P_1$ non-core contributions to
+$2F_x,2F_y$ are $0,-K_G$, respectively, with error at most
+\begin{equation}
+ C_{L_c}\{J_G+q\sqrt{E_GJ_G}+q^2E_G+q^2|K_G|\}
+                  +C\mu_G q^{-N}e^{-c/q^2}
+ \label{an03cfav1:P1error}
+\end{equation}
+in value and first derivatives. These estimates follow by
+expanding the displayed exact trigonometric factors; all
+their discarded coefficients are $O_{C^1}(q^2)$ after the
+leading $1/q$ has been accounted for in $K_G$.
+
+On $P_2$, write
+$T_2(x)=\E[V^2I_x]$ and $T_1(x)=\E[VZI_x]$.
+The Gaussian identities used in MOMC give
+\begin{equation}
+ T_2=\lambda\Phi(\rho x)+O_{C^1}(q^2),\qquad
+ T_1=\rho\phi(\rho x)+O_{C^1}(q^2).
+ \label{an03cfav1:gaussian}
+\end{equation}
+The first-order trigonometric expansion of the non-core
+subtraction is, component by component,
+\begin{align}
+ 2(F_G^{P_2})_x
+ &=V_GT_2-yc_GT_2-A_{1,G}-yA_{2,G}
+                              +\mathcal E_x,\nonumber\\
+ 2(F_G^{P_2})_y
+ &=-c_G(T_1+xT_2)-B_{2,G}-xA_{2,G}
+                              +\mathcal E_y.
+ \label{an03cfav1:P2assembly}
+\end{align}
+Here $V_G=-p_{1,G}/q$. The error has norm at most
+$C_{L_c}q^2(E_G+J_G+q^{-1}\sqrt{E_GJ_G})$.
+For clarity, this follows directly from
+$a_x^\perp\cdot X=V+O_{C^1}(q^2)(|V|+|Z|)$,
+$a_x\cdot X=q(Z+xV)+O_{C^1}(q^3)(|V|+|Z|)$,
+$b_y=(1,qy)+O_{C^1}(q^2,q^3)$ and
+$b_y^\perp=(-qy,1)+O_{C^1}(q^3,q^2)$.
+Use the two output bounds in Lemma \ref{an03cfav1:selected}
+also on the receiver boundary to control differentiated
+expectations. Thus no unproved trace estimate is used.
+
+By \eqref{an03cfav1:gaussian},
+$T_1+xT_2=\rho K(\rho x)+O_{C^1}(q^2)$.
+Lemma \ref{an03cfav1:selected} pays every selected term
+in \eqref{an03cfav1:P2assembly}.
+The residual $X_2$ coefficient is $c_G$ at this stage,
+not silently the full $c$.
+
+For $\BB$ apply PROFILE Proposition 4.1 to its exact
+two-component velocity and first receiver derivative.
+Its cost is $C\mu_{\BB}/q$. Replacing that output by its
+formal contributions $V_{\BB},-K_{\BB},-c_{\BB}$ costs
+the same order, because Gaussian moments give
+$|V_{\BB}|+|K_{\BB}|+|c_{\BB}|\le C\mu_{\BB}/q$
+and the coefficient functions on the fixed square have
+bounded $C^1$ norms. Now $V_G+V_{\BB}=V_O$,
+$K_G+K_{\BB}=K_O$, and
+$c_G+c_{\BB}=c-c_{\KK}$. Replacing this last coefficient
+by $c$ costs $Cq^2M_K$. Replace $K_O$ by $(K_O)_+$ and
+put the resulting $(K_O)_-/2$ into the second remainder
+component. CFR's negative-part lemma bounds its integral
+by $C\mathcal U_\Sigma+C\int\mu_{\BB}/q+o(1)$.
+Finally normalize the core by Lemma
+\ref{an03cfav1:representationlemma}.
+
+For completeness, a single pointwise majorant for all these
+costs, with a fixed enlargement of $C$, is
+\begin{align}
+ \eps_F\le C\big[&
+ q^2(1+M_K+M_{\rm res}+\mu_G+|V_O|+|K_O|)
+ +J_G+q\sqrt{E_GJ_G}
+ +\mu_{\Gp}\mathcal T\nonumber\\
+ &+E_\Sigma+q^{-1}\sqrt{E_\Sigma J_\Sigma}
+ +\mu_{\BB}/q+(\mu_{\KK}-1)_+
+ +\mu_G q^{-N}e^{-c/q^2}\big].
+ \label{an03cfav1:majorant}
+\end{align}
+The exponentially small primary part of $(K_O)_-$ is
+included in the last term. The added $q^2M_{\rm res}$ is
+a harmless enlargement: if matrix-entry estimates are used
+for remaining cross-cluster terms, the extra chart factors
+give this order. Bare $O(M_{\rm res}q)$ cross entries divided
+by $q$ are \emph{not} discarded; their order-one moments
+are $V_O,K_O$ and the selected terms already retained.
+
+Integrate \eqref{an03cfav1:majorant}.
+The primary selected term costs
+$C C_{L_c}C_{\rm RCET}C_0E_g+o(1)$.
+$J_G$ and $q\sqrt{E_GJ_G}$ cost
+$O(q^2\ell(K_Y^2+K_Y\sqrt{E_g+1}))$.
+The secondary terms cost $C\mathcal U_\Sigma$.
+S2CP's candidate moment bound, or its instantaneous
+cross-output bound and outside supremum, pays the $q^2$
+multiple of $|V_O|+|K_O|$ by $o(1)$.
+The remaining terms are paid by
+\eqref{an03cfav1:S2inputs} and
+\eqref{an03cfav1:overshootinput}. This proves
+\eqref{an03cfav1:fullbudget}.
+\end{proof}
+
+\paragraph{Integrated term ledger.}
+All entries below include value and induced receiver derivative;
+constants are fixed before $q$.
+\begin{longtable}{>{\raggedright\arraybackslash}p{.42\textwidth}
+ >{\raggedright\arraybackslash}p{.50\textwidth}}
+\textbf{Term}&\textbf{Integrated price and source}\\\hline
+Target/core finite-noise kernels&
+$C_{L_c,R}q^2(1+M_K)L_T\ell$; MOMC's compact-kernel proof.\\
+Core second output and $c_{\KK}$&
+$Cq^2M_KL_T\ell$; CFR moment and MOMC.\\
+Core overshoot normalization&
+$C_{L_c,R}d_q=o(1)$; S2CP's positive-part identity.\\
+$G_+$ selected residuals of both components&
+$C C_{L_c}C_{\rm RCET}C_0E_g+o(1)$;
+CFR and Lemma \ref{an03cfav1:selected}.\\
+$P_1$ transverse moments, $q^2$ corrections and chart gate tails&
+$Cq^2\ell(1+M_K+M_{\rm res}+K_Y^2+K_Y\sqrt{E_g+1})
+ +o(1)$; \eqref{an03cfav1:P1stein}--\eqref{an03cfav1:P2assembly}.\\
+$\Sigma$ selected moments and its negative $K_O$ part&
+$C\mathcal U_\Sigma+o(1)$; S2CP U, CFR negative and
+\eqref{an03cfav1:genericselected}.\\
+Strong complement&
+$Cq^{\Delta_\nu}\ell$; S2CP compmass and PROFILE.\\
+Original Q3 interior&
+$Cq^9\ell$; GESG and PROFILE.\\
+Both Q3 strips, including their moment substitutions&
+$C_{\rm out}F_{\mathcal S}$; retained strip budget and PROFILE.\\
+Primary negative $K_O$ part&
+Gaussian $o(1)$; CFR negative.\\
+\end{longtable}
+
+\section{Uniform CLOCK constants and its forcing budget}
+The output of \eqref{an03cfav1:representation} is an actual
+cfield representation of the common original receiver field,
+with $0<\widetilde M\le1$, $K_w\ge0$ and $T=0$.
+Let $\alpha=\lambda P/2$.
+LOC's coherent matrix obeys
+\[
+ J_M=J_1-\operatorname{diag}((1-M)(1/2-\alpha),0),\qquad
+ z^TJ_Mz\le-\gamma|z|^2,\quad
+ \gamma=\frac{\alpha(1/2-\alpha)}{\alpha+1/2}.
+\]
+The proved box bounds used in MOMC give
+$\gamma\ge\gamma_*:=1183/20800>0$.
+Choose a fixed enlargement $C_{\rm pass}$ of the uniform
+LOC constant $724/51$ and the remainder norm-conversion
+constants, and set
+\begin{equation}
+ g=\gamma_*/2,\qquad
+ e_*=\min\{1/4,\gamma_*/(2C_{\rm pass})\},\qquad
+ K_{\rm pass}=C_{\rm pass}(1+C_{\rm pass}/g).
+ \label{an03cfav1:passconstants}
+\end{equation}
+These depend only on the model box and fixed neighborhood,
+not on $c_b,C_0$ or residual guards. If $e<e_*$ and
+$r_{\KK}<1$, all core/reference points and joining segments
+lie inside $[-L_c,L_c]^2$, since $a<28/51$.
+CLOCK cfield and LOC's donor cancellation therefore give
+\begin{equation}
+ \begin{split}
+ D^+e&\le-ge+C_{\rm pass}(r_{\KK}+f_*),\\
+ D^+r_{\KK}&\le
+ [\alpha(1-c)+C_{\rm pass}(e+r_{\KK}+f_*)]r_{\KK},\\
+ f_*&=c+|V_O|+(K_O)_++\eps_F .
+ \end{split}
+ \label{an03cfav1:localineq}
+\end{equation}
+Time-dependent donor weights cause no additional derivative
+term: these are instantaneous same-field comparisons, not
+equations for a weighted barycenter.
+
+\begin{proposition}[Forcing bound and its constant order]
+\label{an03cfav1:forcing}
+Under the same stopped hypotheses,
+\begin{align}
+ \int f_*
+ \le{}&\frac{10e}{9}\frac{E_g}{Q(1-c_b)}
+ +\frac{C_V}{Q(1-c_b)}(E_g+K_Y\sqrt{E_g})\nonumber\\
+ &+C_F C_{L_c}C_{\rm RCET}C_0E_g
+ +C_{\mathcal S}F_{\mathcal S}+o(1).
+ \label{an03cfav1:forcingbudget}
+\end{align}
+For $E_g=2c_b$ this is
+$\kappa(c_b,C_0)+C_{\mathcal S}F_{\mathcal S}+o(1)$,
+where $\kappa\to0$ as $c_b,C_0\to0$, with uniform residual
+guard constants as specified below.
+\end{proposition}
+\begin{proof}
+Use S2CP's c budget, retaining $1/Q$, and its VKbudget.
+The latter is
+$C_V(E_g+K_Y\sqrt{E_g})/b_0+C\int\mu_{\BB}/q+o(1)$,
+$b_0=Q(1-c_b)$. Add \eqref{an03cfav1:fullbudget} and
+$T=0$, then use \eqref{an03cfav1:S2inputs}. In particular
+one may take
+\[
+ \kappa(c_b,C_0)=
+ \frac{20e\,c_b/9+C_V(2c_b+K_Y\sqrt{2c_b})}
+      {(169/400)(1-c_b)}
+       +2C_F C_{L_c}C_{\rm RCET}C_0c_b.
+\]
+The asserted limiting property follows once the displayed
+constants are fixed uniformly over small $c_b$.
+
+Here is an explicit such choice. Fix $\bar c=1/4$, the
+model/core budgets and $B_s>\log2$ first. In LCRC's constant
+construction replace its old energy budget $2+2c_b$ by
+$2+2\bar c$, its $h_*=(9/8)c_b+1$ by
+$\bar h_*=(9/8)\bar c+1$, and its lower clock rate by
+$\underline b=(169/400)(1-\bar c)$.
+Set $B=C_rB_s+2$ and use these larger finite numbers in
+LCRC's displayed $E_*,K_E,K_{1/2},A_*,K_Y,M_{\rm res}$
+choices. All are independent of the subsequently selected
+$0<c_b\le\bar c$. The smaller energy guard $E_g=2c_b$
+has the pointcap slack checked in S2CP. RCET's constants
+and admissible small $C_0$ can likewise use the fixed
+positive lower rate $\underline b/2$ throughout this range.
+There is no singular $1/c_b$ in these choices.
+\end{proof}
+
+For clarity, the small-budget selection is not a claim that
+the strip estimate is automatic. Set
+$P_{\rm allow}=e_*/(4C_{\rm pass})$ and choose a fixed
+coarse field allowance $0<\overline F_F<\infty$ before
+the S2 distance constant. Choose $c_b\le\bar c$ so that
+the first two terms of \eqref{an03cfav1:forcingbudget}
+are at most $P_{\rm allow}/4$.
+Choose $C_0$ within RCET's uniform admissibility and the
+receiver-boundary margin, with
+\[
+ C_F C_{L_c}C_{\rm RCET}C_0E_g
+       \le\min(P_{\rm allow}/4,\overline F_F/4).
+\]
+Require the retained strip budget to satisfy
+\begin{equation}
+ C_{\mathcal S}F_{\mathcal S}
+       \le\min(P_{\rm allow}/4,\overline F_F/4),
+ \label{an03cfav1:stripsmall}
+\end{equation}
+where $C_{\mathcal S}$ is enlarged to dominate the strip
+constant in the field bound. Choose $q$ last so all remaining
+errors are at most $\min(P_{\rm allow}/4,\overline F_F/4)$.
+Then $\int f_*\le P_{\rm allow}$ and
+$\int\eps_F\le3\overline F_F/4$.
+
+A consistent complete order is
+\begin{equation}
+ \begin{gathered}
+ (\text{model},R,M_K,B_s,L_c,\bar c,C_{\rm pass},g,e_*)
+ \ \longrightarrow\ (B,K_Y,M_{\rm res})\\
+ \longrightarrow\ (\overline F_F,c_b,E_g=2c_b,C_D,A_0,C_m)
+ \ \longrightarrow\ C_0\\
+ \longrightarrow\ (K(C_0),Z_\Sigma,\text{entry constants},C_\Sigma)
+ \ \longrightarrow\ q .
+ \end{gathered}
+ \label{an03cfav1:order}
+\end{equation}
+The required fixed small upper bound on $F_{\mathcal S}$ is
+chosen before $q$. A given larger strip budget still yields
+\eqref{an03cfav1:fullbudget} and
+\eqref{an03cfav1:forcingbudget}, but not the small-forcing
+passage conclusion. No guard-independent chart or core
+constant is enlarged in response to $C_\Sigma$ or $C_0$.
+
+\section{Entry audit and conditional passage}
+\begin{corollary}[CLOCK passage with the actual reference and clock]
+\label{an03cfav1:passage}
+Retain the non-passage stopped inputs of Section 1 and the
+strip bounds with \eqref{an03cfav1:stripsmall}; choose constants
+as above. On any such interval ending at $t_*\le t_b$, for
+sufficiently small $q$, CLOCK's passage theorem applies with
+clock cohort $\mathcal C_q$, strong family/core $\KK$ and
+the representation \eqref{an03cfav1:representation}.
+It gives
+\begin{equation}
+ e(t)\le3e_*/4,\qquad r_{\KK}(t)\le2\mathcal A,\qquad
+ \int_{t_0}^{t_*}r_{\KK}\le2\mathcal A/a_b,
+ \quad \mathcal A=O(q^\chi),\quad a_b=\alpha(1-c_b).
+ \label{an03cfav1:passresult}
+\end{equation}
+This is a conditional passage improvement on the common
+stopped trajectory. It does not continue the other guards
+to $t_b$, prove the strip bounds, or execute the joint
+weak-passage bootstrap.
+\end{corollary}
+\begin{proof}
+MOMC proves for the actual reference at $t_0=t_h$ that
+$e_0=o(1)$, hence $e_0\le e_*/4$.
+By definition of the fixed core, $r_0\le d_c$.
+The clock is the original $\eta=1/8$ cohort, not all of
+$\Gp$: LCRC localclock/BULK give positivity and
+\[
+ \int_{t_0}^{t_*}\eps_{\mathcal C_q}
+       \ge-D_-,\qquad D_-=O(q^{1/8}+q^2\ell)=o(1).
+ \]
+S2CP's energy conclusion and the LCRC pointcap lemma
+give $H(t_*)\le(9/8)c_b+o(1)$ on the stopped interval,
+so take the fixed $H_b=(5/4)c_b$ for small $q$.
+The S1 seed is
+$H_0\asymp A_q^{-\lambda}q^k$, with
+$0<c_A\le A_q\le C_A$.
+These are conclusions under the current guards, not
+assumed endpoint caps or independent clock premises.
+
+Use CLOCK's exact factor
+\[
+ L_b=\exp(C_{\rm pass}e_0/g+K_{\rm pass}F_b+\alpha D_-/Q)
+                      (H_b/H_0)^{\alpha/Q},
+ \qquad F_b=P_{\rm allow}.
+ \]
+With the cutoff \eqref{an03cfav1:cutoff},
+\begin{align}
+ r_0L_b
+ &\le Cc_*H_b^{\alpha/Q}A_q^{\lambda\alpha/Q}
+        q^{\chi+kP/2-k\alpha/Q}\nonumber\\
+ &=Cc_*H_b^{\alpha/Q}A_q^{\lambda\alpha/Q}
+        q^{\chi+kPq^2/(2Q)}
+ \le C' q^\chi.
+ \label{an03cfav1:handoff}
+\end{align}
+The constant includes the fixed seed comparison and bounded
+exponential factor. The positive $q^2$ exponent is retained;
+no false equality $\alpha/Q=P/2$ is used.
+Since $\alpha\ge169/1600$ and $c_b\le\bar c$,
+$a_b$ has a fixed positive lower bound. Consequently
+\[
+ r_0L_b\le
+ \min\{1/4,\ a_b/(2K_{\rm pass}),\
+                        ge_*/(8C_{\rm pass})\}
+ \]
+for small $q$. The forcing budget was proved in
+Proposition \ref{an03cfav1:forcing}. Finally the mean and
+shape inequalities are \eqref{an03cfav1:localineq}, obtained
+from the now-proved actual c-form, not from a renamed weak
+mass. All hypotheses of CLOCK's passage theorem therefore
+hold at the endpoint $t_*$. Apply that theorem to get
+\eqref{an03cfav1:passresult}.
+\end{proof}
+
+\paragraph{Boundary of the result.}
+The four requested tasks close as implications under the
+specified stopped inputs and retained strip budgets.
+The old coarse field guard was used only to invoke S2CP,
+whose energy/mass conclusions then permit its explicit
+refinement. The resulting strict field and passage
+improvements are suitable for a later joint assembly;
+they are not that assembly. No new weak-entry contract,
+strip classification, selection theorem or consolidation
+is claimed. The companion review records source provenance,
+constant dependencies and each retained input.
+\end{document}
