@@ -1,0 +1,666 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,longtable,hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\E}{\mathbb E}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Rhalf}{\mathcal R}
+\title{The late $3\pi/2$ strip: delay, chart contraction and an arrival-weighted budget}
+\author{Analytical increment AN03\_late\_strip\_budget\_v1}
+\date{October 26, 2026}
+\begin{document}\maketitle
+
+\section{Scope, sources and conclusion}
+This increment proves PISB's remaining arrival-weighted strip consumer on
+the stopped interval of S2CP/CFA, retaining their non-strip inputs only.
+In particular the fixed-chart field allowance, core/reference geometry,
+duration, residual guards and the improved secondary bound are retained
+exactly as in S2CP. Neither CFA's strip input nor its passage conclusion is
+used. No partition is enlarged and no weak-passage bootstrap is executed.
+Source abbreviations and exact repository provenance are recorded in the
+companion review. An external reference such as MOMC \texttt{jacobian}
+means the statement with that suffix in the cited source, not a new
+assumption. All new labels have prefix \texttt{an03lsbv1:}.
+
+Explicitly, after $t_0$ the retained guards include
+$0\le c\le c_b<1$, $t_*-t_0\le L_T\ell$, $\int r\le B$,
+$J_G<q^2K_Y^2$, $E_+<E_g$ and
+$\|e_2\|_{P_1}+\|e_1\|_{P_2}\le M_{\rm res}q$.
+The instantaneous core chart and mass bound, reference offset $e<e_*$,
+and S2CP's instantaneous outside guard
+$\sup\mu_{\mathcal B}/q=b_B(q)=o(1)$ are retained as stopped guards.
+The last guard is not an assumed time-integrated strip budget.
+The inherited c-form has positive donor weights, donor mass at most
+one, and $\int\epsilon_F\le\overline F_F$ in value and induced
+$\ell^1$ receiver derivative on the fixed chart
+$[-L_c,L_c]^2$, where $L_c=R_c+1$ and $R_c=79/51$.
+S2CP improves its temporary secondary guard under these inputs.
+The current result supplies a quantitative strip budget under these
+same guards; it does not assert strict improvement of an arbitrarily
+prescribed function $b_B(q)$ for the full outside population.
+
+Put $\ell=\log(1/q)$ and use the following notation, keeping the noise
+correction in $\beta$:
+\begin{align}
+ &\lambda=\rho^2\in[169/400,49/100],\quad Q=\lambda+q^2,
+ \quad\beta=\lambda/Q,\quad \omega=(1-\lambda)/2,\nonumber\\
+ &a=\rho K(\rho a),\quad P_\rho=\Phi(\rho a),\quad
+ \alpha=\lambda P_\rho/2,\quad d=1/2-\alpha,
+ \quad s_{\rm pr}=d/\omega,\quad p=3/s_{\rm pr},\nonumber\\
+ &c_m=4/(1-\lambda)+1/2,\quad u=10-c_m,\quad v=u-1,
+ \quad k=10(1-\lambda),\quad t_m=c_m\ell,\nonumber\\
+ &M_0=A_q q^u,\quad c_A\le A_q\le C_A,\qquad
+ t_0=10\ell-\log A_q+O(q^2\ell^2+q^u).
+ \label{an03lsbv1:parameters}
+\end{align}
+Here $K(z)=\phi(z)+z\Phi(z)$ is the Gaussian positive-part kernel;
+$M$ is MOMC's original right-half radial mass, and $M(t_0)=1/2$.
+Fix $0<\nu\le1/100$ and take $q$ small enough that
+$1/\beta=1+q^2/\lambda\le1+\nu$. The symbol $r$ below, when used in
+a stopped guard, is $\sup_\theta|R_{11}(\theta)|$, not a receiver angle.
+
+Write $b_0=-\pi/2$ using the continuous lift at $3\pi/2$, and set
+\begin{equation}
+ J_3=\{b=b_0-q s_0:0\le s_0<s_q\},\qquad
+ s_q^2=\frac{1+\eps}{k_G}\log\ell,\quad
+ k_G=169/3200,\quad 0<\eps<1/2.
+ \label{an03lsbv1:strip}
+\end{equation}
+Endpoint inclusion is immaterial for mass but is retained in every
+labelwise assertion. Initial mass is $m(0,b)=q^{10}$ and
+$\dd\lambda_0=\dd b/(2\pi)$ in absolute orientation.
+
+The stopped clock and cap-one conclusions of S2CP and PISB give
+\begin{align}
+ I(t)&=Q\int_{t_0}^t(1-c),\qquad
+ e^{I(t)}\le F_q q^{-k},\qquad
+ F_q=C_H E_g A_q^\lambda e^{D_{\rm clk}},
+ \label{an03lsbv1:clock}\\
+ D_{\rm clk}&=O(q^{1/8}+q^2\ell),\qquad
+ m(t,b)\le C_{\rm abs}m(t_0,b)e^{I(t)},\nonumber\\
+ C_{\rm abs}&=e^{2B+\eta_q},\quad
+ \eta_q=C(1+M_{\rm res})qL_T\ell=o(1).
+ \label{an03lsbv1:cap}
+\end{align}
+The constants $C_H,c_A,C_A$ are the source constants. The duration is
+$t_*-t_0\le L_T\ell$. Fix S2CP's $C_D,A_0$ and $C_g=e^{6B+3}$;
+$A_0=C_D^2\max(1,\delta_0^{-2})$. Increasing $C_g$ by a fixed
+model factor, if required by equivalent norm conventions, is harmless.
+
+Let $\tau_b$ be the first joint arrival after $t_0$ in the fixed S2 chart,
+with $\tau_b=t_0$ for receivers already there and $\tau_b=\infty$ if
+there is no arrival. Let $\xi_b$ be the joint scaled displacement from
+the actual same-field reference at arrival. Use the same norm as S2CP;
+its equivalence to the maximum norm costs a fixed factor. Define
+\begin{align}
+ W_3(t)={}&\int_{J_3\cap\{\tau_b>t\}}m(t,b)\dd\lambda_0(b)\nonumber\\
+ &+C_g\int_{J_3\cap\{\tau_b\le t\}}m(\tau_b,b)
+ \max\{1,A_0q^2\xi_b^2e^{\beta[I(t)-I(\tau_b)]}\}^{1+\nu}
+ \dd\lambda_0(b).
+ \label{an03lsbv1:consumer}
+\end{align}
+
+\begin{theorem}[The remaining strip budget]
+\label{an03lsbv1:main}
+On the stopped interval just specified, the gain in
+\eqref{an03lsbv1:consumer} is arrival-valid and $\mu_{J_3}(t)\le W_3(t)$.
+Define
+\begin{align}
+ \chi_{\rm lag}&=1/4,\qquad a_e=v+du,\qquad
+ H_q=C A_0 A_q^{2d}F_q^\beta,\nonumber\\
+ \delta_B&=c_m-(1+\nu)k,\qquad
+ \delta_L=\chi_{\rm lag}-\nu k,\nonumber\\
+ \delta_E&=2+(1+\nu)(2-\beta k+12d),\qquad
+ \delta_F=2+(1+\nu)(2-\beta k+2a_e).
+ \label{an03lsbv1:exponents}
+\end{align}
+There is a fixed model/S1 constant $C$ such that, uniformly in $t$,
+\begin{align}
+ \frac{W_3(t)}q\le C A_q^{-1} C_g C_{\rm abs}
+ \big\{&F_q^{1+\nu}(s_q q^{\delta_B}+q^{\delta_L})+q^2\nonumber\\
+       &+H_q^{1+\nu}(q^{\delta_E}+q^{\delta_F})\big\}.
+ \label{an03lsbv1:budget}
+\end{align}
+The constants in $H_q$ and the displayed $C$ do not depend on LCRC's
+guards. All guard dependence is displayed in the fixed source gain and
+clock factors. In particular,
+\begin{equation}
+ \sup_{[t_0,t_*]}\frac{W_3}q
+ \le C_{\rm fixed}(1+s_q)q^{769/4000}=o(1),\qquad
+ \int_{t_0}^{t_*}\frac{W_3}q
+ \le L_T\ell C_{\rm fixed}(1+s_q)q^{769/4000}=o(1).
+ \label{an03lsbv1:finalbudget}
+\end{equation}
+Together with PISB's $\pi$ strip, middle and outer zones this supplies
+CFA's whole-strip input with both budgets vanishing. This is an
+improvement of that input on the retained stopped trajectory; it is
+not an application of CFA's passage theorem.
+\end{theorem}
+
+\section{Target-only delay, with the lower endpoint regularized}
+\begin{lemma}[Sign, exact time shift and delay density]
+\label{an03lsbv1:delay}
+For small $q$, the aligned target velocity is positive on
+$[b_0-qs_q,b_0]\cup(b_0,qa_q)$, where $a_q$ is PROFILE's exact root.
+For $b\in J_3$ put
+\begin{equation}
+ T(b)=\int_b^{b_0}\frac{\dd\vartheta}{v_q(\vartheta)}.
+ \label{an03lsbv1:delaydef}
+\end{equation}
+Then, writing a star for the endpoint $b_0$ trajectory,
+\begin{align}
+ \widehat\theta(t,b)&=\widehat\theta_*(t-T),\qquad t\ge T,\nonumber\\
+ \widehat m(t,b)&=L(b)\widehat m_*(t-T),\qquad
+ L(b)=\exp\left(2\int_0^T g_q(\widehat\theta(w,b))\dd w\right)
+       =e^{o(1)},\quad L(b)\ge1,\nonumber\\
+ \widehat\theta(t,b)&\le\widehat\theta_*(t),\qquad
+ \widehat m(t,b)\le\widehat m_*(t)\quad(t\ge0),
+ \label{an03lsbv1:shift}\\
+ \dd\lambda_0&=\frac{v_q(b(T))}{2\pi}\dd T
+ \le CqK(-s_0(T))\dd T\le Cq\dd T.
+ \label{an03lsbv1:density}
+\end{align}
+The first identity also holds for $0\le t<T$ if the endpoint orbit
+is continued backwards to time $-T$. At $b=b_0$, $T=0$ and $L=1$.
+\end{lemma}
+\begin{proof}
+PROFILE's exact equation and the target radial equation are
+\[
+ v_q(\theta)=\frac q2\{-\sin\theta K(\cos\theta/q)
+             +\rho\cos\theta K(\rho\sin\theta/q)\},\quad
+ (\log\widehat m)'=2g_q(\theta),\quad g_q'=2v_q.
+\]
+For $\theta=-r\in(-\pi/2,0)$,
+\[
+ v_q(-r)=\tfrac12\sin r\cos r+	frac q2\sin r K(-\cos r/q)
+              +\tfrac{\rho q}2\cos r K(-\rho\sin r/q)>0.
+\]
+The positive sign up to $qa_q$ follows from PROFILE's root and sign
+lemma (on the remaining fixed scaled interval). In the initial layer,
+\[
+ v_q(b_0-qs)=\frac q2\left\{\cos(qs)K(-\sin(qs)/q)
+                 -\rho\sin(qs)K(-\rho\cos(qs)/q)\right\}.
+\]
+Uniformly for $0\le s\le s_q$, this is comparable to $qK(-s)>0$.
+Indeed $K(-s)\ge c(1+s)^{-2}e^{-s^2/2}$, by integrating its
+Gaussian integral over an interval of length $(1+s)^{-1}$; the second
+term is exponentially small in $q^{-2}$. The first term changes by a
+relative $O(q^2(1+s)^4)=o(1)$ under its trigonometric replacements.
+Consequently
+\[
+ T_{\max}\le C(1+s_q)^3e^{s_q^2/2},\qquad q^2T_{\max}=o(1).
+\]
+Both projected cluster means are nonpositive in this initial layer,
+so $0\le g_q\le Cq^2$ there. Autonomy gives the time shift and exact
+radial prefactor, whose logarithm is at most $Cq^2T_{\max}=o(1)$.
+Scalar order and $g_q'=2v_q>0$ along the entire relevant interval
+give equal-time mass domination, including times before emergence.
+Finally differentiate \eqref{an03lsbv1:delaydef} in absolute orientation
+to obtain \eqref{an03lsbv1:density}. No zero-seed convention is used.
+\end{proof}
+
+\begin{lemma}[The endpoint's seed, arrival and uniform local decay]
+\label{an03lsbv1:endpoint}
+On logarithmic time intervals the endpoint obeys
+\begin{align}
+ \widehat m_*(t)&\le C(q^{10}+q^{12}e^t),
+ \label{an03lsbv1:massendpoint}\\
+ |\widehat\theta_*(t)|&\le Cq^{-1}e^{-t/2}quad
+       \text{if }t\ge2\ell+C\text{ and }\widehat\theta_*(t)<0.
+ \label{an03lsbv1:angleendpoint}
+\end{align}
+The times to $-\pi/4$ and to $-qL$, for fixed sufficiently large $L$,
+are $2\ell+O(1)$ and $4\ell+O(1)$, respectively. After a further fixed
+time the trajectory is in the interior of $[-R,R]$, $R=79/51$.
+Uniformly after that arrival and for $q^2t=o(1)$,
+\begin{equation}
+ \widehat m_*(t)\asymp q^{12}e^t,\qquad
+ a_q-\widehat\theta_*(t)/q\asymp q^{-4d}e^{-dt}.
+ \label{an03lsbv1:endpointprofile}
+\end{equation}
+All constants are model/S1 constants, uniform on the ratio box.
+\end{lemma}
+\begin{proof}
+The target coordinate equation at $(\widehat U_1,\widehat U_2)
+=(0,-q^5)$ gives $\widehat U_1(1)\asymp q^6$, a strictly positive
+Gaussian seed. As long as $\widehat U_2<0$ its negative part is at
+most $q^5e^{q^2t}$ (MOMC's coordinate estimate). The $P_1$ Stein
+identity gives $\widehat U_1'\ge\widehat U_1/2$ once it is positive.
+For an upper bound the same coordinate equation gives
+\[
+ \widehat U_1'\le(1/2+Cq+q^2)\widehat U_1
+                       +Cq^6e^{q^2t}.
+\]
+Thus $\widehat U_1\le Cq^6e^{t/2+Cqt}$ before the zero crossing of
+$\widehat U_2$, proving the two upper bounds there. The zero crossing
+occurs at $4\ell+O(1)$ with mass $\asymp q^8$, by the fixed-chart
+arrival calculation below. Thereafter the target spectral bound
+$(\log\widehat m)'\le1+2q^2$ proves
+\eqref{an03lsbv1:massendpoint} for the rest of the interval.
+
+Use PROFILE's Q4 reciprocal-speed calculation, retaining its
+$\cos b+q$ regularization. Its arrival time is
+$2\log(1/[q(\cos b+q)])+O(1)$; at $b=b_0$ this is $4\ell+O(1)$.
+Stopping that same calculation at $-\pi/4$ gives $2\ell+O(1)$.
+On any subsequent fixed scaled interval the target scalar field has
+its exact root $a_q$, derivative $-d+O(q^2)$ there, and a quadratic
+Taylor remainder bounded by $C|x-a_q|^2$. After a fixed further time,
+attraction gives $\int|x-a_q|\le C$, independently of the terminal
+time. Integration of the logarithmic displacement equation gives
+bounded distortion $e^{O(1)+O(q^2t)}$. The local radial error has the
+same integrable nonlinear contribution and $O(q^2t)$ correction.
+Matching at $4\ell+O(1)$ proves \eqref{an03lsbv1:endpointprofile}.
+This proves the needed uniform-in-time Q4 specialization; it does
+not apply PROFILE's common, later Q1 time guard at an earlier time.
+\end{proof}
+
+\section{Transfer and a chart lemma for an arbitrary receiver}
+Q2EC's all-label comparison at $t_m$ is applicable to both $b$ and
+$b_0$ because the original total mass is still $O(q^u)$. It gives
+\begin{equation}
+ |\theta-\widehat\theta|+|\psi-\widehat\theta|\le Cq^u,
+ \qquad m(t_m,b)=\widehat m(t_m,b)e^{O(q^u)}.
+ \label{an03lsbv1:early}
+\end{equation}
+Fix the following label sets by their states at this single time:
+the charted set has both scaled angles in $[-R,R]$; of its complement,
+the boundary set has $\theta(t_m)\le b_0+2q$, and the transit set is
+the rest. Every non-charted member has $\sin\theta(t_m)<0$ for small
+$q$: if $\theta\ge0$, target order and \eqref{an03lsbv1:early} put both
+angles between $-o(q)$ and $q(a_q+o(1))$, strictly in the chart.
+These are fixed ancestry subsets, not time-dependent masks.
+
+The target delay also defines fixed label subsets and may be used
+simultaneously with this state classification. Equations
+\eqref{an03lsbv1:shift}--\eqref{an03lsbv1:massendpoint}, including the
+case $T>t_m$, imply
+\[
+ m(t_m,b)\le C\{q^{10}+q^{12}e^{t_m-T(b)}\}.
+\]
+PISB's all-receiver bridge uses $\int_{t_m}^{t_0}S\le3/2+o(1)$, and
+therefore yields for every $b\in J_3$
+\begin{equation}
+ m(t_0,b)\le C A_q^{-1}\{q^{c_m}+q^2e^{-T(b)}\}.
+ \label{an03lsbv1:entrymass}
+\end{equation}
+The fixed bridge cost is $e^{6+o(1)}$. This bound does not presume
+that the receiver has arrived by $t_0$.
+
+\begin{lemma}[Single-label contraction in the strong chart]
+\label{an03lsbv1:chart}
+An arbitrary original receiver that is in $[-R,R]^2$ at time
+$s\in[t_m,t_0]$ remains in that chart and satisfies, relative to
+MOMC's actual same-field reference,
+\begin{equation}
+ \xi(t_0)\le C_{\rm sh}\xi(s)G(1/2,M(s))
+       \le C\xi(s)(2M(s))^d,
+ \quad
+ G(M_1,M_0)=(M_1/M_0)^{-d}
+       \left(\frac{1-M_0}{1-M_1}\right)^\alpha.
+ \label{an03lsbv1:single}
+\end{equation}
+The constants depend only on the model and the fixed chart, not on
+LCRC guards or the receiver's ancestry. The exact finite-noise field
+need not be cooperative.
+\end{lemma}
+\begin{proof}
+MOMC's reduction holds for any receiver in a fixed chart. Its leading
+Jacobian, with the actual right-half donors held fixed, is
+\[
+ Df(x,y)=\begin{pmatrix}
+ -(1-M)/2+\rho^3(y-x-\Pi(x))\phi(\rho x)/2&\lambda\Phi(\rho x)/2\\
+ \lambda\Phi(\rho x)/2&-(1-M)/2
+ \end{pmatrix}.
+\]
+Here $\Pi(x)=\int(\xi-x)_+\dd\mu_s\ge0$.
+The second row sum is at most $-1/4+\lambda/2\le-1/200$.
+For the first row drop $\Pi$ and replace $y$ by $R$. The remaining
+positive expression is
+\[
+ H(x)=\lambda\Phi(\rho x)/2+\rho^3(R-x)\phi(\rho x)/2.
+\]
+Since $H'(x)=-\rho^5x(R-x)\phi(\rho x)/2$, its maximum on
+$[-R,R]$ is at zero. Using $\phi(0)<2/5$,
+\[
+ H(0)\le\frac{49}{400}+\frac{27097}{255000}
+        <\frac{49}{200}.
+\]
+Thus the induced maximum-norm logarithmic norm of $Df$ is at most
+$-1/200$ throughout the square, not only near the atomic center.
+MOMC's error is bounded by $C_Rq^2+160\mu/q=o(1)$ there,
+since $\mu\le Cq^2\ell^2M$. The exact logarithmic norm is consequently
+at most $-1/400$. Absolute off-diagonal values change by at most the
+$C^1$ error; finite-noise cooperativity is unnecessary.
+
+For completeness the square is invariant. Replace the coherent donor
+state by $(a,a)$, with error $o(1)$ uniformly, using MOMC's mean and
+spread conclusions. On the upper corner the two leading components
+equal $f_0(R)+M(R-a)/2$, where
+$f_0(x)=(-x+\rho K(\rho x))/2$ and $f_0(a)=0$.
+Its derivative is at most $-1/200$ for $M\le1/2$.
+At the lower corner the second component is at least
+$(R+a)/200$, and the first is no smaller: for $x<a$,
+$\rho F(\rho x,\rho a)\le a$, where $F$ is MOMC's donor kernel.
+Positive leading off-diagonal entries reduce the face checks to
+these corners. The resulting fixed strict inward margins survive
+the $o(1)$ perturbation. This proves invariance and exponential
+contraction at rate $1/400$ to the actual reference, hence
+$\int_s^{t_0}\xi\le C_R$.
+
+Now retain the sharper central Jacobian
+$J_{\rm sh}(M)$, whose row sum is $-d+M/2$. On the segment from
+the actual reference to the receiver its difference from the exact
+Jacobian has norm at most
+\[
+ C_R\{\xi+e+M r_{\Rhalf}+q^2+\mu/q\}.
+\]
+Here $e$ is the reference offset from $(a,a)$ and $r_{\Rhalf}$ the
+right-half donor spread. MOMC gives vanishing integrals for all
+terms except $\xi$, whose integral was just bounded independently
+of the interval length. Logarithmic-norm integration therefore gives
+$\xi(t_0)\le C\xi(s)\exp\int_s^{t_0}(-d+M/2)$.
+MOMC's mass equation, with integrated defect $O(q^2\ell^2)$, converts
+this exponential to $G$ up to a fixed factor. Since $M(t_0)=1/2$,
+the last factor $(2(1-M(s)))^\alpha$ is bounded by $2^\alpha$.
+\end{proof}
+
+\begin{remark}
+MOMC's small-displacement pair proof does not apply verbatim to a
+new receiver at the edge of the chart. The uniform logarithmic-norm
+calculation above supplies the missing bounded-distortion argument.
+It does not assert a multiplicative $e^{o(1)}$ shape comparison for
+this new ancestry.
+\end{remark}
+
+\section{A delay class that arrives before half mass}
+Choose the fixed delay cutoff
+\begin{equation}
+ T_c=(k-2+\chi_{\rm lag})\ell=(k-7/4)\ell,\qquad \chi_{\rm lag}=1/4,
+ \quad J_E=\{T\le T_c\},\quad J_L=\{T>T_c\}.
+ \label{an03lsbv1:split}
+\end{equation}
+The delay parameter $\chi_{\rm lag}=1/4$ is unrelated to TAILREP's
+core-cutoff exponent $\chi=1/20$, which is unchanged.
+These are fixed label sets. No arrival assertion for $J_L$ will be
+needed to pay its budget.
+
+\begin{lemma}[Transit and entry for the early delay class]
+\label{an03lsbv1:transit}
+Every $b\in J_E$ enters $[-R,R]^2$ by
+\begin{equation}
+ s_b\le\max\{t_m,4\ell+T(b)+C\}<t_0.
+ \label{an03lsbv1:arrivaltime}
+\end{equation}
+At $t_0$ it obeys the mass bound \eqref{an03lsbv1:entrymass} and
+\begin{equation}
+ \xi(t_0,b)\le C A_q^d
+       \{q^{6d}e^{dT(b)}+q^{a_e}\},\qquad a_e=v+du.
+ \label{an03lsbv1:massshape}
+\end{equation}
+\end{lemma}
+\begin{proof}
+PISB's rational bound gives
+$c_m-k\ge15259/9240>33/20$. Thus at $t_m$ every member of $J_E$
+has target age at least $(c_m-k+7/4)\ell$, greater than
+$(17/5)\ell$. By \eqref{an03lsbv1:angleendpoint} and
+\eqref{an03lsbv1:early}, its negative angles have magnitude
+$O(q^{7/10})$; its positive angles are at most $q(a_q+o(1))$.
+Also $\Delta(t_m):=\theta(t_m)-\psi(t_m)=O(q^u)$.
+
+Here are the receiver estimates needed between this state and a
+fixed chart. Stop temporarily in a small fixed cone around zero.
+The $P_1$ receiver gate is exponentially full. With MOMC's strong
+donors and arbitrary complement of mass $\mu$,
+\begin{align}
+ R_{11}&=(1-M)/2+O(q^2+\mu),\nonumber\\
+ R_{22}&\ge-C(q^2+\mu),\qquad
+ |R_{12}-R_{21}|\le C(qM+\mu),\nonumber\\
+ |R_{12}|+|R_{21}|&\le C(q+\mu),\qquad
+ |R_{22}\sin\theta|\le C(q+\mu)\quad(\theta\le0).
+ \label{an03lsbv1:transitmatrix}
+\end{align}
+To verify every estimate, remove the $P_1$ gates and use
+$\E_{P_1}XX^T=\operatorname{diag}(1+q^2,q^2)$;
+the donors have $W_1U_1=m(1+O(q^2))$ and $W_2=O(q\sqrt m)$.
+On $P_2$, $f_{\Rhalf,1}$ has norm $O(qM)$ and
+$f_{\Rhalf,2}$ norm $O(q^2M)$, since all donor inputs and outputs
+are in the strong chart. These give respectively $O(q^2M)$ in
+$R_{11}$, $O(q^2M)$ in $R_{22}$ and $O(qM)$ in the cross entries.
+The target selected covariance is symmetric and positive
+semidefinite, so its contribution cancels from $R_{12}-R_{21}$
+and is nonnegative in $R_{22}$.
+For $\theta\le0$ the projected $P_2$ margin gives
+$|\sin\theta|\E_{P_2}[X_2^2\one_{a_\theta\cdot X>0}]
+\le Cq$; Gaussian conditioning proves this also at $\theta=0$.
+PROFILE's unscaled outside value bound is $C\mu$ in each entry.
+These observations prove \eqref{an03lsbv1:transitmatrix} without
+extending the fixed-chart reduction to an unbounded chart.
+
+The exact difference identity is
+\[
+ \Delta'=-(\operatorname{tr}R_\theta)\sin\Delta
+                 +(R_{12}-R_{21})\cos\Delta.
+\]
+The trace is at least $1/5$ for small $q$ before half mass.
+MOMC's increasing mass and $\mu\le Cq^2\ell^2M$ imply
+\begin{equation}
+ |\Delta(t)|\le Cq^u e^{-(t-t_m)/6}+CqM(t).
+ \label{an03lsbv1:delta}
+\end{equation}
+The cone and the small-$\Delta$ restrictions are preserved by the
+following inequalities, so they are legitimate first-exit devices.
+For $z=-\theta\ge0$, the exact angular equation and
+\eqref{an03lsbv1:transitmatrix} give
+\[
+ z'\le-\tfrac12(1-M)z+Cz^3+Cq.
+\]
+Here replacement of $\psi$ by $\theta$ costs $C|\Delta|=O(q)$;
+the initial $q^u$ term is smaller than $q$.
+Fix a sufficiently large model constant $L$. Whenever $z\ge qL$,
+smallness of the cone and largeness of $L$ give $z'\le-z/8$.
+Consequently $\int z^2\le C z(t_m)^2$ and
+$\int q/z\le8/L$ up to that hitting time (change variables using
+$-z'\ge z/8$). Integrating the sharper logarithmic inequality gives
+\[
+ z(t)\le C z(t_m)\exp\{-\tfrac12(t-t_m)+\tfrac12\int_{t_m}^tM\}.
+\]
+Since $\int M\le3/2$, \eqref{an03lsbv1:angleendpoint} puts the hit
+of $-qL$ no later than $4\ell+T+C$. Receivers already above $-qL$
+need only the following bounded-time argument.
+
+For a non-charted label the target attraction and
+\eqref{an03lsbv1:early} imply $t_m\le4\ell+T+C$; otherwise it
+would already lie strictly inside $[-R,R]^2$. Thus all nontrivial
+arrivals considered here occur by
+\[
+ (k+2+\chi_{\rm lag})\ell+C\le(321/40)\ell+C,
+ \qquad M\le C A_q q^{79/40}=o(1),
+\]
+using $M(t)\le C A_q q^{10}e^t$, a direct consequence of MOMC's
+mass law. Equation \eqref{an03lsbv1:delta} then gives
+$\Delta/q=o(1)$. On the fixed enlarged chart containing
+$[-L,L]^2$, MOMC's reduction is uniformly the target field plus
+$o(1)$ on this bounded additional time interval. The aligned target
+orbit from $[-L,0]$ enters a fixed interior subinterval of $[-R,R]$
+in bounded time. Finite-time continuous dependence, with the
+displayed $o(1)$ misalignment, proves joint entry in $[-R,R]^2$.
+The same argument covers the bounded transition band at $t_m$.
+This closes the cone/time first exit and proves
+\eqref{an03lsbv1:arrivaltime}; the gap to $t_0$ tends to infinity.
+
+If the target label is already a fixed distance inside the chart at
+$t_m$, \eqref{an03lsbv1:endpointprofile}, the absolute comparison
+and the actual reference offset $O(q^2+q^v)$ give
+\[
+ \xi(t_m,b)\le C\{q^{d(c_m-4)}e^{dT}+q^v\}.
+\]
+Here $q^2=O(q^v)$ uniformly on the box. Applying
+Lemma~\ref{an03lsbv1:chart} multiplies this by at most
+$C A_q^d q^{du}$ and proves \eqref{an03lsbv1:massshape}.
+For the remaining arrivals, $\xi(s_b)\le C$ and
+$M(s_b)\le C A_q q^6e^T$, so the same lemma gives the first
+term of \eqref{an03lsbv1:massshape}. This includes the bounded
+transition band and proves the result without resetting the reference.
+\end{proof}
+
+\section{Restarting the gain and paying the weighted consumer}
+\begin{lemma}[Gain from the actual arrival]
+\label{an03lsbv1:restart}
+For every finite $\tau_b\le t_*$ in \eqref{an03lsbv1:consumer},
+\begin{equation}
+ m(t,b)\le C_gm(\tau_b,b)
+ \max\{1,A_0q^2\xi_b^2e^{\beta[I(t)-I(\tau_b)]}\}^{1+\nu}
+ \quad(t\ge\tau_b).
+ \label{an03lsbv1:arrivalgain}
+\end{equation}
+\end{lemma}
+\begin{proof}
+This is a restart of S2CP's distance and DECG's gain argument,
+not a new entry-profile assertion. At arrival the receiver is on
+the strong branch in a fixed chart. The c-form local distance
+estimate and GESG's matrix-value splice are estimates from an
+arbitrary start time; their constants use only upper bounds on
+$\int r$, the nonnegative gate excess, and the field error budget.
+Each subinterval inherits the same bounds $B$, $\mathfrak X$ and
+$\overline F_F$. The clock difference is $I(t)-I(\tau_b)$, with
+the same positive derivative lower bound. Thus the distance
+estimate holds with the same $C_D$ until physical exit, including
+reentries. The signed radial estimate and the reference radial
+budget in DECG then give
+\[
+ e^{6B+1/\beta+o(1)}
+ \max\{1,A_0q^2\xi_b^2e^{\beta[I(t)-I(\tau_b)]}\}^{1/\beta}.
+\]
+Its small errors are bounded by full-interval small errors, uniformly
+over start times and receivers. Since $1/\beta\le1+\nu$, this is
+\eqref{an03lsbv1:arrivalgain} with $C_g=e^{6B+3}$ for small $q$.
+None of the entry-tail or ancestry assumptions enters this receiver
+gain proof. At $\xi_b=0$ uniqueness gives the actual reference;
+its radial factor is already included in $C_g$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{an03lsbv1:main}]
+The restart lemma and the unarrived term imply $\mu_{J_3}\le W_3$.
+We estimate the consumer itself, rather than only this smaller mass.
+All arrival displacements are bounded by a fixed chart constant.
+Combining \eqref{an03lsbv1:cap} at arrival with the multiplier in
+\eqref{an03lsbv1:consumer} shows, labelwise, that its contribution is
+at most
+\begin{equation}
+ C C_g C_{\rm abs}m(t_0,b)e^{(1+\nu)I(t)}.
+ \label{an03lsbv1:coarseconsumer}
+\end{equation}
+For small $q$, $A_0q^2\xi_b^2\le1$ for all bounded arrival states.
+The estimate follows from $I(\tau_b)\le I(t)$ and
+$\beta(1+\nu)\le1+\nu$. For an unarrived label it follows directly
+from cap one. Hence it does not require that a late label remain
+on the lower side, or ever arrive. GESG's lower-side no-gain is
+consistent but is not needed for this coarser bound.
+
+The first summand $C A_q^{-1}q^{c_m}$ in
+\eqref{an03lsbv1:entrymass}, integrated over the whole strip of
+width $qs_q$, costs in $W_3/q$ at most
+\[
+ C A_q^{-1}C_g C_{\rm abs}F_q^{1+\nu}s_q
+                          q^{c_m-(1+\nu)k}.
+\]
+This is an upper-bound decomposition, not a decomposition of the
+actual radial measure into evolving subpopulations.
+For the second mass summand restricted to $J_L$, the density
+\eqref{an03lsbv1:density} gives
+\[
+ \int_{J_L}q^2e^{-T}\dd\lambda_0\le Cq^3e^{-T_c}.
+\]
+Equation \eqref{an03lsbv1:coarseconsumer} therefore pays its $W_3/q$
+by $C A_q^{-1}C_g C_{\rm abs}F_q^{1+\nu}q^{\chi_{\rm lag}-\nu k}$.
+This explicitly retains both post-$t_0$ arrivals and the never-arrived
+population in the estimate.
+
+Every member of $J_E$ is charted at $t_0$. For its correlated mass
+summand $C A_q^{-1}q^2e^{-T}$ use
+\eqref{an03lsbv1:massshape} and the arrival gain at $t_0$. Up to a
+fixed factor the gain integrand is bounded by
+\[
+ 1+\left[H_q q^{2-\beta k}
+              \{q^{12d}e^{2dT}+q^{2a_e}\}\right]^{1+\nu}.
+\]
+After division by $q$, integration with
+$\dd\lambda_0\le Cq\dd T$ and $\int_0^\infty e^{-T}\dd T=1$ gives
+\[
+ C A_q^{-1}C_g q^2\left\{1+
+ \frac{H_q^{1+\nu}q^{(1+\nu)(2-\beta k+12d)}}
+      {1-2d(1+\nu)}
+ +H_q^{1+\nu}q^{(1+\nu)(2-\beta k+2a_e)}\right\}.
+\]
+The extension of the nonnegative integral to $T=\infty$ is only
+an estimate; it does not extend the early-class shape assertion.
+Analytically, $d\le631/1600$, since $P_\rho\ge1/2$, so
+\begin{equation}
+ 1-2d(1+\nu)\ge\frac{16269}{80000}>0.
+ \label{an03lsbv1:momentmargin}
+\end{equation}
+This proves \eqref{an03lsbv1:budget}. It is a full weighted moment,
+hence also bounds any restriction to TAILREP's cutoff. The correlated
+part has delay tail index $1/d$, and
+$1/d>3\omega/d=p$ because $3\omega\le693/800<1$.
+The extra $q^{a_e}$ floor and the uncorrelated mass summand have
+been charged separately; no two-sided raw profile is claimed.
+
+For clarity, the positive powers can all be checked with rational
+bounds. From the sources and \eqref{an03lsbv1:parameters},
+\[
+ d>7/20,\quad u\ge169/102,\quad v\ge67/102,\quad
+ a_e\ge841/680,\quad k\le231/40.
+\]
+Consequently
+\begin{align*}
+ \delta_B&\ge15259/9240-231/4000>3/2,\\
+ \delta_L&\ge1/4-231/4000=769/4000,\\
+ \delta_E&\ge2+17/40=97/40,\\
+ \delta_F&\ge2-(101/100)(177/136)=9323/13600.
+\end{align*}
+Here $\beta\le1$ was used only to bound the exponents from below;
+it remains exact in \eqref{an03lsbv1:budget}. All other factors are
+fixed or tend to fixed limits. Multiplication by $L_T\ell$ proves
+\eqref{an03lsbv1:finalbudget}. Adding PISB's already proved zone
+budgets proves the final strip assertion. In particular CFA's
+small fixed strip allowance is met by choosing $q$ last, without
+using its passage conclusion.
+\end{proof}
+
+\section{Constants and limits of the conclusion}
+The chart radius $R=79/51$, the transit radius $L$, its bounded
+additional arrival time, $C_{\rm sh}$, the delay and endpoint
+constants, the bridge factor $e^6$, and the bounds $c_A,C_A$ depend
+only on the model/S1 sources. The new cutoff $\chi_{\rm lag}=1/4$ is fixed
+numerically by an analytic margin, independently of any guard.
+The middle-zone parameter $\eps$ is inherited from PISB. None of
+these quantities enlarges a LCRC core, entry, or reference constant.
+
+The stopped constants enter through $C_D$, $A_0$, $C_g=e^{6B+3}$,
+$C_{\rm abs}$, $L_T$ and $F_q$. Thus the three types of displayed
+$A_q$ factors are $A_q^{-1}$, $A_q^{\lambda(1+\nu)-1}$ in the
+coarse consumer, and
+$A_q^{-1+(2d+\lambda\beta)(1+\nu)}$ in the shape moments.
+The additional fixed factors are powers of $E_g$, $C_H$, $A_0$
+and $e^{D_{\rm clk}}$ exactly as in \eqref{an03lsbv1:budget}.
+There is no hidden choice of a large chart depending on $B$ or
+$M_{\rm res}$ in the pre-entry proof. The post-entry chart and gain
+constants are the already fixed S2CP ones, and multiply positive
+powers of $q$ only.
+
+The source constant order is unchanged: model and S1 geometry;
+the retained stopped guards and field allowances with S2CP's acyclic
+order (including its later choice of $C_\Sigma$ after $C_0$ and SEP
+entry constants); the auxiliary fixed $L$, $\eps$, $\chi_{\rm lag}$; then $q$.
+The $C^1$ field budget after $t_0$ is retained, not proved here.
+The result pays its previously unpaid strip contribution but does
+not close any other joint-bootstrap input. No saturation, selection,
+bridge, or consolidation statement is made.
+\end{document}

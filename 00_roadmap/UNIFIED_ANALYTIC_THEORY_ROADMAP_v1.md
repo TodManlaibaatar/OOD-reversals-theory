@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.15 — October 23, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.16 — October 27, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -56,6 +56,11 @@
 - **The π strip is paid,** with $\sup\mu_{\mathcal S_\pi}/q\lesssim q^{411/800}\sqrt{\log\ell}$.
 - **Both strips' outer and middle zones are frozen and paid.**
 - The only external input left in the weak passage is the 3π/2 inner zone $J_3=(3\pi/2-qs_q,3\pi/2]$, of physical width $O(q\sqrt{\log\ell})$. A time-shift route is recorded for it.
+
+**Revision 1.16 (Oct 27).** Records LSB (`AN03_late_strip_budget_v1`).
+- $J_3$ is paid: $\sup W_3/q\le C(1+s_q)q^{769/4000}$.
+- With PISB, **CFA's whole-strip input is supplied**. Every guard of the weak-passage bootstrap now has a proved strict improvement and no external input remains.
+- Next: the joint weak-passage assembly.
 
 ---
 
@@ -493,7 +498,7 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
 - *Conditional passage.* $e_0=o(1)$ (MOMC's mean claim at $t_h$), $r_0\le d_c$, $H_b=\tfrac54c_b$ and $D_-=o(1)$ give $r_0L_b\le Cq^{\chi+kPq^2/(2Q)}=O(q^\chi)$. CLOCK then gives $e\le3e_*/4$ and $r_{\mathcal K}\le2\mathcal A=O(q^\chi)$. This strictly improves the retained core-geometry and reference guards.
 - *Constant order:* $(\text{model},R,M_K,B_s,L_c,\bar c,C_{\rm pass},g,e_*)\to(B,K_Y,M_{\rm res})\to(\overline F_F,c_b,E_g=2c_b,C_D,A_0,C_m)\to C_0\to(K(C_0),Z_\Sigma,\text{entry},C_\Sigma)\to q$, with a small fixed $F_{\mathcal S}$ chosen before q.
 
-**Weak-passage bootstrap: what is left.**
+**Weak-passage bootstrap: what is left. (After LSB, Oct 27: the strip budget is paid, so only the assembly remains; see "Joint assembly" below.)**
 - Every guard now has a proved strict improvement, conditional on the others:
   - LCRC: $Y$, $\int r$, $E_{G_+}$ and the cross residual;
   - S2CP: $E_\Sigma$;
@@ -568,6 +573,39 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
     - *Arriving after $t_0$, or never:* coarse mass, lower-side no-gain until arrival, then the gain from arrival with $\xi=O(1)$.
   - **Expected structure.** Mass $\propto e^{-T}$ and $\xi\propto e^{dT}$ in the extra delay T, so $J_3$'s tail exponent is $1/d>p=3s^{-1}>2$. The weighted moment converges because $2d<1$; its size is about $q^3\cdot q^{2-k}\xi_0^2$ with endpoint displacement $\xi_0\approx q^{10d-2s}$. This gives $\mu/q$ of order roughly $q^{1/2}$ at $\lambda=169/400$; verify the exact exponents.
 - *Then:* the joint weak-passage assembly.
+
+**Status after LSB (`AN03_late_strip_budget_v1`, Oct 27): $J_3$ paid; strips complete.**
+- *Proved:*
+  - **Time shift.** $v_q>0$ on the layer and on $(-\pi/2,qa_q)$. The aligned target flow from $b\in J_3$ is the endpoint orbit delayed by $T(b)$, with radial prefactor $1\le L\le e^{Cq^2T_{\max}}=e^{o(1)}$, where $T_{\max}$ is polynomial in ℓ. The delay density is $\le CqK(-s_0)$.
+  - **Endpoint profile.** $\hat m_*\asymp q^{12}e^t$; the endpoint arrives in the strong chart at $4\ell+O(1)$, after which $a_q-\hat\theta_*/q\asymp q^{-4d}e^{-dt}$.
+  - **Single-label chart contraction (new; MOMC's pair proof does not apply verbatim).** On $[-79/51,79/51]^2$ the leading Jacobian has max-norm log-norm $\le-1/200$; the x-row bound reduces to $H(0)<49/200$. The square is invariant, and $\int\xi$ is bounded. The sharper central rate $-d+M/2$ then recovers MOMC's multiplier G up to a fixed factor, for any receiver entering the chart.
+  - **Delay split $T_c=(k-7/4)\ell$.**
+    - Early labels arrive before $t_0$ with $\xi(t_0)\le CA_q^d(q^{6d}e^{dT}+q^{v+du})$ and mass $\le CA_q^{-1}(q^{c_m}+q^2e^{-T})$.
+    - Late labels are paid by mass lag alone, through the coarse consumer $m(t_0)e^{(1+\nu)I}$, including those that never arrive.
+  - **Restart.** S2CP's distance and gain restart from the actual arrival with the same constants.
+  - **Exponents.** $\delta_B>3/2$, $\delta_L=1/4-\nu k\ge769/4000$, $\delta_E\ge97/40$, $\delta_F\ge9323/13600$. The moment converges because $1-2d(1+\nu)\ge16269/80000$.
+- *Reviewer checks.* All of the following were re-derived:
+  - the Jacobian, the row sums and $H'(x)=-\rho^5x(R-x)\phi(\rho x)/2$;
+  - the conversion $\exp\int(-d+M/2)=G$;
+  - the shift and the density;
+  - the exponent of $q^{6d}e^{dT}$;
+  - the coarse consumer, using $\beta\le1$ and $I(\tau_b)\le I(t)$.
+
+**Joint assembly (next; the weak-passage theorem).**
+- *Target.* For $\kappa=10$ and $\rho\in[13/20,7/10]$, from $t_0=t_h$ until $t_b$, the first time $c=c_b$, show $t_b\le t_0+L_T\ell$ with all the conclusions below.
+- *Guards, improved together by one first exit,* each with its proved improvement:
+  - $Y<K_Y$, $\int r<B$, $E_{G_+}<E_g=2c_b$, cross residual $<M_{\rm res}q$ (LCRC);
+  - $E_\Sigma<2C_\Sigma(q^5+q^{\Gamma_\nu}H)$ (S2CP);
+  - $\int\epsilon_F<\overline F_F$ (CFA);
+  - core chart, $\mu_{\mathcal K}<M_K$ and reference $e<e_*$ (CFA's passage and the $B_s$ identity);
+  - $\sup\mu_{\mathcal B}/q<b_B(q)$, with a fixed function such as $b_B=q^{1/10}$. The proved rates are $q^{\Delta_\nu}$ with $\Delta_\nu>3/25$ for the complement, $q^9$ for the Q3 interior, $q^{411/800}$ polylog for the π strip, $q^{769/4000}$ polylog for $J_3$, and frozen-zone rates; all lie below $\tfrac12q^{1/10}$ for small q.
+- *Duration.* $c\ge c_{G_+}-|c_\Sigma|-|c_{\mathcal K}|-|c_{\mathcal B}|\ge\tfrac89H_{G_+}-o(1)$ and $H_{G_+}\ge H\ge e^{-D}H_0e^{I}$, with $I'\ge Q(1-c_b)$. Hence $t_b\le t_0+[\log(9c_b/(8H_0))+D+1]/(Q(1-c_b))$, so a fixed $L_T=k/(\lambda_{\min}(1-\bar c))+1$ suffices; $L_T$ enters only vanishing errors.
+- *Constant order:* CFA's order, with $b_B$ and $L_T$ fixed at the start.
+- *Handoff to S4.* Record the state at $t_b$:
+  - core retained ($r_{\mathcal K}=O(q^\chi)$, $e\le3e_*/4$);
+  - clock $H(t_b)$ and response $c_b$, with $o(1)$ clock defect;
+  - $E_\Sigma$, the complement and the outside budgets;
+  - residual bounds.
 
 ### S4. Weak return and matching to the leading weak family
 
@@ -678,7 +716,7 @@ Tracks that can run in parallel:
 | Track | Steps | Notes |
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
-| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs. PISB paid the π strip and both strips' outer and middle zones. Only the 3π/2 inner zone $J_3$ remains external. Next: $J_3$ by the time-shift route, then the joint weak-passage assembly. |
+| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. No external input remains. Next: the joint weak-passage assembly, which produces the weak-passage theorem. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
@@ -784,6 +822,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | CFA | `AN03_c_form_assembly_v1.tex` (+ review), prefix `an03cfav1:` — S3 closed in stopped-guard form; core-only c-form, full remainder, CLOCK forcing, conditional passage |
 | Q3SB | `AN03_Q3_strip_budgets_v1.tex` (+ review), prefix `an03q3sbv1:` — partial; pre-entry cross residual and gate budget, regularized envelope, total clock, frozen 3π/2 substrip; refutes three proposed premises |
 | PISB | `AN03_pi_strip_budget_v1.tex` (+ review), prefix `an03pisbv1:` — π strip paid; outer and middle zones of both strips frozen and paid; $J_3$ consumer recorded |
+| LSB | `AN03_late_strip_budget_v1.tex` (+ review), prefix `an03lsbv1:` — $J_3$ paid via time shift, single-label chart contraction and delay split; strips complete |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |
