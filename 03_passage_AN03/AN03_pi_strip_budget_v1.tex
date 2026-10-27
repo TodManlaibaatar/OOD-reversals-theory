@@ -1,0 +1,688 @@
+% New analytic increment. No preceding increment is modified.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype,booktabs,xurl}
+\usepackage[margin=.9in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf1}
+\newcommand{\Sp}{\mathcal S_\pi}
+\newcommand{\Ss}{\mathcal S_{3\pi/2}}
+\newcommand{\Kh}{\mathcal K}
+\title{The $\pi$-strip budget and middle-zone freezing for both Q3 strips}
+\author{Analytical increment for independent review}
+\date{Version 1; October 22, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+On the existing S2CP/CFA stopped interval, without CFA's strip input
+or its passage conclusion, both required $\pi$-strip mass budgets
+vanish. We prove the refined middle-zone freezing estimate for both
+strips. For the inner $\pi$ zone, scalar target-only order bounds its
+mass at the moving overlap by the regularized boundary trajectory.
+A coarse, explicitly paid strong-rate bound then suffices until
+half mass. Combined with the capped weak gain, its remaining uniform
+power is $q^{411/800}$ in mass divided by $q$. This is weaker than
+the proposed $q^3(\log\ell)^{3/2}$ mass rate, but closes both requested
+budgets with no additional hypothesis. No new labels are put into
+$G_+$, and the $3\pi/2$ inner zone is left for its stated consumer.
+\end{abstract}
+
+\section{Setting and the resulting budget}
+All new labels have prefix \texttt{an03pisbv1:}.
+Use the original initialized balanced flow
+\[
+ U(0,b)=W(0,b)=q^5(\cos b,\sin b),\quad
+ U=\sqrt m\,a_\theta,\quad W=\sqrt m\,a_\psi,\quad
+ \dd\lambda_0=\dd b/(2\pi),
+\]
+\[
+ P=(P_1+P_2)/2,\quad P_1=N(e_1,q^2I_2),\quad
+ P_2=N(\rho e_2,q^2I_2),\quad
+ \rho\in[13/20,7/10],\quad \lambda=\rho^2,\quad Q=\lambda+q^2 .
+\]
+Let $f(X)=\int W(U\cdot X)_+\dd\lambda_0$, $e_i=X_i-f_i$,
+$R_{ij}(\theta)=\E_P[e_iX_j\one_{\{a_\theta\cdot X>0\}}]$.
+The exact equations used below are
+\begin{equation}
+ \theta'=a_\psi^TR_\theta a_\theta^\perp,\qquad
+ \psi'=(a_\psi^\perp)^TR_\theta a_\theta,\qquad
+ (\log m)'=2a_\psi^TR_\theta a_\theta .
+ \label{an03pisbv1:exact}
+\end{equation}
+Set
+\begin{align}
+ \ell&=\log(1/q),\quad \omega=(1-\lambda)/2,\quad
+ c_m=2/\omega+1/2,\quad u=10-c_m\ge169/102,\nonumber\\
+ t_m&=c_m\ell,\qquad
+ t_0=t_h=10\ell-\log A_q+O(q^2\ell^2+q^u),\quad
+ 0<c_A\le A_q\le C_A,\nonumber\\
+ k&=10(1-\lambda),\qquad \beta=\lambda/Q,\qquad
+ I(t)=Q\int_{t_0}^t(1-c),\quad
+ c=Q^{-1}\E_{P_2}[f_2X_2].                       \label{an03pisbv1:scales}
+\end{align}
+We work on any stopped interval $[t_0,t_*]$ of S2CP with CFA's
+retained non-strip inputs. In particular $0\le c\le c_b<1$,
+$t_*-t_0\le L_T\ell$, $\int r<B$,
+$r=\sup_\theta|R_{11}(\theta)|$, the cross residual is at most
+$M_{\rm res}q$, and the primary energy is below $E_g$.
+Its instantaneous core hypotheses and the joint secondary guard or
+proved improvement remain in force. We do \emph{not} assume CFA's
+strip supremum/integral input or apply its conditional passage.
+The existing outside supremum, wherever used by S2CP's gate lemma,
+is still a stopped input, not a new conclusion about the other strip.
+
+The proved inputs needed from S1 and S2 are recorded explicitly:
+\begin{align}
+ \sup_{[0,t_0]}(\|e_1\|_{P_2}+\|e_2\|_{P_1})
+       &\le C_{\rm pre}q,                         \label{an03pisbv1:cross}\\
+ \int_{t_0}^{t_*}X(t)\dd t
+       &\le G+o(1),\quad
+ X=\sup_\theta(|R_{22}|-I'/2)_+,\quad
+ G=\frac{5eE_g}{9(1-c_b)},                         \label{an03pisbv1:gate}\\
+ e^{I(t)}
+       &\le C_H E_g A_q^\lambda q^{-k}e^{D_{\rm clk}},
+ \quad 0\le D_{\rm clk}\le C(q^{1/8}+q^2\ell).
+                                                        \label{an03pisbv1:clock}
+\end{align}
+Equation \eqref{an03pisbv1:cross} is Q3SB's proved pre-entry result.
+Equations \eqref{an03pisbv1:gate}--\eqref{an03pisbv1:clock} are S2CP's
+gate lemma and its stopped clock, using the original Q2 clock seed
+$H(t_0)\asymp A_q^{-\lambda}q^k$. They are conclusions under the
+current guards, not hypotheses of a later passage theorem.
+Loss monotonicity supplies the remaining diagonal residual norms
+on $[0,t_*]$. MOMC gives $t_*\le C_{\rm dur}\ell$.
+
+Fix $0<\varepsilon<1/2$ before $q$ and define
+\begin{equation}
+ \begin{gathered}
+ k_G=169/3200,\quad \Lambda_q=\sqrt{3\ell/k_G},\quad
+ w_q=\arcsin(q\Lambda_q),\quad
+ s_q=\sqrt{(1+\varepsilon)\log\ell/k_G},\\
+ \Sp=[\pi,\pi+2w_q),\qquad
+ \Ss=(3\pi/2-2w_q,3\pi/2].
+ \end{gathered}                                   \label{an03pisbv1:zones}
+\end{equation}
+In either strip let $a$ be its initial nonnegative physical offset
+from its axis: $a=b-\pi$ or $a=3\pi/2-b$.
+The inner zone is $a<qs_q$, the middle zone is
+$qs_q\le a\le(1+\varepsilon)w_q$, and the outer zone is
+$a>(1+\varepsilon)w_q$.
+
+\begin{theorem}[The $\pi$ strip is paid; both other zones freeze]
+\label{an03pisbv1:main}
+For the stated original flow and stopped interval, the middle and
+outer zones of each strip have
+\begin{equation}
+ \sup_{[t_0,t_*]}\frac{\mu_{\rm mid\cup out}}q
+       \le Cq^{10}\sqrt\ell,\qquad
+ \int_{t_0}^{t_*}\frac{\mu_{\rm mid\cup out}}q
+       \le CL_Tq^{10}\ell^{3/2}=o(1).
+ \label{an03pisbv1:frozenbudget}
+\end{equation}
+For the whole $\pi$ strip put
+\begin{align}
+ \delta_1(\lambda)&=c_m-10(1-\lambda),\nonumber\\
+ \delta_2(\lambda)&=(19\lambda-7)/2,\nonumber\\
+ \delta_3(\lambda)&=4/\lambda+10\lambda-12,\qquad
+ \delta_*=\frac{411}{800}.                         \label{an03pisbv1:powers}
+\end{align}
+All three $\delta_j\ge\delta_*>0$. There is an explicit vanishing
+error bound
+\[
+ \Xi_q=D_{\rm clk}
+       +C\{q\ell+q^2\ell^2+q^u+(1+M_{\rm res})qL_T\ell\}=o(1)
+\]
+such that
+\begin{equation}
+ \sup_{[t_0,t_*]}\frac{\mu_{\Sp}}q
+ \le Cq^{10}\sqrt\ell+
+     C e^{2B+\Xi_q}E_g A_q^{\lambda-1}s_q
+                     \sum_{j=1}^3q^{\delta_j(\lambda)}
+ =o(1).
+ \label{an03pisbv1:pibudget}
+\end{equation}
+Multiplying its right side by $L_T\ell$ bounds
+$\int_{t_0}^{t_*}\mu_{\Sp}/q$, which is also $o(1)$.
+In particular the rate obtained uniformly on the ratio box is
+\[
+ \mu_{\Sp}
+   =O\!\left(q^{1211/800}\sqrt{\log\ell}
+                   +q^{11}\sqrt\ell\right)
+\]
+with the fixed factors in \eqref{an03pisbv1:pibudget} retained.
+The sharper proposed $O(q^3(\log\ell)^{3/2})$ rate is not claimed.
+No $G_+$ enlargement or new entry contract is required.
+\end{theorem}
+
+\section{Outer and middle freezing}
+\begin{lemma}[The full outer buffer]
+\label{an03pisbv1:outer}
+There is a fixed $C_{\rm buf}$ such that every initial label in
+$(\pi+w_q,3\pi/2-w_q)$ at distance at least
+$C_{\rm buf}q^3\ell$ from both ends stays in that interval on
+$[0,t_*]$ and satisfies
+\[
+ |\theta(t,b)-b|+|\psi(t,b)-b|\le Cq^3\ell,\qquad
+ m(t,b)=q^{10}e^{O(q^3\ell)}.
+\]
+This applies to both outer zones in \eqref{an03pisbv1:zones}.
+\end{lemma}
+\begin{proof}
+Until the first exit, both input projected means are at most
+$-q\Lambda_q$ in the coordinate convention of GESG interiorspeed.
+That lemma, valid from initialization by loss alone, bounds the
+two angular speeds and the logarithmic radial speed by
+$Ce^{-k_G\Lambda_q^2}=Cq^3$.
+Choose $C_{\rm buf}>2CC_{\rm dur}$. The available travel is smaller
+than the initial buffer, so no first exit exists.
+The outer-zone buffers are at least $\varepsilon w_q$ at the
+nearby end and a fixed positive constant at the other end, and
+$\varepsilon w_q\gg q^3\ell$.
+\end{proof}
+
+\begin{lemma}[Every selected matrix entry retains its small factor]
+\label{an03pisbv1:matrix}
+Let $T(s)=e^{-k_Gs^2}$ and
+$C_*=C_{\rm model}(1+C_{\rm pre}+M_{\rm res})$.
+For $0\le s_\theta,s_\psi\le3\Lambda_q$, the following bounds
+hold throughout $[0,t_*]$.
+Near $\pi$, use $\theta=\pi+qs_\theta$, $\psi=\pi+qs_\psi$;
+near $3\pi/2$, use $\theta=3\pi/2-qs_\theta$,
+$\psi=3\pi/2-qs_\psi$. Entrywise,
+\begin{equation}
+ \begin{array}{c|c}
+ \text{near }\pi&\text{near }3\pi/2\\[2pt]\hline
+ |R_\theta|\le C_*T(s_\theta)
+       \begin{pmatrix}q^2&q\\q&1\end{pmatrix}
+ &
+ |R_\theta|\le C_*T(s_\theta)
+       \begin{pmatrix}1&q\\q&q^2\end{pmatrix}.
+ \end{array}                                      \label{an03pisbv1:table}
+\end{equation}
+Consequently
+\begin{align}
+ |\theta'|+|\psi'|
+ &\le C_*q(1+s_\theta+s_\psi)T(s_\theta),
+                                                        \label{an03pisbv1:angular}\\
+ |(\log m)'|
+ &\le C_*q^2(1+s_\theta)(1+s_\psi)T(s_\theta).
+                                                        \label{an03pisbv1:radial}
+\end{align}
+The $C_*$ in each display may be enlarged by a model-only factor.
+\end{lemma}
+\begin{proof}
+For any cluster and selector $A$, Cauchy--Schwarz and Holder give
+\[
+ |\E[e_iX_j\one_A]|
+ \le \|e_i\|_2(\E X_j^4)^{1/4}\mathbb P(A)^{1/4}.
+\]
+Near $\pi$, the $P_1$ gate is exponentially closed in $q^{-2}$.
+On $P_2$, the fourth-moment norms of $X_1,X_2$ are respectively
+$O(q),O(1)$, while the residual norms of $e_1,e_2$ are respectively
+$O((C_{\rm pre}+M_{\rm res})q),O(1)$.
+This proves the four powers in the left matrix.
+Near $3\pi/2$, the $P_2$ gate is exponentially closed.
+On $P_1$, the fourth-moment norms are $O(1),O(q)$ and the residual
+norms are $O(1),O((C_{\rm pre}+M_{\rm res})q)$.
+This proves all four powers in the right matrix.
+In particular no smallness of $R_{11}$ is assumed there.
+
+The nontrivial selected gate on $P_2$ has probability at most
+$\exp[-\rho^2\sin^2(qs_\theta)/(2q^2)]$, and the corresponding
+$P_1$ bound has $\rho^2$ replaced by one. For
+$s_\theta\le3\Lambda_q$,
+\[
+ \frac{\rho^2\sin^2(qs_\theta)}{8q^2}
+ \ge k_Gs_\theta^2-Cq^2s_\theta^4 .
+\]
+The error is $O(q^2\ell^2)=o(1)$, so a fixed factor suffices to
+retain the exact coefficient $k_G$. The other cluster's
+$e^{-c/q^2}$ contribution is at most $Cq^2T(s_\theta)$:
+on this domain $T(s_\theta)\ge q^{27}$.
+Thus every entry, including the noise-coordinate entries, retains
+the same gate tail.
+
+For the angular equations insert \eqref{an03pisbv1:table} in
+\eqref{an03pisbv1:exact}. Near $\pi$, the two sines have magnitudes
+at most $qs_\theta,qs_\psi$; near $3\pi/2$ the same holds for the
+cosines. This proves \eqref{an03pisbv1:angular}.
+For the radial equation the large diagonal is multiplied by both
+small coordinates, each cross entry by one, and the remaining
+diagonal is already $O(q^2)$. This proves \eqref{an03pisbv1:radial}.
+\end{proof}
+
+\begin{proposition}[Uniform freezing in the middle zone]
+\label{an03pisbv1:middle}
+For a middle-zone initial scaled offset $s_0=a/q$, uniformly on
+$[0,t_*]$,
+\begin{align}
+ |s_\theta(t)-s_0|+|s_\psi(t)-s_0|
+ &\le C\ell(1+s_0)e^{-k_Gs_0^2}
+ \le C(1+s_q)\ell^{-\varepsilon}=o(1),             \label{an03pisbv1:travel}\\
+ \left|\log\frac{m(t,b)}{q^{10}}\right|
+ &\le Cq^2\ell(1+s_0)^2e^{-k_Gs_0^2}
+ \le Cq^2(1+s_q)^2\ell^{-\varepsilon}=o(1).
+                                                        \label{an03pisbv1:middleradial}
+\end{align}
+Here $s_0$ is an offset, not RCET's initial sine.
+\end{proposition}
+\begin{proof}
+For a sufficiently large fixed $A$, set
+$\Delta(s_0)=A\ell(1+s_0)e^{-k_Gs_0^2}$.
+Uniformly for $s_0\ge s_q$ in the middle zone,
+\[
+ \Delta(s_0)=o(1),\qquad
+ s_0\Delta(s_0)\le C(1+s_q)^2\ell^{-\varepsilon}=o(1).
+\]
+These bounds follow because the polynomial times Gaussian is
+decreasing on this range for small $q$.
+Stop when the sum of the two scaled displacements first equals
+$\Delta(s_0)$. Before that time, the offsets are positive and below
+$3\Lambda_q$, and
+\[
+ T(s_\theta)\le T(s_0)e^{2k_Gs_0\Delta(s_0)}
+                      \le 2T(s_0)
+\]
+for small $q$. The scaled angular bound integrated over
+$C_{\rm dur}\ell$ is at most
+$C C_{\rm dur}\ell(1+s_0)T(s_0)<\Delta(s_0)/2$
+after choosing $A$. This contradicts the first equality.
+Integrating the radial bound on the same region gives
+\eqref{an03pisbv1:middleradial}.
+A label-dependent $\Delta(s_0)$ avoids discarding a gate-tail
+constant when $s_0$ is as large as $\Lambda_q$.
+\end{proof}
+
+The union of the two frozen zones in either strip has initial width
+at most $2w_q=O(q\sqrt\ell)$. Lemma~\ref{an03pisbv1:outer} and
+Proposition~\ref{an03pisbv1:middle}, with the fixed label measure
+$\dd b/(2\pi)$, prove \eqref{an03pisbv1:frozenbudget}.
+This proves tasks (1)--(2) without any new entry profile.
+
+\section{The inner \texorpdfstring{$\pi$}{pi} zone at the moving overlap}
+Hats denote only the exact aligned target-only flow with the same
+initial label and norm. Let $\Kh(z)=\phi(z)+z\Phi(z)$.
+Its angular and radial equations are
+\[
+ \widehat\theta'=v_q(\widehat\theta),\qquad
+ v_q(\vartheta)=\frac q2[-\sin\vartheta\,\Kh(\cos\vartheta/q)
+       +\rho\cos\vartheta\,\Kh(\rho\sin\vartheta/q)],
+\]
+\[
+ (\log\widehat m)'=2g_q(\widehat\theta),\qquad
+ g_q(\vartheta)=\E_P[(a_\vartheta\cdot X)_+^2],\qquad
+ g_q'=2v_q .
+\]
+
+\begin{lemma}[Boundary domination in the target flow]
+\label{an03pisbv1:domination}
+For $\pi\le b\le\pi+qs_q$ and every target-only time $t\ge0$,
+\begin{equation}
+ \widehat\theta(t,b)\ge\widehat\theta(t,\pi),\qquad
+ \widehat m(t,b)\le\widehat m(t,\pi).
+ \label{an03pisbv1:targetorder}
+\end{equation}
+For the original flow at $t_m$, the proved all-label early comparison
+therefore gives
+\begin{equation}
+ m(t_m,b)\le e^{Cq^u}\widehat m(t_m,\pi),\qquad
+ \theta(t_m,b),\psi(t_m,b)
+       \ge\theta(t_m,\pi)-Cq^u .
+ \label{an03pisbv1:matching}
+\end{equation}
+No order or cooperativity of the finite-noise original field is
+assumed.
+\end{lemma}
+\begin{proof}
+PROFILE gives its attracting root $qa_q$ and $v_q<0$ above that
+root on a fixed strong chart. The sign continues through Q1:
+using $\Kh(z)=z+\Kh(-z)$,
+\[
+ v_q=-\omega\sin\vartheta\cos\vartheta
+ +\frac q2[-\sin\vartheta\,\Kh(-\cos\vartheta/q)
+          +\rho\cos\vartheta\,\Kh(-\rho\sin\vartheta/q)]<0
+\]
+on $qL\le\vartheta<\pi/2$ for a sufficiently large fixed $L$;
+use $\Kh(-z)\le\Kh(0)$ and $\sin\vartheta\ge2qL/\pi$.
+At $\pi/2$ the negative first term in the exact formula remains.
+On $[\pi/2,\pi]$ both terms in the exact formula are nonpositive,
+and their sum is strictly negative.
+
+For $\vartheta=\pi+qs$, $0\le s\le s_q$, the only positive
+contribution has size at most $Cq^2s_q e^{-c/q^2}$.
+The negative contribution has magnitude at least
+\[
+ cq\,\Kh(-\rho\sin(qs)/q)
+       \ge \frac{cq\,e^{-\rho^2s_q^2/2}}{(1+s_q)^2}.
+\]
+The last bound follows by integrating the Gaussian definition
+$\Kh(-z)=\int_z^\infty(v-z)\phi(v)\dd v$
+over an interval of length $(1+z)^{-1}$ above $z$.
+Its decay is only a fixed power of $\ell$ times a logarithmic
+factor, so it dominates the exponentially closed first gate.
+Thus $v_q<0$ throughout $(qa_q,\pi+qs_q]$.
+
+Scalar uniqueness preserves the angular order, and both
+characteristics stay in this interval. Since $g_q'=2v_q<0$,
+their logarithmic radial rates are ordered as well. Equal initial
+masses prove \eqref{an03pisbv1:targetorder}.
+Q2EC's equation early is explicitly valid for every initial label
+at $t_m$; apply it to $b$ and to $\pi$ to obtain
+\eqref{an03pisbv1:matching}. Its angle error is retained; no exact
+original-flow angular order is inferred.
+\end{proof}
+
+\begin{lemma}[A regularized upper bound at the boundary label]
+\label{an03pisbv1:boundary}
+Uniformly on the ratio box,
+\begin{equation}
+ \widehat m(t_m,\pi)
+ \le C e^{Cq\ell}
+   \left(q^{10}+q^{12-\lambda c_m}
+                  +q^{8-c_m+4/\lambda}\right).
+ \label{an03pisbv1:boundarymass}
+\end{equation}
+\end{lemma}
+\begin{proof}
+PROFILE's exact target coordinate equations are
+\[
+ \widehat U_j'
+  =\frac{\mu_jq|\widehat U|}{2}
+       \Kh(\mu_j\widehat U_j/(q|\widehat U|))+d_q\widehat U_j,
+ \quad (\mu_1,\mu_2)=(1,\rho),\quad 0\le d_q\le q^2.
+\]
+For $b=\pi$, initially $\widehat U_1=-q^5$, $\widehat U_2=0$.
+Let $T_\times$ be the first $\widehat U_1=0$.
+Before this crossing, $\widehat U_2\ge0$ and
+$|\widehat U_1|\le q^5e^{q^2t}$.
+Using $\Kh(z)\le z+\Kh(0)$ for $z\ge0$ gives
+\[
+ \widehat U_2'
+ \le(\lambda/2+Cq+q^2)\widehat U_2+Cq^6e^{q^2t},
+ \qquad
+ \widehat U_2(t)\le Cq^6e^{\lambda t/2+Cqt+q^2t}.
+\]
+Thus before crossing
+$\widehat m(t,\pi)\le C(q^{10}+q^{12}e^{\lambda t})e^{Cqt}$
+on logarithmic times.
+
+Q2E's endpoint-uniform crossing formula, also quoted in RCET,
+retains $(s_0+q)$ and $(c_0+q)$ and gives at this boundary
+\[
+ T_\times=\frac4\lambda\ell+O(1),\qquad
+ \widehat m(T_\times,\pi)\asymp q^8 .
+\]
+The $O(1)$ is uniform on the ratio box.
+After crossing, the target covariance bound gives
+$(\log\widehat m)'\le1+2q^2$.
+If $T_\times\le t_m$, its contribution is therefore at most
+$Cq^{8-c_m+4/\lambda}e^{Cq^2\ell}$.
+If $T_\times>t_m$, the pre-crossing bound applies instead.
+The sum of the three nonnegative terms in
+\eqref{an03pisbv1:boundarymass} covers both cases.
+In particular the Gaussian seed $q^6$ in $\widehat U_2$, and
+hence the $q^{12}e^{\lambda t}$ term, has not been dropped.
+\end{proof}
+
+\section{Paying the remaining pre-entry growth without a new Q2 contract}
+\begin{lemma}[A coarse all-label bridge to half mass]
+\label{an03pisbv1:bridge}
+There is a model/S1 constant $C$ such that for every inner
+$\pi$ label
+\begin{equation}
+ m(t_0,b)\le C A_q^{-1}
+     e^{C(q\ell+q^2\ell^2+q^u)}
+       \left(q^{c_m}
+          +q^{2+(1-\lambda)c_m}
+          +q^{4/\lambda-2}\right).
+ \label{an03pisbv1:entrymass}
+\end{equation}
+This is only a mass bound. It asserts no new Q2EC ratio, sign,
+antisymmetry, or secondary profile contract for these labels.
+\end{lemma}
+\begin{proof}
+Let $S(t)=\int m(t,b)\dd\lambda_0(b)$. For every receiver write
+$R_\theta=A_\theta-C_\theta$, with
+\[
+ A_\theta=\E_P[XX^T\one_{\{a_\theta\cdot X>0\}}],\qquad
+ C_\theta=\E_P[fX^T\one_{\{a_\theta\cdot X>0\}}].
+\]
+The target matrix is positive semidefinite and
+$\|A_\theta\|\le\|\E_PXX^T\|=(1+2q^2)/2$.
+Also $|f(X)|\le S|X|$, so for $q\le1/2$,
+$2\|C_\theta\|\le2S\E_P|X|^2\le4S$.
+Consequently, with no angular restriction,
+\begin{equation}
+ (\log m)'\le1+2q^2+4S(t).                         \label{an03pisbv1:coarserate}
+\end{equation}
+On $[t_m,t_0]$, MOMC, as explicitly recorded in Q2EC's
+equation inputs, supplies
+\[
+ S=M+\mu,\quad \int M\le3/2,\quad
+ \mu\le Cq^2\ell^2M.
+\]
+Thus $\int S\le3/2+Cq^2\ell^2$ and
+\[
+ m(t_0,b)\le
+ e^{6+O(q^2\ell^2)}e^{(1+2q^2)(t_0-t_m)}m(t_m,b).
+\]
+Insert \eqref{an03pisbv1:matching} and
+\eqref{an03pisbv1:boundarymass}, and use
+$e^{t_0-t_m}=A_q^{-1}q^{c_m-10}
+ e^{O(q^2\ell^2+q^u)}$. This proves
+\eqref{an03pisbv1:entrymass}.
+\end{proof}
+
+\begin{remark}[What is paid, and what is not being claimed]
+The factor $e^{t_0-t_m}=A_q^{-1}q^{c_m-10}e^{o(1)}$
+explicitly pays the possible strong-rate growth on this interval.
+It is not hidden in an order-one constant.
+Before $t_m$, all-label early comparison and the exact target
+bound pay the full radial evolution.
+We therefore do not need an $O(1)$ estimate for Q3SB's
+\texttt{unpaidradial} integral, and do not claim to have proved that
+sharper integral estimate. In particular we do not extend Q2EC's
+off-chart transport to Q3 neighbours by assumption.
+There is no enlargement of $G_+$ or change to the partition used by
+LCRC, S2CP or CFA. The price of this simpler bound is the weaker
+positive exponent in Theorem~\ref{an03pisbv1:main}.
+\end{remark}
+
+\section{The regularized post-entry gain and the endpoint check}
+\begin{proposition}[Absolute gain from $t_0$]
+\label{an03pisbv1:postgain}
+For every original receiver define
+$N(t)=|\sin\theta(t)|+|\sin\psi(t)|$, $N_0=N(t_0)$.
+There is a fixed $A_N\ge1$ such that
+\begin{equation}
+ \frac{m(t,b)}{m(t_0,b)}
+ \le e^{2B+\eta_q+1/\beta}
+   \max\{1,A_N(N_0+q)^2e^{\beta I(t)}\}^{1/\beta},
+ \quad
+ \eta_q=C(1+M_{\rm res})qL_T\ell .
+ \label{an03pisbv1:regularizedgain}
+\end{equation}
+Here $1/\beta=1+q^2/\lambda$ exactly. It is at most $1+\nu$
+for the fixed admissible $\nu$ once $q$ is small.
+The simpler simultaneous bound is
+\begin{equation}
+ m(t,b)\le m(t_0,b)e^{2B+\eta_q}e^{I(t)} .
+ \label{an03pisbv1:capone}
+\end{equation}
+The latter bound has no $A_N$ factor.
+\end{proposition}
+\begin{proof}
+GESG's global matrix-value sine inequality gives
+\[
+ D^+N\le\{r+X+I'/2+a_*q\}N+a_*q,\qquad
+ a_*=C(1+M_{\rm res}).
+\]
+Replace $I'/2$ by $\beta I'/2$ at an integrated cost
+$O(q^2L_T\ell)$, and note
+$\beta I'/2\ge a_0:=\lambda_{\min}(1-c_b)/2>0$.
+Duhamel, \eqref{an03pisbv1:gate} and $\int r<B$ give
+\[
+ N(t)\le\min\{2,C_N(N_0+q)e^{\beta I(t)/2}\},\qquad
+ C_N=e^{B+G+1}\max(1,a_*/a_0)
+\]
+for sufficiently small $q$, after harmless enlargement.
+Take $A_N=\max(1,C_N^2/4)$.
+
+DECG's signed weak-gate estimate, including its negative-input
+case, gives directly from \eqref{an03pisbv1:exact}
+\[
+ (\log m)'\le2r+C(1+M_{\rm res})q
+                     +I'(\sin\theta\sin\psi)_+ .
+\]
+Since $(\sin\theta\sin\psi)_+\le\min(1,N^2/4)$, TAILREP's exact
+gain-integration lemma proves \eqref{an03pisbv1:regularizedgain}.
+Retaining only the cap one proves \eqref{an03pisbv1:capone}.
+This also explains why no additional gate-tail sign assumption
+or chart entry is needed after $t_0$.
+\end{proof}
+
+\begin{remark}[The endpoint $b=\pi$]
+The endpoint is included in Lemmas~\ref{an03pisbv1:domination}--
+\ref{an03pisbv1:bridge}, with equality in the target comparison.
+Its nonzero Gaussian seed and crossing time $4\ell/\lambda+O(1)$
+are kept explicitly. Q3SB's lower bounds
+\[
+ \frac{m(t_m,\pi)}{q^{10}}
+       \ge c e^{-Cq^u}q^{2-\lambda c_m},\qquad
+ \frac{m(t_0,\pi)}{q^{10}}
+       \ge c A_q^{-\lambda}q^{2-10\lambda}
+\]
+are consistent with the new upper bounds.
+At $t_m$ the first lower bound is represented by the
+$q^{12-\lambda c_m}$ term.
+At $t_0$,
+\[
+ (12-10\lambda)-[2+(1-\lambda)c_m]
+      =\frac{11-19\lambda}{2}>0
+\]
+on the box, so the coarser entry bound is indeed larger.
+In the post-entry bound the additive $q$ remains even if $N_0=0$.
+Neither a zero initial sine nor exact original-flow angular ordering
+is substituted for the created seed.
+\end{remark}
+
+\section{Closing the \texorpdfstring{$\pi$}{pi} mass budget}
+\begin{proof}[Proof of Theorem~\ref{an03pisbv1:main}]
+Only the inner zone remains after \eqref{an03pisbv1:frozenbudget}.
+For each of its labels, combine
+\eqref{an03pisbv1:entrymass},
+\eqref{an03pisbv1:capone} and the stopped clock
+\eqref{an03pisbv1:clock}. At every endpoint,
+\[
+ m(t,b)\le
+ C e^{2B+\Xi_q}E_gA_q^{\lambda-1}
+       \left(q^{c_m-k}
+             +q^{2+(1-\lambda)c_m-k}
+             +q^{4/\lambda-2-k}\right).
+\]
+The powers are exactly the three $\delta_j$ in
+\eqref{an03pisbv1:powers}, since
+$(1-\lambda)c_m=4+(1-\lambda)/2$.
+The initial width of this zone is $qs_q$, and its measure is
+$qs_q/(2\pi)$. This proves \eqref{an03pisbv1:pibudget}.
+
+For completeness the rational margins need no relation beyond
+the ratio box. $\delta_1$ increases with $\lambda$, and
+\[
+ \delta_1\ge\frac{15259}{9240}>\frac{411}{800}.
+\]
+The increasing affine function $\delta_2$ has minimum
+$411/800$ at $\lambda=169/400$.
+Finally $\delta_3'=10-4/\lambda^2<0$ on the box, so
+\[
+ \delta_3\ge\frac{521}{490}>\frac{411}{800}.
+\]
+All factors outside these powers are fixed or tend to one,
+$A_q$ stays bounded above and below, and
+$s_q=O(\sqrt{\log\ell})$. Multiplication by the duration
+$L_T\ell$ still tends to zero. This closes the supremum and
+integral assertions.
+\end{proof}
+
+\section{The remaining \texorpdfstring{$3\pi/2$}{3pi/2} consumer and the constant order}
+Only the fixed initial inner ancestry
+\[
+ J_3=\{3\pi/2-qs_q<b\le3\pi/2\}
+\]
+remains unpaid on the other side. No claim about its entry, its
+radial lag or its relative shape is proved here.
+
+For an already charted part, S2CP's \texttt{latestrip} consumer is a
+bounded actual-reference entry chart and the \emph{raw} law
+\[
+ \eta_{\rm late}\{\xi>v\}
+     \le C_T\min\{1,(\epsilon_h/v)^p\},\qquad
+ \dd\eta_{\rm late}=m(t_0,b)\dd\lambda_0,\qquad p=3/s_{\rm pr},
+\]
+with the corresponding TAILREP cutoff/moment. Here
+\[
+ d=(1-\lambda P_\rho)/2,\quad s_{\rm pr}=d/\omega,\quad
+ \alpha=\lambda P_\rho/2,\quad
+ \epsilon_h=\sqrt2 A_q^d(1-M_0)^\alpha q^{10d-s_{\rm pr}} .
+\]
+These are the source's profile parameters, not the offsets $s_0$.
+
+If entry is later, let $\tau_b\ge t_0$ be the actual joint chart
+arrival, with $\tau_b=t_0$ for labels already charted, and
+$\tau_b=\infty$ otherwise. Let $\xi_b$ be its scaled displacement
+from the actual reference at arrival. A sufficient exact consumer
+is an arrival-valid gain dominating current mass by
+\begin{align}
+ \mathcal W_3(t)={}&
+ \int_{J_3\cap\{\tau_b>t\}}m(t,b)\dd\lambda_0(b)\nonumber\\
+ &+C_m\int_{J_3\cap\{\tau_b\le t\}}m(\tau_b,b)
+ \max\{1,A_0q^2\xi_b^2e^{\beta[I(t)-I(\tau_b)]}\}^{1+\nu}
+                      \dd\lambda_0(b),             \label{an03pisbv1:lateconsumer}
+\end{align}
+together with
+\[
+ \sup_{[t_0,t_*]}\mathcal W_3/q=o(1),\qquad
+ \int_{t_0}^{t_*}\mathcal W_3/q=o(1),
+\]
+or the second inequality with CFA's small fixed allowance.
+Both the arrival-valid gain and this weighted estimate remain to
+be proved for $J_3$. They are not assumed in the $\pi$ theorem.
+The unarrived term must not be dropped.
+
+The new constants have the following dependencies.
+Loss/Gaussian constants, $k_G$, $C_{\rm pre}$, the target root
+constants, the crossing constants, $c_A,C_A$, and the fixed
+mass-bridge cost $e^6$ are model/S1 constants, independent of
+LCRC guards. $C_{\rm dur}$ uses the retained duration.
+The middle-freezing constants depend on $\varepsilon$,
+$C_{\rm dur}$ and $1+C_{\rm pre}+M_{\rm res}$, all fixed before $q$.
+For the optional sharper post-entry inequality,
+$C_N,A_N$ depend on $B,G,M_{\rm res},c_b$ as displayed.
+They do not enter the main estimate through any new $q$ exponent.
+The main $\pi$ estimate has the explicit fixed factor $e^{2B}E_g$,
+the power $A_q^{\lambda-1}$ and the vanishing clock/rate defect
+$\Xi_q$; its remaining constants are model/S1 constants.
+No chart radius, core mass bound or entry threshold is enlarged.
+
+Thus the existing S2CP/CFA constant order is unchanged:
+model and guard-independent core constants, fixed stopped guards
+and field allowances, $C_0$ and its entry constants as in those
+sources, the auxiliary $\varepsilon$, and finally $q$.
+For any already fixed CFA allowance, the proved $\pi$ contribution
+and both frozen-zone contributions are smaller than that allowance
+for sufficiently small $q$. The $3\pi/2$ inner contribution still
+has to be paid before CFA's \emph{whole-strip} input is available.
+We stop here: no joint weak-passage bootstrap, no CLOCK passage
+application, no new entry contracts, and no consolidation.
+\end{document}
+

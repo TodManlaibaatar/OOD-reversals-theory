@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.14 — October 23, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.15 — October 23, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -51,6 +51,11 @@
   - the total-clock bound $e^{I_{\rm tot}(t_*)}\le CE_gA_q^{-q^2}q^{-10-10q^2}$;
   - a frozen 3π/2 substrip.
 - *Revised strip route:* split each strip by scaled offset into an outer frozen zone, a middle zone (frozen in scaled coordinates), and an inner zone of physical width $O(q\sqrt{\log\ell})$. Do the π strip first, then 3π/2.
+
+**Revision 1.15 (Oct 23).** Records PISB (`AN03_pi_strip_budget_v1`).
+- **The π strip is paid,** with $\sup\mu_{\mathcal S_\pi}/q\lesssim q^{411/800}\sqrt{\log\ell}$.
+- **Both strips' outer and middle zones are frozen and paid.**
+- The only external input left in the weak passage is the 3π/2 inner zone $J_3=(3\pi/2-qs_q,3\pi/2]$, of physical width $O(q\sqrt{\log\ell})$. A time-shift route is recorded for it.
 
 ---
 
@@ -535,6 +540,35 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
       - Expected: inner-zone mass $\approx q^3$ and displacement $\ll1$, giving a post-$t_0$ cost of order $q^{1+}$ under the α-rate.
 - *Order:* the π strip (one session), then the 3π/2 strip (one or two), then the joint weak-passage assembly.
 
+**Status after PISB (`AN03_pi_strip_budget_v1`, Oct 23).**
+- *Proved:*
+  - **Outer zones (both strips).** The buffer argument inside $(\pi+w_q,3\pi/2-w_q)$ gives mass $q^{10}e^{O(q^3\ell)}$.
+  - **Middle zones (both strips).** Every selected entry retains its gate tail $T(s)=e^{-k_Gs^2}$ (`table`):
+    - near π: $|R|\le C_*T\left(\begin{smallmatrix}q^2&q\\q&1\end{smallmatrix}\right)$;
+    - near 3π/2: $|R|\le C_*T\left(\begin{smallmatrix}1&q\\q&q^2\end{smallmatrix}\right)$.
+    Hence angular speeds are $O(q(1+s)T)$, radial rates $O(q^2(1+s)^2T)$, scaled travel $O((1+s_q)\ell^{-\epsilon})$, and the labels are frozen.
+  - **Inner π zone.**
+    - *Target-only domination at $t_m$.* $v_q<0$ on $(qa_q,\pi+qs_q]$ and $g_q'=2v_q$, so $\hat\theta(t,b)\ge\hat\theta(t,\pi)$ and $\hat m(t,b)\le\hat m(t,\pi)$. The comparison factor is at most one.
+    - *Transfer.* Q2EC's all-label early comparison carries this to the original flow at $t_m$.
+    - *Regularized boundary mass.* $\hat m(t_m,\pi)\le C(q^{10}+q^{12-\lambda c_m}+q^{8-c_m+4/\lambda})$.
+    - *Coarse bridge.* $(\log m)'\le1+2q^2+4S$ and $\int_{t_m}^{t_0}S\le3/2$, so $e^{t_0-t_m}$ is paid explicitly. This avoids the unpaid pre-entry radial term.
+    - *After $t_0$.* Cap-one gain $m\le m(t_0)e^{2B}e^I$.
+    - *Result.* Exponents $\delta_1=c_m-k$, $\delta_2=(19\lambda-7)/2\ge411/800$ and $\delta_3=4/\lambda+10\lambda-12$ are all positive.
+- *Remaining:* only the 3π/2 inner zone $J_3$. Its consumer is S2CP's raw tail `latestrip` for charted labels, plus the arrival-weighted bound `lateconsumer` for the rest.
+- *Why crude bounds fail for $J_3$.* These labels reach the strong chart with per-label mass up to about $q^2$ at $t_0$, and the post-$t_0$ weak gain is of order $q^2\xi^2e^{\beta I}\sim q^{2-k}\xi^2$. The budget therefore depends on the actual correlation between mass and displacement. Uniform bounds such as MOMC's $\max\xi\le Cq^{d/2}$, even after contraction, miss by small powers of q.
+- *Proposed route for $J_3$ (reviewer; verify first).*
+  - **Time-shift structure.** The aligned target-only flow is a scalar autonomous ODE. On $[3\pi/2-qs_q,3\pi/2]$ followed by $(-\pi/2,qa_q)$, $v_q>0$ (mirror of PISB's sign lemma). So
+    - $\hat\theta(t,b)=\hat\theta(t-\tau(b),-\pi/2)$ exactly, with delay $\tau(b)=\int_b^{-\pi/2}d\vartheta/v_q>0$;
+    - $\hat m(t,b)\le e^{o(1)}\hat m(t-\tau,-\pi/2)$, and also $\le\hat m(t,-\pi/2)$ by domination.
+    The $J_3$ measure per unit delay is $\le Cq\,K(-s(\tau))$, which continues the right half's endpoint density.
+  - **Transfer at $t_m$** via Q2EC's all-label early comparison.
+  - **Delay classes.**
+    - *Charted at $t_m$:* transport by MOMC's chart contraction from $t_m$.
+    - *Arriving in $(t_m,t_0]$:* a single-label contraction from arrival. In the strong passage $J_{\rm sh}$ contracts at rate $\ge d-M/2\ge d-1/4>0$; fixed constants suffice (ledger 15). This also yields M-clock contraction $\xi(t_0)\lesssim\xi_{\rm arr}(M_{\rm arr}/M(t_0))^d$.
+    - *Arriving after $t_0$, or never:* coarse mass, lower-side no-gain until arrival, then the gain from arrival with $\xi=O(1)$.
+  - **Expected structure.** Mass $\propto e^{-T}$ and $\xi\propto e^{dT}$ in the extra delay T, so $J_3$'s tail exponent is $1/d>p=3s^{-1}>2$. The weighted moment converges because $2d<1$; its size is about $q^3\cdot q^{2-k}\xi_0^2$ with endpoint displacement $\xi_0\approx q^{10d-2s}$. This gives $\mu/q$ of order roughly $q^{1/2}$ at $\lambda=169/400$; verify the exact exponents.
+- *Then:* the joint weak-passage assembly.
+
 ### S4. Weak return and matching to the leading weak family
 
 **Claim.** The Q2 bulk, which is on the strong side at angle $\approx q^{0.52}$ at κ=10 strong entry (target-only), returns into a bounded weak chart with $u\ge0$. Its evolution there matches a closed leading weak family with $\sqrt{N_0}\,W_p(t_0)\to0$, and its response clock matches the logistic half-mass phase to $o(1)$.
@@ -644,7 +678,7 @@ Tracks that can run in parallel:
 | Track | Steps | Notes |
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
-| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, the regularized envelope and a frozen substrip. Next: the π strip by the three-zone route, then the 3π/2 strip, then the joint weak-passage assembly. |
+| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs. PISB paid the π strip and both strips' outer and middle zones. Only the 3π/2 inner zone $J_3$ remains external. Next: $J_3$ by the time-shift route, then the joint weak-passage assembly. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
@@ -749,6 +783,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | S2CP | `AN03_S2_closure_package_v1.tex` (+ review), prefix `an03s2cpv1:` — S2 closed in stopped-guard form; $\mathcal U_\Sigma$ and $B_s$ paid; retained-input audit |
 | CFA | `AN03_c_form_assembly_v1.tex` (+ review), prefix `an03cfav1:` — S3 closed in stopped-guard form; core-only c-form, full remainder, CLOCK forcing, conditional passage |
 | Q3SB | `AN03_Q3_strip_budgets_v1.tex` (+ review), prefix `an03q3sbv1:` — partial; pre-entry cross residual and gate budget, regularized envelope, total clock, frozen 3π/2 substrip; refutes three proposed premises |
+| PISB | `AN03_pi_strip_budget_v1.tex` (+ review), prefix `an03pisbv1:` — π strip paid; outer and middle zones of both strips frozen and paid; $J_3$ consumer recorded |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |
