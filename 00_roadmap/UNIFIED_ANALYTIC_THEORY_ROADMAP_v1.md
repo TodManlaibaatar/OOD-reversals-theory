@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.17 — October 28, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.18 — October 28, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -67,6 +67,11 @@
 - The single remaining gap is **the lower response barrier** $c\ge0$. Every source assumes it, and none proves it. My v1.16 claim that no input remained was wrong (ledger 21).
 - WPT also corrects my hitting-time formula: the denominator is Q, not $Q(1-c_b)$.
 - Next: a signed response-barrier lemma, which completes the weak-passage theorem.
+
+**Revision 1.18 (Oct 28).** Records RB (`AN03_response_barrier_v1`): **the deep-regime weak-passage theorem is complete.**
+- **Barrier:** $c\ge\tfrac{\kappa_0}2q^2\mu_{\mathcal K}+\tfrac12H_{G_+}>0$, with $\kappa_0=351/102400$, so $\tau=t_b$.
+- **Terminal amplitude and time:** $H(t_b)\asymp c_b$ and $t_b-t_0=[\log(c_b/H_0)+O(1)]/Q$.
+- **Next: S4,** revised to run the selection stage inside the passage interval.
 
 ---
 
@@ -615,6 +620,18 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
     - or a *sign-alignment route*, using $\Delta'=-\operatorname{tr}R\sin\Delta+(R_{12}-R_{21})\cos\Delta$. This would confine negative-response states ($\sin\theta>0>\sin\psi$) to $|\theta|,|\psi|\le Cq$, where the response is $O(q^2m)$.
   - Then $c\ge\tfrac{\kappa_0}2q^2\mu_{\mathcal K}+\tfrac12H_{G_+}>0$ on the whole interval, so $\tau=t_+$.
 
+**Status after RB (`AN03_response_barrier_v1`, Oct 28): weak passage complete.**
+- *Theorem (initialized deep-regime weak passage).* For κ=10, ρ∈[13/20,7/10], fixed constants in WPT's order, and small q:
+  - the original flow reaches $c=c_b$ at $t_b<t_0+20\ell$, with $c>0$ throughout;
+  - all of WPT's estimates hold on $[t_0,t_b]$;
+  - $H(t_b)\asymp c_b$, and $t_b-t_0=[\log(c_b/H_0)+O(1)]/Q$, where the clock has an $o(1)$ subinterval defect and the phase error is a bounded constant.
+- *Proof checked:*
+  - **Core sign.** $\phi(0)>3/8$ gives $a\ge39/160$, and $39/160-3/16-9/320=9/320$. The core moment $(q^2/Q)\int y\rho K(\rho x)$ gives $\kappa_0=351/102400$. Mass stays at least $(\tfrac12-o(1))e^{-d_q}$ by a last-crossing argument.
+  - **Entry alignment.** Q2EC's all-receiver decomposition gives $(\operatorname{tr}R)_-\le C(q^2M+\mu)$ and $|R_{12}-R_{21}|\le C(qM+\mu)$. The trace is nonnegative because $M\le1/2$.
+  - **Alignment after $t_0$.** $(R_{22})_-\le\tfrac12M_{\rm res}q^2+\tfrac12(Qc+N_-)$, and S2CP's gate budget makes the negative-trace integral at most $B+G_b$. This gives $|\theta-\psi|\le C_{\rm al}q(1+\ell)$.
+  - **Exact Stein moment.** $E_{P_2}[X_2(a_\theta\cdot X)_+]=\rho qK(\rho s/q)+q^2s\Phi(\rho s/q)$. Three sign cases then give $(c_S)_-\le C(q+\delta)^2\mu_S$, so $(c_{\mathcal B})_-=O(q^{31/10}\ell^2)=o(q^2)$.
+  - **Terminal comparison.** $H_{G_+}(t_b)\ge\tfrac9{10}c_b-o(1)$, and RCET's fixed-distortion transport carries this to the clock cohort.
+
 **Joint assembly (done in WPT except the response barrier; outline kept for reference).**
 - *Target.* For $\kappa=10$ and $\rho\in[13/20,7/10]$, from $t_0=t_h$ until $t_b$, the first time $c=c_b$, show $t_b\le t_0+L_T\ell$ with all the conclusions below.
 - *Guards, improved together by one first exit,* each with its proved improvement:
@@ -632,6 +649,23 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - residual bounds.
 
 ### S4. Weak return and matching to the leading weak family
+
+**Revised plan (Oct 28, after RB; reviewer proposal, to verify).**
+- *Structure of the remaining deep-regime proof:*
+  - $t_0\to t_b$: the weak passage (done);
+  - $t_s\to t_{n_b}$: the **selection stage** (S4);
+  - from $n_b$ to the reversal windows: finite time, by compact-window matching (S5).
+- *Run the selection inside the passage.* Choose a fixed $n_b\in(0,c_b/2]$, small enough for WEAK's small-gain condition $\Theta\le1/4$. Then $t_{n_b}<t_b$, and every WPT/RB estimate is available, so no continuation of the bootstrap past $t_b$ is needed. The core's retention after $n_b$ comes from finite-time matching in S5.
+- *Tool:* TAILREP's perturbed selection theorem (`selection`, `Econclusion`, `Wconclusion`), which builds on WEAK's forcing, concentration and `Wineq` results. Its error system is
+  $E_s'\le-gE_s+C_s(d_0+NW_p)$, $W_p'\le[-\lambda(1-N)/2+N/2+\ell_B]W_p+C_w(E_s+d_0)$.
+  Its conclusion: if $N_0\to0$, $A_0=\sqrt{N_0}W_p(t_s)\to0$ and $d_0\to0$, then the strong-mean and weak-population errors at $n_b$ vanish.
+- *Inputs to match:*
+  - **(i) Weak return.** For a fixed weak cohort (the clock $\mathcal C_q$ or $G_+$), inputs satisfy $u\ge0$ with WEAK's strict margin from some start $t_s$. Labels arrive from the strong side. BULK's $x=qj/z\le C(q^\eta e^{-b_*\tau/2}+q^2)$ suggests $u(t_{n_b})\lesssim q^{-0.6}$, so a growing weak chart $|u|\le q^{-1+\epsilon}$ is needed, and WEAK allows divergent incoming spread.
+  - **(ii) Weak-chart field.** The weak family's field in (u,v), with finite-noise errors of order $q^2(1+u^2)$, the M−1 defect (where $\int_{t_s}(1-M)$ is small once $t_s-t_0\to\infty$), and strong/outside contributions from existing budgets. These must be cast as TAILREP's additive $d_0$ and integrated $\ell_B$.
+  - **(iii) Clock matching** N↔H↔c with $o(1)$ phase. RB's exact clock and BULK give $N_{\rm cohort}=H_{\rm cohort}(1+O(q^2))$ in the chart.
+  - **(iv) Smallness.** $A_0\to0$ (for example $\sqrt{H(t_s)}\,W_p(t_s)$), and $d_0\lesssim q^\chi+q^{\Delta_\nu}+\dots$ from WPT/RB.
+  - **(v) Leading-system hypotheses:** $Y\ge0$ (RB's core has $y\ge9/320$), bounded $\rho K_s$, and positivity of the selected branch's weak input (AN06).
+- *First session (S4a):* match all of these hypotheses and close what follows directly. Stop at the first unmatched one.
 
 **Claim.** The Q2 bulk, which is on the strong side at angle $\approx q^{0.52}$ at κ=10 strong entry (target-only), returns into a bounded weak chart with $u\ge0$. Its evolution there matches a closed leading weak family with $\sqrt{N_0}\,W_p(t_0)\to0$, and its response clock matches the logistic half-mass phase to $o(1)$.
 
@@ -740,8 +774,8 @@ Tracks that can run in parallel:
 | Track | Steps | Notes |
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
-| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem. The one gap is the lower response barrier $c\ge0$ (ledger 21). Next: the signed response-barrier lemma, after which the weak-passage theorem is complete. |
-| III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
+| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem, and **RB proved the response barrier: the deep-regime weak passage is a theorem.** Track II is complete; next is S4 (track III). |
+| III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. **Next: S4a,** the selection-stage interface inside the passage: weak return, weak-chart field, clock matching, and TAILREP's perturbed selection at $n_b\le c_b/2$. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
 | — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. |
@@ -852,6 +886,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | PISB | `AN03_pi_strip_budget_v1.tex` (+ review), prefix `an03pisbv1:` — π strip paid; outer and middle zones of both strips frozen and paid; $J_3$ consumer recorded |
 | LSB | `AN03_late_strip_budget_v1.tex` (+ review), prefix `an03lsbv1:` — $J_3$ paid via time shift, single-label chart contraction and delay split; strips complete |
 | WPT | `AN03_weak_passage_theorem_v1.tex` (+ review), prefix `an03wptv1:` — two-boundary theorem with all non-response guards improved; stops at the lower response barrier $c\ge0$; corrects the hitting-time denominator |
+| RB | `AN03_response_barrier_v1.tex` (+ review), prefix `an03rbv1:` — **response barrier; completed initialized deep-regime weak-passage theorem**; $H(t_b)\asymp c_b$, exact time relation, S4 handoff |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

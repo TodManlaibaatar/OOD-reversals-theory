@@ -1,0 +1,837 @@
+% New standalone increment. No prior source is changed or merged.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=.88in]{geometry}
+\usepackage{array,longtable,booktabs,xurl}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf1}
+\newcommand{\KK}{\mathcal K}
+\newcommand{\BB}{\mathcal B}
+\newcommand{\Gp}{G_+}
+\newcommand{\Clk}{\mathcal C_q}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Kfun}{\mathsf K}
+\newcommand{\src}[2]{\textup{#1} \texttt{#2}}
+\title{The response barrier and the completed weak passage}
+\author{Standalone analytical increment for independent review}
+\date{Version 1 --- 28 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We exclude the lower response boundary in WPT's initialized
+two-boundary theorem. A uniform core response of order $q^2$ is
+retained with its sign. An all-label angle-difference estimate,
+$|\theta-\psi|\le Cq(1+\log(1/q))$, makes the negative outside
+response $o(q^2)$ under the already proved outside-mass guard.
+The secondary response is at most $H/9+o(q^2)$. Consequently
+$c\ge (\kappa_0/2)q^2\mu_{\KK}+H_{\Gp}/2>0$ on WPT's
+closed stopped interval, with an explicit model constant
+$\kappa_0=351/102400$. The first response boundary is therefore
+$c=c_b$. A fixed-factor comparison of primary and clock amplitudes
+also gives $H(t_b)\asymp c_b$ and
+$t_b-t_0=[\log(c_b/H_0)+O(1)]/Q$. The clock defect itself remains
+$o(1)$. No response-sign assumption is added to the initialized theorem.
+\end{abstract}
+
+\section{Domain, notation and the noncircular use of WPT}
+\label{an03rbv1:domain}
+Use the initialized balanced original flow and normalization of WPT:
+\[
+ P_1=\mathcal N(e_1,q^2I_2),\quad
+ P_2=\mathcal N(\rho e_2,q^2I_2),\quad P=(P_1+P_2)/2,
+ \quad \rho\in[13/20,7/10],\quad m(0,b)=q^{10}.
+\]
+Write $\lambda=\rho^2$, $Q=\lambda+q^2$, $\ell=\log(1/q)$,
+$k=10(1-\lambda)$, and
+\[
+ U=\sqrt m\,a_\theta,\quad W=\sqrt m\,a_\psi,\quad
+ R_\theta=\E_P[(X-f(X))X^T\one_{a_\theta\cdot X>0}].
+\]
+Angles are continuous lifts with equal initial values. For a fixed
+cohort $S$, let $\dd\mu=m\dd\lambda_0$, $\mu_S=\int_S\dd\mu$,
+\[
+ c_S=Q^{-1}\E_{P_2}[X_2(f_S)_2],\quad
+ E_S=\tfrac12\int_S(U_2^2+W_2^2)\dd\lambda_0,\quad
+ J_S=\tfrac12\int_S(U_1^2+W_1^2)\dd\lambda_0.
+\]
+Thus $E_S+J_S=\mu_S$. Let
+$z=(U_2+W_2)/2$, $a_-=(U_2-W_2)/2$,
+$H_S=\int_Sz^2\dd\lambda_0$, and $A_S=\int_Sa_-^2\dd\lambda_0$.
+The positive part notation for a scalar is $v_+=\max(v,0)$,
+and $v_-=\max(-v,0)$; $a_-$ above is a signed coordinate,
+not this positive-part operation.
+
+Keep WPT's fixed partition, without reassigning any strip:
+\begin{equation}
+ \mathbb S^1=\KK\ \dot\cup\ \Gp\ \dot\cup\ \Sigma\ \dot\cup\ \BB,
+ \qquad
+ \BB=\mathcal C\ \dot\cup\ \mathcal Q_{3,\mathrm{int}}^0
+       \ \dot\cup\ \mathcal S_\pi\ \dot\cup\ \mathcal S_{3\pi/2}.
+ \label{an03rbv1:partition}
+\end{equation}
+Here $\mathcal C$ is the strong complement, $\mathcal D=\varnothing$,
+and $\Clk\subset\Gp$ is the fixed clock cohort. Put
+$H=H_{\Clk}$, $H_0=H(t_0)$,
+$I(t)=Q\int_{t_0}^t(1-c)$, and $t_0=t_h$.
+
+\src{WPT}{twoboundary} is an unconditional initialized theorem.
+It provides $0<c(t_0)<c_b$ and all its estimates on
+\begin{equation}
+ [t_0,\tau],\qquad
+ \tau=\min(t_-,t_+)<t_0+20\ell,\qquad
+ t_-:=\inf\{t>t_0:c(t)=0\},\quad
+ t_+:=\inf\{t>t_0:c(t)=c_b\}.
+ \label{an03rbv1:twostop}
+\end{equation}
+In particular $0\le c\le c_b$ on this \emph{closed} interval.
+Every application below of a source requiring this sign condition
+is restricted to this interval, including a possible endpoint with
+$c=0$. Positivity after $\tau$ is not used. The argument excludes
+$\tau=t_-$ only after all its estimates have been obtained there.
+
+We use WPT's constants and strict improvements, in particular
+\begin{gather}
+ \int_{t_0}^{\tau}r\le B,quad
+ r=\sup_\theta|R_{11}(\theta)|,quad
+ \|e_2\|_{P_1}+\|e_1\|_{P_2}\le M_{\rm res}q,quad
+ |R_{12}|+|R_{21}|\le C(1+M_{\rm res})q,
+ \label{an03rbv1:matrixinputs}\\
+ E_{\Gp}<E_g=2c_b,quad J_G\le q^2K_Y^2,quad
+ E_\Sigma\le C_\Sigma(q^5+q^{\Gamma_\nu}H),\quad
+ \Gamma_\nu\ge\frac{289169}{924000}>\frac3{10},
+ \label{an03rbv1:energyinputs}\\
+ e\le3e_*/4\le3/16,\quad r_{\KK}=O(q^{1/20}),\quad
+ |\theta|,|\psi|\le Rq\text{ on }\KK,\quad R=79/51,
+ \quad \mu_{\BB}/q\le q^{1/10}.
+ \label{an03rbv1:geometryinputs}
+\end{gather}
+Here $e$ bounds each coordinate error of the actual reference from
+$(a,a)$, $r_{\KK}$ bounds each core coordinate's displacement from
+that reference, and $a=\rho\Kfun(\rho a)$, with
+$\Kfun(v)=\phi(v)+v\Phi(v)$. We have weakened some of WPT's
+strict inequalities. Its improved geometry, not the raw inequality
+$r_{\KK}<1$, will be essential for the core sign.
+
+\section{Positive core response and the primary--secondary ledger}
+\begin{lemma}[Explicit core sign and lower mass]
+\label{an03rbv1:core}
+Uniformly on \eqref{an03rbv1:twostop}, for sufficiently small $q$,
+every core label has
+\begin{equation}
+ x=\theta/q\ge y_{\min},\quad y=\psi/q\ge y_{\min},\quad
+ y_{\min}=\frac9{320},\qquad
+ c_{\KK}\ge\kappa_0q^2\mu_{\KK},\quad
+ \kappa_0=\frac{351}{102400}.
+ \label{an03rbv1:corepositive}
+\end{equation}
+With the $d_q=\int_{t_0}^{\tau}|\eta|=o(1)$ of S2CP's core
+mass equation,
+\begin{equation}
+ \mu_{\KK}(t)\ge\mu_{\KK}(t_0)e^{-d_q}
+   =(1/2-o(1))e^{-d_q}\ge1/3.
+ \label{an03rbv1:masslower}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The elementary bound $\phi(0)>3/8$ suffices. For example,
+$\pi/4=\int_0^1(1+x^2)^{-1}\dd x<1-1/3+1/5=13/15$
+implies $\pi<32/9$. MOMC's positive root satisfies
+$a\ge\rho\phi(0)\ge39/160$.
+Choose $q$ last so that $r_{\KK}\le9/320$. Then
+\[
+ x,y\ge39/160-3/16-9/320=9/320.
+\]
+For the exact response, write $X=(qZ,V)$ on $P_2$, where
+$V=\rho+qZ_2$ and $Z,Z_2$ are independent standard normals.
+The trigonometric substitution used in \src{MOMC}{reduction} gives
+\begin{align}
+ c_{\KK}
+ &=\frac{q^2}{Q}\int_{\KK} y\E[V(Z+xV)_+]\dd\mu
+                  +O_R(q^4\mu_{\KK})\notag\\
+ &=\frac{q^2}{Q}\int_{\KK}y\rho\Kfun(\rho x)\dd\mu
+                  +O_R(q^4\mu_{\KK}).
+ \label{an03rbv1:coremoment}
+\end{align}
+Indeed $\sin(qy)=qy+O_R(q^3)$ and
+$a_\theta\cdot X=q\cos(qx)[Z+\tan(qx)V/q]$.
+The compact-parameter Gaussian moment is smooth; Taylor expansion
+in $V$ about $\rho$, with centered variance $q^2$, has error
+$O_R(q^2)$. This is precisely the moment calculation in MOMC,
+and is uniform over the current positive donor measure.
+Since $x\ge0$, $\rho\Kfun(\rho x)\ge39/160$.
+For $Q\le1$ the leading coefficient is at least $351/51200$;
+the uniform $O_R(q^4)$ term is absorbed by half of it. This proves
+\eqref{an03rbv1:corepositive} with a model-only constant.
+
+S2CP \texttt{Bs}, as invoked on WPT's interval, gives
+\[
+ (\log\mu_{\KK})'=1-\mu_{\KK}+\eta,\quad
+ \int|\eta|=d_q=o(1),\quad \mu_{\KK}(t_0)=1/2-o(1)<1.
+\]
+If $w(t)=\log\mu_{\KK}(t)<w(t_0)$, take the last crossing
+of $w(t_0)$ before $t$ (or $t_0$ itself). Between that crossing
+and $t$, $\mu_{\KK}<\mu_{\KK}(t_0)<1$, so $w'\ge\eta$.
+Integration gives $w(t)\ge w(t_0)-d_q$; the other case is immediate.
+This proves \eqref{an03rbv1:masslower}. In particular we have not
+multiplied the pointwise overshoot bound by a logarithmic duration.
+\end{proof}
+
+\begin{lemma}[Signed primary and absorbed secondary charges]
+\label{an03rbv1:explicit}
+On the same interval,
+\begin{align}
+ c_{\Gp}&\ge\frac89H_{\Gp}
+                  -C\mu_{\Gp}e^{-\rho^2/(4q^2)},
+ \label{an03rbv1:primary}\\
+ |c_\Sigma|&\le\frac19H+mathcal R_\Sigma(q),\qquad
+ \mathcal R_\Sigma(q)
+       \le C(q^5+q^{9/2}+q^{4+\Gamma_\nu})=o(q^2).
+ \label{an03rbv1:secondary}
+\end{align}
+All constants in the second bound are fixed before $q$.
+\end{lemma}
+\begin{proof}
+The exact additive decomposition is
+\begin{equation}
+ c=c_{\KK}+c_{\Gp}+c_\Sigma+c_{\BB}.
+ \label{an03rbv1:ledger}
+\end{equation}
+LCRC \texttt{identity}, with its nonnegative negative-part
+convention, says $c_S=H_S-A_S+\tau_S$.
+LCRC \texttt{localclock/signgood}, already supplied by WPT,
+gives $z>0$, $|a_-|\le z/3$, and $W_2=z-a_->0$ on $\Gp$.
+Thus $A_{\Gp}\le H_{\Gp}/9$ and LCRC \texttt{taulower}
+applies with no angular margin. This proves \eqref{an03rbv1:primary}.
+Its tail is $o(q^2)$ because
+$\mu_{\Gp}=E_{\Gp}+J_{\Gp}\le E_g+q^2K_Y^2$.
+
+LCRC \texttt{responsecharge} holds for arbitrary signs. From
+$J_\Sigma\le J_G\le q^2K_Y^2$ and
+\eqref{an03rbv1:energyinputs} it yields
+\[
+ |c_\Sigma|\le C_\Sigma q^5+C_\Sigma q^{\Gamma_\nu}H
+       +Cq^{9/2}+Cq^{2+\Gamma_\nu/2}\sqrt H.
+\]
+Young's inequality bounds the last term by
+$H/18+Cq^{4+\Gamma_\nu}$; choose $q$ so that
+$C_\Sigma q^{\Gamma_\nu}\le1/18$. The result is
+\eqref{an03rbv1:secondary}. No bound of the form $o(H_0)$ is needed.
+\end{proof}
+
+\section{An all-label alignment bound with the required scope}
+\label{an03rbv1:alignmentsection}
+The fixed-$Cq$ alignment strip suggested in the route is stronger
+than needed. We prove $Cq(1+\ell)$ globally instead. Its squared
+cost times the outside mass is $o(q^2)$. This avoids imposing an
+unproved invariant sign region on transitional strip labels.
+
+\begin{lemma}[All-label alignment at entry]
+\label{an03rbv1:entryalignment}
+For every initial label, including the two Q3 endpoints,
+\begin{equation}
+ |\theta(t_0,b)-\psi(t_0,b)|\le C_{\rm al,0}q.
+ \label{an03rbv1:deltaentry}
+\end{equation}
+The constant depends only on the proved S1 bounds and the model
+box, not on LCRC's guards.
+\end{lemma}
+\begin{proof}
+At the moving overlap $t_m=c_m\ell$,
+$c_m=4/(1-\lambda)+1/2$, Q2EC \texttt{early} is an all-label
+comparison and gives $|\theta-\psi|\le Cq^u$, where
+$u=10-c_m\ge169/102>1$.
+On $[t_m,t_0]$, MOMC \texttt{main} supplies the fixed right-half
+family $\mathcal R$ in the chart $[-R,R]^2$, with mass
+$M\le1/2$, remaining mass $\mu\le Cq^2\ell^2M$, and
+$\int M\le3/2$. The last bound also follows from its mass law
+by integrating $-\log(1-M)$ and its $o(1)$ integrated defect.
+
+We need estimates for \emph{arbitrary receivers}, not an extension
+of MOMC's receiver chart. Let
+$T_s=\int_{\mathcal R}m a_\psi a_\theta^T\dd\lambda_0$ and
+$A_i=\E_{P_i}[XX^T\one_{a_\theta\cdot X>0}]$.
+Q2EC \texttt{fullgates}, valid at every receiver angle, says
+\[
+ R_\theta=\tfrac12[(I-T_s)A_1+A_2-B_2]+\mathcal R_\theta,
+ \quad B_2=\E_{P_2}[f_{\mathcal R}X^T\one_{a_\theta\cdot X>0}],
+ \quad |\mathcal R_\theta|\le C\mu+CM e^{-c/q^2}.
+\]
+Its donor moment bounds are
+\[
+ (T_s)_{11}=M+O(q^2M),\quad
+ (T_s)_{12},(T_s)_{21}=O(qM),\quad (T_s)_{22}=O(q^2M),
+\]
+and $|(B_2)_{11}|+|(B_2)_{22}|\le Cq^2M$,
+$|(B_2)_{12}|+|(B_2)_{21}|\le CqM$.
+For all receiver gates, $(A_1)_{ii}\ge0$ and
+$|(A_1)_{12}|\le\E_{P_1}|X_1X_2|\le Cq$.
+Since $M\le1/2$, both diagonal coefficients of $I-T_s$ are
+positive for small $q$. The two cross terms in its trace therefore
+give at worst $-Cq^2M$. Also $\operatorname{tr}A_2\ge0$.
+The target matrices are symmetric, so their antisymmetric part
+vanishes exactly. These observations prove uniformly in the receiver
+\begin{align}
+ (\operatorname{tr}R_\theta)_-&\le
+       C_R(q^2M+\mu+M e^{-c/q^2}),\notag\\
+ |(R_\theta)_{12}-(R_\theta)_{21}|&\le
+       C_R(qM+\mu+M e^{-c/q^2}).
+ \label{an03rbv1:pretrace}
+\end{align}
+The donor gate-removal estimate is uniform because the receiver
+indicator has absolute value at most one; the donor P1 margin
+is at least $1/(2q)$. Thus no receiver-angle range was added.
+
+For $\Delta=\theta-\psi$, direct subtraction of the exact angular
+equations gives
+\begin{equation}
+ \Delta'=-\operatorname{tr}R_\theta\sin\Delta
+                +(R_{12}-R_{21})\cos\Delta.
+ \label{an03rbv1:deltaequation}
+\end{equation}
+While $|\Delta|<1$, the upper Dini derivative satisfies
+\begin{equation}
+ D^+|\Delta|\le(\operatorname{tr}R_\theta)_-|\Delta|
+                         +|R_{12}-R_{21}|.
+ \label{an03rbv1:deltacomparison}
+\end{equation}
+The negative-trace integral in \eqref{an03rbv1:pretrace} is
+$O(q^2\ell^2)$, and its antisymmetric integral is
+$O(q+q^2\ell^2)=O(q)$. Gronwall, starting with $O(q^u)$,
+strictly improves the temporary $|\Delta|<1$ guard to $Cq$.
+This proves \eqref{an03rbv1:deltaentry} without a P2-open-gate
+assumption, a crossing-time assumption, or finite-noise cooperativity.
+\end{proof}
+
+\begin{lemma}[Alignment on the two-boundary interval]
+\label{an03rbv1:postalignment}
+There is a fixed $C_{\rm al}$ such that, for every label and
+$t\in[t_0,\tau]$,
+\begin{equation}
+ |\theta(t,b)-\psi(t,b)|\le\delta_q:=C_{\rm al}q(1+\ell).
+ \label{an03rbv1:deltapost}
+\end{equation}
+The constant may depend on $B,M_{\rm res},E_g,c_b$; its uses
+below multiply only vanishing powers of $q$.
+\end{lemma}
+\begin{proof}
+Put $N_-=\E_{P_2}[(f_2X_2)_-]$ and
+$\mathcal G_b=5\mathrm e E_g/[9(1-c_b)]$.
+The signed-gate proof of GESG yields the following useful direct
+bound, not just a bound on the excess over $I'/2$:
+\begin{equation}
+ -R_{22}(\theta)
+ \le\tfrac12M_{\rm res}q^2+	frac12\E_{P_2}[(f_2X_2)_+]
+ =\tfrac12M_{\rm res}q^2+\tfrac12(Qc+N_-).
+ \label{an03rbv1:negdiagonal}
+\end{equation}
+Indeed the P1 contribution costs at most
+$\|e_2\|_{P_1}\|X_2\|_{P_1}/2$; in the negative of the P2
+residual, discard the nonpositive selected $-X_2^2$ term and
+then drop the gate from the positive part of $f_2X_2$.
+The right side is nonnegative. S2CP \texttt{gate}, whose full
+stopped hypotheses are supplied by WPT, gives
+\[
+ \int_{t_0}^{\tau}(Qc+N_-)
+       \le\frac{10\mathrm e}{9}\frac{E_g}{1-c_b}+o(1).
+\]
+Therefore
+\begin{equation}
+ \int_{t_0}^{\tau}\sup_\theta(\operatorname{tr}R_\theta)_-
+       \le B+\mathcal G_b+o(1).
+ \label{an03rbv1:tracebudget}
+\end{equation}
+Here $(R_{11}+R_{22})_-\le|R_{11}|+(R_{22})_-$.
+The $M_{\rm res}q^2$ integral is $o(1)$ on the duration $20\ell$.
+The distinction between negative diagonal and absolute gate excess
+is necessary in this step.
+
+Let $a_*=C(1+M_{\rm res})$ be the uniform cross-entry constant
+in \eqref{an03rbv1:matrixinputs}. Apply
+\eqref{an03rbv1:deltacomparison} and Lemma
+\ref{an03rbv1:entryalignment} while $|\Delta|<1$:
+\[
+ |\Delta(t)|\le e^{B+\mathcal G_b+1}
+                 (C_{\rm al,0}q+20a_*q\ell).
+\]
+For example
+$C_{\rm al}=e^{B+\mathcal G_b+1}(C_{\rm al,0}+20a_*)$
+works. For sufficiently small $q$ this is less than $1/2$,
+closing that guard. The estimate includes the closed endpoint
+$\tau$ by continuity.
+\end{proof}
+
+\section{Signed outside response: a uniform moment estimate}
+\begin{lemma}[Negative response of an almost aligned donor]
+\label{an03rbv1:donorsign}
+If $|\theta-\psi|\le\delta\le1/2$, its response per unit
+radial mass has negative part at most
+\begin{equation}
+ C\{(q+\delta)^2+e^{-\rho^2/(4q^2)}\}.
+ \label{an03rbv1:singlecharge}
+\end{equation}
+Consequently every fixed cohort $S$ on WPT's interval satisfies
+\begin{equation}
+ (c_S)_-\le C\{(q+\delta_q)^2+e^{-\rho^2/(4q^2)}\}\mu_S.
+ \label{an03rbv1:cohortcharge}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Put $s=\sin\theta$, $v=\sin\psi$. Stein's identity for the
+two correlated Gaussian variables $X_2$ and $a_\theta\cdot X$
+gives the exact formula
+\begin{equation}
+ A_q(s):=\E_{P_2}[X_2(a_\theta\cdot X)_+]
+    =\rho q\Kfun(\rho s/q)+q^2s\Phi(\rho s/q).
+ \label{an03rbv1:stein}
+\end{equation}
+The per-unit-mass response is $vA_q(s)/Q$, and $|v-s|\le\delta$.
+Also, uniformly in $s$, the negative part of $A_q(s)$ can only
+come from $X_2<0$, and hence is at most
+$C e^{-\rho^2/(4q^2)}$ by the same fourth-moment/Chernoff
+estimate as LCRC \texttt{taulower}.
+
+If $v\ge0$, this proves the required estimate immediately.
+If $v<0$ and $s\ge0$, then $s,|v|\le\delta$ and
+$0\le A_q(s)\le C(q+s)$, since
+$\Kfun(z)\le z+\phi(0)$ for $z\ge0$.
+The negative response is at most $C\delta(q+\delta)$.
+If $v<0$ and $s<0$, the second term in \eqref{an03rbv1:stein}
+is nonpositive, so
+\[
+ (A_q(s))_+\le\rho q\Kfun(-\rho|s|/q),\qquad
+ |v|\le|s|+\delta.
+\]
+The inequalities $\Kfun(-z)\le\phi(z)$ and
+$\sup_{z\ge0}z\phi(z)<\infty$ give a cost
+$C(q^2+q\delta)$. Division by $Q\ge169/400$ proves
+\eqref{an03rbv1:singlecharge}. Integrate it against the positive
+radial measure, using $(\int h)_-\le\int h_-$, to obtain
+\eqref{an03rbv1:cohortcharge}.
+This calculation remains valid at $s=0$ and $v=0$.
+\end{proof}
+
+\begin{proposition}[Outside sign budget]
+\label{an03rbv1:outside}
+Uniformly on $[t_0,\tau]$,
+\begin{equation}
+ (c_{\BB})_-\le C_{m fixed}q^{31/10}(1+\ell)^2=o(q^2)
+       \le\frac{\kappa_0}{4}q^2\mu_{\KK}.
+ \label{an03rbv1:outsidebudget}
+\end{equation}
+In particular the proposed bound with the additional
+$H_{\Gp}/9$ allowance holds.
+\end{proposition}
+\begin{proof}
+Apply \eqref{an03rbv1:cohortcharge} with $S=\BB$ and the existing
+guard $\mu_{\BB}\le q^{11/10}$. The exponential is smaller than
+any positive power of $q$. Lemma \ref{an03rbv1:masslower} and
+a final decrease of $q$ give the last inequality.
+
+For completeness, the sharper component sources give the following
+individual upper bounds, with the common harmless constant suppressed.
+Set $L_q=1+\ell$, $s_q=O(\sqrt{\log\ell})$.
+\begin{center}
+\begin{tabular}{p{.25\textwidth}p{.27\textwidth}p{.34\textwidth}}
+\toprule
+Fixed ancestry & Supremum mass source & Negative response bound\\
+\midrule
+Strong complement $\mathcal C$ & S2CP \texttt{compmass},
+$\mu_{\mathcal C}\le Cq^{1+\Delta_\nu}$,
+$\Delta_\nu>3/25$ & $Cq^{3+\Delta_\nu}L_q^2$\\[3pt]
+Original Q3 interior & GESG, $\mu\le Cq^{10}$ &
+$Cq^{12}L_q^2$; also $Cq^{13}$ by its closed P2 gate\\[3pt]
+Inner $\pi$ strip & PISB \texttt{main},
+$\mu\le Cs_qq^{1+411/800}$ &
+$Cs_qq^{3+411/800}L_q^2$\\[3pt]
+$J_3$, including transit labels & LSB \texttt{main},
+$\mu\le C(1+s_q)q^{1+769/4000}$ &
+$C(1+s_q)q^{3+769/4000}L_q^2$\\[3pt]
+Both strips' frozen zones & PISB/LSB,
+$\mu\le Cq^{11}\sqrt\ell$ & $Cq^{13}\sqrt\ell L_q^2$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For the interior's stronger optional estimate, GESG keeps the P2
+gate margin at least $\rho\Lambda_q$, where
+$e^{-k_G\Lambda_q^2}=q^3$, $k_G=169/3200$.
+The fourth-moment/H\"older gate charge of a unit donor is $O(q^3)$;
+multiplication by its $O(q^{10})$ mass gives $O(q^{13})$.
+The generic alignment estimate already suffices there.
+No comparison of the raw $\pi$-strip mass with $H_0$ is used.
+Joined, transitional and frozen $J_3$ labels are all covered by
+the same exact moment estimate; no whole-strip chart assertion is made.
+\end{proof}
+
+\section{The barrier, terminal amplitude and time}
+\begin{theorem}[Strict response barrier on WPT's interval]
+\label{an03rbv1:barrier}
+For all sufficiently small $q$, with WPT's fixed constants,
+\begin{equation}
+ c(t)\ge\frac{\kappa_0}{2}q^2\mu_{\KK}(t)
+                         +\frac12 H_{\Gp}(t)>0
+ \qquad(t_0\le t\le\tau).
+ \label{an03rbv1:barrierineq}
+\end{equation}
+Consequently $t_->t_+$ and $\tau=t_+=t_b<t_0+20\ell$.
+In particular WPT's missing domain condition holds on
+$[t_0,\min(t_+,t_0+20\ell)]$.
+\end{theorem}
+\begin{proof}
+Combine the exact decomposition \eqref{an03rbv1:ledger},
+Lemmas \ref{an03rbv1:core}--\ref{an03rbv1:explicit}, and
+Proposition \ref{an03rbv1:outside}. Since $H\le H_{\Gp}$,
+\[
+ c\ge\kappa_0q^2\mu_{\KK}+\frac79H_{\Gp}
+ -\mathcal R_\Sigma(q)-C\mu_{\Gp}e^{-\rho^2/(4q^2)}
+ -(c_{\BB})_-.
+\]
+The outside charge uses at most $\kappa_0q^2\mu_{\KK}/4$.
+The other two remainders are $o(q^2)$ uniformly, so by
+$\mu_{\KK}\ge1/3$ they use at most another quarter for small $q$.
+This proves the stronger bound with $7H_{\Gp}/9$ in place of
+$H_{\Gp}/2$. If $\tau=t_-$, continuity gives $c(\tau)=0$,
+contradicting \eqref{an03rbv1:barrierineq}. WPT already proved
+finite $\tau$ before the duration boundary and excluded every
+other guard exit. Thus $\tau=t_+$; positivity at this finite
+endpoint and continuity also give $t_->t_+$.
+\end{proof}
+
+\begin{lemma}[Fixed primary-to-clock comparison]
+\label{an03rbv1:clockcomparison}
+There is a fixed $C_{m ent}\ge1$ such that
+\begin{equation}
+ H_0\le H_{\Gp}(t_0)\le C_{m ent}H_0,qquad
+ H(t)\le H_{\Gp}(t)\le C_{m ent}e^{2D_+}H(t),
+ \quad D_+=C(C_0+q^2\ell),
+ \label{an03rbv1:primaryclock}
+\end{equation}
+on the completed passage. In particular $H(t_b)\asymp c_b$.
+\end{lemma}
+\begin{proof}
+We record the entry check; a whole-Q2 $q^5$ energy estimate would
+not suffice here. The fixed primary group is
+$c_0\ge K(C_0)q^\gamma$. Q2EC's proof of its entry theorem
+keeps each of these labels in its controlled sector through $t_0$:
+after its matched weak-axis band the actual angle is at least $qL$
+and the target angle at least $16qL$, with fixed large $L$.
+Q2EC \texttt{match, coordinatetransport} therefore compares its
+positive $U_2(t_0)$ with $\widehat U_2(t_0)$ by fixed factors.
+The matched band covers late crossers, including $b=\pi$; it
+is not legitimate to take logarithms of their initial zero $U_2$.
+
+For precision, Q2E \texttt{crossclock, crossamplitude} give
+\[
+ T_\times=\frac2\lambda\log\frac{c_0+q}{q(s_0+q)}+O(1),
+ \qquad
+ \widehat U_2(T_\times)\asymp q^5(c_0+q)/q.
+\]
+All such target crossings precede $t_0$ since
+$4/\lambda\le1600/169<10$ and $\log A_q=O(1)$.
+After crossing the exact coordinate rate is
+\[
+ (\log\widehat U_2)'=\lambda/2+d_q^{\rm tar}
+       +\frac{\rho q}{2\sin\widehat\theta}
+                         \Kfun(-\rho\sin\widehat\theta/q),
+ \quad 0\le d_q^{\rm tar}\le q^2.
+\]
+Its extra integral is bounded uniformly while the endpoint angle
+is at least $16qL$. To see the scope explicitly, the fixed weak-axis
+layer has bounded duration; above $\pi/4$ the extra rate is
+exponentially small. Below $\pi/4$, Q2EC's target version of the
+positive cotangent rate gives
+$-(\log\sin\widehat\theta)'\ge b/2$, $b=1/1000$.
+Changing variable to $w=\sin\widehat\theta/q$ bounds the remaining
+integral by $C\int_{cL}^{\infty}\Kfun(-\rho w)w^{-2}\dd w$.
+Also $\int d_q^{\rm tar}=O(q^2\ell)$.
+Thus, using $t_0=10\ell-\log A_q+o(1)$,
+\begin{equation}
+ \widehat U_2(t_0,b)^2
+ \asymp q^{10}e^{\lambda t_0}(s_0+q)^2
+ \asymp A_q^{-\lambda}q^k(s_0+q)^2
+ \quad(b\in\Gp).
+ \label{an03rbv1:primaryseed}
+\end{equation}
+All comparisons are fixed-factor ones. In particular at $b=\pi$
+the regularized seed is $s_0+q=q$, not zero.
+Q2EC's original entry signs give $z\le4U_2/3$.
+Integrating the upper bound in \eqref{an03rbv1:primaryseed}
+therefore yields $H_{\Gp}(t_0)\le C A_q^{-\lambda}q^k$.
+Q2EC's clock seed gives the reverse comparison for $H_0$ on its
+fixed interior subcohort. The upper and lower bounds on $A_q$
+are supplied by MOMC. This proves the entry assertion.
+
+RCET Theorem 2.1's relative-amplitude transport applies to both
+positive-amplitude fixed subsets of $\Gp$, including the containing
+set itself. Its required response range, duration, residual bounds,
+$\int r\le B$, and entry signs/ratios all hold by WPT and Q2EC.
+Its individual defect bound implies the aggregate bound on each
+subset, giving \eqref{an03rbv1:primaryclock}; no disjointness is needed.
+
+At $c(t_b)=c_b$, LCRC's absolute response charge, signgood and
+$J_{\Gp}\le q^2K_Y^2$ give
+\[
+ c_{\Gp}(t_b)\le E_{\Gp}(t_b)+O(q^2)
+                 \le\frac{10}{9}H_{\Gp}(t_b)+O(q^2).
+\]
+The core absolute response is $O(q^2)$, the secondary response
+is $o(1)$ from its energy bound and $H\le O(c_b)$, and
+$|c_{\BB}|\le C\mu_{\BB}=o(1)$. Hence
+\begin{equation}
+ \frac9{10}c_b-o(1)\le H_{\Gp}(t_b)
+                  \le\frac98c_b+o(1).
+ \label{an03rbv1:terminalprimary}
+\end{equation}
+Together with \eqref{an03rbv1:primaryclock}, this proves
+$H(t_b)\asymp c_b$ with fixed constants, not a claimed limiting
+ratio $H(t_b)/c_b$.
+\end{proof}
+
+\begin{theorem}[Initialized deep-regime weak passage]
+\label{an03rbv1:completed}
+For $\kappa=10$ and $\rho\in[13/20,7/10]$, choose the fixed
+constants in WPT's order. For every sufficiently small $q$, the
+original initialized flow has a first $t_b>t_0=t_h$ with $c(t_b)=c_b$,
+and $t_b<t_0+20\ell$. On $[t_0,t_b]$ the barrier
+\eqref{an03rbv1:barrierineq} and every conclusion of WPT
+\texttt{twoboundary} hold. In particular:
+\begin{align}
+ \|e_1\|_{P_1}+\|e_2\|_{P_2}&\le C,&
+ \|e_2\|_{P_1}+\|e_1\|_{P_2}&\le M_{\rm res}q/2,\notag\\
+ J_G&\le q^2K_Y^2/4,&
+ \int r&\le C_r\int|1-\kappa_1|+o(1)
+                       \le C_r\log2+o(1),\notag\\
+ H\le H_{\Gp}&\le9c_b/8+o(1),&
+ E_{\Gp}&\le5c_b/4+o(1),\notag\\
+ E_\Sigma&\le C_\Sigma(q^5+q^{\Gamma_\nu}H),&
+ r_{\KK}&=O(q^{1/20}),\quad e\le3e_*/4,\notag\\
+ (1/2-o(1))e^{-d_q}&\le\mu_{\KK}\le e^{d_q},& d_q&=o(1).
+ \label{an03rbv1:conclusions}
+\end{align}
+The core stays in $|\theta|,|\psi|<Rq$, $R=79/51$.
+The strong complement and the entire fixed outside population obey
+\begin{align}
+ \sup\mu_{\mathcal C}/q&\le Cq^{\Delta_\nu},\quad \Delta_\nu>3/25,
+ \notag\\
+ \sup\mu_{\BB}/q&\le C\{q^{\Delta_\nu}+q^9+s_qq^{411/800}
+       +(1+s_q)q^{769/4000}+q^{10}\sqrt\ell\}=o(q^{1/10}).
+ \label{an03rbv1:massconclusions}
+\end{align}
+Each corresponding time integral is at most $20\ell$ times the
+displayed bound, hence tends to zero. All-endpoint S2 distance and
+capped-gain conclusions remain valid. For CFA's canonical
+core-only representation ($T=0$),
+\begin{align}
+ \int\eps_F&\le C_FC_{L_c}C_{\rm RCET}C_0E_g+o(1)<\bar F_F/2,
+ \notag\\
+ \int f_*&\le
+ \frac{10\mathrm e E_g/9+C_V(E_g+K_Y\sqrt{E_g})}{Q(1-c_b)}
+       +C_FC_{L_c}C_{\rm RCET}C_0E_g+o(1)
+       \le\frac{e_*}{4C_{\rm pass}}.
+ \label{an03rbv1:forcingconclusions}
+\end{align}
+The remainder norm includes value and induced $\ell^1$ receiver
+derivative on $[-L_c,L_c]^2$. Its small fixed allowance is not
+asserted to be $o(1)$ at fixed $c_b,C_0$.
+
+The clock seed is $H_0\asymp A_q^{-\lambda}q^k$, with
+$0<c_A\le A_q\le C_A$, and for every subinterval
+\begin{equation}
+ \log\frac{H(t)}{H(s)}=I(t)-I(s)+\delta(s,t),\qquad
+ |\delta(s,t)|\le D_{\rm clk}=O(q^{1/8}+q^2\ell)=o(1).
+ \label{an03rbv1:clock}
+\end{equation}
+At the endpoint $H(t_b)\asymp c_b$ and the exact time relation is
+\begin{align}
+ t_b-t_0
+ &=\frac{\log(H(t_b)/H_0)-\delta(t_0,t_b)}{Q}
+                                  +\int_{t_0}^{t_b}c,\notag\\
+ 0\le\int_{t_0}^{t_b}c
+ &\le\frac{10\mathrm e}{9}\frac{E_g}{Q(1-c_b)}+o(1),\notag\\
+ t_b-t_0
+ &=\frac{\log(c_b/H_0)+O_{\rm fixed}(1)}Q
+  =\frac{k\ell+\lambda\log A_q+\log c_b+O_{\rm fixed}(1)}Q.
+ \label{an03rbv1:time}
+\end{align}
+The bounded phase error in the last line is not $o(1)$;
+the exact subinterval clock defect in \eqref{an03rbv1:clock} is.
+\end{theorem}
+\begin{proof}
+Theorem \ref{an03rbv1:barrier} identifies WPT's finite endpoint
+as $t_b$, so its already proved conclusions hold without an
+additional hypothesis. Lemma \ref{an03rbv1:clockcomparison}
+supplies terminal comparability. Substitute it into WPT
+\texttt{exacttime} and \texttt{cint}. The $1/Q$ in the integrated
+response bound is retained. Since $c_b$ is fixed and small, that
+integral is bounded independently of $q$. This proves
+\eqref{an03rbv1:time}. No equality with denominator $Q(1-c_b)$
+is inferred from a lower bound on $I'$.
+\end{proof}
+
+\section{Hypothesis audit, constants and S4 handoff}
+\label{an03rbv1:audit}
+The source statements used here have the following scopes. Their
+stopped assumptions are conclusions of WPT on \eqref{an03rbv1:twostop},
+not hypotheses imposed on a later interval.
+\begin{longtable}{>{\raggedright\arraybackslash}p{.19\textwidth}
+ >{\raggedright\arraybackslash}p{.45\textwidth}
+ >{\raggedright\arraybackslash}p{.27\textwidth}}
+\toprule
+Source & Hypotheses needed here & Where supplied\\\midrule
+WPT \texttt{twoboundary} & Original balanced isotropic initialization,
+$\kappa=10$, ratio box, its fixed constant order, sufficiently small $q$.
+No additional sign premise. & Model of Section 1; this source constructs
+the interval with $0\le c\le c_b$.\\[4pt]
+LCRC \texttt{ledger} & Fixed measurable cohorts, finite positive radial
+mass; for \texttt{taulower}, $W_2\ge0$. No gate margin.
+& Fixed partition; WPT signgood on $\Gp$.\\[4pt]
+LCRC \texttt{localclock}; RCET/BULK & $0\le c\le c_b<1$, logarithmic
+duration, bounded diagonal residuals, cross residual $O(q)$,
+$\int r\le B$; positive entry $z$, $|a_-|/z\le1/4$,
+entry ratio $qj/z\le C_0$ (clock $C_{\rm clk}q^{1/8}$),
+small admissible $C_0$ and $q$. & WPT on its closed two-boundary
+interval; Q2EC entry; unchanged constant order.\\[4pt]
+S2CP \texttt{gate} & The preceding stopped residual/clock inputs,
+$Y<K_Y$, $E_{\Gp}<E_g$, secondary joint guard, instantaneous core
+chart/mass, outside supremum tending to zero, S1 entry and
+$\mathcal D=\varnothing$. & WPT guards/improvements; no use of
+the future passage forcing as a budget source.\\[4pt]
+S2CP S2 and \texttt{Bs} & Same stopped guards; S2 additionally the
+coarse c-form value/derivative integral and reference guard, SEP
+and MOMC entry profiles; Bs uses core geometry, radial identity
+and instantaneous outside bound. & WPT's matched joint bootstrap;
+its canonical field, geometry, entry and outside improvements.\\[4pt]
+MOMC \texttt{main}; Q2EC \texttt{early, fullgates} & Initialized
+S1 flow on $[0,t_h]$, moving $t_m$, $M\le1/2$ on
+$[t_m,t_h]$, strong donors on their fixed chart. Fullgates and
+early are all-receiver/all-label statements. & Their unconditional
+S1 conclusions; no weak-passage sign assumption.\\[4pt]
+Q2E crossing; Q2EC matching/transport & Target-only Q2 closed sector
+with regularized endpoints; original matched positive-coordinate
+sector while angle $\ge qL$, fixed large $L$. & Q2EC's primary
+threshold proof; $b=\pi$ handled by its band matching.\\[4pt]
+GESG/PISB/LSB outside & Fixed ancestry cohorts, logarithmic stopped
+duration, post-entry residual/clock guards and pre-entry cross
+bound; no whole-strip lower-side or chart assumption. & WPT
+\texttt{outside}; its use of Q3SB \texttt{crosspre}.\\[4pt]
+CFA & Core-only positive normalized donor representation, stopped
+geometry and residual/secondary budgets, paid outside/strip
+integrals, clock-entry and forcing smallness. & Already matched
+and proved in WPT; only its conclusions are inherited here.\\
+\bottomrule
+\end{longtable}
+
+\paragraph{Constant order.}
+Keep WPT's $\bar c=1/4$, $L_T=20$, $b_B=q^{1/10}$,
+$R=79/51$, $R_{\rm LCRC}=2R$, $M_K=2$,
+$B_s^0=\log2+1$, $L_c=R+1$, core cutoff $\chi=1/20$,
+and admissible fixed $c_*,\nu$ first. Then fix the model passage
+constants and the conservative, uniform $B,K_Y,M_{\rm res}$
+(with $M_{\rm res}>2C_{\rm pre}$). Choose $\bar F_F$ and
+small $c_b$, set $E_g=2c_b$, then the S2 distance/gain constants;
+choose $C_0$ within LCRC/RCET and CFA's bounds; next fix
+$K(C_0)$, SEP's entry constants and $C_\Sigma$; finally choose $q$.
+This order is unchanged.
+
+The new $y_{\min}=9/320$ and $\kappa_0=351/102400$ are model-only.
+$C_{\rm al,0}$ is S1-only. $C_{\rm al}$ is explicitly allowed to
+depend on $B,M_{\rm res},E_g,c_b$; it is used only in
+$C_{\rm al}q(1+\ell)$ and in
+$C_{\rm al}^2q^2(1+\ell)^2\mu_{\BB}$.
+The secondary remainder constant depends on $C_\Sigma,K_Y$;
+all its powers exceed two. $C_{\rm ent}$ depends on the fixed
+primary threshold and matching constants, and terminal comparability
+also uses the fixed RCET distortion. None of these new constants
+chooses an earlier guard, radius or forcing allowance.
+
+\paragraph{Endpoint and accuracy checks.}
+The entry alignment proof includes every initial label, hence both
+$b=\pi$ and $b=3\pi/2=-\pi/2$. The signed Stein bound allows
+zero sine and negative sine without division by either.
+The primary seed keeps $(s_0+q)$ and $(c_0+q)$ and uses matched
+crossing before taking coordinate logarithms. There is no claim
+that all late-joiner labels are charted or lower-side retained.
+The proof uses the already improved core radius; the raw guard
+$r_{\KK}<1$ alone would not prove positive core coordinates.
+The energy alternative for outside response is not needed.
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{.25\textwidth}
+ >{\raggedright\arraybackslash}p{.40\textwidth}
+ >{\raggedright\arraybackslash}p{.26\textwidth}}
+\toprule
+S4 input & Certified at $t_b$ / through the passage & Accuracy\\\midrule
+Response endpoint and phase & $c(t_b)=c_b$, strict positive barrier;
+\eqref{an03rbv1:time}, $H(t_b)\asymp c_b$ & Exact endpoint;
+bounded phase constant after replacing $H(t_b)$ by $c_b$\\[3pt]
+Clock and seed & \eqref{an03rbv1:clock},
+$H_0\asymp A_q^{-\lambda}q^k$ & $o(1)$ subinterval defect;
+fixed-factor seed, not an exact coefficient\\[3pt]
+Primary state/residuals & Signs, RCET ratio and relative-amplitude
+transport, $J_G=O(q^2)$, \eqref{an03rbv1:conclusions} &
+Fixed primary distortion; cross residual $O(q)$;
+learning integral $\le\log2+o(1)$\\[3pt]
+Retained core/reference & Fixed core, $r_{\KK}=O(q^{1/20})$,
+$e\le3e_*/4$, $1/2-o(1)\le\mu_{\KK}\le1+o(1)$ &
+Vanishing core radius; fixed reference allowance\\[3pt]
+Secondary and outside & S2 entry-based energy, all-endpoint
+distance/gain, \eqref{an03rbv1:massconclusions} and integrated
+$\mu/q$ bounds & Explicit positive powers, with fixed constants\\[3pt]
+Strong c-form/forcing & CFA representation and
+\eqref{an03rbv1:forcingconclusions} & Small fixed integrated
+value/derivative and forcing budgets\\
+\bottomrule
+\end{longtable}
+These are inputs for a future weak return, matching or selection
+argument. No continuation estimate beyond $t_b$ or S4 theorem
+is proved here.
+
+\begin{thebibliography}{20}\small
+\bibitem{WPT} \path{AN03_weak_passage_theorem_v1.tex},
+prefix \texttt{an03wptv1:}: \texttt{twoboundary, entry, guards,
+improvements, exacttime, cint, gap}.
+\bibitem{LCRC} \path{AN03_ledger_cap_residual_closure_v1.tex},
+prefix \texttt{an03lcrcv1:}: \texttt{ledger, identity, taulower,
+responsecharge, pointcap, localclock}.
+\bibitem{S2CP} \path{AN03_S2_closure_package_v1.tex},
+prefix \texttt{an03s2cpv1:}: \texttt{gate, S2, compmass, Bs}.
+\bibitem{GESG} \path{AN03_global_envelope_signed_gate_v1.tex},
+prefix \texttt{an03gesgv1:}: signed-gate proof, matrix values,
+Q3 interior.
+\bibitem{DECG} \path{AN03_distance_envelope_and_capped_gain_v1.tex},
+prefix \texttt{an03decgv1:}: Proposition 3.2, Corollary 3.3.
+\bibitem{PISB} \path{AN03_pi_strip_budget_v1.tex},
+prefix \texttt{an03pisbv1:}: \texttt{main}, frozen zones.
+\bibitem{LSB} \path{AN03_late_strip_budget_v1.tex},
+prefix \texttt{an03lsbv1:}: \texttt{main}, delayed/frozen split.
+\bibitem{CFA} \path{AN03_c_form_assembly_v1.tex},
+prefix \texttt{an03cfav1:}: representation, assembly, forcing, passage.
+\bibitem{MOMC} \path{AN02_moving_overlap_M_clock_passage_v1.tex},
+prefix \texttt{an02momcv1:}: \texttt{main, reduction, massclaim,
+outsideclaim}.
+\bibitem{Q2EC} \path{AN02_Q2_entry_contracts_v1.tex},
+prefix \texttt{an02q2ecv1:}: \texttt{early, matrixmoments, fullgates,
+match, coordinatetransport}, primary-entry proof and clock seed.
+\bibitem{Q2E} \path{AN02_Q2_boundary_layers_and_cohort_energy_v1.tex},
+prefix \texttt{inc:AN02:q2completion:v1:}: \texttt{crossclock,
+crossamplitude, U2rate}.
+\bibitem{RCET} \path{AN03_residual_closure_and_eta0_transport_v1.tex},
+prefix \texttt{an03rcetv1:}: Theorem 2.1, \texttt{transport}.
+\bibitem{BULK} \path{AN03_bulk_clock_and_secondary_Q2_energy_v1.tex},
+prefix \texttt{inc:AN03:bulkclock:v1:}: \texttt{crossinput,
+pointseed}, Theorem 4.1.
+\bibitem{PROFILE} \path{AN02_strong_entry_profile_and_tail_budget_v1.tex},
+prefix \texttt{inc:AN02:profile:v1:}: Proposition 4.1 and Gaussian
+gate-integral estimates.
+\end{thebibliography}
+\end{document}
