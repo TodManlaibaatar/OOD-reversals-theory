@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.16 — October 27, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.17 — October 28, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -61,6 +61,12 @@
 - $J_3$ is paid: $\sup W_3/q\le C(1+s_q)q^{769/4000}$.
 - With PISB, **CFA's whole-strip input is supplied**. Every guard of the weak-passage bootstrap now has a proved strict improvement and no external input remains.
 - Next: the joint weak-passage assembly.
+
+**Revision 1.17 (Oct 28).** Records WPT (`AN03_weak_passage_theorem_v1`).
+- Every non-response guard improves on one joint stopped interval. This yields a **two-boundary theorem:** all assembled estimates hold until c first hits 0 or $c_b$, and one of the two is hit within $20\ell$.
+- The single remaining gap is **the lower response barrier** $c\ge0$. Every source assumes it, and none proves it. My v1.16 claim that no input remained was wrong (ledger 21).
+- WPT also corrects my hitting-time formula: the denominator is Q, not $Q(1-c_b)$.
+- Next: a signed response-barrier lemma, which completes the weak-passage theorem.
 
 ---
 
@@ -591,7 +597,25 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - the exponent of $q^{6d}e^{dT}$;
   - the coarse consumer, using $\beta\le1$ and $I(\tau_b)\le I(t)$.
 
-**Joint assembly (next; the weak-passage theorem).**
+**Status after WPT (`AN03_weak_passage_theorem_v1`, Oct 28).**
+- *Proved (two-boundary theorem).* Let $t_\pm$ be the first times c hits $c_b$ and 0, and $\tau=\min(t_-,t_+)$. With constants fixed in CFA's order ($L_T=20$, $b_B=q^{1/10}$, $M_K=2$, $E_g=2c_b$):
+  - $c(t_0)=a^2q^2/(2\lambda)+o(q^2)>0$ and $t_0<\tau<t_0+20\ell$;
+  - on $[t_0,\tau]$, every assembled estimate holds: residuals, $J_G$, $\int r$, $\int|1-\kappa_1|\le\log2+o(1)$, $\mu_{\mathcal K}\le e^{d_q}$, $H_{G_+}\le\tfrac98c_b+o(1)$, $E_\Sigma$, core retention $r_{\mathcal K}=O(q^{1/20})$ with $e\le3e_*/4$, outside rates, $\int\epsilon_F<\overline F_F/2$, $\int f_*\le e_*/(4C_{\rm pass})$, and the clock with its $o(1)$ defect;
+  - duration margin $20\cdot\tfrac{507}{1600}-\tfrac{231}{40}=\tfrac9{16}>0$.
+- *The gap.* $c(t)\ge0$ for $t_0\le t\le\min(t_+,t_0+20\ell)$. Here c is a signed regression coefficient, not a mass.
+  - The absolute ledger gives only $c\ge\tfrac89H_{G_+}-\epsilon_q$. This is too weak at entry, where $H_{G_+}=O(q^3)$ while the core response $c_{\mathcal K}\asymp q^2$ is positive.
+  - A **signed** bound is needed: $c_\Sigma+c_{\mathcal K}+c_{\mathcal B}>-\tfrac89H_{G_+}+(\text{tail})$ at any putative first zero.
+- *Clock correction.* The exact identity is $t-t_0=[\log(H/H_0)-\delta]/Q+\int c$, with $\int c=O(c_b)$. So $t_b-t_0=[\log(c_b/H_0)+O(1)]/Q$, given $H(t_b)\asymp c_b$; the $Q(1-c_b)$ form is only an upper bound.
+- *Proposed route for the barrier (reviewer; verify first).* Decompose $c=c_{\mathcal K}+c_{G_+}+c_\Sigma+c_{\mathcal B}$.
+  - **Core is positive and of order $q^2$.** Under the guards the core sits at $x,y\ge a-3e_*/4-r_{\mathcal K}$. Since $a\ge\rho\phi(0)\ge0.259>3/16\ge3e_*/4$, this gives $x,y\ge0.07$. The exact Gaussian moment then gives $c_{\mathcal K}\ge\kappa_0q^2\mu_{\mathcal K}$ with explicit $\kappa_0>0$, where $c_{\mathcal K}\approx(q^2/Q)\int y\rho K(\rho x)\,d\mu$. Also $\mu_{\mathcal K}\ge(\tfrac12-o(1))e^{-d_q}$.
+  - **$G_+$:** $c_{G_+}\ge\tfrac89H_{G_+}-C\mu e^{-\rho^2/(4q^2)}$ (LCRC ledger).
+  - **Σ:** $|c_\Sigma|\le C(q^5+q^{\Gamma_\nu}H)+Cq^2K_Y\sqrt{q^5+q^{\Gamma_\nu}H}\le\tfrac19H+o(q^2)$.
+  - **Outside:** show $(c_{\mathcal B})_-\le\tfrac{\kappa_0}4q^2\mu_{\mathcal K}+\tfrac19H_{G_+}$. Two possible routes:
+    - an *energy route*, using $|c_S|\le E_S+2q\sqrt{E_SJ_S/Q}$ with weak energies rather than masses. Near the strong axis, $E\sim q^2\xi^2m$. The complement's weighted second moment gives $E_{\mathcal C}\ll H$, the π strip has $\mu\ll H$ at all times, the Q3 interior has a closed $P_2$ gate, and $J_3$ satisfies $\mu_{J_3}(t_0)=O(q^3)$ with near-core labels of positive sign;
+    - or a *sign-alignment route*, using $\Delta'=-\operatorname{tr}R\sin\Delta+(R_{12}-R_{21})\cos\Delta$. This would confine negative-response states ($\sin\theta>0>\sin\psi$) to $|\theta|,|\psi|\le Cq$, where the response is $O(q^2m)$.
+  - Then $c\ge\tfrac{\kappa_0}2q^2\mu_{\mathcal K}+\tfrac12H_{G_+}>0$ on the whole interval, so $\tau=t_+$.
+
+**Joint assembly (done in WPT except the response barrier; outline kept for reference).**
 - *Target.* For $\kappa=10$ and $\rho\in[13/20,7/10]$, from $t_0=t_h$ until $t_b$, the first time $c=c_b$, show $t_b\le t_0+L_T\ell$ with all the conclusions below.
 - *Guards, improved together by one first exit,* each with its proved improvement:
   - $Y<K_Y$, $\int r<B$, $E_{G_+}<E_g=2c_b$, cross residual $<M_{\rm res}q$ (LCRC);
@@ -716,7 +740,7 @@ Tracks that can run in parallel:
 | Track | Steps | Notes |
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
-| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. No external input remains. Next: the joint weak-passage assembly, which produces the weak-passage theorem. |
+| II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem. The one gap is the lower response barrier $c\ge0$ (ledger 21). Next: the signed response-barrier lemma, after which the weak-passage theorem is complete. |
 | III | S0 + S4 weak return/matching | S0 closed conditionally (RCET + LCRC); $\eta=0$ variant and dichotomy done. S4 is now mostly bookkeeping on top of BULK Theorem 4.1 and LCRC. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
@@ -786,6 +810,10 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
     - *Rules:*
       - near a boundary or separatrix, include the regularization seed and check the endpoint label explicitly;
       - before extending a family contract to a boundary layer, split the layer into frozen, transitional and joined parts.
+21. **Missed domain hypothesis and wrong clock formula (WPT prompt).**
+    - Roadmap v1.16 said every guard had a strict improvement and no external input remained. But every source (LCRC, RCET, BULK, S2CP, CFA, CLOCK) assumes $0\le c\le c_b$, and my guard list stopped only at the upper boundary. The response c is a signed regression coefficient, and nothing proves $c\ge0$.
+    - My prompt asked for $t_b-t_0=[\log(c_b/H_0)+O(1)]/(Q(1-c_b))$ as an asymptotic equality. The exact identity $t-t_0=[\log(H/H_0)-\delta]/Q+\int c$ with $\int c=O(c_b)$ gives denominator Q. The $Q(1-c_b)$ form is only an upper bound.
+    - *Rule:* before declaring an assembly complete, list every hypothesis of every cited theorem, including sign and range conditions on observables, not only the guards the roadmap tracks.
 
 ---
 
@@ -823,6 +851,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | Q3SB | `AN03_Q3_strip_budgets_v1.tex` (+ review), prefix `an03q3sbv1:` — partial; pre-entry cross residual and gate budget, regularized envelope, total clock, frozen 3π/2 substrip; refutes three proposed premises |
 | PISB | `AN03_pi_strip_budget_v1.tex` (+ review), prefix `an03pisbv1:` — π strip paid; outer and middle zones of both strips frozen and paid; $J_3$ consumer recorded |
 | LSB | `AN03_late_strip_budget_v1.tex` (+ review), prefix `an03lsbv1:` — $J_3$ paid via time shift, single-label chart contraction and delay split; strips complete |
+| WPT | `AN03_weak_passage_theorem_v1.tex` (+ review), prefix `an03wptv1:` — two-boundary theorem with all non-response guards improved; stops at the lower response barrier $c\ge0$; corrects the hitting-time denominator |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |
