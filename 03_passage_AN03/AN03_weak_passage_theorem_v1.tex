@@ -1,0 +1,578 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,longtable,array,hyperref}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\E}{\mathbb E}
+\newcommand{\KK}{\mathcal K}
+\newcommand{\BB}{\mathcal B}
+\newcommand{\Gp}{G_+}
+\newcommand{\eps}{\varepsilon}
+\title{Weak-passage assembly: a two-boundary theorem and the remaining response barrier}
+\author{Analytical increment AN03 weak passage theorem v1}
+\date{Version 1}
+\begin{document}\maketitle
+\begin{abstract}
+The proved stopped implications strictly improve every proposed
+energy, residual, field, core and outside guard. There is, however,
+one unmatched domain hypothesis: the cited implications assume
+$0\le c\le c_b$, whereas the proposed initialized first exit
+addresses only the upper response boundary. We prove the resulting
+two-boundary statement: starting at strong half mass, all the
+assembled estimates hold until the first hit of either $0$ or $c_b$,
+and one of these boundaries is reached within $20\log(1/q)$.
+The sources do not exclude the lower hit. Thus the requested
+unconditional passage to $c_b$ is not claimed. We isolate the exact
+missing signed inequality and record the correct clock accuracy;
+the denominator $Q(1-c_b)$ supplies a duration upper bound, not
+the proposed asymptotic equality with an additive $O(1)$ numerator.
+\end{abstract}
+
+\section{Setting and scope of the result}
+All new labels have prefix \texttt{an03wptv1:}. Source names are
+those of roadmap v1.16; their exact paths and blob identifiers are
+in the companion review. We use the initialized original balanced
+flow, not a leading-system trajectory:
+\[
+ U(0,b)=W(0,b)=q^5(\cos b,\sin b),\qquad
+ \dd\lambda_0=\dd b/(2\pi),\qquad
+ P=\tfrac12N(e_1,q^2I)+\tfrac12N(\rho e_2,q^2I).
+\]
+Put $\lambda=\rho^2\in[169/400,49/100]$, $Q=\lambda+q^2$,
+$\ell=\log(1/q)$, $k=10(1-\lambda)$ and $t_0=t_h$.
+The response is the signed regression coefficient
+\begin{equation}
+ c(t)=Q^{-1}\E_{P_2}[f_2(X,t)X_2],\qquad
+ I(t)=Q\int_{t_0}^t(1-c(s))\dd s.
+ \label{an03wptv1:response}
+\end{equation}
+It is not a nonnegative mass by definition.
+
+Use the fixed partition $\KK,\Gp,\Sigma,\BB$, with
+$\mathcal D=\varnothing$, $G=\Gp\cup\Sigma$ and
+$H=H_{\mathcal C_q}$ for the original $\eta=1/8$ clock cohort.
+The core is the TAILREP/S2CP fixed-label set in the right-half
+ancestry, selected at $t_0$ by
+\begin{equation}
+ \xi\le d_c=c_*q^{\chi+kP_\rho/2},\qquad
+ \chi=1/20,\quad P_\rho=\Phi(\rho a),\quad a=\rho K(\rho a).
+ \label{an03wptv1:core}
+\end{equation}
+Here $\xi$ is joint scaled displacement from MOMC's actual reference.
+The complement of this core in the right-half ancestry is
+$\mathcal C$. The entire outside set is exactly
+\begin{equation}
+ \BB=\mathcal C\cup\mathcal Q_{3,\mathrm{int}}^0
+              \cup\mathcal S_\pi\cup\mathcal S_{3\pi/2},
+ \label{an03wptv1:outsidepartition}
+\end{equation}
+up to null boundary labels, assigned once. No time-dependent
+membership or new explicit cohort is introduced.
+
+We retain the source energy notation $E_S=H_S+A_S$,
+$\mu_S=E_S+J_S$, and write
+\[
+ Y=\sqrt{J_G}/q,\quad r=\sup_\theta|R_{11}|,\quad
+ e=|(x_c,y_c)-(a,a)|_2,\quad
+ r_{\KK}=\mathop{\rm ess\,sup}_{b\in\KK}
+       (|x_b-x_c|+|y_b-y_c|).
+\]
+The reference is never reset. Let
+\begin{equation}
+ t_-:=\inf\{t\ge t_0:c(t)=0\},\qquad
+ t_+:=\inf\{t\ge t_0:c(t)=c_b\},\qquad
+ \tau:=\min(t_-,t_+),
+ \label{an03wptv1:stops}
+\end{equation}
+with the infimum of an empty set equal to infinity.
+
+\begin{theorem}[Initialized assembly up to the first response boundary]
+\label{an03wptv1:twoboundary}
+There are fixed constants, chosen in Section 2's order, and a
+small fixed $c_b>0$ such that, for all sufficiently small $q$
+uniformly on the ratio box,
+\[
+ 0<c(t_0)<c_b,\qquad t_0<\tau<t_0+20\ell.
+\]
+On the entire closed interval $[t_0,\tau]$ the following hold:
+\begin{align}
+ \|e_1\|_{P_1}+\|e_2\|_{P_2}&\le C,&
+ \|e_2\|_{P_1}+\|e_1\|_{P_2}&\le M_{\rm res}q/2,
+ \label{an03wptv1:residuals}\\
+ J_G&\le q^2K_Y^2/4,&
+ \int_{t_0}^\tau r&\le C_r\int_{t_0}^\tau|1-\kappa_1|+o(1),
+ \label{an03wptv1:transverse}\\
+ \int_{t_0}^\tau|1-\kappa_1|&\le\log2+o(1),&
+ \mu_{\KK}(t)&\le e^{d_q},\quad d_q=o(1),
+ \label{an03wptv1:learning}\\
+ H\le H_{\Gp}&\le\tfrac98c_b+o(1),&
+ E_{\Gp}&\le\tfrac54c_b+o(1),
+ \label{an03wptv1:energies}\\
+ E_\Sigma&\le C_\Sigma(q^5+q^{\Gamma_\nu}H),&
+ \Gamma_\nu&\ge289169/924000>3/10,
+ \label{an03wptv1:secondary}\\
+ r_{\KK}(t)&=O(q^{1/20}),& e(t)&\le3e_*/4.
+ \label{an03wptv1:coreconclusion}
+\end{align}
+The core remains in the fixed coordinate chart
+$|\theta|,|\psi|<Rq$, $R=79/51$. Uniformly in time,
+\begin{align}
+ \mu_{\mathcal C}/q&\le Cq^{\Delta_\nu},
+       &\Delta_\nu&>3/25,\nonumber\\
+ \mu_{\BB}/q&\le C\{q^{\Delta_\nu}+q^9
+      +s_qq^{411/800}+(1+s_q)q^{769/4000}
+      +q^{10}\sqrt\ell\}=o(q^{1/10}),
+ \label{an03wptv1:outside}
+\end{align}
+where $s_q=O(\sqrt{\log\ell})$. The corresponding time integrals
+are bounded by $20\ell$ times these right sides. With the canonical
+CFA c-form remainder and forcing,
+\begin{align}
+ \int_{t_0}^\tau\eps_F
+ &\le C_FC_{L_c}C_{\rm RCET}C_0E_g+o(1)
+        <\overline F_F/2,
+ \label{an03wptv1:field}\\
+ \int_{t_0}^\tau f_*
+ &\le\frac{10e}{9}\frac{E_g}{Q(1-c_b)}
+  +\frac{C_V(E_g+K_Y\sqrt{E_g})}{Q(1-c_b)}
+  +C_FC_{L_c}C_{\rm RCET}C_0E_g+o(1)
+  \le\frac{e_*}{4C_{\rm pass}}.
+ \label{an03wptv1:forcing}
+\end{align}
+Here $E_g=2c_b$, $f_*=c+|V|+K_w+\eps_F$, and $T\equiv0$.
+The clock is positive and satisfies, for all subintervals,
+\begin{equation}
+ \log\frac{H(t)}{H(s)}=I(t)-I(s)+\delta(s,t),\qquad
+ |\delta(s,t)|\le D_{\rm clk}
+ =O(q^{1/8}+q^2\ell)=o(1).
+ \label{an03wptv1:clock}
+\end{equation}
+The sign-good group has RCET's bounded defect
+$O(C_0+q^2\ell)$ and fixed-factor relative-amplitude transport.
+
+The theorem does not identify which response boundary is hit.
+In particular it does not assert $\tau=t_b=t_+$. A nonnegative-response
+barrier, or the stronger exclusion $t_->t_+$, remains to be supplied
+as specified in Section 6.
+\end{theorem}
+
+\section{Constants and the canonical field guard}
+Fix at the start
+\begin{equation}
+ \bar c=1/4,\quad L_T=20,\quad b_B(q)=q^{1/10},\quad
+ R=79/51,\quad M_K=2,\quad B_s^0=\log2+1,
+ \quad L_c=R+1.
+ \label{an03wptv1:firstconstants}
+\end{equation}
+Choose a fixed $c_*>0$ and $0<\nu\le1/100$ as in S2CP.
+The core norm convention needs one explicit adjustment: LCRC writes
+$|\theta|+|\psi|\le R_{\rm LCRC}q$, whereas MOMC/CFA use
+coordinate bounds $Rq$. Use $R_{\rm LCRC}=2R$ in LCRC's
+constants. This is a fixed model radius chosen now; it does not
+enlarge CFA's receiver square or create a residual-radius loop.
+
+Use CFA's model-uniform $C_{\rm pass},g,e_*,K_{\rm pass}$ and set
+$P_{\rm allow}=e_*/(4C_{\rm pass})$. Following CFA's uniform
+construction, use the conservative energy $2+2\bar c$, amplitude
+$\bar h_*=(9/8)\bar c+1$ and lower rate
+$\underline b=(169/400)(1-\bar c)$ in LCRC's formulas for
+$E_*,K_E,K_{1/2},A_*,K_Y,M_{\rm res}$. In particular
+\[
+ B=C_rB_s^0+2.
+\]
+Enlarge $M_{\rm res}$ once, if necessary, so that
+$M_{\rm res}>2C_{\rm pre}$ from Q3SB. All these constants are
+independent of the subsequently selected $c_b,C_0$.
+
+Choose any fixed positive coarse field allowance $\overline F_F$.
+Choose $0<c_b\le\bar c$ small enough that the first two terms
+of \eqref{an03wptv1:forcing}, with $E_g=2c_b$ and $Q\ge169/400$,
+sum to at most $P_{\rm allow}/4$. Fix S2CP's $C_D,A_0,C_m$
+from these constants and $\overline F_F$. Choose $C_0$ within
+LCRC/RCET's admissibility and CFA's fixed-chart boundary margin,
+with
+\begin{equation}
+ C_FC_{L_c}C_{\rm RCET}C_0E_g
+ \le\min(\overline F_F/4,P_{\rm allow}/4).
+ \label{an03wptv1:C0choice}
+\end{equation}
+Only then fix $K(C_0)$, SEP's cap and entry constants, and
+$C_\Sigma\ge\max(1,C_{\rm out},C_{\rm ent}+1)$ as in S2CP.
+Choose $q$ last. This is CFA's order, with duration and the outside
+function made explicit at the first step. No positive-power error
+coefficient is used to choose an earlier order-one constant.
+
+The field guard is a well-defined scalar quantity, not an existence
+assertion. For every state in the core chart, use CFA's exact
+definitions
+\[
+ \widetilde\mu_s=\mu_s\min(1,\mu_{\KK}^{-1}),\quad
+ V=V_O,\quad K_w=(K_O)_+,\quad T=0,
+ \quad\eps_F(t)=\|F_{\rm orig}-F_c\|_*.
+\]
+Here $F_c$ is CFA \texttt{cform}, $\|\cdot\|_*$ controls value and
+induced $\ell^1$ receiver derivative on the fixed square, and
+$O=\Gp\cup\Sigma\cup\BB$. The remainder is defined by subtraction
+before its budget is improved. The normalized donor measure is
+positive and has mass at most one. Thus imposing
+$\int\eps_F<\overline F_F$ supplies precisely the inherited
+S2CP field hypothesis, without first assuming CFA's sharper bound.
+
+\section{Strict entry, including the response}
+\begin{lemma}[The initialized entry lies inside the joint domain]
+\label{an03wptv1:entry}
+For the above fixed constants and sufficiently small $q$, all guards
+in Section 4 hold strictly at $t_0$. In addition,
+\begin{equation}
+ c(t_0)=\frac{a^2}{2\lambda}q^2+o(q^2)>0.
+ \label{an03wptv1:centry}
+\end{equation}
+\end{lemma}
+\begin{proof}
+MOMC supplies the actual reference $e_0=o(1)$, right-half mass
+$1/2$ and the raw right-half entry tail. The latter gives
+$\mu_{\mathcal C}(t_0)/q\le Cq^{\Delta_\nu}$: the entry exponent
+in S2CP's tail calculation is at least its later exponent
+$\Delta_\nu>3/25$. Hence $\mu_{\KK}(t_0)=1/2-o(1)$.
+The core definition gives $r_0\le d_c=o(1)$.
+Q2EC/Q2EP give $J_G(t_0)\le C_Jq^3$,
+$E_{\Gp}(t_0)=o(1)$, the primary signs and ratios, and
+$H_0\asymp A_q^{-\lambda}q^k$, with $A_q$ bounded above and below.
+SEP gives $E_\Sigma(t_0)\le C_{\rm ent}q^5<C_\Sigma q^5$.
+Q3SB gives the cross-residual entry bound $C_{\rm pre}q$.
+All cumulative-integral guards are zero at entry.
+
+To check outside entry without using a post-entry guard, use the
+pre-entry parts of the strip proofs. GESG's original Q3 interior
+has mass $O(q^{10})$. PISB's outer and middle bounds, restricted
+to $[0,t_0]$, use loss and Q3SB's proved pre-entry cross bound only.
+PISB \texttt{entrymass} bounds an inner $\pi$ label by
+\[
+ C A_q^{-1}\{q^{c_m}+q^{2+(1-\lambda)c_m}+q^{4/\lambda-2}\}e^{o(1)},
+ \quad c_m=4/(1-\lambda)+1/2.
+\]
+Each displayed exponent exceeds six; its label width is $qs_q$.
+LSB \texttt{entrymass} and \texttt{density}, whose proofs end at
+$t_0$ using only S1, give
+\[
+ \mu_{J_3}(t_0)\le C A_q^{-1}(q^{c_m+1}s_q+q^3)=O(q^3).
+\]
+Thus the whole Q3 entry mass is $O(q^3)$; in particular every
+outside component is strictly below $q b_B(q)/8$ for small $q$.
+This verifies the outside guard independently of its own assumed
+post-entry version.
+
+There is also a short signed entry check. MOMC's uniform shapes
+at $t_0$ put every right-half donor at
+$(\theta/q,\psi/q)=(a,a)+o(1)$, with mass $1/2$.
+Under $P_2$, write $X=(qZ,V)$, $V=\rho+qZ_2$.
+The same compact Gaussian moment used in MOMC's reduction gives
+\[
+ c_{\mathcal R}(t_0)
+ =\frac{q^2}{Q}\int_{\mathcal R}
+ y\,\E[V(Z+xV)_+]\dd\mu+o(q^2)
+ =\frac{a\rho K(\rho a)}{2\lambda}q^2+o(q^2).
+\]
+Use $a=\rho K(\rho a)$. The whole Q2 entry mass is $O(q^3)$
+by Q2EP, and we just checked the same bound for Q3.
+Their absolute responses are $O(q^3)$ by LCRC's elementary
+mass charge. This proves \eqref{an03wptv1:centry}, uniformly in
+the ratio box; $a^2/\lambda$ has a positive model lower bound.
+The upper response boundary is fixed, so $c(t_0)<c_b$ as well.
+\end{proof}
+
+\section{Joint stopped interval and hypothesis matching}
+In addition to stopping at either response boundary and at
+$t_0+20\ell$, stop at the first equality in
+\begin{equation}
+ \begin{gathered}
+ Y<K_Y,\quad\int r<B,\quad E_{\Gp}<2c_b,\quad
+ \|e_2\|_{P_1}+\|e_1\|_{P_2}<M_{\rm res}q,\\
+ E_\Sigma<2C_\Sigma(q^5+q^{\Gamma_\nu}H),\qquad
+ \int\eps_F<\overline F_F,\\
+ e<e_*,\quad r_{\KK}<1,\quad
+ |\theta|,|\psi|<Rq\text{ on }\KK,\quad\mu_{\KK}<2,\\
+ \sup_{t_0\le s\le t}\mu_{\BB}(s)/q<b_B(q).
+ \end{gathered}
+ \label{an03wptv1:guards}
+\end{equation}
+On each such initial interval $0<c<c_b$. Its closed endpoint
+has $0\le c\le c_b$. The sources apply with that endpoint;
+none needs the future time $t_b$ to be known in advance.
+
+\begin{proposition}[Every non-response guard improves]
+\label{an03wptv1:improvements}
+On the joint stopped interval, the energy, residual, field, core
+and outside guards in \eqref{an03wptv1:guards} have strict slack,
+uniformly in its endpoint. They cannot cause the first exit.
+\end{proposition}
+\begin{proof}
+We match hypotheses; the source arguments themselves are not
+reproved. The initially assumed core geometry supplies both
+S2CP's and LCRC's core state inputs. S2CP Proposition Bs therefore
+gives
+\[
+ \int|1-\kappa_1|\le\log2+o(1),\qquad
+ (\log\mu_{\KK})_+(t)+\int(\mu_{\KK}-1)_+\le d_q=o(1).
+\]
+This proposition uses the current core geometry and instantaneous
+outside guard, not future core retention. In particular it supplies
+LCRC's learning input $B_s^0$ and improves $\mu_{\KK}<2$.
+
+LCRC \texttt{localclock} uses only entry, response domain, loss,
+cross residual, duration and $\int r<B$. It gives the primary
+signs, $E_{\Gp}\le(10/9)H_{\Gp}$, its bounded backward defect,
+and the separate $o(1)$ clock defect. It uses neither a secondary
+energy conclusion nor an endpoint cap. S2CP \texttt{gate} then
+uses the temporary secondary guard, core and outside state guards
+to bound the signed gate excess. S2CP Theorem S2 additionally
+uses the coarse field guard and reference bound; SEP and MOMC
+supply its entry profiles. Consequently it gives its distance,
+gain, secondary energy and strong-complement mass conclusions.
+Its output $C_\Sigma$ was chosen after the entry constants and
+does not depend on the coefficient of the temporary secondary
+guard. Thus the factor-two secondary guard improves strictly.
+Its Corollary U gives $\mathcal U_\Sigma=o(1)$.
+
+With those distance/gain conclusions, all LCRC retained secondary
+inputs are supplied on the very same interval. The chart-group
+condition and \texttt{chartmass} are vacuous because $\mathcal D$
+is empty. The pointwise ledger cap yields
+$H_{\Gp}\le(9/8)c_b+o(1)$ and
+$E_{\Gp}\le(5/4)c_b+o(1)<(3/2)c_b<2c_b$.
+LCRC's unchanged Volterra step gives $Y\le K_Y/2$ and its
+instantaneous output estimate gives cross residual at most
+$M_{\rm res}q/2$. Its integral residual estimate and Bs give
+$\int r\le C_r\log2+o(1)<B-1$.
+The conservative constants used before selecting $c_b$ suffice
+for this smaller energy guard, exactly as checked in S2CP and CFA.
+
+For outside mass, S2CP \texttt{compmass}, GESG's original-label
+Q3 interior, PISB \texttt{main} and LSB \texttt{main} give
+\eqref{an03wptv1:outside} under the current stopped hypotheses.
+Their pre-entry cross input is Q3SB \texttt{crosspre}.
+PISB and LSB require neither CFA's strip budget nor its passage
+conclusion. For each of the four fixed components in
+\eqref{an03wptv1:outsidepartition}, its power is strictly larger
+than $1/10$. All coefficients are fixed before $q$; hence each
+is at most $b_B(q)/8$, and their sum is at most $b_B(q)/2$.
+Their integrated versions supply CFA's strip input with
+$F_{\mathcal S}(q)=o(1)$, satisfying any prescribed fixed small
+allowance for sufficiently small $q$.
+
+CFA \texttt{assembly} now uses S2CP's energy, outside and overshoot
+conclusions, the current core geometry and the paid strip input.
+It improves the canonical field guard to
+\[
+ \int\eps_F\le C_FC_{L_c}C_{\rm RCET}C_0E_g+o(1)
+       <\overline F_F/2.
+\]
+The coefficient of the primary term is
+independent of the coarse field allowance and secondary guard
+coefficient. Their influence in the other source constants
+multiplies only vanishing scales. CFA \texttt{forcing} gives
+\eqref{an03wptv1:forcing}, with its factor $1/Q$ retained.
+
+Finally CFA \texttt{passage} applies at this stopped endpoint.
+Its amplitude cap follows from LCRC's pointcap, its signed clock
+defect from localclock/BULK, its initial $e_0,r_0,H_0$ from S1
+and \eqref{an03wptv1:core}, and its forcing budget was just paid.
+Its cutoff calculation keeps
+\[
+ r_0L_b\le Cq^{\chi+kP_\rho q^2/(2Q)}=O(q^{1/20}).
+\]
+Thus $e\le3e_*/4$ and $r_{\KK}=O(q^{1/20})<1/2$.
+Since $a<28/51$, $e_*\le1/4$ and $r_{\KK}=o(1)$, each core
+coordinate is at most $28/51+3/16+o(1)<79/51$ in absolute
+value. The separate core chart guard therefore improves too.
+No future retained state has been used to prove its own past
+hypothesis: each source was invoked on the joint stopped interval.
+\end{proof}
+
+\paragraph{Continuity and continuation.}
+For each fixed positive $q$, the foundational characteristic
+regularity and finite-horizon mass bounds give continuous dependence
+on time uniformly over the compact initial circle. The fixed-cohort
+energies and response are continuous by domination. Gaussian
+integration gives continuous residual norms and matrix entries;
+the supremum over the compact receiver circle is continuous.
+The core is a fixed entry sublevel set. Uniform-in-label continuity
+also gives continuity of its essential-supremum radius and chart
+coordinates. The canonical field and its first receiver derivative
+are continuous on the fixed chart; the mass cap and positive-part
+moment in its definition are continuous, even at their corners.
+Thus $\eps_F$ is locally bounded and its time integral continuous.
+The cumulative outside supremum is continuous as well. All guards
+start strictly and all non-response first equalities are excluded
+by Proposition~\ref{an03wptv1:improvements}. This justifies the
+common continuation argument, including a simultaneous exit.
+
+\section{Duration and the clock accuracy actually certified}
+LCRC's ledger and sign-good estimate give on a stopped interval
+\begin{equation}
+ c(t)\ge\frac89H_{\Gp}(t)-\epsilon_q,\qquad
+ \epsilon_q=C\{q^2+q b_B(q)+q^5+q^{\Gamma_\nu}E_g
+       +q^2K_Y\sqrt{q^5+q^{\Gamma_\nu}E_g}\}+o(1),
+ \label{an03wptv1:ledgerlower}
+\end{equation}
+where the additional $o(1)$ includes the exponentially small
+primary tail. The constants are fixed. Combining with the clock,
+\begin{equation}
+ e^{-D_{\rm clk}}H_0e^{Q(1-c_b)(t-t_0)}
+ \le H(t)\le H_{\Gp}(t)\le\frac98(c_b+\epsilon_q).
+ \label{an03wptv1:durationineq}
+\end{equation}
+Therefore every endpoint inside this response strip satisfies
+\begin{equation}
+ t-t_0\le
+ \frac{\log(9c_b/(8H_0))+D_{\rm clk}+1}{Q(1-c_b)}
+ \quad\text{for sufficiently small }q.
+ \label{an03wptv1:duration}
+\end{equation}
+This is the proposed duration argument with its correct scope:
+it excludes remaining in $[0,c_b]$ for too long, not exit at zero.
+
+Since $H_0\asymp A_q^{-\lambda}q^k$, $k\le231/40$ and
+$Q(1-c_b)\ge507/1600$,
+\[
+ 20(507/1600)-231/40=9/16>0.
+\]
+Thus the right side of \eqref{an03wptv1:duration} is less than
+$20\ell$ for small $q$, independently of all later guards.
+The common stop cannot be the duration boundary. The strict
+improvements and entry lemma prove
+Theorem~\ref{an03wptv1:twoboundary}.
+
+There is a sharper, useful clock identity. At any certified endpoint,
+\begin{equation}
+ t-t_0=\frac{\log(H(t)/H_0)-\delta(t_0,t)}Q
+                         +\int_{t_0}^t c(s)\dd s,
+ \quad |\delta(t_0,t)|\le D_{\rm clk}.
+ \label{an03wptv1:exacttime}
+\end{equation}
+S2CP's gate budget gives
+\begin{equation}
+ 0\le\int c\le\frac{10e}{9}\frac{E_g}{Q(1-c_b)}+o(1).
+ \label{an03wptv1:cint}
+\end{equation}
+In particular, using the cap on $H$,
+\begin{equation}
+ t-t_0\le\frac{\log(c_b/H_0)+O_{m fixed}(1)}Q.
+ \label{an03wptv1:sharperupper}
+\end{equation}
+The requested equality
+$t_b-t_0=[\log(c_b/H_0)+O(1)]/[Q(1-c_b)]$ is not the
+accuracy of these sources. For any fixed $c_b>0$ it is incompatible
+with \eqref{an03wptv1:sharperupper} if a certified $t_b$ exists:
+the difference of the two leading terms is
+\[
+ \frac{c_b}{Q(1-c_b)}\log(c_b/H_0)
+ =\frac{c_b k}{Q(1-c_b)}\ell+O_{m fixed}(1),
+\]
+which diverges. Formula \eqref{an03wptv1:duration} is a valid
+upper bound. Formula \eqref{an03wptv1:exacttime} retains the
+$o(1)$ clock defect and the exact terminal clock amplitude.
+An additional terminal comparison $H(t_b)\asymp c_b$, if established,
+would give $[\log(c_b/H_0)+O(1)]/Q$, not the proposed denominator.
+No such comparison is silently used here.
+
+\section{Exact stopping point: the lower response boundary}
+The hypotheses $0\le c\le c_b$ occur explicitly in LCRC Section 1,
+RCET Theorem 2.1, BULK Theorem 4.1, S2CP's guard list, CFA's guard
+list and CLOCK's cfield/passage statements. They are not conclusions
+of those statements. The proposed guard list and the roadmap's
+strict-improvement list omit an argument excluding exit through
+the lower boundary. Continuity alone cannot exclude it.
+
+The exact missing domain conclusion is
+\begin{equation}
+ \boxed{\quad c(t)\ge0\quad
+   (t_0\le t\le\min\{t_+,t_0+20\ell\}).\quad}
+ \label{an03wptv1:gap}
+\end{equation}
+This is needed for the initialized flow, with the other guards
+improved as above. Touching zero and returning to positive response
+would be allowed; strict positivity is not part of the required
+contract. The stronger statement $t_->t_+$ would suffice to remove
+the two-boundary alternative in our continuation argument.
+A sufficient signed ledger estimate at a putative first
+lower hit $s$ would be
+\begin{equation}
+ c_{\Sigma}(s)+c_{\KK}(s)+c_{\BB}(s)
+ >-\frac89 H_{\Gp}(s)
+       +C\mu_{\Gp}(s)e^{-\rho^2/(4q^2)}.
+ \label{an03wptv1:signedneeded}
+\end{equation}
+Together with LCRC's one-sided primary tail this would imply
+$c(s)>0$, a contradiction. A different proved invariant-region
+argument for the exact response could also supply
+\eqref{an03wptv1:gap}. Neither is among the matched sources.
+
+The proposed absolute-charge route gives only
+\eqref{an03wptv1:ledgerlower}. At $c(s)=0$ it implies
+\[
+ H_{\Gp}(s)\le\tfrac98\epsilon_q,
+\]
+which is compatible with a positive but small clock. To turn this
+route into a lower-boundary contradiction one would need
+\begin{equation}
+ \frac89H_{\Gp}(s)>
+ |c_\Sigma(s)|+|c_{\KK}(s)|+|c_{\BB}(s)|
+       +C\mu_{\Gp}(s)e^{-\rho^2/(4q^2)}.
+ \label{an03wptv1:absolutefailure}
+\end{equation}
+This is not a consequence of a vanishing absolute error. Indeed
+at entry Q2EP gives $H_{\Gp}(t_0)\le\mu_{Q2}(t_0)=O(q^3)$,
+whereas \eqref{an03wptv1:centry}'s core calculation also gives
+$c_{\KK}(t_0)\asymp q^2$. Thus the uniform absolute-domination
+version of \eqref{an03wptv1:absolutefailure} already fails at entry,
+even though the actual response there is strictly positive.
+The sign of the core contribution, lost in that absolute charge,
+matters. Later the available outside bounds are also absolute and
+are not $o(q^2)$ bounds on its response.
+
+Q3SB \texttt{gatepre} bounds $|c|+N_-$ before $t_0$; it does not
+prove nonnegativity. Its signed-excess calculation explicitly allows
+slightly negative pre-entry response. Loss monotonicity and the
+positive radial weights do not turn the signed regression
+\eqref{an03wptv1:response} into a nonnegative mass. None of these
+facts proves the missing later barrier.
+
+We stop at \eqref{an03wptv1:gap}. This is an unmatched hypothesis,
+not a counterexample to response positivity in the initialized flow.
+No extension of CLOCK, BULK or the c-form inequalities to negative
+response is asserted. Such an extension would be a different task.
+
+\section{Handoff and boundary of the claim}
+The certified handoff is at $\tau$, with the unresolved alternative
+$c(\tau)=0$ or $c(\tau)=c_b$. If the latter alternative is proved
+to occur, the following are available to S4 immediately:
+\begin{itemize}
+ \item Original residual bounds and $J_G=O(q^2)$, the primary
+ sign/ratio transport with fixed $e^{O(C_0)}$ accuracy, and
+ $\int r\le C_r\log2+o(1)$.
+ \item The fixed clock seed $H_0\asymp A_q^{-\lambda}q^k$, the
+ exact clock \eqref{an03wptv1:clock} with $o(1)$ defect, its
+ amplitude cap, and the phase identity \eqref{an03wptv1:exacttime}.
+ A fixed seed comparison is not an asymptotically exact seed coefficient.
+ \item The same-field reference and fixed core, with
+ $r_{\KK}=O(q^{1/20})$, $e\le3e_*/4$ and
+ $\mu_{\KK}\le1+o(1)$; these are retention bounds, not an
+ orbit-selection theorem.
+ \item The secondary energy bound and all-endpoint capped gain;
+ the complementary and outside masses, including their integrated
+ $\mu/q$ budgets, at positive-power accuracy.
+ \item The exact c-form representation, a small fixed integrated
+ value-and-derivative remainder, and a small fixed CLOCK forcing
+ budget. These budgets are not relabeled $o(1)$ when their
+ $C_0E_g$ or $\sqrt{E_g}$ terms remain fixed.
+\end{itemize}
+As the sources stand, the condition selecting this upper-boundary
+handoff has not been proved. No S4 weak return, matching beyond
+$c_b$, or selection is begun, and no prior source is modified.
+\end{document}
