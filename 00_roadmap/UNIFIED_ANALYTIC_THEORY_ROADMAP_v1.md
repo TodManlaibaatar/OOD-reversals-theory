@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.20 — October 30, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.21 — October 30, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -91,6 +91,16 @@
   - the selected cohort must carry all but $o(H)$ of the weak mass and response;
   - WBR does not supply $A_0\to0$.
 - **Next:** S4c, the matching package. S4d (field reductions and selection) follows.
+
+**Revision 1.21 (Oct 30).** Records MP (`AN03_matching_package_v1`, S4c): **closed.**
+- **Population accounting.** The omitted primary band is $\asymp q^{1/4}$ of H.
+- **Response:** $c=H(1+O(q^{1/4}))+O(q^2)$.
+- **Phase:** uniform $o(1)$ logistic phase, and $\int|N-c|=o(1)$.
+- **Transverse energy and smallness:** $J_S\le C(q^3+q^2H)$, so $A_0=O(q^{1/16})$ with $p=2$.
+- **Mass defects:** late budgets, pointwise and integrated.
+- **Remaining S4:**
+  - **S4d**, the strong-reference reduction and the local guard;
+  - **S4e**, the weak-chart reduction and the selection theorem.
 
 ---
 
@@ -738,6 +748,39 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
 - *Remaining S4 (2–3 sessions):*
   - **S4c, the matching package:** population accounting, logistic phase, mass identities, $A_0$, and late mass-defect budgets.
   - **S4d:** field reductions (weak chart and strong reference) to TAILREP's error inequalities, the local strong guard $E_0$, and the selection theorem.
+  - *S4c is done (MP, next block). S4d is split into S4d and S4e.*
+
+**Status after MP (`AN03_matching_package_v1`, S4c, Oct 30): closed.**
+- *Theorem (matching package).* On $[t_s,t_e]$ (the first hits of $H=q^{1/8}$ and $H=h$), with $S=\mathcal C_q$:
+  - **Population.** The omitted primary band $P_q=G_+\setminus\mathcal C_q$ has $H_{P_q}/H\asymp q^{1/4}$, and $H_{P_q}+\mu_\Sigma+\mu_{\mathcal B}=O(q^{1/4}H)$.
+  - **Response.** $c=H(1+O(q^{1/4}))+O(q^2)$.
+  - **Phase.** For the logistic N with $N(t_s)=H(t_s)$:
+    - $\sup|\log(H/N)|\le C(q^{1/8}+q^2\ell+q^{1/4}h/b_0)=o(1)$;
+    - $\int|N-c|=o(1)$;
+    - interior hitting times differ by $o(1)$.
+  - **Masses.** $N_S/H=1+O(q^2)$ and $N_{\rm nc}/H=1+O(q^{1/4})$.
+  - **Transverse energy.** $J_S\le C(q^3+q^2H)$, from BULK `forcing`/`Jprop` with $G=S$ and $\sigma=0$; the inputs come from RB and Q2EP.
+  - **Smallness.** With $p=2$: $N_0=q^{1/8}$ and $A_0=O(q^{1/16})$.
+  - **Mass defects.** $\sup|1-M|=O(q^{11/10})$ and $\sup|1-M|L=O(q^{101/640})$, with matching integrated budgets.
+- *Checked:*
+  - $\gamma(169/400)=6481/18480>7/20$;
+  - the band measure;
+  - the seed ratio, where the $A_q^{-\lambda}$ factors cancel;
+  - RCET's fixed distortion;
+  - the ledger identity $c_S=H-A_S+\tau_S$, with the absolute bound $|\tau_S|\le C\mu_Se^{-c/q^2}$ on the reached chart;
+  - the Young bound;
+  - the sign-contracting phase equation;
+  - the logistic hitting-time formula;
+  - $\int m(u^2+v^2)\le CJ_S/q^2$;
+  - the sup-route window. Its exact necessary condition is $k>11/2+7c_b/(2(1-c_b))$; my "$k>5.5$" was only the $c_b\to0$ limit.
+- *Remaining S4 (2 sessions, possibly 3):*
+  - **S4d, the strong reference.**
+    - Reduce the strong reference to TAILREP's `strongerror` form, with pointwise $d_0\to0$.
+    - The weak influence on strong receivers must appear as leading weak moments (N, and the weak population's moments compared through $W_p$), not as CFA's fixed $C_0E_g$ remainder.
+    - Establish WEAK's local box for $N\le2h$, and $E_0\to0$ at $t_s$.
+  - **S4e, the weak chart and selection.**
+    - Reduce the selected cohort's (u,v) field on the reached chart to TAILREP's `weakerror` form: value vs coefficient, the normalized-weight defect, and a common $L_*$.
+    - Then apply TAILREP's selection at a fixed logistic level $n<h$ (for example $h/2$).
 
 **Original claim (v1; "bounded chart" superseded by SI).** The Q2 bulk, which is on the strong side at angle $\approx q^{0.52}$ at κ=10 strong entry (target-only), returns into a bounded weak chart with $u\ge0$. Its evolution there matches a closed leading weak family with $\sqrt{N_0}\,W_p(t_0)\to0$, and its response clock matches the logistic half-mass phase to $o(1)$.
 
@@ -847,7 +890,7 @@ Tracks that can run in parallel:
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
 | II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem, and **RB proved the response barrier: the deep-regime weak passage is a theorem.** Track II is complete; next is S4 (track III). |
-| III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **Next: S4c,** the matching package (population accounting, logistic phase, $A_0$). Then S4d (field reductions, strong guard, selection). |
+| III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **Next: S4d,** the strong-reference reduction and local guard. Then S4e (weak-chart reduction and selection). |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
 | — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. |
@@ -857,7 +900,7 @@ Tracks that can run in parallel:
 ```text
 S0 ──┐
 S1 ──┼──> S2, S3 ──> c-passage (CLOCK) ──┐
-     └──> S4b return ──> S4c matching ──> S4d selection ─────┤
+     └──> S4b return ──> S4c matching ──> S4d–e selection ───┤
 S6 ──────────────────────────────────────────────────────────┼──> S5 (AN7) ──> Theorem A, B-core, persistence
 S8 ──> S7 (AN4) ──> B-bridge, canonical mechanism ───────────┘ (regime map links the two)
 ```
@@ -970,6 +1013,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | RB | `AN03_response_barrier_v1.tex` (+ review), prefix `an03rbv1:` — **response barrier; completed initialized deep-regime weak-passage theorem**; $H(t_b)\asymp c_b$, exact time relation, S4 handoff |
 | SI | `AN03_selection_interface_v1.tex` (+ review), prefix `an03siv1:` — S4a, partial: full selection-hypothesis inventory with exact constants; core donor moments; BULK size in weak coordinates ($p_b$); growing-chart mass relation and logistic phase identity. Stops at the original weak-return margin. |
 | WBR | `AN03_weak_boundary_return_v1.tex` (+ review), prefix `an03wbrv1:` — S4b, closed: exact weak-boundary moments; one-sided weak feedback by energy; pointwise strong-mass rate; $O(q)$ clock alignment; original input return of the whole clock to a fixed level |
+| MP | `AN03_matching_package_v1.tex` (+ review), prefix `an03mpv1:` — S4c, closed: population accounting (band $\asymp q^{1/4}$); response $c=H(1+O(q^{1/4}))+O(q^2)$; uniform $o(1)$ logistic phase; $J_S\le C(q^3+q^2H)$; $A_0=O(q^{1/16})$ ($p=2$); late mass-defect budgets |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

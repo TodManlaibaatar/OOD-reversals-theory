@@ -1,0 +1,624 @@
+% New standalone increment; prior increments and repository are read-only.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,array,longtable,booktabs,xurl}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\newcommand{\KK}{\mathcal K}\newcommand{\BB}{\mathcal B}
+\newcommand{\Gp}{{G_+}}\newcommand{\Clk}{\mathcal C_q}
+\newcommand{\eps}{\varepsilon}\newcommand{\one}{\mathbf1}
+\newcommand{\Kfun}{\mathsf K}
+\newcommand{\src}[2]{\textup{#1} \texttt{#2}}
+\title{Matching package inside the initialized weak passage\\
+Population accounting, logistic phase and weighted incoming smallness}
+\author{Standalone analytical increment for independent review}
+\date{Version 1 --- 30 October 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The full clock cohort carries all but a vanishing relative amount of
+the non-core mass and the weak response on a late passage interval.
+The omitted primary band has relative amplitude of order $q^{1/4}$,
+not merely a bounded fraction. The exact amplitude clock then matches
+an auxiliary logistic mass with $o(1)$ phase. BULK's separate-clock
+transverse theorem applies under RB's proved states and regenerates
+$J_S\le C(q^3+q^2H)$, which supplies the previously missing
+$\sqrt{N_0}W_2(t_s)\to0$. We also record exact mass identities and
+quantitative late core-mass defect budgets. This is a matching theorem
+on the original flow, not a weak-field reduction or a selection theorem.
+\end{abstract}
+
+\section{Interval, fixed populations and inherited facts}
+\label{an03mpv1:setup}
+All new labels have prefix \texttt{an03mpv1:}. Work in the initialized
+deep regime $\kappa=10$, $\rho\in[13/20,7/10]$, and set
+\[
+ \lambda=\rho^2,\quad Q=\lambda+q^2,\quad \ell=\log(1/q),
+ \quad k=10(1-\lambda),\quad
+ \gamma=1-5\lambda+\frac{2\lambda}{1-\lambda}.
+\]
+Keep WPT/RB's fixed constant order and then WBR's choices.
+All passage inputs are conclusions of RB's completed theorem;
+we do not reopen its bootstrap. The fixed original label partition is
+$\KK,\Gp,\Sigma,\BB$, with $\mathcal D=\varnothing$, where
+\begin{align}
+ \Gp&=\{b\in[\pi/2,\pi]:c_0=-\cos b\ge Kq^\gamma\},
+ &\Sigma&=\{b\in[\pi/2,\pi]:c_0<Kq^\gamma\},\notag\\
+ S&=\Clk=\{b\in[\pi/2,\pi]:c_0\ge q^{1/4}\},
+ &P_q&=\Gp\setminus S.
+ \label{an03mpv1:partition}
+\end{align}
+Here $K=K(C_0)$ is Q2EC's fixed threshold. The proved bound
+$\gamma>7/20$ ensures $Kq^\gamma<q^{1/4}$ for small $q$.
+Thus the union called $\Gp$ in LCRC is precisely the primary Q2
+population, counted once. Labels are fixed, including the endpoints;
+the initialization measure is $\dd\lambda_0=\dd b/(2\pi)$.
+
+Use the exact balanced-flow energies
+\begin{gather*}
+ z=(U_2+W_2)/2,\quad a_-=(U_2-W_2)/2,\quad
+ H_T=\int_Tz^2,\quad A_T=\int_Ta_-^2,\\
+ J_T=\tfrac12\int_T(U_1^2+W_1^2),\quad E_T=H_T+A_T.
+\end{gather*}
+All label integrals use $\lambda_0$. Balance gives $\mu_T=E_T+J_T$.
+Write $H=H_S$, $M=\mu_\KK$ for the physical core mass, and
+$c_T=Q^{-1}\E_{P_2}[X_2(f_T)_2]$ for the response of a cohort.
+Do not identify $M$ with $M_{\rm res}$ or with a normalized mass.
+
+We choose the start exponent
+\begin{equation}
+ a=1/8,\qquad t_s=\inf\{t\ge t_0:H(t)=q^a\},\qquad
+ t_e=\inf\{t\ge t_0:H(t)=h\},
+ \label{an03mpv1:levels}
+\end{equation}
+where $h$ is any fixed level satisfying WBR's smallness conditions;
+it may be decreased. In particular $h<c_Hc_b/2$ and $h<1/4$.
+RB and WBR give $t_0<t_s<t_e<t_b<t_0+20\ell$ for small $q$.
+BULK's clock proof gives $z'/z\ge b_*/2>0$ on $S$, where
+$b_*=Q(1-c_b)/2$; hence $H$ is strictly increasing. In particular
+$q^a\le H\le h$ on the selected interval.
+
+The following inherited bounds will be used with their stated scopes:
+\begin{align}
+ &E_\Gp\le C_EH,\quad E_T\le(10/9)H_T\ (T\subseteq\Gp),
+ \quad J_G\le q^2K_Y^2,\quad G=\Gp\cup\Sigma,\notag\\
+ &E_\Sigma\le C_\Sigma(q^5+q^{\Gamma_\nu}H),\quad
+ \Gamma_\nu\ge289169/924000>3/10,\quad
+ \mu_\BB\le q^{11/10},\quad |c_\KK|\le Cq^2,
+ \label{an03mpv1:states}\\
+ &H_0:=H(t_0)\asymp A_q^{-\lambda}q^k,\quad
+ 0<c_A\le A_q\le C_A,\quad
+ \int_s^t|\eps_H|\le D_q:=C(q^{1/8}+q^2\ell),\notag\\
+ & (\log H)'=Q(1-c)+\eps_H,\quad 0<c\le c_b\le1/4,
+ \quad b_0=Q(1-c_b)>0.
+ \label{an03mpv1:clock}
+\end{align}
+The absolute defect integral is BULK's conclusion, certified by RB,
+not a consequence inferred by differentiating a bounded phase error.
+It implies
+\begin{equation}
+ H(v)\le e^{D_q}H(t)e^{-b_0(t-v)},\qquad
+ \int_{t_0}^t H\le\frac{e^{D_q}}{b_0}H(t),\quad
+ \int_{t_0}^t\sqrt H\le\frac{2e^{D_q/2}}{b_0}\sqrt{H(t)}.
+ \label{an03mpv1:backward}
+\end{equation}
+The weak coordinates are $u=(\pi/2-\theta)/q$ and
+$v=(\psi-\pi/2)/q$. WBR gives $u>0$ on $S$ from $t_0$ to $t_e$,
+$|\theta-\psi|\le C_\Delta q$, and, on $[t_s,t_e]$,
+\begin{equation}
+ |u|+|v|\le L(q):=C_L(1+q^{-p_*}),\qquad p_*=603/640<1.
+ \label{an03mpv1:chart}
+\end{equation}
+The reached chart, not a bounded-chart assumption, justifies all
+small-angle estimates below.
+
+\section{Step 1: population accounting and signed response}
+\begin{lemma}[The omitted primary band]
+\label{an03mpv1:band}
+Uniformly on the entire RB passage,
+\begin{equation}
+ H_{P_q}(t)/H(t)\asymp q^{1/4}.
+ \label{an03mpv1:bandratio}
+\end{equation}
+Both constants are fixed and may depend on the primary threshold and
+the fixed RCET distortion. In particular this is a vanishing ratio.
+\end{lemma}
+\begin{proof}
+RB \texttt{primaryseed}, together with Q2EC's two-sided original
+coordinate transport in its matched primary sector, gives
+\begin{equation}
+ U_2(t_0,b)^2\asymp A_q^{-\lambda}q^k(s_0+q)^2,
+ \qquad s_0=\sin b,\quad b\in\Gp.
+ \label{an03mpv1:seed}
+\end{equation}
+At entry $|a_-|/z\le1/4$, so $z^2\asymp U_2^2$.
+The Q2EC matching proof includes late crossings, particularly $b=\pi$,
+and retains both $s_0+q$ and $c_0+q$. Its proof also checks the bounded
+shift $t_0-10\ell=-\log A_q+o(1)$. Thus this is not a transfer
+through an absolute angle error or a logarithm of the initial zero seed.
+
+On $P_q$, $Kq^\gamma\le c_0<q^{1/4}$, so $s_0\asymp1$.
+The change of variable $c_0=-\cos b$ has density
+$(2\pi\sqrt{1-c_0^2})^{-1}$, bounded above and below there.
+Because $\gamma>7/20>1/4$,
+\[
+ \lambda_0(P_q)\asymp q^{1/4}-Kq^\gamma\asymp q^{1/4}.
+\]
+Integrating \eqref{an03mpv1:seed} gives
+$H_{P_q}(t_0)\asymp A_q^{-\lambda}q^{k+1/4}$, whereas
+$H(t_0)\asymp A_q^{-\lambda}q^k$.
+RCET \texttt{transport} applies to the two fixed positive-amplitude
+subsets $P_q,S\subseteq\Gp$, with all its response, duration, residual,
+learning and Cartesian entry hypotheses discharged by RB/Q2EC.
+It multiplies their relative ratio by a factor in $[e^{-2D_+},e^{2D_+}]$,
+where $D_+=O(C_0+q^2\ell)$ is bounded. This proves
+\eqref{an03mpv1:bandratio}; it does not claim $D_+=o(1)$.
+\end{proof}
+
+\begin{proposition}[Accounting on the late interval]
+\label{an03mpv1:accounting}
+Uniformly for $t_s\le t\le t_e$,
+\begin{align}
+ H_{P_q}+\mu_\Sigma+\mu_\BB&\le Cq^{1/4}H,
+ \label{an03mpv1:omitted}\\
+ |c-H|&\le Cq^{1/4}H+Cq^2.
+ \label{an03mpv1:response}
+\end{align}
+Consequently the omitted weak mass is $o(H)$ even if all outside
+mass, rather than only its weak-side part, is charged. No population
+mask is differentiated.
+\end{proposition}
+\begin{proof}
+The secondary mass satisfies
+\[
+ \frac{\mu_\Sigma}{H}\le C\left(q^{\Gamma_\nu}
+       +q^{5-a}+q^{2-a}\right),\qquad
+ \frac{\mu_\BB}{H}\le q^{11/10-a}.
+\]
+For $a=1/8$ the latter exponent is $39/40$, and all the displayed
+exponents exceed $1/4$. Together with Lemma \ref{an03mpv1:band}
+this proves \eqref{an03mpv1:omitted}.
+
+To estimate the selected response, WBR alignment and balance give
+\begin{equation}
+ A_S\le(C_\Delta^2/4)q^2\mu_S,\qquad
+ \mu_S=H+A_S+J_S\le C(H+q^2)\le CH.
+ \label{an03mpv1:earlymass}
+\end{equation}
+The last step uses $H\ge q^a$. On the reached chart
+$\sin\theta\ge1/2$ for small $q$. In LCRC's exact ledger,
+\[
+ c_S=H-A_S+\tau_S,\qquad
+ \tau_S=Q^{-1}\int_S W_2\E_{P_2}[X_2(U\cdot X)_-],
+\]
+Gaussian projection gives the two-sided absolute estimate
+\begin{equation}
+ |\tau_S|\le C\mu_S e^{-c_*/q^2}.
+ \label{an03mpv1:tail}
+\end{equation}
+Indeed $|W_2||U|\le m$, the gate-failure probability is at most
+$\exp[-\rho^2/(8q^2)]$, and Cauchy--Schwarz bounds the remaining
+fourth moment uniformly. This uses the reached input chart; LCRC's
+one-sided \texttt{taulower} alone would not give an upper error.
+Thus $|c_S-H|\le Cq^2H+CH e^{-c_*/q^2}$.
+
+For each other cohort LCRC \texttt{responsecharge} and Young's
+inequality give
+\[
+ |c_T|\le E_T+\frac{2q}{\sqrt Q}\sqrt{E_TJ_T}
+          \le2E_T+\frac{q^2}{Q}J_T.
+\]
+Hence $|c_{P_q}|\le Cq^{1/4}H+Cq^4$ and
+$|c_\Sigma|\le C(q^5+q^{\Gamma_\nu}H+q^4)$.
+The core response is $O(q^2)$, and
+$|c_\BB|\le C\mu_\BB\le Cq^{39/40}H$.
+Sum the exact decomposition
+$c=c_S+c_{P_q}+c_\Sigma+c_\KK+c_\BB$ to obtain
+\eqref{an03mpv1:response}. All four data/gate contributions remain
+in the exact ledger; no sign of an omitted cohort is assumed.
+\end{proof}
+
+\section{Step 2: logistic matching with a vanishing phase error}
+Define the auxiliary scalar $N$ by
+\begin{equation}
+ N'=\lambda N(1-N),\qquad N(t_s)=N_0=H(t_s)=q^a.
+ \label{an03mpv1:logistic}
+\end{equation}
+It is a comparison mass, not a declaration of the original radial law.
+
+\begin{proposition}[Uniform phase and interior hitting times]
+\label{an03mpv1:phase}
+On $[t_s,t_e]$, with $x=\log(H/N)$,
+\begin{equation}
+ \sup|x|\le d_{\rm ph}(q):=
+ C\left(q^{1/8}+q^2\ell+\frac{q^{1/4}h}{b_0}\right)=o(1).
+ \label{an03mpv1:phasebound}
+\end{equation}
+In particular $N(t_e)=h\exp(O(d_{\rm ph}))<2h<1/2$ for small $q$.
+For every fixed $n\in(0,h)$, both first hits $t_H(n),t_N(n)$ lie
+in $[t_s,t_e]$ for small $q$, and
+\begin{equation}
+ |t_H(n)-t_N(n)|\le C\frac{d_{\rm ph}}{\lambda(1-h)}=o(1).
+ \label{an03mpv1:hittime}
+\end{equation}
+For $n=h$, the same $o(1)$ relation holds to the auxiliary logistic
+hit, which may lie just after $t_e$; no original-flow estimate after
+$t_e$ is used in that endpoint comparison.
+\end{proposition}
+\begin{proof}
+The exact identity is
+\[
+ x(t)=q^2\int_{t_s}^t(1-c)+\lambda\int_{t_s}^t(N-c)
+                   +\int_{t_s}^t\eps_H.
+\]
+Its derivative can be reorganized as
+\begin{equation}
+ x'=\lambda N(1-e^x)+f(t),\qquad
+ f=q^2(1-c)+\lambda(H-c)+\eps_H.
+ \label{an03mpv1:contractphase}
+\end{equation}
+For every real $x$, the first term opposes its sign, so
+$D^+|x|\le|f|$. Equations \eqref{an03mpv1:backward} and
+\eqref{an03mpv1:response} give
+\[
+ \int_{t_s}^{t_e}|H-c|\le Cq^{1/4}\frac{e^{D_q}h}{b_0}
+                                  +Cq^2\ell.
+\]
+Using the absolute clock-defect integral proves
+\eqref{an03mpv1:phasebound}, without a factor $e^{Ch\ell}$.
+As an additional useful conclusion,
+\begin{equation}
+ \int_{t_s}^{t_e}|N-c|
+ \le C\left(d_{\rm ph}\frac{h}{b_0}
+              +q^{1/4}\frac{h}{b_0}+q^2\ell\right)=o(1).
+ \label{an03mpv1:phaseintegral}
+\end{equation}
+Here $|N-H|\le C d_{\rm ph}H$ follows from the uniform bound.
+
+At $t_H(n)$, $N=n e^{-x(t_H(n))}$. Exact logistic integration
+therefore gives
+\[
+ t_H(n)-t_N(n)=\lambda^{-1}
+ \left[-x(t_H(n))+
+ \log\frac{1-n}{1-n e^{-x(t_H(n))}}\right].
+\]
+The mean value theorem proves \eqref{an03mpv1:hittime}. For fixed
+$n<h$, $N(t_e)>n$ for small $q$, so the logistic hit is interior.
+At $n=h$ the formula uses only the explicit auxiliary logistic
+solution, not an extension of any original estimate.
+\end{proof}
+
+\section{Step 3: mass identities, without identifying the three masses}
+\begin{proposition}[Selected and whole weak mass]
+\label{an03mpv1:masses}
+The exact identities and current pointwise consequences are
+\begin{align}
+ N_S:=\mu_S&=H+A_S+J_S,\qquad A_S\le Cq^2N_S,
+ \label{an03mpv1:identity}\\
+ \frac{N_S}{H}&=1+O(q^2+q^{2-a})=1+O(q^{15/8}).
+ \label{an03mpv1:coarsemass}
+\end{align}
+The transverse estimate proved in the next section sharpens this to
+\begin{equation}
+ \frac{N_S}{H}=1+O\left(q^2+\frac{q^3}{H}\right)=1+O(q^2).
+ \label{an03mpv1:sharpmass}
+\end{equation}
+Define the full fixed non-core radial mass by
+$N_{\rm nc}=\mu_\Gp+\mu_\Sigma+\mu_\BB$. Then
+\begin{equation}
+ \frac{N_{\rm nc}}H=1+O(q^{1/4}),\qquad
+ \frac{N_S}N=1+O(d_{\rm ph}+q^2),\qquad
+ \frac{N_{\rm nc}}N=1+O(d_{\rm ph}+q^{1/4}).
+ \label{an03mpv1:totalmass}
+\end{equation}
+Any weak-family mass containing $S$ and drawn from these non-core
+cohorts obeys the same $1+O(q^{1/4})$ comparison with $H$.
+If only part of $\BB$ is called weak, charging all of $\BB$ proves
+the assertion without needing a moving-mask evolution law.
+\end{proposition}
+\begin{proof}
+Balance proves the identity. Since $|\sin\theta-\sin\psi|
+\le|\theta-\psi|\le C_\Delta q$, WBR alignment proves the bound
+for $A_S$. Absorb $Cq^2N_S$ and use $J_S\le q^2K_Y^2$
+to get \eqref{an03mpv1:coarsemass}. Inserting the next section's
+$J_S\le C(q^3+q^2H)$ instead gives \eqref{an03mpv1:sharpmass}.
+For the omitted primary group,
+$\mu_{P_q}\le(10/9)H_{P_q}+J_{P_q}$, with
+$J_{P_q}\le q^2K_Y^2$. Add Proposition
+\ref{an03mpv1:accounting} and use $q^2/H\le q^{15/8}$.
+The ratios to $N$ then follow from the phase estimate.
+No circular use of \eqref{an03mpv1:sharpmass} was made in that
+phase proof or in the transverse input below.
+\end{proof}
+
+\section{Step 4: regenerated transverse energy and second-moment smallness}
+\begin{lemma}[The proved transverse theorem applies]
+\label{an03mpv1:transverse}
+There is a fixed $C_J'$ such that, on the entire certified passage,
+\begin{equation}
+ J_S(t)\le C_J'[q^3+q^2H(t)].
+ \label{an03mpv1:J}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Apply BULK \texttt{forcing} with its cohort $G=S$ and exponent
+$\sigma=0$. Its complete inputs are as follows:
+the fixed positive clock $H$, $0\le c\le c_b<1$, the subinterval
+lower bound $\int\eps_H\ge-D_q$, logarithmic duration,
+$E_S\le C_E(q^5+H)$, $J_S(t_0)\le C_Jq^3$,
+$\ell_S\le L_\times q$, and $\int r_S\le B$.
+The clock and response range are \eqref{an03mpv1:clock};
+signgood gives $E_S\le10H/9$, which is independent of
+\eqref{an03mpv1:J}. Q2EP \texttt{entryenergy} applies to every
+fixed Q2 subcohort and gives the required initial $J_S$.
+RB's residual norms imply $\ell_S\le L_\times q$ by BULK
+\texttt{residualinputs}; RB also supplies $\int r_S\le B$
+and duration at most $20\ell$. All constants are fixed, and
+$D_q$ can be bounded by one.
+Thus BULK \texttt{Jprop} gives \eqref{an03mpv1:J} directly.
+Equivalently its already proved norm inequality and
+\eqref{an03mpv1:backward} bound $\sqrt{J_S}$ by a fixed multiple
+of $q^{3/2}+q\sqrt H$. No leading-system capture or bounded
+weak chart is a hypothesis of this Cartesian theorem.
+\end{proof}
+
+For initial comparison, set
+\[
+ \eta_s(\dd b)=\frac{m(t_s,b)}{N_S(t_s)}\dd\lambda_0(b)
+ \quad(b\in S),\qquad N_0=q^a.
+\]
+This is a positive probability on fixed labels. Let
+$(U_*,V_*)(N)$ be the selected leading branch and define, just at
+entry,
+\begin{equation}
+ W_2(t_s)=\big\||u-U_*(N_0)|+|v-V_*(N_0)|\big\|_{L^2(\eta_s)}.
+ \label{an03mpv1:Wp}
+\end{equation}
+AN06 \texttt{regiontheorem}, as inventoried in SI, gives
+$0<U_*<1$, $0<V_*<11/10$ on $0<N\le1/2$ in the ratio box.
+This is used solely for bounded comparator coordinates, not as
+an original-field or local-strong-guard assertion.
+
+\begin{proposition}[Weighted incoming smallness]
+\label{an03mpv1:smallness}
+With $a=1/8$ and $p=2$,
+\begin{equation}
+ N_0=q^{1/8}\longrightarrow0,\qquad
+ A_0:=\sqrt{N_0}W_2(t_s)
+ \le C(q^{1/2}+q^{1/16})=O(q^{1/16})\longrightarrow0.
+ \label{an03mpv1:A0}
+\end{equation}
+The same bound holds if the initial scalar normalization is chosen
+as the actual $N_S(t_s)$ instead of $H(t_s)$, with a corresponding
+bounded comparator at that mass. In that convention the initial
+logarithmic phase is $O(q^2)$ rather than zero.
+\end{proposition}
+\begin{proof}
+On the reached chart, $|qu|,|qv|\le1/2$ for small $q$, so
+\[
+ \int_S m(u^2+v^2)\le C J_S/q^2.
+\]
+Minkowski and the bounded comparator give
+\[
+ N_0W_2(t_s)^2\le C\frac{N_0}{N_S(t_s)}
+             \left[\frac{J_S(t_s)}{q^2}+N_S(t_s)\right].
+\]
+Use \eqref{an03mpv1:sharpmass} and \eqref{an03mpv1:J} at
+$H(t_s)=q^a$ to bound the right side by $C(q+q^a)$.
+This proves \eqref{an03mpv1:A0}. The changed normalization assertion
+uses $N_S(t_s)/N_0=1+O(q^2)$ and the same uniform comparator bounds.
+No assumption of constant future normalized original weights is made.
+\end{proof}
+
+\paragraph{Audit of the proposed supremum route.}
+At a first clock level $H=q^{\widetilde a}$, SI's BULK bound gives
+the exponent
+\[
+ p(\widetilde a)=15/8-(k-\widetilde a)(1-c_b)/4.
+\]
+For this estimate alone to prove both a reached small-angle chart
+and $\sqrt{H}\sup(|u|+|v|)\to0$, the strict inequalities are
+$p(\widetilde a)<1$ and $\widetilde a/2-p(\widetilde a)>0$.
+Equivalently,
+\begin{equation}
+ \frac{15/2-k(1-c_b)}{1+c_b}<\widetilde a
+       <k-\frac{7}{2(1-c_b)}.
+ \label{an03mpv1:supinterval}
+\end{equation}
+On this box such an interval can exist only if
+\begin{equation}
+ k>\frac{11}{2}+\frac{7c_b}{2(1-c_b)}.
+ \label{an03mpv1:supthreshold}
+\end{equation}
+Thus the proposed $k>5.5$ count is a necessary limiting condition,
+and at fixed positive $c_b$ the actual condition is stricter.
+It fails on part of the box, since $k=51/10$ at $\rho=7/10$.
+This failure of a coarse sufficient bound is not an obstruction to
+\eqref{an03mpv1:A0}; the proved transverse theorem supplies the
+needed moment estimate throughout the box.
+
+\section{Step 5: late physical-core mass-defect budgets}
+WBR \texttt{masseq, massrate} gives on the completed passage
+\begin{equation}
+ (\log M)'=1-M+\eta,\quad |\eta|\le C_\eta q^{11/10},\qquad
+ |1-M(t)|\le C_me^{-(t-t_0)/3}+6C_\eta q^{11/10}.
+ \label{an03mpv1:massrate}
+\end{equation}
+RB's exact clock and bounded $\int c$ imply
+\begin{equation}
+ t_s-t_0=\frac{(k-a)\ell+\lambda\log A_q+O(1)}Q,
+ \quad \alpha_M:=\frac{k-a}{3Q}\ge\frac{199}{60}
+ \label{an03mpv1:starttime}
+\end{equation}
+for small $q$, using $Q\le1/2$ and $k\ge51/10$.
+Thus, with $w=t-t_s\ge0$,
+\[
+ |1-M(t)|\le C[q^{\alpha_M}e^{-w/3}+q^{11/10}].
+\]
+BULK's size can also be retained with its time decay:
+\[
+ |u|+|v|\le L_t:=C[1+q^{-p_*}e^{-b_0w/4}],
+ \qquad p_*=603/640.
+\]
+
+\begin{proposition}[Value and coefficient budgets for the mass defect]
+\label{an03mpv1:massbudgets}
+All the following are uniform on $[t_s,t_e]$:
+\begin{align}
+ \sup|1-M|&\le Cq^{11/10},&
+ \int_{t_s}^{t_e}|1-M|&\le C[q^{\alpha_M}+q^{11/10}\ell],
+ \label{an03mpv1:massbudget}\\
+ \sup |1-M|L_t&\le Cq^{101/640},&
+ \int_{t_s}^{t_e}|1-M|L_t
+ &\le C[q^{\alpha_M-p_*}+q^{101/640}+q^{11/10}\ell]
+   =O(q^{101/640}).
+ \label{an03mpv1:linearbudget}
+\end{align}
+If $Y_*,X_*$ are the selected leading strong comparator coordinates
+at $N(t)$, then
+\begin{equation}
+ \sup |M-1|\bigl(|Y_*|+\Kfun(\rho X_*)\bigr)\le C_*q^{11/10},
+ \quad
+ \int |M-1|\bigl(|Y_*|+\Kfun(\rho X_*)\bigr)
+       \le C_*[q^{\alpha_M}+q^{11/10}\ell].
+ \label{an03mpv1:comparator}
+\end{equation}
+The integrals and suprema in these statements are proved budgets;
+no complete TAILREP field-error inequality is asserted here.
+\end{proposition}
+\begin{proof}
+Integrate the two exponentials with their fixed positive rates
+$1/3$ and $b_0/4$, and use $t_e-t_s\le20\ell$ for the constant
+floor. The smallest power in the product is
+$11/10-p_*=101/640>0$, while $\alpha_M\ge199/60$.
+This gives \eqref{an03mpv1:massbudget}--\eqref{an03mpv1:linearbudget}.
+By Proposition \ref{an03mpv1:phase}, $N(t)<2h<1/2$.
+AN06's selected half-learning region bounds $|Y_*|$, $|X_*|$
+uniformly, and $\Kfun$ is bounded on that compact interval.
+Multiplication gives \eqref{an03mpv1:comparator}.
+\end{proof}
+
+\paragraph{Placement in TAILREP's later errors.}
+SI/TAILREP's donor comparison retains
+$|M-1||Y_*|$ and $|M-1|\Kfun(\rho X_*)$; their additive
+supremum budget is $Cq^{11/10}$. P's mass-linear terms are
+$-(1-M)v\Phi(u)/2$ and $-(1-M)\Kfun(u)/2$ in the two weak
+velocities. Since $0\le\Phi\le1$ and
+$\Kfun(u)\le\phi(0)+|u|$, their absolute value on the reached
+chart has budget $Cq^{101/640}$. Alternatively, after subtracting
+a bounded comparator, their bounded parts cost $Cq^{11/10}$
+additively and their linear coefficients can be assigned
+$\ell_M(t)=C|1-M(t)|$, with
+$\int\ell_M=O(q^{11/10}\ell)$.
+These are two possible allocations of the same mass defect, not
+two charges to be added. Deriving the remaining original-field terms,
+normalized-weight terms and the full common $\ell_B$ inequality
+is reserved for S4d.
+
+\section{Step 6: matching theorem, constants and handoff}
+\begin{theorem}[Initialized matching package inside the weak passage]
+\label{an03mpv1:main}
+In the stated deep regime, retain WPT/RB's constants and WBR's
+return theorem, fix $a=1/8$, and choose a fixed admissible WBR level
+$h$ before choosing $q$. For every sufficiently small $q$ the
+original initialized flow on \eqref{an03mpv1:levels} has:
+\begin{enumerate}
+ \item the full closed clock cohort $S$ in the nonnegative weak-input
+ region, with WBR's strict boundary margin and reached chart;
+ \item omitted non-core mass $O(q^{1/4}H)$, response
+ $c=H(1+O(q^{1/4}))+O(q^2)$, and primary-band amplitude ratio
+ $H_{P_q}/H\asymp q^{1/4}$;
+ \item the auxiliary logistic comparison \eqref{an03mpv1:logistic}
+ with uniform phase \eqref{an03mpv1:phasebound},
+ $\int|N-c|=o(1)$ and the interior first-hit relation
+ \eqref{an03mpv1:hittime};
+ \item exact selected mass identity \eqref{an03mpv1:identity},
+ $N_S/H=1+O(q^2)$ and total non-core mass
+ $N_{\rm nc}/H=1+O(q^{1/4})$;
+ \item for $p=2$ and the actual incoming radial probability,
+ $N_0=q^{1/8}$ and $A_0=O(q^{1/16})$;
+ \item the pointwise and integrated physical-core mass-defect
+ budgets \eqref{an03mpv1:massbudget}--\eqref{an03mpv1:comparator}.
+\end{enumerate}
+No unproved field-reduction, local strong-reference guard, or
+selection hypothesis is imposed to obtain these conclusions.
+\end{theorem}
+\begin{proof}
+WBR supplies return and the chart. Lemma \ref{an03mpv1:band} and
+Proposition \ref{an03mpv1:accounting} establish accounting without
+using the later sharp transverse conclusion. Proposition
+\ref{an03mpv1:phase} then proves logistic matching. BULK's explicitly
+matched transverse theorem sharpens the exact mass identity and
+proves Proposition \ref{an03mpv1:smallness}; it uses only the
+independent signgood energy bound, not logistic matching or smallness.
+The last conclusion is Proposition \ref{an03mpv1:massbudgets}.
+All intervals are subsets of RB's completed passage.
+\end{proof}
+
+\paragraph{Constant order.}
+Keep every WPT/RB constant unchanged, then WBR's fixed constants
+and boundary margin. The new transverse constant $C_J'$ depends
+only on their already fixed $B,L_\times,C_J,b_0$, a fixed upper
+bound for $D_q$, and the signgood energy constant. The primary-band
+constants depend on fixed Q2EC matching constants and $e^{2D_+}$;
+no smallness of $D_+$ is required. Fix the start exponent $a=1/8$
+and $p=2$, then take $h$ satisfying WBR's upper bounds, then $q$.
+The phase and mass constants have only fixed factors $1/b_0$,
+$1/[\lambda(1-h)]$, and the previously fixed passage constants.
+No earlier guard is chosen in terms of a new constant. S4d may
+decrease $h$ to meet its local small-gain conditions; all statements
+here persist for each such fixed choice.
+
+\paragraph{Handoff and scope limit.}
+For a later selection endpoint one can take any fixed $n<h$, for
+example $n=h/2$, and stop at the auxiliary logistic hit $N=n$.
+It lies strictly inside $[t_s,t_e]$, with all actual return and
+matching estimates available. The start has the required $p=2$
+weighted smallness and no excluded fraction of weak mass. However,
+the full weak and strong-reference field inequalities, the local
+strong guard $E_0\le\delta/(2K_0)$ (and its actual small-gain
+variant), and the selection conclusion remain unproved here.
+Fixed original labels do not imply constant normalized radial
+weights; a weight-defect coefficient still belongs in S4d's field
+audit. The matching theorem never replaces $M$ by one without
+\eqref{an03mpv1:massbudget}--\eqref{an03mpv1:comparator}, never
+uses the $O(1)$ phase of $t_b$ for an $o(1)$ match, and makes no
+continuation claim beyond $t_b$.
+
+\begin{thebibliography}{12}\small
+\bibitem{RB} RB: \path{AN03_response_barrier_v1.tex}, prefix
+\texttt{an03rbv1:}, \texttt{completed, primaryseed, primaryclock,
+clock, conclusions, massconclusions}, S4 handoff.
+\bibitem{WBR} WBR: \path{AN03_weak_boundary_return_v1.tex}, prefix
+\texttt{an03wbrv1:}, \texttt{main, clockalignment, massrate,
+latechart, times}.
+\bibitem{SI} SI: \path{AN03_selection_interface_v1.tex}, prefix
+\texttt{an03siv1:}, inventory, \texttt{massdeficit, masslinear}.
+\bibitem{BULK} BULK: \path{AN03_bulk_clock_and_secondary_Q2_energy_v1.tex},
+prefix \texttt{inc:AN03:bulkclock:v1:}, \texttt{bulkclockclosure,
+bulkdefectconclusion, forcing, forcinginputs, Jprop, residualinputs}.
+\bibitem{RCET} RCET: \path{AN03_residual_closure_and_eta0_transport_v1.tex},
+prefix \texttt{an03rcetv1:}, Theorem 2.1 and \texttt{transport}.
+\bibitem{LCRC} LCRC: \path{AN03_ledger_cap_residual_closure_v1.tex},
+prefix \texttt{an03lcrcv1:}, \texttt{ledger, identity, responsecharge,
+signgood}.
+\bibitem{Q2EC} Q2EC: \path{AN02_Q2_entry_contracts_v1.tex}, prefix
+\texttt{an02q2ecv1:}, \texttt{main, match, coordinatetransport,
+transport, targetcontracts}.
+\bibitem{Q2EP} Q2EP: \path{AN02_Q2_entry_through_strong_passage_v1.tex},
+prefix \texttt{an02q2epv1:}, \texttt{energy, entryenergy}.
+\bibitem{TAILREP} TAILREP: \path{AN03_mass_charged_tail_and_selection_defects_v1.tex},
+prefix \texttt{inc:AN03:tailrepair:v1:}, \texttt{strongerror,
+weakerror, selection}; error placement only, theorem not applied.
+\bibitem{WEAK} WEAK: \path{AN03_weak_transit_forcing_and_orbit_selection_v1.tex},
+prefix \texttt{inc:AN03:weak:v1:}, \texttt{Wineq}; $W_p$ definition only.
+\bibitem{AN06} AN06: \path{AN06_learned_orbit_witnesses_v2.tex},
+prefix \texttt{inc:AN06:v2:}, \texttt{regiontheorem}; bounded selected
+comparator for $0<N\le1/2$.
+\end{thebibliography}
+\end{document}
