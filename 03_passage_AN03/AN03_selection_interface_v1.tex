@@ -1,0 +1,635 @@
+% New standalone audit/partial increment. No prior source is modified.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.87in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,array,longtable,booktabs,xurl}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\theoremstyle{remark}\newtheorem{remark}[proposition]{Remark}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\newcommand{\KK}{\mathcal K}\newcommand{\BB}{\mathcal B}
+\newcommand{\Gp}{G_+}\newcommand{\Clk}{\mathcal C_q}
+\newcommand{\Kfun}{\mathsf K}\newcommand{\Ffun}{\mathsf F}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\src}[2]{\textup{#1} \texttt{#2}}
+\title{Selection-stage interface inside the weak passage:\\
+full hypothesis audit and the unmatched weak-return condition}
+\author{Standalone analytical increment for independent review}
+\date{Version 1 --- 28 October 2026}
+\begin{document}\maketitle
+\begin{abstract}
+RB's completed passage is used only through its certified S4 handoff.
+We inventory TAILREP's perturbed selection hypotheses and the WEAK
+results underlying them. The normalized core first moment, bounded
+strong moments, leading selected-branch positivity and a quantitative
+weak-coordinate size bound are available. The original weak return
+condition is not supplied: BULK controls absolute Cartesian ratios,
+whereas WEAK requires nonnegative weak inputs and a strict inward
+boundary margin. We exhibit the exact finite-noise boundary inequality
+that must be proved and the order-one uncertainty left by the residual
+norm estimate. We stop at this unmatched contract. No selection theorem,
+logistic phase match, or continuation beyond $t_b$ is asserted.
+\end{abstract}
+
+\section{Scope, notation and the quantities that must not be identified}
+\label{an03siv1:scope}
+Fix $\kappa=10$, $\rho\in[13/20,7/10]$, $\lambda=\rho^2$,
+$Q=\lambda+q^2$ and $\ell=\log(1/q)$. All passage facts below
+come from RB's S4 handoff, with the source statement named there
+when its precise formula is needed. In particular, the original flow
+is certified on $[t_0,t_b]$, $0<c\le c_b$, and
+\begin{gather}
+ H_0\asymp A_q^{-\lambda}q^k,\quad k=10(1-\lambda),\quad
+ H(t_b)\asymp c_b,\quad 0<c_A\le A_q\le C_A,\notag\\
+ \log\frac{H(t)}{H(s)}=Q\int_s^t(1-c)+\delta(s,t),\qquad
+ |\delta(s,t)|\le C(q^{1/8}+q^2\ell)=o(1),
+ \label{an03siv1:handoffclock}\\
+ 0\le\int_{t_0}^{t_b}c
+ \le\frac{10\mathrm e E_g}{9Q(1-c_b)}+o(1),\quad
+ E_g=2c_b,\quad t_b-t_0\le20\ell.
+ \label{an03siv1:handoffc}
+\end{gather}
+We retain the fixed original cohorts $\KK,\Gp,\Sigma,\BB$,
+with $\Clk\subset\Gp$, $\mathcal D=\varnothing$ and $H=H_{\Clk}$.
+The bounds on residuals, core geometry, secondary energy and outside
+mass are those already handed off by RB; they are not reconstructed
+from conditional pre-RB passage theorems.
+
+The chart convention is important. P \texttt{pa:charts} and BULK
+\texttt{weakJ} use
+\begin{equation}
+ a_w=(\sin(qu),\cos(qu)),\qquad
+ b_w=(-\sin(qv),\cos(qv)),\qquad
+ u=\frac{\pi/2-\theta}{q},\quad
+ v=\frac{\psi-\pi/2}{q}.
+ \label{an03siv1:weakcoords}
+\end{equation}
+Thus the output coordinate has the opposite angular convention from
+the input coordinate. In particular $u\ge0$ means $U_1\ge0$, not
+merely $U_2>0$.
+
+\begin{center}
+\begin{tabular}{p{.21\textwidth}p{.34\textwidth}p{.34\textwidth}}
+\toprule
+Notation & WEAK/TAILREP meaning & Relation to passage quantities\\\midrule
+$M$ & Total strong-family squared-radius mass & Candidate is actual
+$\mu_{\KK}$ if the complement is charged separately. It is not
+$M_{\rm res}$ or the fixed upper cap $M_K=2$.\\[3pt]
+$M=1$ & Invariant surface of the defined leading equations &
+CFA's capped mass $\widetilde M=\min(\mu_{\KK},1)$ is not identically
+one. Normalizing a measure does not erase its field defect.\\[3pt]
+$N$ & Weak-family mass with exact law $N'=\lambda N(1-N)$ &
+Neither the signed response $c$, nor $H$, nor the original radial mass
+$N_C=\int_Cm\dd\lambda_0$ has this law by definition.\\[3pt]
+$Y$ & Strong donor moment $\int y\dd\mu_s$ & Not LCRC's transverse
+guard variable $Y$ or its bound $K_Y$.\\[3pt]
+$B_\rho$ & A bound for $|\rho K_s|$ in WEAK forcing & Not the
+passage residual integral $\int r\le B$.\\[3pt]
+$M_K$ in TAILREP & Actual mass of the charted core & Not the
+order-one passage mass cap with the same letters.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Every hypothesis of the selection mechanism}
+\label{an03siv1:inventory}
+The statements being audited are exact statements for their stated
+systems. Their hypotheses cannot be replaced by small residual norms
+without a matching calculation.
+
+\subsection*{The underlying characteristic and moment structure}
+WEAK works with fixed strong and weak labels, positive radial measures,
+$\mu_s(\mathbb R^2)=1$, and $\mu_w=N\eta_w$, where $\eta_w$ is a
+probability with \emph{fixed normalized label weights}. Its class has
+bounded support on each compact time interval (the bound may diverge
+as $q\to0$), sufficient moments and differentiable characteristic
+integrals. The exact leading weak equations are
+\begin{align}
+ 2u'&=\phi(u)-\mathcal W(u)-Y\Phi(u)-\lambda(1-N)u,
+ &\mathcal W(u)&=N\E_{\eta_w}\Ffun(u,\widetilde u),\notag\\
+ 2v'&=\rho K_s-\lambda V-\lambda(1-N)v,
+ &V&=N\E_{\eta_w}v,\quad N'=\lambda N(1-N).
+ \label{an03siv1:leading}
+\end{align}
+Here $K_s=\int\Kfun(\rho x)\dd\mu_s$ and
+$K_w=N\E_{\eta_w}\Kfun(u)$. Fixed original labels are available;
+constant normalized original weights and \eqref{an03siv1:leading}
+are not original-flow identities. RB supplies fixed-distortion primary
+transport and an $o(1)$ clock defect, not equality of radial reaction
+rates. The normalized-weight and field discrepancies must be paid in
+TAILREP's errors, rather than discarded.
+
+\subsection*{WEAK forcing, concentration and population-to-orbit comparison}
+On a leading interval $[t_s,t_n]$, WEAK \texttt{forcing} requires
+$0<N_0<n_b\le1/2$, $N(t_n)=n_b$, \eqref{an03siv1:leading},
+$Y\ge0$, and $|\rho K_s|\le B_\rho$. Its finite incoming moments are
+\[
+ U_0^+=\E(u(t_s))_+,\quad V_0^{\rm abs}=\E|v(t_s)|,\quad
+ N_*=N_0(U_0^++3V_0^{\rm abs})^2,
+\]
+and its constants are exactly
+\begin{equation}
+ C_u=\phi(0)+\frac{\phi(0)}{\lambda(1-n_b)},\qquad
+ C_w^{\rm force}=C_u+B_\rho/\lambda.
+ \label{an03siv1:forcingconstants}
+\end{equation}
+It proves $K_w\le C_uN+U_0^+\sqrt{N_0N}$ and its integrated
+forcing bounds \emph{in that leading system}.
+
+WEAK \texttt{concentration} additionally requires
+\begin{equation}
+ u(t_s,b)\ge0\quad\hbox{labelwise},\qquad
+ 0\le Y\le Y_{\max}<2\phi(0),\qquad
+ \mathfrak m:=\phi(0)-Y_{\max}/2-C_un_b-U_0^+\sqrt{N_0n_b}>0.
+ \label{an03siv1:returnhyp}
+\end{equation}
+The strict margin and the exact leading equations give the invariant
+region $u\ge0$ and the multiplier $\sqrt{N(s)/N(t)}$.
+Neither positivity of $z=(U_2+W_2)/2$ nor positivity of the second
+coordinates is this hypothesis.
+
+WEAK \texttt{Wineq} requires that nonnegative-input conclusion,
+the same full field and fixed weight probability, and the selected
+coherent branch evaluated at the \emph{same logistic mass} $N(t)$.
+The selected input must also be nonnegative so that the whole segment
+between a receiver and its comparator lies in the contraction region.
+AN06 \texttt{regiontheorem}, for the selected leading branch and
+$0<N\le1/2$, supplies $0<U_*(N)<1$, $0<V_*(N)<11/10$.
+It does not supply the sign of an original population's input.
+For $1\le p\le\infty$ the needed finite quantity is
+\[
+ W_p=\big\||u-U_*|+|v-V_*|\big\|_{L^p(\eta_w)}.
+\]
+The resulting weak comparison uses
+$\Delta_s=|Y-Y_*|+\rho|K_s-\Kfun(\rho X_*)|$.
+
+\subsection*{The strong local comparison and its initial margin}
+WEAK's derivation of the coupled error system also requires its local
+strong neighborhood, not just a fixed passage chart. Write
+$a=\rho\Kfun(\rho a)$, $\alpha=\lambda\Phi(\rho a)/2$, and
+\[
+ \gamma=\frac{\alpha(1/2-\alpha)}{\alpha+1/2},\qquad g=\gamma/2.
+\]
+Choose $\delta>0$ and a small leading mass level so that
+\begin{equation}
+ \delta<a/8,\quad a+3\delta<2\phi(0),\quad
+ |X_*(N)-a|,|Y_*(N)-a|\le\delta,
+ \label{an03siv1:localbox}
+\end{equation}
+and the symmetric coherent strong Jacobian on
+$|x-a|,|y-a|\le2\delta$, $N\le n_b$, with the selected weak
+atom held fixed, is at most $-gI$. The source proves the existence
+of these choices analytically. The reference must stay in
+$E_s=|(c_s,d_s)-(X_*,Y_*)|<\delta$ until its guard is improved.
+The donor replacement needs a \emph{pointwise} strong first moment,
+not just an integrated passage error. A fixed $C_s$ must bound the
+strong donor perturbations on that neighborhood; WEAK allows
+$C_s=20(R_*+1)^2$ with a fixed
+$R_*>2+a+|u_\rho|+a/\lambda$ bounding the selected coordinates.
+For WEAK's unperturbed selection theorem the pointwise assumption is
+$D_s\le d_0$, with its unit-mass strong measure, and the constants in
+the forcing/return step are specifically
+$Y_{\max}=a+3\delta$ and
+$B_\rho=\rho\phi(0)+\lambda(a+3\delta)$.
+Its moment comparison is
+$\Delta_s\le(1+\lambda)(E_s+D_s)$, so the weak additive coefficient
+there is $C_w^0=(1+\lambda)/2$, distinct from
+$C_w^{\rm force}$. The core-only version must instead use
+\eqref{an03siv1:massdeficit} and charge the complement.
+
+\subsection*{TAILREP's exact abstract hypotheses}
+TAILREP \texttt{selection} assumes nonnegative error functions satisfying
+\begin{align}
+ D^+E_s&\le-gE_s+C_s(d_0+NW_p),\label{an03siv1:neededstrong}\\
+ D^+W_p&\le[-\lambda(1-N)/2+N/2+\ell_B(t)]W_p
+                             +C_w(E_s+d_0),
+ \label{an03siv1:neededweak}
+\end{align}
+up to the strong first exit, with $d_0\ge0$, $\ell_B\ge0$,
+fixed $g,C_s,C_w>0$, exact logistic $N$, $0<N_0<n_b<1$,
+$N(t_n)=n_b$, and a common finite bound
+\begin{equation}
+ \int_{t_s}^{t_n}\ell_B\le L_*<\infty.
+ \label{an03siv1:ellbudget}
+\end{equation}
+For the proposed use of WEAK and AN06 we need the smaller common
+range $n_b\le1/2$. The weak return-region hypotheses are
+\emph{explicitly maintained separately} in TAILREP; its conclusion
+does not prove them.
+
+The constants and small-gain condition, retaining their coefficients, are
+\begin{gather}
+ B_*=e^{L_*}(1-n_b)^{-1/(2\lambda)},\quad
+ a_0=\lambda(1-n_b)/2,\quad m_0=\min(g/2,a_0/2),\notag\\
+ L_0=1+\frac{C_s(1+B_*)}{g-m_0},\quad K_0=2L_0,\quad
+ \Theta=\frac{C_sB_*C_wn_b}{(a_0-m_0)(g-m_0)}\le\frac14.
+ \label{an03siv1:smallgain}
+\end{gather}
+One also needs
+\begin{equation}
+ E_0=E_s(t_s),\quad A_0=\sqrt{N_0}W_p(t_s),\qquad
+ K_0(E_0+d_0+A_0\sqrt{n_b})\le\delta/2.
+ \label{an03siv1:initialguard}
+\end{equation}
+The terminal convergence conclusion needs $N_0\to0$, $A_0\to0$,
+$d_0\to0$ and uniformly admissible $E_0$ and constants, including
+a common $L_*$. Only then does exact logistic integration imply
+$t_n-t_s\to\infty$ and the decay in \texttt{Econclusion/Wconclusion}.
+The theorem neither constructs \eqref{an03siv1:neededstrong}--
+\eqref{an03siv1:neededweak} nor proves the original logistic matching.
+
+\subsection*{The mass-deficit term is part of the contract}
+For a physical charted core of mass $m_K=\mu_{\KK}$, TAILREP's
+elementary donor comparison is
+\begin{align}
+ |Y_K-Y_*|&\le D_K+m_KE_s+|m_K-1||Y_*|,\notag\\
+ |K_{s,K}-\Kfun(\rho X_*)|
+ &\le\rho D_K+\rho m_KE_s+|m_K-1|\Kfun(\rho X_*).
+ \label{an03siv1:massdeficit}
+\end{align}
+Moreover P's full leading equations contain
+\begin{equation}
+ 2u'\supset-(1-M)v\Phi(u),\qquad
+ 2v'\supset-(1-M)\Kfun(u).
+ \label{an03siv1:masslinear}
+\end{equation}
+Thus unit normalization of the core leaves both comparator errors
+and errors linear in large weak coordinates. Their value or coefficient
+budgets must be proved on the selected late interval. CFA's
+$T=0$ convention removes a complement moment from the \emph{strong}
+c-form representation; it does not set \eqref{an03siv1:masslinear}
+to zero.
+
+\section{Closed parts of the audit}
+\begin{proposition}[Core moment bounds available for a candidate interface]
+\label{an03siv1:coremoments}
+Let $\bar\mu_K=\mu|_K/\mu_K$ be the positive unit-mass core measure.
+For small $q$, the RB handoff gives
+\begin{equation}
+ \bar D_K:=\int_K(|x-c_s|+|y-d_s|)\dd\bar\mu_K
+       =O(q^{1/20}),\qquad D_K=O(q^{1/20}).
+ \label{an03siv1:Dcore}
+\end{equation}
+Its strong moments obey, for instance,
+\begin{equation}
+ 0<\bar Y_K\le3/5,\qquad
+ 0<\rho\bar K_{s,K}\le3/5.
+ \label{an03siv1:normalizedmoments}
+\end{equation}
+For the unnormalized core one may use $0<Y_K\le5/8$ and
+$|\rho K_{s,K}|\le3/5$ for sufficiently small $q$.
+These are core-moment bounds, not the original weak field representation.
+\end{proposition}
+\begin{proof}
+RB supplies $r_K=O(q^{1/20})$, $e\le3e_*/4\le3/16$,
+positive core coordinates and $\mu_K\le1+o(1)$ bounded away
+from zero. The distance integral is at most $2r_K$ after
+normalization and at most $2\mu_Kr_K$ before it.
+AN06 \texttt{residentbounds} gives $a<\phi(0)<2/5$.
+Consequently every core coordinate is at most
+$a+3/16+r_K<3/5$ for small $q$; its positivity is the RB core
+sign check, also explicitly required in this interface's input list.
+Since $\Kfun(w)\le\phi(0)+w$ for $w\ge0$,
+\[
+ \rho\bar K_{s,K}\le\rho\phi(0)+\lambda\bar x_K
+ <\frac7{25}+\frac{147}{500}=\frac{287}{500}<\frac35.
+\]
+Multiplication by $\mu_K\le1+o(1)$ preserves the stated larger
+unnormalized bounds. In particular $Y_{\max}=5/8$ has a positive
+geometric margin $\phi(0)-Y_{\max}/2>1/16$.
+The remaining incoming-moment term in \eqref{an03siv1:returnhyp}
+is a separate obligation. The narrower local box
+\eqref{an03siv1:localbox} is not proved by these coarse bounds.
+\end{proof}
+
+\begin{proposition}[What BULK actually gives in weak coordinates]
+\label{an03siv1:bulksize}
+On RB's passage the clock cohort satisfies
+\begin{equation}
+ |u(t,b)|+|v(t,b)|
+ \le C\left[q^{-15/8}e^{-Q(1-c_b)(t-t_0)/4}+1\right].
+ \label{an03siv1:size}
+\end{equation}
+For any fixed $h>0$ below a fixed lower bound for $H(t_b)$,
+let $t_h^H$ be its first clock hit. It lies before $t_b$, and
+\begin{align}
+ t_h^H-t_0&=\frac{k\ell+\lambda\log A_q+\log h+O_{m fixed}(1)}Q,
+ \label{an03siv1:clockhit}\\
+ |u(t_h^H,b)|+|v(t_h^H,b)|&\le C_h(1+q^{-p_b}),\quad
+ p_b=\frac{15}{8}-\frac{k(1-c_b)}4,
+ \quad \frac{69}{160}\le p_b\le\frac{147}{160}.
+ \label{an03siv1:endpointsize}
+\end{align}
+These estimates give size, not sign, not bounded weak coordinates,
+and not a logistic weak-mass endpoint.
+\end{proposition}
+\begin{proof}
+Use BULK Theorem 4.1 with $\eta=1/8$. Its hypotheses are exactly
+the clock entry, residual, response-range, duration and integrated
+$r$ facts in RB's handoff. In its notation
+\[
+ x_{\rm rat}=qj/z\le C[q^{1/8}e^{-b_*(t-t_0)/2}+q^2],
+ \quad b_*=Q(1-c_b)/2,\quad |a_-|\le z/3,\quad z>0.
+\]
+Both second coordinates are at least $2z/3$, while
+$|U_1|,|W_1|\le\sqrt2j$. With the upper-half-circle lifts,
+\[
+ |u|\le q^{-1}|U_1/U_2|\le\frac{3\sqrt2}{2q^2}x_{\rm rat},
+ \qquad
+ |v|\le\frac{3\sqrt2}{2q^2}x_{\rm rat}.
+\]
+Here $|\arctan w|\le|w|$ was used; no sign was introduced.
+This proves \eqref{an03siv1:size}.
+RB has a fixed $c_H>0$ with $H(t_b)\ge c_Hc_b$ for small $q$;
+choose $h<c_Hc_b/2$. Continuity and $H_0\to0$ give the first hit.
+Equations \eqref{an03siv1:handoffclock}--\eqref{an03siv1:handoffc}
+give \eqref{an03siv1:clockhit}. Substitution proves the exponent.
+Since $51/10\le k\le231/40$ and $0<c_b\le1/4$,
+\[
+ \frac{15}{8}-\frac{231}{160}=\frac{69}{160},\qquad
+ \frac{15}{8}-\frac{153}{160}=\frac{147}{160}.
+\]
+For example this certifies an endpoint chart of size
+$q^{-1+1/20}$ after absorbing fixed constants, because
+$147/160<19/20$. At $c_b=0$ as an algebraic limit, the upper-box
+value is $p_b=3/5$; at fixed positive $c_b$ the corresponding
+value is $3/5+51c_b/40$. The $c_b$ correction cannot be dropped
+from a power of $q$.
+\end{proof}
+
+\begin{remark}[Why the mass-level convention needs a separate match]
+\label{an03siv1:masslevel}
+The condition $n_b\le c_b/2$ alone does not imply that the first
+$H=n_b$ hit precedes $t_b$: RB gives fixed-factor comparability,
+not $H(t_b)\ge c_b/2$. Choosing a level below $c_Hc_b/2$ resolves
+this issue for $H$. It still does not identify that time with the
+first hit of a leading logistic $N=n_b$ or an original radial mass
+$N_C=n_b$. No $t_{n_b}$ with all these meanings is used here.
+\end{remark}
+
+\section{Exact stopping point: weak return is not an absolute-ratio bound}
+\label{an03siv1:stop}
+The first attempted dynamical match is the separate weak-return
+hypothesis of TAILREP \texttt{selection}. The proposed use of
+BULK fails to establish \eqref{an03siv1:returnhyp}.
+Positive $z$, positive $U_2,W_2$, and small $qj/z$ do not imply
+$U_1\ge0$. For example the balanced state
+\begin{equation}
+ U=W=\sqrt m(-\sin q,\cos q)
+ \quad\Longrightarrow\quad
+ u=-1,\ v=1,\ a_-=0,\ z>0,\quad qj/z=q\tan q=O(q^2).
+ \label{an03siv1:signexample}
+\end{equation}
+It satisfies the Cartesian size and signgood conditions, including
+their $q^2$ floor, but is outside WEAK's input return region.
+This is a test of the implication between inequalities, not an
+assertion that the initialized flow visits this state.
+
+Nor does the handed-off cross-residual estimate provide the needed
+strict boundary direction. At $u=0$, so $\theta=\pi/2$, the exact
+angular equation gives
+\begin{equation}
+ u'=\frac{R_{21}(\pi/2)\cos(qv)-R_{11}(\pi/2)\sin(qv)}q.
+ \label{an03siv1:exactboundary}
+\end{equation}
+The sign of the second term agrees with the output convention
+\eqref{an03siv1:weakcoords}. In the $M=1$ leading field,
+\eqref{an03siv1:returnhyp} instead gives
+\[
+ 2u'\big|_{u=0}=\phi(0)-\mathcal W(0)-Y/2\ge\mathfrak m>0,
+ \qquad \mathcal W(0)\le K_w.
+\]
+A sufficient original-flow version with half this strict margin is
+\begin{equation}
+ \boxed{\quad
+ \frac{R_{21}(\pi/2,t)\cos(qv)-R_{11}(\pi/2,t)\sin(qv)}q
+       \ge\frac{\mathfrak m}{4}>0
+ \quad}
+ \label{an03siv1:missingreturn}
+\end{equation}
+This is required at every potential selected-cohort boundary hit.
+It must be accompanied by $u(t_s,b)\ge0$ on the entire chosen
+fixed cohort, including its endpoint labels.
+
+What the available matrix norm estimate actually gives is only
+\begin{equation}
+ u'\big|_{u=0}\ge-C_\times(1+M_{\rm res})-r(t)|v|.
+ \label{an03siv1:normfailure}
+\end{equation}
+Here one may fix the coarse bound with $C_\times\ge1$.
+The factor $q$ in $R_{21}=O((1+M_{\rm res})q)$ is canceled by
+the scaled angular derivative. Even at $v=0$ there is an
+order-one, sign-indefinite remainder. To obtain
+\eqref{an03siv1:missingreturn} by bounding the error around its
+leading value, the attempted norm-charge method would require
+\begin{equation}
+ C_\times(1+M_{\rm res})+r(t)|v|
+          \le\mathfrak m/4
+ \quad\text{as a pointwise boundary-error budget},
+ \label{an03siv1:failedabsorption}
+\end{equation}
+which is not supplied by RB and does not become true by sending
+$q\to0$. For this coarse choice its left side is at least one,
+whereas $\mathfrak m/4\le\phi(0)/4<1/10$; this particular
+absolute-error absorption fails. More basically, an unsigned bound on $R_{21}$ cannot
+itself yield a positive lower bound on it. Its allowed matrix-value
+test $R_{21}=-a q$, $v=0$, with any fixed admissible $a>0$,
+has $u'=-a$. This is again a norm-scope test, not a counterexample
+to the initialized population or to RB.
+
+The integral $\int r\le B$ cannot supply a pointwise boundary
+margin. Taking $n_b$ smaller reduces leading weak feedback but
+does not make the fixed $M_{\rm res}$ norm constant vanish.
+The one-sided selected-moment cancellation which could prove
+\eqref{an03siv1:missingreturn} belongs to a weak-receiver field
+calculation; it is not part of RB's fixed strong-chart c-form
+handoff. AN06's positive $U_*$ proves the comparator sign only.
+
+This stops the selection application. No original return hypothesis
+is inserted into a conditional selection theorem. The diagnosis
+does not assert that \eqref{an03siv1:missingreturn} is false for the
+actual flow: it identifies the exact estimate left unproved by the
+attempted BULK/norm route. No second alternative route is attempted.
+
+\section{Remaining inventory and accuracy audit, without applying later stages}
+\label{an03siv1:remaining}
+The following table completes the inventory. ``Unmatched'' means
+not discharged for the original population in this increment, not
+that the leading source theorem is incorrect.
+\begin{longtable}{>{\raggedright\arraybackslash}p{.23\textwidth}
+ >{\raggedright\arraybackslash}p{.31\textwidth}
+ >{\raggedright\arraybackslash}p{.36\textwidth}}
+\toprule
+Hypothesis & Matched part / source & Unmatched original-flow item\\\midrule
+Model, sign/range, duration & RB: ratio box, $0<c\le c_b$,
+$t\le t_b$, logarithmic duration & $0<N_0<n_b$ and an exact logistic
+$N$ are different requirements.\\[4pt]
+Characteristic regularity, finite moments, $p$ & Fixed labels, finite
+mass and compact initial circle; BULK's positive second coordinates
+allow the weak-angle lift for fixed $q$. Take any fixed
+$1\le p\le\infty$. & No uniform-in-$q$ incoming moment or support
+claim follows solely from finite support at fixed $q$.\\[4pt]
+Unit strong mass and donor moment & Core normalization and
+\eqref{an03siv1:Dcore}; CFA representation is valid on its strong chart.
+& Pay \eqref{an03siv1:massdeficit}--\eqref{an03siv1:masslinear}; need
+late sup/integrated mass-defect budgets for the selection error system.
+The raw RB mass interval is not $M\equiv1$.\\[4pt]
+$Y\ge0$, bounded $\rho K_s$ & Proposition \ref{an03siv1:coremoments}
+gives these for core moments. & Need the original weak receiver field
+to use those moments with the other cohorts charged as errors.\\[4pt]
+Weak incoming sign and strict margin & Leading source's exact margin
+is \eqref{an03siv1:returnhyp}; selected branch $U_*>0$ is AN06.
+& Original sign at $t_s$ and \eqref{an03siv1:missingreturn}: the
+stopping point.\\[4pt]
+Fixed normalized weak weights & RB/BULK give fixed-cohort amplitude
+transport (clock $o(1)$ defect, primary fixed distortion).
+& Original radial weights, choice of a fixed comparison probability,
+and their induced value/linear defects need a bound in
+\eqref{an03siv1:neededweak}.\\[4pt]
+Local stable strong box & WEAK proves existence of
+\eqref{an03siv1:localbox}, its negative Jacobian and donor constants.
+& RB's $e\le3e_*/4$ is a different fixed allowance; it does not
+establish \eqref{an03siv1:initialguard} for this $\delta,K_0$.\\[4pt]
+Original-to-leading fields & RB supplies a fixed strong-chart
+value/derivative remainder and paid secondary/outside budgets.
+& \eqref{an03siv1:neededstrong}--\eqref{an03siv1:neededweak} on the
+weak receiver chart, with $d_0=o(1)$ and
+\eqref{an03siv1:ellbudget}.\\[4pt]
+Exact logistic phase & RB gives the exact $H$ identity with $o(1)$
+defect and fixed terminal comparability. & Match $N_C,H,c$ with
+an $o(1)$ logit phase; matching through the $O(1)$ hitting-time
+formula is insufficient.\\[4pt]
+Small gain and initial smallness & Equations
+\eqref{an03siv1:smallgain}--\eqref{an03siv1:initialguard} are the exact
+source conditions. & A proved common $L_*$ and actual $N_0,A_0,d_0,E_0$
+are needed before asserting them for the original solution.\\
+\bottomrule
+\end{longtable}
+
+\paragraph{Mass matching: the precise static statement.}
+For any original fixed cohort $C$, balance gives the exact identity
+\begin{equation}
+ N_C=\int_Cm\dd\lambda_0=H_C+A_C+J_C.
+ \label{an03siv1:massidentity}
+\end{equation}
+BULK \texttt{weakJ} is a bounded-chart statement. If the support
+is instead $|u|,|v|\le L(q)$, $qL(q)=o(1)$, elementary
+trigonometry gives
+\begin{equation}
+ \frac{N_C}{H_C}=1+O(q^2L(q)^2).
+ \label{an03siv1:growingmass}
+\end{equation}
+Indeed $z^2=m[\cos(qu)+\cos(qv)]^2/4$.
+For $L=q^{-1+\eps}$ the error is $O(q^{2\eps})$, not
+generally $O(q^2)$. The aligned state with $u=L,v=-L$ has
+$N_C/H_C=\sec^2(qL)=1+q^{2\eps}+O(q^{4\eps})$.
+This is still $o(1)$ for fixed $\eps>0$; it is not by itself
+a dynamical logistic phase estimate. Without such a chart, the
+handed-off signgood and energy bounds only give
+$1\le N_C/H_C\le10/9+J_C/H_C$.
+For example, if a comparison logistic $N$ is initialized at $H(t_s)$,
+then the exact clock identity gives the prospective matching relation
+\begin{equation}
+ \log\frac{H(t)}{N(t)}
+ =q^2\int_{t_s}^t(1-c)+\lambda\int_{t_s}^t(N-c)
+                         +\delta(t_s,t).
+ \label{an03siv1:phaseneeded}
+\end{equation}
+The first and third terms vanish on the passage. Uniform vanishing
+of the middle signed integral is a remaining requirement; a
+sufficient condition is $\int_{t_s}^{t_n}|N-c|=o(1)$.
+RB's fixed $O(c_b)$ response integral alone is not that condition.
+
+\paragraph{What the field budget would have to say.}
+The original-to-leading reduction must separate additive value errors
+from coefficients multiplying the potentially large $u,v,W_p$.
+The required conclusion is exactly
+\eqref{an03siv1:neededstrong}--\eqref{an03siv1:ellbudget}, with
+\[
+ d_0\ge C\sup_{[t_s,t_n]}
+   \{D_K+|1-\mu_K|+\hbox{additive normalized field errors}\}=o(1).
+\]
+RB pays $D_K=O(q^{1/20})$ and the outside costs with explicit
+positive powers, and its secondary estimate is available.
+Its fixed strong-chart remainder, however, has a small fixed
+$C_0E_g$ term, and its domain is $|\theta|,|\psi|\le L_cq$.
+A weak receiver near $\theta=\pi/2$ is not in that chart.
+Neither its norm nor the original cross-residual bound can simply
+be renamed $d_0=o(1)$ on a growing weak chart. The proposed
+finite-noise coefficient $q^2(1+u^2)$ also needs its value versus
+linear-error placement proved, not just a size substituted into it.
+
+\paragraph{Late start and smallness are not declared.}
+A late first hit of an actual clock level $H=q^a$, $0<a<k$, can
+be located using \eqref{an03siv1:handoffclock}; that does not verify
+the original return sign, the full field representation, or the
+mass-defect requirements. No $t_s$ is asserted here to satisfy all
+these conditions. Likewise $J_G=O(q^2)$ alone permits only an
+order-one bound on a scaled weighted transverse size
+$\sqrt{J_G}/q$; it is not a proof of $A_0\to0$.
+These are inventory observations, not attempts to run Steps 2--6
+after the stopping point.
+
+\section{Constant order and the S4b handoff}
+\label{an03siv1:handoff}
+Every WPT/RB constant remains fixed in its original order. New
+leading comparison constants would then be chosen from the analytic
+WEAK neighborhood: $\delta,g,C_s,C_w$, followed by a \emph{proved}
+common upper bound $L_*$, and a fixed $n_b$ satisfying
+\eqref{an03siv1:smallgain}, the return margin and the correctly
+matched endpoint constraint. Only after those choices could one
+choose $q$ sufficiently small and define a suitable late start.
+This is an obligation list, not an assertion that $L_*$ or the
+return margin has been obtained. No preceding guard constant is
+changed to force \eqref{an03siv1:failedabsorption}.
+
+The closed outputs for S4b are:
+\begin{itemize}
+ \item The complete selection/forcing/concentration hypothesis list,
+ with the distinct meanings of mass, response, clock and transverse
+ guard variables fixed.
+ \item Core first-moment replacement $O(q^{1/20})$ and bounded
+ positive core donor moments, with explicit coarse constants.
+ \item The absolute weak-coordinate bound \eqref{an03siv1:size} and
+ the exact exponent \eqref{an03siv1:endpointsize} at a fixed actual
+ clock level. This is compatible with a growing chart; it proves no sign.
+ \item The corrected static growing-chart mass comparison
+ \eqref{an03siv1:growingmass}, and the distinction between a first
+ $H$ hit and a logistic weak-mass hit.
+\end{itemize}
+The first unproved dynamical contract for S4b is the original input
+return: construct a fixed-cohort late start with $u(t_s,b)\ge0$,
+and prove \eqref{an03siv1:missingreturn} by an actual weak-receiver
+selected-moment calculation, or prove another return argument with
+the same consumer conclusion. Endpoints must be included; signgood
+in the second coordinate is not a replacement. The field/error,
+logistic phase and initial-smallness rows then remain to be discharged.
+
+No retained assumption is appended to a claimed selection theorem.
+No S4b argument, S5 core retention, or continuation past $t_b$ is
+undertaken. The obstruction is a missing implication at the prescribed
+interface, not a counterexample to initialized selection.
+
+\begin{thebibliography}{9}\small
+\bibitem{RB}\path{AN03_response_barrier_v1.tex}, prefix
+\texttt{an03rbv1:}; S4 handoff and the exact formulas referenced there.
+\bibitem{TAILREP}\path{AN03_mass_charged_tail_and_selection_defects_v1.tex},
+prefix \texttt{inc:AN03:tailrepair:v1:};
+\texttt{strongerror, weakerror, selection, Econclusion, Wconclusion}.
+\bibitem{WEAK}\path{AN03_weak_transit_forcing_and_orbit_selection_v1.tex},
+prefix \texttt{inc:AN03:weak:v1:};
+\texttt{setup, forcing, concentration, barrier, Wineq, strongineq,
+smallgain, selection, guard}.
+\bibitem{BULK}\path{AN03_bulk_clock_and_secondary_Q2_energy_v1.tex},
+prefix \texttt{inc:AN03:bulkclock:v1:}; Theorem 4.1,
+\texttt{bulkratioconclusion, weakJ}.
+\bibitem{AN06}\path{AN06_learned_orbit_witnesses_v2.tex},
+prefix \texttt{inc:AN06:v2:}; \texttt{residentbounds, regiontheorem}.
+\bibitem{P}\path{THEOREM_A_ANALYTICAL_PROGRESS.tex};
+\texttt{pa:charts, pa:leading, pa:masslaws}. Used for definitions of
+the leading system, not as a finite-noise reduction theorem.
+\end{thebibliography}
+\end{document}
