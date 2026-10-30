@@ -1,0 +1,651 @@
+% New standalone increment. All prior sources are read-only.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.88in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,array,longtable,booktabs,xurl}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf1}\newcommand{\KK}{\mathcal K}
+\newcommand{\BB}{\mathcal B}\newcommand{\Gp}{{G_+}}
+\newcommand{\Clk}{\mathcal C_q}\newcommand{\eps}{\varepsilon}
+\newcommand{\ph}{\phi(0)}\newcommand{\WW}{\mathcal W}
+\newcommand{\src}[2]{\textup{#1} \texttt{#2}}
+\title{Weak-receiver boundary field and original input return\\
+at a fixed clock level}
+\author{Standalone analytical increment for independent review}
+\date{Version 1 --- 30 October 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We compute the original Gaussian field at the weak input boundary,
+including the physical core-mass term. A pointwise energy estimate
+controls the entire primary weak output, without assuming the leading
+weak contraction. The pointwise strong radial identity yields a late
+mass-deficit rate that absorbs its product with the growing weak-chart
+radius. A positive trace on the clock cohort improves its alignment to
+$O(q)$; together with the regularized endpoint seed this supplies the
+incoming sign without deleting any labels. The whole closed clock
+cohort has nonnegative weak input up to the first hit of a fixed small
+clock level. This closes SI's boundary-return obligation, not the full
+weak-chart perturbation or selection problem.
+\end{abstract}
+
+\section{Certified passage, normalization and scope}
+\label{an03wbrv1:scope}
+Every new label has prefix \texttt{an03wbrv1:}. Fix $\kappa=10$,
+$\rho\in[13/20,7/10]$, $\lambda=\rho^2$, $Q=\lambda+q^2$,
+$\ell=\log(1/q)$ and $k=10(1-\lambda)$. Fix WPT/RB's constants,
+in their order; in particular $0<c_b\le1/4$. RB's completed theorem
+and S4 handoff certify the original flow on $[t_0,t_b]$.
+All uses of the earlier stopped statements below are specializations
+to this already certified interval.
+
+Write $U=\sqrt m(\cos\theta,\sin\theta)$,
+$W=\sqrt m(\cos\psi,\sin\psi)$, with $|U|^2=|W|^2=m$, and
+\[
+ P_1=N(e_1,q^2I),\quad P_2=N(\rho e_2,q^2I),\quad
+ R_\theta=\tfrac12\sum_{i=1}^2\E_{P_i}[(X-f)X^T
+       \one_{\{a_\theta\cdot X>0\}}].
+\]
+The fixed partition is $\KK,\Gp,\Sigma,\BB$, with $\mathcal D=\varnothing$.
+Integrals over labels use the original $\lambda_0$ measure. Put
+\[
+ E_S=\tfrac12\int_S(U_2^2+W_2^2),\quad
+ J_S=\tfrac12\int_S(U_1^2+W_1^2),\quad \mu_S=E_S+J_S,
+ \quad M=\mu_\KK,\quad Y_\KK=\int_\KK m\psi/q.
+\]
+Here $M$ is the \emph{physical core mass}, not $M_{\rm res}$ and
+not CFA's truncated mass. The weak coordinates have opposite conventions:
+\begin{equation}
+ u=(\pi/2-\theta)/q,\qquad v=(\psi-\pi/2)/q.
+ \label{an03wbrv1:coordinates}
+\end{equation}
+The selected set is the entire fixed, closed clock cohort
+\begin{equation}
+ S=\Clk=\{b\in[\pi/2,\pi]:c_0=-\cos b\ge q^{1/4}\}.
+ \label{an03wbrv1:selected}
+\end{equation}
+No labels are removed. Let $H=H_S$ be its $z^2$ clock.
+
+We record precisely the pointwise handoff used below, weakening constants
+when convenient. RB \texttt{conclusions, massconclusions, primaryclock},
+LCRC \texttt{signgood} and SI \texttt{coremoments} give
+\begin{align}
+ &\tfrac13\le M\le2,\quad M(t_0)=\tfrac12-o(1)<1,
+ \quad |\theta|,|\psi|\le Rq\text{ on }\KK,\quad R=79/51,
+ \nonumber\\
+ &0<Y_\KK\le5/8,\quad \bar D_\KK=O(q^{1/20}),
+ \quad E_\Gp\le C_E H,\quad J_G\le q^2K_Y^2,
+ \nonumber\\
+ &E_\Sigma\le C_\Sigma(q^5+q^{\Gamma_\nu}H),\qquad
+ \Gamma_\nu\ge\frac{289169}{924000}>\frac3{10},\qquad
+ \mu_\BB\le q^{11/10}.
+ \label{an03wbrv1:state}
+\end{align}
+The last bound holds for small $q$ because RB proves
+$\sup\mu_\BB/q=o(q^{1/10})$. Here $G=\Gp\cup\Sigma$,
+$W_2,U_2>0$ on $\Gp$, and $E_\Gp\le(10/9)H_\Gp\le C_EH$.
+The constant $C_E$ is fixed by RB's primary-to-clock comparison;
+it is not chosen using a later clock level. The diagonal residual norms
+are bounded and the cross residual norms are at most $M_{\rm res}q$.
+Consequently all matrix entries are bounded and
+$|R_{12}|+|R_{21}|\le C_\times q$, with fixed $C_\times$.
+
+Set
+\begin{equation}
+ g_0=\ph-5/16>1/16.
+ \label{an03wbrv1:gap}
+\end{equation}
+SI proves this analytic gap. We retain actual core moments, rather than
+replacing the core by a unit atom. In particular no core first-moment
+error is hidden in a term linear in a large weak coordinate.
+
+\section{Step 1: the exact boundary calculation}
+\label{an03wbrv1:exactsection}
+For a sender $b$, define, with independent standard normals $Z_1,Z_2$,
+\begin{align*}
+ A_1(b)&=\E[(U_1(1+qZ_1)+qU_2Z_2)_+\one_{\{Z_2>0\}}],\\
+ p_1(b)&=\Pr\{U_1(1+qZ_1)+qU_2Z_2>0,\ Z_2>0\},\\
+ p_2(b)&=\Pr\{qU_1Z_1+U_2(\rho+qZ_2)>0,\ Z_2>-\rho/q\}.
+\end{align*}
+These definitions retain both sender gates and the receiver gate.
+Write $\sum_T$ for the four cohorts $T=\KK,\Gp,\Sigma,\BB$.
+
+\begin{lemma}[Exact Gaussian boundary moments]
+\label{an03wbrv1:exact}
+At $\theta=\pi/2$,
+\begin{align}
+ R_{21}&=\frac{q\ph}{2}
+ -\frac12\sum_T\int_T W_2[A_1+q^2U_1(p_1+p_2)],
+ \label{an03wbrv1:R21}\\
+ R_{11}&=\frac{1+q^2}{4}+\frac{q^2}{2}\Phi(\rho/q)
+ -\frac12\sum_T\int_T W_1[A_1+q^2U_1(p_1+p_2)].
+ \label{an03wbrv1:R11}
+\end{align}
+Thus, exactly,
+\begin{equation}
+ qu'|_{u=0}=R_{21}\cos(qv)-R_{11}\sin(qv).
+ \label{an03wbrv1:boundaryidentity}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The receiver gate is $A=\{X_2>0\}$, independent of $X_1$.
+Gaussian integration by parts in $X_1$ gives
+\[
+ \E_{P_1}[X_1(U\cdot X)_+\one_A]=A_1+q^2U_1p_1,
+ \qquad
+ \E_{P_2}[X_1(U\cdot X)_+\one_A]=q^2U_1p_2.
+\]
+The target moments are $q\ph$ and $0$ for $X_2X_1$ on
+$P_1,P_2$, respectively, and $(1+q^2)/2$ and
+$q^2\Phi(\rho/q)$ for $X_1^2$. This proves the two formulas,
+including the mixture factors $1/2$. Finally
+$\theta'=a_\psi^TR_\theta a_\theta^\perp$ and
+$a_\psi=(-\sin qv,\cos qv)$ prove the boundary identity.
+No receiver derivative or differentiation of a gate was used.
+\end{proof}
+
+For any fixed group define its exact boundary weak-output functional by
+\begin{equation}
+ \WW_T^q(0)=q^{-1}\int_T W_2 A_1.
+ \label{an03wbrv1:Wexact}
+\end{equation}
+For bounded weak sender coordinates its integrand is
+\[
+ m\cos(q\widetilde v)\E\left[
+ \left(\frac{\sin(q\widetilde u)}q(1+qZ_1)
+             +\cos(q\widetilde u)Z_2\right)_+\one_{\{Z_2>0\}}\right].
+\]
+It converges uniformly on compact sender charts to
+$m\E[(Z_2+\widetilde u)_+\one_{\{Z_2>0\}}]=mF(0,\widetilde u)$.
+This identification uses Gaussian Lipschitz domination and is only a
+coefficient check; our estimates below keep \eqref{an03wbrv1:Wexact}
+exact even for unbounded or uncharted sender coordinates.
+
+\section{Step 2: pointwise boundary budgets}
+\begin{proposition}[Cohort charges and value--coefficient decomposition]
+\label{an03wbrv1:budget}
+Uniformly on the certified passage,
+\begin{align}
+ \frac{2R_{21}}q&=\ph-Y_\KK/2-\WW_\Gp^q(0)+e_{21},
+ &|e_{21}|&\le C[q^2+E_\Sigma+K_Y\sqrt{E_\Sigma}+\mu_\BB/q],
+ \label{an03wbrv1:21budget}\\
+ R_{11}&=(1-M)/4+e_{11},
+ &|e_{11}|&\le C(q^2+\mu_\BB).
+ \label{an03wbrv1:11budget}
+\end{align}
+For $qL\le1/2$, $|v|\le L$, the exact field therefore has the form
+\begin{equation}
+ 2u'|_{u=0}=\ph-Y_\KK/2-\WW_\Gp^q(0)-(1-M)v/2+\mathcal R,
+ \label{an03wbrv1:leading}
+\end{equation}
+where
+\begin{align}
+ |\mathcal R|\le C\{&q^2(1+L^2)+E_\Sigma+K_Y\sqrt{E_\Sigma}
+ +\mu_\BB/q+(q^2+\mu_\BB)L
+ \nonumber\\[-2pt]
+ &+|1-M|Lq^2L^2\}.
+ \label{an03wbrv1:remainder}
+\end{align}
+All constants are fixed passage/Gaussian constants. The primary weak
+functional has a fixed upper bound on the passage, as proved below.
+\end{proposition}
+\begin{proof}
+The elementary pointwise sender bound
+$A_1\le C|U_1|+Cq|U_2|$ and Cauchy--Schwarz give
+\begin{equation}
+ |\WW_T^q(0)|\le C(E_T+q^{-1}\sqrt{E_TJ_T}),\quad
+ q\left|\int_TW_2U_1(p_1+p_2)\right|\le Cq\sqrt{E_TJ_T}.
+ \label{an03wbrv1:energycharge}
+\end{equation}
+For an arbitrary outside group the alternative bounds are
+$C\mu_T/q$ and $Cq\mu_T$. They require no sign or chart.
+For $\Sigma$ use $J_\Sigma\le q^2K_Y^2$; its contributions are
+bounded by $C(E_\Sigma+K_Y\sqrt{E_\Sigma})$.
+The primary Stein correction is $O(q^2)$ because
+$E_\Gp=O(1)$ and $J_\Gp=O(q^2)$.
+
+For a core donor the $P_1$ donor gate can be removed with an
+exponentially small error, even after inserting $\one_{X_2>0}$.
+Indeed its projected $P_1$ mean is at least $1/2$ for small $q$.
+With $T_{ij}=\int_\KK W_iU_j$, core geometry gives
+\[
+ T_{21}=qY_\KK+O_R(q^3M),\quad T_{22}=O_R(q^2M),
+ \quad T_{11}=M+O_R(q^2M),\quad T_{12}=O_R(qM).
+\]
+Since $\E_{P_1}X_1\one_A=1/2$ and
+$\E_{P_1}X_2\one_A=q\ph$,
+\[
+ \WW_\KK^q(0)=Y_\KK/2+O_R(q^2M)+O_R(Me^{-c/q^2}/q).
+\]
+Its Stein correction is $O_R(q^2M)$. This proves
+\eqref{an03wbrv1:21budget}. Notice that the core's $P_2$ term was
+handled by the exact Stein formula, not by an unsigned $O(q)$ field
+bound divided by $q$.
+
+For the first row, the raw $P_1$ explicit-cohort charge is bounded by
+$C(J_G+q\sqrt{E_GJ_G})$; its Stein charge is $Cq^2J_G$.
+Both are $O(q^2)$, since \eqref{an03wbrv1:state} bounds $E_G$.
+The outside charge is $C\mu_\BB$. The core $P_1$ first-row output
+has leading term $T_{11}(1+q^2)/2$ before the mixture factor,
+and its cross term is $T_{12}q\ph=O_R(q^2M)$.
+The core $P_2$ Stein term is $O(q^2M)$.
+Equations \eqref{an03wbrv1:R11} and \eqref{an03wbrv1:state} prove
+\eqref{an03wbrv1:11budget}. Expanding only the receiver sine and
+cosine in \eqref{an03wbrv1:boundaryidentity} gives
+\eqref{an03wbrv1:remainder}.
+\end{proof}
+
+\paragraph{Coefficient check against P.}
+P \texttt{pa:pop-u}, with its physical unnormalized strong mass, says
+\[
+ 2u'=\phi(u)-\WW(u)-\{Y+(1-M)v\}\Phi(u)-\lambda(1-N)u.
+\]
+At $u=0$ this is precisely the leading part of
+\eqref{an03wbrv1:leading}, including $-(1-M)v/2$ in $2u'$.
+There is no coefficient or output-sign discrepancy.
+
+\paragraph{What is, and is not, paid pointwise.}
+The core first moment is kept as the actual $Y_\KK$ and has no
+replacement error. If replaced by $M$ times the actual reference
+coordinate, its additive error is at most $D_\KK=O(q^{1/20})$;
+replacing $M$ by one adds at most $C|1-M|$ as a comparator error.
+Neither replacement is needed. The mass-linear error remains explicit
+in \eqref{an03wbrv1:leading}. The $q^2$ terms in
+\eqref{an03wbrv1:21budget} are additive; the $q^2+\mu_\BB$ terms
+in \eqref{an03wbrv1:11budget} multiply $v$ after scaling. Receiver
+trigonometric errors are $q^2L^2$ and the last term of
+\eqref{an03wbrv1:remainder}. The two tails of every Gaussian gate
+remain in the exact formulas or the donor tail estimate. No integral
+of $r$, $\mu_\BB/q$ or the c-form remainder has been used to bound
+a pointwise error.
+
+\section{Step 3: a quantitative late strong-mass fit}
+\begin{lemma}[Pointwise mass relaxation]
+\label{an03wbrv1:mass}
+For a fixed $C_\eta$, let $\eps_q=C_\eta q^{11/10}$.
+On the entire passage,
+\begin{align}
+ (\log M)'&=1-M+\eta(t),\qquad |\eta(t)|\le\eps_q,
+ \label{an03wbrv1:masseq}\\
+ |1-M(t)|&\le C_m e^{-(t-t_0)/3}+6\eps_q,
+ \qquad (M(t)-1)_+\le6\eps_q,
+ \label{an03wbrv1:massrate}\\
+ \inf_\theta R_{11}(t,\theta)&\ge-C\eps_q.
+ \label{an03wbrv1:R11lower}
+\end{align}
+\end{lemma}
+\begin{proof}
+CFR \texttt{radialbound} is a state lemma: it requires the residual
+guards, core donor chart and mass bound, and a charted receiver. RB
+supplies all of these for each core receiver, with $R$, $M_K=2$ and
+any fixed $L_c\ge R$. Its exact conclusion is
+\[
+ (\log m)'=1-\kappa_1+\delta_m,\quad
+ |\delta_m|\le C_{L_c,R}
+ [q^2(1+2+M_{\rm res})+J_G+q\sqrt{E_GJ_G}+\mu_\BB].
+\]
+By \eqref{an03wbrv1:state} this is $C(q^2+\mu_\BB)$.
+Also $|\kappa_1-M|\le C_Rq^2M$. Averaging with the current
+positive core radial weights gives \eqref{an03wbrv1:masseq}.
+This is the same equation used in S2CP \texttt{Bs}, now with a
+pointwise rate derived from its pointwise radial source. An integrated
+$d_q=o(1)$ alone would not give this rate.
+
+For $z=1-M$ the equation is $z'=-Mz-M\eta$.
+Use $1/3\le M\le2$, variation of constants, and $M(t_0)<1$.
+The forced part is bounded by $6\eps_q$; the positive overshoot
+has zero initial value. This proves \eqref{an03wbrv1:massrate}.
+
+For completeness the lower bound for \emph{all receiver gates}
+also follows from the state calculation. On $P_1$ write
+$e_1=(1-\kappa_1)X_1-g_1$. CFR's radial proof, before removing
+the receiver gate, gives
+\[
+ \|g_1\|_{P_1}\le C[q^2M+J_G+q\sqrt{E_GJ_G}+\mu_\BB]
+                \le C\eps_q.
+\]
+For every receiver event $A$, $\E_{P_1}X_1^2\one_A\ge0$,
+and $\kappa_1\le1+C\eps_q$. The $g_1$ term is at most
+$C\eps_q$ in absolute value. The $P_2$ term is bounded by
+$\|e_1\|_{P_2}\|X_1\|_{P_2}/2\le M_{\rm res}q^2/2$.
+This proves \eqref{an03wbrv1:R11lower} without using a receiver chart.
+\end{proof}
+
+Let $c_H>0$ be a fixed lower-comparability constant in
+$H(t_b)\ge c_Hc_b$, supplied by RB. For a fixed $h<c_Hc_b/2$,
+to be made smaller below, define first hits
+\begin{equation}
+ t_s=\inf\{t\ge t_0:H(t)=q^{1/8}\},\qquad
+ t_e=\inf\{t\ge t_0:H(t)=h\}.
+ \label{an03wbrv1:levels}
+\end{equation}
+For small $q$, $t_0<t_s<t_e<t_b$, by continuity and the entry
+seed. The exact clock and the bounded integral of $c$ in RB give
+\begin{align}
+ t_s-t_0&=\frac{(k-1/8)\ell+\lambda\log A_q+O_{\rm fixed}(1)}Q,
+ \nonumber\\
+ t_e-t_0&=\frac{k\ell+\lambda\log A_q+\log h+O_{\rm fixed}(1)}Q.
+ \label{an03wbrv1:times}
+\end{align}
+No $o(1)$ phase is inferred from the fixed-factor seed.
+
+SI \texttt{size}, which specializes BULK to RB's clock cohort, yields
+for $t_s\le t\le t_e$
+\begin{align}
+ |u|+|v|&\le C_L(1+q^{-p_s})\le L(q):=C_L(1+q^{-603/640}),
+ \nonumber\\
+ p_s&=15/8-(k-1/8)(1-c_b)/4\le603/640.
+ \label{an03wbrv1:latechart}
+\end{align}
+The last rational bound uses $k\ge51/10$ and $c_b\le1/4$.
+Thus this is a reached weak chart, with $qL=O(q^{37/640})$.
+For small $q$, $Q\le1/2$, and
+$(k-1/8)/(3Q)\ge199/60$. Equations
+\eqref{an03wbrv1:massrate}--\eqref{an03wbrv1:latechart} imply
+\begin{equation}
+ \sup_{[t_s,t_e]}|1-M|L
+ \le C\{q^{199/60-603/640}+q^{11/10-603/640}\}
+ \le Cq^{101/640}.
+ \label{an03wbrv1:massproduct}
+\end{equation}
+In particular it is eventually less than any fixed positive margin
+divided by $16$. The additive core-normalization comparator error,
+if requested, is smaller still. This is a rate, not just convergence
+of the core mass.
+
+\section{Step 4: all primary weak senders at a fixed small level}
+\begin{lemma}[Original one-sided boundary feedback]
+\label{an03wbrv1:weakvalue}
+For every $t\in[t_0,t_e]$,
+\begin{equation}
+ 0\le\WW_\Gp^q(0)\le C_W(H+K_Y\sqrt H)
+                    \le C_W(h+K_Y\sqrt h).
+ \label{an03wbrv1:Wbudget}
+\end{equation}
+Both the selected contribution and that of $\Gp\setminus S$ are
+nonnegative and bounded by the same right side. Their sum, not two
+separately chosen allowances, is bounded as displayed.
+\end{lemma}
+\begin{proof}
+$W_2>0$ on $\Gp$ by LCRC/RCET signgood, and $A_1\ge0$.
+Equation \eqref{an03wbrv1:energycharge} gives the value--coefficient
+bound
+\[
+ \WW_\Gp^q(0)\le C E_\Gp+
+       C(\sqrt{J_\Gp}/q)\sqrt{E_\Gp}.
+\]
+Use $E_\Gp\le C_EH$ and $\sqrt{J_\Gp}/q\le K_Y$.
+No weak-coordinate size estimate on $\Gp\setminus S$, no return
+sign of any sender, and no leading contraction theorem is needed.
+\end{proof}
+
+Choose $h$ fixed so that
+\begin{equation}
+ 0<h<\min\{1/4,c_b/2,c_Hc_b/2\},\qquad
+ C_W(h+K_Y\sqrt h)\le g_0/8.
+ \label{an03wbrv1:hfirst}
+\end{equation}
+This gives a fixed-level result, rather than the vanishing-level
+fallback. For comparison, the fallback's crude quantity
+$H\sup|u|$ at $H=q^{a'}$ has exponent
+$a'(3+c_b)/4-p_b$, so its proposed threshold
+$a'>4p_b/(3+c_b)$ is indeed the threshold for that particular
+size charge. It supplies neither a sign nor a bound for all
+$\Gp\setminus S$. We do not use it.
+
+By \eqref{an03wbrv1:state}, \eqref{an03wbrv1:remainder} and
+\eqref{an03wbrv1:massproduct}, uniformly on $[t_s,t_e]$ and
+$|v|\le L(q)$,
+\begin{equation}
+ |\mathcal R|\le C_{\rm fixed}q^{1/10}.
+ \label{an03wbrv1:finalremainder}
+\end{equation}
+Indeed $q^2L^2=O(q^{37/320})$,
+$(q^2+\mu_\BB)L=O(q^{101/640})$,
+$\mu_\BB/q\le q^{1/10}$, and the secondary square-root term
+has powers $5/2$ and $\Gamma_\nu/2>3/20$, with fixed $h$.
+The mass--trigonometric product is still smaller. All constants
+here were fixed before $q$.
+
+\section{Step 5: the incoming sign, including the endpoint seed}
+\begin{lemma}[Clock alignment and positive entry seed]
+\label{an03wbrv1:incomingpre}
+On the whole certified passage and every label of $S$,
+\begin{equation}
+ |\theta-\psi|\le C_\Delta q.
+ \label{an03wbrv1:clockalignment}
+\end{equation}
+At $t_0$, uniformly including $b=\pi$ and $c_0=q^{1/4}$,
+\begin{equation}
+ 0<\theta(t_0,b)<\pi/2,\qquad
+ \cos\theta(t_0,b)\ge c_{\rm in}q^{1-\sigma_*},
+ \quad \sigma_*:=2079/13520>0.
+ \label{an03wbrv1:entryseed}
+\end{equation}
+\end{lemma}
+\begin{proof}
+BULK's gate conclusion gives $a_{\theta,2}/q\ge c_*q^{-1/8}$
+on the clock. Its \texttt{R22tail} formula therefore gives
+$R_{22}\ge Q(1-c_b)/4\ge b_c:=507/6400$ for small $q$.
+Together with \eqref{an03wbrv1:R11lower},
+$\operatorname{tr}R\ge b_c/2$. This does not require $U_1\ge0$;
+the positive $U_2,W_2$ already follow from BULK.
+RB \texttt{entryalignment} gives $|\Delta(t_0)|\le C_{\rm al,0}q$.
+The exact equation, with $\Delta=\theta-\psi$, is
+\[
+ \Delta'=-\operatorname{tr}R\sin\Delta+(R_{12}-R_{21})\cos\Delta.
+\]
+While $|\Delta|\le1$ it implies
+$D^+|\Delta|\le-(b_c/4)|\Delta|+C_\times q$.
+Take $C_\Delta=C_{\rm al,0}+4C_\times/b_c+1$ and close the
+first-exit comparison for small $q$. This proves
+\eqref{an03wbrv1:clockalignment}; unlike the all-label alignment
+bound, it has no logarithmic loss.
+
+For the entry seed use RCET \texttt{regularized} and Q2EC
+\texttt{transport, targetcontracts}. The latter proves bounded-time
+shift uniformity at $t_0=10\ell-\log A_q+o(1)$, covers the matched
+positive-coordinate sector, and keeps every primary clock label
+outside its fixed strong chart. Hence, with
+$r_\lambda=(1-\lambda)/\lambda$ and
+$\gamma=1-5\lambda+2\lambda/(1-\lambda)$,
+\[
+ q\cot\theta(t_0,b)\asymp
+ \left[q^\gamma\frac{s_0+q}{c_0+q}\right]^{r_\lambda},
+ \qquad s_0=\sin b.
+\]
+The two-sided factors are fixed; the original angle is in $(0,\pi/2)$
+after its matched crossing. Since $(s_0+q)/(c_0+q)\ge q/2$,
+\[
+ q\cot\theta(t_0,b)\ge c q^{2-\sigma(\lambda)},\qquad
+ \sigma(\lambda)=7-5\lambda-2/\lambda\ge\sigma_*.
+\]
+The last inequality follows from
+$\sigma'(\lambda)=-5+2/\lambda^2>0$ on the box and evaluation
+at $\lambda=169/400$. Passing from positive cotangent to cosine
+proves \eqref{an03wbrv1:entryseed}. In particular $b=\pi$ uses
+$s_0+q=q$, not the zero unregularized seed. The other closed
+endpoint obeys the same uniform bound.
+\end{proof}
+
+\begin{proposition}[No input-boundary escape]
+\label{an03wbrv1:nocross}
+For every label of the closed cohort $S$,
+$u(t,b)>0$ for $t_0\le t\le t_e$. In particular the incoming
+condition at $t_s$ holds without excluding any selected mass.
+\end{proposition}
+\begin{proof}
+Choose a fixed $T_*>0$, before choosing $q$, such that
+\begin{equation}
+ \tfrac12 C_m C_\Delta e^{-T_*/3}\le g_0/8.
+ \label{an03wbrv1:Tstar}
+\end{equation}
+On $[t_0,t_0+T_*]$, let $w=\cos\theta$ for a clock label.
+While $w\ge0$, the exact angular equation, bounded diagonal
+entries, cross entries $O(q)$ and
+$|\cos\psi-\cos\theta|\le C_\Delta q$ give
+\[
+ w'\ge-C_1w-C_2q.
+\]
+For example in
+$\theta'=-R_{11}\cos\psi\sin\theta+
+R_{12}\cos\psi\cos\theta-R_{21}\sin\psi\sin\theta+
+R_{22}\sin\psi\cos\theta$, every diagonal term after
+multiplication by $-\sin\theta$ is bounded below by
+$-Cw-Cq$. The cross terms are $O(q)$. Thus
+\[
+ w(t)\ge c_{\rm in}e^{-C_1T_*}q^{1-\sigma_*}-C_*q>0
+\]
+for small $q$. There is no boundary hit in this initial fixed interval.
+
+At a hypothetical first hit afterwards, $\theta=\pi/2$ and
+\eqref{an03wbrv1:clockalignment} gives $|v|\le C_\Delta$.
+Use \eqref{an03wbrv1:leading} with this fixed radius, not the
+possibly large early weak-coordinate size. By
+\eqref{an03wbrv1:Tstar}, \eqref{an03wbrv1:massrate} and smaller
+$q$, the absolute mass-linear term is at most $g_0/4$.
+Equation \eqref{an03wbrv1:Wbudget} charges the entire primary
+feedback by $g_0/8$. The remaining pointwise error tends to zero
+uniformly while $H\le h$ and is at most $g_0/8$. Consequently
+$2u'\ge g_0/2>0$, contrary to a first exit from $u>0$.
+By \eqref{an03wbrv1:times}, $t_s-t_0\to\infty$, so $t_0+T_*<t_s$
+for small $q$. The proof is independent of any weak-chart assumption
+before $t_s$. Continuous dependence on the initial label extends the
+uniform comparisons to the closed endpoints; alternatively all the
+displayed scalar inequalities hold directly for those labels.
+\end{proof}
+
+\section{Step 6: the return theorem and its strict local margin}
+To express the margin in the notation of WEAK, let
+$N_0=\mu_S(t_s)>0$ and let the actual normalized incoming radial
+measure be $\eta_s=m(t_s,b)\dd\lambda_0/N_0$. Put
+$U_0^+=\int u(t_s,b)_+\dd\eta_s$. By
+\eqref{an03wbrv1:latechart}, $|qu|\le1/2$ for small $q$.
+The inequality $u_+\le2|U_1|/(q\sqrt m)$ and Cauchy--Schwarz give
+\begin{equation}
+ U_0^+\sqrt{N_0}\le 2\sqrt{2J_S}/q\le 2\sqrt2 K_Y=:\mathcal B_U.
+ \label{an03wbrv1:incomingmoment}
+\end{equation}
+This estimate only identifies the incoming term in the boundary
+margin; it does not assert a leading mass evolution.
+
+Set $n_b=2h$. This is a valid actual selected-mass cap on
+$[t_s,t_e]$, since signgood and the transverse bound give
+\[
+ N_S(t):=\mu_S(t)=H(t)+A_S(t)+J_S(t)
+ \le(10/9)h+q^2K_Y^2\le2h
+\]
+for small $q$. It is not an assertion about a leading logistic solution.
+Define
+\begin{equation}
+ C_u(n_b)=\ph+\frac{\ph}{\lambda(1-n_b)},\qquad
+ \mathfrak m_q=\ph-5/16-C_u(n_b)n_b-U_0^+\sqrt{N_0n_b}.
+ \label{an03wbrv1:margin}
+\end{equation}
+Make the fixed choice of $h$ in \eqref{an03wbrv1:hfirst} also satisfy
+\begin{equation}
+ 2\ph(1+2/\lambda_{\min})h+\mathcal B_U\sqrt{2h}\le g_0/4,
+ \qquad\lambda_{\min}=169/400.
+ \label{an03wbrv1:hsecond}
+\end{equation}
+Then $3g_0/4\le\mathfrak m_q\le g_0$. The cap $n_b=2h$ here
+does not identify the actual mass $N_S(t_e)$ with $H(t_e)$ and does
+not apply WEAK's contraction or logistic theorem.
+
+\begin{theorem}[Original input return to a fixed clock level]
+\label{an03wbrv1:main}
+For the initialized deep-regime flow, keep WPT/RB's fixed constants,
+then make the fixed choices above. For every sufficiently small $q$,
+the entire closed clock cohort \eqref{an03wbrv1:selected} and the
+first-hit times \eqref{an03wbrv1:levels} satisfy
+\[
+ t_s-t_0\longrightarrow\infty,\qquad t_s<t_e<t_b,\qquad
+ u(t,b)\ge0\quad(t_s\le t\le t_e,\ b\in S).
+\]
+The reached weak chart has the uniform size
+\eqref{an03wbrv1:latechart}. The exact original boundary field,
+uniformly over $t\in[t_s,t_e]$ and $|v|\le L(q)$, satisfies
+\begin{equation}
+ u'|_{u=0}\ge g_0/4\ge\mathfrak m_q/4>0.
+ \label{an03wbrv1:return}
+\end{equation}
+In particular this holds at every potential selected boundary hit.
+Moreover $\sup|1-M||v|\le Cq^{101/640}\le\mathfrak m_q/16$,
+and the pointwise boundary remainder is
+$O_{\rm fixed}(q^{1/10})$ when actual core moments are retained.
+The time accuracy is exactly \eqref{an03wbrv1:times}.
+No additional retained input, excluded cohort, or continuation past
+$t_b$ is needed for this statement.
+\end{theorem}
+\begin{proof}
+Proposition \ref{an03wbrv1:nocross} gives the incoming sign and
+its preservation. The levels and size were proved in
+\eqref{an03wbrv1:levels}--\eqref{an03wbrv1:latechart}.
+Choose $q$ last so the mass product is at most $\mathfrak m_q/16$
+and \eqref{an03wbrv1:finalremainder} is at most $g_0/8$.
+In \eqref{an03wbrv1:leading} the core gap is at least $g_0$,
+the primary charge is at most $g_0/8$, and the remaining mass-linear
+charge is at most $g_0/8$. Thus $2u'\ge5g_0/8\ge g_0/2$,
+which proves \eqref{an03wbrv1:return}. Finally
+\eqref{an03wbrv1:incomingmoment} and \eqref{an03wbrv1:hsecond}
+give the asserted positive WEAK-shaped margin from actual incoming
+data, without invoking a leading-system hypothesis for the original flow.
+\end{proof}
+
+\paragraph{Constant order.}
+First keep the full WPT/RB order, including $R,M_K,L_T,B,K_Y,M_{\rm res}$,
+$c_b,C_0,C_\Sigma$ and the entry/matching constants. Next take the
+model local constants $g_0,\lambda_{\min}$ and WEAK's displayed
+$C_u$ formula; fix $C_E,C_W,C_\eta,C_\Delta,C_L,T_*,\mathcal B_U$
+from these already fixed bounds. Fix the start exponent $a_s=1/8$.
+Choose $h$ by \eqref{an03wbrv1:hfirst} and
+\eqref{an03wbrv1:hsecond}, then $q$. The new constants may depend
+on the fixed passage guards, but never select an earlier guard.
+In particular $h$ can depend on $K_Y$ and $C_E$ and is independent
+of $q$; $C_\eta$ multiplies $q^{11/10}$, $C_\Delta$ multiplies $q$,
+and the late mass/error constants multiply positive powers of $q$.
+
+\paragraph{S4c handoff and limits.}
+The supplied interface is a fixed-label cohort with no missing mass,
+actual incoming nonnegative input, a reached chart
+$qL=O(q^{37/640})$, a uniform strict boundary margin,
+the exact boundary functional and its pointwise charges, and a late
+physical-core mass rate. The endpoint is $H=h$, not an asserted
+leading weak mass level. The whole weak-chart $(u,v)$ field,
+TAILREP's additive/integrated perturbation inequalities, logistic
+phase $\int(N-c)$, the $W_p$ initial smallness, and selection remain
+for S4c/S4d. The exact boundary estimates do not establish their
+receiver derivatives or their field away from $u=0$.
+
+\begin{thebibliography}{12}\small
+\bibitem{P} P: \path{01_foundations/THEOREM_A_ANALYTICAL_PROGRESS.tex},
+\texttt{pa:leading, pa:pop-u}.
+\bibitem{RB} RB: \path{AN03_response_barrier_v1.tex},
+\texttt{an03rbv1:completed, conclusions, massconclusions, clock,
+time, primaryclock, entryalignment}, S4 handoff.
+\bibitem{SI} SI: \path{AN03_selection_interface_v1.tex},
+\texttt{an03siv1:coremoments, bulksize, size, missingreturn}.
+\bibitem{CFR} CFR: \path{AN03_c_form_field_reduction_v1.tex},
+\texttt{an03cfrv1:radial, radialbound} and its proof.
+\bibitem{S2CP} S2CP: \path{AN03_S2_closure_package_v1.tex},
+\texttt{an03s2cpv1:Bs, radialerror}.
+\bibitem{LCRC} LCRC: \path{AN03_ledger_cap_residual_closure_v1.tex},
+\texttt{an03lcrcv1:signgood, closure}.
+\bibitem{BULK} BULK: \path{AN03_bulk_clock_and_secondary_Q2_energy_v1.tex},
+\texttt{inc:AN03:bulkclock:v1:bulkclockclosure, bulkratioconclusion,
+R22tail, bulkweights}.
+\bibitem{RCET} RCET: \path{AN03_residual_closure_and_eta0_transport_v1.tex},
+\texttt{an03rcetv1:transport, regularized, dichotomy}.
+\bibitem{Q2EC} Q2EC: \path{AN02_Q2_entry_contracts_v1.tex},
+\texttt{an02q2ecv1:main, transport, match, coordinatetransport,
+targetcontracts} and its endpoint/time-domain check.
+\bibitem{MOMC} MOMC: \path{AN02_moving_overlap_M_clock_passage_v1.tex},
+\texttt{an02momcv1:main}; entry normalization as inherited by RB.
+\end{thebibliography}
+\end{document}
