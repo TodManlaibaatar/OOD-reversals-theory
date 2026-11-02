@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.24 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.25 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -126,6 +126,15 @@
   - a proposed lower-half transverse-energy route that would pay every unpaid cohort at once;
   - the S5 sessions reordered so that probe precision comes before continuation.
 - **Next: S5b,** probe-sector energy and entry precision.
+
+**Revision 1.25 (Nov 2).** Records PSE (`AN07_probe_sector_energy_v1`, S5b): **closed.**
+- **Lower-half energy.** For every fixed cohort, $\mathfrak E_T(t)\le e^{31}\mathfrak E_T(0)+31e^{31}C_Eq^2L^2\sup\mu_T$ on $[0,t_b]$, with $L=1+\log(1/q)$.
+- **Cohort masses before entry.** A new backward radial comparison gives $m(t)\le e^5m(t_0)$ for $t\le t_0$.
+- **Background paid.** $\mathcal Q_{\Sigma\cup\mathcal B}\le Cq^2(q^8+L^2q^{\gamma_*})$, so the full probe error and source rates equal the core's own to $o(q^2)$ throughout $[t_s,t_b]$.
+- **Entry comparison.** The initialized probe error and source rates match the selected orbit at every fixed level $n'$ in a compact subset of $(0,n]$, with error $O(q^{1/20})$. Consequently A-error-transfer already holds on every fixed window inside $(-\infty,s_n]$ (reviewer corollary).
+- **Continuation criterion.** An explicit conditional energy inequality lists what S5c must continue past $t_b$.
+- **Reviewer additions:** the reviewer's proposed route (v1.24) is now proved as stated. Ledger 25 gains six more garbled-escape locations (a dropped `\q` in `\quad`) and a scan for them.
+- **Next: S5c,** finite-window continuation and A-error-transfer after entry.
 
 ---
 
@@ -953,6 +962,29 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - **S5c: continuation.** From $t_n$ through the windows: passage-internal up to $t_b$, then a finite-time bootstrap past $t_b$ for the masses, the matrix and alignment bounds S5b needs, the original-to-leading reduction in CWI's first-moment norm, and the mass/logit phase.
   - **S5d: transfer and assembly.** A-error-transfer on every fixed window, A-rate-transfer on WIT's $J$, then AN8 (Theorem A via WIT + LPR, persistence via LP).
 
+**Status after PSE (`AN07_probe_sector_energy_v1`, S5b, Nov 2): closed.**
+- *Theorems (all on the original initialized flow, constants in the fixed order, q last):*
+  - **Energy** (`energy`). For every fixed cohort, $\mathfrak E_T(t)\le e^{31}\mathfrak E_T(0)+31e^{31}C_Eq^2L^2\sup_{[0,t]}\mu_T$ on $[0,t_b]$. Here $\mathfrak E_T(0)\le q^{10}$, and $\mathfrak E_\Sigma(0)=0$.
+  - **Masses** (`backmass`). $m(t)\le e^5m(t_0)$ for every label and $t\le t_0$, so RB's passage mass budgets extend to $[0,t_b]$.
+  - **Background** (`Qpaid`, `lateprecision`). $\sup_{[0,t_b]}\mathcal Q_{\Sigma\cup\mathcal B}\le C_{R_\zeta}q^2\epsilon_{\rm bg}$, with $\epsilon_{\rm bg}=q^8+L^2q^{\gamma_*}$ and $\gamma_*=289169/924000$. On $[t_s,t_b]$, the full error, the background output rates and the total source rates differ from the core's own by $O(q^2\epsilon_{\rm bg})$.
+  - **Entry** (`levels`, `entry`). For n′ in a compact $\mathcal N\subset(0,n]$: $E_s+W_2=O_{\mathcal N}(q^{1/20})$, $q^{-2}(E-\tfrac12)(t_{n'})=\mathcal E_{\rho,\zeta}(s_{n'})+O_{\mathcal N}(q^{1/20})$, and the same for $q^{-2}D_p^\tau$. This holds uniformly over the ratio box and $\zeta\in[87/50,7/4]$, with the single center $\tau_h$.
+  - **Continuation criterion** (`conditional`). On a future window, the energy continues under four matrix-value and alignment bounds: $|R_{12}|\le C_{12}q$, $|R^{(1)}_{22}|\le C_1q^2$, the lower-gate bound on $R^{(2)}_{22}$, and $|W_2-U_2|\le d_{\rm al}\sqrt m$.
+- *Checked (reviewer, Nov 2):*
+  - **Cross residual.** PSE's input $\|e_2\|_{P_1}+\|e_1\|_{P_2}\le C_\times q$ is exactly WPT/RB's $M_{\rm res}q/2$ guard (WPT lines 104–105, RB 610–611) and Q3SB `crosspre` on $[0,t_0]$; same norm.
+  - **Loss.** $\mathcal L(0)\le1$ and $\mathbb E_{P_j}\le2\,\mathbb E_{\rm mix}$, so $\|e_f\|_{L^2(P_j)}\le2$ at all times.
+  - **Lower gate.** Under $P_2$, $a_\theta\cdot X\sim N(\rho\sin\theta,q^2)$, so the gate probability is exactly $\Phi(-\rho s/q)$. Hölder with $\mathbb EX_2^4=\rho^4+6\rho^2q^2+3q^4\le43/16$ and Chernoff give $C_G=2$ and $k_G=\rho^2/8\ge169/3200$.
+  - **Energy step.** $(v_-^2)'=-2v_-v'$; $U_2'=R_{12}W_1+R_{22}W_2$; one Young step at weight $1/L$; Gaussian maxima $1/(ek)$ and $1/\sqrt{2ek}$. Since $t_b<30\ell+O(1)\le31L$, the integrating factor is $e^{31}$.
+  - **Backward masses.** Polarization gives $a_\psi^TAa_\theta\ge-\tfrac14\|A\|\,|a_\psi-a_\theta|^2$. $\|A_\theta\|\le\|\mathbb E_{\rm mix}XX^T\|=a_*$, and $\|C_f\|\le a_*S$ by Cauchy–Schwarz on the mixture (not per cluster). $\int_0^{t_0}S\le\log2+o(1)$ and $\int|\theta-\psi|^2\le Cq^2L$ then give $e^5$.
+  - **Static bound and inactivity.** The static inequality holds. The late primary ratio needs only $I'\le Q$.
+  - **Core gap and Θ.** $87/50-21/34=477/425$. $\Theta(n')\le1/8$ for every $n'\le1/2$.
+- *Reviewer corollary.* Because $t_{n'}=\tau_h+s_{n'}$ exactly and the entry comparison is uniform on compact level sets, H2's A-error-transfer, and an entry source-rate comparison, already hold on every fixed window $K\subset(-\infty,\min_\rho s_n]$. WIT's J and LP's late windows lie after $s_n$, so this does not yet give Theorem A or persistence.
+- *Remaining S5 (2 sessions, possibly 3):*
+  - **S5c (next): finite-window continuation and A-error-transfer after entry.**
+    - A finite-time bootstrap from $t_n$ for PSE `conditional`'s matrix and alignment bounds, plus core chart, primary inactivity, weak reached chart and transverse energy, past $t_b$.
+    - The original-to-leading reduction in CWI's first-moment norm, and a perturbed version of CWI `propagation`.
+    - Then A-error-transfer on every fixed window $[s_n,T]$.
+  - **S5d: rates and assembly.** A-rate-transfer on WIT's gate-separated J, then AN8: Theorem A via WIT + LPR (on $\mathcal P_*$), and persistence via LP `diagonal-transfer`.
+
 ### S6. The exact finite-noise lag (AN1)
 
 **Claim.** The original-flow help channel $D_1^{\rm phys}/(\mu_1^2q^2)=-\tfrac12A_{q,\xi}L^{\rm mean}_{1,q}+\text{remainder}$, with the remainder smaller than the lag's signed margin on the learned windows, and a positive-lag estimate for the exact lag.
@@ -1034,7 +1066,7 @@ Tracks that can run in parallel:
 | III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction**, and **S4e (WCS) closed the weak-chart reduction and selection**: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ at a fixed small weak mass. **Track III is complete.** |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
-| — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **Next: S5b,** probe-sector energy and entry precision. |
+| — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **S5b (PSE) closed:** background paid on the passage; full error and rates match at every fixed level $n'\le n$, so A-error-transfer holds on windows inside $(-\infty,s_n]$. **Next: S5c,** continuation to later windows. |
 
 **Dependency sketch**
 
@@ -1132,8 +1164,9 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
       - RB: lines 335, 429, 513, 515 (also `qquad`) and 516;
       - GESG: lines 231 and 238;
       - LSB: line 181.
+      - Dropped `\q` (`\quad` printed as "quad"; added Nov 2): RB lines 106, 107, 108 and 111 (twice); LSB line 214.
     - These are typesetting defects only; no statement's mathematics changes. Prior increments are frozen, so they are recorded here rather than edited. Fix them only by an explicitly approved errata-only commit.
-    - *Rule:* before delivery, every work session scans its .tex with `grep -nP '[\x00-\x09\x0b-\x1f]'` and checks that `\rm`, `\tfrac`, `\qquad` and `\text` survive.
+    - *Rule:* before delivery, every work session scans its .tex with `grep -nP '[\x00-\x09\x0b-\x1f]'` and with `grep -nP '(?<![\\A-Za-z])q{1,2}uad(?![a-z])'` (a backslash dropped without a control character), and checks that `\rm`, `\tfrac`, `\qquad` and `\text` survive.
 26. **An integration-by-parts instruction that does not extend (my S4e prompt).** I asked S4e to extend WBR's integration by parts in $X_1$ from $u=0$ to the whole chart. At $u\ne0$ the $P_1$ receiver gate $\{a\cdot X>0\}$ depends on $X_1$, so integrating by parts in $X_1$ would differentiate the gate. WCS used instead the rotated variable $Z_\perp=c_uZ_1-s_uZ_2$, which is tangent to the gate's level sets and equals $Z_1$ at $u=0$. WCS also avoided a spurious inadmissible term $q^2|v|u^3$ by using Gaussian saturation in place of a global Lipschitz bound.
     - *Rules:*
       - Integrate by parts only in a variable on which the receiver gate does not depend; at a general receiver this is the direction tangent to the gate's level set.
@@ -1192,6 +1225,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | SRR | `AN03_strong_reference_reduction_v1.tex` (+ review), prefix `an03srrv1:` — S4d, closed: CFA's actual reference in TAILREP `strongerror` form on $[t_s,t_n]$ ($g_W=\gamma/2$, $C_s=980$, pointwise $d_0^{(s)}=O(q^{1/20})$); $E_0=O(q^{1/20})$ via CFA `localineq` before $t_s$; superpolynomial late primary tail; fixed-label $W_2$ convention and weight value conversion; explicit δ and h bound |
 | WCS | `AN03_weak_chart_selection_v1.tex` (+ review), prefix `an03wcsv1:` — S4e, closed: exact weak-receiver velocities by tangent Gaussian integration by parts; growing-chart value reduction with admissible linear/cubic growth; value-only weak error form ($C_w=20$, $d_0^{(w)}=O(q^{1/20})$, $L_*=1$); explicit level n with $\Theta\le1/8$; **initialized $L^2$ selection** $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$; S5 handoff |
 | CWI | `07_compact_windows_AN07/AN07_compact_window_interface_v1.tex` (+ review), prefix `an07cwiv1:` — S5a, audit: consumer interface; centering $\tau_h$ and time units; exact probe-activity classification; precision criterion $\mathcal Q_{\Sigma\cup\mathcal B}=o(q^2)$ with paid and unpaid cohorts; core entry error and rates; outside rate charge; leading WIT extension with strong-only compact support |
+| PSE | `07_compact_windows_AN07/AN07_probe_sector_energy_v1.tex` (+ review), prefix `an07psev1:` — S5b, closed: lower-half transverse energy $\mathfrak E_T$ on $[0,t_b]$; backward pre-entry mass comparison ($e^5$); background $\mathcal Q_{\Sigma\cup\mathcal B}=O(q^2\epsilon_{\rm bg})$; full error and source-rate comparison at every fixed level $n'\le n$; conditional continuation criterion for S5c |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

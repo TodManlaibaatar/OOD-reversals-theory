@@ -1,0 +1,926 @@
+% New standalone increment. Prior sources and GitHub are read-only.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.88in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,array,longtable,booktabs,xurl}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf1}\newcommand{\eps}{\varepsilon}
+\newcommand{\KK}{\mathcal K}\newcommand{\BB}{\mathcal B}
+\newcommand{\CC}{\mathcal C}\newcommand{\Gp}{{G_+}}
+\newcommand{\EE}{\mathfrak E}
+\title{Probe-sector transverse energy and entry precision\\
+in the initialized deep regime}
+\author{Standalone analytical increment for independent review}
+\date{Version 1 --- 2 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The lower-half input energy of every fixed cohort is bounded by
+its initial energy plus \(Cq^2(1+\log(1/q))^2\) times its maximum
+mass. The proof uses matrix values, all-label alignment and the
+closed lower-side Gaussian gate; no receiver derivative or
+ancestry sign is needed. A backward comparison from the exact
+radial equation pays all pre-entry cohort masses using the
+already proved passage budgets. Consequently every outside
+probe moment left open by CWI is \(o(q^2)\) throughout the late
+weak passage. The full initialized error and source rates match
+the selected leading orbit at every fixed sufficiently small
+logistic level, uniformly on compact sets of such levels.
+A separate conditional estimate identifies the bounds needed
+on a later fixed window; no continuation beyond \(t_b\) is proved.
+\end{abstract}
+
+\section{Conventions, interval and hypothesis inventory}
+\label{an07psev1:inventory}
+Keep the original balanced, untied flow with
+\[
+ P_{\rm mix}=\tfrac12(P_1+P_2),\quad
+ P_1=N(e_1,q^2I_2),\quad P_2=N(\rho e_2,q^2I_2),\quad
+ \rho\in[13/20,7/10],\quad S_0=q^{10}.
+ \]
+Time is normalized: \(t=\tau=\mu_1^2t_{\rm phys}\).
+Write \(\lambda=\rho^2,\ Q=\lambda+q^2,\ \ell=\log(1/q)\),
+and \(L=1+\ell\). All estimates are for sufficiently small
+\(q>0\), uniformly on the ratio box after the unchanged
+WPT/RB and WCS constant choices.
+Let \(U=\sqrt m\,a_\theta,\ W=\sqrt m\,a_\psi\), with
+\(a_\theta=(\cos\theta,\sin\theta)\) and
+\(\dd\lambda_0=\dd b/(2\pi)\). The fixed partition is
+\(\KK,\Gp,\Sigma,\BB\), with selected clock \(S=\mathcal C_q\).
+Fixed cohorts may depend on \(q\); they do not depend on time.
+The strong complement is \(\CC\subset\BB\).
+
+The proved times are
+\[
+ t_m=\left(\frac4{1-\lambda}+\frac12\right)\ell,\quad
+ t_0=10\ell-\log A_q+o(1),\quad
+ t_b<t_0+20\ell .
+ \]
+Here \(0<c_A\le A_q\le C_A\) is MOMC's entry constant.
+Write \(u=19/2-4/(1-\lambda)\ge169/102\) for the early
+mass exponent.
+In particular \(t_b\le31L\) for small \(q\).
+Let \(t_s=\inf\{t\ge t_0:H(t)=q^{1/8}\}\), as in WCS.
+It lies before \(t_b\), since the proved clock has
+\(H_0\asymp A_q^{-\lambda}q^{10(1-\lambda)}\) and
+\(H(t_b)\asymp c_b>0\).
+Fix a probe range \(0\le\zeta\le R_\zeta\), with \(R_\zeta\)
+independent of \(q\), and require \(qR_\zeta\le\pi/2\).
+This explicit sign restriction includes WIT's positive offsets.
+
+For a fixed cohort \(T\) define
+\[
+ \mu_T=\int_Tm\dd\lambda_0,\qquad
+ \EE_T=\int_T(U_2)_-^2\dd\lambda_0,\qquad
+ \mathcal Q_T(\zeta)=
+ \int_Tm[\sin(q\zeta-\theta)]_+^2\dd\lambda_0 .
+ \]
+The last quantity is exactly CWI's probe moment, not a mass
+majorant. The symbol \(e_f=X-f(X)\) denotes the residual.
+Matrix conventions are
+\begin{equation}
+ R^{(j)}_\theta=\tfrac12\E_{P_j}
+       [e_f(X)X^T\one_{\{U\cdot X>0\}}],\quad
+ R=R^{(1)}+R^{(2)},\quad U'=R^TW,\quad W'=RU .
+ \label{an07psev1:matrixconvention}
+\end{equation}
+The mixture half is included in each \(R^{(j)}\).
+
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{.22\textwidth}
+ >{\raggedright\arraybackslash}p{.39\textwidth}
+ >{\raggedright\arraybackslash}p{.31\textwidth}}
+\toprule Source & Hypotheses needed here & Interval and supply\\\midrule\endhead
+P \texttt{pa:exactflow}, loss and balance
+& Initialized positive balanced radii; Gaussian model and normalized
+ time; regular characteristic flow and finite moments.
+& All existing times through \(t_b\). Exact identities;
+ loss monotonicity is displayed below. No angular sign required.\\
+P \texttt{pa:earlybounds}
+& Aligned initialization, \(S_0=q^{10}\); for its angle bound,
+ \(\overline S-S_0<\pi\).
+& \([0,t_m]\): \(\overline S(t_m)=O(q^u)\),
+ \(u\ge169/102>1\), verifies the range condition.\\
+MOMC \texttt{main, massclaim, chartclaim, outsideclaim}
+& Original initialized deep regime, small \(q\); fixed right-half
+ ancestry \(\mathcal R\), positive radial weights, first right-half
+ mass \(1/2\).
+& Unconditional S1 result on \([t_m,t_0]\):
+ \(0<M_{\mathcal R}\le1/2\), chart \(79/51\),
+ \(\mu_{\mathcal R^c}\le Cq^2\ell^2M_{\mathcal R}\).
+ Its integrated mass consequence is proved below.\\
+Q3SB \texttt{pre/crosspre}
+& Same initialized model and the preceding early/MOMC results;
+ arbitrary receiver, no pre-entry response sign.
+& \([0,t_0]\): \(\|e_1\|_{P_2}+\|e_2\|_{P_1}\le C_{\rm pre}q\).
+ No strip-entry assumption.\\
+Q2EC \texttt{fullgates}, RB \texttt{pretrace}
+& Strong donors in their compact chart, \(M_{\mathcal R}\le1/2\),
+ left mass charged absolutely; arbitrary receiver gates.
+& \([t_m,t_0]\). The proof-level intermediate trace estimate
+ is restated and justified below, then integrated at every time.\\
+RB \texttt{completed, conclusions, massconclusions, clock}
+& Initialized deep regime; fixed WPT/RB order and sufficiently
+ small \(q\). Its lower response barrier is proved, not retained.
+& \([t_0,t_b]\): \(0<c\le c_b\), duration, residual, mass,
+ core chart and clock conclusions. No new stopped guard is imposed.\\
+RB \texttt{postalignment}
+& Completed passage supplies its cross-residual and signed-gate
+ budgets; continuous lifts and initial \(O(q)\) alignment.
+& \([t_0,t_b]\): \(|\theta-\psi|\le C_{\rm al}qL\), all labels.
+ No outside sign assumption.\\
+S2CP energy/mass, PISB/LSB/GESG budgets
+& Their stopped hypotheses, including \(0\le c\le c_b\), entry,
+ geometry, field and strip budgets, were discharged by WPT/RB.
+& Used only as RB's proved passage conclusions. Their extension
+ to \([0,t_0]\) follows from the new radial comparison, not
+ from applying a stopped theorem before its start.\\
+CWI \texttt{split, equivalence}
+& Balanced exact output; fixed \(T=\Sigma\cup\BB\);
+ inactive \(\Gp\); \(|f_\KK|=O(q)\); alignment \(\delta_q\);
+ \(\mu_TL^2\to0\) for the equivalence.
+& Originally at \(t_n\). These hypotheses are verified directly
+ on \([t_s,t_b]\) below, so its algebra applies there.\\
+CWI \texttt{ratecharge}
+& Sourcewise bounded diagonal and \(O(q)\) cross entries;
+ alignment \(CqL\); fixed cohort, bounded offset, selector/a.e.
+ convention at the probe gate.
+& Passage matrix bounds supply all hypotheses on \([t_s,t_b]\).
+ Only values, not receiver derivatives, are used.\\
+CWI \texttt{corestatic, corerates}
+& Reached core chart; physical core mass and first moments close
+ to the selected state; same \(\rho\), offset and phase.
+ Rates also require a fixed positive core probe gap, sourcewise
+ CFA reduction and its pointwise late remainder, SRR moments.
+& At \(t_n\) in CWI. After the uniform-level lemma below,
+ all hypotheses hold at \(t_{n'}\), \(n'\) in a fixed compact
+ subset of \((0,n]\). No later-window comparison is inferred.\\
+WCS/SRR/MP/WBR and TAILREP \texttt{selection}
+& Exact auxiliary logistic, \(0<N_0<n'<1\); maintained original
+ return and local strong box; positive measures and core moment;
+ finite \(L^2(\eta_s)\), fixed incoming law; both error inequalities,
+ nonnegative \(\ell_B\), \(\int\ell_B\le1\), common pointwise
+ \(d_0\); small gain and initial strict guard.
+& \([t_s,t_{n'}]\subset[t_s,t_n]\subset[t_s,t_e]\).
+ WCS discharges the field/return inputs. The reduced endpoint
+ small-gain and uniformity checks are given in Section 5.\\
+\bottomrule
+\end{longtable}\normalsize
+
+\section{Matrix values, alignment and pre-entry cohort masses}
+\label{an07psev1:inputs}
+\subsection{Loss and cross residuals on their correct intervals}
+For the normalized training loss
+\(\mathcal L=\tfrac12\E_{\rm mix}|X-f(X)|^2\), the exact
+gradient-flow identity is
+\[
+ \mathcal L'=-\int(|U'|^2+|W'|^2)\dd\lambda_0\le0.
+ \]
+At aligned isotropic initialization \(f_0(X)=q^{10}X/4\).
+For \(q\le1/2,\ \rho\le1\), this gives \(\mathcal L(0)\le1\);
+therefore \(\|e_f\|_{L^2(P_j)}\le2\) for \(j=1,2\).
+These bounds hold at every time in the proved trajectory.
+
+Set \(C_\times=\max(C_{\rm pre},M_{\rm res})\).
+Q3SB \texttt{crosspre} and RB \texttt{conclusions} give
+\begin{equation}
+ \|e_2\|_{P_1}+\|e_1\|_{P_2}\le C_\times q
+                 \qquad(0\le t\le t_b).
+ \label{an07psev1:cross}
+\end{equation}
+The pre-entry source's two regimes are essential:
+on \([0,t_m]\), \(S\le q^{10}e^{(1+2q^2)t}=O(q^u)=o(q)\)
+and \(|f(X)|\le S|X|\); on \([t_m,t_0]\),
+\[
+ \|(f_{\mathcal R})_1\|_{P_2}
+ +\|(f_{\mathcal R})_2\|_{P_1}\le CqM_{\mathcal R},
+ \quad
+ \|(f_{\mathcal R^c})_i\|_{P_j}\le C\mu_{\mathcal R^c}
+ \le Cq^2\ell^2M_{\mathcal R}.
+ \]
+Thus both cross target coordinates, whose norms equal \(q\),
+have \(O(q)\) residuals. This is the content of Q3SB's proved
+lemma, not an application of LCRC before \(t_0\).
+In particular \(\|f_2\|_{P_1}\le(1+C_\times)q\);
+the \(P_1\) second-output term cannot have an order-one price.
+
+\begin{lemma}[Uniform matrix values, with the lower gate retained]
+\label{an07psev1:matrix}
+For all receivers and \(0\le t\le t_b\),
+\begin{equation}
+ \begin{gathered}
+ |R_{12}|,\,|R_{21}|\le C_{12}q,\qquad
+ |R_{12}^{(j)}|,\,|R_{21}^{(j)}|\le C_{12}q\quad(j=1,2),\\
+ |R_{22}^{(1)}|\le C_1q^2,\qquad
+ C_{12}=1+C_\times,\quad C_1=C_\times/2.
+ \end{gathered}
+ \label{an07psev1:matrixbounds}
+\end{equation}
+All entries of each source matrix are bounded by a model
+constant. If \(U_2<0\), put \(s=-\sin\theta>0\). Then
+\begin{equation}
+ \mathbb P_{P_2}(U\cdot X>0)=\Phi(-\rho s/q),\qquad
+ |R_{22}^{(2)}|\le C_G e^{-k_Gs^2/q^2},
+ \quad C_G=2,\quad k_G=\frac{169}{3200}.
+ \label{an07psev1:gate}
+\end{equation}
+\end{lemma}
+\begin{proof}
+For \(R_{12}^{(1)}\), use \(\|e_1\|_{P_1}\le2\) and
+\(\|X_2\|_{P_1}=q\). For \(R_{12}^{(2)}\), use the cross
+residual and \(\|X_2\|_{P_2}=\sqrt Q\le1\).
+For \(R_{21}\) interchange the clusters, using
+\(\|X_1\|_{P_1}\le2\). This proves the first two bounds
+with the stated slack. Cauchy--Schwarz gives
+\(|R_{22}^{(1)}|\le\frac12\|e_2\|_{P_1}q\).
+The loss bounds give the remaining bounded entries.
+
+The exact receiver-gate probability follows from
+\(a_\theta\cdot X\sim N(\rho\sin\theta,q^2)\) under \(P_2\).
+For \(A=\{U\cdot X>0\}\), Hölder and Cauchy--Schwarz give
+\[
+ |R_{22}^{(2)}|
+ \le\tfrac12\|e_2\|_{P_2}
+          (\E_{P_2}X_2^4)^{1/4}\mathbb P(A)^{1/4}.
+ \]
+Here \(\E X_2^4=\rho^4+6\rho^2q^2+3q^4\le43/16\)
+for \(\rho\le1,\ q\le1/2\), so its fourth root is less than
+two. The Gaussian Chernoff bound
+\(\Phi(-v)\le e^{-v^2/2}\) for \(v\ge0\) proves
+\eqref{an07psev1:gate}, including the mixture half.
+No independence of \(e_2\) and the gate, or integration by
+parts across that gate, was asserted.
+\end{proof}
+
+\subsection{Alignment before entry, including intermediate times}
+\begin{lemma}[All-label alignment over all three regimes]
+\label{an07psev1:alignment}
+There is a fixed \(C_{\rm a}\) such that
+\[
+ |\theta-\psi|\le
+ \begin{cases}
+ Cq^u,&0\le t\le t_m,\\
+ Cq,&t_m\le t\le t_0,\\
+ C_{\rm a}qL,&t_0\le t\le t_b .
+ \end{cases}
+ \qquad
+ |W_2-U_2|\le C_{\rm a}qL\sqrt m .
+ \label{an07psev1:alignmentbounds}
+ \]
+All initial labels and closed sector endpoints are included.
+\end{lemma}
+\begin{proof}
+P \texttt{earlybounds} applies through \(t_m\), since
+\(\overline S(t_m)=O(q^u)<\pi\), proving the first line.
+For the intermediate line we restate the calculation in
+RB \texttt{entryalignment}; an endpoint estimate alone would
+not suffice.
+Under MOMC's theorem, let
+\(T_{\mathcal R}=\int_{\mathcal R}m a_\psi a_\theta^T\dd\lambda_0\).
+Q2EC \texttt{fullgates} gives, for every receiver,
+\[
+ R=\tfrac12[(I-T_{\mathcal R})A_1+A_2-B_2]+\mathcal R,\quad
+ \|\mathcal R\|\le C\mu_{\mathcal R^c}
+                         +CM_{\mathcal R}e^{-c/q^2}.
+ \]
+The target \(A_j\) are positive semidefinite and symmetric.
+The core diagonal coefficients are \(M_{\mathcal R}+O(q^2M_{\mathcal R})\)
+and \(O(q^2M_{\mathcal R})\); its cross coefficients are
+\(O(qM_{\mathcal R})\). The corresponding \(B_2\) diagonal
+entries are \(O(q^2M_{\mathcal R})\) and its cross entries
+are \(O(qM_{\mathcal R})\).
+Since \(M_{\mathcal R}\le1/2\), the diagonal coefficients
+of \(I-T_{\mathcal R}\) are positive for small \(q\).
+Also \(|(A_1)_{12}|\le Cq\). Thus
+\begin{align*}
+ (\operatorname{tr}R)_-
+ &\le C(q^2M_{\mathcal R}+\mu_{\mathcal R^c}
+                             +M_{\mathcal R}e^{-c/q^2}),\\
+ |R_{12}-R_{21}|
+ &\le C(qM_{\mathcal R}+\mu_{\mathcal R^c}
+                             +M_{\mathcal R}e^{-c/q^2}).
+\end{align*}
+These are exactly RB's intermediate trace bounds, now with
+their needed donor and receiver hypotheses explicit.
+
+For clarity, MOMC's mass law already yields
+\[
+ \int_{t_m}^{t_0}M_{\mathcal R}
+ =\log\frac{1-M_0}{1-1/2}
+   -\int_{t_m}^{t_0}
+       \frac{M_{\mathcal R}\delta_M}{1-M_{\mathcal R}}
+ \le\log2+\int|\delta_M|=\log2+o(1).
+ \]
+Here \(M_{\mathcal R}>0,\ M_{\mathcal R}\le1/2\) and
+\(\int|\delta_M|=O(q^2\ell^2)\), all from its theorem.
+The negative trace integral is therefore \(O(q^2\ell^2)\)
+and the antisymmetric integral is \(O(q+q^2\ell^2)=O(q)\).
+The exact difference equation, for \(\Delta=\theta-\psi\), is
+\[
+ \Delta'=-\operatorname{tr}R\sin\Delta
+                         +(R_{12}-R_{21})\cos\Delta.
+ \]
+While \(|\Delta|<1\), its upper Dini derivative is at most
+\((\operatorname{tr}R)_-|\Delta|+|R_{12}-R_{21}|\).
+Gronwall from \(t_m\) gives \(Cq\) uniformly at every
+intermediate time, strictly closing that temporary guard.
+The post-entry line is RB \texttt{postalignment} on its
+completed interval. Finally sine is 1-Lipschitz and balance
+gives the stated coordinate difference.
+\end{proof}
+
+\begin{lemma}[Pre-entry mass comparison for every fixed cohort]
+\label{an07psev1:backmass}
+For sufficiently small \(q\), every label and every \(0\le t\le t_0\)
+satisfies
+\[
+ m(t,b)\le e^5m(t_0,b),\qquad
+ \sup_{0\le t\le t_0}\mu_T(t)\le e^5\mu_T(t_0)
+ \quad\hbox{for every fixed }T .
+ \label{an07psev1:backmassbound}
+ \]
+No backward clock premise or future probe bound is used.
+\end{lemma}
+\begin{proof}
+P's exact decomposition \(R=A_\theta-C_f\) has
+\(A_\theta\succeq0,\ \|A_\theta\|\le a_*=\frac12+q^2\)
+and \(\|C_f\|\le a_*S(t)\), \(S=\int m\).
+The last inequality follows from the feature representation
+and Gaussian second-moment Cauchy--Schwarz, for arbitrary
+receiver gates. The symmetric quadratic identity gives
+\[
+ (\log m)'=2a_\psi^TRa_\theta
+          \ge-a_*|\theta-\psi|^2-2a_*S.
+ \]
+The early envelope has integral \(O(q^u)\) through \(t_m\).
+The preceding mass calculation and MOMC's outside bound give
+\(\int_{t_m}^{t_0}S\le\log2+o(1)\), hence
+\(\int_0^{t_0}S\le2\) for small \(q\).
+Lemma \ref{an07psev1:alignment} gives
+\(\int_0^{t_0}|\theta-\psi|^2\le Cq^2L\le1\), uniformly
+in the label. Since \(a_*\le1\), integration from \(t\) to
+\(t_0\) gives \(\log(m(t_0)/m(t))\ge-5\).
+Integrate the labelwise bound over \(T\).
+\end{proof}
+
+\section{Static probe inequality and the energy theorem}
+\label{an07psev1:energysection}
+\begin{lemma}[Static inequality with the exact sign range]
+\label{an07psev1:static}
+For every balanced state and \(0\le\zeta\le R_\zeta\),
+\(qR_\zeta\le\pi/2\),
+\begin{align}
+ (U\cdot\xi_q)_+
+ &\le |U_1|\sin(q\zeta)+(U_2)_-\cos(q\zeta),\notag\\
+ \mathcal Q_T(\zeta)&\le2q^2\zeta^2\mu_T+2\EE_T .
+ \label{an07psev1:staticbound}
+\end{align}
+\end{lemma}
+\begin{proof}
+Both trigonometric coefficients on the right are nonnegative.
+Use \(U\cdot\xi_q=U_1\sin(q\zeta)-U_2\cos(q\zeta)\),
+then square, apply \((a+b)^2\le2a^2+2b^2\),
+\(\sin(q\zeta)\le q\zeta\), and \(U_1^2\le m\).
+For \(\theta=0\) the first inequality is equality;
+for \(\theta=\pi\) its left side is zero; for
+\(\theta=3\pi/2\) it is again equality, with value
+\(\sqrt m\cos(q\zeta)\). At \(\zeta=0\), the first two
+angles are gate endpoints. The classification uses current
+angles, not initial ancestry. No version with unrestricted
+signed \(\zeta\) or negative cosine is used.
+\end{proof}
+
+\begin{lemma}[Exact negative-input energy identity]
+\label{an07psev1:identity}
+Let \(h=(U_2)_-\). Along each characteristic,
+\begin{equation}
+ (h^2)'=-2h(W_1R_{12}+W_2R_{22}),\qquad
+ R_{22}=R_{22}^{(1)}+R_{22}^{(2)} .
+ \label{an07psev1:energyidentity}
+\end{equation}
+It holds almost everywhere, with both sides zero from the
+chain rule at \(U_2=0\). The integrated identity holds for
+every fixed cohort. There is no moving-boundary flux.
+\end{lemma}
+\begin{proof}
+The function \(v\mapsto(v_-)^2\) is continuously differentiable
+with derivative \(-2v_-\). Apply the chain rule to
+\(U_2'=W_1R_{12}+W_2R_{22}\).
+At each fixed \(q\), bounded residual matrices give an
+exponential finite-time radial bound, justifying
+integration over the finite label law. No differentiation
+of the indicator of a time-varying cohort is involved.
+\end{proof}
+
+\begin{theorem}[Lower-half energy, with \(j=2\)]
+\label{an07psev1:energy}
+For every fixed cohort \(T\) and every \(0\le t\le t_b\),
+\begin{equation}
+ \EE_T(t)\le e^{31}\EE_T(0)
+       +31e^{31}C_Eq^2L^2
+                       \sup_{0\le v\le t}\mu_T(v),
+ \qquad \EE_T(0)\le q^{10},
+ \label{an07psev1:energybound}
+\end{equation}
+where, with the constants of Lemmas \ref{an07psev1:matrix}
+and \ref{an07psev1:alignment}, one may take
+\begin{equation}
+ C_E=C_{12}^2+2C_1+
+              \frac{2C_G}{e k_G}
+              +\frac{2C_G C_{\rm a}}{\sqrt{2e k_G}}.
+ \label{an07psev1:CE}
+\end{equation}
+All constants are fixed independently of \(q\) and the cohort.
+\end{theorem}
+\begin{proof}
+On \(U_2<0\) put \(s=h/\sqrt m=-\sin\theta\).
+Balance gives \(|W_1|\le\sqrt m\) and
+\(|W_2|\le h+\delta\sqrt m\), where
+\(\delta=|\theta-\psi|\le C_{\rm a}qL\).
+The cross term in \eqref{an07psev1:energyidentity} obeys
+\[
+ 2h|W_1R_{12}|
+ \le L^{-1}h^2+C_{12}^2q^2Lm .
+ \]
+The \(P_1\) diagonal term is at most \(2C_1q^2m\), using
+\(h,|W_2|\le\sqrt m\), without an output sign assumption.
+The \(P_2\) term is at most
+\[
+ 2C_Gm(s^2+\delta s)e^{-k_Gs^2/q^2}
+ \le2C_Gm\left(\frac{q^2}{e k_G}
+                 +\frac{\delta q}{\sqrt{2e k_G}}\right).
+ \]
+The last inequality follows by maximizing
+\(v^2e^{-k_Gv^2}\) and \(ve^{-k_Gv^2}\) for \(v\ge0\);
+their maxima are \(1/(e k_G)\) and \(1/\sqrt{2e k_G}\).
+This retains the Gaussian factor rather than treating
+the \(h^2R_{22}^{(2)}\) term as an order-one growth rate.
+Thus, including \(U_2\ge0\) by the zero derivative there,
+\begin{equation}
+ (\EE_T)'\le L^{-1}\EE_T+C_Eq^2L\mu_T
+                       \quad\hbox{a.e. on }[0,t_b].
+ \label{an07psev1:energydiff}
+\end{equation}
+Integrate and use \(t_b\le31L\).
+Initially \(m=q^{10}\) and \(\lambda_0\) is a probability,
+so \(\EE_T(0)\le q^{10}\). In fact \(\EE_\Sigma(0)=0\),
+because its initial input angles lie in Q2.
+\end{proof}
+
+\paragraph{Explicit layer check.}
+The suggested split is valid with
+\(K_{\rm lay}^2=4/k_G=12800/169\).
+On \(s\le K_{\rm lay}q\sqrt\ell\) one has
+\(h^2\le K_{\rm lay}^2q^2\ell m\); on its other side
+\(|R_{22}^{(2)}|\le2q^4\).
+The separating level is below one for small \(q\).
+Both sides, and \(s=0\), are covered by the proof's stronger
+Gaussian maxima. This is why no third logarithmic power
+is needed. Output misalignment was charged even when
+\(W_2\) has the opposite sign from \(U_2\).
+
+\section{All cohort masses and the late-passage probe budget}
+\label{an07psev1:budgets}
+Let \(\gamma_*:=289169/924000>3/10\) and
+\[
+ \Gamma_\nu=1-5\lambda+\frac{2\lambda}{1-\lambda}
+                   -\nu[10(1-\lambda)-2]\ge\gamma_*,
+ \qquad 0<\nu\le1/100,\quad q^2/\lambda\le\nu .
+ \]
+These are the unchanged S2CP choices. Its energy conclusion,
+inherited by RB, and \(J_\Sigma\le J_G\le q^2K_Y^2\), give
+\[
+ \sup_{[t_0,t_b]}\mu_\Sigma
+ \le C_\Sigma(q^5+q^{\Gamma_\nu}E_g)+q^2K_Y^2 ,
+ \]
+enlarging only a fixed coefficient; \(H\le E_g\) for small
+\(q\) follows from RB with \(E_g=2c_b\).
+Each mass estimate below is a proved RB passage conclusion.
+Lemma \ref{an07psev1:backmass} multiplies its right side
+by at most \(e^5\) to cover the entire interval \([0,t_b]\).
+No source is applied before its proved time range.
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{.24\textwidth}
+ >{\raggedright\arraybackslash}p{.65\textwidth}}
+\toprule Fixed cohort & Bound for \(\mu_T^*=\sup_{[0,t_b]}\mu_T\)\\\midrule\endhead
+\(\Sigma\) & \(C[q^5+q^{\Gamma_\nu}E_g+q^2K_Y^2]\);
+ S2CP/RB and the backward comparison.\\
+Strong complement \(\CC\) & \(Cq^{1+\Delta_\nu}\),
+ \(\Delta_\nu\ge17141311/140024000>3/25\);
+ S2CP/RB and the backward comparison.\\
+\(\pi\) strip & \(C[q^{1211/800}(1+\sqrt{\log\ell})
+                          +q^{11}\sqrt\ell]\);
+ PISB as inherited by RB.\\
+\(J_3\) inner zone & \(Cq^{4769/4000}(1+\sqrt{\log\ell})\);
+ LSB as inherited by RB.\\
+Q3 interior & \(Cq^{10}\); GESG as inherited by RB.\\
+Frozen zones & \(Cq^{11}\sqrt\ell\); PISB as inherited by RB.
+ They are included in whole-strip totals and not counted twice.\\
+Entire \(\BB\), or any remaining subcohort & \(e^5q^{11/10}\)
+ for small \(q\), by RB's aggregate bound and the backward
+ comparison. The fixed ancestry decomposition is exhaustive
+ up to the already assigned zero-measure endpoints.\\\bottomrule
+\end{longtable}\normalsize
+Every listed mass times \(L^2\) tends to zero. For
+\(T=\Sigma\cup\BB\) in particular,
+\begin{equation}
+ \mu_T^*\le C(q^5+q^{\Gamma_\nu}+q^2+q^{11/10})
+                 \le Cq^{\gamma_*}.
+ \label{an07psev1:totalmass}
+\end{equation}
+The last comparison uses \(0<q<1\) and
+\(\gamma_*<11/10<2<5,\ \Gamma_\nu\ge\gamma_*\);
+no smaller error power has silently absorbed a larger one.
+Combining \eqref{an07psev1:staticbound} and
+\eqref{an07psev1:energybound} proves the stronger all-time bound
+\begin{equation}
+ \sup_{\substack{0\le t\le t_b\\0\le\zeta\le R_\zeta}}
+ \mathcal Q_{\Sigma\cup\BB}(t,\zeta)
+ \le C_{R_\zeta}q^2\epsilon_{\rm bg}(q)=o(q^2),
+ \quad
+ \epsilon_{\rm bg}(q):=q^8+L^2q^{\gamma_*}.
+ \label{an07psev1:Qpaid}
+\end{equation}
+This pays current-angle lower-side slices and all transit
+labels, without assigning them a new sign or chart.
+
+\begin{lemma}[Primary inactivity over the whole late interval]
+\label{an07psev1:inactive}
+All labels in \(\Gp\) are probe-inactive for
+\(t_s\le t\le t_b\), uniformly on any fixed bounded offset range.
+\end{lemma}
+\begin{proof}
+RB's completed RCET transport has \(U_2>0\) and
+\[
+ q|U_1|/U_2\le C(C_0e^{-b_*(t-t_0)/2}+q^2),\qquad
+ b_*=Q(1-c_b)/2 .
+ \]
+The exact subinterval clock, with \(I'\le Q\), gives
+\[
+ t_s-t_0\ge Q^{-1}[(k-1/8)\ell+O(1)],
+ \quad k=10(1-\lambda).
+ \]
+Since \(c_b\le1/4\) and \(k\ge51/10\),
+\[
+ e^{-b_*(t_s-t_0)}
+ \le Cq^{(1-c_b)(k-1/8)/2}\le Cq^{597/320}.
+ \]
+This repeats SRR's late-time algebra on its now stated
+scope, using only RB/RCET conclusions valid to \(t_b\).
+For \(t\ge t_s\), \(q|U_1|/U_2=o(1)\); hence
+\[
+ U\cdot\xi_q/U_2
+ \le R_\zeta q|U_1|/U_2-\cos(q\zeta)<0 .
+ \]
+The positive coordinate and regularized ratio include
+the closed boundary label \(b=\pi\).
+\end{proof}
+
+\begin{theorem}[Full background precision within the weak passage]
+\label{an07psev1:lateprecision}
+Uniformly for \(t\in[t_s,t_b]\), \(0\le\zeta\le R_\zeta\),
+\begin{align}
+ |E_{\xi_q}(t)-E_{\xi_q}^{\KK}(t)|
+ &\le C_{R_\zeta}q^2\epsilon_{\rm bg}(q),\notag\\
+ |\xi_q\cdot\dot f_{\Sigma\cup\BB,p}|
+ &\le C_{R_\zeta}q^2\epsilon_{\rm bg}(q),\notag\\
+ |D_p^\tau-D_p^{\KK,\rm self}|
+ &\le C_{R_\zeta}q^2\epsilon_{\rm bg}(q),\qquad p=1,2 .
+ \label{an07psev1:latebounds}
+\end{align}
+Here \(E^\KK=\tfrac12|\xi_q-f_\KK|^2\) and
+\(D_p^{\KK,\rm self}=-(\xi_q-f_\KK)\cdot\dot f_{\KK,p}\);
+the core velocities are driven by the full original field.
+Use the exact selector source rates or a.e. derivatives.
+No uniform pointwise claim at gate-hit atoms is made.
+\end{theorem}
+\begin{proof}
+The preceding lemma makes \(f=f_\KK+f_T\), \(T=\Sigma\cup\BB\),
+on this interval. RB supplies the core chart and bounded
+core mass, so \(|f_\KK|\le Cq\).
+CWI's exact split, with all its hypotheses now verified, gives
+\[
+ E-E^\KK=-\mathcal Q_T+\mathcal A_T
+                      +f_\KK\cdot f_T+\tfrac12|f_T|^2,\quad
+ |\mathcal A_T|\le CqL\sqrt{\mu_T\mathcal Q_T},\quad
+ |f_T|\le\sqrt{\mu_T\mathcal Q_T}.
+ \]
+Insert \eqref{an07psev1:Qpaid} and
+\(\mu_T\le Cq^{\gamma_*}\). In particular
+\[
+ L\sqrt{\mu_T\epsilon_{\rm bg}}
+ \le C(q^4L\sqrt{\mu_T}+L^2\mu_T)
+ \le C(q^8+L^2q^{\gamma_*}).
+ \]
+The last step is Young's inequality. It pays every cross
+and misalignment term at the stated precision.
+
+All sourcewise matrix hypotheses of CWI \texttt{ratecharge}
+hold by Lemma \ref{an07psev1:matrix}. Its conclusion is
+\[
+ |\xi_q\cdot\dot f_{T,p}|
+ \le C(\mathcal Q_T+q^2L^2\mu_T),\qquad
+ |\dot f_{T,p}|
+ \le C(\sqrt{\mu_T\mathcal Q_T}+qL\mu_T).
+ \]
+It applies to arbitrary receivers and so needs no outside
+chart. At core receivers, bounded diagonal and \(O(q)\)
+cross entries give \(|\theta'_p|+|\psi'_p|=O(q)\) and
+\(|(\log m)'_p|=O(1)\). The exact output derivative therefore
+has \(|\dot f_{\KK,p}|\le Cq\).
+Finally expand exactly
+\[
+ D_p^\tau-D_p^{\KK,\rm self}
+ =f_T\cdot\dot f_{\KK,p}
+  -(\xi_q-f_\KK)\cdot\dot f_{T,p}
+  +f_T\cdot\dot f_{T,p}.
+ \]
+The displayed bounds and the same Young estimate pay all
+three terms. The invisible primary labels remain in the
+training residual, even though their direct probe rates are zero.
+\end{proof}
+Thus on the late passage the full error has the instantaneous
+core-chart expansion
+\[
+ q^{-2}(E_{\xi_q}-1/2)=\mathcal E_{\KK(t),\zeta}
+                       +O(q^2+\epsilon_{\rm bg}).
+ \]
+This is not selection of that core throughout \([t_n,t_b]\).
+Selected-orbit comparisons are asserted only at the levels below.
+
+\section{Uniform entry comparison at fixed smaller levels}
+\label{an07psev1:entrysection}
+Retain WCS's same auxiliary logistic \(N(t_s)=N_0=q^{1/8}\),
+and its fixed upper matching level
+\[
+ \begin{gathered}
+ n=\frac12\min\left\{h,\frac14,
+       \frac{\lambda_{\min}g_{\min}}
+            {64C_sB_{\max}C_w}\right\},\\
+ \lambda_{\min}=\frac{169}{400},\
+ g_{\min}=\frac{1183}{41600},\
+ C_s=980,\ C_w=20,\ 
+ B_{\max}=e\,2^{1/(2\lambda_{\min})}.
+ \end{gathered}
+ \]
+Fix a compact level set \(\mathcal N\subset(0,n]\), and
+write \(n_-=\inf\mathcal N>0\).
+For \(n'\in\mathcal N\), let \(t_{n'}\) be the hit of this
+same logistic mass. For small \(q\), \(N_0<n_-\) and
+\([t_s,t_{n'}]\subset[t_s,t_n]\subset[t_s,t_e]\).
+
+\begin{lemma}[WCS at every such level, with uniform constants]
+\label{an07psev1:levels}
+Uniformly in \(n'\in\mathcal N\) and \(\rho\) in the ratio box,
+\[
+ E_s(t_{n'})+W_2(t_{n'})=O_{\mathcal N}(q^{1/20}).
+ \label{an07psev1:levelselection}
+ \]
+WCS's other entry contracts and pointwise late bounds used
+by CWI hold at these times with constants uniform on
+\(\mathcal N\).
+\end{lemma}
+\begin{proof}
+Use the already proved WCS strong and weak error inequalities
+on the smaller interval, with the unchanged positive logistic
+comparator, actual returned weak inputs and positive donor
+measure, local strong box, incoming-law \(L^2\) norm,
+\(\ell_B\ge0,\ \int\ell_B\le1\), and common pointwise
+\(d_0=Cq^{1/20}\). WCS's initial estimates are
+\(E_0=O(q^{1/20})\) and \(A_0=O(q^{1/16})\).
+These are conclusions under the original-flow hypotheses,
+not conditions added to this lemma.
+
+For TAILREP's endpoint constants with \(n'\) in place of \(n\),
+\[
+ B_*\le B_{\max},\quad a_0=\lambda(1-n')/2,\quad
+ m_0=\min(g/2,a_0/2),\quad
+ a_0-m_0\ge\lambda_{\min}/8,\quad g-m_0\ge g_{\min}/2 .
+ \]
+Consequently
+\[
+ \Theta(n')\le
+ \frac{16C_sB_{\max}C_wn'}{\lambda_{\min}g_{\min}}
+ \le\frac18<\frac14 .
+ \]
+\(K_0=2[1+C_s(1+B_*)/(g-m_0)]\) is uniformly bounded,
+and its initial strict guard
+\(K_0(E_0+d_0+A_0\sqrt{n'})\le\delta/2\) holds uniformly
+for small \(q\). The return, finite moments, regularity and
+first-exit hypotheses of TAILREP are exactly the ones already
+verified in WCS; restriction of the time interval preserves them.
+Thus its two conclusions apply verbatim with endpoint \(n'\).
+In particular
+\[
+ W_2(t_{n'})\le B_*\left[
+ \frac{A_0}{\sqrt{n'}}+
+ C_w(K_0+1)\left\{
+ \frac{E_0e^{-m_0(t_{n'}-t_s)}}{a_0-m_0}
+ +\frac{d_0}{a_0}+\frac{A_0\sqrt{n'}}{2a_0}\right\}\right].
+ \]
+All denominators are uniformly positive, including
+\(\sqrt{n'}\ge\sqrt{n_-}\). Since \(q^{1/16}\le q^{1/20}\),
+this and the strong-error conclusion prove the stated rate.
+Also
+\[
+ t_{n'}-t_s=\lambda^{-1}
+    \log\frac{n'(1-q^{1/8})}{q^{1/8}(1-n')}
+           =\frac{\ell}{8\lambda}+O_{\mathcal N}(1).
+ \]
+MP's physical mass budget and phase/response estimates hold
+on \([t_s,t_e]\), SRR's weight conversion and late remainder
+on the corresponding interval, and RB's core radius and
+outside bounds on the entire passage. Hence the other
+entry contracts used by CWI have the claimed uniformity.
+\end{proof}
+
+\begin{theorem}[Initialized probe error and source rates at entry]
+\label{an07psev1:entry}
+Define the single center
+\[
+ \tau_h=t_n+\lambda^{-1}\log\frac{1-n}{n},\qquad
+ s_{n'}=\lambda^{-1}\log\frac{n'}{1-n'} .
+ \]
+Then \(t_{n'}=\tau_h+s_{n'}\) exactly for the auxiliary
+logistic family. Uniformly for \(n'\in\mathcal N\),
+\(\rho\in[13/20,7/10]\) and \(\zeta\) in WIT's positive
+offset interval \([87/50,7/4]\),
+\begin{align}
+ q^{-2}(E_{\xi_q}-\tfrac12)(t_{n'})
+ &=\mathcal E_{\rho,\zeta}(s_{n'})
+                             +O_{\mathcal N}(q^{1/20}),\notag\\
+ q^{-2}D_p^\tau(t_{n'},\xi_q)
+ &=d_{p,\rho,\zeta}(s_{n'})
+                             +O_{\mathcal N}(q^{1/20}),\quad p=1,2.
+ \label{an07psev1:entrycomparisons}
+\end{align}
+Rates use the selector convention, or the a.e. interpretation;
+no assertion at a gate-hit atom beyond that convention is made.
+For common learned witness margins one must still restrict
+parameters to WIT's \(\mathcal P_*\) and continue the flow
+to its later windows.
+\end{theorem}
+\begin{proof}
+The preceding lemma supplies the hypotheses of CWI
+\texttt{corestatic, corerates} uniformly at \(t_{n'}\).
+In particular the core mass is \(1+O(q^{11/10})\), the
+radius and reference error are \(O_{\mathcal N}(q^{1/20})\),
+and current weak weights differ from the fixed incoming law
+by \(1+o(1)\). Its selected branch is in the same small
+strong box. Since SRR has \(a<28/51\) and \(\delta<a/8\),
+the reference gap is larger than
+\(87/50-21/34=477/425>1\); the actual core gap is at least
+one for small \(q\). SRR's pointwise moment and late
+remainder estimates, not an integrated forcing allowance,
+are the sourcewise inputs to CWI's core rate calculation.
+Thus both core comparisons have normalized error
+\(O_{\mathcal N}(q^{1/20})+O(q^2)\).
+Apply Theorem \ref{an07psev1:lateprecision}.
+Since \(\gamma_*>1/20\),
+\[
+ q^{-1/20}\epsilon_{\rm bg}(q)
+ =q^{8-1/20}+L^2q^{\gamma_*-1/20}\longrightarrow0 .
+ \]
+This pays the full background without changing the entry rate.
+The logistic identity proves the exact common center.
+WCS/MP's \(o(1)\) original-clock phase, uniformly on
+\(\mathcal N\), is consistent with
+\[
+ t_{n'}-t_0=Q^{-1}\log\frac{n'}{(1-n')H_0}+o(1).
+ \]
+Replacing \(Q\) by \(\lambda\) in a fixed-level logarithm
+costs \(O_{\mathcal N}(q^2)\); over the long delay the
+allowed cost is \(O(q^2\ell)=o(1)\).
+No \(O(1)\)-accuracy terminal hitting time is used as a phase.
+\end{proof}
+Physical time is \((\tau_h+s_{n'})/\mu_1^2\), and the physical
+source rate is \(\mu_1^2D_p^\tau\), as in CWI. The result is
+uniform only on compact level sets bounded away from zero;
+no uniform statement for a new \(q\)-dependent terminal level
+is asserted.
+
+\section{Conditional continuation form and S5c handoff}
+\label{an07psev1:continuation}
+The following statement isolates a reusable inequality. Its
+future-time hypotheses are not claimed to be proved here.
+\begin{proposition}[Exact conditional energy continuation]
+\label{an07psev1:conditional}
+On an interval \([a,a+\mathcal T]\) of an exact balanced characteristic
+flow, suppose for all relevant receivers
+\[
+ |R_{12}|\le C_{12}q,\quad |R_{22}^{(1)}|\le C_1q^2,\quad
+ |R_{22}^{(2)}|\le C_Ge^{-k_G\sin^2\theta/q^2}
+                         \quad\text{when }U_2<0,
+ \quad |W_2-U_2|\le d_{\rm al}\sqrt m .
+ \]
+For every fixed cohort and any \(w>0\),
+\begin{align}
+ \EE_T(t)\le e^{w(t-a)}\bigg[\EE_T(a)
+ +q^2\bigg\{\frac{C_{12}^2}{w}+2C_1
+ +\frac{2C_G}{e k_G}
+ +\frac{2C_Gd_{\rm al}}{q\sqrt{2e k_G}}\bigg\}
+ \int_a^t\mu_T(v)\dd v\bigg].
+ \label{an07psev1:conditionalbound}
+\end{align}
+For fixed \(\mathcal T\), \(d_{\rm al}\le C_{\mathcal T}qL\),
+\(w=1\), this is
+\[
+ \sup_{[a,a+\mathcal T]}\EE_T
+ \le e^{\mathcal T}[\EE_T(a)+C_{\mathcal T}q^2L\,\mathcal T
+                         \sup_{[a,a+\mathcal T]}\mu_T].
+ \]
+Thus \(\EE_T(a)=o(q^2)\) and
+\(L\sup\mu_T\to0\) suffice for energy continuation;
+the CWI output/rate cross terms are paid by
+\(L^2\sup\mu_T\to0\) with this alignment scale.
+\end{proposition}
+\begin{proof}
+Repeat the labelwise identity and the Gaussian maxima in
+Theorem \ref{an07psev1:energy}, using
+\(2C_{12}qh\sqrt m\le wh^2+C_{12}^2q^2m/w\).
+Integrate the resulting scalar inequality. This does not
+construct a trajectory satisfying the future hypotheses.
+\end{proof}
+
+For S5c, the exact sufficient primitive bounds and their
+consequences are:
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{.24\textwidth}
+ >{\raggedright\arraybackslash}p{.65\textwidth}}
+\toprule Quantity and norm & Required scope and consequence\\\midrule\endhead
+Cross residuals
+& Continue \(\|e_2\|_{L^2(P_1)}+\|e_1\|_{L^2(P_2)}
+ \le C_{\mathcal T}q\) on the proposed fixed interval after \(t_b\).
+ Loss monotonicity supplies bounded diagonal residuals.
+ These imply \(R_{12},R_{21}=O_{\mathcal T}(q)\) for every receiver
+ and \(R_{22}^{(1)}=O_{\mathcal T}(q^2)\).\\
+Lower-side \(P_2\) moment
+& Bounded \(\|e_2\|_{L^2(P_2)}\), the unchanged Gaussian
+ model and \(\rho\ge13/20\) imply the exponential matrix
+ bound of Lemma \ref{an07psev1:matrix}. It requires no
+ output sign, response sign, receiver chart or derivative.\\
+Alignment
+& Continue \(\sup_b|\theta-\psi|\le C_{\mathcal T}qL\);
+ sufficient for the energy proof is
+ \(|W_2-U_2|\le C_{\mathcal T}qL\sqrt m\).
+ On a fixed interval this follows conditionally from the
+ continued cross-residual bound, bounded matrix values,
+ and RB's entry alignment: the exact \(\Delta\) equation
+ gives only a fixed \(e^{C\mathcal T}\) loss.\\
+Fixed-cohort masses
+& Require \(L^2\sup\mu_{\Sigma\cup\BB}=o(1)\) for the
+ full probe reduction, and the energy seed paid here.
+ Under bounded residual matrices, the exact radial equation
+ gives \(\mu_T(t)\le e^{C\mathcal T}\mu_T(t_b)\) for any unchanged
+ fixed cohort. Thus this mass requirement is a direct
+ conditional fixed-time consequence; no new ancestry
+ classification or moving-mask flux is hidden in it.\\
+Core and primary carriers
+& For full-error/background separation, also maintain a
+ bounded scaled core chart and
+ \(|f_\KK|,|\dot f_{\KK,p}|=O_{\mathcal T}(q)\),
+ and primary inactivity, or pay any newly active primary
+ output and rates explicitly. These are distinct from the
+ lower-half energy inequality.\\
+Original-to-leading matching
+& Continue masses, reaction/velocity reduction in CWI's
+ first-moment norm, selected weak activity and the original
+ logit/clock phase on every desired fixed window. This is
+ not a consequence of the energy inequality. Source-rate
+ transfer is only requested on gate-separated learned
+ windows; gate-hit atoms remain excluded.\\\bottomrule
+\end{longtable}\normalsize
+For the conditional alignment assertion, \(|\operatorname{tr}R|\le C\)
+and \(|R_{12}-R_{21}|\le C_{\mathcal T}q\) give
+\(D^+|\Delta|\le C|\Delta|+C_{\mathcal T}q\) while \(|\Delta|<1\).
+Starting with \(O(qL)\), a fixed interval strictly closes
+this comparison for small \(q\). The conditional mass
+assertion follows from \(|(\log m)'|\le2\|R\|\).
+These are consequences of the listed hypotheses, not a
+joint continuation of the original residual guard.
+
+\paragraph{Constants and scope.}
+Keep the complete WPT/RB and WCS order unchanged.
+The new Gaussian constants \(k_G=169/3200,\ C_G=2\),
+layer threshold \(K_{\rm lay}^2=12800/169\), and duration
+factor \(31\) are model-only. The pre-entry mass factor
+\(e^5\) uses only proved S1 bounds. \(C_\times,C_{\rm a},C_E\)
+may depend on the already fixed residual/clock constants;
+they multiply \(q^2L^2\) and the proved vanishing masses.
+Then fix \(R_\zeta\) and the compact level set \(\mathcal N\),
+and choose \(q\) last. Future fixed-window constants may
+depend on its fixed duration, not on \(q\).
+
+All requested entry-precision claims close. There is no
+unmatched inequality on \([0,t_b]\). The bounds after
+\(t_b\) in this section remain conditional S5c obligations.
+No later-window original-to-leading theorem, AN8 assembly,
+new gate-hit rate transfer or canonical-regime result is asserted.
+\end{document}
