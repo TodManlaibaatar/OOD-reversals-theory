@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.25 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.26 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -135,6 +135,15 @@
 - **Continuation criterion.** An explicit conditional energy inequality lists what S5c must continue past $t_b$.
 - **Reviewer additions:** the reviewer's proposed route (v1.24) is now proved as stated. Ledger 25 gains six more garbled-escape locations (a dropped `\q` in `\quad`) and a scan for them.
 - **Next: S5c,** finite-window continuation and A-error-transfer after entry.
+
+**Revision 1.26 (Nov 2).** Records FWC (`AN07_finite_window_continuation_v1`, S5c): **closed. A-error-transfer holds on every fixed centered window.**
+- **Continuation without the passage guards.** A combined transverse energy $\mathcal Z=E_{\mathcal K}+J_G$ propagates the cross residuals for any fixed time from the state at $t_n$. From it follow the alignment, the bounded core chart, the reached weak chart, primary probe inactivity and the physical mass laws. No small $c_b$ or $E_g$ guard is continued.
+- **Reduction and propagation.** The original-to-leading reduction errors (core by source, selected weak by value, reactions weighted by distance) are $O(q^{1/10})$ in the first-moment norm. CWI's propagation therefore holds for the original flow: $\mathfrak d=O_T(q^{1/20})$ on $[s_n,T]$.
+- **A-error-transfer.** $\sup|q^{-2}(E_{\xi_q}(\tau_h+s)-\tfrac12)-\mathcal E_{\rho,\zeta}(s)|\le C_Tq^{1/20}$, uniformly over the deep box and every bounded nonnegative offset range. This is H2's A-error-transfer on every fixed window and LP's `compact-transfer` premise.
+- **Reviewer additions:**
+  - ledger 28 (my S5c prompt's suggested continuation order was circular);
+  - the observation that the reversal itself (rebound and the ordered integrated error change) now follows from A-error-transfer plus WIT, while the source signs $D_1<0<D_2$ need A-rate-transfer.
+- **Next: S5d,** A-rate-transfer on WIT's learned windows and the AN8 assembly (Theorem A and persistence).
 
 ---
 
@@ -985,6 +994,33 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
     - Then A-error-transfer on every fixed window $[s_n,T]$.
   - **S5d: rates and assembly.** A-rate-transfer on WIT's gate-separated J, then AN8: Theorem A via WIT + LPR (on $\mathcal P_*$), and persistence via LP `diagonal-transfer`.
 
+**Status after FWC (`AN07_finite_window_continuation_v1`, S5c, Nov 2): closed.**
+- *Theorem* (`main`). For every fixed $T>\max_\rho s_n$ and $R_\zeta<\infty$, on $[t_n,\tau_h+T]$, with no retained hypothesis:
+  - the primitive continuation (`primitive` through `masslogistic`);
+  - the reduction bound `reductionnorm`;
+  - the first-moment distance $\mathfrak d\le e^{64R(s-s_n)}[\mathfrak d(s_n)+\int\mathcal R]=O_{T,n}(q^{1/20})$ (`distbound`);
+  - **A-error-transfer** at rate $q^{1/20}$, uniformly over $\rho\in[13/20,7/10]$ and $\zeta\in[0,R_\zeta]$ (`errortransfer`).
+  
+  With the early-window corollary (`early`), this covers every fixed centered window.
+- *Mechanism.*
+  - **Masses.** Loss gives $\|R\|\le4$, hence fixed-label masses within $e^{\pm8D}$ of their values at entry.
+  - **Combined energy.** $\mathcal Z=E_{\mathcal K}+J_G$ satisfies $\mathcal X\le C[q(1+\bar S)+\sqrt{\bar S\mathcal Z}+\mu_{\mathcal B}]$ and $D^+\mathcal Z\le C(\mathcal Z+q^2+\mu_{\mathcal B}^2)$. So $\mathcal Z=O(q^2)$ and $\mathcal X=O(q)$, with no chart or response hypothesis.
+  - **Consequences**, in non-circular order: alignment $O(qL)$; core chart $O(q)$; selected chart $q^{1-p}$; primary $\sin\theta\ge cq^{43/640}$ (hence inactivity and full $P_2$ donor gates); then the physical mass laws.
+- *Checked (reviewer, Nov 2):*
+  - the balance output bounds and the cross-residual estimate;
+  - the Cartesian energy derivatives $(U_2^2+W_2^2)'/2=2R_{22}U_2W_2+R_{12}U_2W_1+R_{21}W_2U_1$ and the $J_G$ analogue;
+  - $|R_{12}|+|R_{21}|\le C(q+\mathcal X)$ at every receiver;
+  - the angular equations near each axis;
+  - $(\sin\theta)'\ge-C\sin\theta-C_DqL$ for primary labels ($1-43/640=597/640>0$);
+  - $c=N+O(q^{1/4})$ and $g_S=\lambda(1-N)+\epsilon_S$;
+  - the reduction-norm powers ($2-p=677/640$);
+  - the gap-free static comparison with $A_*=(\zeta-X)_+$, which gives $4R|A-A_*|+|B-B_*|\le10R^2\mathfrak d$;
+  - the background via PSE `conditional` with $w=1$.
+  
+  The .tex passes both escape scans.
+- *Reviewer observation, for S5d.* WIT `uniformtheorem` gives $\mathcal E'\le-\tfrac34\gamma_0$ on $J_-$ and $\ge\tfrac34\gamma_0$ on $J_+$ in the limit. Since A-error-transfer is uniform at the $q^2$ scale, the original error therefore decreases by at least $(\tfrac38\gamma_0r-o(1))q^2$ across $J_-$ and increases by the same across $J_+$, giving a rebound of order $\gamma_0rq^2$ on the offset sector of $\mathcal P_*$ (physical width $2\delta_\zeta q$), with no rate transfer. The cluster source signs $D_1<0<D_2$ on J, part of Theorem A's statement, do need A-rate-transfer.
+- *Remaining (1 session, possibly 2):* **S5d.** A-rate-transfer on WIT's J (sourcewise core field and reactions from FWC, CWI `rate` with $g_0=g_*/4$, background rate charges), then AN8: initialized Theorem A on $\mathcal P_*$ and the persistence corollary via LP `diagonal-transfer`. After that: S6 (exact lag, B-core) and S7/S8 (canonical regime).
+
 ### S6. The exact finite-noise lag (AN1)
 
 **Claim.** The original-flow help channel $D_1^{\rm phys}/(\mu_1^2q^2)=-\tfrac12A_{q,\xi}L^{\rm mean}_{1,q}+\text{remainder}$, with the remainder smaller than the lag's signed margin on the learned windows, and a positive-lag estimate for the exact lag.
@@ -1066,7 +1102,7 @@ Tracks that can run in parallel:
 | III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction**, and **S4e (WCS) closed the weak-chart reduction and selection**: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ at a fixed small weak mass. **Track III is complete.** |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
-| — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **S5b (PSE) closed:** background paid on the passage; full error and rates match at every fixed level $n'\le n$, so A-error-transfer holds on windows inside $(-\infty,s_n]$. **Next: S5c,** continuation to later windows. |
+| — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **S5b (PSE) closed:** background paid on the passage; full error and rates match at every fixed level $n'\le n$, so A-error-transfer holds on windows inside $(-\infty,s_n]$. **S5c (FWC) closed:** continuation by combined transverse energy; **A-error-transfer on every fixed window**. **Next: S5d,** A-rate-transfer on J and the AN8 assembly. |
 
 **Dependency sketch**
 
@@ -1180,6 +1216,8 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
       - Classify activity by current angle, not ancestry, and check every sign claim at both signs of each parameter.
       - State a precision requirement in the exact observable, not in a majorant such as mass.
       - A one-signed contribution is not paid by its sign.
+28. **A circular continuation order (my S5c prompt).** I suggested reducing the cross residuals to "the transverse energy J, the core chart and the outside masses". But continuing the core chart itself needs O(q) cross residuals, so that chain is circular. FWC closed it with a single combined energy $\mathcal Z=E_{\mathcal K}+J_G$, whose inequality uses only the a priori total-mass bound. The other bounds then follow in a fixed order.
+    - *Rule:* when continuing coupled bounds, look for one quantity whose differential inequality uses only a priori bounds, and derive the rest from it in a stated non-circular order. Choose each guard constant only after the bound it depends on.
 
 ---
 
@@ -1226,6 +1264,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | WCS | `AN03_weak_chart_selection_v1.tex` (+ review), prefix `an03wcsv1:` — S4e, closed: exact weak-receiver velocities by tangent Gaussian integration by parts; growing-chart value reduction with admissible linear/cubic growth; value-only weak error form ($C_w=20$, $d_0^{(w)}=O(q^{1/20})$, $L_*=1$); explicit level n with $\Theta\le1/8$; **initialized $L^2$ selection** $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$; S5 handoff |
 | CWI | `07_compact_windows_AN07/AN07_compact_window_interface_v1.tex` (+ review), prefix `an07cwiv1:` — S5a, audit: consumer interface; centering $\tau_h$ and time units; exact probe-activity classification; precision criterion $\mathcal Q_{\Sigma\cup\mathcal B}=o(q^2)$ with paid and unpaid cohorts; core entry error and rates; outside rate charge; leading WIT extension with strong-only compact support |
 | PSE | `07_compact_windows_AN07/AN07_probe_sector_energy_v1.tex` (+ review), prefix `an07psev1:` — S5b, closed: lower-half transverse energy $\mathfrak E_T$ on $[0,t_b]$; backward pre-entry mass comparison ($e^5$); background $\mathcal Q_{\Sigma\cup\mathcal B}=O(q^2\epsilon_{\rm bg})$; full error and source-rate comparison at every fixed level $n'\le n$; conditional continuation criterion for S5c |
+| FWC | `07_compact_windows_AN07/AN07_finite_window_continuation_v1.tex` (+ review), prefix `an07fwcv1:` — S5c, closed: combined transverse energy continuation from $t_n$ (cross residuals, alignment, charts, primary inactivity, physical mass laws) with no passage guard; sourcewise core and signed weak value reductions; perturbed first-moment propagation with current weights; gap-free static comparison; **A-error-transfer on every fixed centered window**; LP `compact-transfer` |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

@@ -1,0 +1,1009 @@
+% New standalone increment; prior increments and GitHub are read-only.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.85in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,array,longtable,booktabs,microtype,xurl}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\E}{\mathbb E}\newcommand{\dd}{\,d}
+\newcommand{\KK}{\mathcal K}\newcommand{\BB}{\mathcal B}
+\newcommand{\Gp}{G_+}\newcommand{\EE}{\mathfrak E}
+\newcommand{\dist}{\mathfrak d}\newcommand{\one}{\mathbf1}
+\newcommand{\Kfun}{\mathsf K}\newcommand{\Ffun}{\mathsf F}
+\title{Finite-window continuation and initialized error transfer\\in the deep regime}
+\author{Standalone analytical increment for independent review}
+\date{Version 1 --- 2 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Starting at the proved small fixed logistic level, a combined transverse
+energy propagates the cross residuals on any fixed time interval.
+It supplies bounded strong support, a reached growing weak chart,
+primary probe inactivity and the primitive inputs to the probe-sector
+energy estimate, without retaining the small-response passage guard.
+The exact Gaussian field calculations extend in value to this class.
+Their errors, including reaction errors against the current weights,
+vanish in the required first-moment norm. Perturbed propagation then
+gives initialized error transfer on every fixed centered window,
+with the original clock phase and all background populations retained.
+Sourcewise estimates are recorded for the next rate-transfer step;
+no learned-window rate conclusion or persistence assembly is made here.
+\end{abstract}
+
+\section{Setting, sources and the early-window corollary}
+\label{an07fwcv1:inventory}
+Use normalized time \(t=\tau=\mu_1^2t_{\rm phys}\),
+\(\rho\in[13/20,7/10]\), \(\lambda=\rho^2\),
+\(Q=\lambda+q^2\), \(S_0=q^{10}\), and \(L=1+\log(1/q)\).
+The model is the original balanced untied Gaussian flow,
+\(U=\sqrt m\,a_\theta, W=\sqrt m\,a_\psi\), with
+\(P_1=N(e_1,q^2I)\), \(P_2=N(\rho e_2,q^2I)\) and mixture halves.
+Write \(d\mu=m\,d\lambda_0\) on fixed initial-label cohorts.
+Keep the fixed partition
+\[
+ \KK,\quad G=\Gp\cup\Sigma,\quad\BB,\qquad
+ S=\mathcal C_q\subset\Gp,\quad P_q=\Gp\setminus S.
+\]
+In particular the strong complement is in \(\BB\).
+No family is reclassified by its later angle.
+Write \(f(X)=\int W(U\cdot X)_+\,d\lambda_0\) and
+\(e=X-f\). The source matrices and exact equations are
+\[
+ R^{(j)}_\theta=\tfrac12\E_{P_j}[eX^T\one_{\{U\cdot X>0\}}],
+ \quad R=R^{(1)}+R^{(2)},\quad U'=R^TW,\quad W'=RU.
+\]
+Thus all source matrices include the mixture half.
+At the probe \(\xi_q=(\sin(q\zeta),-\cos(q\zeta))\),
+\(E_{\xi_q}=\tfrac12|\xi_q-f(\xi_q)|^2\).
+Small \(q\) is chosen also so that \(qR_\zeta\le\pi/2\).
+Set \(M=\mu_\KK\), \(N=\mu_S\); these are physical masses,
+not the old residual guard or the auxiliary logistic.
+Strong and weak coordinates are, respectively,
+\[
+ (\theta,\psi)=(qx,qy),\qquad
+ (\theta,\psi)=(\pi/2-qu,\pi/2+qv).
+\]
+The weak output convention has the opposite sign.
+Let \(n\) be WCS's explicit fixed level, unchanged:
+\[
+ \begin{gathered}
+ n=\tfrac12\min\{h,1/4,
+ \lambda_{\min}g_{\min}/[64(980)B_{\max}(20)]\},\\
+ \lambda_{\min}=169/400,\quad g_{\min}=1183/41600,
+ \quad B_{\max}=e\,2^{1/(2\lambda_{\min})}.
+ \end{gathered}
+\]
+WCS/PSE define its hit \(t_n<t_b\) through the exact auxiliary
+logistic starting at \(N_0=q^{1/8}\). Define
+\begin{equation}
+ \tau_h=t_n+\lambda^{-1}\log\frac{1-n}{n},\qquad
+ n_\rho(s)=\frac1{1+e^{-\lambda s}},\qquad
+ s_n(\rho)=\lambda^{-1}\log\frac n{1-n}.
+ \label{an07fwcv1:time}
+\end{equation}
+Thus \(t_n=\tau_h+s_n\) exactly. The physical mass \(N\)
+will be compared with \(n_\rho\), not declared equal to it.
+Fix \(T>\max_\rho s_n\), a bounded nonnegative offset range
+\([0,R_\zeta]\), and put
+\(D=T-\min_\rho s_n\). All constants below may depend on this
+fixed \(D,n,R_\zeta\) and the already fixed entry constants.
+They are independent of \(q\). Write
+\[
+ \chi=1/20,\quad p=603/640<1,\quad
+ \gamma_*=289169/924000>3/10,\quad
+ \epsilon_{\rm bg}=q^8+L^2q^{\gamma_*}.
+\]
+
+\paragraph{Entry data used, with their scopes.}
+PSE \texttt{levels,entry}, WCS \texttt{handoff}, CWI
+\texttt{entrydistance}, and RB/MP at \(t_n\) give
+\begin{align}
+ \dist(t_n)&=O_n(q^\chi),& M(t_n)&=1+O(q^{11/10}),&
+ N(t_n)&=n+O_n(q^{1/8}),\notag\\
+ \sup_\KK(|x|+|y|)&\le C_n,&
+ \sup_S(|u|+|v|)&\le C_nq^{-p},& J_G(t_n)&\le C_nq^2,\notag\\
+ \mu_{P_q}(t_n)&\le C_nq^{1/4},&
+ \mu_\Sigma(t_n)&\le C_nq^{\gamma_*},&
+ \mu_\BB(t_n)&\le q^{11/10},\notag\\
+ \sup_b|\theta-\psi|(t_n)&\le CqL,&
+ \EE_{\Sigma\cup\BB}(t_n)&\le Cq^2\epsilon_{\rm bg}.
+ \label{an07fwcv1:entry}
+\end{align}
+Here \(J_A=\tfrac12\int_A(U_1^2+W_1^2)\) and
+\(E_A=\tfrac12\int_A(U_2^2+W_2^2)\), so
+\(E_A+J_A=\mu_A\). In addition, PSE \texttt{inactive}'s proof,
+using RB/RCET only before this entry, supplies
+\begin{equation}
+ U_2,W_2>0\text{ on }\Gp,\qquad
+ \frac{q|U_1|}{U_2}\le Cq^{597/640}\quad\text{at }t_n.
+ \label{an07fwcv1:primaryentry}
+\end{equation}
+Its regularized endpoint labels, including \(b=\pi\), are included.
+The distance in \eqref{an07fwcv1:entry} uses physical current measures;
+the fixed incoming-law \(L^2\) estimate and the proved weight conversion
+are used only to obtain this entry value.
+
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{.22\textwidth}
+ >{\raggedright\arraybackslash}p{.41\textwidth}
+ >{\raggedright\arraybackslash}p{.28\textwidth}}
+\toprule Source & All hypotheses used here & Interval and matching\\\midrule\endhead
+PSE \texttt{levels,entry}
+& Original initialized deep regime; fixed WCS level; compact level set
+ inside \((0,n]\); same auxiliary logistic; small \(q\).
+ Rates have WIT's positive offset range and selector convention.
+& Only at \(t_{n'}\le t_n<t_b\). Supplies entry and the early
+ corollary, not later evolution.\\
+WCS \texttt{handoff}; RB/MP/PSE entry budgets
+& Their completed initialized regime, unchanged constant order,
+ positive radial measures, reached charts and \(t\le t_b\).
+& Used only at \(t_n\), including current-weight conversion,
+ physical masses, \(J_G\), outside mass and alignment.\\
+P exact flow and loss
+& Original Gaussian model, balanced positive initialized radii,
+ finite label law, normalized time, finite moments.
+& Exact identities on each finite continuation. Loss gives bounded
+ residual matrices and existence; no sign of \(c\) is assumed.\\
+CFA/SRR core Gaussian calculations
+& Bounded strong donor/receiver chart; bounded mass and moments;
+ primary positive \(P_2\) margins; remaining donors charged in
+ absolute value. Capping and \((K_O)_+\) are not used here.
+& Their passage theorems are not extended. The value calculations
+ are restated with physical \(M\), signed \(K_O\), and the new
+ energy bounds in Section 4.\\
+WCS \texttt{IBP, P2, overlap, reduction}
+& Reached chart \(q(|u|+|v|)=o(1)\); positive current selected
+ measure; bounded donor second moments, core chart, transverse
+ energy, omitted-energy and outside charges.
+& Exact identities re-used; the originally nonnegative-input
+ Gaussian estimates are proved for both signs below.
+ No use of \(u\ge0\), \(Y\ge0\), \(c\le c_b\) after entry.\\
+CWI \texttt{propagation}
+& Defined leading velocities/reactions; positive measures,
+ masses \(\le2\); bounded strong support and comparator;
+ \(R\ge2\), \(0<\rho\le1\); finite weak first moments.
+& Not applied directly to the original flow. Its one-sided
+ comparison is repeated with velocity and weighted reaction
+ errors, supplied in Sections 4--5.\\
+PSE \texttt{conditional}; CWI \texttt{split,ratecharge}
+& Bounded source matrices, cross entries \(O(q)\),
+ \(R^{(1)}_{22}=O(q^2)\), lower Gaussian gate, alignment
+ \(O(qL)\); fixed cohorts, bounded nonnegative offsets.
+ Split also needs inactive \(\Gp\), \(f_\KK=O(q)\), and
+ \(L^2\mu_{\Sigma\cup\BB}\to0\).
+& All re-proved on the new window. No derivative of a receiver
+ gate is used. Rate statements retain the selector/a.e. convention.\\
+CWI static part of \texttt{rate}
+& Positive strong measure, \(M\le2\), bounded strong chart
+ and comparator, bounded offset.
+& Its energy proof is restated with \((\zeta-X)_+\), so no
+ probe gap is required for the error observable.\\
+H2 A-error-transfer; LP \texttt{compact-transfer}
+& Actual initialized flow, all populations, same analytically
+ matched center; each fixed finite centered window; uniform
+ compact parameters and offsets; original times nonnegative.
+& Proved below. LP uses \(t_h^{\rm phys}=\tau_h/\mu_1^2\).
+ Neither clearing nor the diagonal argument is run here.\\
+WIT rate/window consumers
+& In addition: \(\mathcal P_*\), learned windows, bounded
+ comparator, positive gap \(g_0\), sourcewise precision.
+& Handoff only; no A-rate-transfer conclusion is asserted.\\
+\bottomrule
+\end{longtable}\normalsize
+
+\begin{corollary}[Already proved early centered windows]
+\label{an07fwcv1:early}
+For every fixed compact \(K\subset(-\infty,\min_\rho s_n]\),
+the full initialized A-error-transfer holds uniformly for
+\(s\in K\), the deep ratio box, and \(0\le\zeta\le R_\zeta\).
+On WIT's offset range PSE also supplies the entry source-rate
+comparison on these windows, in its stated rate convention.
+\end{corollary}
+\begin{proof}
+Set \(n'=n_\rho(s)\). Compactness and \(\lambda\in[169/400,49/100]\)
+give \(0<n_-\le n'\le n\), uniformly. PSE \texttt{levels,entry}
+applies on this single compact level set, and
+\(t_{n'}=\tau_h+\lambda^{-1}\log(n'/(1-n'))=\tau_h+s\)
+exactly. This proves the stated conclusion on WIT's offsets.
+For arbitrary bounded nonnegative offsets, use the same entry
+first-moment estimate, the core static positive-part expansion,
+and PSE's background bound, both uniform on \([0,R_\zeta]\).
+The static Lipschitz argument is displayed in Section 6 and needs
+no gap. Thus the error conclusion has the larger offset range;
+no corresponding gap-free rate assertion is inferred.
+Since \(\tau_h\to\infty\), these original times are positive.
+\end{proof}
+
+\section{What is replaced after the passage}
+\label{an07fwcv1:rangeaudit}
+Neither the LCRC guards nor the RB clock are invoked after \(t_n\).
+Their functions in the old reductions and their replacements are:
+\begin{itemize}
+\item The small \(E_g\) and \(c_b\) were essential to the long
+ passage closure and CLOCK attraction. They are not hypotheses of
+ the Gaussian value identities. Bounded total mass and the new
+ transverse estimate replace their value-budget roles.
+\item The \(P_2\) primary-gate tail previously came from RCET's
+ growing margin. Its entry margin is propagated for a fixed duration
+ directly by the exact angular equations; no later residual clock is used.
+\item The old secondary bound \(q^5+q^{\Gamma_\nu}H\) and all strip
+ gain theorems are used only at entry. Fixed-label radial comparison
+ propagates their small masses; the combined transverse energy
+ pays their possibly unbounded per-mass fields.
+\item The capped core measure \(\widetilde M\le1\) and the positive
+ part \((K_O)_+\) served CLOCK's attraction proof. Here the reduction
+ retains physical \(M\) and signed \(K_O\). No overshoot cap or
+ positive strong output moment is needed for finite-time comparison.
+\item WCS's return theorem and local contraction cannot be extended
+ to arbitrary later masses. Instead the reached weak chart is
+ propagated, Gaussian estimates are extended to signed \(u\),
+ and CWI's one-sided comparison is used. There is no claim that
+ the actual weak input stays nonnegative.
+\item Small integrated passage budgets are not pointwise errors.
+ The remainders below come from the displayed value identities
+ and the newly proved instantaneous bounds.
+\end{itemize}
+
+\section{Primitive finite-time continuation}
+\label{an07fwcv1:continuation}
+Let \(I_q=[t_n,\tau_h+T]\), of length at most \(D\).
+All supremum bounds in this section are on this interval.
+
+\begin{lemma}[Loss and fixed-label masses]
+\label{an07fwcv1:massrough}
+The exact original flow exists on \(I_q\). For \(q\le1/2\),
+one may use the model bound \(\|R_\theta\|,\|R^{(j)}_\theta\|\le4\),
+and, for every fixed cohort \(A\),
+\begin{equation}
+ e^{-8D}m(t_n,b)\le m(t,b)\le e^{8D}m(t_n,b),\qquad
+ \mu_A(t)\le e^{8D}\mu_A(t_n),\qquad
+ S_{\rm tot}(t)\le\bar S:=3e^{8D}.
+ \label{an07fwcv1:roughmass}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Loss monotonicity gives \(\|X-f\|_{P_j}\le2\), as in PSE.
+Cauchy--Schwarz with the bounded Gaussian second moments bounds
+the gated matrices, source by source. The exact radial identity
+\((\log m)'=2a_\psi^TRa_\theta\) gives the displayed factors.
+Entry total mass is at most three for small \(q\).
+At fixed positive \(q\), the Gaussian field is locally Lipschitz
+in angles and in the bounded-mass characteristic representation;
+the squared radii stay positive and bounded on finite intervals.
+These bounds preclude a finite-time characteristic escape and
+extend the local flow through \(I_q\). This is an existence
+argument, not the desired scaled-chart estimate.
+\end{proof}
+
+\begin{lemma}[Combined transverse energy closes the cross residuals]
+\label{an07fwcv1:transverse}
+Define
+\[
+ \mathcal Z=E_\KK+J_G
+ =\tfrac12\int_\KK(U_2^2+W_2^2)
+  +\tfrac12\int_G(U_1^2+W_1^2),\qquad
+ \mathcal X=\|e_2\|_{P_1}+\|e_1\|_{P_2},\quad e=X-f.
+\]
+Then on \(I_q\)
+\begin{equation}
+ \mathcal Z\le C_Dq^2,\qquad
+ \mathcal X\le C_Dq,
+ \quad |R_{12}^{(j)}|+|R_{21}^{(j)}|\le C_Dq,
+ \quad |R_{22}^{(1)}|\le C_Dq^2.
+ \label{an07fwcv1:primitive}
+\end{equation}
+No chart, primary gate sign, small response or small weak energy
+is assumed in proving these estimates.
+\end{lemma}
+\begin{proof}
+For any cohort \(A\), balance and Cauchy--Schwarz give
+\begin{align}
+ |f_{A,1}(X)|&\le2J_A|X_1|+2\sqrt{E_AJ_A}|X_2|,\notag\\
+ |f_{A,2}(X)|&\le2\sqrt{E_AJ_A}|X_1|+2E_A|X_2|.
+ \label{an07fwcv1:outputenergy}
+\end{align}
+Use the second bound for the core on \(P_1\) and the first
+on \(P_2\), and the reverse roles of the small energies for
+\(G\). The target cross coordinates have norm \(q\).
+The arbitrary \(\BB\) output has norm at most \(C\mu_\BB\).
+Hence, with a model constant,
+\begin{equation}
+ \mathcal X\le C[q(1+\bar S)+\sqrt{\bar S\mathcal Z}+\mu_\BB].
+ \label{an07fwcv1:crossfromenergy}
+\end{equation}
+At every receiver, bounded diagonal residuals and these two
+cross norms imply \(|R_{12}|+|R_{21}|\le C(q+\mathcal X)\),
+also sourcewise. The exact Cartesian equations give
+\[
+ (E_\KK)'=\int_\KK
+ [2R_{22}U_2W_2+R_{12}U_2W_1+R_{21}W_2U_1],
+\]
+and the corresponding formula for \((J_G)'\) has
+\(2R_{11}U_1W_1\) and the same cross products on \(G\).
+Their matrices are evaluated at their own receivers.
+Consequently
+\[
+ D^+\mathcal Z\le C\mathcal Z
+     +C(q+\mathcal X)\sqrt{\bar S\mathcal Z}
+ \le C_{\bar S}[\mathcal Z+q^2+\mu_\BB^2].
+\]
+Entry has \(\mathcal Z(t_n)=O(q^2)\) by its core chart
+and \(J_G\) bound. Lemma \ref{an07fwcv1:massrough} gives
+\(\mu_\BB^2\le e^{16D}q^{11/5}\le e^{16D}q^2\).
+Gronwall proves \(\mathcal Z\le C_Dq^2\), then
+\eqref{an07fwcv1:crossfromenergy} gives \(\mathcal X\le C_Dq\).
+Finally \(|R_{22}^{(1)}|\le\frac12q\|e_2\|_{P_1}\).
+All coefficients were fixed before any proposed scaled-energy guard.
+\end{proof}
+
+\begin{lemma}[Charts, alignment, primary gates and moments]
+\label{an07fwcv1:charts}
+There are fixed constants such that throughout \(I_q\)
+\begin{gather}
+ \sup_b|\theta-\psi|\le C_DqL,\qquad
+ \sup_\KK(|x|+|y|)\le R_A,\qquad
+ \sup_S(1+|u|+|v|)\le A_Dq^{-p},\label{an07fwcv1:chartsizes}\\
+ \int_S(1+u^2+v^2)\dd\mu\le C_D,\qquad
+ \sin\theta,\sin\psi\ge c_Dq^{43/640}\quad\text{on }\Gp.
+ \label{an07fwcv1:momentsgates}
+\end{gather}
+Every primary label is probe-inactive for \(0\le\zeta\le R_\zeta\).
+Selected labels satisfy \(q|u+\zeta|<\pi/2\); their chart is
+reached, but no post-entry sign of \(u\) is asserted.
+\end{lemma}
+\begin{proof}
+The exact difference equation is
+\(\Delta'=-\operatorname{tr}R\sin\Delta+(R_{12}-R_{21})\cos\Delta\).
+Bounded matrices and \eqref{an07fwcv1:primitive} give
+\(D^+|\Delta|\le C|\Delta|+C_Dq\) while \(|\Delta|<1\).
+From the entry value \(O(qL)\), fixed-time Gronwall strictly
+closes that auxiliary guard. It also gives
+\(|W_2-U_2|\le C_DqL\sqrt m\).
+
+Near the strong axis the exact angular equations give
+\(D^+(|\theta|+|\psi|)\le C(|\theta|+|\psi|)+C_Dq\)
+while both angles have magnitude below \(1/4\).
+Starting at \(O(q)\), they stay within \(R_Aq\) for a fixed
+\(R_A\), strictly inside that physical chart for small \(q\).
+Near the positive weak axis the same calculation with the
+distances to \(\pi/2\) gives
+\(D^+(|\theta-\pi/2|+|\psi-\pi/2|)
+\le C(|\theta-\pi/2|+|\psi-\pi/2|)+C_Dq\).
+Entry is \(O(q^{1-p})\), which proves the selected chart.
+On it, \(|qu|,|qv|\le1/2\) and \(|\sin z|\ge|z|/2\),
+so its second moment is bounded by \(C J_S/q^2\le C_D\).
+
+For the whole primary family, \eqref{an07fwcv1:primaryentry}
+gives \(\sin\theta(t_n)\ge c q^{43/640}\).
+The alignment bound gives the same for \(\psi\).
+As long as both are positive, direct differentiation of
+\(\sin\theta\), using the bounded diagonals and cross entries,
+gives
+\[
+ (\sin\theta)'\ge-C\sin\theta-C_DqL,
+\]
+and likewise for \(\psi\). For example replace \(\sin\psi\)
+by \(\sin\theta+O(qL)\) in the diagonal terms; the remaining
+terms cost \(C_Dq\). Thus both stay above
+\(e^{-CD}c q^{43/640}-C_DqL\ge c_Dq^{43/640}>0\).
+This strictly prevents their first zero, including boundary labels.
+It follows that \(q|\cot\theta|\le C_Dq^{597/640}\), so
+\(a_\theta\cdot\xi_q<0\) uniformly on bounded nonnegative offsets.
+For \(S\) the stronger reached-chart bound gives the asserted
+\(q|u+\zeta|\) inequality. All classifications use current angles.
+\end{proof}
+
+\begin{lemma}[Physical mass and response equations]
+\label{an07fwcv1:massfine}
+Uniformly on \(I_q\),
+\begin{align}
+ g_\KK(t,b):=(\log m)'&=1-M+\epsilon_\KK,
+ &|\epsilon_\KK|&\le C_D(q^2+\mu_\BB),\notag\\
+ c&=N+O_D(q^{1/4}),\label{an07fwcv1:cN}\\
+ g_S(t,b)&=\lambda(1-N)+\epsilon_S,
+ &|\epsilon_S|&\le C_D[q^{1/4}+q^2(1+|u|+|v|)^2].
+ \label{an07fwcv1:reactions}
+\end{align}
+In particular
+\begin{equation}
+ \sup|M-1|\le C_Dq^{11/10},\qquad
+ \sup|N-n_\rho(t-\tau_h)|\le C_D(q^{1/8}+q^{1/4}),
+ \quad M,N<3/2
+ \label{an07fwcv1:masslogistic}
+\end{equation}
+for small \(q\). The physical logit has the same \(o(1)\) phase
+on this fixed window.
+\end{lemma}
+\begin{proof}
+On \(P_1\), all core gates have exponentially small deficits,
+with \(\cos\theta\ge1/2\). Their longitudinal donor coefficient
+is \(M+O_D(q^2)\). Equation \eqref{an07fwcv1:outputenergy}
+gives \(\|(f_G)_1\|_{P_1}=O_D(q^2)\);
+the arbitrary outside contribution costs \(C\mu_\BB\).
+The core radial \(P_1\) contraction is therefore
+\(1-M+O_D(q^2+\mu_\BB)\). On \(P_2\), core input is
+\(O_D(q)(|Z_1|+|X_2|)\); the first residual has norm \(O_D(q)\)
+and the core output second component is \(O_D(q)\).
+The two radial contractions cost \(O_D(q^2)\). This proves
+the first line, with its mixture normalization.
+
+For the global response \(c=Q^{-1}\E_{P_2}[f_2X_2]\),
+the selected full-gate expression is
+\(\int_S W_2U_2=N+O(J_S)\), with exponentially small error.
+Core response is \(O_D(q^2)\) by conditioning on
+\(X_2=\rho+qZ_2\) in the compact core moment.
+For any other cohort the exact absolute response charge gives
+\(|c_A|\le E_A+2q\sqrt{E_AJ_A/Q}\le C\mu_A\).
+The mass comparison gives \(\mu_{P_q}=O_D(q^{1/4})\),
+\(\mu_\Sigma=O_D(q^{\gamma_*})\), \(\mu_\BB=O_D(q^{11/10})\).
+This proves \eqref{an07fwcv1:cN} without assuming a response sign.
+
+For selected receivers the \(P_2\) gate is exponentially full.
+The exact full-gate moment is \(B_{22}=Q(1-c)\),
+\(B_{11}=O_D(q^2)\), \(B_{12}=O_D(q)\),
+\(B_{21}=O_D(q^3)\). For the last entry, Stein gives
+\(-q^2\int W_2U_1\Pr\{U\cdot X>0\}\), and core,
+\(G\), outside charges are \(O_D(q),O_D(q),O_D(q^{11/10})\).
+The radial contraction thus equals \(Q(1-c)\) plus
+\(O_D(q^2(1+|u|+|v|)^2)\). On \(P_1\), use
+\(R_{22}^{(1)}=O_D(q^2)\), cross entries \(O_D(q)\),
+and horizontal receiver components \(O(q|u|),O(q|v|)\)
+to get that same error size. Replace \(Q,c\) by \(\lambda,N\)
+using \eqref{an07fwcv1:cN}; the response is bounded by the
+rough total mass, so this replacement has the stated cost.
+
+Integrating the radial laws against current weights gives
+\(M'=M(1-M)+O_D(q^{11/10})\) and
+\(N'=\lambda N(1-N)+O_D(q^{1/4}+q^2)\), using the second
+moment, not the weak supremum. Both masses were already bounded
+by \(\bar S\), so finite-time scalar stability gives
+\eqref{an07fwcv1:masslogistic} from \eqref{an07fwcv1:entry}.
+In particular masses \(\le2\) are now conclusions, not a
+circular hypothesis of the field comparison. On a fixed window
+\(n_\rho\) stays uniformly away from zero and one; hence the
+same estimate puts the actual mass strictly between zero and one
+for sufficiently small \(q\) and controls its logit difference. No derivative of
+an entry phase error was taken.
+\end{proof}
+
+\paragraph{First-exit implementation and constant order.}
+The estimates above also give a single strict-guard proof if desired.
+First fix the inherited WPT/RB--WCS constants and \(n\), then
+\(T,R_\zeta,D,\bar S\). Fix an energy bound twice the explicit
+Gronwall majorant from \eqref{an07fwcv1:crossfromenergy}; next
+twice the resulting cross-residual constant, then twice the
+alignment and angular-comparison bounds. Use guards
+\[
+ \mathcal Z<2C_Zq^2,\quad \mathcal X<2C_Xq,\quad
+ |\Delta|<2C_\Delta qL,\quad
+ |x|+|y|<2R_A,\quad 1+|u|+|v|<2A_Dq^{-p},
+ \quad M,N<2,
+\]
+and primary lower guards one half of the proved positive lower
+bound. Fixed-cohort masses have guards twice
+\(e^{8D}\mu_A(t_n)\); the rough total mass can use
+\(2\bar S\). Every entry is strict. The energy majorant depends
+only on the independent rough mass bound, not on the energy or
+cross-residual guard constants. Subsequent bounds depend only
+on their previously fixed predecessors; the mass improvement
+uses the exact radial laws, not the first-moment comparison.
+Every guard is improved by its displayed bound. Supremum guards
+are continuous (compact label sets, or their closures with the same
+endpoint estimates); the integrals are continuous by domination.
+At a first exit the preceding estimates give a contradiction.
+Choose \(q\) last to make all physical-chart, lower-margin and
+mass inequalities strict. No \(c_b\) or small-energy guard is
+continued.
+
+\section{Original fields and reactions in the first-moment norm}
+\label{an07fwcv1:reduction}
+Use the physical core and selected measures, and define
+\[
+ Y=\int_\KK y\dd\mu,\quad V=\int_S v\dd\mu,\quad
+ K_s=\int_\KK\Kfun(\rho x)\dd\mu,\quad K_w=\int_S\Kfun(u)\dd\mu,
+\]
+\[
+ \begin{gathered}
+ \Kfun(z)=\phi(z)+z\Phi(z),\quad
+ \Ffun(z,w)=\phi(\min(z,w))+w\Phi(\min(z,w)),\\
+ \mathcal S(x)=\int_\KK\Ffun(\rho x,\rho\widetilde x)\dd\mu,
+ \quad\mathcal W(u)=\int_S\Ffun(u,\widetilde u)\dd\mu.
+ \end{gathered}
+\]
+These are positive measures, but their coordinate means need not
+have either sign. Their first moments are bounded by Section 3.
+For \(O=G\cup\BB\), the exact non-core moments used in the
+Gaussian calculation are
+\[
+ V_O=-\frac{\E_{P_2}[(f_O)_1X_2]}{qQ},\qquad
+ K_O=\frac{\E_{P_1}[(f_O)_2X_1]}q.
+\]
+P's leading weak velocity \(F_w=(F_u,F_v)\), with these
+physical core and selected measures, is explicitly
+\begin{align*}
+ 2F_u&=\phi(u)-\mathcal W(u)-[Y+(1-M)v]\Phi(u)
+                  -\lambda(1-N)u,\\
+ 2F_v&=\rho K_s-\lambda V-\lambda(1-N)v-(1-M)\Kfun(u).
+\end{align*}
+
+\begin{lemma}[Energy charges and signed Gaussian value calculations]
+\label{an07fwcv1:charges}
+The omitted \(P_q,\Sigma\) moments and selected weak functionals
+cost, uniformly in the receiver,
+\begin{equation}
+ C_D(\mu_A+q^{-1}\sqrt{\mu_AJ_A})
+ \le C_D(\mu_A+\sqrt{\mu_A}),\qquad A=P_q,\Sigma.
+ \label{an07fwcv1:nonselectedcharge}
+\end{equation}
+They are respectively \(O_D(q^{1/8})\) and
+\(O_D(q^{\gamma_*/2})\). The arbitrary \(\BB\) field costs
+\(C_D\mu_\BB/q=O_D(q^{1/10})\).
+The core source velocities have P's physical leading form,
+with value errors bounded by \(C_Dq^{1/10}\), source by source:
+\begin{align}
+ 2x'_1&=-(1-M)x+e_{x1},\notag\\
+ 2y'_1&=-(1-M)y-Y-K_w+e_{y1},\notag\\
+ 2x'_2&=\rho\phi(\rho x)-\rho\mathcal S(x)
+       +\lambda[V+(1-N)y]\Phi(\rho x)+e_{x2},\notag\\
+ 2y'_2&=\rho(1-N)\Kfun(\rho x)+e_{y2}.
+ \label{an07fwcv1:corefield}
+\end{align}
+The core source reactions are
+\(g_{\KK,1}=1-M+O_D(q^2+\mu_\BB)\),
+\(g_{\KK,2}=O_D(q^2)\).
+For selected receivers the leading weak velocities \(F_w\)
+are P's \texttt{pop-u,pop-v} with these physical moments and
+masses. If \(r=1+|u|+|v|\), then
+\begin{equation}
+ |(u',v')-F_w(u,v)|_1
+ \le C_D[q^{1/10}+q r+q^2r^3+q^{1/4}r].
+ \label{an07fwcv1:weakerror}
+\end{equation}
+No non-selected weak field is charged by its raw mass alone.
+The \(\BB\) alternative is the exact total-quadratic-energy charge
+\(C_D(E_\BB+J_\BB)/q=C_D\mu_\BB/q\), not a bounded
+per-mass scaled-field assumption.
+\end{lemma}
+\begin{proof}
+Equation \eqref{an07fwcv1:outputenergy}, inserted into the
+\(P_1\) weak functional \(q^{-1}\E[f_{A,2}\one_{\mathcal A_\theta}]\),
+where \(\mathcal A_\theta\) is the receiver gate,
+and the two regression moments defining \(V_O,K_O\), gives
+\eqref{an07fwcv1:nonselectedcharge} by Gaussian moments.
+This repeats SRR \texttt{momentcharge} and WCS
+\texttt{omittedfunctional} with their actual hypotheses.
+It uses no chart or input sign for the omitted donors.
+For \(\BB\), \(|f_\BB(X)|\le\mu_\BB|X|\) directly gives
+the unscaled matrix cost \(C\mu_\BB\); angular scaling costs
+\(1/q\). No outside energy theorem is extended past its endpoint.
+
+Here is the core remainder audit, using physical mass and signed
+moments throughout. Remove core \(P_1\) donor and receiver gates
+at exponential cost, and keep its four donor coefficients.
+Their compact-chart expansions are
+\(T_{11}=M+O_D(q^2)\), \(T_{21}=qY+O_D(q^3)\),
+\(T_{12}=O_D(q)\), \(T_{22}=O_D(q^2)\).
+The exact \(P_1\) Stein calculation in CFA gives the first
+line of \eqref{an07fwcv1:corefield}, with errors
+\(C_D[J_G+q\sqrt{E_GJ_G}+q^2(1+E_G+|K_O|)]\)
+and the outside cost. These are \(O_D(q^2)+O_D(\mu_\BB/q)\).
+For \(P_2\), conditioning on \(X_2\) gives the compact core
+Gaussian kernels \(\rho\phi-\rho\mathcal S\) and
+\(\rho\Kfun\), with \(O_D(q^2)\) error in scaled value.
+Primary outputs are linear up to a Gaussian negative-part tail.
+Section 3 gives a donor margin at least \(c_Dq^{-597/640}\);
+all polynomial multiples of its tail
+\(\exp[-c_Dq^{-597/320}]\) vanish faster than any fixed power.
+Subtracting the \(X_2\) regression leaves the linear cross
+charges \(J_G+q\sqrt{E_GJ_G}\), not a zero selected moment.
+Secondary selected moments cost
+\(C_D(E_\Sigma+J_\Sigma+q^{-1}\sqrt{E_\Sigma J_\Sigma})\).
+This is \(O_D(q^{\gamma_*/2}+q^2)\) by the proved masses
+and transverse energy. The \(\BB\) term costs \(\mu_\BB/q\).
+All trigonometric and compact-kernel corrections cost
+\(q^2\) times bounded masses/moments. This is precisely the
+value calculation behind CFA/SRR, now justified by new bounds;
+neither \(c\le c_b\) nor small \(E_G\) enters it. Keep
+\(K_O\) signed and do not cap \(M\).
+
+For clarity the selected moment replacements are also small
+without weak compact support. On its reached chart, exact Gaussian
+regression and the \(P_1\) formula give
+\[
+ V_S=\int_Sm\frac{\sin(qv)}q\cos(qu)+\text{exponential tail},
+\]
+\[
+ K_S=\int_Sm\cos(qv)
+ \left[\Kfun\!\left(\frac{\sin(qu)}q\right)
+       +q\sin(qu)\Phi\!\left(\frac{\sin(qu)}q\right)\right].
+\]
+Thus \(|V_S-V|+|K_S-K_w|\le C_Dq^2\int_S r^3\dd\mu
+ +\text{exponential tail}=O_D(q^{2-p})\).
+The full non-core moments differ from these by
+\eqref{an07fwcv1:nonselectedcharge} and \(\mu_\BB/q\).
+Replacing \(c\) by \(N\) costs \(O_D(q^{1/4})\) on the core
+chart, by \eqref{an07fwcv1:cN}. Every exponent just listed is
+at least \(1/10\). The core radial calculation was given in
+Lemma \ref{an07fwcv1:massfine}, source by source.
+
+For the weak receivers, the WCS tangent integration by parts is
+exact for both signs. With \(s_u=\sin(qu),c_u=\cos(qu)>1/2\),
+rotate to independent normals
+\(Z_\parallel=s_uZ_1+c_uZ_2\),
+\(Z_\perp=c_uZ_1-s_uZ_2\). The receiver gate depends only
+on \(Z_\parallel\); integrate by parts only in \(Z_\perp\).
+This gives WCS \texttt{IBP}'s four moments with
+\(r_u=s_u/q\), and its exact donor derivative identity.
+For signed \(u\), \(r_u\) has the same sign as \(u\) and
+\(|u|/2\le|r_u|\le|u|\). Consequently
+\begin{equation}
+ |\Phi(r_u)-\Phi(u)|+|\phi(r_u)-\phi(u)|\le Cq^2,
+ \quad |\Kfun(r_u)-\Kfun(u)|\le Cq^2|u|^3.
+ \label{an07fwcv1:signedgaussian}
+\end{equation}
+Indeed \(|r_u-u|\le q^2|u|^3/6\) and the intervening
+Gaussian factors are bounded by a polynomial times
+\(e^{-u^2/8}\). This handles the negative side as well as
+the positive side. In particular no quartic
+\(q^2|v||u|^3\) is generated by a crude bound on \(\Phi\).
+
+In the weak overlap calculation replace a donor's positive part
+by \((Z_2+\widetilde u)_+\). Its integrated error, and the
+output cosine error, cost
+\(C_D[q\int r+q^2\int r^3]=O_D(q+q^{2-p})\).
+Conditioning on \(Z_1\), changing the receiver threshold costs
+\(C_D(q|u|+q^2|u|^3)\): the integrand
+\((z+\widetilde u)_+\phi(z)\) is bounded by
+\(C(1+|\widetilde u|)\) for every signed donor and receiver.
+The exact remaining overlap is \(\mathcal W(u)\).
+All donor first and second moments used here are bounded by
+\eqref{an07fwcv1:momentsgates}; cubic moments cost only its
+proved supremum times the second moment.
+
+The core \(P_1\) coefficients then give
+\(\phi(u)-Y\Phi(u)-(1-M)v\Phi(u)\) and
+\(-(1-M)\Kfun(u)\). Errors have degree at most three with
+coefficient \(q^2\), by \eqref{an07fwcv1:signedgaussian}.
+The selected weak functional gives \(-\mathcal W(u)\);
+the omitted functionals have already been charged.
+On \(P_2\), the receiver gate is exponentially full, and
+the exact moment matrix used in Lemma \ref{an07fwcv1:massfine}
+gives \(-\lambda(1-c)u\) and
+\(\rho K_s-\lambda V_O-\lambda(1-c)v\),
+with \(C_Dq^2r^3\) error. Replacing \(V_O\) and \(c\)
+by \(V\) and \(N\) gives exactly
+\eqref{an07fwcv1:weakerror}. All original residual producers
+are retained in these charges. The calculation never uses
+the old positive-input return, small \(E_g\), or local strong
+attraction.
+\end{proof}
+
+\begin{proposition}[Integrated value and weighted reaction errors]
+\label{an07fwcv1:errors}
+Let \(F_s,F_w\) be P's leading velocities with physical
+\(M,N\) and current measures. Put
+\(\varepsilon_s=(x',y')-F_s\),
+\(\varepsilon_w=(u',v')-F_w\), and use the reaction defects
+\(\epsilon_\KK,\epsilon_S\) from \eqref{an07fwcv1:reactions}.
+For any fixed bound on comparison coordinates, there is a fixed
+constant such that
+\begin{align}
+ \mathcal R(t):={}&\int_\KK
+    [|\varepsilon_s|_1+(1+|x-X|+|y-Y_*|)|\epsilon_\KK|]\dd\mu
+       \notag\\
+ &+\int_S[|\varepsilon_w|_1+
+          (1+|u-U_*|+|v-V_*|)|\epsilon_S|]\dd\mu
+ \le{}&C_Dq^{1/10},\qquad
+ \int_{I_q}\mathcal R\le C_DDq^{1/10}.
+ \label{an07fwcv1:reductionnorm}
+\end{align}
+\end{proposition}
+\begin{proof}
+With \(r=1+|u|+|v|\), the reached chart and transverse energy give
+\[
+ \int_Sr^2\dd\mu\le C_D,\qquad
+ \int_Sr^3\dd\mu\le C_Dq^{-p},\qquad
+ q\int_Sr+q^2\int_Sr^3\le C_D(q+q^{2-p}).
+\]
+The additional weak response term costs
+\(q^{1/4}\int_Sr\le C_Dq^{1/4}\).
+For reaction-weighted distance, use
+\(1+|u-U_*|+|v-V_*|\le C_Dr\) and
+\eqref{an07fwcv1:reactions}, giving
+\(C_D(q^{1/4}\int r+q^2\int r^3)\).
+The core terms are bounded pointwise on its fixed chart.
+Since \(2-p=677/640>1\), all these powers dominate
+\(q^{1/10}\). This is an integral against current mass;
+using the weak supremum cubed would not prove it.
+\end{proof}
+
+\section{Perturbed first-moment propagation with current weights}
+\label{an07fwcv1:propagationsection}
+The selected leading solution has strong mass one and weak mass
+\(n_\rho(s)\). Its coordinates are bounded on this fixed window,
+uniformly in the ratio box. To verify the needed bound without a
+trajectory premise, substitute the coherent atoms into P's system:
+\(|(X,Y_*,U_*,V_*)'|_1\le C(1+|(X,Y_*,U_*,V_*)|_1)\),
+because \(0<n_\rho<1\), \(|\Phi|\le1\),
+\(|\phi|\le\phi(0)\), and \(\Kfun(z)\le\phi(0)+|z|\).
+The selected branch exists at \(n\) by P/WCS and has uniformly
+bounded entry. Gronwall gives both forward existence and a fixed
+coordinate bound on \([s_n,T]\).
+Fix \(R\ge2\) larger than this bound, \(R_A\), and \(R_\zeta\).
+
+\begin{theorem}[Original first-moment comparison]
+\label{an07fwcv1:propagation}
+At physical time \(t=\tau_h+s\), define
+\[
+ D_s=\int_\KK(|x-X|+|y-Y_*|)\dd\mu,\qquad
+ D_w=\int_S(|u-U_*|+|v-V_*|)\dd\mu,
+\]
+\[
+ \dist=|M-1|+|N-n_\rho|+D_s+D_w.
+\]
+Then
+\begin{equation}
+ \dist(s)\le e^{64R(s-s_n)}
+ \left[\dist(s_n)+\int_{s_n}^s\mathcal R(\tau_h+v)\dd v\right]
+ =O_{T,n}(q^{1/20})
+ \quad(s_n\le s\le T).
+ \label{an07fwcv1:distbound}
+\end{equation}
+The masses and distances use the original current weights.
+In particular the actual selected mass has vanishing mass/logit
+phase error on the same logistic clock.
+\end{theorem}
+\begin{proof}
+All structural hypotheses of CWI's leading comparison now hold:
+positive measures, \(M,N\le2\), bounded strong support and
+comparator, finite weak moments, same \(\rho\). Its strong
+velocity comparison is \(8R(d_s+\dist)\).
+For completeness the weak one-sided step, valid for all real \(u\),
+is
+\[
+ A'(u)=-\tfrac12[(u+Y)\phi(u)+\mathcal W'(u)
+                           +\lambda(1-N)]\le R+1\le2R,
+\]
+where
+\(A(u)=\tfrac12[\phi(u)-\mathcal W(u)-Y\Phi(u)
+                         -\lambda(1-N)u]\) and
+\(\mathcal W'(u)=\phi(u)\int_S(\widetilde u-u)_+\dd\mu\ge0\).
+Use \(|Y|\le2R\), \(|u|\phi(u)\le1\),
+\(\lambda|1-N|\le1\), and compare donor moments at bounded
+\(U_*\) first. The remaining \((1-M)v\Phi(u)\) and
+\((1-M)\Kfun(u)\) terms cost at most the receiver distances
+plus \(R|M-1|\), since \(|1-M|\le1\).
+Exactly as in CWI this yields
+\[
+ D^+d_s\le8R(d_s+\dist)+|\varepsilon_s|_1,
+ \qquad D^+d_w\le8R(d_w+\dist)+|\varepsilon_w|_1.
+\]
+The reference donor differences are controlled by physical
+mass differences and the two first moments; no weak support
+bound or sign of its input is used in this comparison.
+
+Now differentiate the integrals with their actual reactions.
+The leading reaction coefficients \(1-M,\lambda(1-N)\)
+have absolute value at most one. Their defects add respectively
+\(\int d_s|\epsilon_\KK|\) and \(\int d_w|\epsilon_S|\).
+The mass differences satisfy logistic comparisons with
+coefficient at most three on \([0,2]\), plus
+\(\int|\epsilon_\KK|\) and \(\int|\epsilon_S|\).
+Thus the same coefficient calculation as CWI gives
+\[
+ D^+\dist\le(1+40R)\dist+\mathcal R
+                \le64R\dist+\mathcal R.
+\]
+All differentiations are justified by the finite second moment
+and the integrable cubic majorants proved above, or by truncation.
+No fixed-relative-weight assumption is imposed on the original
+flow. Gronwall, the entry distance, and
+\eqref{an07fwcv1:reductionnorm} prove \eqref{an07fwcv1:distbound}.
+The logit consequence also follows directly from Lemma
+\ref{an07fwcv1:massfine}, with the identical initial phase.
+\end{proof}
+
+\section{Background precision and A-error-transfer}
+\label{an07fwcv1:errorsection}
+\begin{lemma}[Background on the continued window]
+\label{an07fwcv1:background}
+For \(T_0=\Sigma\cup\BB\), uniformly on \(I_q\) and
+\(0\le\zeta\le R_\zeta\),
+\begin{equation}
+ \EE_{T_0}\le C_Dq^2\epsilon_{\rm bg},\qquad
+ \mathcal Q_{T_0}\le C_{D,R_\zeta}q^2\epsilon_{\rm bg},\qquad
+ |E_{\xi_q}-E_{\xi_q}^{\KK}|\le
+                   C_{D,R_\zeta}q^2\epsilon_{\rm bg}.
+ \label{an07fwcv1:backgroundbound}
+\end{equation}
+\end{lemma}
+\begin{proof}
+All four PSE \texttt{conditional} hypotheses have been supplied:
+cross entries and \(R_{22}^{(1)}\) by
+Lemma \ref{an07fwcv1:transverse}, alignment by
+Lemma \ref{an07fwcv1:charts}, and the lower gate by loss and
+the same Gaussian calculation as PSE:
+\[
+ |R_{22}^{(2)}|\le2e^{-169\sin^2\theta/(3200q^2)}
+                                      \quad(U_2<0).
+\]
+Its proof uses only the exact gate probability, bounded residual
+\(L^2\), and \(\E X_2^4\le43/16\), so it is valid after
+the old passage. Apply the conditional inequality with
+\(a=t_n\), duration \(D\), and its parameter \(w=1\).
+The initial energy is in \eqref{an07fwcv1:entry}; the rough
+mass comparison gives \(\mu_{T_0}\le C_Dq^{\gamma_*}\).
+Hence the added energy is at most \(C_Dq^2Lq^{\gamma_*}\),
+bounded by the displayed \(q^2\epsilon_{\rm bg}\).
+The exact static inequality
+\(\mathcal Q_{T_0}\le2q^2\zeta^2\mu_{T_0}+2\EE_{T_0}\)
+gives the second bound, including every changing-angle slice.
+
+Primary inactivity gives \(f=f_\KK+f_{T_0}\) at the probe.
+CWI's exact split is
+\[
+ E-E^\KK=-\mathcal Q_{T_0}+\mathcal A_{T_0}
+       +f_\KK\cdot f_{T_0}+\tfrac12|f_{T_0}|^2,
+ \quad |\mathcal A_{T_0}|\le C_DqL\sqrt{\mu_{T_0}\mathcal Q_{T_0}},
+ \quad |f_{T_0}|\le\sqrt{\mu_{T_0}\mathcal Q_{T_0}}.
+\]
+The bounded core chart gives \(f_\KK=O_D(q)\).
+Young's inequality and \(L^2\mu_{T_0}=o(1)\) pay all
+cross terms by \(C_Dq^2(q^8+L^2q^{\gamma_*})\).
+No favorable sign is substituted for an absolute precision bound.
+\end{proof}
+
+\begin{lemma}[Gap-free core static comparison]
+\label{an07fwcv1:static}
+For \(R\ge2\), strong mass \(M\le2\), strong coordinates
+and the comparison atom in \([-R,R]^2\), and \(|\zeta|\le R\),
+put
+\[
+ A=\int_\KK(\zeta-x)_+\dd\mu,\quad
+ B=\int_\KK y(\zeta-x)_+\dd\mu,\quad
+ \mathcal E_\KK=-\zeta A+B+\tfrac12A^2.
+\]
+Then
+\begin{equation}
+ E_{\xi_q}^{\KK}-\tfrac12=q^2\mathcal E_\KK+O_R(q^4),
+ \qquad |\mathcal E_\KK-\mathcal E_*|\le10R^2\dist.
+ \label{an07fwcv1:staticcompare}
+\end{equation}
+No condition on the sign or size of \(\zeta-X\) is required.
+\end{lemma}
+\begin{proof}
+The input activation is \(\sin(q(\zeta-x))_+\).
+Taylor expansion with the 1-Lipschitz positive part gives
+\((f_\KK)_1=qA+O_R(q^3)\),
+\((f_\KK)_2=q^2B+O_R(q^4)\). Expand the exact squared error.
+For arbitrary gap, take \(A_*=(\zeta-X)_+\),
+\(B_*=Y_*A_*\), not \(\zeta-X\).
+Then
+\[
+ |A-A_*|\le D_s+2R|M-1|,\quad
+ |B-B_*|\le2RD_s+2R^2|M-1|,
+ \quad |A|\le4R,\ |A_*|\le2R.
+\]
+Consequently the energy difference is at most
+\(4R|A-A_*|+|B-B_*|\le10R^2\dist\).
+This is the static part of CWI's proof with its unnecessary
+rate-gap hypothesis removed by the displayed argument.
+It covers atoms exactly at the probe gate.
+\end{proof}
+
+\begin{theorem}[Finite-window continuation and full A-error-transfer]
+\label{an07fwcv1:main}
+For the original initialized deep-regime family, retain the proved
+entry level and center \eqref{an07fwcv1:time}. For every fixed
+\(T>\max_\rho s_n\) and \(R_\zeta<\infty\), the primitive
+continuation conclusions \eqref{an07fwcv1:primitive}--
+\eqref{an07fwcv1:masslogistic}, the field and weighted reaction
+reduction \eqref{an07fwcv1:reductionnorm}, and
+\eqref{an07fwcv1:distbound} hold on \([t_n,\tau_h+T]\).
+There are no additional retained original-flow hypotheses.
+Moreover
+\begin{equation}
+ \sup_{\substack{\rho\in[13/20,7/10],\ s_n(\rho)\le s\le T\\
+                       0\le\zeta\le R_\zeta}}
+ \left|q^{-2}(E_{\xi_q}(\tau_h+s)-\tfrac12)
+              -\mathcal E_{\rho,\zeta}(s)\right|
+ \le C_{T,n,R_\zeta}q^{1/20}\longrightarrow0.
+ \label{an07fwcv1:errortransfer}
+\end{equation}
+Together with Corollary \ref{an07fwcv1:early}, this gives H2's
+A-error-transfer on every fixed finite centered window,
+uniformly on the stated ratio box and every bounded nonnegative
+offset interval. It supplies LP's \texttt{compact-transfer}
+premise on such compact offsets, with
+\(t_h^{\rm phys}=\tau_h/\mu_1^2\).
+\end{theorem}
+\begin{proof}
+Combine Lemmas \ref{an07fwcv1:background} and
+\ref{an07fwcv1:static} with Theorem \ref{an07fwcv1:propagation}.
+The error is at most
+\(10R^2\dist+C_Rq^2+C_{D,R_\zeta}\epsilon_{\rm bg}\).
+Since \(\gamma_*>1/20\),
+\(q^{-1/20}\epsilon_{\rm bg}\to0\), proving the stated rate.
+For a general fixed window, the part \(s\le s_n(\rho)\)
+is covered by the same compact-level argument as the early
+corollary (its minimum level is uniform); the remaining part
+is covered by \eqref{an07fwcv1:errortransfer}.
+The center is never replaced by \(t_b\) or by an order-one
+approximation to a seed. The known difference \(Q-\lambda=q^2\)
+costs \(O(q^2\log(1/q))=o(1)\) in the inherited long entry phase;
+the new interval compares the actual mass with the exact same
+\(\lambda\)-logistic. Normalized time in H2 and LP's physical
+time agree since
+\(\tau_h+s=\mu_1^2(t_h^{\rm phys}+s/\mu_1^2)\).
+No later-window rate or growing-window conclusion is used.
+\end{proof}
+
+\section{S5d handoff and final constant audit}
+\label{an07fwcv1:handoff}
+The new constant order, appended to the unchanged WPT/RB--WCS
+order, is
+\[
+ (T,R_\zeta,D)\ \longrightarrow\ \bar S\
+ \longrightarrow\ C_Z,C_X,C_\Delta,R_A,A_D\
+ \longrightarrow\ R\ \longrightarrow\ C_{\rm red},C_{\rm bg}\
+ \longrightarrow\ q.
+\]
+Here \(R\) covers the leading solution on the fixed window as
+well as the original core and offsets. Each primitive guard is
+chosen after a bound independent of itself. Neither an old small
+energy guard nor an order-one passage allowance is hidden in a
+vanishing pointwise defect. All fixed-time losses may depend on
+\(D\); no uniformity as \(T\to\infty\) is claimed.
+
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{.27\textwidth}
+ >{\raggedright\arraybackslash}p{.63\textwidth}}
+\toprule S5d consumer & Supplied quantity and remaining action\\\midrule\endhead
+Same original state and phase
+& Physical masses and current first moments obey
+ \(\dist=O_T(q^{1/20})\); original selected mass/logit uses the
+ unchanged \(\tau_h\). No passage bound is being used after \(t_b\).\\
+Core sourcewise field/reaction
+& Equation \eqref{an07fwcv1:corefield} has pointwise
+ source errors \(O_T(q^{1/10})\); source reactions are given
+ there and in Lemma \ref{an07fwcv1:massfine}. All residual
+ producers, including probe-inactive weak labels, remain included.\\
+Leading rate robustness
+& CWI \texttt{rate} applies once the learned parameter/window
+ and gap hypotheses are matched: positive measures, masses
+ \(\le2\), strong chart and comparator in \([-R,R]^2\), finite
+ weak first moments, \(|\zeta|\le R\),
+ \(\zeta-X\ge g_0=g_*/4>0\). It supplies
+ \(64R^2(1+g_0^{-1})\dist\). The learned-window and margin
+ choices themselves belong to WIT/S5d.\\
+Background source charges
+& PSE/CWI matrix and alignment hypotheses now hold on the
+ full window. CWI \texttt{ratecharge} therefore gives
+ \(|\xi_q\cdot\dot f_{\Sigma\cup\BB,p}|
+ \le C_Tq^2\epsilon_{\rm bg}\), and the associated unprojected
+ bound. Primary direct outputs/rates vanish by strict inactivity.
+ These are source charges, not the asserted A-rate-transfer theorem.\\
+Gate conventions
+& Static transfer needs no gap. For S5d's uniform source transfer,
+ use WIT's gate-separated \(J\) and its \(\mathcal P_*\);
+ verify \(g_0\), source and total-rate margins in that range.
+ Retain selector/a.e. statements elsewhere. No pointwise
+ gate-hit-atom rate claim is added.\\
+H2 and LP
+& A-error-transfer and LP's finite-window premise are supplied
+ here for the initialized family and matched physical center.
+ Applying WIT/LPR/LP to obtain the final reversal/persistence
+ statements and AN8 assembly remains outside this increment.\\
+\bottomrule
+\end{longtable}\normalsize
+The analytic estimates needed for S5d's original-flow rate calculation
+are supplied by the sourcewise reduction and first-moment comparison;
+the next step must assemble them on the precise learned windows and
+compare with their margins. This increment does not assert that
+rate-transfer conclusion. All proofs above use Gaussian identities,
+differential inequalities and fixed-time comparison only.
+\end{document}
