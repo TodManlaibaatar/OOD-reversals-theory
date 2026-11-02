@@ -1,0 +1,817 @@
+% New standalone increment. All prior files and GitHub remain read-only.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.88in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,array,longtable,booktabs,xurl}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}\newcommand{\dd}{\,d}\newcommand{\one}{\mathbf1}
+\newcommand{\KK}{\mathcal K}\newcommand{\BB}{\mathcal B}
+\newcommand{\Gp}{{G_+}}\newcommand{\eps}{\varepsilon}
+\newcommand{\Kfun}{\mathsf K}\newcommand{\Ffun}{\mathsf F}
+\newcommand{\ph}{\phi(0)}
+\title{Weak-chart reduction and selection at a fixed logistic level}
+\author{Standalone analytical increment for independent review}
+\date{Version 1 --- 1 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We reduce the original weak-receiver velocities on the reached growing
+chart to the value-error form of TAILREP. A tangent Gaussian integration
+by parts retains both receiver and donor gates without differentiating
+a gate. The resulting errors have admissible linear and cubic growth.
+Contraction is taken from a comparator with the actual positive clock
+donor measure and the positive core output moment. Fixed incoming
+weights need no derivative-weight budget. Together with SRR, the
+reduction proves selection at a sufficiently small fixed logistic mass:
+the strong-reference error and the incoming-law weak $L^2$ error are
+$O(q^{1/20})$. The result stops at that mass level.
+\end{abstract}
+
+\section{Step 1: conventions, domain and consumer hypotheses}
+\label{an03wcsv1:inventory}
+Work in the initialized deep regime $\kappa=10$,
+$\rho\in[13/20,7/10]$, $\lambda=\rho^2$, $Q=\lambda+q^2$,
+$\ell=\log(1/q)$ and $k=10(1-\lambda)$. All uses of RB, WBR,
+MP and SRR below are on their proved original-flow intervals.
+Keep RB's $t_0=t_h$ and $t_b=\inf\{c=c_b\}$. Keep the fixed
+partition $\KK,\Gp,\Sigma,\BB$, with $\mathcal D=\varnothing$,
+and the closed selected set
+\[
+ S=\mathcal C_q=\{b\in[\pi/2,\pi]:-\cos b\ge q^{1/4}\},
+ \qquad P_q=\Gp\setminus S,\qquad G=\Gp\cup\Sigma.
+\]
+For a label, $U=\sqrt m(\cos\theta,\sin\theta)$ and
+$W=\sqrt m(\cos\psi,\sin\psi)$. The original radial measure
+is $m\,d\lambda_0$. Set
+\[
+ E_T=\tfrac12\int_T(U_2^2+W_2^2),\quad
+ J_T=\tfrac12\int_T(U_1^2+W_1^2),\quad \mu_T=E_T+J_T.
+\]
+Physical core mass is $M=\mu_\KK$, not the residual guard constant.
+The weak coordinates retain SRR's opposite input/output conventions:
+\[
+ u=(\pi/2-\theta)/q,\qquad v=(\psi-\pi/2)/q.
+\]
+Fix SRR's model constants $\delta,g=g_W,C_s=980$, and its fixed
+admissible $h<1/4$. Let $t_s=\inf\{H=q^{1/8}\}$ and
+$t_e=\inf\{H=h\}$, where $H=H_S$ is the actual clock. Define
+\begin{equation}
+ N'=\lambda N(1-N),\quad N(t_s)=N_0=q^{1/8},\qquad
+ t_n=\inf\{N=n\},\quad 0<n<h.
+ \label{an03wcsv1:logistic}
+\end{equation}
+For every fixed $n<h$, MP proves $t_s<t_n<t_e<t_b$ for small $q$.
+The level $n$ is chosen only after the weak constants below.
+
+The unchanged reference is CFA/MOMC's actual characteristic
+$z_c=(x_c,y_c)$. Define
+\begin{equation}
+ E_s=|z_c-(X_*,Y_*)(N)|_2,\qquad
+ \eta_s(db)=\frac{m(t_s,b)}{N_S(t_s)}d\lambda_0(b),\qquad
+ W_2=\big\||u-U_*|+|v-V_*|\big\|_{L^2(\eta_s)},
+ \label{an03wcsv1:objects}
+\end{equation}
+where $N_S=\mu_S$. The probability $\eta_s$ is transported with
+fixed labels. Current radial probability is $\eta_t$, and SRR proves
+$\omega=d\eta_t/d\eta_s=1+o(1)$, uniformly including the closed
+endpoints. Differentiating the norm in \eqref{an03wcsv1:objects}
+differentiates only label velocities. Thus no derivative of $\omega$
+occurs; its value is used only inside current donor integrals.
+
+\paragraph{Every hypothesis of the invoked selection implication.}
+TAILREP \texttt{selection} requires: exact logistic $N$;
+$0<N_0<n<1$ and the terminal hit; nonnegative errors; the strong and
+weak differential inequalities up to the first exit $E_s<\delta$;
+fixed positive $g,C_s,C_w$; a single pointwise constant $d_0\ge0$;
+a nonnegative coefficient $\ell_B$ with a common finite integral
+bound $L_*$; separately maintained weak return; its specified
+small-gain inequality $\Theta\le1/4$ and initial guard
+$K_0(E_0+d_0+A_0\sqrt n)\le\delta/2$. The terminal convergence
+uses $N_0,A_0,d_0\to0$. Bounded support for each fixed $q$, or
+sufficient moments and absolute continuity, is needed for the norm
+calculation; WBR's reached chart supplies bounded support for each $q$.
+
+The WEAK \texttt{Wineq} argument additionally requires a common
+leading logistic comparator, a nonnegative donor measure, and a
+nonnegative-input comparison segment; its scalar derivative uses
+$u+Y\ge0$. Its original statement obtains return from
+\texttt{forcing/concentration}, assuming $M=1$, fixed normalized
+weak weights, $Y\ge0$, bounded $|\rho K_s|$, initial $u\ge0$,
+$0\le Y\le Y_{\max}<2\ph$, and the strict margin
+\[
+ C_u n+U_0^+\sqrt{N_0n}<\ph-Y_{\max}/2,\qquad
+ C_u=\ph+\frac{\ph}{\lambda(1-n)}.
+\]
+We do not apply that leading return theorem to the original flow.
+WBR already gives strict original return $u>0$ on $[t_0,t_e]$,
+including endpoints. AN06 gives $0<U_*<1$, $0<V_*<11/10$
+for $0<N\le1/2$. Below we prove the required positivity of the
+actual core moment, pay $M-1$, and use the derivative calculation
+in WEAK's proof with the actual positive donor measure. No assumption
+of unit original core mass or fixed \emph{current} radial weights
+is made.
+
+\section{Step 2: exact weak receivers and polynomial value errors}
+\label{an03wcsv1:fieldsection}
+Write $s_u=\sin(qu)$, $c_u=\cos(qu)$, and similarly for $v$.
+Let
+\[
+ a=(s_u,c_u),\quad p=(c_u,-s_u),\quad
+ b=(-s_v,c_v),\quad b^\perp=(-c_v,-s_v),\quad A=\{a\cdot X>0\}.
+\]
+The exact scaled velocities, with the mixture factors displayed, are
+\begin{equation}
+ 2u'=\frac1q\sum_{j=1}^2\E_{P_j}[(b\cdot(X-f))(p\cdot X)\one_A],
+ \qquad
+ 2v'=\frac1q\sum_{j=1}^2\E_{P_j}[(b^\perp\cdot(X-f))(a\cdot X)\one_A].
+ \label{an03wcsv1:exact}
+\end{equation}
+WBR and MP prove, throughout $[t_s,t_e]$,
+\begin{equation}
+ 0<u,\quad |u|+|v|\le L=C_L(1+q^{-p_*}),\quad
+ p_*=\frac{603}{640},\quad qL=o(1),\quad
+ J_S\le C(q^3+q^2H).
+ \label{an03wcsv1:chart}
+\end{equation}
+In particular $c_u\ge1/2$ and the $P_2$ receiver gate has a
+uniform Gaussian tail. No strong-chart representation is applied
+at a weak receiver.
+
+\subsection{A tangential extension of the boundary integration by parts}
+\begin{lemma}[Exact $P_1$ projected moments]
+\label{an03wcsv1:IBP}
+On $P_1$, set $T=s_u Z_1+c_u Z_2$, $Z_\perp=c_u Z_1-s_u Z_2$
+and $r=s_u/q$. These are independent standard normals,
+$a\cdot X=q(r+T)$, $p\cdot X=c_u+qZ_\perp$, and
+$A=\{T>-r\}$. Thus
+\begin{align}
+ \E[X_1(p\cdot X)\one_A]
+ &=c_u[(1+q^2)\Phi(r)+qs_u\phi(r)],\notag\\
+ q^{-1}\E[X_2(p\cdot X)\one_A]
+ &=c_u^2\phi(r)-qs_u\Phi(r),\notag\\
+ q^{-1}\E[X_1(a\cdot X)\one_A]
+ &=\Kfun(r)+qs_u\Phi(r),\notag\\
+ q^{-1}\E[X_2(a\cdot X)\one_A]&=qc_u\Phi(r).
+ \label{an03wcsv1:targetmoments}
+\end{align}
+For any fixed donor output $f_{T_0,i}$,
+\begin{equation}
+ \E[f_{T_0,i}Z_\perp\one_A]
+ =q\int_{T_0}W_i(U\cdot p)
+       \Pr\{U\cdot X>0,\ A\}\,d\lambda_0.
+ \label{an03wcsv1:tangentstein}
+\end{equation}
+No receiver gate is differentiated.
+\end{lemma}
+\begin{proof}
+Condition on $T$ and integrate by parts only in $Z_\perp$.
+The receiver gate is constant in that variable. The ReLU derivative
+is its donor indicator almost everywhere, giving
+\eqref{an03wcsv1:tangentstein}; Gaussian domination justifies
+integration over labels. At $u=0$, $Z_\perp=Z_1$, recovering WBR's
+$X_1$ integration by parts. At nonzero $u$, direct integration in
+$X_1$ would differentiate the receiver gate, so the tangent rotation
+is essential.
+
+For \eqref{an03wcsv1:targetmoments}, use
+$\E(T+r)_+=\Kfun(r)$ and
+$\E(T+r)_+^2=(1+r^2)\Phi(r)+r\phi(r)$.
+The identities
+$X_1=s_u(a\cdot X)+c_u(p\cdot X)$ and
+$X_2=c_u(a\cdot X)-s_u(p\cdot X)$ then give all four formulas.
+In particular $\E(T+r)_+^2-r\Kfun(r)=\Phi(r)$, which
+accounts for the last cancellation.
+\end{proof}
+
+For later polynomial bookkeeping, uniformly for $u\ge0$, $qu\le1/2$,
+\begin{equation}
+ |\Phi(s_u/q)-\Phi(u)|+|\phi(s_u/q)-\phi(u)|\le Cq^2,
+ \qquad |\Kfun(s_u/q)-\Kfun(u)|\le Cq^2u^3.
+ \label{an03wcsv1:gaussiansaturation}
+\end{equation}
+Indeed $u/2\le s_u/q\le u$ and $|s_u/q-u|\le q^2u^3/6$.
+The mean value theorem and boundedness of
+$u^j e^{-u^2/8}$ for fixed $j$ prove the first estimate;
+$|\Kfun'|\le1$ proves the second. This analytic Gaussian
+saturation matters: the crude Lipschitz estimate for $\Phi$,
+multiplied by $v$, would produce the inadmissible quartic
+$q^2|v|u^3$. It is replaced by the displayed bounded-kernel
+estimate, not discarded.
+
+\subsection{The own-cluster coefficient and the weak functional}
+Define the actual core moments and actual positive selected measure by
+\[
+ Y=\int_\KK my,\quad K_c=\int_\KK m\Kfun(\rho x),\qquad
+ \mathcal W_S(u)=\int_S\Ffun(u,\widetilde u)\,d\mu_S,\quad
+ \mathcal V_S=\int_S\widetilde v\,d\mu_S.
+\]
+The physical core coordinates here are $\theta=qx,\psi=qy$.
+Put $V_O=-\E_{P_2}[(f_O)_1X_2]/(qQ)$ as in CFA/SRR.
+
+\begin{lemma}[Full-gate $P_2$ values]
+\label{an03wcsv1:P2}
+The $P_2$ contributions to \eqref{an03wcsv1:exact} are
+\begin{align}
+ 2u'_{P_2}&=-\lambda(1-c)u+\mathcal R_{2u},\notag\\
+ 2v'_{P_2}&=\rho K_c-\lambda V_O-\lambda(1-c)v+\mathcal R_{2v},
+ \qquad
+ |\mathcal R_{2u}|+|\mathcal R_{2v}|
+ \le C_{\rm fixed}q^2(1+|u|+|v|)^3+Cq^{-j}e^{-c_*/q^2}.
+ \label{an03wcsv1:P2values}
+\end{align}
+Here the subscript means the contribution to the total velocity;
+the factors two in \eqref{an03wcsv1:exact} remain in force.
+\end{lemma}
+\begin{proof}
+Removing the receiver gate costs at most $Cq^{-j}e^{-c_*/q^2}$:
+$\rho c_u\ge\rho/2$, the total radial mass is bounded by RB,
+and $|f(X)|\le\mu_{\rm tot}|X|$. Both sides of the failed gate
+are covered by Gaussian absolute moments.
+
+Let $B_{ij}=\E_{P_2}[(X_i-f_i)X_j]$. Exactly,
+\[
+ B_{22}=Q(1-c),\quad
+ B_{11}=q^2\left(1-\int W_1U_1\Pr_{P_2}(U\cdot X>0)\right),
+ \quad
+ B_{21}=-q^2\int W_2U_1\Pr_{P_2}(U\cdot X>0).
+\]
+The last two formulas are full-gate Stein identities.
+Core geometry, $J_G=O(q^2)$ and $\mu_\BB\le q^{11/10}$
+give $B_{11}=O(q^2)$ and $B_{21}=O(q^3)$.
+We restate and prove the compact core moment used in MOMC/CFA.
+For a core donor, put $t_x=\tan(qx)/q$ and $V=\rho+qZ_2$.
+Conditioning on $V$ gives exactly
+\[
+ \E_{P_2}[(f_\KK)_1X_2]
+ =q\int_\KK m\cos(qy)\cos(qx)\,
+                          \E_V[V\Kfun(t_xV)].
+\]
+On the fixed donor chart, $t_x=x+O(q^2)$ and both cosines
+are $1+O(q^2)$. The second derivative in $V$ of
+$V\Kfun(t_xV)$ has a uniform polynomial bound. Taylor expansion,
+$\E(V-\rho)=0$, and $\E(V-\rho)^2=q^2$ therefore give
+$q\rho K_c+O(q^3)$, using bounded core mass. Hence
+\[
+ B_{12}=-q\rho K_c+qQ V_O+O(q^3).
+\]
+This core error is uniform on the proved fixed donor chart.
+SRR's balance estimate bounds $V_O$ uniformly.
+The two exact contractions of this matrix are
+\[
+ q^{-1}[-s_vc_uB_{11}+c_vc_uB_{21}+s_vs_uB_{12}-c_vs_uB_{22}],
+\]
+\[
+ q^{-1}[-c_vs_uB_{11}-s_vs_uB_{21}-c_vc_uB_{12}-s_vc_uB_{22}].
+\]
+Expand the trigonometric coefficients for $q(|u|+|v|)\le1/2$.
+The terms from $B_{22}$ give the stated rates, including the
+$O(q^2)$ replacement of $Q$ by $\lambda$.
+The cubic sine error is retained; all other errors have degree at
+most three. This proves \eqref{an03wcsv1:P2values}.
+\end{proof}
+
+\begin{lemma}[Finite-noise weak overlap]
+\label{an03wcsv1:overlap}
+Set $\mathcal W_S^q(u)=q^{-1}\E_{P_1}[(f_S)_2\one_A]$.
+On the reached chart,
+\begin{equation}
+ |\mathcal W_S^q(u)-\mathcal W_S(u)|
+ \le C_{\rm fixed}\{q+q^2L+q|u|+q^2|u|^3\}.
+ \label{an03wcsv1:overlaperror}
+\end{equation}
+For $T_0=P_q,\Sigma$, the corresponding unsigned functional
+has the receiver-uniform bound
+\begin{equation}
+ q^{-1}\E_{P_1}[|(f_{T_0})_2|\one_A]
+ \le C(E_{T_0}+q^{-1}\sqrt{E_{T_0}J_{T_0}}).
+ \label{an03wcsv1:omittedfunctional}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The exact selected integrand is
+\[
+ m\cos(q\widetilde v)\,
+ \E\left[\left(\frac{\sin(q\widetilde u)}q
+       +\sin(q\widetilde u)Z_1+\cos(q\widetilde u)Z_2\right)_+
+ \one_{\{Z_2>-\tan(qu)/q-\tan(qu)Z_1\}}\right].
+\]
+Replace the positive part by $(Z_2+\widetilde u)_+$.
+Its $L^1$ error, before label integration, is at most
+$C[q|\widetilde u|+q^2|\widetilde u|^2+q^2|\widetilde u|^3]$.
+Replacing $\cos(q\widetilde v)$ by one costs additionally
+$Cq^2\widetilde v^2(1+|\widetilde u|)$.
+MP's transverse theorem gives
+\begin{equation}
+ \int_Sm(1+|\widetilde u|+|\widetilde v|
+                    +\widetilde u^2+\widetilde v^2)\le C_{\rm fixed},
+ \label{an03wcsv1:donormoments}
+\end{equation}
+since the second moment is at most $CJ_S/q^2=O(q+H)$.
+All donor cubic integrals are at most $CL$ times this bound.
+Thus these two replacements cost $C(q+q^2L)$.
+
+For the remaining gate replacement condition on $Z_1$.
+The integral of $(z+\widetilde u)_+\phi(z)$ between two thresholds
+is at most $C(1+|\widetilde u|)$ times their separation.
+Here its expected separation is bounded by
+$C(q|u|+q^2|u|^3)$. Use \eqref{an03wcsv1:donormoments}.
+The resulting exact one-dimensional integral is
+$\Ffun(u,\widetilde u)$. This proves \eqref{an03wcsv1:overlaperror}
+without a correlation differentiability assumption at coincident
+donors. Finally
+$|(f_{T_0})_2|\le2\sqrt{E_{T_0}J_{T_0}}|X_1|+2E_{T_0}|X_2|$
+proves \eqref{an03wcsv1:omittedfunctional} for every receiver gate.
+\end{proof}
+
+\begin{proposition}[Original growing-chart value reduction]
+\label{an03wcsv1:reduction}
+For every selected receiver on $[t_s,t_e]$,
+\begin{align}
+ 2u'&=\phi(u)-\mathcal W_S(u)-Y\Phi(u)
+       -(1-M)v\Phi(u)-\lambda(1-c)u+\mathcal R_u,\notag\\
+ 2v'&=\rho K_c-\lambda\mathcal V_S-\lambda(1-c)v
+                         -(1-M)\Kfun(u)+\mathcal R_v,
+ \label{an03wcsv1:leading}\\
+ |\mathcal R_u|+|\mathcal R_v|
+ &\le C_{\rm fixed}\{q^{1/10}+q(1+|u|+|v|)
+                              +q^2(1+|u|+|v|)^3\}.
+ \label{an03wcsv1:Rgrowth}
+\end{align}
+The constant is fixed before $n$; it may depend on the already fixed
+passage and level constants. These are value estimates only.
+\end{proposition}
+\begin{proof}
+For the core on $P_1$, remove its donor gate at exponential cost
+and set $T_{ij}=\int_\KK W_iU_j$. The proved donor chart gives
+\[
+ T_{11}=M+O(q^2),\quad T_{21}=qY+O(q^3),\quad
+ T_{12}=O(q),\quad T_{22}=O(q^2).
+\]
+Substitute the four exact moments \eqref{an03wcsv1:targetmoments}
+into \eqref{an03wcsv1:exact} for the target minus core.
+Equations \eqref{an03wcsv1:gaussiansaturation} and
+$|\sin(qv)/q-v|\le Cq^2|v|^3$ give respectively
+\[
+ \phi(u)-Y\Phi(u)-(1-M)v\Phi(u),\qquad
+ -(1-M)\Kfun(u),
+\]
+with error at most $Cq^2(1+|u|+|v|)^3$.
+For explicit bookkeeping: the $X_1p$ moment differs from $\Phi(u)$
+by $Cq^2(1+u^2)$; the $X_2p/q$ moment differs from $\phi(u)$
+by that same bound; $X_1a/q-\Kfun(u)$ costs $Cq^2(1+u^3)$;
+and $X_2a/q$ is $O(q)$. The $T_{12},T_{22}$ factors and
+receiver trigonometric factors therefore create no term of degree
+larger than three at order $q^2$. Higher products are absorbed using
+$q^2L^2=o(1)$. In particular the spurious quartic mentioned after
+\eqref{an03wcsv1:gaussiansaturation} is not used.
+
+For $G$ on $P_1$, balance gives
+\[
+ |(f_G)_1|\le2J_G|X_1|+2\sqrt{E_GJ_G}|X_2|,\qquad
+ |(f_G)_2|\le2\sqrt{E_GJ_G}|X_1|+2E_G|X_2|.
+\]
+Here $J_G=O(q^2)$ and $E_G=O(1)$.
+In $2u'$, the $f_{G,1}$ term costs $Cq^2|v|$.
+For the second output use \eqref{an03wcsv1:tangentstein}:
+\[
+ q^{-1}\E[(f_G)_2(p\cdot X)\one_A]
+ =c_u\mathcal W_G^q(u)
+       +q\int_GW_2(U\cdot p)\Pr\{U\cdot X>0,A\},
+\]
+whose last term is $O(q^2(1+|u|))$.
+The factor $c_vc_u-1$ on the uniformly bounded functional costs
+$Cq^2(u^2+v^2)$. The $P_1$ terms in $2v'$ cost
+$Cq^2(1+|u|)(1+|v|)$ by the two output bounds and
+$|a\cdot X|/q\le C(|u|+|Z_1|+|Z_2|)$.
+For $P_q$ and $\Sigma$, \eqref{an03wcsv1:omittedfunctional}
+costs respectively $O(q^{1/8})$ and $O(q+q^{\Gamma_\nu/2})$:
+use SRR's proved mass/transverse charges, retaining the $q^2$
+term in $\mu_{P_q}$. No uncharted mass is divided by $q$ alone.
+The $S$ term is Lemma \ref{an03wcsv1:overlap}.
+
+PROFILE's matrix-value estimate bounds the entire $\BB$ field
+at any receiver by $C\mu_\BB/q\le Cq^{1/10}$, irrespective of
+which side of a donor gate it occupies. This includes both strips.
+In the $P_2$ calculation its formal moment is also bounded by
+the same amount.
+Lemma \ref{an03wcsv1:P2} supplies the own-cluster terms.
+Finally SRR \texttt{finiteweak} gives
+$|V_S-\mathcal V_S|\le Cq^{37/320}$, while its non-selected
+moment charges give $|V_O-V_S|\le Cq^{1/10}$.
+All these additive exponents exceed or equal $1/10$.
+Also $q^2L=O(q^{677/640})=O(q)$.
+This proves \eqref{an03wcsv1:leading}--\eqref{an03wcsv1:Rgrowth}
+with every omitted population accounted for.
+\end{proof}
+
+\paragraph{Admissibility audit.}
+If $d=|u-U_*|+|v-V_*|$, bounded selected coordinates imply
+$(1+|u|+|v|)^3\le C[1+(1+L^2)d]$. Thus the growth lines
+are split as follows:
+\[
+\begin{array}{c|c|c|c}
+\text{term}&(j,i)&j-p_*(i-1)&\text{coefficient integral}\\ \hline
+q(1+|u|+|v|)&(1,1)&1&O(q\ell)\\
+q^2(1+|u|+|v|)^2&(2,2)&677/640&O(q^{677/640}\ell)\\
+q^2(1+|u|+|v|)^3&(2,3)&37/320&O(q^{37/320}\ell).
+\end{array}
+\]
+Each is admissible. Constants times $q^{1/10}$ are pointwise
+additive errors. The exact $-\lambda(1-c)(u,v)$ and physical
+mass terms were computed, not bounded as arbitrary large errors.
+
+\section{Step 3: signs, strong moments and donor comparison}
+\label{an03wcsv1:donorsection}
+RB gives $y\ge9/320$ on every core label and $M\ge1/3$.
+Therefore the actual comparison moment satisfies
+\begin{equation}
+ Y=\int_\KK my\ge3/320>0,\qquad |Y|+|\rho K_c|\le C_{\rm model}.
+ \label{an03wcsv1:Ysign}
+\end{equation}
+If the unexpanded moment $q^{-1}\int_\KK W_2U_1$ is used
+instead, it differs from $Y$ by $O(q^2)$ and is at least
+$3/640$ for small $q$. Non-core strong-output contributions
+have not been silently included in this positive moment:
+the $G$ first-output terms are the explicitly charged transverse
+terms in Proposition \ref{an03wcsv1:reduction}, and $\BB$ is
+charged in absolute value. No sign is asserted for these non-core
+fields. They stay in the explicitly budgeted remainder; the
+comparator uses the actual core moment itself.
+
+SRR \texttt{corecollapse}, MP's physical mass budget, and the
+unchanged reference give
+\begin{equation}
+ |Y-Y_*|+\rho|K_c-\Kfun(\rho X_*)|
+ \le (1+\lambda)M E_s+(1+\lambda)M\bar D_\KK
+                +C_{\rm model}|1-M|
+ \le3E_s+C_{\rm fixed}q^{1/20}.
+ \label{an03wcsv1:strongmoments}
+\end{equation}
+Here $M\le2$, $\lambda\le49/100$ and
+$\bar D_\KK=O(q^{1/20})$; this inequality only compares moments
+and does not alter SRR's strong equation.
+
+Let $d_{\rm ph}$ be MP's uniform bound on $|\log(H/N)|$, and set
+\begin{equation}
+ \epsilon_w(t)=\left[\frac{N_S(t)}{N(t)}
+                       \|\omega(t,\cdot)\|_\infty-1\right]_+.
+ \label{an03wcsv1:weightcoefficient}
+\end{equation}
+Then, uniformly on $[t_s,t_e]$,
+\begin{equation}
+ \epsilon_w\le C[D_q+q^2(1+L^2)+d_{\rm ph}],\quad
+ |N_S-N|\le CN(d_{\rm ph}+q^2),\quad
+ D_q=C(q^{1/8}+q^2\ell).
+ \label{an03wcsv1:weights}
+\end{equation}
+These are exactly SRR's weight-value conversion and MP's mass
+and phase statements. At the bounded comparator input,
+\begin{align}
+ |\mathcal W_S(U_*)-N\Ffun(U_*,U_*)|
+ &\le\int_S|\widetilde u-U_*|\,d\mu_S
+                      +C_{\rm model}|N_S-N|,\notag\\
+ |\mathcal V_S-NV_*|
+ &\le\int_S|\widetilde v-V_*|\,d\mu_S
+                      +C_{\rm model}|N_S-N|.
+ \label{an03wcsv1:donorcomparison}
+\end{align}
+The first inequality uses $|\Ffun_r|\le1$ for every donor;
+the second is exact linear moment subtraction.
+They retain the coefficient one, unlike a coarser combined moment
+bound. In particular the weighted sum needed below is at most
+\begin{equation}
+ \int_S(|\widetilde u-U_*|+\lambda|\widetilde v-V_*|)\,d\mu_S
+ \le N(1+\epsilon_w)W_1(\eta_s)
+ \le N(1+\epsilon_w)W_2.
+ \label{an03wcsv1:coefficientone}
+\end{equation}
+No derivative-weight term is needed or claimed.
+
+\section{Step 4: the original weak error inequality}
+\begin{theorem}[Value-only weak error reduction]
+\label{an03wcsv1:weakerror}
+One can fix the model-only constant $C_w=20$, independent of $n$,
+and a pointwise constant $d_0^{(w)}=C_{\rm wcs}q^{1/20}$,
+with $C_{\rm wcs}$ depending only on already fixed constants,
+such that up to the first exit from $E_s<\delta$,
+\begin{equation}
+ D^+W_2\le[-\lambda(1-N)/2+N/2+\ell_B(t)]W_2
+                         +C_w(E_s+d_0^{(w)}).
+ \label{an03wcsv1:weakineq}
+\end{equation}
+A valid nonnegative coefficient is
+\begin{equation}
+ \ell_B=\frac{\lambda}{2}|c-N|+\frac N2\epsilon_w
+       +C_{\rm fixed}\{|1-M|+q+q^2(1+L^2)\}.
+ \label{an03wcsv1:ellB}
+\end{equation}
+For small $q$, uniformly over all $n\in(N_0,h)$,
+\begin{equation}
+ \int_{t_s}^{t_n}\ell_B\le L_*=1.
+ \label{an03wcsv1:Lstar}
+\end{equation}
+In fact the integral tends to zero uniformly.
+\end{theorem}
+\begin{proof}
+Use the comparator scalar input field
+\[
+ A_t(u)=\tfrac12[\phi(u)-\mathcal W_S(u)-Y\Phi(u)
+                                      -\lambda(1-c)u].
+\]
+Its donors are the actual positive radial measure on $S$.
+For every $u\ge0$,
+\[
+ A_t'(u)=-\tfrac12[(u+Y)\phi(u)
+       +\phi(u)\int_S(\widetilde u-u)_+\,d\mu_S+\lambda(1-c)]
+       \le-\lambda(1-c)/2.
+\]
+The segment from the actual $u>0$ to $U_*>0$ lies in this
+domain, by WBR and AN06. This is the derivative of the comparator,
+not a receiver derivative estimate for a finite-noise remainder.
+Use the corresponding output comparator
+$[\rho K_c-\lambda\mathcal V_S-\lambda(1-c)v]/2$,
+whose scalar derivative is $-\lambda(1-c)/2$.
+
+Subtract the selected branch equations at the exact logistic mass.
+The input donor difference and the output linear donor difference
+are \eqref{an03wcsv1:donorcomparison}; their sum is controlled by
+\eqref{an03wcsv1:coefficientone}.
+Strong moment differences cost half of
+\eqref{an03wcsv1:strongmoments}.
+Changing $c$ to $N$ costs
+$\lambda|c-N|d/2$ plus a bounded-comparator
+$C_{\rm model}|c-N|$.
+The two physical mass terms in \eqref{an03wcsv1:leading} cost
+$C_{\rm model}|1-M|(1+d)$ since $\Phi\le1$ and
+$\Kfun(u)\le\ph+|u|$.
+Finally \eqref{an03wcsv1:Rgrowth} gives an additive
+$C_{\rm fixed}q^{1/10}$ and coefficient
+$C_{\rm fixed}[q+q^2(1+L^2)]d$.
+The bounded mass-normalization errors in
+\eqref{an03wcsv1:donorcomparison} and the pointwise phase error
+are $O(d_{\rm ph}+q^2)$.
+Here $d_{\rm ph}=O(q^{1/8}+q^2\ell)=O(q^{1/8})$ for the fixed
+$h$, and $|1-M|=O(q^{11/10})$.
+All additive errors other than the core moment have exponent
+at least $1/10>1/20$. Thus $C_{\rm wcs}$ can be fixed to put
+them in $20d_0^{(w)}$. The coefficient of $E_s$ is at most
+$3/2$; choosing $C_w=20$ is model-only.
+
+The resulting common labelwise inequality for
+$d=|u-U_*|+|v-V_*|$ has the common donor term
+$N(1+\epsilon_w)W_1/2$. Integrate its scalar comparison against
+the fixed $\eta_s$, using Minkowski and $W_1\le W_2$.
+This proves \eqref{an03wcsv1:weakineq} in the integrated sense
+and hence for the upper Dini derivative where needed.
+The argument covers zeros of either coordinate difference and
+zeros of the norm by the same integrated comparison.
+The coefficients are continuous or locally bounded on the finite
+chart; the original characteristics and these norms are absolutely
+continuous. No current-weight differentiation occurs.
+
+For the coefficient integral, MP gives
+\[
+ \int_{t_s}^{t_e}|c-N|
+ \le C\left(d_{\rm ph}h/b_0+q^{1/4}h/b_0+q^2\ell\right)=o(1),
+ \qquad b_0=Q(1-c_b).
+ \]
+Exact logistic integration and $N(t_e)<2h<1/2$ give
+$\int_{t_s}^{t_e}N\le\lambda^{-1}\log(1/(1-2h))$.
+MP bounds $\int|1-M|=O(q^{11/10}\ell)$, and RB's duration
+is at most $20\ell$. Hence
+\begin{align}
+ \int_{t_s}^{t_e}\ell_B
+ \le C_{\rm fixed}\big[
+ &d_{\rm ph}h/b_0+q^{1/4}h/b_0+q^2\ell\notag\\
+ &+(D_q+d_{\rm ph}+q^2(1+L^2))
+                      \lambda^{-1}\log(1/(1-2h))\notag\\
+ &+(q^{11/10}+q+q^{37/320})\ell\big]=o(1).
+ \label{an03wcsv1:integratedledger}
+\end{align}
+The right side uses no terminal $n$, proving the uniform choice
+$L_*=1$. This is a proved coefficient budget; no integrated
+quantity has been substituted for $d_0^{(w)}$.
+\end{proof}
+
+\section{Step 5: a fixed level and the selection theorem}
+\label{an03wcsv1:selectionsection}
+Let $\lambda_{\min}=169/400$, $g_{\min}=1183/41600$,
+$C_s=980$, $C_w=20$, $L_*=1$, and
+$B_{\max}=e\,2^{1/(2\lambda_{\min})}$. Fix, for example,
+\begin{equation}
+ n=\frac12\min\left\{h,\frac14,
+              \frac{\lambda_{\min}g_{\min}}{64C_sB_{\max}C_w}\right\}.
+ \label{an03wcsv1:nchoice}
+\end{equation}
+This is a positive fixed number strictly below $h$.
+With the actual model rate $g=g_W$, define exactly as TAILREP
+\begin{gather}
+ B_*=e(1-n)^{-1/(2\lambda)},\qquad
+ a_0=\lambda(1-n)/2,\qquad m_0=\min(g/2,a_0/2),\notag\\
+ L_0=1+\frac{C_s(1+B_*)}{g-m_0},\qquad K_0=2L_0,\qquad
+ \Theta=\frac{C_sB_*C_wn}{(a_0-m_0)(g-m_0)}.
+ \label{an03wcsv1:selectionconstants}
+\end{gather}
+For $n\le1/2$, $B_*\le B_{\max}$,
+$a_0-m_0\ge\lambda_{\min}/8$ and
+$g-m_0\ge g_{\min}/2$. Thus
+\[
+ \Theta\le\frac{16C_sB_{\max}C_wn}{\lambda_{\min}g_{\min}}
+ \le\frac14.
+\]
+The half in \eqref{an03wcsv1:nchoice} leaves additional strict
+slack. No later value of $q$ or $n$ chooses $C_w$ or $L_*$.
+
+\begin{theorem}[Initialized $L^2$ selection inside the weak passage]
+\label{an03wcsv1:main}
+Fix constants in the order
+\[
+ \mathrm{WPT/RB}\ \longrightarrow\ \mathrm{WBR}\
+ \longrightarrow\ (a_s=1/8,p=2)\
+ \longrightarrow\ (\delta,g_W,C_s)\
+ \longrightarrow\ h\ \longrightarrow\ (C_w,L_*)\
+ \longrightarrow\ n\ \longrightarrow\ q,
+\]
+with SRR's unchanged local constants and
+\eqref{an03wcsv1:nchoice}--\eqref{an03wcsv1:selectionconstants}.
+For the original initialized flow and all sufficiently small $q$,
+the strong-reference guard closes on $[t_s,t_n]$, and
+\begin{equation}
+ \begin{gathered}
+ E_s(t)\le K_0[E_0e^{-m_0(t-t_s)}+d_0+A_0\sqrt{N(t)}],\\
+ d_0=\max\{C_{\rm srr},C_{\rm wcs}\}q^{1/20},\qquad
+ E_0=O(q^{1/20}),\qquad A_0=O(q^{1/16}).
+ \end{gathered}
+ \label{an03wcsv1:Econclusion}
+\end{equation}
+Writing $T_n=t_n-t_s$,
+\begin{align}
+ W_2(t_n)\le B_*\left[\frac{A_0}{\sqrt n}
+ +C_w(K_0+1)\left\{
+ \frac{E_0e^{-m_0T_n}}{a_0-m_0}+\frac{d_0}{a_0}
+                           +\frac{A_0\sqrt n}{2a_0}\right\}\right].
+ \label{an03wcsv1:Wconclusion}
+\end{align}
+In particular
+\begin{equation}
+ E_s(t_n)+W_2(t_n)=O_n(q^{1/20}).
+ \label{an03wcsv1:rates}
+\end{equation}
+This is selection in the fixed-incoming-law $L^2$ norm, not a
+uniform labelwise assertion. No conclusion past $t_n$ is claimed.
+\end{theorem}
+\begin{proof}
+The exact logistic solution gives $0<N_0=q^{1/8}<n<1$ and the
+terminal hit, with $t_n<t_e<t_b$ by MP.
+WBR maintains original return throughout this interval; AN06
+supplies the selected positive branch in $N<1/2$.
+The actual positive donor measure and positive $Y$ are verified
+above. SRR supplies the unchanged strong inequality up to the
+first exit $E_s<\delta$ with pointwise $d_0^{(s)}$.
+Theorem \ref{an03wcsv1:weakerror} supplies the other inequality
+on precisely that scope, with $\ell_B\ge0$ and
+$\int\ell_B\le1$. Enlarging both additive constants to the same
+$d_0$ preserves both inequalities.
+SRR proves $E_0=O(q^{1/20})$ and MP proves
+$A_0=O(q^{1/16})$ for exactly \eqref{an03wcsv1:objects}.
+Consequently
+$K_0(E_0+d_0+A_0\sqrt n)\le\delta/2$ for small $q$.
+The initial state is strictly inside the guard, every constant is
+fixed, and both errors are nonnegative and absolutely continuous.
+All hypotheses of TAILREP \texttt{selection} are now discharged.
+Its conclusions are exactly
+\eqref{an03wcsv1:Econclusion}--\eqref{an03wcsv1:Wconclusion}.
+
+For explicit rates, logistic integration yields
+\begin{equation}
+ T_n=\frac1\lambda\log\frac{n(1-q^{1/8})}{q^{1/8}(1-n)}
+ =\frac{\ell}{8\lambda}+\frac1\lambda\log\frac n{1-n}+o(1).
+ \label{an03wcsv1:duration}
+\end{equation}
+Hence $E_0e^{-m_0T_n}=O_n(q^{1/20+m_0/(8\lambda)})$.
+The other terms are $O_n(q^{1/20})$ and $O_n(q^{1/16})$,
+which proves \eqref{an03wcsv1:rates}. In particular $T_n\to\infty$.
+The local strong guard is improved to $E_s\le\delta/2$ by the
+invoked theorem, not presumed during the original-field reduction.
+\end{proof}
+
+\section{Step 6: the S5 handoff, with accuracy stated}
+\label{an03wcsv1:handoff}
+All constants in this table are fixed after the displayed constant
+order. Rates with subscript $n$ permit dependence on the chosen
+fixed positive level.
+\begin{longtable}{@{}p{.27\textwidth}p{.67\textwidth}@{}}
+\toprule
+Quantity at $t_n$ & Proved state\\ \midrule\endhead
+Actual strong reference &
+$|z_c-Z_*(n)|_2=O_n(q^{1/20})$, and $E_s\le\delta/2$
+through the selection interval.\\
+Core first moment and mass &
+$\int_\KK m(|x-X_*(n)|+|y-Y_*(n)|)=O_n(q^{1/20})$;
+$\mu_\KK=1+O(q^{11/10})$; inherited radius
+$r_\KK=O(q^{1/20})$.\\
+Weak distance &
+$W_2(\eta_s)=O_n(q^{1/20})$ to $(U_*,V_*)(n)$.
+Under current weights,
+$W_2(\eta_{t_n})\le\|\omega\|_\infty^{1/2}W_2(\eta_s)
+=(1+o(1))W_2(\eta_s)$.\\
+Selected mass and response &
+$N_S/n=1+O_n(q^{1/8})$,
+$c(t_n)=n+O_n(q^{1/8})$.
+The actual clock is $H(t_n)=n\exp(O(d_{\rm ph}))$.\\
+Non-selected mass &
+$\mu_{P_q}+\mu_\Sigma+\mu_\BB
+\le C(q^{1/4}H+q^2)=O_n(q^{1/4})$.
+More specifically
+$\mu_\Sigma\le C(q^5+q^{\Gamma_\nu}H+q^2)$
+and $\mu_\BB\le q^{11/10}$.\\
+Non-selected fields &
+The omitted weak nonlinear functionals and linear moments cost
+$O(q^{1/8})$ for $P_q$,
+$O(q+q^{\Gamma_\nu/2})$ for $\Sigma$,
+and $O(q^{1/10})$ for $\BB$.
+At actual receivers the remaining transverse terms keep their
+explicit admissible polynomial factors.\\
+Outside budgets &
+RB's proved pointwise and integrated ancestry budgets remain valid
+on this subinterval. In particular $\sup\mu_\BB/q\le q^{1/10}$
+and $\int_{t_0}^{t_n}\mu_\BB/q\le20q^{1/10}\ell=o(1)$.\\
+Phase/time &
+With the exact entry clock $H_0=H(t_0)$,
+$t_n-t_0=Q^{-1}\log\{n/[(1-n)H_0]\}+o(1)$.
+Since $H_0\asymp A_q^{-\lambda}q^k$, its expression using
+only $A_q$ has an $O(1)$ seed uncertainty.\\
+\bottomrule
+\end{longtable}
+The first-moment statement follows from SRR's core radius and
+\eqref{an03wcsv1:rates}; fixed mass multiplies the reference
+error. The mass and response statements use MP, not a derivative
+of a small phase error.
+
+For completeness, the time accuracy in the table follows from RB's
+exact identity
+\[
+ t_n-t_0=\frac{\log(H(t_n)/H_0)-\delta_H(t_n)}Q
+                         +\int_{t_0}^{t_n}c,\qquad
+ |\delta_H|\le D_q=o(1).
+\]
+Before $t_s$, SRR \texttt{preforcing} gives
+$c\le C(H+q^2+\mu_\BB)$. The proved backward clock bounds
+$\int_{t_0}^{t_s}H\le Cq^{1/8}$, so that part of $\int c$
+is $o(1)$, retaining the outside term.
+After $t_s$, MP gives $\int|c-N|=o(1)$ and
+$\int_{t_s}^{t_n}N=\lambda^{-1}
+\log[(1-N_0)/(1-n)]$. Combine these with
+$H(t_n)/n=e^{O(d_{\rm ph})}$.
+Replacing $\lambda$ by $Q$ only in the fixed logarithmic
+factor costs $O(q^2)$, proving the asserted $o(1)$ phase.
+Equivalently, with only the entry asymptotics,
+\[
+ t_n-t_0=
+ \frac{k\ell+\lambda\log A_q+\log(n/(1-n))+O(1)}Q.
+\]
+This does not use RB's terminal time as an $o(1)$ clock.
+
+\paragraph{Limitations.}
+The result is $p=2$ selection at a fixed small level and a
+population-to-orbit value comparison. It supplies neither
+$p=\infty$ selection nor pairwise finite-noise contraction.
+The growing chart remains a valid support bound; the $L^2$
+conclusion does not replace it by uniform bounded support.
+Compact-window transfer, any continuation beyond $t_n$, and all
+later retention belong to S5. No prior increment is modified.
+
+\begin{thebibliography}{12}\small\raggedright
+\bibitem{RB} RB, \path{AN03_response_barrier_v1.tex}:
+\texttt{an03rbv1:completed, conclusions, massconclusions, primaryclock, clock}.
+\bibitem{WBR} WBR, \path{AN03_weak_boundary_return_v1.tex}:
+\texttt{an03wbrv1:exact, boundaryidentity, main, clockalignment, latechart, mass}.
+\bibitem{MP} MP, \path{AN03_matching_package_v1.tex}:
+\texttt{an03mpv1:accounting, response, phase, phaseintegral, masses,
+transverse, smallness, massbudgets, linearbudget}.
+\bibitem{SRR} SRR, \path{AN03_strong_reference_reduction_v1.tex}:
+\texttt{an03srrv1:main, W, weights, momentcharge, finiteweak, weakmoments,
+corecollapse, delta, hbound, preforcing}.
+\bibitem{CFA} CFA, \path{AN03_c_form_assembly_v1.tex}:
+compact core Gaussian moments and the exact definition of $V_O$.
+Its strong receiver chart is not used for weak receivers.
+\bibitem{MOMC} MOMC, \path{AN02_moving_overlap_M_clock_passage_v1.tex}:
+the compact core Gaussian moments in its strong reduction proof.
+\bibitem{P} P, \path{THEOREM_A_ANALYTICAL_PROGRESS.tex}:
+\texttt{pa:F, pa:pop-u, pa:pop-v, pa:5d, pa:branch}.
+\bibitem{AN06} AN06, \path{AN06_learned_orbit_witnesses_v2.tex}:
+\texttt{inc:AN06:v2:regiontheorem}.
+\bibitem{WEAK} WEAK, \path{AN03_weak_transit_forcing_and_orbit_selection_v1.tex}:
+\texttt{inc:AN03:weak:v1:forcing, concentration, Wineq}.
+\bibitem{TAILREP} TAILREP,
+\path{AN03_mass_charged_tail_and_selection_defects_v1.tex}:
+\texttt{inc:AN03:tailrepair:v1:weakerror, selection, Econclusion, Wconclusion}.
+\bibitem{PROFILE} PROFILE,
+\path{AN02_strong_entry_profile_and_tail_budget_v1.tex}:
+\texttt{inc:AN02:profile:v1:cost}.
+\end{thebibliography}
+\end{document}

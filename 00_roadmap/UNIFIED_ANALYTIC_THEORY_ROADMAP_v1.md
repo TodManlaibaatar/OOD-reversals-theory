@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.22 — October 31, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.23 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -108,6 +108,13 @@
 - **Fixed for S4e:** $W_2$ under the fixed incoming law $\eta_s$; the weight value conversion $\omega=1+o(1)$; an explicit δ and a new upper bound on h.
 - **Reviewer corrections:** ledger 23 (the S4d prompt's regime-crossing errors, found in my audit), 24 (a coefficient slip in my corrected prompt, caught by SRR) and 25 (eaten TeX escapes in SRR and five committed increments; typesetting only).
 - **Next: S4e,** the weak-chart reduction and selection at a fixed level $n<h$.
+
+**Revision 1.23 (Nov 2).** Records WCS (`AN03_weak_chart_selection_v1`, S4e): **closed. S4 is complete.**
+- **Weak error form.** On $[t_s,t_n]$, up to the strong first exit, the fixed-incoming-law $W_2$ satisfies TAILREP's `weakerror` with $C_w=20$, a pointwise $d_0^{(w)}=O(q^{1/20})$, and $\int\ell_B=o(1)$ uniformly in the level, so $L_*=1$.
+- **Selection.** With the explicit level $n=\tfrac12\min\{h,\tfrac14,\lambda_{\min}g_{\min}/(64C_sB_{\max}C_w)\}$, all of TAILREP `selection`'s hypotheses are discharged: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$.
+- **Meaning.** The initialized original flow reaches a fixed small weak mass with its strong reference and selected weak cohort close to the selected coherent orbit (weak part in $L^2$ of the incoming law), and with an $o(1)$ actual-clock phase.
+- **Reviewer additions:** ledger 26 (an integration-by-parts instruction in my S4e prompt that was not valid away from $u=0$), and an S5 plan that starts with an interface and probe-precision audit (S5a; two risks recorded in S5).
+- **Next: S5a.**
 
 ---
 
@@ -811,6 +818,22 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - **Value-only route.** TAILREP's remark after `weakerror` says population-to-orbit comparison needs value bounds at actual receivers, while receiver derivatives are needed only for pairwise contraction. So the weak reduction can compare each receiver's velocity with a leading-form field built from the actual positive donor measures, and take the contraction from that field on $u\ge0$.
   - **Admissible growth.** On the reached chart, a per-label error of size $q^j\times$(degree-$i$ monomial in $|u|,|v|$) splits into $\ell_B(|u-U_*|+|v-V_*|)$ plus an additive $o(1)$ term exactly when $j>\tfrac{603}{640}(i-1)$. Any other term needs its signed leading value (ledger 22).
 - *Remaining S4:* S4e (1 session, possibly 2).
+  - *S4e is done (WCS, next block).*
+
+**Status after WCS (`AN03_weak_chart_selection_v1`, S4e, Nov 2): closed. S4 complete.**
+- *Theorem A' (weak error form).* On $[t_s,t_n]$, up to the first exit from $E_s<\delta$: $D^+W_2\le[-\lambda(1-N)/2+N/2+\ell_B]W_2+20(E_s+d_0^{(w)})$, with $d_0^{(w)}=C_{\rm wcs}q^{1/20}$, $\ell_B=\tfrac\lambda2|c-N|+\tfrac N2\epsilon_w+C\{|1-\mu_{\mathcal K}|+q+q^2(1+L^2)\}\ge0$, and $\int_{t_s}^{t_e}\ell_B=o(1)$, bounded without reference to $t_n$, so $L_*=1$ is fixed before n.
+- *Theorem (initialized $L^2$ selection inside the weak passage).* Constant order WPT/RB → WBR → $(a=1/8,p=2)$ → $(\delta,g_W,C_s)$ → h → $(C_w,L_*)$ → n → q. With the explicit n above, $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ and the strong guard closes to $\delta/2$.
+- *Checked (reviewer, Nov 2):*
+  - **Exact velocities.** The θ-direction of $a=(s_u,c_u)$ is $-p$ and the ψ-direction of $b$ is $b^\perp$, so $2u'=q^{-1}\sum_j\mathbb E_{P_j}[(b\cdot(X-f))(p\cdot X)1_A]$ and $2v'=q^{-1}\sum_j\mathbb E_{P_j}[(b^\perp\cdot(X-f))(a\cdot X)1_A]$, with the mixture factor ½.
+  - **Tangent integration by parts.** On $P_1$, $a\cdot X=q(r+T)$ and $p\cdot X=c_u+qZ_\perp$, with $T,Z_\perp$ independent; the receiver gate depends on T only, and $\partial_{Z_\perp}(U\cdot X)=qU\cdot p$. All four projected target moments re-derived, including $\mathbb E(T+r)_+^2-r\mathsf K(r)=\Phi(r)$.
+  - **$P_2$ matrix.** $B_{22}=Q(1-c)$ by the definition of c; $B_{12}=-q\rho K_c+qQV_O+O(q^3)$ from $\mathbb E_V[V\mathsf K(t_xV)]$ with $V\sim N(\rho,q^2)$; $B_{11}=O(q^2)$, $B_{21}=O(q^3)$. The leading coefficients reproduce `pa:pop-u` and `pa:pop-v` exactly, which also checks the normalization.
+  - **Growth.** Gaussian saturation ($s_u/q\in[u/2,u]$ for $qu\le1/2$) gives $|\Phi(s_u/q)-\Phi(u)|=O(q^2)$, removing the apparent $q^2|v|u^3$. Admissibility exponents $j-\tfrac{603}{640}(i-1)$: 1, 677/640 and 37/320, all positive.
+  - **Contraction.** $F_t=(r-t)_+\phi(t)\ge0$ makes $\mathcal W_S'\ge0$, so the comparator derivative is at most $-\lambda(1-c)/2$ on $u\ge0$ with $Y\ge3/320$; only value bounds of the remainder are used.
+  - **Constants.** $(1+\lambda)\mu_{\mathcal K}\le3$ gives the $\tfrac32E_s$ coefficient. For Θ: $B_*\le e\,2^{1/(2\lambda_{\min})}$, $a_0-m_0\ge\lambda_{\min}/8$, $g-m_0\ge g_{\min}/2$ (since $g_W\ge\gamma_*/2$), so $\Theta\le16C_sB_{\max}C_wn/(\lambda_{\min}g_{\min})\le1/8$.
+  - **Times.** $T_n=\ell/(8\lambda)+\lambda^{-1}\log(n/(1-n))+o(1)$; $t_n-t_0=Q^{-1}\log\{n/[(1-n)H_0]\}+o(1)$ from RB's exact clock identity with the pre-$t_s$ $\int c=o(1)$.
+- *Weight derivative:* not needed (the norm is on fixed labels), as the v1.22 note expected.
+- *Handoff at $t_n$ (WCS `handoff`):* $|z_c-Z_*(n)|=O_n(q^{1/20})$; core first moment about the atom $O_n(q^{1/20})$, $\mu_{\mathcal K}=1+O(q^{11/10})$; $W_2(\eta_s)=O_n(q^{1/20})$ and $(1+o(1))$ that under current weights; $N_S/n=1+O_n(q^{1/8})$, $c(t_n)=n+O_n(q^{1/8})$; non-selected weak mass $O_n(q^{1/4})$ with field charges $O(q^{1/8})$, $O(q+q^{\Gamma_\nu/2})$, $O(q^{1/10})$; $\sup\mu_{\mathcal B}/q\le q^{1/10}$.
+- *Limits:* $p=2$, not $p=\infty$; no bounded weak support; nothing past $t_n$.
 
 **Original claim (v1; "bounded chart" superseded by SI).** The Q2 bulk, which is on the strong side at angle $\approx q^{0.52}$ at κ=10 strong entry (target-only), returns into a bounded weak chart with $u\ge0$. Its evolution there matches a closed leading weak family with $\sqrt{N_0}\,W_p(t_0)\to0$, and its response clock matches the logistic half-mass phase to $o(1)$.
 
@@ -841,6 +864,40 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
 - **Probe-gate strips.**
 
 **Unlocks.** Theorem A by WIT + LPR; initialized persistence by LP's diagonal argument with no further limiting work.
+
+**Revised plan (Nov 2, after WCS; reviewer proposal, to verify).**
+- *Starting point.* WCS's state at $t_n$, a fixed small weak mass, inside the weak passage.
+- *Consumers:*
+  - WIT `populationtransfer` (tolerance $\varepsilon_*$ in the first-moment distance `distance`) and `propagation`;
+  - WIT `ratebound` and `clockalignment`;
+  - LP `diagonal-transfer` (persistence);
+  - LPR `combinedtheorem`;
+  - H2 §3.2 and the AN7 contract, items 1–6.
+- *Risk 1: compact support.*
+  - WIT `populationtransfer` and `propagation` assume chart supports in $[-R,R]^2$ for both families, and `propagation` has coefficient $e^{64R(s-a)}$.
+  - At $t_n$ no proved bound gives the selected weak cohort a bounded support. WBR/BULK give only $|u|+|v|\le Cq^{-p}$ with $p>9/10$ even after BULK's time decay ($603/640$ less at most $\tfrac1{32}\cdot\tfrac Q\lambda$). WEAK's multiplier from MP's incoming support gives $W_\infty(t_n)\lesssim q^{1/16}L\to\infty$.
+  - What looks available, to verify:
+    - `ratebound` uses the weak family only through $K_w,V,N$, which are Lipschitz in the first moment without support bounds;
+    - $\eta_s$-mass beyond unit distance from the branch is at most $W_2^2$;
+    - the selected weak family is probe-inactive on the whole reached chart, since $a_w\cdot\xi_q=-\cos(q(u+\zeta))<0$ whenever $q|u+\zeta|<\pi/2$.
+  - So a version of WIT's transfer with compact strong support and first-moment weak control is plausible.
+- *Risk 2: $q^{-2}$ precision for probe-active outside labels.*
+  - With $\xi_q=(\sin q\zeta,-\cos q\zeta)$, a label is probe-active iff its input angle lies in $(q\zeta-\pi,q\zeta)$. Q1 above the probe offset, Q2 and the whole weak family are inactive.
+  - Active non-core populations:
+    - the strong complement below or near the axis;
+    - the Q3 interior;
+    - the 3π/2 strip, adjacent to the probe direction $-\pi/2+q\zeta$;
+    - the part of the π strip beyond $\pi+q\zeta$.
+  - An active label contributes $-(W\cdot\xi)(U\cdot\xi)_+$ to $E-\tfrac12$, which can be as large as its mass m.
+  - The proved outside budgets are mass rates: complement $\mu\lesssim q^{1+\Delta_\nu}$ ($\Delta_\nu>3/25$); Q3 interior $\mu\lesssim q^{10}$; π strip $\mu\lesssim q^{1+411/800}$ (polylog); $J_3$ $\mu\lesssim q^{1+769/4000}$ (polylog). In total $\mu_{\mathcal B}\le q^{11/10}$, while A-error-transfer needs these contributions to be $o(q^2)$.
+  - The crude charge therefore fails by up to $q^{-9/10}$. S5 needs probe-sector mass or second-moment bounds, or the signed geometry (for aligned labels the contribution is $\le0$), and the same for their rates.
+- *Risk 3: continuation past $t_b$.* Every passage estimate is proved for $0\le c\le c_b$. WIT's windows lie a fixed time after $t_n$, where $N\ge1/4$, so a finite-time bootstrap must carry residual, core, outside and weak bounds past $t_b$ with fixed $e^{CT}$ losses.
+- *Clock.* An analytic original centering is available: $\tau_h:=t_n+\lambda^{-1}\log((1-n)/n)$, the half-mass time of the same exact logistic N. WCS gives its $o(1)$ actual-clock phase.
+- *Sessions (estimate 4, possibly 5):*
+  - **S5a.** Interface and probe-precision audit: inventory, static probe-activity classification, the precision ledger, and a leading-system transfer lemma with non-compact weak support.
+  - **S5b.** Finite-time original-flow continuation from $t_n$ to the windows, and the original-to-leading reduction there.
+  - **S5c.** Outside and background probe budgets, and A-error-transfer on every fixed window.
+  - **S5d.** A-rate-transfer on the gate-separated windows; the AN8 assembly (Theorem A via WIT + LPR, persistence via LP).
 
 ### S6. The exact finite-noise lag (AN1)
 
@@ -920,10 +977,10 @@ Tracks that can run in parallel:
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
 | II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem, and **RB proved the response barrier: the deep-regime weak passage is a theorem.** Track II is complete; next is S4 (track III). |
-| III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction** (strong error form on $[t_s,t_n]$; $E_0=O(q^{1/20})$). **Next: S4e,** the weak-chart reduction and selection at a fixed $n<h$. |
+| III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction**, and **S4e (WCS) closed the weak-chart reduction and selection**: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ at a fixed small weak mass. **Track III is complete.** |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
-| — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. |
+| — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **Next: S5a,** the interface and probe-precision audit (S5 revised plan). |
 
 **Dependency sketch**
 
@@ -1015,7 +1072,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 24. **Coefficient slip (my corrected S4d prompt).** Step 5 said $c\le C(H+q^2)$ while also listing $c_{\mathcal B}\le C\mu_{\mathcal B}$. RB's guard gives only $\mu_{\mathcal B}\le q^{11/10}$, which is not $O(q^2)$. SRR kept $c\le C(H+q^2+\mu_{\mathcal B})$, and the conclusion is unaffected. The same prompt also asked for $H_{G_+}\lesssim H$ before $t_s$ to be checked through RCET; RB `primaryclock` already proves it on the whole passage. *Rule:* as in item 19, do not absorb a term into a smaller power without the inequality that justifies it, and cite the proved conclusion rather than re-deriving it.
 25. **Eaten TeX escapes (artifact; found while reviewing SRR).** In some delivered files a backslash escape became a control character: `\r` became CR or LF (from `\rm`), `\t` became TAB (from `\tfrac`), and one `\qquad` lost its backslash. TeX compiles these without warnings, so compile checks miss them, but the typeset formulas read wrong (for example "−frac12Q(1−2c)").
     - *Locations:*
-      - SRR (not yet committed): lines 323–324 (`d_{\rm ph}`);
+      - SRR (committed unchanged): lines 323–324 (`d_{\rm ph}`);
       - SI: line 319;
       - WPT: lines 465 and 475;
       - RB: lines 335, 429, 513, 515 (also `qquad`) and 516;
@@ -1023,6 +1080,10 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
       - LSB: line 181.
     - These are typesetting defects only; no statement's mathematics changes. Prior increments are frozen, so they are recorded here rather than edited. Fix them only by an explicitly approved errata-only commit.
     - *Rule:* before delivery, every work session scans its .tex with `grep -nP '[\x00-\x09\x0b-\x1f]'` and checks that `\rm`, `\tfrac`, `\qquad` and `\text` survive.
+26. **An integration-by-parts instruction that does not extend (my S4e prompt).** I asked S4e to extend WBR's integration by parts in $X_1$ from $u=0$ to the whole chart. At $u\ne0$ the $P_1$ receiver gate $\{a\cdot X>0\}$ depends on $X_1$, so integrating by parts in $X_1$ would differentiate the gate. WCS used instead the rotated variable $Z_\perp=c_uZ_1-s_uZ_2$, which is tangent to the gate's level sets and equals $Z_1$ at $u=0$. WCS also avoided a spurious inadmissible term $q^2|v|u^3$ by using Gaussian saturation in place of a global Lipschitz bound.
+    - *Rules:*
+      - Integrate by parts only in a variable on which the receiver gate does not depend; at a general receiver this is the direction tangent to the gate's level set.
+      - Before declaring a growth term inadmissible, bound it using the Gaussian factor it carries (a polynomial times a Gaussian is bounded), not a global Lipschitz constant.
 
 ---
 
@@ -1066,6 +1127,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | WBR | `AN03_weak_boundary_return_v1.tex` (+ review), prefix `an03wbrv1:` — S4b, closed: exact weak-boundary moments; one-sided weak feedback by energy; pointwise strong-mass rate; $O(q)$ clock alignment; original input return of the whole clock to a fixed level |
 | MP | `AN03_matching_package_v1.tex` (+ review), prefix `an03mpv1:` — S4c, closed: population accounting (band $\asymp q^{1/4}$); response $c=H(1+O(q^{1/4}))+O(q^2)$; uniform $o(1)$ logistic phase; $J_S\le C(q^3+q^2H)$; $A_0=O(q^{1/16})$ ($p=2$); late mass-defect budgets |
 | SRR | `AN03_strong_reference_reduction_v1.tex` (+ review), prefix `an03srrv1:` — S4d, closed: CFA's actual reference in TAILREP `strongerror` form on $[t_s,t_n]$ ($g_W=\gamma/2$, $C_s=980$, pointwise $d_0^{(s)}=O(q^{1/20})$); $E_0=O(q^{1/20})$ via CFA `localineq` before $t_s$; superpolynomial late primary tail; fixed-label $W_2$ convention and weight value conversion; explicit δ and h bound |
+| WCS | `AN03_weak_chart_selection_v1.tex` (+ review), prefix `an03wcsv1:` — S4e, closed: exact weak-receiver velocities by tangent Gaussian integration by parts; growing-chart value reduction with admissible linear/cubic growth; value-only weak error form ($C_w=20$, $d_0^{(w)}=O(q^{1/20})$, $L_*=1$); explicit level n with $\Theta\le1/8$; **initialized $L^2$ selection** $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$; S5 handoff |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |
