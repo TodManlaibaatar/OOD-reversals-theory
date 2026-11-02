@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.23 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.24 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -115,6 +115,17 @@
 - **Meaning.** The initialized original flow reaches a fixed small weak mass with its strong reference and selected weak cohort close to the selected coherent orbit (weak part in $L^2$ of the incoming law), and with an $o(1)$ actual-clock phase.
 - **Reviewer additions:** ledger 26 (an integration-by-parts instruction in my S4e prompt that was not valid away from $u=0$), and an S5 plan that starts with an interface and probe-precision audit (S5a; two risks recorded in S5).
 - **Next: S5a.**
+
+**Revision 1.24 (Nov 2).** Records CWI (`AN07_compact_window_interface_v1`, S5a): **audit complete; leading extension closed.**
+- **Interface and clock.** Every consumer hypothesis is inventoried. The centering $\tau_h=t_n+\lambda^{-1}\log((1-n)/n)$ is admissible, and $\tau=\mu_1^2t_{\rm phys}$.
+- **Exact precision criterion.** $E-E^{\mathcal K}=o(q^2)\iff\mathcal Q_{\Sigma\cup\mathcal B}=o(q^2)$, where $\mathcal Q_T=\int_Tm[\sin(q\zeta-\theta)]_+^2$. The core's static error and source rates at entry are paid.
+- **Unpaid at entry:** Σ's lower-half slice, the strong complement, the inner π strip and $J_3$. The existing tail majorant fails ($\Xi_\nu\le915/604<2$ at $\lambda=49/100$).
+- **Leading extension.** WIT's transfer, rate and propagation results hold with strong-only compact support and finite weak first moments, with unchanged constants.
+- **Reviewer additions:**
+  - ledger 27 (four errors in my S5a prompt and the v1.23 plan);
+  - a proposed lower-half transverse-energy route that would pay every unpaid cohort at once;
+  - the S5 sessions reordered so that probe precision comes before continuation.
+- **Next: S5b,** probe-sector energy and entry precision.
 
 ---
 
@@ -898,6 +909,49 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - **S5b.** Finite-time original-flow continuation from $t_n$ to the windows, and the original-to-leading reduction there.
   - **S5c.** Outside and background probe budgets, and A-error-transfer on every fixed window.
   - **S5d.** A-rate-transfer on the gate-separated windows; the AN8 assembly (Theorem A via WIT + LPR, persistence via LP).
+  - *Reordered in v1.24; see the next block.*
+
+**Status after CWI (`AN07_compact_window_interface_v1`, S5a, Nov 2): audit complete; leading extension closed.**
+- *Closed:*
+  - **Clock.** $\tau=\mu_1^2t_{\rm phys}$. $\tau_h=t_n+\lambda^{-1}\log((1-n)/n)$ is the exact center of WCS's auxiliary logistic, equal to $t_0-Q^{-1}\log H_0+o(1)$. It is not an original half-mass hit.
+  - **Activity** (`signs`). $a_\theta\cdot\xi_q=\sin(q\zeta-\theta)$, so a label is active iff $\theta\in(q\zeta-\pi,q\zeta)$, with both endpoints at zero. $G_+$ (S and $P_q$) is inactive at $t_n$ by the late RCET ratio. Q2 inactivity needs $\zeta\ge0$.
+  - **Exact split** (`split`, `equivalence`). $E-E^{\mathcal K}=-\mathcal Q_T+\mathcal A_T+f_{\mathcal K}\cdot f_T+\tfrac12|f_T|^2$ with $T=\Sigma\cup\mathcal B$, and it is $o(q^2)$ iff $\mathcal Q_T=o(q^2)$.
+  - **Core at entry** (`corestatic`, `corerates`). Static error and source rates $O_n(q^{2+1/20})+O(q^4)$.
+  - **Outside rate charge** (`ratecharge`). $|\xi_q\cdot\dot f_{T,p}|\le C(\mathcal Q_T+q^2(1+\ell)^2\mu_T)$.
+  - **Leading extension** (`rate`, `propagation`, `witness`). The constants $64R^2(1+g_0^{-1})$, $10R^2$ and $e^{64R(s-a)}$ are unchanged, with strong-only compact support and finite weak first moments. A one-sided weak receiver derivative bound $\le R+1$ replaces the absolute Lipschitz bound.
+- *Gaps at entry (after division by $q^2$):*
+  - Σ: only its lower-half slice remains unpaid;
+  - strong complement: the tail test gives exponent $\Xi_\nu\le915/604<2$ at $\lambda=49/100$;
+  - inner π strip: $q^{-389/800}$;
+  - $J_3$: $q^{-3231/4000}$.
+- *Checked (reviewer):*
+  - the activity identity, the split algebra and the Young step;
+  - $G_+$ inactivity from the RCET ratio;
+  - $\Gamma_\nu\le481/1020$ (derivative $-5+2/(1-\lambda)^2>0$ on the box);
+  - the tail-test rationals: $B(49/100,1/2)=311/604$, so $\Xi_\nu\le1+B=915/604$; bracket $-8093/200$; corner $54762159/43757500$ with $R_g=-303/2500$;
+  - the exponents $1211/800-2=-389/800$ and $4769/4000-2=-3231/4000$;
+  - the one-sided derivative bound ($|u|\phi(u)\le\phi(1)<1$, $\phi\le\phi(0)<2/5$, $\lambda|1-N|\le1$);
+  - the exact rate formula ($m'=2gm$, $\theta'=v_\theta$, $\psi'=v_\psi$).
+- *Reviewer observation: a proposed lower-half energy route.* The static part is checked; the dynamics are not verified.
+  - **Static.** $U\cdot\xi_q=U_1\sin q\zeta-U_2\cos q\zeta\le q\zeta|U_1|+(U_2)_-$ for $\zeta\ge0$. Hence, for every state, $\mathcal Q_T\le2q^2\zeta^2\mu_T+2\mathfrak E_T$, where $\mathfrak E_T=\int_T(U_2)_-^2$.
+  - **Dynamics.** $U_2'=W_1R_{12}+W_2R_{22}$ with $R_{ij}=\mathbb E_{\rm mix}[(X-f)_iX_j1\{U\cdot X>0\}]$, and:
+    - $R_{12}=O(q)$ for every receiver;
+    - $R^{(1)}_{22}=O(q^2)$;
+    - for $U_2<0$ the $P_2$ gate is open with probability only about $\Phi(-\rho|\sin\theta|/q)$;
+    - labels enter $\{U_2<0\}$ only through $U_2=0$.
+    
+    So $\mathfrak E_T$ should grow only through terms Young absorbs at weight $1/\ell$ over the $O(\ell)$ duration: $\mathfrak E_T(t)\le C[q^{10}+q^2(1+\ell)^j\sup\mu_T]=o(q^2)$ for $T=\Sigma\cup\mathcal B$. That would pay every unpaid cohort at once, including transit labels.
+  - **Why the tail test failed.** Its majorant multiplied the full mass gain by $\min(1,A\xi^2)$; the energy route keeps angle and gain together.
+- *Reviewer observation: entry at smaller levels.* WCS's bound $\Theta\le16C_sB_{\max}C_wn'/(\lambda_{\min}g_{\min})$ holds for every $n'\le1/2$. So its selection theorem should apply at every fixed $n'\in(0,n]$, with constants uniform on compact level sets (to verify in S5b). That would give entry comparisons for every window $s\le s_n$.
+- *S5 sessions, reordered (estimate 3, possibly 4):*
+  - **S5b (next): probe-sector energy and entry precision.**
+    - The static and dynamic $\mathfrak E_T$ bounds on $[0,t_b]$, paying $\mathcal Q_{\Sigma\cup\mathcal B}=o(q^2)$ on $[t_s,t_b]$.
+    - The entry error and rate comparison at every fixed $n'\le n$.
+    - The exact list of bounds to continue past $t_b$.
+    
+    This is risk-first: under continued matrix bounds, $\mathcal Q_T$ changes over a fixed window only by $e^{\pm CT}$ factors plus $O(q^2(1+\ell)^2\mu_T)$, so entry precision is effectively necessary.
+  - **S5c: continuation.** From $t_n$ through the windows: passage-internal up to $t_b$, then a finite-time bootstrap past $t_b$ for the masses, the matrix and alignment bounds S5b needs, the original-to-leading reduction in CWI's first-moment norm, and the mass/logit phase.
+  - **S5d: transfer and assembly.** A-error-transfer on every fixed window, A-rate-transfer on WIT's $J$, then AN8 (Theorem A via WIT + LPR, persistence via LP).
 
 ### S6. The exact finite-noise lag (AN1)
 
@@ -980,7 +1034,7 @@ Tracks that can run in parallel:
 | III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction**, and **S4e (WCS) closed the weak-chart reduction and selection**: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ at a fixed small weak mass. **Track III is complete.** |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
-| — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **Next: S5a,** the interface and probe-precision audit (S5 revised plan). |
+| — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **Next: S5b,** probe-sector energy and entry precision. |
 
 **Dependency sketch**
 
@@ -1084,6 +1138,15 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
     - *Rules:*
       - Integrate by parts only in a variable on which the receiver gate does not depend; at a general receiver this is the direction tangent to the gate's level set.
       - Before declaring a growth term inadmissible, bound it using the Gaussian factor it carries (a polynomial times a Gaussian is bounded), not a global Lipschitz constant.
+27. **Activity and precision misstatements (my S5a prompt and the v1.23 S5 plan).** CWI corrected all four.
+    - *A sign claim stated for both signs of a parameter.* I asked for Q2 inactivity for all $|\zeta|\le R$. For $\zeta<0$ the label at $\theta=\pi$ is active, since its input is $-\sin(q\zeta)>0$. WIT's offsets are positive, so nothing downstream breaks.
+    - *Ancestry taken for current angle.* I wrote that "the whole weak family" is probe-inactive. Inactivity is proved only for $G_+$ (S and $P_q$), via the late RCET ratio. Recruited Σ labels can sit in the strong chart or on the lower side.
+    - *Mass used as the precision measure.* Risk 2 compared outside masses with $q^2$. The exact criterion is the mass-weighted squared active input $\mathcal Q_T$; mass is only an upper bound.
+    - *A sign offered as payment.* I suggested the aligned contribution being $\le0$ might help. A one-signed term still needs two-sided $o(q^2)$ precision.
+    - *Rules:*
+      - Classify activity by current angle, not ancestry, and check every sign claim at both signs of each parameter.
+      - State a precision requirement in the exact observable, not in a majorant such as mass.
+      - A one-signed contribution is not paid by its sign.
 
 ---
 
@@ -1128,6 +1191,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | MP | `AN03_matching_package_v1.tex` (+ review), prefix `an03mpv1:` — S4c, closed: population accounting (band $\asymp q^{1/4}$); response $c=H(1+O(q^{1/4}))+O(q^2)$; uniform $o(1)$ logistic phase; $J_S\le C(q^3+q^2H)$; $A_0=O(q^{1/16})$ ($p=2$); late mass-defect budgets |
 | SRR | `AN03_strong_reference_reduction_v1.tex` (+ review), prefix `an03srrv1:` — S4d, closed: CFA's actual reference in TAILREP `strongerror` form on $[t_s,t_n]$ ($g_W=\gamma/2$, $C_s=980$, pointwise $d_0^{(s)}=O(q^{1/20})$); $E_0=O(q^{1/20})$ via CFA `localineq` before $t_s$; superpolynomial late primary tail; fixed-label $W_2$ convention and weight value conversion; explicit δ and h bound |
 | WCS | `AN03_weak_chart_selection_v1.tex` (+ review), prefix `an03wcsv1:` — S4e, closed: exact weak-receiver velocities by tangent Gaussian integration by parts; growing-chart value reduction with admissible linear/cubic growth; value-only weak error form ($C_w=20$, $d_0^{(w)}=O(q^{1/20})$, $L_*=1$); explicit level n with $\Theta\le1/8$; **initialized $L^2$ selection** $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$; S5 handoff |
+| CWI | `07_compact_windows_AN07/AN07_compact_window_interface_v1.tex` (+ review), prefix `an07cwiv1:` — S5a, audit: consumer interface; centering $\tau_h$ and time units; exact probe-activity classification; precision criterion $\mathcal Q_{\Sigma\cup\mathcal B}=o(q^2)$ with paid and unpaid cohorts; core entry error and rates; outside rate charge; leading WIT extension with strong-only compact support |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

@@ -4,7 +4,7 @@ Working repository for an **analytic** theory of out-of-distribution (OOD) probe
 
 The empirical phenomenon: after both concepts are learned, an off-cone probe's error first decreases and then rises. Cluster 1 (strong concept) helps the probe through the strong family's output. Cluster 2 (weak concept) harms it by rotating the strong family's inputs, driven by residual that the weak family produces. The goal is one unified theory that proves this mechanism from initialization.
 
-**Current status.** The mechanism is proved within the leading small-noise population system. In the trained network itself, everything from initialization through strong half mass is now proved unconditionally at $S_0=q^{10}$ (S1). That covers the strong profile and every entry contract the weak passage needs. The residual-norm closure for the weak passage (S0) is proved conditionally. S2 and S3 are closed in stopped-guard form (S2CP, CFA), with a conditional CLOCK passage. The Q3 strip budgets are complete (Q3SB, PISB, LSB). The joint assembly (WPT) and the response barrier (RB) complete the **initialized deep-regime weak-passage theorem**. The selection-stage audit (SI, S4a) stopped at the original weak input return, which WBR (S4b) then proved, the matching package (MP, S4c) is closed, and the strong-reference reduction (SRR, S4d) and the weak-chart reduction with selection (WCS, S4e) are closed: **the initialized flow selects the coherent orbit at a fixed small weak mass.** What remains open is compact-window transfer (S5), the exact lag (S6), and the canonical-regime bridge (S7, S8). See `00_roadmap/UNIFIED_ANALYTIC_THEORY_ROADMAP_v1.md` for the full status and the remaining steps.
+**Current status.** The mechanism is proved within the leading small-noise population system. In the trained network itself, everything from initialization through strong half mass is now proved unconditionally at $S_0=q^{10}$ (S1). That covers the strong profile and every entry contract the weak passage needs. The residual-norm closure for the weak passage (S0) is proved conditionally. S2 and S3 are closed in stopped-guard form (S2CP, CFA), with a conditional CLOCK passage. The Q3 strip budgets are complete (Q3SB, PISB, LSB). The joint assembly (WPT) and the response barrier (RB) complete the **initialized deep-regime weak-passage theorem**. The selection-stage audit (SI, S4a) stopped at the original weak input return, which WBR (S4b) then proved, the matching package (MP, S4c) is closed, and the strong-reference reduction (SRR, S4d) and the weak-chart reduction with selection (WCS, S4e) are closed: **the initialized flow selects the coherent orbit at a fixed small weak mass.** The compact-window interface audit (CWI, S5a) is done; it reduces the probe comparison to an exact outside precision condition. What remains open is compact-window transfer itself (S5b–S5d), the exact lag (S6), and the canonical-regime bridge (S7, S8). See `00_roadmap/UNIFIED_ANALYTIC_THEORY_ROADMAP_v1.md` for the full status and the remaining steps.
 
 > This repository contains unpublished research. Keep it private unless you intend to share it.
 
@@ -107,6 +107,12 @@ Each proof increment is a `.tex` file with a same-stem `_review.md` (where one e
 |---|---|
 | `main-15.tex` | Historical research notebook. Reuse only checked statements with their exact assumptions. |
 | `main-appendix-frozen-theory-selfcontained.tex` | Historical appendix with conditional and certificate-era arguments. Do not infer initialized entry from its conditional results. |
+
+### `07_compact_windows_AN07/` — compact-window matching (AN7)
+
+| File | Contents |
+|---|---|
+| `AN07_compact_window_interface_v1` **[CWI]** | S5a, audit. Inventories every hypothesis of the window consumers (WIT, LP, LPR, H2's transfer contracts) against the state the selection stage delivers. Fixes the time centering, classifies which labels are active at the probe, and reduces the outside part of the probe comparison to one exact precision condition, listing which populations it is already proved for. Also extends WIT's leading-system transfer to weak populations without bounded support. |
 
 ### `99_archive/` — superseded files, kept for audit only
 

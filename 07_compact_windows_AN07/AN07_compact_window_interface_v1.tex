@@ -1,0 +1,1074 @@
+% Standalone increment: no prior source is modified.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.86in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,array,longtable,booktabs,xurl}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}\newcommand{\dd}{\,d}
+\newcommand{\one}{\mathbf1}\newcommand{\eps}{\varepsilon}
+\newcommand{\KK}{\mathcal K}\newcommand{\BB}{\mathcal B}
+\newcommand{\Gp}{{G_+}}\newcommand{\CC}{\mathcal C}
+\newcommand{\Kfun}{\mathsf K}\newcommand{\Ffun}{\mathsf F}
+\newcommand{\dist}{\mathfrak d}
+\title{Compact-window interface and probe-precision audit\\
+with a first-moment leading-population extension}
+\author{Standalone analytical increment for independent review}
+\date{Version 1 --- 2 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The selected entry at a fixed small logistic level supplies a
+mass-weighted first-moment comparison, but not compact weak support
+or an original-flow comparison on the learned windows. We identify the
+correct normalized centering and classify probe activity, including
+boundary labels and the distinction between ancestry and current angle.
+At entry, the unpaid outside probe quantity is a mass-weighted squared
+active input, at precision \(o(q^2)\); its source-rate analogue is
+controlled by the same quantity under the passage bounds. Existing
+mass and tail estimates do not discharge every such charge.
+In the defined leading system, WIT's rate robustness and finite-window
+propagation extend to finite first weak moments, with its original
+constants. This yields a strong-only compact-support version of its
+population witness implication. No original trajectory is continued
+beyond its proved interval.
+\end{abstract}
+
+\section{Scope, conventions and the consumer inventory}
+\label{an07cwiv1:scope}
+Throughout \(\kappa=10\), \(\rho\in[13/20,7/10]\),
+\(\lambda=\rho^2\), \(Q=\lambda+q^2\), \(\ell=\log(1/q)\),
+and \(\chi=1/20\). Initial radial scale is \(S_0=q^{10}\).
+The original balanced representation is
+\[
+ U=\sqrt m\,a_\theta,\quad W=\sqrt m\,a_\psi,\qquad
+ a_\theta=(\cos\theta,\sin\theta),\qquad
+ f_T(X)=\int_Tm a_\psi(a_\theta\cdot X)_+\dd\lambda_0 .
+\]
+All cohorts used in output or rate decompositions are fixed labels.
+Retain the partition \(\KK,\Gp,\Sigma,\BB\), selected clock
+\(S=\mathcal C_q\), \(P_q=\Gp\setminus S\), and the outside
+decomposition of RB. In particular \(\CC\subset\BB\) denotes the
+fixed strong complement, not all nonselected labels.
+In this note \(M=\mu_\KK\) and \(N\) is a leading weak mass;
+neither is the residual constant \(M_{\rm res}\).
+The leading coordinates are
+\[
+ a_s=(\cos qx,\sin qx),\quad b_s=(\cos qy,\sin qy),\qquad
+ a_w=(\sin qu,\cos qu),\quad b_w=(-\sin qv,\cos qv).
+\]
+Thus the opposite conventions for weak input and output are preserved.
+
+Sources are cited by exact label suffixes: WIT has prefix
+\texttt{inc:AN06:v2:}; LP \texttt{inc:LP:v1:}; LPR
+\texttt{inc:LPR:v1:}; TAILREP \texttt{inc:AN03:tailrepair:v1:}.
+WCS, RB, SRR, CFA and S2CP have the prefixes specified in the
+roadmap's source ledger. H2 means the handoff, Section 3.2 and AN7.
+The companion review records repository paths and fetched blob hashes.
+
+\paragraph{Entry already proved, not assumed anew.}
+Keep WCS's explicit level
+\[
+ n=\frac12\min\left\{h,\frac14,
+ \frac{\lambda_{\min}g_{\min}}{64(980)B_{\max}(20)}\right\},
+ \quad \lambda_{\min}=\frac{169}{400},\
+ g_{\min}=\frac{1183}{41600},\
+ B_{\max}=\mathrm e\,2^{1/(2\lambda_{\min})}.
+\]
+WCS \texttt{main,handoff} gives, at its exact auxiliary-logistic hit
+\(t_n<t_e<t_b\),
+\begin{align}
+ E_s+W_2&=O_n(q^\chi),&
+ r_\KK&=O(q^\chi),&
+ M&=1+O(q^{11/10}), \notag\\
+ N_S/n&=1+O_n(q^{1/8}),&
+ c&=n+O_n(q^{1/8}),&
+ \sup\mu_\BB/q&\le q^{1/10}.
+ \label{an07cwiv1:entry}
+\end{align}
+The \(W_2\) law is the fixed incoming probability \(\eta_s\);
+current probability differs by a uniformly \(1+o(1)\) density.
+Consequently, with the physical current core and selected measures,
+\begin{equation}
+ \begin{split}
+ \dist(t_n):={}&|M-1|+|N_S-n|\\
+ &+\int_\KK(|x-X_*(n)|+|y-Y_*(n)|)\dd\mu\\
+ &+\int_S(|u-U_*(n)|+|v-V_*(n)|)\dd\mu
+ =O_n(q^\chi).
+ \end{split}
+ \label{an07cwiv1:entrydistance}
+\end{equation}
+This uses \(L^2(\eta_s)\) to \(L^1(\eta_s)\), not a support
+estimate. WBR/WCS only give a growing weak chart
+\(|u|+|v|\le Cq^{-p_w}\), with \(9/10<p_w<1\).
+
+\subsection{Time and parameter range}
+\begin{proposition}[An admissible comparison clock, not an unproved hit]
+\label{an07cwiv1:time}
+The times denoted by \(t\) in the passage sources obey
+\(\tau=\mu_1^2 t_{\rm phys}\) (\(\tau:\text{ normalized time}\)). Set
+\begin{equation}
+ \tau_h=t_n+\lambda^{-1}\log\frac{1-n}{n},\qquad
+ s=\tau-\tau_h,\qquad s_n=\lambda^{-1}\log\frac n{1-n}.
+ \label{an07cwiv1:center}
+\end{equation}
+This is exactly the half-mass center of WCS's own auxiliary logistic
+mass, at the same \(\rho\). It is analytically defined by the proved
+hit \(t_n\). In LP use \(t_h^{\rm phys}=\tau_h/\mu_1^2\), so that
+\[
+ t_h^{\rm phys}+s/\mu_1^2=(\tau_h+s)/\mu_1^2,\qquad
+ D_p^{\rm phys}=\mu_1^2D_p^\tau .
+ \]
+The probe remains a unit vector. Moreover
+\begin{equation}
+ \tau_h=t_0-Q^{-1}\log H_0+o(1),\qquad
+ (Q^{-1}-\lambda^{-1})O(\ell)=O(q^2\ell)=o(1).
+ \label{an07cwiv1:Qtime}
+\end{equation}
+\end{proposition}
+\begin{proof}
+WCS gives \(t_n-t_0=Q^{-1}\log\{n/[(1-n)H_0]\}+o(1)\).
+Insert this in \eqref{an07cwiv1:center}; the remaining fixed-level
+logarithm has coefficient \(Q^{-1}-\lambda^{-1}\). The exact
+logistic law gives WIT \texttt{clockalignment}. Since
+\(t_0=10\ell+O(1)\), \(H_0\asymp A_q^{-\lambda}q^{10(1-\lambda)}\)
+and \(A_q\) is bounded above and below, \(\tau_h\to\infty\).
+Every fixed centered interval therefore has nonnegative original
+time for small \(q\).
+\end{proof}
+The physical mass \(N_S\) is not asserted logistic. A leading
+comparison initialized with that mass has own center
+\[
+ t_n+\lambda^{-1}\log\frac{1-N_S(t_n)}{N_S(t_n)}
+       =\tau_h+O_n(q^{1/8}).
+ \]
+Alternatively multiply its initial weak measure by \(n/N_S(t_n)\);
+this constructs a leading comparison with center exactly \(\tau_h\)
+and changes \eqref{an07cwiv1:entrydistance} by \(O_n(q^{1/8})\).
+Neither construction proves an original half-mass hit.
+For a perturbed mass, WIT's logit identity retains
+\(\int r_N/[N(1-N)]\); centering cannot remove this defect.
+
+WIT's common windows and LPR's combined theorem hold only on their
+proved rectangle
+\(\mathcal P_*\subset[13/20,7/10]\times[87/50,7/4]\), centered at
+\((2/3,5\pi/9)\). They are not established on the entire ratio box
+with common margins. On those windows
+\(n_\rho(s)\ge1/4+\sigma/2>n\), so the windows are a fixed time
+after \(s_n\). This is compatible with the centering; it does not
+put them inside the weak passage. No comparison beyond \(t_b\)
+is supplied by RB. A fixed interval beginning before \(s_n\)
+requires matching from a smaller fixed level, or a separate
+earlier-window transfer. Its auxiliary logistic center would
+be the same by the exact logistic identity. The necessary
+earlier-window matching is not asserted by this audit.
+
+\subsection{Complete hypothesis inventory}
+\label{an07cwiv1:inventory}
+Here E means supplied at \(t_n\), P means proved only on a
+passage subinterval (never beyond \(t_b\)), L means an existing
+leading-model conclusion, and O means open for the initialized
+application. Model hypotheses and original-to-model identification
+are separate obligations.
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{.19\textwidth}>{\raggedright\arraybackslash}p{.42\textwidth}>{\raggedright\arraybackslash}p{.31\textwidth}}
+\toprule Consumer & Every required domain/input & Status and source\\\midrule
+\endhead
+WIT \texttt{ratebound}
+& \(R\ge2,\ 0<\rho\le1\), nonnegative measures,
+ \(M,N\le2\), coherent masses \(1,n_*\), \(0\le n_*\le1\);
+ same \(\rho,\zeta\).
+& E for \(\KK,S\) by WCS; L for the comparator.
+ Not an exact original leading-system identification.\\
+& Both supports and comparator coordinates in \([-R,R]^2\);
+ \(|\zeta|\le R\); strict gap \(\zeta-X\ge g_0>0\).
+& E for strong support and bounded atom coordinates; O for fixed
+ weak support. Theorem \ref{an07cwiv1:rate} replaces just that
+ hypothesis. Gap supplied at entry on WIT offsets and on \(J\)
+ by WIT \texttt{uniformtheorem}, not for arbitrary offsets.\\
+& Selector convention at \(x=\zeta\); same definitions of
+ \(\mathcal E,d_1,d_2,\dist\), including mass and both first moments.
+& L definitions; E distance \eqref{an07cwiv1:entrydistance}.
+ Core self-error has these leading definitions; full original
+ observable needs Section \ref{an07cwiv1:precision}.\\
+WIT \texttt{propagation}
+& A solution of the defined leading system and the selected
+ solution at the same \(\rho\); chart validity on \([a,b]\),
+ \(M,N\le2\), fixed relative weights, logistic reactions;
+ regular characteristics and finite distance. Any inherited
+ probe/gap restrictions are those above; they are not used
+ in the propagation estimate itself.
+& L equations, not the original equations. E initial distance;
+ O original continuation/chart validity. Fixed current weights
+ are not an original-flow conclusion. Theorem
+ \ref{an07cwiv1:propagation} handles weak first moments.\\
+WIT \texttt{population\-transfer}
+& \((\rho,\zeta)\in\mathcal P_*\), same selected half-mass clock;
+ masses \(\le2\), chart supports throughout \(J\);
+ \(\sup_J\dist\le\eps_*\), where
+ \(\eps_*=\min(1/4,\sigma/4,p_*/(8C_1),\gamma_0/(8C_1))\),
+ \(C_1=64R^2(1+4/g_*)\).
+& L parameter rectangle, reference gap \(g_*/4\) and margins;
+ E small distance only at \(s_n\); O original uniform comparison
+ on \(J\). The weak-support replacement is
+ Corollary \ref{an07cwiv1:witness}.\\
+& Regular characteristics for the a.e. chain rule;
+ selector-defined source rates, positive window lengths \(r/2\);
+ \(n_\rho\ge1/4+\sigma/2\) and the strict source/total margins.
+& L, WIT \texttt{generalrates,uniformtheorem}. No original
+ pointwise rate conclusion at gate-hit atoms.\\
+WIT \texttt{clockalignment}
+& Leading logistic \(N\), \(0<N(\tau_a)<1\), same \(\lambda\);
+ existence on the compared interval, and to \(\tau_h\) if it
+ is called a hit. For a perturbed mass: absolute continuity,
+ \(0<N<1\), \(N(0)=1/2\), and its logit defect.
+& L for the auxiliary logistic; E centering in
+ Proposition \ref{an07cwiv1:time}. O physical mass law/defect
+ on later windows. No response monotonicity is inferred.\\
+LP \texttt{diagonal-transfer}
+& Compact offset set, any stated compact ratio set; selected
+ limiting family with a common finite clearing time \(S\);
+ actual initialized positive-noise family \(S_0(q)\);
+ analytical physical centering.
+& L clearing on the LPR parameter set; E initialization \(q^{10}\)
+ and centering \eqref{an07cwiv1:center}. Uniformity is limited to
+ sets on which these inputs are proved.\\
+& Full original \(\sup_{\zeta,\rho,S\le s\le T}
+ |q^{-2}(E-1/2)-\mathcal E|\to0\) for every finite \(T>S\);
+ all background included, nonnegative original times.
+& O compact-transfer. Nonnegative time follows from
+ Proposition \ref{an07cwiv1:time}. A single witness window or
+ static entry comparison cannot supply this premise.\\
+LPR \texttt{combinedtheorem}
+& Selected coherent leading branch, strong mass exactly one,
+ own logistic half-mass clock, \(\mathcal P_*\);
+ WIT uniform witness constants and LP's uniform clearing on
+ its compact projection.
+& L, already proved by LPR. Its selection/continuity/forward
+ growth inputs are leading conclusions, not original ones.
+ No initialized transfer or wider rectangle is inherited.\\
+H2 A-error-transfer
+& Same actual initialization and center; every fixed finite
+ centered interval, uniform final compact ratio/offset region;
+ full original output including background and membership flux.
+& E entry and center; P bounds only to \(t_b\);
+ O continuation and \(q^2\)-precision. Fixed ancestry avoids
+ flux here, but future moving charts must account for it.\\
+H2 A-rate-transfer
+& Normalized source rates \(D_p^\tau/q^2\) on the fixed
+ gate-separated learned \(J\); convergence or explicit errors
+ below source and total margins, uniform parameters.
+& O original window transfer. Section \ref{an07cwiv1:rates}
+ gives an entry ledger, not this conclusion. Gate-hit atoms
+ are outside the uniform rate scope.\\
+AN7 items 1--6
+& Reached-class original field and reactions; full residuals;
+ \(q^2\)-precision; all long-delay terms; mass/response/amplitude
+ phase and flux; every fixed error window and learned rate
+ window; uniform parameters and explicit scale family.
+& E entry/phase from WCS, with \(O(q^2\ell)=o(1)\);
+ P RB residual/core/outside bounds; remaining reached-class
+ continuation, output and source-rate precision are O.
+ No canonical regime, power band or broad split reference.\\
+\bottomrule
+\end{longtable}\normalsize
+
+\section{Static activity: current angles, signs and endpoints}
+\label{an07cwiv1:activity}
+\begin{proposition}[Exact classification]
+\label{an07cwiv1:signs}
+For \(\xi_q(\zeta)=(\sin q\zeta,-\cos q\zeta)\) and a
+positive-mass label,
+\[
+ a_\theta\cdot\xi_q=\sin(q\zeta-\theta).
+ \]
+It is active exactly when
+\(\theta\in(q\zeta-\pi,q\zeta)\pmod{2\pi}\). Both endpoints
+have zero activation. For \(0\le\zeta\le R\), \(qR<\pi/2\),
+every current Q2 label is inactive, as is every current Q1
+label with \(\theta\ge q\zeta\). A weak-chart label is inactive
+if \(q|u+\zeta|\le\pi/2\) (strict inequality gives a negative
+input). At \(t_n\), all of \(\Gp\), including its endpoint labels,
+are inactive for every fixed bounded \(\zeta\).
+\end{proposition}
+\begin{proof}
+The identity proves the interval and its endpoints.
+For a weak receiver the input is \(-\cos(q(u+\zeta))\).
+WCS's reached chart has \(qL\to0\), proving the assertion for \(S\).
+To include \(P_q\), use RCET's positive \(U_2\) and ratio,
+restated with its late-time proof in SRR \texttt{tail}:
+\[
+ \frac{q|U_1|}{U_2}
+ \le C(C_0e^{-b_*(t-t_0)/2}+q^2),\quad
+ e^{-b_*(t_s-t_0)}\le Cq^{597/320}.
+ \]
+Thus at \(t_n\ge t_s\) this ratio is \(o(1)\), and
+\[
+ \frac{U\cdot\xi_q}{U_2}
+ \le R\,\frac{q|U_1|}{U_2}-\cos(q\zeta)<0 .
+ \]
+All divisions use the positive-coordinate conclusion of RCET,
+whose regularized endpoint statement includes \(b=\pi\).
+\end{proof}
+For negative offsets the unqualified Q2 statement is false:
+\(\theta=\pi\) has input \(-\sin(q\zeta)>0\) when \(\zeta<0\).
+The correct active Q2 slice is \((\pi+q\zeta,\pi]\).
+This does not obstruct WIT, whose offsets are positive.
+Statements about Q2 inactivity must refer to current angles,
+or to a separately reached inactive chart.
+
+For WIT's positive offsets the activity ledger is:
+\begin{center}\small
+\begin{tabular}{p{.26\textwidth}p{.65\textwidth}}\toprule
+Fixed cohort & Exact test, not a mass-based sign inference\\\midrule
+Core \(\KK\) & \(x<\zeta\); \(x=\zeta\) gives zero.
+ At \(t_n\) WIT offsets have a fixed positive gap from
+ \(X_*(n)\), so all core labels are active for small \(q\).\\
+\(S,P_q\) & Inactive at \(t_n\), by Proposition
+ \ref{an07cwiv1:signs}.\\
+\(\Sigma\) & Recruited Q2 ancestry does not imply inactivity.
+ A part in a strong chart is active when \(x<\zeta\).
+ Later lower-side inputs are not excluded by an energy norm.\\
+Strong complement \(\CC\) & Use its current angle in the exact
+ active interval. No full-cohort inactivity conclusion.\\
+Q3 interior, \(3\pi/2\) strip & Current Q3 inputs are active
+ exactly above \(\pi+q\zeta\); current Q4 inputs are active.
+ Transit/returned labels use the same interval test.\\
+\(\pi\) strip & The part still in Q3 with current
+ \(\theta>\pi+q\zeta\) is active; equality gives zero.
+ Initial offset alone does not decide later activity.\\\bottomrule
+\end{tabular}
+\end{center}
+The angle \(3\pi/2=-\pi/2\) has input \(\cos(q\zeta)>0\);
+\(\pi\) has input \(-\sin(q\zeta)\), zero only at \(\zeta=0\).
+At overlapping ancestry endpoints assign \(\pi\) to the primary
+closed cohort and \(3\pi/2\) to the right-half endpoint if a
+disjoint integral partition is needed. They have zero initial
+label measure; their pointwise signs are nevertheless checked.
+No gate selector is substituted for a positive ReLU value.
+
+\section{The \texorpdfstring{\(q^{-2}\)}{q-inverse-squared} precision ledger at entry}
+\label{an07cwiv1:precision}
+Put \(z_\alpha=a_{\theta_\alpha}\cdot\xi_q\). For a fixed
+cohort \(T\) define
+\begin{equation}
+ \mathcal Q_T(\zeta)=\int_Tm(z_\alpha)_+^2\dd\lambda_0,
+ \qquad \mu_T=\int_Tm\dd\lambda_0 .
+ \label{an07cwiv1:Qprobe}
+\end{equation}
+This probe moment is not the data second moment \(Q\).
+RB \texttt{postalignment}, inherited on its completed interval,
+gives \(|\theta-\psi|\le\delta_q=C_{\rm al}q(1+\ell)\)
+for every label. Constants are fixed before \(q\).
+
+\begin{lemma}[Exact output split and its decisive precision]
+\label{an07cwiv1:split}
+At \(t_n\), set \(T=\Sigma\cup\BB\), so \(f=f_\KK+f_T\). Exactly,
+\begin{align}
+ E_{\xi_q}-\tfrac12
+ &=-\xi_q\cdot f+\tfrac12|f|^2, \notag\\
+ E_{\xi_q}-E_{\xi_q}^{\KK}
+ &=-\xi_q\cdot f_T+f_\KK\cdot f_T+\tfrac12|f_T|^2,\notag\\
+ -\xi_q\cdot f_T&=-\mathcal Q_T+\mathcal A_T,\qquad
+ |\mathcal A_T|\le\delta_q\sqrt{\mu_T\mathcal Q_T},\qquad
+ |f_T|\le\sqrt{\mu_T\mathcal Q_T}.
+ \label{an07cwiv1:exactsplit}
+\end{align}
+Here \(E^\KK=\tfrac12|\xi_q-f_\KK|^2\), not a
+separately trained network. The core has \(|f_\KK|\le C_Rq\).
+Since \(\mu_T(1+\ell)^2\to0\), uniformly over bounded offsets
+\begin{equation}
+ E_{\xi_q}-E_{\xi_q}^{\KK}=o(q^2)
+ \quad\Longleftrightarrow\quad
+ \mathcal Q_{\Sigma\cup\BB}=o(q^2).
+ \label{an07cwiv1:equivalence}
+\end{equation}
+\end{lemma}
+\begin{proof}
+For one label the linear term equals
+\(-m(z_\alpha)_+^2
+ -m[(a_{\psi_\alpha}-a_{\theta_\alpha})\cdot\xi_q](z_\alpha)_+\).
+Use \(|a_\psi-a_\theta|\le|\psi-\theta|\) and
+Cauchy--Schwarz. The output bound follows the same way.
+The core is on its fixed chart. S2CP and RB give
+\(\mu_\Sigma\le C(q^5+q^{\Gamma_\nu}H+q^2K_Y^2)\),
+\(\Gamma_\nu>3/10\), and \(\mu_\BB\le q^{11/10}\);
+at entry \(H=O_n(1)\). Hence the mass-log product vanishes.
+The error in replacing \(E-E^\KK\) by \(-\mathcal Q_T\)
+is at most
+\[
+ C(q+\delta_q)\sqrt{\mu_T\mathcal Q_T}
+                 +\tfrac12\mu_T\mathcal Q_T.
+ \]
+Young's inequality absorbs any fixed small multiple of
+\(\mathcal Q_T\), with remainder \(Cq^2(1+\ell)^2\mu_T=o(q^2)\).
+This proves both directions, including the uniform version.
+\end{proof}
+For aligned labels \(W\parallel U\) with the initialized positive
+parallel orientation, the linear contribution is exactly
+\(-\mathcal Q_T\le0\). This is not an absolute-error bound
+or a sign assertion for the complete quadratic observable
+or its source derivatives.
+
+\paragraph{Core and inactive cohorts.}
+Taylor expansion on the reached core chart, exactly as in
+P \texttt{pa:probe-pop}, gives
+\[
+ (f_\KK)_1=qA_\KK+O_R(q^3),\quad
+ (f_\KK)_2=q^2B_\KK+O_R(q^4),\quad
+ E^\KK-\tfrac12=q^2\mathcal E_\KK+O_R(q^4).
+ \]
+This is a self-output calculation; it does not assume the
+remaining network absent. The strong first-moment entry bound gives
+\begin{equation}
+ E^\KK(t_n)-\tfrac12
+   =q^2\mathcal E_{\rho,\zeta}(s_n)+O_n(q^{2+\chi})+O(q^4).
+ \label{an07cwiv1:corestatic}
+\end{equation}
+It pays core mass and radius errors. Inactive labels
+contribute exactly zero, regardless of radial mass.
+For \(\BB\) alone the crude cross terms are already paid:
+\[
+ q\mu_\BB=O(q^{21/10}),\quad
+ \mu_\BB^2=O(q^{11/5}),\quad
+ \delta_q\mu_\BB=O(q^{21/10}(1+\ell)).
+ \]
+The unpaid term is its squared active input.
+For \(\Sigma\), whose raw mass has a weaker power, retain the
+square-root expression in \eqref{an07cwiv1:exactsplit};
+do not use these \(\BB\)-specific crude estimates.
+
+\paragraph{Cohort ledger.}
+Write \(L_q=1+\sqrt{\log\ell}\) for small \(q\). The secondary
+exponent is exactly
+\[
+ \Gamma_\nu=1-5\lambda+\frac{2\lambda}{1-\lambda}
+                   -\nu[10(1-\lambda)-2],\qquad
+ \frac{289169}{924000}\le\Gamma_\nu
+                    \le\frac{481}{1020}<\frac12 .
+ \]
+The lower bound is S2CP \texttt{gamma}; for the upper bound,
+the unpenalized expression increases on the ratio box
+because its derivative is \(-5+2/(1-\lambda)^2>0\), and its
+value at \(49/100\) is \(481/1020\).
+Every entry below is at \(t_n\); the mass estimates themselves
+hold only on the passage. A negative displayed exponent describes
+failure of an available upper bound to prove the target,
+not a lower bound on the true contribution.
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{.19\textwidth}>{\raggedright\arraybackslash}p{.39\textwidth}>{\raggedright\arraybackslash}p{.34\textwidth}}
+\toprule Cohort & Proved size / exact contribution & \(q^2\)-precision status\\\midrule
+\endhead
+\(\KK\) & \eqref{an07cwiv1:corestatic}; radius \(q^\chi\),
+ mass defect \(q^{11/10}\). & Paid, error \(O_n(q^{2+\chi})+O(q^4)\).\\
+\(S,P_q\) & \(f=0\) exactly at entry. & Paid as direct carriers.
+ Their training residuals still drive the core.\\
+\(\Sigma\) & \(\mathcal Q_\Sigma\le
+ C(E_\Sigma+q^2J_\Sigma)\le
+ C(q^5+q^{\Gamma_\nu}H+q^4)\).
+ & Open at fixed \(H\asymp n\): gives
+ \(O_n(q^{\Gamma_\nu-2}+q^2)\) after division.
+ Need \(\mathcal Q_\Sigma=o(q^2)\).\\
+Strong complement \(\CC\) & \(\mathcal Q_\CC\le\mu_\CC
+ \le Cq^{1+\Delta_\nu}\), \(\Delta_\nu>3/25\).
+ Refined test below. & Mass-only bound gives \(Cq^{\Delta_\nu-1}\).
+ Need \(\mathcal Q_\CC=o(q^2)\).\\
+Q3 interior & \(\mathcal Q\le\mu\le Cq^{10}\)
+ (GESG, inherited by RB). & Paid, \(O(q^8)\) after division.\\
+\(\pi\) strip & \(\mathcal Q\le Cq^{1211/800}L_q+
+ Cq^{11}\sqrt\ell\) (PISB/RB).
+ & Inner part open: \(O(q^{-389/800}L_q)\).
+ Need its \(\mathcal Q=o(q^2)\).\\
+\(J_3\), \(3\pi/2\) inner zone & \(\mathcal Q\le
+ Cq^{4769/4000}L_q\) (LSB/RB).
+ & Open: \(O(q^{-3231/4000}L_q)\).
+ Need its \(\mathcal Q=o(q^2)\).\\
+Frozen middle/outer zones & \(\mathcal Q\le
+ Cq^{11}\sqrt\ell\) (PISB, included in RB).
+ & Paid, \(O(q^9\sqrt\ell)\). Do not count these masses twice
+ inside the strip totals.\\\bottomrule
+\end{longtable}\normalsize
+The bound for \(\Sigma\) follows from
+\(\sin(q\zeta-\theta)^2\le
+C_R(\sin^2\theta+q^2\cos^2\theta)\).
+Its currently upper-half active slice has \(0\le\theta<q\zeta\)
+and thus \(\mathcal Q\le C_Rq^2\mu_\Sigma=o(q^2)\).
+The exact remaining possible slice is
+\begin{equation}
+ \int_{\Sigma\cap\{\sin\theta<0\}}
+       m[\sin(q\zeta-\theta)]_+^2\dd\lambda_0=o(q^2).
+ \label{an07cwiv1:Sigmagap}
+\end{equation}
+SEP's entry chart at \(t_0\), or an unsigned distance/gain bound
+after it, does not prove this slice stays empty. We neither
+assume such a sign nor claim the actual slice has large mass.
+
+\subsection{What the strong-complement tail actually pays}
+To distinguish PROFILE's exponent from centered time \(s\), write
+\[
+ P=P_\rho=\Phi(\rho a),\quad a=\rho\Kfun(\rho a),\quad
+ \alpha=\lambda P/2,\quad d=1/2-\alpha,\quad
+ s_{\rm pr}=\frac{1-\lambda P}{1-\lambda},\quad p=3/s_{\rm pr}.
+ \]
+Here \(\Kfun(z)=\phi(z)+z\Phi(z)\).
+S2CP's proved entry uses
+\[
+ \epsilon_h=\sqrt2 A_q^d(1-M_0)^\alpha
+                  q^{10d-s_{\rm pr}},\qquad
+ d_c=c_*q^{\chi+kP/2},\qquad
+ I(t)=Q\int_{t_0}^t(1-c(v))\dd v.
+ \]
+\(M_0\) is MOMC's moving-overlap strong mass, not the present
+core mass. The \(A_q\) and \(1-M_0\) factors have positive fixed
+upper/lower bounds. The cutoff constant \(c_*>0\) is already fixed.
+\begin{proposition}[A direct second-moment test of the existing tail]
+\label{an07cwiv1:tailtest}
+Use the proved S2CP entry law \(\eta_0=2m(t_0)\dd\lambda_0\),
+\(\eta_0\{\xi>u\}\le C\min(1,(\epsilon_h/u)^p)\),
+\(p=3/s_{\rm pr}>2(1+\nu)\), and cutoff \(d_c\).
+The existing distance and capped gain imply, on the passage,
+\begin{align}
+ \mathcal Q_\CC
+ &\le Cq^2\mu_\CC+
+ C(\epsilon_h/d_c)^p
+       \min\{1,Ad_c^2\}\max\{1,Ad_c^2\}^{1+\nu},
+ \label{an07cwiv1:tailbound}\\
+ A&=C_{\rm fixed}q^2 e^{\beta I},\quad \beta=\lambda/Q.
+ \notag
+\end{align}
+The endpoint majorant \(A\asymp q^{2-k}\), \(k=10(1-\lambda)\),
+gives the exponent
+\begin{equation}
+ \Xi_\nu=p(E-\chi)-R_g-\nu(R_g)_+,\qquad
+ E=5(1-P)-s_{\rm pr},\quad R_g=k(1-P)-2-2\chi .
+ \label{an07cwiv1:Xi}
+\end{equation}
+This test would pay the probe precision if \(\Xi_\nu>2\)
+uniformly. In fact its exponent obeys \(\Xi_\nu\le915/604<2\)
+at \(\lambda=49/100\) for every allowed \(P\); it cannot pay
+the requested uniform precision.
+\end{proposition}
+\begin{proof}
+Before physical exit, the distance envelope and core angle
+\(O(q)\) give
+\[
+ (z_\alpha)_+^2\le Cq^2+C\min(1,A\xi^2).
+ \]
+After exit, \(A\xi^2\) has reached a fixed positive threshold;
+\(I\) increases, so the same inequality holds after a fixed
+enlargement depending on the physical exit threshold.
+Multiply the second term by the gain
+\(\max(1,A\xi^2)^{1+\nu}\) and integrate over \(\xi>d_c\).
+For \(Ad_c^2\le1\), split at \(A^{-1/2}\).
+The lower integral is at most
+\(C A\epsilon_h^p d_c^{2-p}\), since \(p>2\);
+the upper is \(C\epsilon_h^p A^{p/2}\), since \(p>2(1+\nu)\).
+It is no larger than the first bound because
+\((Ad_c^2)^{p/2-1}\le1\).
+If \(Ad_c^2\ge1\), the \(2(1+\nu)\) tail moment gives
+the bound directly. No \(4+2\nu\) moment is needed.
+
+S2CP justifies the trajectory powers and \(Q\)-versus-\(\lambda\)
+clock factors: \(\epsilon_h/d_c\asymp q^{E-\chi}\) and
+\(Ad_c^2\asymp q^{-R_g}\). This proves \eqref{an07cwiv1:Xi}.
+On the independent rectangle used by TAILREP, take the exact
+corner \(\lambda=49/100,\ P=153/250\). Then
+\[
+ R_g=-303/2500,\qquad
+ \Xi_\nu=1+\frac{11004659}{43757500}
+        =\frac{54762159}{43757500}<2.
+ \]
+This value is independent of \(\nu\), since \(R_g<0\).
+This is exact rational substitution, not a numerical sign test.
+There is also a check on the actual endpoint parameter.
+Put \(B=p(E-\chi)-1-R_g\), as in TAILREP. At fixed
+\(\lambda=49/100\),
+\[
+ \partial_P B=\frac{1-\lambda}{20(1-P\lambda)^2}
+ [200P^2\lambda^2-400P\lambda+297\lambda-100]<0 .
+ \]
+The bracket decreases for \(P\lambda<1\), and at \(P=1/2\)
+it is \(50\lambda^2+97\lambda-100=-8093/200<0\).
+Thus, for every \(P\in[1/2,153/250]\), including \(P_\rho\),
+\[
+ \Xi_\nu=1+B-\nu(R_g)_+
+ \le1+B(49/100,1/2)
+ =\frac{2967}{1510}-\frac9{20}=\frac{915}{604}<2.
+ \]
+The missing inequality fails for this particular available
+majorant even on the endpoint of the actual model box.
+This is not a lower bound for the original probe moment or
+a counterexample to a sharper probe estimate.
+\end{proof}
+The bounded \(A_q\) factors and fixed \(n\) alter constants,
+not this missing exponent margin. A sharper angular/gain
+correlation is an S5c obligation, not proved here.
+
+\subsection{Source-rate precision at the same entry state}
+\label{an07cwiv1:rates}
+Here use
+\(R^{(p)}_\theta=\frac12\E_{P_p}[(X-f)X^T
+\one_{\{a_\theta\cdot X>0\}}]\); the mixture half is included.
+Define
+\[
+ g_p=a_\psi^TR^{(p)}a_\theta,\quad
+ v_{\theta,p}=a_\psi^TR^{(p)}a_\theta^\perp,\quad
+ v_{\psi,p}=(a_\psi^\perp)^TR^{(p)}a_\theta .
+ \]
+The exact source output derivative of a fixed cohort is
+\begin{equation}
+ \begin{split}
+ \dot f_{T,p}=\int_Tm\{&
+ 2g_p a_\psi z_+
+ +v_{\psi,p}a_\psi^\perp z_+\\
+ &+v_{\theta,p}a_\psi\one_{\{z>0\}}
+                       (a_\theta^\perp\cdot\xi_q)\}\dd\lambda_0,\qquad
+ D_p^\tau=-(\xi_q-f)\cdot\sum_T\dot f_{T,p}.
+ \end{split}
+ \label{an07cwiv1:exactrate}
+\end{equation}
+Use the selector convention, or a.e. time derivatives; no
+uniform pointwise assertion is made at gate-hit atoms.
+
+\begin{lemma}[Outside rate charge under the passage bounds]
+\label{an07cwiv1:ratecharge}
+At entry, for \(p=1,2\) and any fixed \(T\),
+\begin{align}
+ |\xi_q\cdot\dot f_{T,p}|
+ &\le C\{\mathcal Q_T+q^2(1+\ell)^2\mu_T\},\notag\\
+ |\dot f_{T,p}|
+ &\le C\{\sqrt{\mu_T\mathcal Q_T}+q(1+\ell)\mu_T\}.
+ \label{an07cwiv1:ratechargeeq}
+\end{align}
+Thus the unpaid \(o(q^2)\) conditions in the static ledger
+also suffice for outside source-rate charges at \(t_n\).
+Q3 interior and frozen-zone charges are already \(o(q^2)\).
+\end{lemma}
+\begin{proof}
+Loss bounds and the two cross-residual norms, applied to each
+cluster separately by Cauchy--Schwarz, give bounded diagonal
+entries and off-diagonal entries \(O(q)\) of \(R^{(p)}\),
+uniformly in its receiver. Hence \(|g_p|\le C\), and RB
+alignment gives
+\[
+ |v_{\theta,p}|+|v_{\psi,p}|
+       \le C(|\sin\theta\cos\theta|+q+\delta_q).
+ \]
+On an active label \(|\sin\theta|\le z_++C_Rq\).
+Also \(|a_\psi\cdot\xi_q|\le z_++\delta_q\).
+Insert these estimates in \eqref{an07cwiv1:exactrate}.
+The projected integrand is bounded by
+\(C[z_+^2+(q+\delta_q)z_+
+                         \delta_q(q+\delta_q)]m\);
+the unprojected one by \(C[z_++q+\delta_q]m\).
+Integrate, use Cauchy--Schwarz and then Young's inequality.
+No receiver gate was differentiated. The scope is the passage.
+\end{proof}
+
+\begin{lemma}[Core source precision at entry]
+\label{an07cwiv1:corerates}
+On WIT's offset range, the core's self-output rate satisfies
+\begin{equation}
+ -(\xi_q-f_\KK)\cdot\dot f_{\KK,p}
+       =q^2d_{p,*}(s_n)+O_n(q^{2+\chi})+O(q^4),
+       \qquad p=1,2.
+ \label{an07cwiv1:corerateeq}
+\end{equation}
+These velocities are driven by the full original training
+field. Inactive weak carriers are not deleted from the residual.
+\end{lemma}
+\begin{proof}
+We restate the sourcewise consequence of CFA's componentwise
+proof, rather than infer it from a total-field error.
+At a core receiver put
+\(\mathcal S(x)=\int_\KK\Ffun(\rho x,\rho\widetilde x)\dd\mu\)
+and \(Y=\int_\KK y\dd\mu\). The unnormalized equations are
+\begin{align*}
+ 2x'_1&=-(1-M)x+e_{x1},\\
+ 2y'_1&=-(1-M)y-Y-K_O+e_{y1},\\
+ 2x'_2&=\rho\phi(\rho x)-\rho\mathcal S(x)
+            +\lambda[V_O+(1-c)y]\Phi(\rho x)+e_{x2},\\
+ 2y'_2&=\rho(1-c)\Kfun(\rho x)+e_{y2}.
+\end{align*}
+CFA \texttt{P1stein,P1error,P2assembly,gaussian} yields these
+cluster-by-cluster identities with the pointwise majorant in
+its proof; using physical \(M\) removes the normalization
+cost. Explicitly, at \(t_n\) the error terms are bounded by
+\[
+ C[q^2+J_G+q\sqrt{E_GJ_G}
+ +\mu_\Gp\mathcal T
+ +E_\Sigma+q^{-1}\sqrt{E_\Sigma J_\Sigma}
+ +\mu_\BB/q] .
+ \]
+Here \(J_G\le q^2K_Y^2,\ E_G=O(1)\), SRR
+\texttt{tail} gives superpolynomial \(\mathcal T\), S2CP gives
+\(E_\Sigma=O(q^5+q^{\Gamma_\nu})\), and
+\(\mu_\BB/q\le q^{1/10}\).
+Since \(\Gamma_\nu>3/10\), the sum is \(O(q^{1/10})\).
+Bounded \(V_O,K_O\) follows from SRR \texttt{weakmoments}
+and WCS entry; this pays their \(q^2\) multiples.
+This is a pointwise argument, not use of CFA's integrated allowance.
+
+The source radial coefficients also satisfy
+\[
+ (\log m)'_1=1-M+O(q^2+\mu_\BB),\qquad
+ (\log m)'_2=O(q^2+\mu_\BB).
+ \]
+Indeed the core target/donor \(P_1\) longitudinal moment is
+\(1-M+O(q^2)\). The non-core \(P_1\) first output costs
+\(J_G+q\sqrt{E_GJ_G}=O(q^2)\), and the second output is
+multiplied by \(O(q)\), giving \(q^2K_G=O(q^2)\).
+On \(P_2\), the core input is \(O(q)(|Z|+|X_2|)\),
+the first residual is \(O(q)\) in \(L^2\), and the second
+output coordinate is \(O(q)\); the contractions cost
+\(O(q^2)\). An arbitrary outside output costs \(C\mu_\BB\)
+by Gaussian moments. This uses exactly the mixture
+normalization in \eqref{an07cwiv1:exactrate}.
+
+SRR's moment comparison and WCS entry replace \(c,V_O,K_O\)
+by \(n,nV_*(n),n\Kfun(U_*(n))\) with error \(O_n(q^\chi)\).
+Core donor and receiver errors have the same order.
+Thus each scaled core source velocity and reaction differs
+from the coherent leading counterpart by \(O_n(q^\chi)\).
+The core probe gap is fixed and positive at entry. Differentiate
+its compact trigonometric expansion with these bounded source
+velocities: the error is \(O(q^4)\), and the leading rate is
+WIT \texttt{generalrates}. Its strong first-moment comparison
+gives \eqref{an07cwiv1:corerateeq}.
+\end{proof}
+In the full rate retain the additional terms
+\[
+ f_T\cdot\dot f_{\KK,p}
+ -(\xi_q-f_\KK)\cdot\dot f_{T,p}
+ +f_T\cdot\dot f_{T,p}.
+ \]
+Since \(\dot f_{\KK,p}=O(q)\), Lemmas
+\ref{an07cwiv1:split} and \ref{an07cwiv1:ratecharge} pay them
+if \(\mathcal Q_T=o(q^2)\). The same unpaid cohorts remain.
+An \(O(q^{1/10})\) training-field charge alone is not their
+probe-rate proof. After \(t_b\), the passage bounds used in
+Lemma \ref{an07cwiv1:ratecharge} require a new source.
+
+\section{Leading-system extension with no weak support bound}
+\label{an07cwiv1:leading}
+This section concerns only P's defined leading population
+system. Its positive measures have masses \(M,N\), reactions
+\(1-M,\lambda(1-N)\), and fixed within-family relative weights.
+Set
+\[
+ Y=\int y\dd\mu_s,\quad V=\int v\dd\mu_w,\quad
+ K_s=\int\Kfun(\rho x)\dd\mu_s,\quad
+ K_w=\int\Kfun(u)\dd\mu_w ,
+ \]
+\[
+ \Kfun(u)=\phi(u)+u\Phi(u),\qquad
+ \Ffun(t,r)=\phi(\min(t,r))+r\Phi(\min(t,r)).
+ \]
+The strong source equations are those in the proof of
+Lemma \ref{an07cwiv1:corerates}, now exactly with
+\((c,V_O,K_O)=(N,V,K_w)\) and zero remainders.
+The weak equations are
+\begin{align}
+ 2u'&=\phi(u)-\mathcal W(u)
+       -[Y+(1-M)v]\Phi(u)-\lambda(1-N)u,\notag\\
+ 2v'&=\rho K_s-\lambda V-\lambda(1-N)v-(1-M)\Kfun(u),
+ \quad \mathcal W(u)=\int\Ffun(u,\widetilde u)\dd\mu_w.
+ \label{an07cwiv1:weaksystem}
+\end{align}
+Let \(D_s,D_w\) denote the two integral terms in WIT's distance
+about the coherent atom \((X,Y_*),(U,V_*)\); write
+\(m_s=|M-1|,\ m_w=|N-n_*|\) and
+\(\dist=m_s+m_w+D_s+D_w\).
+
+\begin{theorem}[Rate robustness with weak first moments]
+\label{an07cwiv1:rate}
+In WIT \texttt{ratebound}, replace compact weak support by
+\[
+ \int (|u|+|v|)\dd\mu_w<\infty .
+ \]
+Keep every other hypothesis: \(R\ge2,\ 0<\rho\le1\),
+\(M,N\le2\), nonnegative measures, strong support and all
+comparison coordinates in \([-R,R]^2\), \(0\le n_*\le1\),
+\(|\zeta|\le R\), and \(\zeta-X\ge g_0>0\).
+For WIT's selector-defined leading rates,
+\begin{equation}
+ |d_p-d_{p,*}|\le64R^2(1+g_0^{-1})\dist,\qquad
+ |\mathcal E-\mathcal E_*|\le10R^2\dist.
+ \label{an07cwiv1:ratebound}
+\end{equation}
+For regular characteristic solutions with locally bounded
+first moments, WIT's a.e. chain rule remains valid.
+\end{theorem}
+\begin{proof}
+The identities
+\[
+ 0\le\partial_t\Ffun(t,r)=(r-t)_+\phi(t),\qquad
+ |\partial_r\Ffun|\le1,\qquad
+ 0\le\Kfun(u)\le\phi(0)+|u|
+ \]
+show that all weak moments exist. Do not assert a uniform
+bound for actual \(K_w,V\), which can be arbitrarily large.
+Compare donors to the bounded reference:
+\begin{gather*}
+ |A-A_*|\le D_s+2Rm_s,\quad
+ |B-B_*|\le2R^2\dist,\quad |Y-Y_*|\le D_s+Rm_s,\\
+ |K_w-n_*\Kfun(U)|\le D_w+2Rm_w,\qquad
+ |V-n_*V_*|\le D_w+Rm_w .
+\end{gather*}
+Here \(A=\int(\zeta-x)_+\dd\mu_s,\ B=\int y(\zeta-x)_+\dd\mu_s\),
+\(A_*=\zeta-X\), and \(B_*=Y_*A_*\).
+For a strong receiver put \(D=|x-X|+|y-Y_*|\).
+Change donor moments at the actual receiver first, then move
+the receiver in the bounded reference field. As in WIT,
+without an actual weak supremum, this gives
+\begin{equation}
+ |x'_2-x'_{2,*}|\le2R(D+\dist),\qquad
+ |y'_2-y'_{2,*}|\le\tfrac12D+R\dist.
+ \label{an07cwiv1:strongdiff}
+\end{equation}
+The reference satisfies \(|x'_{2,*}|,|y'_{2,*}|\le R\);
+for example
+\(2x'_{2,*}=\lambda\Phi(\rho X)
+[n_*V_*-X+(1-n_*)Y_*]\).
+The reference receiver derivative of the overlap is bounded
+on the strong chart. No bound on \(\partial_t\Ffun\) at an
+unbounded weak receiver is used here.
+
+Use WIT's exact formulas
+\[
+ d_1=-\tfrac12A(Y+K_w)+(1-M)\mathcal C,\quad
+ |\mathcal C|\le28R^2,\qquad
+ d_2=\int_{x<\zeta}(\zeta-A-y)x'_2\dd\mu_s
+       +\int(\zeta-x)_+y'_2\dd\mu_s .
+ \]
+Split the lag product as
+\(A[(Y+K_w)-(Y_*+n_*\Kfun(U))]
+ +(A-A_*)[Y_*+n_*\Kfun(U)]\).
+Use \(A\le4R\) and bounded reference lag. Its half costs
+\(7R^2\dist\); the reaction term costs \(28R^2\dist\).
+
+For the input part of \(d_2\), write \(c_x=\zeta-A-y\),
+\(c_*=X-Y_*\). Then \(|c_x|\le6R,\ |c_*|\le2R\).
+Integrating \(c_x(x'_2-x'_{2,*})\) costs at most
+\(36R^2\dist\) by \eqref{an07cwiv1:strongdiff}.
+The term \((c_x-c_*)x'_{2,*}\) costs at most \(4R^2\dist\).
+The active-mass mismatch costs
+\(2R^2(m_s+D_s/g_0)\), since
+\(\mu_s\{x\ge\zeta\}\le D_s/g_0\).
+The output part costs at most \((13/2)R^2\dist\):
+use \eqref{an07cwiv1:strongdiff} under
+\((\zeta-x)_+\), then compare \(A\) with \(A_*\).
+The total is at most \((50+2/g_0)R^2\dist\), below
+\eqref{an07cwiv1:ratebound}.
+The energy bound is WIT's unchanged
+\(4R|A-A_*|+|B-B_*|\le10R^2\dist\).
+
+On a finite interval the strong velocities are integrably
+bounded by the weak first moments. Differentiating the strong
+positive parts is justified by domination. The level-set chain
+rule sets the normal contribution to zero at almost every time
+on a zero level, exactly as in WIT. No assumption that an atom
+never hits a gate is needed.
+\end{proof}
+
+\begin{theorem}[First-moment finite-window propagation]
+\label{an07cwiv1:propagation}
+Let a regular solution of the defined leading system and the
+selected coherent solution at the same \(\rho\) have masses
+in \([0,2]\), strong support and all comparison coordinates
+in \([-R,R]^2\), \(R\ge2\), on \([a,b]\). Assume only finite
+initial weak first moments. Then
+\begin{equation}
+ \dist(s)\le e^{64R(s-a)}\dist(a),\qquad a\le s\le b.
+ \label{an07cwiv1:propbound}
+\end{equation}
+Strong chart validity is presupposed; no original-flow
+continuation assertion is part of this theorem.
+\end{theorem}
+\begin{proof}
+The strong full velocity comparison, with the same donor-first
+split as above, is
+\[
+ |x'-X'|+|y'-Y_*'|\le8R(D+\dist).
+ \]
+For weak receivers the corresponding absolute Lipschitz bound
+is unnecessary and need not hold uniformly. Use a one-sided
+scalar estimate. Define
+\[
+ A_t(u)=\tfrac12[\phi(u)-\mathcal W(u)-Y\Phi(u)
+                                      -\lambda(1-N)u].
+ \]
+Since \(|Y|\le2R\), \(N\le2\) and the weak measure is positive,
+\begin{equation}
+ A_t'(u)=-\tfrac12[(u+Y)\phi(u)
+            +\mathcal W'(u)+\lambda(1-N)]
+       \le R+1\le2R\quad(u\in\mathbb R).
+ \label{an07cwiv1:onesided}
+\end{equation}
+Here \(|u|\phi(u)\le1\) and
+\(\mathcal W'(u)=\phi(u)\int(\widetilde u-u)_+\dd\mu_w\ge0\).
+Retain the Gaussian factor; no negative-input restriction or
+uniform weak receiver radius was inserted.
+Comparing at bounded \(U\) costs at most \(3R\dist/2\).
+The remaining input term satisfies
+\[
+ \tfrac12|1-M|\,|v|\Phi(u)
+ \le\tfrac12|v-V_*|+\tfrac R2m_s ,
+ \]
+and the output term satisfies
+\[
+ \tfrac12|1-M|\Kfun(u)
+ \le\tfrac12|u-U|+Rm_s .
+ \]
+Use the moment estimates in the output equation to obtain
+\[
+ D^+(|u-U|+|v-V_*|)
+       \le8R(|u-U|+|v-V_*|+\dist).
+ \]
+This replaces WIT's weak absolute-velocity comparison and
+proves exactly the distance inequality required.
+
+Finite first moments stay locally finite on the stipulated
+interval: \(|\Ffun(u,r)|\le\phi(0)+|r|\),
+\(\Kfun(u)\le\phi(0)+|u|\), bounded strong moments and
+\eqref{an07cwiv1:weaksystem} give a linear first-moment
+Gronwall bound. This also justifies integration of the
+characteristic inequalities by truncation and domination.
+Reaction coefficients have absolute value at most one,
+and relative weights are fixed in this leading system.
+Consequently
+\[
+ D^+D_s\le(1+8R)D_s+16R\dist,\qquad
+ D^+D_w\le(1+8R)D_w+16R\dist .
+ \]
+The two logistic mass differences cost at most three times
+their sum on \([0,2]\). Thus
+\(D^+\dist\le(1+40R)\dist\le64R\dist\).
+Integrate. Zero family mass is covered by continuity.
+\end{proof}
+
+\begin{corollary}[WIT with strong-only compact support]
+\label{an07cwiv1:witness}
+WIT \texttt{populationtransfer} remains valid if compact weak
+support is replaced by finite first weak moments.
+Keep its leading-system, same-parameter and clock hypotheses,
+strong support and comparison coordinates in \([-R,R]^2\),
+\(M,N\le2\), regularity for a.e. derivatives, and
+\(\sup_J\dist\le\eps_*\) with the unchanged \(\eps_*\).
+Then all its mass, source-rate and total-rate inequalities
+hold, and both rebound bounds are at least \(\gamma_0r/4\).
+An entry distance \(\eps_*e^{-128Rr}\) at the left endpoint
+of \(J\), with the stated strong chart validity, suffices.
+\end{corollary}
+\begin{proof}
+Apply Theorem \ref{an07cwiv1:rate} with \(g_0=g_*/4\);
+WIT's margins and integration argument are unchanged.
+Theorem \ref{an07cwiv1:propagation} gives the last assertion.
+These hypotheses define the leading-model class; none is
+advertised as a discharged original-window hypothesis.
+\end{proof}
+
+\paragraph{How WCS enters this extension.}
+Let \(d=|u-U_*(n)|+|v-V_*(n)|\). The fixed incoming law obeys
+\[
+ \eta_s\{d>1\}\le W_2^2=O_n(q^{1/10}),\qquad
+ \int_{\{d>1\}}d\dd\eta_s\le W_2^2=O_n(q^{1/10}).
+ \]
+The second inequality uses \(d\le d^2\) there.
+Current probability has the same estimates up to \(1+o(1)\);
+the whole first moment is \(O_n(q^\chi)\).
+This supplies entry without discarding the tail or declaring it
+compact. A leading comparison initialized with the selected
+core/weak state, optionally rescaled as in Section 1, has distance
+\(O_n(e^{64R(s-s_n)}q^\chi)\) on each fixed interval where its
+stipulated strong chart holds. This is a leading statement,
+not an original-flow estimate on that interval.
+
+\section{S5b/S5c handoff and fixed constant order}
+\label{an07cwiv1:handoff}
+Closed results are the clock conversion and interface,
+the exact activity classification, the static/source-rate
+precision reduction and paid cohorts, and the leading-model
+first-moment extension. Complete original \(q^2\) probe
+comparison remains open even at entry until the unpaid moments
+in Section \ref{an07cwiv1:precision} are paid. No missing item
+is added as a premise of an initialized theorem.
+
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{.18\textwidth}>{\raggedright\arraybackslash}p{.75\textwidth}}
+\toprule Consumer & Exact remaining deliverable\\\midrule
+\endhead
+S5b: state & On each fixed \([s_n,T]\), continue the original
+ strong chart, physical masses, weak first/second moments and
+ appropriate residual bounds. Prove a moment-stable
+ original-to-leading field/reaction reduction with errors
+ tending to zero and fixed \(e^{C(T-s_n)}\) losses.
+ Weak supremum compactness is no longer a leading-consumer
+ requirement. Growing-chart finite-noise errors and their
+ moment integrals still require proof.\\
+S5b: clock & Use \(\tau=\tau_h+s\) from
+ \eqref{an07cwiv1:center}; prove \(N_S-n_\rho=o(1)\) on every
+ compared interval, or its logit defect
+ \(\int r_N/[N_S(1-N_S)]=o(1)\), with entry mismatch
+ \(O_n(q^{1/8})\). Include flux if selected labels change.
+ Do not center through the \(O(1)\) terminal passage-time error.\\
+S5b: weak activity & Keep \(q|u+\zeta|<\pi/2\) on the desired
+ offsets, or pay exact active weak output and rate.
+ Finite first moments in the leading model alone do not
+ prove finite-noise weak inactivity.\\
+S5c: output & For every fixed centered interval and final
+ compact offset/ratio region, prove the full remainder
+ \(-\xi_q\cdot f_T+f_\KK\cdot f_T+|f_T|^2/2=o(q^2)\),
+ uniformly. A sufficient form under continued alignment is
+ \(\sup\mathcal Q_{\Sigma\cup\BB}=o(q^2)\) and
+ \(\sup\mu_T(1+\ell)^2=o(1)\).
+ Pay separately the strong complement, possible lower-side
+ secondary slice, \(\pi\) inner strip and \(J_3\), including
+ transit labels. Passage mass exponents alone do not pay them.\\
+S5c / rate stage & On WIT's gate-separated \(J\), prove
+ \(\xi_q\cdot\dot f_{T,p}=o(q^2)\) and the cross terms in
+ \eqref{an07cwiv1:exactrate} are \(o(q^2)\).
+ Lemma \ref{an07cwiv1:ratecharge} suffices if its matrix and
+ alignment bounds are continued; otherwise supply direct
+ projected source bounds. Retain a sourcewise core
+ velocity/reaction reduction, not just a total-field error.\\
+WIT / H2 & Obtain \(\sup_J\dist\le\eps_*\), original normalized
+ rate errors below fixed margins (or \(o(1)\) after division
+ by \(q^2\)), and arbitrary fixed-window error convergence.
+ Rate claims at gate-hit atoms remain excluded.\\
+LP / LPR & Use the same physical center
+ \(t_h^{\rm phys}=\tau_h/\mu_1^2\). Supply LP's every-finite-\(T\)
+ compact-transfer premise after common clearing \(S\);
+ then its diagonal conclusion applies, without a quantitative
+ horizon rate. LPR is already a leading theorem on
+ \(\mathcal P_*\), not original-flow transfer.\\\bottomrule
+\end{longtable}\normalsize
+
+Keep WPT/RB's constants, then WBR/MP/SRR/WCS's constants and
+fixed \(n\), unchanged. Next fix the final compact parameter/
+offset region (use \(\mathcal P_*\) for the common witness),
+a finite centered interval, and \(R\ge2\) containing the
+strong chart and reference coordinates with slack. Fix the
+positive reference probe gap on \(J\), then
+\(64R^2(1+g_0^{-1})\), \(\eps_*\), and
+\(e^{64R(T-s_n)}\); choose \(q\) last.
+New leading constants depend only on \(R,g_0\) and already
+fixed witness margins, not residual guards. Original entry
+constants may depend on fixed \(n\) and earlier guards; they
+multiply displayed vanishing powers. No earlier chart or guard
+is enlarged after seeing \(q\).
+
+\paragraph{Boundary of this increment.}
+The false unrestricted-offset Q2 inactivity proposal was
+corrected to the exact sign range; WIT's positive offsets are
+unaffected. The tail test records a precision gap in the
+available implication, not a failure of the initialized theory.
+No original continuation past \(t_b\), new strip mass theorem,
+gate-hit rate transfer, AN8 assembly, S6 result or
+canonical-regime claim is made.
+\end{document}
