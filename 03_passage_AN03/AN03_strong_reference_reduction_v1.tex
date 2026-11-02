@@ -1,0 +1,753 @@
+% New standalone increment. Prior sources and GitHub are read-only.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.88in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,array,longtable,booktabs,xurl}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\newcommand{\KK}{\mathcal K}\newcommand{\BB}{\mathcal B}
+\newcommand{\Gp}{{G_+}}\newcommand{\eps}{\varepsilon}
+\newcommand{\Kfun}{\mathsf K}\newcommand{\Ffun}{\mathsf F}
+\newcommand{\one}{\mathbf1}\newcommand{\ph}{\phi(0)}
+\newcommand{\src}[2]{\textup{#1} \texttt{#2}}
+\title{Strong-reference reduction to the selection error form\\
+and the local initial guard}
+\author{Standalone analytical increment for independent review}
+\date{Version 1 --- 30 October 2026}
+\begin{document}\maketitle
+\begin{abstract}
+On the initialized deep-regime passage, CFA's same-field reference
+obeys TAILREP's strong error inequality with a pointwise additive
+defect $O(q^{1/20})$ and a model-only coefficient of $NW_2$.
+The selected weak distance uses the actual incoming probability
+transported with fixed labels. Its conversion from current radial
+weights is proved, and all non-selected weak moments are charged
+with transverse energy rather than mass alone. The primary gate
+remainder is superpolynomially small on the late interval. Before
+that interval, CFA's original local inequality gives an initial
+strong error $O(q^{1/20})$ without invoking the later local box.
+The weak error inequality and selection remain separate obligations.
+\end{abstract}
+
+\section{Step 1: objects, intervals and hypothesis inventory}
+\label{an03srrv1:inventory}
+All new labels have prefix \texttt{an03srrv1:}. Fix the initialized
+deep regime $\kappa=10$, $\rho\in[13/20,7/10]$, and write
+$\lambda=\rho^2$, $Q=\lambda+q^2$, $\ell=\log(1/q)$,
+$k=10(1-\lambda)$, and $a=a_\rho=\rho\Kfun(\rho a)$.
+Keep RB's $t_0=t_h$ and $t_b=\inf\{c=c_b\}$. All estimates
+below take place on RB's completed passage.
+The fixed populations are $\KK,\Gp,\Sigma,\BB$, with
+$S=\mathcal C_q\subset\Gp$, $P_q=\Gp\setminus S$ and
+$\mathcal D=\varnothing$. Put $G=\Gp\cup\Sigma$,
+$O=\Gp\cup\Sigma\cup\BB$, $M=\mu_\KK$ and
+$\widetilde M=\min(M,1)$.
+
+Use MP's start $t_s=\inf\{H=q^{1/8}\}$ and WBR's upper endpoint
+$t_e=\inf\{H=h\}$. The exact logistic comparison is
+\[
+ N'=\lambda N(1-N),\qquad N(t_s)=N_0=q^{1/8}.
+\]
+For any later fixed choice $0<n<h$, let $t_n$ be its logistic hit.
+MP places $t_n$ inside $(t_s,t_e)$ for small $q$. No choice of the
+selection constants $C_w,L_*,n$ is made here.
+
+There is one reference object throughout:
+\begin{equation}
+ z_c=(x_c,y_c)=(c_s,d_s),\quad
+ e=|z_c-(a,a)|_2,\qquad E_s=|z_c-Z_*(N)|_2,
+ \quad Z_*=(X_*,Y_*).
+ \label{an03srrv1:reference}
+\end{equation}
+It is MOMC's actual characteristic, retained by CFA, not a mean,
+not reset to $(a,a)$, and not evolved under $G_M$. Both errors are
+Euclidean. The core law is the positive original radial measure,
+normalized in CFA by
+$\widetilde\mu_\KK=\mu_\KK\min(1,M^{-1})$.
+Its normalized first moment about $z_c$ obeys
+\[
+ \bar D_\KK=M^{-1}\int_\KK(|x-x_c|+|y-y_c|)\dd\mu
+       =O(q^{1/20}).
+\]
+The unnormalized $D_\KK$ is $M\bar D_\KK$; WEAK's $D_s$ is
+the corresponding moment of its unit-mass strong family.
+These normalizations are not interchanged without a mass defect.
+
+For every $t\in[t_s,t_n]$ define the \emph{fixed incoming} probability
+and distance
+\begin{equation}
+ \eta_s(\dd b)=\frac{m(t_s,b)}{N_S(t_s)}\dd\lambda_0(b),\quad
+ W_2(t)=\big\||u(t,b)-U_*(N(t))|+|v(t,b)-V_*(N(t))|\big\|_{L^2(\eta_s)},
+ \label{an03srrv1:W}
+\end{equation}
+where $N_S=\mu_S$, $u=(\pi/2-\theta)/q$ and
+$v=(\psi-\pi/2)/q$. This is the convention S4e must retain.
+The original labels, not their current radial weights, transport
+$\eta_s$. For fixed $q$ the reached chart ensures finite moments.
+
+\paragraph{Inventory of the consumer, not an application of it.}
+TAILREP \texttt{selection} requires exact logistic $N$,
+$0<N_0<n<1$, $N(t_n)=n$, nonnegative errors, and, up to the first
+exit from $E_s<\delta$,
+\begin{align}
+ D^+E_s&\le-gE_s+C_s(d_0+NW_2),\notag\\
+ D^+W_2&\le[-\lambda(1-N)/2+N/2+\ell_B(t)]W_2+C_w(E_s+d_0).
+ \label{an03srrv1:consumer}
+\end{align}
+Here $g,C_s,C_w>0$ are fixed, $d_0\ge0$ is one pointwise
+constant shared by both inequalities, $\ell_B\ge0$ and
+$\int\ell_B\le L_*<\infty$. Weak return is maintained separately.
+With
+\begin{gather*}
+ B_*=e^{L_*}(1-n)^{-1/(2\lambda)},\quad
+ a_0=\lambda(1-n)/2,\quad m_0=\min(g/2,a_0/2),\\
+ L_0=1+C_s(1+B_*)/(g-m_0),\quad K_0=2L_0,
+ \quad\Theta=\frac{C_sB_*C_wn}{(a_0-m_0)(g-m_0)}\le1/4,
+\end{gather*}
+it also requires
+\begin{equation}
+ K_0(E_0+d_0+A_0\sqrt n)\le\delta/2,\qquad
+ E_0=E_s(t_s),\quad A_0=\sqrt{N_0}W_2(t_s).
+ \label{an03srrv1:consumerGuard}
+\end{equation}
+For terminal convergence $N_0,A_0,d_0\to0$ and common finite
+constants are needed. This increment supplies only the first
+inequality and the vanishing strong part of its initial guard.
+
+WEAK's derivation of \texttt{strongineq, smallgain, guard} additionally
+uses unit strong mass in its leading system, positive fixed label
+measures, nonnegative returned weak inputs (also $U_*>0$), the
+same logistic comparator and fixed normalized weak weights, finite
+$W_p$, and a local box
+\[
+ \delta<a/8,\quad a+3\delta<2\ph,\quad
+ |X_*-a|,|Y_*-a|\le\delta,
+\]
+whose frozen-weak-atom coherent Jacobian is at most $-g_WI$ on
+the $2\delta$ box. Here
+\[
+ \alpha=\lambda\Phi(\rho a)/2,\quad
+ \gamma=\frac{\alpha(1/2-\alpha)}{\alpha+1/2},\quad g_W=\gamma/2.
+\]
+Its strong moment error is pointwise, $D_s\le d_0$; the weak
+return derivation uses $0\le Y\le a+3\delta<2\ph$,
+$|\rho K_s|\le\rho\ph+\lambda(a+3\delta)$, and the strict
+moment margin $C_un+U_0^+\sqrt{N_0n}<\ph-(a+3\delta)/2$.
+Those leading assumptions do not become original-flow identities.
+We instead use WBR's proved return, convert weights below, and
+pay physical mass and moment defects. No term $\ell(t)E_s$ will
+remain: every defect is pointwise additive or a model-only multiple
+of $NW_2$. Thus no absorption based only on $\int\ell$ is used.
+
+\section{Step 2: a pointwise strong-receiver remainder}
+\label{an03srrv1:fieldsection}
+CFA's proved representation on its fixed square
+$[-L_c,L_c]^2$, $L_c=79/51+1$, is
+\begin{align}
+ 2(F_c)_x&=-(1-\widetilde M)x+\rho\phi(\rho x)
+ -\rho\widetilde{\mathcal S}(x)
+ +\lambda[V_O+(1-c)y]\Phi(\rho x),\notag\\
+ 2(F_c)_y&=-(1-\widetilde M)y-\widetilde Y-(K_O)_+
+                         +\rho(1-c)\Kfun(\rho x),
+ \label{an03srrv1:cform}\\
+ V_T&=-\frac{\E_{P_2}[(f_T)_1X_2]}{qQ},\qquad
+ K_T=\frac{\E_{P_1}[(f_T)_2X_1]}q,
+ \quad (V_O,K_O)=\sum_{T=S,P_q,\Sigma,\BB}(V_T,K_T).
+ \label{an03srrv1:moments}
+\end{align}
+We start from its exact $F_{\rm orig}=F_c+\mathcal R$;
+we do not re-derive the receiver field. Its full remainder
+$\eps_F$ bounds the value needed here. To avoid an integrated
+inference we restate and justify the pointwise majorant used in
+CFA's proof.
+
+\begin{lemma}[Primary gate tail, with a late rate]
+\label{an03srrv1:tail}
+With the fixed admissible $C_0$ already chosen for CFA's chart,
+the primary selected-moment error has bound
+\begin{equation}
+ C_{L_c}\{J_\Gp+q\sqrt{E_\Gp J_\Gp}+\mu_\Gp\mathcal T(t)\},
+ \quad
+ \mathcal T(t)\le C\exp\left[-\frac{c_*}
+ {q^2+C_*C_0^2e^{-b_*(t-t_0)}}\right]+Ce^{-c_*/q^2},
+ \label{an03srrv1:tailpoint}
+\end{equation}
+where $b_*=Q(1-c_b)/2$. In particular, on $[t_s,t_e]$,
+\begin{equation}
+ \mathcal T(t)\le C\exp(-c q^{-597/320})+Ce^{-c/q^2}.
+ \label{an03srrv1:taillate}
+\end{equation}
+It is smaller than every fixed power of $q$, with a constant
+allowed to depend on that power. On $[t_0,t_b]$ it is simply
+bounded by a fixed constant.
+\end{lemma}
+\begin{proof}
+Restate the cancellation behind CFA \texttt{primaryselected}.
+For $i=1,2$, write exactly
+$f_{\Gp,i}=L_{i1}X_1+L_{i2}X_2+N_i$, with
+$L_{ij}=\int_\Gp W_iU_j$ and
+$N_i=\int_\Gp W_i(U\cdot X)_-$.
+Subtracting the $P_2$ regression removes $L_{i2}X_2$.
+The remaining linear terms cost $J_\Gp$ and
+$q\sqrt{E_\Gp J_\Gp}$. For a unit input direction with
+$u_2>0$, the scalar Gaussian negative-part moment is
+\[
+ \E_{P_2}(u\cdot X)_-^2
+ \le Cq^2 e^{-c(u_2/q)^2}.
+\]
+Cauchy--Schwarz against the Gaussian factors, and
+$|W_i||U|\le m$, bound the value errors after their possible
+$1/q$ scaling by $C\mu_\Gp e^{-c(u_2/q)^2}$ uniformly over
+the primary directions. RCET's ratio gives
+\[
+ q|U_1|/U_2\le C(C_0e^{-b_*(t-t_0)/2}+q^2),\quad
+ (u_2/q)^{-2}\le C(q^2+C_0^2e^{-b_*(t-t_0)}).
+\]
+This proves the value part of \eqref{an03srrv1:tailpoint}.
+For the full CFA norm, its receiver boundary has
+$X_1=-qt_xX_2$, $|t_x|\le2L_c$.
+The already fixed $C_0$ gives $U_2-qt_xU_1\ge U_2/2$,
+so the negative part there vanishes for $X_2\ge0$.
+The other side costs at most
+$C\mu_\Gp q^{-1}\E[|X_2|^3\one_{X_2<0}]\le
+C\mu_\Gp e^{-c/q^2}$. The regression correction is bounded
+by the same value estimate times a bounded differentiated
+Gaussian moment. This justifies the tail including both gate sides.
+
+WBR's time formula, with its bounded $A_q$ shift, implies
+\[
+ e^{-b_*(t-t_0)}\le Cq^{(1-c_b)(k-1/8)/2}
+                  \le Cq^{597/320},\qquad t\ge t_s.
+\]
+The last exponent uses $c_b\le1/4$ and $k\ge51/10$.
+As $597/320<2$, the denominator in \eqref{an03srrv1:tailpoint}
+is at most $Cq^{597/320}$. This proves \eqref{an03srrv1:taillate}.
+The superpolynomial statement follows from the elementary boundedness
+of $x^re^{-cx}$ for every fixed $r>0$, not from a numerical tail test.
+\end{proof}
+
+\begin{lemma}[Global moment charges and pointwise CFA remainder]
+\label{an03srrv1:pointwise}
+For an arbitrary cohort $T$,
+\begin{equation}
+ |V_T|+|K_T|\le C\left(\mu_T+q^{-1}\sqrt{\mu_TJ_T}\right),
+ \qquad |V_\BB|+|K_\BB|\le C\mu_\BB/q.
+ \label{an03srrv1:momentcharge}
+\end{equation}
+On the completed passage a valid pointwise majorant for CFA's
+full remainder is
+\begin{align}
+ \eps_F\le C\big[&q^2(1+M_K+M_{\rm res}+\mu_G+|V_O|+|K_O|)
+ +J_G+q\sqrt{E_GJ_G}+\mu_\Gp\mathcal T\notag\\
+ &+E_\Sigma+q^{-1}\sqrt{E_\Sigma J_\Sigma}
+ +\mu_\BB/q+(M-1)_++\mu_Gq^{-j}e^{-c/q^2}\big]
+ \label{an03srrv1:majorant}
+\end{align}
+for fixed $j,C$. Consequently
+\begin{equation}
+ \sup_{[t_s,t_e]}\eps_F\le C_{\rm fixed}q^{1/10}.
+ \label{an03srrv1:epslate}
+\end{equation}
+\end{lemma}
+\begin{proof}
+On $P_2$, $X=(qZ,V)$, balance gives
+$|f_{T,1}|\le2qJ_T|Z|+2\sqrt{E_TJ_T}|V|$.
+On $P_1$, $|f_{T,2}|\le2\sqrt{E_TJ_T}|X_1|+2E_T|X_2|$.
+Insert these into \eqref{an03srrv1:moments}, use Gaussian moments
+and $E_T\le\mu_T$ to prove \eqref{an03srrv1:momentcharge}.
+The outside alternative follows directly from $|f_T(X)|\le\mu_T|X|$.
+
+Here is the pointwise justification of every line of
+\eqref{an03srrv1:majorant}, as opposed to its integrated use in CFA.
+MOMC's compact core-kernel reduction, already used in CFA's exact
+assembly, has error $C_{L_c,R}q^2(1+M_K)$; the core's second
+output and response cost $Cq^2M_K$. Core mass capping costs
+$C(M-1)_+$ in value (and receiver derivative), by subtracting
+the two donor measures. CFA's $P_1$ Stein calculation gives
+$J_G+q\sqrt{E_GJ_G}+q^2E_G+q^2|K_G|$, plus the fixed-chart
+Gaussian receiver tail $C\mu_Gq^{-j}e^{-c/q^2}$.
+Its $P_2$ trigonometric/kernel corrections give
+$Cq^2(E_G+J_G+q^{-1}\sqrt{E_GJ_G})$ and
+$Cq^2(|V_O|+|K_O|)$; the selected terms of $\Gp$ are exactly
+Lemma \ref{an03srrv1:tail}. For $\Sigma$, inserting the two output
+bounds above in the selected value integrals gives
+$C(E_\Sigma+J_\Sigma+q^{-1}\sqrt{E_\Sigma J_\Sigma})$.
+Boundary differentiation, when retaining the full norm, uses bounded
+$t_x,t_x'$ and the same Gaussian moments, as in CFA; it has the
+same charge. PROFILE's exact outside cost is $C\mu_\BB/q$,
+also paying its formal moment replacements. Finally the primary
+negative part of $K_O$ can occur only on $X_1<0$, since $W_2>0$
+on $\Gp$; it costs $C\mu_\Gp q^{-1}e^{-c/q^2}$.
+The secondary and outside negative parts are bounded by their
+absolute charges above. This accounts for the positive-part
+substitution and proves the majorant. No selected moment is
+discarded by regression orthogonality.
+
+RB gives $J_G\le q^2K_Y^2$, $E_G=O(1)$,
+$\mu_\BB/q\le q^{1/10}$, and
+$E_\Sigma\le C_\Sigma(q^5+q^{\Gamma_\nu}H)$ with
+$\Gamma_\nu>3/10$. Thus the secondary line is
+$O(q^{5/2}+q^{\Gamma_\nu/2})$ on the late interval.
+The moments in the $q^2$ line are uniformly bounded by
+\eqref{an03srrv1:momentcharge}. WBR gives
+$(M-1)_+\le Cq^{11/10}$ on the whole passage, and the primary
+tail is \eqref{an03srrv1:taillate}. These pointwise statements
+prove \eqref{an03srrv1:epslate}. All constants multiplying vanishing
+powers may use the already fixed passage bounds.
+\end{proof}
+
+The core first-moment replacement is a further, distinct value error:
+\begin{equation}
+ |\widetilde{\mathcal S}(x_c)-\widetilde M\Kfun(\rho x_c)|
+ \le\rho\bar D_\KK,\qquad
+ |\widetilde Y-\widetilde M y_c|\le\bar D_\KK.
+ \label{an03srrv1:corecollapse}
+\end{equation}
+Indeed $\Ffun(z,w)$ is 1-Lipschitz in $w$ and
+$\Ffun(z,z)=\Kfun(z)$; $\widetilde M\le1$.
+This costs $O(q^{1/20})$ by RB/SI. The remaining replacement
+$\widetilde M\mapsto1$ costs $C|1-M|=O(q^{11/10})$ on the
+compact reference chart, by MP. No original characteristic is
+replaced by the collapsed one in making these value comparisons.
+
+\section{Steps 2(c)--3: weak moments and fixed incoming weights}
+\label{an03srrv1:momentsection}
+MP gives on $[t_s,t_e]$
+\begin{gather}
+ N_S/H=1+O(q^2),\quad
+ d_{
+m ph}:=\sup|\log(H/N)|
+ \le C(q^{1/8}+q^2\ell+q^{1/4}h/b_0),\notag\\
+ J_S\le C(q^3+q^2H),\quad
+ \mu_{P_q}\le C(q^{1/4}H+q^2),\quad
+ \mu_\Sigma\le C(q^5+q^{\Gamma_\nu}H+q^2),
+ \label{an03srrv1:MPinputs}
+\end{gather}
+where $b_0=Q(1-c_b)$. The $q^2$ term in $\mu_{P_q}$ is retained:
+MP's band statement is initially about $H_{P_q}$, not radial mass.
+
+\begin{lemma}[Finite-noise selected moment values]
+\label{an03srrv1:finiteweak}
+With $L=C_L(1+q^{-603/640})$,
+\begin{equation}
+ \left|V_S-\int_S mv\right|+
+ \left|K_S-\int_Sm\Kfun(u)\right|
+ \le C_{\rm fixed}q^{37/320}.
+ \label{an03srrv1:finitevalue}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The reached chart gives $|qu|,|qv|\le1/2$ and
+$\sin\theta=\cos(qu)\ge1/2$. The exact $P_2$ regression identity
+therefore gives
+\[
+ V_S=\int_Sm\frac{\sin(qv)}q\cos(qu)
+                      +O(\mu_Sq^{-1}e^{-c/q^2}).
+\]
+For $K_S$ there is a useful exact Gaussian formula. On $P_1$,
+$(U\cdot X)/(q\sqrt m)=\sin(qu)/q+\sin(qu)Z_1+\cos(qu)Z_2$;
+the centered Gaussian here has variance exactly one. Stein's identity
+in $Z_1$ yields
+\begin{equation}
+ K_S=\int_Sm\cos(qv)\left[
+ \Kfun\left(\frac{\sin(qu)}q\right)
+ +q\sin(qu)\Phi\left(\frac{\sin(qu)}q\right)\right].
+ \label{an03srrv1:Kexact}
+\end{equation}
+Use $|\Kfun'|\le1$, $\Kfun(u)\le\ph+|u|$, and the sine/cosine
+Taylor bounds only on the reached chart. The two errors are at most
+\[
+ Cq^2(1+L^2)\int_Sm(1+|u|+|v|)
+                  +C\mu_Sq^{-1}e^{-c/q^2}.
+\]
+Cauchy--Schwarz and MP's transverse theorem bound the integral by
+$C(N_S+\sqrt{N_SJ_S}/q)\le C(H+\sqrt{qH})$.
+This is uniformly bounded, and $q^2L^2=O(q^{74/640})$.
+This proves \eqref{an03srrv1:finitevalue}, without applying a bounded
+weak-chart reduction to the growing chart.
+\end{proof}
+
+\begin{lemma}[Value conversion of radial weights]
+\label{an03srrv1:weights}
+Let $\eta_t=m(t,b)\dd\lambda_0/N_S(t)$ on the fixed clock.
+Then its density relative to \eqref{an03srrv1:W} satisfies
+\begin{equation}
+ \omega(t,b):=\frac{\dd\eta_t}{\dd\eta_s}(b),\qquad
+ \sup_{t,b}|\omega-1|
+ \le C[D_q+q^2(1+L^2)]=o(1),\quad
+ D_q=C(q^{1/8}+q^2\ell).
+ \label{an03srrv1:weightbound}
+\end{equation}
+This is a value bound only, not a derivative-weight budget.
+\end{lemma}
+\begin{proof}
+BULK's individual and aggregate amplitude defects, equivalently its
+\texttt{bulkweights} proof, give
+\[
+ e^{-2D_q}\le
+ \frac{z_b^2(t)/H(t)}{z_b^2(t_s)/H(t_s)}\le e^{2D_q}.
+\]
+On the reached chart, per-label balance is
+$m=z^2+a_-^2+j^2$, where $j^2=(U_1^2+W_1^2)/2$.
+WBR alignment gives $a_-^2/m\le Cq^2$, while
+$j^2/m\le Cq^2L^2$. Hence $m/z^2=1+O(q^2(1+L^2))$
+uniformly, including both closed endpoints. Combining the two
+times with MP's $N_S/H=1+O(q^2)$ proves
+\eqref{an03srrv1:weightbound}. Positivity of $z$ and radial weights
+justifies every division; the ratios extend to endpoint labels by
+the same individual inequalities. Nothing differentiates $\omega$.
+\end{proof}
+
+\begin{proposition}[Weak moment comparison in the required norm]
+\label{an03srrv1:weakmoments}
+One may take the model constant $C_1=8$ so that
+\begin{align}
+ |c-N|&\le C_{\rm fixed}(q^{1/8}+q^2\ell),\notag\\
+ |V_O-NV_*|+|K_O-N\Kfun(U_*)|
+ &\le C_1NW_2+C_{\rm fixed}q^{1/10}.
+ \label{an03srrv1:momentcomparison}
+\end{align}
+The same second bound holds with $K_O$ replaced by $(K_O)_+$.
+\end{proposition}
+\begin{proof}
+The first line is MP's response and phase at $H\le h$.
+For $S$, write the leading moment differences against the current
+probability, then use \eqref{an03srrv1:weightbound} and
+$N_S/N=1+O(d_{\rm ph}+q^2)$. For small $q$ these two ratios
+are at most two. Since $\Kfun$ is 1-Lipschitz,
+\begin{align*}
+ &\left|\int_S mv-NV_*\right|+
+   \left|\int_Sm\Kfun(u)-N\Kfun(U_*)\right|\\
+ &\hspace{1cm}\le4N\int_S(|v-V_*|+|u-U_*|)\dd\eta_s
+                    +C N(d_{\rm ph}+q^2)\\
+ &\hspace{1cm}\le4NW_2+C N(d_{\rm ph}+q^2).
+\end{align*}
+Here AN06 gives $0<U_*<1$ and $0<V_*<11/10$ for $N<2h<1/2$.
+This comparison avoids multiplying a small weight error by the
+possibly divergent supremum $L$; deviations are kept in $NW_2$.
+Add Lemma \ref{an03srrv1:finiteweak}.
+
+For the other primary labels, \eqref{an03srrv1:momentcharge} and
+\eqref{an03srrv1:MPinputs}, with $J_{P_q}\le q^2K_Y^2$, give
+\[
+ |V_{P_q}|+|K_{P_q}|\le
+ C_{\rm fixed}(q^{1/4}H+q^2+q^{1/8}\sqrt H+q)=O(q^{1/8}).
+\]
+For $\Sigma$ the analogous bound is
+$C_{\rm fixed}(q+q^{\Gamma_\nu/2})$, and for $\BB$ it is
+$C\mu_\BB/q\le Cq^{1/10}$. These are field-moment charges,
+not division of MP's relative-mass estimate by $q$.
+All remaining powers, including $37/320$ and $\Gamma_\nu/2$,
+exceed $1/10$. This proves the second line, with slack $C_1=8$.
+Finally $N\Kfun(U_*)\ge0$ and the positive-part map is
+1-Lipschitz; its replacement needs no separate negative-part
+estimate in this moment comparison.
+\end{proof}
+
+\section{Step 4: a model-only local box and the strong inequality}
+\label{an03srrv1:local}
+The coherent strong vector field with selected weak atom held fixed is
+\begin{equation}
+ F_*(x,y;N)=\frac12\binom{
+ \lambda[NV_*-x+(1-N)y]\Phi(\rho x)}{
+ -y-N\Kfun(U_*)+\rho(1-N)\Kfun(\rho x)}.
+ \label{an03srrv1:coherent}
+\end{equation}
+Its symmetric Jacobian is exactly WEAK's displayed matrix
+\begin{equation}
+ J_*=
+ \begin{pmatrix}
+ \frac\lambda2[-\Phi(\rho x)+\rho(NV_*-x+(1-N)y)\phi(\rho x)]
+ &\frac\lambda2(1-N)\Phi(\rho x)\\
+ \frac\lambda2(1-N)\Phi(\rho x)&-1/2
+ \end{pmatrix}.
+ \label{an03srrv1:Jacobian}
+\end{equation}
+At $(a,a,0)$ it is $J_1\le-\gamma I$; LOC/CFA give the
+model lower bound $\gamma\ge\gamma_*:=1183/20800$.
+
+Here are explicit analytic choices, without a numerical sign test.
+Let $L_J\ge1$ bound the sum of the operator norms of the first
+derivatives in $x,y,N$ of \eqref{an03srrv1:Jacobian}, with $V_*$
+treated as an independent frozen parameter in $[0,11/10]$, on
+$|x-a|,|y-a|\le1/4$, $0\le N\le1/2$, over the ratio box.
+The formula and the bounded Gaussian derivatives prove $L_J<\infty$.
+Its value at $N=0$ is independent of that frozen parameter, so
+\[
+ \|J_*-J_1\|\le L_J(|x-a|+|y-a|+N).
+\]
+Use the model bounds $a_{\min}=39/160\le a< a_{\max}=2/5$ and choose
+\begin{equation}
+ \delta=\frac12\min\left\{
+ \frac{a_{\min}}8,\frac{2\ph-a_{\max}}3,\frac18,
+ \frac{\gamma_*}{8L_J}\right\}>0.
+ \label{an03srrv1:delta}
+\end{equation}
+P \texttt{pa:branch} gives a $C^1$ graph at $N=0$.
+There are model constants $n_{\rm br}>0,C_{\rm br}<\infty$ such that
+\begin{equation}
+ |Z_*(N)-(a,a)|_2\le C_{\rm br}N\qquad(0\le N\le n_{\rm br}).
+ \label{an03srrv1:branch}
+\end{equation}
+For uniformity, the resident equations and the vector field are smooth
+in the compact ratio parameter, the unstable eigenvalue is
+$\lambda\ge169/400$, and the angular eigenvalues are separated
+from zero by the model bounds used in P/LOC/AN06. The parameter
+version of the same finite-dimensional unstable-manifold theorem
+used in P gives a uniform $C^1$ graph; its first derivative on a
+smaller compact graph gives $C_{\rm br}$. Equivalently one may use
+P/AN06's first-order branch expansion with this compactness check.
+
+Decrease the fixed WBR level, if necessary, so that
+\begin{equation}
+ h\le\min\left\{h_{\rm WBR},\frac{n_{\rm br}}2,
+       \frac{\delta}{2C_{\rm br}},\frac{\gamma_*}{8L_J}\right\},
+ \qquad h<1/4.
+ \label{an03srrv1:hbound}
+\end{equation}
+The symbol $h_{\rm WBR}$ denotes any fixed number satisfying all
+WBR's strict upper conditions. Then both local requirements hold:
+$|X_*-a|,|Y_*-a|\le\delta$ for $N\le2h$, and, on the $2\delta$ box,
+\[
+ J_*\le-\gamma I+L_J(4\delta+2h)I
+       \le-(\gamma/2)I=-g_WI.
+\]
+These choices also give $\delta<a/8$ and $a+3\delta<2\ph$.
+They do not presume that the actual reference has entered this box.
+
+\begin{proposition}[Strong error reduction up to its local first exit]
+\label{an03srrv1:strong}
+There is a pointwise constant
+\begin{equation}
+ d_0^{(s)}=C_{\rm srr}q^{1/20}\longrightarrow0
+ \label{an03srrv1:d0}
+\end{equation}
+such that, on $[t_s,t_n]$ up to the first exit from $E_s<\delta$,
+\begin{equation}
+ D^+E_s\le-g_WE_s+C_s(d_0^{(s)}+NW_2),\qquad C_s=980.
+ \label{an03srrv1:strongerror}
+\end{equation}
+$C_s$ and $g_W$ are model-only; $C_{\rm srr}$ may depend on
+the already fixed passage constants. No $\ell(t)E_s$ term is left.
+\end{proposition}
+\begin{proof}
+At $z_c$, use \eqref{an03srrv1:corecollapse} in CFA's field and then
+replace $\widetilde M$ by one. On the local box $|x_c|,|y_c|<1$,
+the coefficients of the moment and mass differences are bounded by
+model constants. Directly from \eqref{an03srrv1:cform}, one may use
+the conservative value bound
+\begin{align*}
+ |F_{\rm orig}(z_c)-F_*(z_c;N)|_2
+ \le{}&10\{\bar D_\KK+|1-M|+|c-N|
+       +|V_O-NV_*|+|(K_O)_+-N\Kfun(U_*)|\}+\eps_F.
+\end{align*}
+For example $\lambda\Phi/2\le1/2$, the coefficient of $K_O$
+is $1/2$, and the remaining coefficients involve only $|x_c|,|y_c|<1$
+and bounded $\Kfun(\rho x_c)$. Equations
+\eqref{an03srrv1:epslate}, \eqref{an03srrv1:momentcomparison} and
+MP's mass bound make this at most
+$80NW_2+C_{\rm fixed}q^{1/20}$.
+Choose $C_{\rm srr}$ to dominate the additive constant.
+WEAK permits $C_s=20(R_*+1)^2$ with
+$R_*>2+a+|u_\rho|+a/\lambda$; the model choice $R_*=6$ is
+admissible by AN06's resident bounds. Thus $C_s=980$ dominates
+both WEAK's prescribed coefficient and $80$.
+
+The selected branch at the exact logistic mass satisfies
+$Z_*'=F_*(Z_*;N)$. While $E_s<\delta$, the segment from
+$z_c$ to $Z_*$ stays in the $2\delta$ box. The symmetric Jacobian
+bound therefore gives
+$(z_c-Z_*)\cdot(F_*(z_c;N)-F_*(Z_*;N))\le-g_WE_s^2$.
+The norm Dini derivative gives \eqref{an03srrv1:strongerror},
+also at $E_s=0$. All mass errors were charged as bounded values
+on this box, and all weak spread was retained as $NW_2$.
+No integrated error was substituted for $d_0^{(s)}$.
+\end{proof}
+
+\section{Step 5: the initial guard from the earlier CFA inequality}
+\label{an03srrv1:entrysection}
+This section uses neither WEAK's box nor $g_W$ before $t_s$.
+The only attraction inequality is CFA \texttt{localineq}, already
+certified by RB with $e\le3e_*/4<e_*$ and $r_\KK<1$:
+\begin{equation}
+ D^+e\le-g_c e+C_{\rm pass}(r_\KK+f_*),\quad
+ g_c=\gamma_*/2,\quad
+ f_*=c+|V_O|+(K_O)_++\eps_F.
+ \label{an03srrv1:earlier}
+\end{equation}
+The capped donor mass stays in its proved range
+$\widetilde M\in[1/2-o(1),1]$ and $(a,a)$ is stationary for
+the comparison $G_{\widetilde M}$ throughout that range.
+
+\begin{lemma}[Pointwise pre-start forcing]
+\label{an03srrv1:preforcing}
+On the entire interval $[t_0,t_s]$,
+\begin{equation}
+ c\le C(H+q^2+\mu_\BB),\qquad
+ |V_O|+|K_O|\le C_{\rm fixed}q^{1/16},\qquad
+ \eps_F\le C_{\rm fixed}q^{1/10},\qquad
+ f_*\le C_{\rm fixed}q^{1/16}.
+ \label{an03srrv1:prebounds}
+\end{equation}
+These statements do not use MP's late response or reached chart.
+\end{lemma}
+\begin{proof}
+RB's \texttt{primaryclock} applies on all of $[t_0,t_b]$, not just
+after $t_s$: its proof uses Q2EC's original entry seed and RCET's
+fixed-subset transport under RB's residual/range/learning bounds.
+With LCRC signgood it gives $E_\Gp\le CH$ before $t_s$.
+The first-hit definition gives $H\le q^{1/8}$ there.
+The secondary bound and the transverse guard consequently yield
+$E_G\le C(H+q^5)$, $J_G\le q^2K_Y^2$.
+LCRC's absolute charge, including Young's inequality, gives
+$|c_G|\le2E_G+q^2J_G/Q$. Add the core $O(q^2)$ response and
+$|c_\BB|\le C\mu_\BB$ to obtain the first bound.
+The $C\mu_\BB$ term is retained: the outside supremum alone
+does not justify deleting it in favor of $Cq^2$.
+
+The proof of \eqref{an03srrv1:momentcharge}, in its sharper form
+$C(E_G+J_G+q^{-1}\sqrt{E_GJ_G})$, and the outside alternative give
+\[
+ |V_O|+|K_O|\le C_{\rm fixed}
+  [H+q^2+q^{5/2}+\sqrt H+\mu_\BB/q]
+                  \le C_{\rm fixed}q^{1/16}.
+\]
+This is a balance/Gaussian estimate for arbitrary donors, not a late
+weak-coordinate expansion. In \eqref{an03srrv1:majorant}, use
+the bounded, not the late superpolynomial, estimate $\mathcal T\le C$.
+It gives $\mu_\Gp\mathcal T\le C(H+q^2)$.
+All transverse and finite-noise terms are $O(q^2)$, the secondary
+term is at most
+$C(q^{5/2}+q^{(\Gamma_\nu+1/8)/2})$, the outside term is
+$q^{1/10}$, and WBR's global overshoot bound gives
+$(M-1)_+\le Cq^{11/10}$. Thus $\eps_F\le Cq^{1/10}$.
+Finally $\mu_\BB\le q^{11/10}$ and $H\le q^{1/8}$ bound
+$c$ by $Cq^{1/8}$; summing proves the last assertion.
+\end{proof}
+
+\begin{proposition}[Vanishing local initial error]
+\label{an03srrv1:E0}
+For the same actual reference,
+\begin{equation}
+ e(t_s)=O(q^{1/20}),\qquad E_0=E_s(t_s)=O(q^{1/20})\to0.
+ \label{an03srrv1:entryrate}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Use \eqref{an03srrv1:earlier} only in its certified CFA regime:
+\[
+ e(t_s)\le e^{-g_c(t_s-t_0)}e(t_0)
+ +C_{\rm pass}\int_{t_0}^{t_s}e^{-g_c(t_s-s)}
+                      (r_\KK+f_*)(s)\dd s.
+\]
+RB has $r_\KK=O(q^{1/20})$ on this whole interval; Lemma
+\ref{an03srrv1:preforcing} supplies the pointwise forcing.
+The integral is at most $C(q^{1/20}+q^{1/16})/g_c$.
+MOMC/CFA gives $e(t_0)=o(1)$, in particular bounded, and WBR's
+time formula gives
+\[
+ e^{-g_c(t_s-t_0)}\le Cq^{g_c(k-1/8)/Q},\qquad
+ \frac{g_c(k-1/8)}Q\ge\frac{235417}{832000}>\frac1{20}
+\]
+for small $q$, using $Q\le1/2$.
+This proves the first bound. Then \eqref{an03srrv1:branch} at
+$N_0=q^{1/8}$ gives
+$E_0\le e(t_s)+C_{\rm br}q^{1/8}$.
+In particular the required small forcing on a final stretch holds:
+one may take $T_q=(t_s-t_0)/2\to\infty$; the stronger pointwise
+bound was proved on the entire earlier interval. No logarithmic
+length is multiplied by a fixed integrated forcing allowance.
+\end{proof}
+
+\section{Step 6: strong-error theorem and S4e interface}
+\begin{theorem}[Original strong-reference part of the selection system]
+\label{an03srrv1:main}
+In the initialized deep regime, fix constants in the order
+\[
+ \mathrm{WPT/RB}\ \longrightarrow\ \mathrm{WBR}\
+ \longrightarrow\ (a_s=1/8,p=2)\
+ \longrightarrow\ (\delta,g_W,C_s)\
+ \longrightarrow\ h\
+ \longrightarrow\ [\mathrm{S4e}:C_w,L_*,n]\
+ \longrightarrow\ q,
+\]
+where the model-only local choices are
+\eqref{an03srrv1:delta}--\eqref{an03srrv1:hbound},
+$g_W=\gamma/2$ and $C_s=980$.
+For any fixed $0<n<h$, on $[t_s,t_n]$ up to the first exit from
+$E_s<\delta$, CFA's actual reference and the fixed-incoming-law
+$W_2$ in \eqref{an03srrv1:W} satisfy
+\[
+ D^+E_s\le-g_WE_s+C_s(d_0^{(s)}+NW_2),\qquad
+ d_0^{(s)}=C_{\rm srr}q^{1/20}.
+\]
+Moreover $E_0=O(q^{1/20})$ and MP gives $A_0=O(q^{1/16})$.
+For every fixed finite $K_0$ and fixed $n$, therefore,
+\begin{equation}
+ K_0(E_0+d_0^{(s)}+A_0\sqrt n)\le\delta/2
+ \label{an03srrv1:strongguard}
+\end{equation}
+once $q$ is small. No extra retained inequality is assumed to obtain
+this strong reduction or its initial error.
+\end{theorem}
+\begin{proof}
+The field and moment estimates prove Proposition
+\ref{an03srrv1:strong}; the independently justified earlier-regime
+argument proves Proposition \ref{an03srrv1:E0}. MP's incoming
+smallness uses the same probability and comparator convention as
+\eqref{an03srrv1:W}. This proves \eqref{an03srrv1:strongguard}.
+All original estimates used are confined to $[t_0,t_n]\subset[t_0,t_b]$.
+\end{proof}
+
+\paragraph{What this does not conclude.}
+TAILREP ultimately needs $d_0=\max\{d_0^{(s)},d_0^{(w)}\}$.
+If S4e proves $d_0^{(w)}\to0$ and fixed finite selection constants,
+the same limit proves its full initial guard. This sentence does
+not supply that missing weak estimate. The derivative of normalized
+weights, the complete $\ell_B$ budget, $C_w,L_*$, the small-gain
+choice $\Theta\le1/4$, the choice of $n$, and the selection theorem
+remain in S4e. No strong guard is propagated to $t_n$ by this
+increment alone; its differential inequality is stated with the
+correct local first-exit scope. The pointwise $d_0^{(s)}$ is not
+CFA's integrated $C_0E_g$ allowance.
+
+\begin{thebibliography}{15}\small
+\bibitem{RB} RB: \path{AN03_response_barrier_v1.tex},
+\texttt{an03rbv1:completed, primaryclock, conclusions, massconclusions}.
+\bibitem{CFA} CFA: \path{AN03_c_form_assembly_v1.tex},
+\texttt{an03cfav1:representation, selected, primaryselected, cform,
+majorant, localineq, passage}.
+\bibitem{CLOCK} CLOCK: \path{AN03_exact_amplitude_clock_and_c_passage_v1.tex},
+\texttt{inc:AN03:clock:v1:cfield, passage}.
+\bibitem{LOC} LOC: \path{AN03_local_rate_mean_tracking_v1.tex},
+local donor cancellation and Lemma 3.1.
+\bibitem{WBR} WBR: \path{AN03_weak_boundary_return_v1.tex},
+\texttt{an03wbrv1:main, mass, massrate, times, latechart}.
+\bibitem{MP} MP: \path{AN03_matching_package_v1.tex},
+\texttt{an03mpv1:accounting, phase, masses, transverse, smallness,
+massbudgets}.
+\bibitem{BULK} BULK: \path{AN03_bulk_clock_and_secondary_Q2_energy_v1.tex},
+\texttt{inc:AN03:bulkclock:v1:bulkclockclosure, bulkweights}.
+\bibitem{RCET} RCET: \path{AN03_residual_closure_and_eta0_transport_v1.tex},
+\texttt{an03rcetv1:ratio, margin, transport}.
+\bibitem{SI} SI: \path{AN03_selection_interface_v1.tex},
+\texttt{an03siv1:inventory, coremoments, massdeficit}.
+\bibitem{WEAK} WEAK: \path{AN03_weak_transit_forcing_and_orbit_selection_v1.tex},
+\texttt{inc:AN03:weak:v1:strongineq, smallgain, guard}.
+\bibitem{TAILREP} TAILREP: \path{AN03_mass_charged_tail_and_selection_defects_v1.tex},
+\texttt{inc:AN03:tailrepair:v1:strongerror, weakerror, selection}.
+\bibitem{P} P: \path{THEOREM_A_ANALYTICAL_PROGRESS.tex},
+\texttt{pa:branch, pa:pop-x, pa:pop-y}.
+\bibitem{AN06} AN06: \path{AN06_learned_orbit_witnesses_v2.tex},
+\texttt{inc:AN06:v2:residentbounds, regiontheorem}.
+\bibitem{PROFILE} PROFILE: \path{AN02_strong_entry_profile_and_tail_budget_v1.tex},
+Proposition 4.1; exact outside value cost.
+\bibitem{MOMC} MOMC: \path{AN02_moving_overlap_M_clock_passage_v1.tex},
+strong compact-kernel reduction and actual-reference entry.
+\end{thebibliography}
+\end{document}

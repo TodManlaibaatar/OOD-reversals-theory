@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.21 — October 30, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.22 — October 31, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -101,6 +101,13 @@
 - **Remaining S4:**
   - **S4d**, the strong-reference reduction and the local guard;
   - **S4e**, the weak-chart reduction and the selection theorem.
+
+**Revision 1.22 (Oct 31).** Records SRR (`AN03_strong_reference_reduction_v1`, S4d): **closed.**
+- **Strong error form.** On $[t_s,t_n]$, up to the first exit from $E_s<\delta$, CFA's actual reference satisfies TAILREP's `strongerror` with $g=g_W=\gamma/2$, the model-only $C_s=980$, and a pointwise $d_0^{(s)}=O(q^{1/20})$.
+- **Initial error.** $E_0=O(q^{1/20})$. It comes from CFA `localineq` (rate $g_c=\gamma_*/2$) on $[t_0,t_s]$; WEAK's box and rate are used only after $t_s$.
+- **Fixed for S4e:** $W_2$ under the fixed incoming law $\eta_s$; the weight value conversion $\omega=1+o(1)$; an explicit δ and a new upper bound on h.
+- **Reviewer corrections:** ledger 23 (the S4d prompt's regime-crossing errors, found in my audit), 24 (a coefficient slip in my corrected prompt, caught by SRR) and 25 (eaten TeX escapes in SRR and five committed increments; typesetting only).
+- **Next: S4e,** the weak-chart reduction and selection at a fixed level $n<h$.
 
 ---
 
@@ -781,6 +788,29 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - **S4e, the weak chart and selection.**
     - Reduce the selected cohort's (u,v) field on the reached chart to TAILREP's `weakerror` form: value vs coefficient, the normalized-weight defect, and a common $L_*$.
     - Then apply TAILREP's selection at a fixed logistic level $n<h$ (for example $h/2$).
+  - *S4d is done (SRR, next block).*
+
+**Status after SRR (`AN03_strong_reference_reduction_v1`, S4d, Oct 31): closed.**
+- *Theorem (strong-reference part of the selection system).* Fix any $0<n<h$. On $[t_s,t_n]$, up to the first exit from $E_s<\delta$:
+  - $D^+E_s\le-g_WE_s+C_s(d_0^{(s)}+NW_2)$, with $g_W=\gamma/2$, $\gamma=\alpha(1/2-\alpha)/(\alpha+1/2)$, $C_s=980$;
+  - $d_0^{(s)}=C_{\rm srr}q^{1/20}$, pointwise; its size is set by the core first moment $\bar D_{\mathcal K}$;
+  - $E_0=E_s(t_s)=O(q^{1/20})$. With MP's $A_0=O(q^{1/16})$, the strong part of TAILREP's initial guard holds for any fixed $K_0$ once q is small.
+- *Checked (reviewer, Oct 31):*
+  - **Primary tail.** $b_*(t_s-t_0)=(1-c_b)(k-1/8)\ell/2+O(1)$; the factor Q cancels. With $c_b\le1/4$ and $k\ge51/10$ the exponent is at least $\tfrac34\cdot\tfrac{199}{40}\cdot\tfrac12=597/320<2$. So after $t_s$, $\mathcal T\le Ce^{-cq^{-597/320}}+Ce^{-c/q^2}$, and CFA's fixed $C_0E_g$ never enters $d_0$.
+  - **Start exponent.** $g_c(k-1/8)/Q\ge\tfrac{1183}{41600}\cdot\tfrac{199}{40}\cdot2=235417/832000>1/20$.
+  - **Chart order.** $q^2L^2=O(q^{2-1206/640})=O(q^{37/320})$, and $37/320>1/10$.
+  - **Exact selected moments.** $V_S=\int_Sm\sin(qv)\cos(qu)/q$ up to an exponentially small gate tail. On $P_1$ the gate variable is $q[\sin(qu)/q+G]$ with $G\sim N(0,1)$ exactly, so Stein gives $K_S=\int_Sm\cos(qv)[\mathsf K(r)+q\sin(qu)\Phi(r)]$, $r=\sin(qu)/q$.
+  - **Non-selected charges.** $|V_T|+|K_T|\le C(\mu_T+q^{-1}\sqrt{\mu_TJ_T})$ from balance: $P_q$ costs $O(q^{1/8})$, Σ costs $O(q+q^{\Gamma_\nu/2})$, and $\mathcal B$ costs $O(q^{1/10})$.
+  - **Coefficient.** $N_S/N\le2$ and $\omega\le2$ give $4NW_2$. The field coefficients are at most 10, giving $80NW_2\le C_sNW_2$. WEAK's $R_*=6$ is admissible: $2+a+|u_*|+a/\lambda<2+\tfrac25+1+\tfrac{160}{169}$.
+  - **Local box.** $\|J_*-J_1\|\le L_J(|x-a|+|y-a|+N)$, with $V_*$ frozen; it drops out at $N=0$. Then $\delta\le\gamma_*/(16L_J)$ and $h\le\gamma_*/(8L_J)$ give $J_*\le-(\gamma/2)I$ on the 2δ box for $N\le2h$, using $\gamma\ge\gamma_*$.
+  - **Before $t_s$.** RB `primaryclock` ($H\le H_{G_+}\le C_{\rm ent}e^{2D_+}H$) holds on the whole passage, so $E_{G_+}\le CH<Cq^{1/8}$. Then $f_*=O(q^{1/16})$, dominated by $K_Y\sqrt H$, and $r_{\mathcal K}=O(q^{1/20})$.
+- *New constants:* $\delta=\tfrac12\min\{a_{\min}/8,(2\phi(0)-a_{\max})/3,1/8,\gamma_*/(8L_J)\}$, with $a_{\min}=39/160$, $a_{\max}=2/5$, and model-only $L_J$, $n_{\rm br}$, $C_{\rm br}$. **New upper bound on the level:** $h\le\min\{h_{\rm WBR},n_{\rm br}/2,\delta/(2C_{\rm br}),\gamma_*/(8L_J)\}$, $h<1/4$.
+- *Conventions handed to S4e:* $\eta_s=m(t_s)\,d\lambda_0/N_S(t_s)$, transported with fixed labels; $W_2$ is the $p=2$ distance to $(U_*,V_*)(N(t))$; $\omega=d\eta_t/d\eta_s=1+O(D_q+q^2L^2)$, a value bound only.
+- *Reviewer notes for S4e (to verify, not established):*
+  - **Weight derivative.** SRR lists a "derivative normalized-weight defect" for S4e. Because $W_2$ is defined on fixed labels, $D^+W_2$ involves only per-label velocities. The actual-weight donor terms then need only ω's value bound. This obligation may therefore be empty; S4e should decide rather than build it by default.
+  - **Value-only route.** TAILREP's remark after `weakerror` says population-to-orbit comparison needs value bounds at actual receivers, while receiver derivatives are needed only for pairwise contraction. So the weak reduction can compare each receiver's velocity with a leading-form field built from the actual positive donor measures, and take the contraction from that field on $u\ge0$.
+  - **Admissible growth.** On the reached chart, a per-label error of size $q^j\times$(degree-$i$ monomial in $|u|,|v|$) splits into $\ell_B(|u-U_*|+|v-V_*|)$ plus an additive $o(1)$ term exactly when $j>\tfrac{603}{640}(i-1)$. Any other term needs its signed leading value (ledger 22).
+- *Remaining S4:* S4e (1 session, possibly 2).
 
 **Original claim (v1; "bounded chart" superseded by SI).** The Q2 bulk, which is on the strong side at angle $\approx q^{0.52}$ at κ=10 strong entry (target-only), returns into a bounded weak chart with $u\ge0$. Its evolution there matches a closed leading weak family with $\sqrt{N_0}\,W_p(t_0)\to0$, and its response clock matches the logistic half-mass phase to $o(1)$.
 
@@ -890,7 +920,7 @@ Tracks that can run in parallel:
 |---|---|---|
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
 | II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem, and **RB proved the response barrier: the deep-regime weak passage is a theorem.** Track II is complete; next is S4 (track III). |
-| III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **Next: S4d,** the strong-reference reduction and local guard. Then S4e (weak-chart reduction and selection). |
+| III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction** (strong error form on $[t_s,t_n]$; $E_0=O(q^{1/20})$). **Next: S4e,** the weak-chart reduction and selection at a fixed $n<h$. |
 | IV | S6 exact lag | Independent; needed for B-core. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
 | — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. |
@@ -972,6 +1002,27 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
     - *Rules:*
       - A size or norm bound is not a sign. If a quantity's leading value is $O(q)$ and its error bound is also $O(q)$, then dividing by q leaves an order-one remainder of unknown sign. The sign must come from computing the signed leading term.
       - Before using a chart's error orders, check that the chart is actually reached on the interval.
+23. **Regime-crossing and budget-type errors (my S4d draft prompt; found in the reviewer audit of Oct 30, before the run).**
+    - *A rate outside its regime.* Step 5 applied WEAK's $-gI$ rate on $[t_0,t_s]$. That bound is proved only on the 2δ box, at $M=1$, for $N\le n_b$. The inequality proved there is CFA `localineq`, with rate $g_c=\gamma_*/2$ and target $(a,a)$, uniform in $\widetilde M$ (ledger 13).
+    - *An object outside its domain.* It used the logistic N before $t_s$, where N is not defined and MP's estimates do not hold. Before $t_s$ the right quantity is the clock, $H<q^{1/8}$.
+    - *The wrong budget type.* It allowed CFA's integrated budgets as $d_0$ sources, but TAILREP's $d_0$ is a pointwise constant shared by both error inequalities.
+    - *A mass bound used as a field bound.* It charged non-selected weak senders by MP's mass bound. MP itself says that bound does not control field costs divided by q.
+    - *A missing moment and a misstated risk.* It listed only $P_1$ weak moments and omitted the $P_2$ moment $V_O$. It also described the $C_0E_g$ risk as $O(h)$. In fact the integrated primary part is small but fixed, and pointwise it is $\mu_{G_+}\mathcal T$, which is superpolynomially small after $t_s$.
+    - *Rules:*
+      - Use a rate or estimate only on the box, mass range and interval where it was proved. Across a regime boundary, use the earlier regime's inequality and match at the boundary.
+      - An integrated budget is not a pointwise $d_0$ source.
+      - Charge a population's field by its mass only when its per-mass field is bounded on a reached chart; otherwise use transverse energy.
+24. **Coefficient slip (my corrected S4d prompt).** Step 5 said $c\le C(H+q^2)$ while also listing $c_{\mathcal B}\le C\mu_{\mathcal B}$. RB's guard gives only $\mu_{\mathcal B}\le q^{11/10}$, which is not $O(q^2)$. SRR kept $c\le C(H+q^2+\mu_{\mathcal B})$, and the conclusion is unaffected. The same prompt also asked for $H_{G_+}\lesssim H$ before $t_s$ to be checked through RCET; RB `primaryclock` already proves it on the whole passage. *Rule:* as in item 19, do not absorb a term into a smaller power without the inequality that justifies it, and cite the proved conclusion rather than re-deriving it.
+25. **Eaten TeX escapes (artifact; found while reviewing SRR).** In some delivered files a backslash escape became a control character: `\r` became CR or LF (from `\rm`), `\t` became TAB (from `\tfrac`), and one `\qquad` lost its backslash. TeX compiles these without warnings, so compile checks miss them, but the typeset formulas read wrong (for example "−frac12Q(1−2c)").
+    - *Locations:*
+      - SRR (not yet committed): lines 323–324 (`d_{\rm ph}`);
+      - SI: line 319;
+      - WPT: lines 465 and 475;
+      - RB: lines 335, 429, 513, 515 (also `qquad`) and 516;
+      - GESG: lines 231 and 238;
+      - LSB: line 181.
+    - These are typesetting defects only; no statement's mathematics changes. Prior increments are frozen, so they are recorded here rather than edited. Fix them only by an explicitly approved errata-only commit.
+    - *Rule:* before delivery, every work session scans its .tex with `grep -nP '[\x00-\x09\x0b-\x1f]'` and checks that `\rm`, `\tfrac`, `\qquad` and `\text` survive.
 
 ---
 
@@ -990,9 +1041,9 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | RET2 | `AN03_two_sided_passage_and_Q2_retention_v2.tex` |
 | LOC | `AN03_local_rate_mean_tracking_v1.tex` |
 | CLOCK | `AN03_exact_amplitude_clock_and_c_passage_v1.tex` (+ review) |
-| WEAK | `AN03_weak_transit_forcing_and_orbit_selection_v1.tex` (+ review) |
-| TAILREP | `AN03_mass_charged_tail_and_selection_defects_v1.tex` (+ review) |
-| BULK | `AN03_bulk_clock_and_secondary_Q2_energy_v1.tex` (+ review) |
+| WEAK | `AN03_weak_transit_forcing_and_orbit_selection_v1.tex` (+ review), prefix `inc:AN03:weak:v1:` |
+| TAILREP | `AN03_mass_charged_tail_and_selection_defects_v1.tex` (+ review), prefix `inc:AN03:tailrepair:v1:` |
+| BULK | `AN03_bulk_clock_and_secondary_Q2_energy_v1.tex` (+ review), prefix `inc:AN03:bulkclock:v1:` |
 | RCET | `AN03_residual_closure_and_eta0_transport_v1.tex` (+ review), prefix `an03rcetv1:` |
 | LCRC | `AN03_ledger_cap_residual_closure_v1.tex` (+ review), prefix `an03lcrcv1:` |
 | OWPT | `AN02_overlap_window_profile_transfer_v1.tex` (+ review), prefix `an02owptv1:` |
@@ -1014,6 +1065,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | SI | `AN03_selection_interface_v1.tex` (+ review), prefix `an03siv1:` — S4a, partial: full selection-hypothesis inventory with exact constants; core donor moments; BULK size in weak coordinates ($p_b$); growing-chart mass relation and logistic phase identity. Stops at the original weak-return margin. |
 | WBR | `AN03_weak_boundary_return_v1.tex` (+ review), prefix `an03wbrv1:` — S4b, closed: exact weak-boundary moments; one-sided weak feedback by energy; pointwise strong-mass rate; $O(q)$ clock alignment; original input return of the whole clock to a fixed level |
 | MP | `AN03_matching_package_v1.tex` (+ review), prefix `an03mpv1:` — S4c, closed: population accounting (band $\asymp q^{1/4}$); response $c=H(1+O(q^{1/4}))+O(q^2)$; uniform $o(1)$ logistic phase; $J_S\le C(q^3+q^2H)$; $A_0=O(q^{1/16})$ ($p=2$); late mass-defect budgets |
+| SRR | `AN03_strong_reference_reduction_v1.tex` (+ review), prefix `an03srrv1:` — S4d, closed: CFA's actual reference in TAILREP `strongerror` form on $[t_s,t_n]$ ($g_W=\gamma/2$, $C_s=980$, pointwise $d_0^{(s)}=O(q^{1/20})$); $E_0=O(q^{1/20})$ via CFA `localineq` before $t_s$; superpolynomial late primary tail; fixed-label $W_2$ convention and weight value conversion; explicit δ and h bound |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |
