@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.26 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.27 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -145,6 +145,18 @@
   - the observation that the reversal itself (rebound and the ordered integrated error change) now follows from A-error-transfer plus WIT, while the source signs $D_1<0<D_2$ need A-rate-transfer.
 - **Next: S5d,** A-rate-transfer on WIT's learned windows and the AN8 assembly (Theorem A and persistence).
 
+**Revision 1.27 (Nov 2).** Records RTA (`AN07_rate_transfer_and_assembly_v1`, S5d): **closed. Initialized Theorem A and initialized persistence are proved in the deep regime.**
+- **Family.** Aligned-balanced isotropic initialization with $S_0=q^{10}$, $0<q\le q_0$ (an analytic, unevaluated $q_0$), and $(\rho,\zeta)$ in WIT's rectangle $\mathcal P_*$ around $(2/3,5\pi/9)$.
+- **Theorem A** (`theoremA`):
+  - responses $\mathsf m_1\ge1/2$, $\mathsf m_2\ge1/4$, and exact cluster losses $\mathcal L_p\le(169/196)\mathcal L_p(0)$;
+  - source signs $D_1^\tau\le-p_*q^2/2<0<p_*q^2/2\le D_2^\tau$ on J;
+  - total rate $\le-5\gamma_0q^2/8$ on $J_-$ and $\ge5\gamma_0q^2/8$ on $J_+$;
+  - an interior error minimizer with rebound $\ge\gamma_0rq^2/4$ on both sides;
+  - an off-cone sector of width $2\delta_\zeta q$.
+- **Persistence** (`persistence`). There are a common $S_{\rm clr}$, a horizon $T_q\to\infty$ and $\varepsilon_q\to0$ with $|E-\tfrac12|\le\varepsilon_qq^2$ on $[S_{\rm clr},S_{\rm clr}+T_q]$. No rate for $T_q$ is given.
+- **Not covered:** the original-flow B-core decomposition (S6); the canonical and bridge regimes (S7/S8); a quantitative horizon.
+- **Next: S6,** the original-flow B-core on WIT's windows. Before any merge, an independent read of the complete chain is advisable.
+
 ---
 
 ## 0. Ground rule: analytic proof only
@@ -178,10 +190,10 @@ Every statement keeps H2's scope labels: exact original-flow result; exact compa
 
 | Name | Content | Current status |
 |---|---|---|
-| **Theorem A** | From aligned-isotropic initialization, on an analytically specified joint family $(q,S_0(q))$ near $\rho=2/3$: substantial learning of both concepts, strict opposite cluster signs $D_1<0<D_2$ on a common learned window, and an ordered negative-then-positive total rate, giving a rebound $\ge c\,q^2$ on an off-cone sector of width $\ge c\,q$. | Open. Limiting version proved. |
-| **B-core** | The same proof shows *why*: cluster-1 help = exposure × signed exact lag; cluster-2 harm = input rotation of the strong carrier driven by a residual that the weak family produces; the evolving lag/exposure/residual force the change of dominance, with complete remainders. | Proved in the leading system; original-flow version open. |
+| **Theorem A** | From aligned-isotropic initialization, on an analytically specified joint family $(q,S_0(q))$ near $\rho=2/3$: substantial learning of both concepts, strict opposite cluster signs $D_1<0<D_2$ on a common learned window, and an ordered negative-then-positive total rate, giving a rebound $\ge c\,q^2$ on an off-cone sector of width $\ge c\,q$. | **Proved (deep regime, Nov 2; RTA):** $S_0=q^{10}$, $0<q\le q_0$, $(\rho,\zeta)\in\mathcal P_*$. |
+| **B-core** | The same proof shows *why*: cluster-1 help = exposure × signed exact lag; cluster-2 harm = input rotation of the strong carrier driven by a residual that the weak family produces; the evolving lag/exposure/residual force the change of dominance, with complete remainders. | Proved in the leading system; original-flow version open (S6, next). |
 | **B-bridge** | The canonical depth enhancement: a non-small inactive strong bridge changes exposure and compensation. | Open (AN4). |
-| **Persistence** | After the rebound, the scaled benefit is eventually zero on growing windows. | Proved in the limiting system; the original-flow version follows from AN7 by LP's diagonal argument. |
+| **Persistence** | After the rebound, the scaled benefit is eventually zero on growing windows. | **Proved for the initialized family (RTA, via FWC and LP's diagonal argument)**, on a diverging horizon with no rate. |
 | **Linear contrast** | Commuting aligned linear networks have monotone probe error and clusterwise help. | Complete (LP, extending P10). |
 
 ### 1.2 Empirical facts the theory must account for
@@ -1021,6 +1033,28 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
 - *Reviewer observation, for S5d.* WIT `uniformtheorem` gives $\mathcal E'\le-\tfrac34\gamma_0$ on $J_-$ and $\ge\tfrac34\gamma_0$ on $J_+$ in the limit. Since A-error-transfer is uniform at the $q^2$ scale, the original error therefore decreases by at least $(\tfrac38\gamma_0r-o(1))q^2$ across $J_-$ and increases by the same across $J_+$, giving a rebound of order $\gamma_0rq^2$ on the offset sector of $\mathcal P_*$ (physical width $2\delta_\zeta q$), with no rate transfer. The cluster source signs $D_1<0<D_2$ on J, part of Theorem A's statement, do need A-rate-transfer.
 - *Remaining (1 session, possibly 2):* **S5d.** A-rate-transfer on WIT's J (sourcewise core field and reactions from FWC, CWI `rate` with $g_0=g_*/4$, background rate charges), then AN8: initialized Theorem A on $\mathcal P_*$ and the persistence corollary via LP `diagonal-transfer`. After that: S6 (exact lag, B-core) and S7/S8 (canonical regime).
 
+**Status after RTA (`AN07_rate_transfer_and_assembly_v1`, S5d, Nov 2): closed. S5 (AN7) and AN8 are complete for the deep regime.**
+- *Theorems:*
+  - **Core gap** (`coregap`). Supremum core tracking $C_{\rm sup}q^{1/20}$, so every core label is at least $g_*/8$ from the probe gate on J.
+  - **Rate transfer** (`ratetransfer`). On J, $|q^{-2}D_p^\tau-d_{p,\rho,\zeta}|\le\delta_J=O(q^{1/20})$ uniformly on $\mathcal P_*$.
+  - **Learning** (`learning`). Responses and the 169/196 loss ratio, proved directly from full-output $L^2$ estimates, since WIT `staticproposition` does not apply.
+  - **Theorem A** (`theoremA`) and **persistence** (`persistence`) as in Revision 1.27.
+- *Checked (reviewer, Nov 2):*
+  - **Pairwise core comparison.** $D^+|z_b-z_{b'}|\le L_F|z_b-z_{b'}|+2C_Fq^{1/10}$ in the same leading field, with FWC's pointwise value errors and receiver Lipschitz $\partial_1\mathsf F=(w-t)_+\phi(t)$; averaging gives sup tracking.
+  - **Rate algebra.** The core rate expansion $f_{\mathcal K,1}=qA+O(q^3)$, $f_{\mathcal K,2}=q^2B+O(q^4)$ and $\xi_q=(\sin q\zeta,-\cos q\zeta)$ give $q^{-2}D_p=(A-\zeta)A_p+B_p+O(q^2)$, which matches WIT `generalrates` with the $1-M$ reaction kept.
+  - **Rate margins.** $5/8-1/8=1/2$ for sources and $3/4-1/8=5/8$ for totals, with $\delta_J<\min(p_*/8,\gamma_0/16)$.
+  - **Learning arithmetic.**
+    - $f_0=S_0X/4$, since $\mathbb E[aa^T1\{a\cdot X>0\}]=I/4$.
+    - $\|X\|_{P_p}^2=Q_p+q^2$.
+    - With masses in $[1/4,5/4]$, $|1-M_p|\le3/4$; the condition $C_{\rm loss}q^{1/4}\le\tfrac{13}{320}\le\sqrt{Q_p}/16$ gives the residual ratio $(13/16)/(7/8)=13/14$.
+  - **Rebound.** A drop of $3\gamma_0r/8$ across each half-window, less two endpoint errors of at most $\gamma_0r/16$ each, leaves $\gamma_0r/4$; both endpoints are excluded as minimizers.
+  - **Persistence.** LP `diagonal-transfer`'s premise is FWC `errortransfer` for every finite T, with LPR's exact clearing.
+  - **Escapes.** The .tex passes both escape scans.
+- *The deep-regime chain.* Every increment from F/P through RB, WBR–WCS, CWI, PSE, FWC and RTA is now a proved conclusion with no retained hypothesis on its stated scope. The consolidation into a checkpoint 2.0 (with changelog and label map) awaits Tod's explicit approval, and preferably an independent read first.
+- *Remaining:*
+  - **S6 (next): original-flow B-core on WIT's windows.** P's exact factorizations evaluated for the original flow, with a signed exact lag and producer attribution.
+  - **S7/S8:** bridge and canonical regime.
+
 ### S6. The exact finite-noise lag (AN1)
 
 **Claim.** The original-flow help channel $D_1^{\rm phys}/(\mu_1^2q^2)=-\tfrac12A_{q,\xi}L^{\rm mean}_{1,q}+\text{remainder}$, with the remainder smaller than the lag's signed margin on the learned windows, and a positive-lag estimate for the exact lag.
@@ -1100,9 +1134,9 @@ Tracks that can run in parallel:
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
 | II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem, and **RB proved the response barrier: the deep-regime weak passage is a theorem.** Track II is complete; next is S4 (track III). |
 | III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction**, and **S4e (WCS) closed the weak-chart reduction and selection**: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ at a fixed small weak mass. **Track III is complete.** |
-| IV | S6 exact lag | Independent; needed for B-core. |
+| IV | S6 exact lag | Needed for B-core. **Next** (after RTA): the original-flow B-core on WIT's windows, using FWC/RTA's sourcewise reductions. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
-| — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **S5b (PSE) closed:** background paid on the passage; full error and rates match at every fixed level $n'\le n$, so A-error-transfer holds on windows inside $(-\infty,s_n]$. **S5c (FWC) closed:** continuation by combined transverse energy; **A-error-transfer on every fixed window**. **Next: S5d,** A-rate-transfer on J and the AN8 assembly. |
+| — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **S5b (PSE) closed:** background paid on the passage; full error and rates match at every fixed level $n'\le n$, so A-error-transfer holds on windows inside $(-\infty,s_n]$. **S5c (FWC) closed:** continuation by combined transverse energy; **A-error-transfer on every fixed window**. **S5d (RTA) closed:** rate transfer on J; **initialized Theorem A and persistence**. |
 
 **Dependency sketch**
 
@@ -1265,6 +1299,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | CWI | `07_compact_windows_AN07/AN07_compact_window_interface_v1.tex` (+ review), prefix `an07cwiv1:` — S5a, audit: consumer interface; centering $\tau_h$ and time units; exact probe-activity classification; precision criterion $\mathcal Q_{\Sigma\cup\mathcal B}=o(q^2)$ with paid and unpaid cohorts; core entry error and rates; outside rate charge; leading WIT extension with strong-only compact support |
 | PSE | `07_compact_windows_AN07/AN07_probe_sector_energy_v1.tex` (+ review), prefix `an07psev1:` — S5b, closed: lower-half transverse energy $\mathfrak E_T$ on $[0,t_b]$; backward pre-entry mass comparison ($e^5$); background $\mathcal Q_{\Sigma\cup\mathcal B}=O(q^2\epsilon_{\rm bg})$; full error and source-rate comparison at every fixed level $n'\le n$; conditional continuation criterion for S5c |
 | FWC | `07_compact_windows_AN07/AN07_finite_window_continuation_v1.tex` (+ review), prefix `an07fwcv1:` — S5c, closed: combined transverse energy continuation from $t_n$ (cross residuals, alignment, charts, primary inactivity, physical mass laws) with no passage guard; sourcewise core and signed weak value reductions; perturbed first-moment propagation with current weights; gap-free static comparison; **A-error-transfer on every fixed centered window**; LP `compact-transfer` |
+| RTA | `07_compact_windows_AN07/AN07_rate_transfer_and_assembly_v1.tex` (+ review), prefix `an07rtav1:` — S5d, closed: sup core tracking and strict probe gap; A-rate-transfer on WIT's J; direct learning (responses, 169/196 loss ratio); **initialized Theorem A** on $\mathcal P_*$ ($S_0=q^{10}$); **initialized persistence** on a diverging horizon; dependency ledger and S6 handoff |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

@@ -1,0 +1,791 @@
+% New standalone increment. Prior increments and GitHub remain read-only.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.87in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,array,longtable,booktabs,xurl}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}\allowdisplaybreaks[2]
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\E}{\mathbb E}\newcommand{\dd}{\,d}
+\newcommand{\KK}{\mathcal K}\newcommand{\BB}{\mathcal B}
+\newcommand{\Gp}{G_+}\newcommand{\dist}{\mathfrak d}
+\newcommand{\one}{\mathbf1}\newcommand{\Kfun}{\mathsf K}
+\newcommand{\Ffun}{\mathsf F}
+\title{Source-rate transfer and initialized learned reversal\\
+with persistence in the deep regime}
+\author{Standalone analytical increment for independent review}
+\date{Version 1 --- 2 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+FWC's finite-window continuation is combined with WIT's learned
+limiting witnesses. A pairwise core comparison supplies a strict
+probe gap for every core label. The exact original source rates
+then differ from their leading-form counterparts by a vanishing
+normalized error, including all background and radial-reaction terms.
+Both concept responses and the fixed cluster-loss reduction are
+proved directly, without assuming compact weak support or deleting
+outside labels. This gives initialized Theorem A on WIT's nonempty
+parameter rectangle for \(S_0=q^{10}\), with source signs,
+ordered total-rate windows and a quantitative rebound.
+FWC's every-fixed-window error transfer also discharges LP's
+initialized persistence premise. No quantitative growing horizon,
+canonical-regime assertion or original-flow lag decomposition is made.
+\end{abstract}
+
+\section{Scope, clocks, exact conventions and hypothesis inventory}
+\label{an07rtav1:inventory}
+Keep the original balanced untied population initialized by the
+uniform label law with \(m(0,b)=S_0=q^{10}\).
+In normalized coordinates
+\[
+ P_1=N(e_1,q^2I_2),\qquad P_2=N(\rho e_2,q^2I_2),\qquad
+ P_{\rm mix}=\tfrac12(P_1+P_2),\qquad \lambda=\rho^2.
+\]
+Write \(U=\sqrt m\,a_\theta\), \(W=\sqrt m\,a_\psi\),
+\(a_\theta=(\cos\theta,\sin\theta)\), and
+\(d\mu=m\,d\lambda_0\). All cohorts are the unchanged fixed
+initial-label sets \(\KK,\Gp,\Sigma,\BB\), with
+\(S=\mathcal C_q\subset\Gp\), \(P_q=\Gp\setminus S\).
+Use \(M=\mu_\KK\) and \(N=\mu_S\) for physical masses.
+The output and probe error are
+\[
+ f(X)=\int m a_\psi(a_\theta\cdot X)_+\dd\lambda_0,
+ \quad \xi_q(\zeta)=(\sin(q\zeta),-\cos(q\zeta)),
+ \quad E_{\xi_q}=\tfrac12|\xi_q-f(\xi_q)|^2.
+\]
+Source matrices include the mixture half:
+\begin{equation}
+ R^{(p)}_\theta=\tfrac12\E_{P_p}[(X-f(X))X^T
+                    \one_{\{U\cdot X>0\}}],\qquad
+ U'_p=(R^{(p)})^TW,\quad W'_p=R^{(p)}U.
+ \label{an07rtav1:sourceconvention}
+\end{equation}
+Set \(h_p=(\log m)'_p=2a_\psi^TR^{(p)}a_\theta\);
+this is twice CWI's auxiliary scalar \(g_p\).
+The original source rate is
+\(D_p^\tau=-(\xi_q-f)\cdot\dot f_p\), with
+\(D^\tau=D_1^\tau+D_2^\tau\). At a probe gate use CWI's
+selector \(\one_{\{a_\theta\cdot\xi_q>0\}}\).
+These are classical source derivatives at gate-regular states and
+give the time derivative almost everywhere. No classical derivative
+at a background gate-hit atom is presumed below.
+
+Retain the analytically defined WCS/PSE/FWC center
+\begin{equation}
+ \tau=\mu_1^2t_{\rm phys},\qquad
+ \tau_h=t_n+\lambda^{-1}\log\frac{1-n}{n},\qquad
+ s=\tau-\tau_h,\qquad n_\rho(s)=(1+e^{-\lambda s})^{-1}.
+ \label{an07rtav1:time}
+\end{equation}
+Here \(n\le1/8\) is the unchanged WCS level and \(t_n\)
+is its exact auxiliary-logistic hit. This center matches the
+selected branch's half-mass phase; it is not declared to be the
+exact half-mass time of the physical \(N\). FWC bounds the
+physical mass/logit error on every fixed window. Thus WIT's
+\(s\)-clock is exactly the comparison clock in
+\eqref{an07rtav1:time}, including its \(\rho\)-dependence.
+
+Keep WIT's \emph{original}, analytically specified rectangle
+and witnesses, without recomputing its widths:
+\begin{gather}
+ \mathcal P_*=K_\rho\times I_\zeta,\quad
+ K_\rho=[2/3-\delta_\rho,2/3+\delta_\rho],\quad
+ I_\zeta=[5\pi/9-\delta_\zeta,5\pi/9+\delta_\zeta],
+ \label{an07rtav1:rectangle}\\
+ J=[s_*-r,s_*+r],\quad
+ J_-=[s_*-r,s_*-r/2],\quad
+ J_+=[s_*+r/2,s_*+r].
+ \label{an07rtav1:windows}
+\end{gather}
+The constants \(\delta_\rho,\delta_\zeta,r,p_*,\gamma_0,\sigma,g_*\)
+are positive and defined by WIT's
+\texttt{rdef,\allowbreak windows,\allowbreak constants,\allowbreak rectangle}. In particular
+\(\mathcal P_*\subset[13/20,7/10]\times[87/50,7/4]\).
+WIT \texttt{uniformtheorem} gives on this same rectangle
+\begin{align}
+ n_\rho&\ge1/4+\sigma/2,& \zeta-X_\rho&\ge g_*/4&&\text{on }J,
+ \notag\\
+ d_{1,*}&\le-5p_*/8,&d_{2,*}&\ge5p_*/8&&\text{on }J,
+ \label{an07rtav1:limitingmargins}\\
+ \mathcal E_*'&\le-3\gamma_0/4&&&\text{on }J_-,\notag\\
+ \mathcal E_*'&\ge3\gamma_0/4&&&\text{on }J_+.\notag
+\end{align}
+Since \(n<1/4\), monotonicity of \(n_\rho\) proves
+\(s_n(\rho)<s_*-r\) for every \(\rho\in K_\rho\).
+Choose one fixed
+\(T_J>\max\{s_*+r,\max_{[13/20,7/10]}s_n\}\).
+FWC therefore supplies all its conclusions throughout \(J\).
+Write \(L=1+\log(1/q)\), \(\chi=1/20\),
+\(\gamma_*=289169/924000\) and
+\(\epsilon_{\rm bg}=q^8+L^2q^{\gamma_*}\).
+
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{.21\textwidth}
+ >{\raggedright\arraybackslash}p{.43\textwidth}
+ >{\raggedright\arraybackslash}p{.27\textwidth}}
+\toprule Source & Hypotheses, including domains & Use and supply\\\midrule\endhead
+FWC \texttt{main,\allowbreak corefield,\allowbreak distbound,\allowbreak background}
+& Original initialized \(\kappa=10\), deep ratio box; inherited
+ fixed constants; fixed finite \(T>\max s_n\), bounded nonnegative
+ offsets; \(q\) last. Current measures and fixed cohorts.
+& Unconditional original-flow conclusion on \([t_n,\tau_h+T_J]\).
+ No passage guard is added. Later fixed horizons are used separately
+ for persistence.\\
+WIT \texttt{uniformtheorem}
+& Selected coherent branch, leading strong mass one, exact
+ half-mass-centered \(n_\rho\); parameters in its \(\mathcal P_*\);
+ its specified common \(J,J_-,J_+\) and positive analytic constants.
+& Supplies \eqref{an07rtav1:limitingmargins}. The original physical
+ mass is compared by FWC, not set equal to \(n_\rho\).\\
+WIT \texttt{populationtransfer,\allowbreak epsdef}
+& A solution of the defined leading system at the same \(\rho,s\);
+ positive measures, \(M,N\le2\), both supports in \([-R_W,R_W]^2\)
+ throughout \(J\), and \(\sup_J\dist\le\varepsilon_*\), with
+ \(\varepsilon_*=\min\{1/4,\sigma/4,p_*/(8C_1),\gamma_0/(8C_1)\}\),
+ \(C_1=64R_W^2(1+4/g_*)\); selector/a.e. chain rule.
+& Not applied to the perturbed original flow or its noncompact weak
+ chart. Source rates and learning are transferred directly below.
+ Its tolerance can also be met by FWC for small \(q\).\\
+WIT \texttt{staticproposition}
+& Entire exact state consists of two charted measures with both
+ supports in \([-R_W,R_W]^2\), \(R_W\ge2\), \(M,N\le2\),
+ \(\rho\in[13/20,7/10]\), \(0<q\le1\). Its final learning claim
+ also needs its population mass conclusions, \(S_0\le1/2\),
+ and \(q\le q_{\rm learn}\), the minimum of
+ \(1,\sigma/(100R_W),1/(100R_W)\) and
+ \((13/20)/(272R_W)\).
+& Entire-state compactness is not supplied. Section 4 replaces the
+ estimate by a direct full-output \(L^2\) proof, including weak tails
+ and all omitted labels. No learning input remains open.\\
+CWI \texttt{rate}
+& Leading-form rate evaluated at positive measures; \(0<\rho\le1\),
+ \(M,N\le2\), \(0\le n_*\le1\), \(R\ge2\); strong support and
+ comparison coordinates in \([-R,R]^2\); finite weak first moments;
+ \(|\zeta|\le R\), \(\zeta-X_*\ge g_0>0\).
+& FWC supplies the state and moments, WIT gives \(g_0=g_*/4\).
+ This is a static leading-form comparison, not an exact original
+ leading-system identification.\\
+CWI \texttt{exactrate,\allowbreak ratecharge}; PSE matrix/energy
+& Exact balanced output; fixed cohorts; sourcewise bounded
+ diagonal and \(O(q)\) cross entries; \(O(qL)\) alignment;
+ bounded offsets, selector/a.e. convention.
+& FWC continuation and background prove these on \(J\), including
+ every strip and angle slice. Its primitive estimates replace the
+ old passage-only scope.\\
+P \texttt{probe-pop,\allowbreak atomicerror}
+& Full population probe expansion assumes two compact charted
+ families and no outside; its simple source identities assume
+ leading \(M=1\). Atomic formula is for the selected coherent state.
+& Only the core expansion is re-used, with its actual reactions;
+ background is separately charged. \(M-1\) is retained. Atomic
+ formula identifies the limiting observable and clearing.\\
+LP \texttt{uniform-clear}
+& Compact \(K\subset(0,1)\), selected branch continuous in \(\rho\)
+ on finite windows, uniform forward growth bound, finite upper offset.
+& Use \(K=K_\rho\), \(\zeta_+=\max I_\zeta\). WIT
+ \texttt{branchsmooth} and P's growth inequality supply these,
+ as explicitly checked in LPR.\\
+LPR \texttt{combinedtheorem}
+& Same selected leading branch and WIT rectangle/witnesses;
+ imported P and LP continuation, invariants and uniform clearing.
+& Supplies one fixed \(S>s_*+r\) with \(\mathcal E_*=0\) for
+ all later times and all \(\mathcal P_*\). No original-flow
+ conclusion is borrowed from that theorem.\\
+LP \texttt{diagonal-transfer}
+& Actual initialized positive-noise family; analytical physical
+ centering; same compact offsets/parameters and common clearing
+ time; full original compact-window convergence for every finite
+ \([S,T]\).
+& \(S_0=q^{10}\), center \(\tau_h/\mu_1^2\), LPR clearing,
+ and FWC \texttt{errortransfer,\allowbreak early} supply all inputs. No rate
+ of the growing horizon is inferred.\\
+\bottomrule
+\end{longtable}\normalsize
+The source \(R_W\) in WIT's rectangle/tolerance is frozen.
+The possibly larger continuation radius \(R\) used below does not
+redefine \(\delta_\rho,\delta_\zeta\) or the common windows.
+
+\section{Every core label is separated from the probe gate}
+\label{an07rtav1:coresection}
+Choose \(R\ge2\) covering FWC's core chart, all selected comparator
+coordinates on \([s_n,T_J]\), and the offsets. Let \(D_J\) be an
+upper bound for \(T_J-s_n(\rho)\). All constants in this and the
+next sections are fixed before \(q\), uniformly over \(K_\rho\).
+
+\begin{lemma}[Supremum core tracking and strict probe gap]
+\label{an07rtav1:coregap}
+For some fixed \(C_{\rm sup}\),
+\begin{equation}
+ \sup_{b\in\KK}|(x_b,y_b)-(X_*,Y_*)|_1
+                  \le C_{\rm sup}q^\chi
+ \quad\text{on }[t_n,\tau_h+T_J].
+ \label{an07rtav1:suptracking}
+\end{equation}
+In particular, if \(C_{\rm sup}q^\chi\le g_*/8\), then
+\(\zeta-x_b\ge g_*/8\) for every core label and every
+\((\rho,\zeta,s)\in\mathcal P_*\times J\).
+All core labels are strictly probe-active for small \(q\), including
+closed endpoints of their label set.
+\end{lemma}
+\begin{proof}
+At fixed time, hold the physical donor measures and moments fixed
+in P's leading strong field \(F_s(z;\mu_\KK,\mu_S)\).
+Its receiver Lipschitz constant on \([-R,R]^2\) is bounded by a
+fixed \(L_F\). Indeed \(M,N\le2\), the current weak first moments
+are bounded by FWC, and
+\[
+ \partial_1\Ffun(t,w)=(w-t)_+\phi(t),\qquad
+ |\Kfun'|\le1
+\]
+bound the strong donor-kernel derivative on this compact chart.
+All other receiver derivatives are bounded Gaussian functions times
+these bounded moments. No derivative estimate for the original
+finite-noise remainder is needed.
+
+FWC \texttt{corefield} gives
+\(z_b'=F_s(z_b;\mu_\KK,\mu_S)+e_b\) with
+\(\sup_b|e_b|_1\le C_Fq^{1/10}\). Hence any two fixed core labels
+satisfy
+\[
+ D^+|z_b-z_{b'}|_1\le L_F|z_b-z_{b'}|_1+2C_Fq^{1/10}.
+\]
+The entry core radius is \(O(q^\chi)\) by the WCS/PSE handoff.
+Gronwall bounds the entire diameter by
+\(e^{L_FD_J}[C_{\rm ent}q^\chi+2C_FD_Jq^{1/10}]=O(q^\chi)\).
+For every label, averaging over the current core measure yields
+\[
+ |z_b-Z_*|_1\le\operatorname{diam}(\KK)+
+       M^{-1}\int_\KK|z_{b'}-Z_*|_1\dd\mu(b').
+\]
+FWC gives \(M\ge1/2\) and the last integral \(O(q^\chi)\).
+This proves \eqref{an07rtav1:suptracking} without needing to
+identify the chosen reference label with a core endpoint.
+Combine with WIT's gap \(\zeta-X_*\ge g_*/4\).
+Finally \(a_\theta\cdot\xi_q=\sin(q(\zeta-x_b))>0\), since
+the gap is positive and its upper bound is fixed; take
+\(2qR<\pi/2\). Continuity extends the estimate to closed labels.
+\end{proof}
+
+\section{Exact source rates, background and leading comparison}
+\label{an07rtav1:ratesection}
+Let \(z=a_\theta\cdot\xi_q\), and let
+\(v_{\theta,p},v_{\psi,p}\) be the exact source angular velocities
+from \eqref{an07rtav1:sourceconvention}. For any fixed cohort \(A\),
+\begin{equation}
+ \dot f_{A,p}=\int_A m\big[
+ h_p a_\psi z_++v_{\psi,p}a_\psi^\perp z_+
+ +v_{\theta,p}a_\psi\one_{\{z>0\}}
+                       (a_\theta^\perp\cdot\xi_q)\big]\dd\lambda_0.
+ \label{an07rtav1:exactrate}
+\end{equation}
+There is no extra factor \(1/2\) to apply to this formula.
+The primary family is strictly inactive by FWC, so its direct
+output and direct source derivatives vanish exactly. Its contribution
+to the training residual is retained in all core velocities.
+
+\begin{lemma}[Core self-rate through physical leading-form rates]
+\label{an07rtav1:corerate}
+Let \(d_p^{\rm lead}\) be the leading-form source rate evaluated
+at the actual physical core and selected measures. Uniformly on
+\(\mathcal P_*\times J\),
+\begin{equation}
+ \left|q^{-2}D_p^{\KK,\rm self}-d_p^{\rm lead}\right|
+ \le C_{\rm core}(q^{1/10}+q^2),\qquad
+ D_p^{\KK,\rm self}=-(\xi_q-f_\KK)\cdot\dot f_{\KK,p}.
+ \label{an07rtav1:coreprecision}
+\end{equation}
+The core velocities in this self-output expression are driven by
+the full original field, not by a core-only training problem.
+\end{lemma}
+\begin{proof}
+All core gates are strictly active by Lemma \ref{an07rtav1:coregap}.
+Set
+\[
+ A=\int_\KK(\zeta-x)\dd\mu,\qquad
+ B=\int_\KK y(\zeta-x)\dd\mu,
+\]
+and, with the actual source velocities and full source reaction,
+\begin{align*}
+ A_p^{\rm act}&=\int_\KK[(\zeta-x)h_p-x'_p]\dd\mu,\\
+ B_p^{\rm act}&=\int_\KK[y(\zeta-x)h_p
+                  +(\zeta-x)y'_p-yx'_p]\dd\mu.
+\end{align*}
+Uniform Taylor expansion of the exact active sine and output
+coordinates, and of \eqref{an07rtav1:exactrate}, gives
+\[
+ f_{\KK,1}=qA+O_R(q^3),\quad f_{\KK,2}=q^2B+O_R(q^4),
+ \quad \dot f_{\KK,p,1}=qA_p^{\rm act}+O(q^3),\quad
+ \dot f_{\KK,p,2}=q^2B_p^{\rm act}+O(q^4).
+\]
+Here scaled core velocities and reactions are uniformly bounded
+by FWC's sourcewise equations and its moment bounds. Thus the
+derivative expansion is justified directly, not by differentiating
+a static \(O(q^4)\) symbol. It follows that
+\begin{equation}
+ q^{-2}D_p^{\KK,\rm self}
+       =(A-\zeta)A_p^{\rm act}+B_p^{\rm act}+O(q^2).
+ \label{an07rtav1:corealgebra}
+\end{equation}
+
+For explicit normalization, the physical leading source velocities
+used for comparison are
+\begin{align*}
+ 2F_{x1}&=-(1-M)x,&2F_{y1}&=-(1-M)y-Y-K_w,\\
+ 2F_{x2}&=\rho\phi(\rho x)-\rho\mathcal S(x)
+                  +\lambda[V+(1-N)y]\Phi(\rho x),&
+ 2F_{y2}&=\rho(1-N)\Kfun(\rho x),
+\end{align*}
+with leading reactions \(h_1^0=1-M\), \(h_2^0=0\).
+The moments and positive measures are FWC's physical ones;
+\(Y=\int_\KK y\), \(V=\int_S v\),
+\(K_w=\int_S\Kfun(u)\), and
+\(\mathcal S(x)=\int_\KK\Ffun(\rho x,\rho\widetilde x)\).
+Define \(A_p^0,B_p^0\) by replacing the velocities and reactions
+in the preceding two integrals by \(F_{xp},F_{yp},h_p^0\).
+Then \(d_p^{\rm lead}=(A-\zeta)A_p^0+B_p^0\) is precisely
+the general leading-form rate used in CWI \texttt{rate}.
+In particular the \(1-M\) reaction has not been dropped.
+At \(M=1\) its first source reduces to
+\(-A(Y+K_w)/2\), agreeing with P \texttt{probe-pop}.
+
+FWC gives source velocity errors \(O(q^{1/10})\), and reaction
+errors \(O(q^2+\mu_\BB)\) for source 1 and \(O(q^2)\) for source 2.
+All coefficients in the two integrals are bounded on the core
+chart, and \(\mu_\BB=O(q^{11/10})\). Subtracting them in
+\eqref{an07rtav1:corealgebra} proves \eqref{an07rtav1:coreprecision}.
+This uses physical \(M\), signed moments and sourcewise errors;
+a total-field estimate alone would not supply this result.
+\end{proof}
+
+\begin{lemma}[Full background source charge]
+\label{an07rtav1:backgroundrate}
+Uniformly on \(\mathcal P_*\times J\),
+\begin{equation}
+ |D_p^\tau-D_p^{\KK,\rm self}|
+                       \le C_{\rm bg}q^2\epsilon_{\rm bg}.
+ \label{an07rtav1:backgroundprecision}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Put \(T_0=\Sigma\cup\BB\). FWC gives
+\(\mu_{T_0}\le Cq^{\gamma_*}\),
+\(\mathcal Q_{T_0}\le Cq^2\epsilon_{\rm bg}\), and all
+matrix-value/alignment hypotheses of CWI \texttt{ratecharge}
+on the continued window. Hence
+\begin{gather*}
+ |f_{T_0}|\le\sqrt{\mu_{T_0}\mathcal Q_{T_0}},\qquad
+ |\xi_q\cdot\dot f_{T_0,p}|\le
+                  C(\mathcal Q_{T_0}+q^2L^2\mu_{T_0}),\\
+ |\dot f_{T_0,p}|\le
+                  C(\sqrt{\mu_{T_0}\mathcal Q_{T_0}}+qL\mu_{T_0}).
+\end{gather*}
+Also \(|f_\KK|+|\dot f_{\KK,p}|\le Cq\) by the reached
+core chart and the preceding source calculation.
+Primary inactivity leaves exactly
+\[
+ D_p^\tau-D_p^{\KK,\rm self}
+ =f_{T_0}\cdot\dot f_{\KK,p}
+   -(\xi_q-f_\KK)\cdot\dot f_{T_0,p}
+   +f_{T_0}\cdot\dot f_{T_0,p}.
+\]
+Insert the displayed bounds; use
+\(L^2\mu_{T_0}\le C\epsilon_{\rm bg}\) and Young's inequality,
+in particular \(L\sqrt{\mu_{T_0}\epsilon_{\rm bg}}
+\le C\epsilon_{\rm bg}\). This proves the result with every
+output and rate cross term retained. No outside sign or chart
+has been assumed.
+
+At a possible background gate hit, changing the ReLU selector
+within \([0,1]\) changes only its normal term in
+\eqref{an07rtav1:exactrate}. There
+\(|a_\psi\cdot\xi_q|\le|\theta-\psi|=O(qL)\) and the
+source angular velocity is \(O(qL)\), since the input angle
+is a bounded \(q\)-distance from an axis. The projected change
+is at most \(Cq^2L^2\mu_{T_0}\), and the unprojected change
+at most \(CqL\mu_{T_0}\). Thus the same bounds hold for the
+standard selector, or any such selector. This proves a bound
+on source formulas, not classical differentiability at an atom.
+\end{proof}
+
+\begin{theorem}[A-rate-transfer on the learned windows]
+\label{an07rtav1:ratetransfer}
+Let \(C_{\rm dist}\) be FWC's fixed-window constant in
+\(\dist\le C_{\rm dist}q^\chi\), and set
+\begin{equation}
+ \delta_J(q)=C_{\rm core}(q^{1/10}+q^2)
+      +C_{\rm bg}\epsilon_{\rm bg}
+      +64R^2(1+4/g_*)C_{\rm dist}q^\chi.
+ \label{an07rtav1:deltaJ}
+\end{equation}
+Then \(\delta_J(q)=O(q^{1/20})\to0\) and, for \(p=1,2\),
+\begin{equation}
+ \sup_{(\rho,\zeta)\in\mathcal P_*,\ s\in J}
+ |q^{-2}D_p^\tau(\tau_h+s,\xi_q)-d_{p,\rho,\zeta}(s)|
+                       \le\delta_J(q).
+ \label{an07rtav1:ratelimit}
+\end{equation}
+This is uniform for the exact selector-defined source formulas;
+it holds for classical source derivatives wherever defined and
+in the almost-everywhere time sense. There is no core gate hit.
+If
+\begin{equation}
+ \delta_J(q)<\min\{p_*/8,\gamma_0/16\},
+ \label{an07rtav1:ratethreshold}
+\end{equation}
+then
+\begin{align}
+ D_1^\tau&\le-\tfrac12p_*q^2,&
+ D_2^\tau&\ge\tfrac12p_*q^2&&\text{on }J,\notag\\
+ D^\tau&\le-\tfrac58\gamma_0q^2&&&\text{on }J_-,\notag\\
+ D^\tau&\ge\tfrac58\gamma_0q^2&&&\text{on }J_+.
+ \label{an07rtav1:originalmargins}
+\end{align}
+\end{theorem}
+\begin{proof}
+Every hypothesis of CWI \texttt{rate} is matched: positive
+physical measures; \(M,N\le2\); bounded strong support and
+comparator; finite weak first moments; same \(\rho\); and
+\(\zeta-X_*\ge g_*/4\) from WIT. It compares the leading-form
+rate at the actual state with the coherent rate, with error
+\(64R^2(1+4/g_*)\dist\). Apply it after
+Lemmas \ref{an07rtav1:corerate} and
+\ref{an07rtav1:backgroundrate}. Since \(\gamma_*>\chi\),
+\(\epsilon_{\rm bg}=o(q^\chi)\), proving the stated order.
+Each source error is below \(p_*/8\); their sum is below
+\(\gamma_0/8\) under \eqref{an07rtav1:ratethreshold}.
+Subtract from the exact limiting coefficients in
+\eqref{an07rtav1:limitingmargins} to obtain
+\(5/8-1/8=1/2\) for sources and
+\(3/4-1/8=5/8\) for total rates.
+Absolute continuity and the exact source chain rule identify
+the sum with \(dE/d\tau\) almost everywhere; no derivative
+of an error-transfer remainder is taken.
+\end{proof}
+
+\section{Learning of both concepts, including exact cluster losses}
+\label{an07rtav1:learningsection}
+WIT's \texttt{staticproposition} cannot be applied verbatim:
+the entire original state is not supported in two fixed compact
+scaled charts. The selected weak chart can grow like
+\(q^{-603/640}\), and \(P_q,\Sigma,\BB\) remain present.
+The following direct estimate replaces that hypothesis.
+Set \(Q_1=1+q^2\), \(Q_2=\rho^2+q^2\), and
+\[
+ \mathsf m_p=Q_p^{-1}\E_{P_p}[X_pf_p(X)],\qquad
+ \mathcal L_p=\tfrac12\E_{P_p}|f(X)-X|^2.
+\]
+In particular \(\mathsf m_2=c\) is the exact response,
+not a name for the physical selected mass.
+
+\begin{lemma}[Full-output learning estimate with weak moments]
+\label{an07rtav1:learningestimate}
+On \(J\), with \(M_1=M\), \(M_2=N\), there are fixed constants
+\(C_{\rm out},C_{\rm resp},C_{\rm loss}\) such that
+\begin{align}
+ \|f-e_pM_pX_p\|_{L^2(P_p)}&\le C_{\rm out}q^{1/4},\notag\\
+ |\mathsf m_p-M_p|&\le C_{\rm resp}q^{1/4},\notag\\
+ \sqrt{2\mathcal L_p}&\le
+       |1-M_p|\sqrt{Q_p}+C_{\rm loss}q^{1/4}.
+ \label{an07rtav1:learningbounds}
+\end{align}
+All original populations are included.
+\end{lemma}
+\begin{proof}
+FWC supplies bounded \(M,N\), a bounded strong chart, and
+\(\int_S(1+|u|+|v|)\dd\mu\le C\).
+It also gives
+\(\mu_{P_q}+\mu_\Sigma+\mu_\BB=O(q^{1/4})\)
+throughout the fixed window, by its fixed-label mass comparison.
+
+For a core unit feature on \(P_1\), Lipschitz continuity of
+the positive part gives
+\[
+ \|a_\psi(a_\theta\cdot X)_+-e_1X_1\|_2
+ \le (|a_\theta-e_1|+|a_\psi-e_1|)\|X\|_2
+                       +\|(-X_1)_+\|_2\le C_Rq.
+\]
+On \(P_2\) its feature norm is at most
+\(q+q|x|\sqrt{Q_2}\le C_Rq\).
+For a selected weak feature on \(P_1\), the norm is at most
+\(q|u|\sqrt{Q_1}+q\). On \(P_2\), compare with \(e_2X_2\):
+\[
+ \|a_\psi(a_\theta\cdot X)_+-e_2X_2\|_2
+ \le Cq(|u|+|v|)+\|(-X_2)_+\|_2
+ \le Cq(1+|u|+|v|).
+\]
+The bounds \(|a_w-e_2|\le q|u|\),
+\(|b_w-e_2|\le q|v|\) need no fixed weak supremum.
+The Gaussian negative parts are bounded by \(q|Z|\), not
+declared absent. Integrating these feature estimates against
+the positive current measures costs \(O(q)\).
+For each omitted cohort \(A\), the exact inequality
+\(|f_A(X)|\le\mu_A|X|\) gives an unscaled \(L^2\) cost
+\(C\mu_A\). This is legitimate at the present order-one
+learning scale; it is not the \(q^2\)-precision probe argument.
+Minkowski proves the first line of \eqref{an07rtav1:learningbounds}.
+The response bound follows by Cauchy--Schwarz and
+\(\sqrt{Q_p}\ge13/20\). Finally the unused target coordinate
+has norm \(q\); absorb it into the last constant.
+\end{proof}
+
+\begin{proposition}[Responses and the fixed loss ratio]
+\label{an07rtav1:learning}
+For all sufficiently small \(q\), uniformly on \(K_\rho\times J\),
+\begin{gather}
+ M=1+O(q^{11/10}),\quad N=n_\rho+O(q^{1/8}),\quad
+ c=N+O(q^{1/4}),\notag\\
+ \tfrac34\le M\le\tfrac54,\qquad
+ \tfrac14+\tfrac\sigma4\le N\le\tfrac54,\qquad
+ \mathsf m_1\ge\tfrac12,\quad\mathsf m_2\ge\tfrac14,
+ \label{an07rtav1:learningresponse}\\
+ \mathcal L_p\le\frac{169}{196}\mathcal L_p(0),
+                    \qquad p=1,2.
+ \label{an07rtav1:lossratio}
+\end{gather}
+Thus both exact cluster losses have relative reduction at least
+\(27/196\). No entire-state compact-chart hypothesis is retained.
+\end{proposition}
+\begin{proof}
+The first line is FWC. WIT's mass margin and the uniform errors
+give the two mass intervals if
+\(C_Mq^{11/10}\le1/4\) and
+\(C_Nq^{1/8}\le\min(1/4,\sigma/4)\).
+For responses choose in addition
+\(C_{\rm resp}q^{1/4}\le\min(1/4,\sigma/4)\).
+Then \eqref{an07rtav1:learningbounds} gives the claimed thresholds.
+Both masses are in \([1/4,5/4]\), so \(|1-M_p|\le3/4\).
+If
+\begin{equation}
+ C_{\rm loss}q^{1/4}\le\frac{13}{320},
+ \qquad S_0=q^{10}\le\tfrac12,
+ \label{an07rtav1:learnthreshold}
+\end{equation}
+then \(C_{\rm loss}q^{1/4}/\sqrt{Q_p}\le1/16\) and
+\(\sqrt{2\mathcal L_p}\le(13/16)\sqrt{Q_p}\).
+The exact isotropic initial output is \(f_0(X)=S_0X/4\), hence
+\[
+ \sqrt{2\mathcal L_p(0)}
+ =(1-S_0/4)\sqrt{Q_p+q^2}\ge(7/8)\sqrt{Q_p}.
+\]
+The squared ratio is \((13/14)^2=169/196\), with no limiting
+loss substituted for the actual initialized one.
+\end{proof}
+
+\section{AN8: initialized Theorem A on the learned rectangle}
+\label{an07rtav1:assembly}
+All constants below are analytic, not numerical enclosures.
+First keep the entire WPT/RB--WCS entry order and \(n\).
+Freeze WIT's original rectangle, witnesses and their margins.
+Choose \(T_J\), the FWC continuation constants and radius \(R\),
+then \(L_F,C_{\rm sup},C_{\rm core},C_{\rm bg},C_{\rm dist}\)
+and the direct learning constants. Let \(C_{\rm err}\) satisfy
+FWC's normalized error-transfer bound on \(J\).
+Choose \(q_0>0\) so that every \(0<q\le q_0\) satisfies all
+source smallness thresholds and, explicitly,
+\begin{gather}
+ C_{\rm sup}q^\chi\le g_*/8,\qquad
+ \delta_J(q)<\min(p_*/8,\gamma_0/16),\qquad
+ C_{\rm err}q^\chi\le\gamma_0r/16,\notag\\
+ C_Mq^{11/10}\le1/4,\quad
+ C_Nq^{1/8}\le\min(1/4,\sigma/4),\quad
+ C_{\rm resp}q^{1/4}\le\min(1/4,\sigma/4),\notag\\
+ C_{\rm loss}q^{1/4}\le13/320,\qquad
+ q^{10}\le1/2,\quad q\le1/2,\quad 2qR<\pi/2.
+ \label{an07rtav1:q0}
+\end{gather}
+Such a \(q_0\) exists because all constants are fixed and all
+the displayed errors vanish. It can also be decreased so that
+\(\sup_J\dist\le\varepsilon_*\); this does not license direct
+application of WIT's exact-leading-flow theorem to original dynamics.
+No numerical value of \(q_0\) is asserted.
+
+\begin{theorem}[Initialized learned signed competition and reversal]
+\label{an07rtav1:theoremA}
+For the original aligned-balanced isotropic initialization with
+\(S_0=q^{10}\), every \(0<q\le q_0\), and every
+\((\rho,\zeta)\in\mathcal P_*\), the common centered windows
+\eqref{an07rtav1:windows} occur at normalized times \(\tau_h+J\)
+and satisfy all of the following.
+\begin{enumerate}
+\item Both concepts are learned in the exact response/loss sense:
+ \(\mathsf m_1\ge1/2\), \(\mathsf m_2\ge1/4\) and
+ \(\mathcal L_p\le(169/196)\mathcal L_p(0)\), \(p=1,2\).
+ The physical mass conclusions in
+ \eqref{an07rtav1:learningresponse} also hold.
+\item The original source rates satisfy
+ \(D_1^\tau\le-p_*q^2/2<0<D_2^\tau\), with
+ \(D_2^\tau\ge p_*q^2/2\), on \(J\).
+ The total rate is at most \(-5\gamma_0q^2/8\) on \(J_-\)
+ and at least \(5\gamma_0q^2/8\) on \(J_+\).
+ These are the exact selector source observables; the corresponding
+ classical derivatives and total derivative satisfy the same
+ inequalities wherever defined and almost everywhere in time.
+\item The continuous original probe error has an interior minimizer
+ \(s_{\min,q}\in J^\circ\), possibly depending on the parameters,
+ such that
+ \begin{align}
+ E(\tau_h+s_*-r)-E(\tau_h+s_{\min,q})
+                &\ge c_{\rm rev}q^2,\notag\\
+ E(\tau_h+s_*+r)-E(\tau_h+s_{\min,q})
+                &\ge c_{\rm rev}q^2,\qquad
+ c_{\rm rev}=\gamma_0r/4>0.
+ \label{an07rtav1:rebound}
+ \end{align}
+ No uniqueness or transverse-zero claim is made.
+\item For each \(\rho\in K_\rho\), these conclusions hold on the
+ off-concept-cone angular sector
+ \(\arg\xi_q=-\pi/2+qI_\zeta\), of exact width
+ \(2\delta_\zeta q\).
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+The response/loss conclusions are Proposition
+\ref{an07rtav1:learning}; the source and total-rate margins are
+Theorem \ref{an07rtav1:ratetransfer}. For the rebound use only
+the continuous error transfer, so no rate differentiation at
+background gate atoms is involved.
+Each of \(J_-\), \(J_+\) has length \(r/2\). Integrating the
+limiting margins gives a drop across \(J_-\) and a rise across
+\(J_+\), each at least \(3\gamma_0r/8\) in scaled error.
+FWC's two endpoint errors cost at most
+\(2C_{\rm err}q^\chi\le\gamma_0r/8\). Thus the exact original
+drop and rise are each at least \(\gamma_0rq^2/4\).
+The minimum over the compact \(J\) exists. Comparing the left
+endpoint with the end of \(J_-\), and the right endpoint with
+the start of \(J_+\), excludes both endpoints as minimizers
+and proves \eqref{an07rtav1:rebound}.
+Finally \(I_\zeta\) has length \(2\delta_\zeta>0\); for small
+\(q\) its probes have positive first coordinate and negative
+second coordinate, outside the positive cone of the two concept
+means. The angular map has derivative \(q\), proving the width.
+\end{proof}
+
+\paragraph{Physical time and rates.}
+The physical windows are
+\((\tau_h+J)/\mu_1^2\) and
+\((\tau_h+J_\pm)/\mu_1^2\). Every normalized source or total-rate
+bound is multiplied by \(\mu_1^2\):
+\(D_p^{\rm phys}=\mu_1^2D_p^\tau\).
+The error rebound and angular sector retain the factors \(q^2\)
+and \(q\), respectively. The center uses the original analytic
+clock, not a fitted time or the \(O(1)\)-accuracy value of \(t_b\).
+
+\section{Initialized persistence on a diverging, unspecified horizon}
+\label{an07rtav1:persistencesection}
+\begin{corollary}[Initialized persistence after common clearing]
+\label{an07rtav1:persistence}
+There is a fixed finite \(S_{\rm clr}>s_*+r\), common to all
+\(\mathcal P_*\), and there are functions \(T_q\to\infty\),
+\(\varepsilon_q\to0\) as \(q\downarrow0\), such that for the
+same original initialized family and center,
+\begin{equation}
+ \sup_{\substack{(\rho,\zeta)\in\mathcal P_*\\
+                   S_{\rm clr}\le s\le S_{\rm clr}+T_q}}
+ \left|E_{\xi_q}(\tau_h+s)-\tfrac12\right|
+                       \le\varepsilon_q q^2.
+ \label{an07rtav1:persistencebound}
+\end{equation}
+No rate of growth of \(T_q\) is asserted. This is not a
+forever-in-time claim at a fixed positive \(q\).
+\end{corollary}
+\begin{proof}
+The projection \(K_\rho\) is a compact interval in \((0,1)\).
+WIT \texttt{branchsmooth} supplies continuous selected branches
+on finite windows; the uniform forward growth bound in P, with
+bounded entry on this compact set, supplies LP
+\texttt{uniform-clear}'s other input. Take upper offset
+\(\zeta_+=\max I_\zeta\). As already assembled in LPR
+\texttt{combinedtheorem}, one common \(S_{\rm clr}>s_*+r\)
+has \(X_\rho(s)>\zeta_+\) for all later \(s\).
+P \texttt{atomicerror}, equivalently LPR's error formula, then
+gives \(\mathcal E_{\rho,\zeta}(s)=0\) exactly there.
+This is gate clearing, not merely a nonpositive benefit estimate.
+
+For every finite \(T>S_{\rm clr}\), FWC
+\texttt{errortransfer,\allowbreak early} gives the full original convergence
+uniformly on \(K_\rho\times I_\zeta\times[S_{\rm clr},T]\).
+Its family is the actual initialization \(S_0=q^{10}\),
+and LP's required physical centering is
+\(t_h^{\rm phys}=\tau_h/\mu_1^2\). Thus every hypothesis of
+LP \texttt{diagonal-transfer} holds on exactly the same compact
+parameter and offset sets. Apply that proposition to obtain
+\eqref{an07rtav1:persistencebound}.
+Its uniform threshold sequence can be chosen below \(q_0\);
+for each integer \(j\), the compact-window error on
+\([S_{\rm clr},S_{\rm clr}+j]\) is at most \(1/j\) once
+\(q\le q_j\), with \(q_{j+1}\le q_j/2\).
+The proposition then takes \(T_q=j(q)\), \(\varepsilon_q=1/j(q)\).
+This records its uniformity and gives no new horizon-growth rate.
+\end{proof}
+In physical time the interval in
+\eqref{an07rtav1:persistencebound} is
+\([ (\tau_h+S_{\rm clr})/\mu_1^2,
+    (\tau_h+S_{\rm clr}+T_q)/\mu_1^2]\).
+In particular the original benefit \((1/2-E)_+\) is at most
+\(\varepsilon_q q^2\) there, while the stronger absolute-error
+statement is what the corollary proves.
+
+\section{Dependency ledger, final scope and S6 handoff}
+\label{an07rtav1:handoff}
+The direct proof dependencies of this increment are:
+\begin{itemize}\raggedright
+\item FWC \texttt{main,\allowbreak primitive,\allowbreak charts,\allowbreak masslogistic,\allowbreak roughmass,\allowbreak 
+corefield,\allowbreak distbound,\allowbreak background,\allowbreak errortransfer,\allowbreak early};
+\item CWI \texttt{exactrate,\allowbreak ratecharge,\allowbreak rate,\allowbreak time}; PSE's
+\texttt{matrix,\allowbreak conditional} enter through FWC's proved continuation;
+\item P \texttt{leading,\allowbreak pop-sources,\allowbreak probe-pop,\allowbreak atomicerror,\allowbreak branch}
+and the selected-orbit forward-growth result;
+\item WIT \texttt{uniformtheorem,\allowbreak windows,\allowbreak rectangle,\allowbreak branchsmooth,\allowbreak 
+generalrates,\allowbreak epsdef}, with \texttt{populationtransfer,\allowbreak 
+staticproposition,\allowbreak clockalignment} audited in their exact scopes;
+\item LP \texttt{uniform-clear,\allowbreak compact-transfer,\allowbreak diagonal-transfer}
+and LPR \texttt{combinedtheorem}; H2 Sections 3.1--3.2 and AN8
+specify the consumers.
+\end{itemize}
+No foundational, entry or passage argument is re-proved in this
+assembly. The inherited initialized chain, whose conclusions are
+encapsulated in FWC/PSE, is recorded for review:
+\begin{itemize}
+\item Exact model and target/leading identities: F and P.
+\item Entry: PROFILE, OWPT, MOMC, Q2/Q2E, Q2EP, Q2EC and SEP.
+\item Passage and budgets: LOC, CLOCK, TAILREP, BULK, RCET, LCRC,
+CFR, DECG, GESG, S2CP, CFA, Q3SB, PISB, LSB, WPT and RB.
+\item Matching and selection: WEAK, WBR, MP, SRR and WCS;
+then CWI, PSE and FWC supply the compact-window interface.
+\end{itemize}
+Obstruction-only or superseded contracts are not substituted for
+any of these completed conclusions. The companion review records
+the exact repository paths and blob hashes read for this assembly.
+
+The proved initialized parameter family is precisely
+\(S_0=q^{10}\), \(0<q\le q_0\),
+\((\rho,\zeta)\in\mathcal P_*\), with the analytic widths
+inherited from WIT. It contains \((2/3,5\pi/9)\) in the
+interior of its ratio/offset rectangle. It is not an initialized
+interval of powers \(\kappa\), and no numeric lower bound for
+\(q_0\) or for the local parameter widths is claimed.
+In particular the canonical \((q,S_0)=(0.05,2\cdot10^{-4})\)
+run is not covered; no claim is made for a rounded offset merely
+because it is numerically close to \(5\pi/9\).
+
+This completes the initialized learned-reversal and persistence
+assembly in the stated deep regime. The original-flow B-core
+lag/exposure and producer-attribution decomposition, including
+accuracy relative to a small lag cancellation, remains S6.
+The signed source bounds here do not supply that decomposition.
+The non-small bridge and canonical regimes remain S7/S8.
+There is no quantitative persistence horizon, no finite-width
+claim and no assertion of unique reversal time.
+
+For S6 the available handoff is the same matched clock; fixed-window
+physical masses, current moments and pointwise sourcewise core
+velocities/reactions; strict core probe gap on \(J\); the proved
+source margins; and full-background source charges at the
+\(q^2\epsilon_{\rm bg}\) scale. S6 must still identify and control
+the exact lag/exposure terms in their required relative precision.
+No checkpoint merge or change to any prior file is authorized or made.
+\end{document}
