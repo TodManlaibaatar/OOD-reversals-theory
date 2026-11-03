@@ -1,0 +1,373 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,longtable,array,geometry}
+\geometry{margin=.9in}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\dd}{\,d}\newcommand{\ellq}{\ell}
+\title{Canonical-regime audit: timing, entry geometry and negative weak input}
+\author{Independent analytical increment}\date{Version 1, November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For fixed \(2<\kappa<3\) the nominal strong clock precedes every
+target-only timing threshold in the roadmap. Even the zero-noise
+right-half tail asymptotic in TAIL is outside its domain at that clock.
+We prove a two-sided left-facing angle and mass law for compact interior
+Q2 ancestry in the positive-noise comparison. For the leading weak field
+we give the receiver contraction with its mass-deficit term and identify
+the distinct boundary condition needed for chart return. Neither comparison
+supplies initialized canonical entry. The audit separates these conclusions
+from the proved \(q^{10}\) chain.
+\end{abstract}
+
+\section{Clocks, models and source domains}\label{an04crav1:scope}
+Let \(0<q<1,\ S_0=q^\kappa,\ \ell=\log(1/q),\
+\lambda=\rho^2,\ \rho\in[13/20,7/10]\), with \(\kappa\) fixed as \(q\downarrow0\).
+Denote \(\lambda_- =169/400,\ \lambda_+=49/100\).
+Times are normalized. The nominal clock \(T_A=\log(A/S_0)=\kappa\ell+\log A\)
+has fixed \(A>0\). It is distinct from a first hitting time in the
+trained population. A hat denotes the positive-noise target-only flow.
+A bar in the outer comparison denotes its zero-noise reference.
+
+\begin{itemize}
+\item F/P give the exact balanced original dynamics for aligned isotropic
+initial mass \(S_0>0\). P's early envelopes, including
+\(\bar S=S_0e^{(1+2q^2)t}\), compare angles and weights on their
+early interval (in particular the alignment guard is \(<\pi\)).
+P's separate escape example fixes its parameters and time; it is
+not a uniform saturation statement.
+\item ARR main uses \(3/5\le\rho\le3/4,\ q\le1/20,\
+0<S_0<\delta\le1/100,\ R\ge1,\ qR\le\lambda/2\).
+TAIL earlyfraction uses the same small mass cap at
+\(T_\delta=\log(\delta/S_0)/(1+2q^2)\). TAIL's exact quadrant
+pushforward and its nominal-scale tail corollary refer to a different
+model, the zero-noise target-only flow.
+\item Q2 cross, transit and outer use a compact fixed interior initial
+angle interval in Q2 and compact ratios in \((0,1)\). For transit to
+\(qR\) choose \(R>4\rho_+\phi(0)/(1-\rho_+^2)\); fixed Q1 test angles
+lie in a compact subset of \((0,\pi/2)\). No training mass guard enters
+the scalar target-only clocks. Q2E crossclock covers the closed sector
+at positive noise on the ratio box.
+\item PROFILE arrival uses fixed sufficiently large \(L\); entry additionally
+requires \(T\ge(2/\omega)\ell+C_1,\ q^2T\le1\). The mass law is for
+Q1, displacement lower bounds for its upper half, and a finite tail cutoff.
+Its joint-power application requires a separately transferred profile and
+passage bounds. Q2E's whole-Q2 \(q^3,q^5\) energy equivalences fix
+\(T=10\ell,\ S_0=q^{10}\).
+\item Q2 originaltracking uses the same initial label, \(q\le1\),
+the original input \(a_1\le0\), \(\Delta<\pi\), and full-output defect
+envelopes through the claimed time. It gives estimates in terms of those
+envelopes without bounding them at saturation.
+\item WIT popsystem and P leading describe a given leading characteristic
+solution (nonnegative finite mass measures and finite required moments).
+The derivative below holds at a frozen state and fixed output coordinate.
+WEAK's transit forcing estimate uses \(M=1\), logistic weak mass
+\(0<N_0\le N\le n_b<1\), \(Y\ge0\), bounded \(\rho K_s\) and
+incoming moments. Its selection theorem also uses nonnegative incoming
+input, its moment boundary barrier and strong mean/shape and small-gain
+conditions. Neither theorem supplies original-flow entry from Q2.
+\end{itemize}
+
+\section{A rational regime map}\label{an04crav1:map}
+Write \(a=\rho K(\rho a)>0,\ K(t)=\phi(t)+t\Phi(t)\),
+\(P=\Phi(\rho a)\), \(\omega=(1-\lambda)/2,\ d=(1-\lambda P)/2,\
+s=d/\omega,\ p=3/s\). PROFILE gives \(1/2<P<153/250\).
+Define \(b_-=169/400,\ b_+=49/100,\ f(b)=2/b+4/(1-b)\), and
+\[
+ L_-=2+169/231,\qquad L_+=250/97+49/51.
+\]
+\begin{theorem}\label{an04crav1:thresholds}
+The following are rational enclosures of the threshold coefficients.
+In every row \(2<\kappa<3\) is strictly below the lower endpoint.
+The comparison is between logarithmic powers only.
+\[
+\begin{array}{l|c|l}
+\text{event or test}&\text{enclosure}&\text{source and status}\\ \hline
+\text{interior Q2 crosses }e_2 &[200/49,800/169]&\text{Q2 cross, target only}\\
+\text{last Q1 hits }qL &[1600/231,400/51]&\text{PROFILE arrival, target only}\\
+\text{interior Q2 hits fixed Q1 angle}
+ &[2/(b_+(1-b_+)),2/(b_-(1-b_-))]&\text{Q2 transit, target only}\\
+\text{last Q2 crosses }e_2 &[400/49,1600/169]&\text{Q2E crossclock, target only}\\
+\text{interior Q2 hits }qR &[f(b_-),f(b_+)]&\text{Q2 transit, target only}\\ \hline
+ E_{\rm loc}>0\text{ threshold}&[2L_-,2L_+]&\text{conditional passage}\\
+ pE_{\rm loc}>1\text{ threshold}&[8L_-/3,8L_+/3]&\text{conditional tail charge}
+\end{array}
+\]
+\end{theorem}
+\begin{proof}
+The first five clocks divide by \(\ell\) and have coefficients
+\(2/\lambda,\ 4/(1-\lambda),\ 2/[\lambda(1-\lambda)],\
+4/\lambda,\ f(\lambda)\), respectively. A strict comparison with
+\(\kappa\) decides the nominal ordering. Leading coefficients alone
+do not resolve equality. For all-Q1 arrival PROFILE gives
+\(\omega^{-1}\log(1/[q(\cos\alpha+q)])+O(1)\) on the upper half,
+including its endpoint. For the last Q2 crossing Q2E gives
+\((2/\lambda)\log[(c_0+q)/(q(s_0+q))]+O(1)\),
+\(c_0=-\cos\alpha,\ s_0=\sin\alpha\), with the maximum at \(\pi\).
+These are different endpoint layers. The formulas are independent of
+initial radial scale in the normalized target-only angle equation.
+The third coefficient decreases since \(\lambda<1/2\).
+The last increases because \(f'>0\) iff \(2\lambda^2>(1-\lambda)^2\),
+and \(2(169)^2>231^2\). The other endpoint orders are immediate.
+
+For the last two rows the candidate normalized upper tail is
+\(\min(1,(\epsilon/h)^p)\), \(\epsilon=q^{-s}e^{-dT_A}\).
+The presumed local shape multiplier has scale
+\(G\asymp S_0^{-(1-\lambda)\alpha/\lambda}\),
+\(\alpha=\lambda P/2\), from the candidate weak seed
+\(N_0\asymp S_0^{1-\lambda}\) and a bounded terminal mass.
+This yields \(\epsilon G\asymp q^{E_{\rm loc}}\),
+\(E_{\rm loc}=\kappa(1-P)/2-s\). PROFILE's implication requires
+the actual entry law, local multiplier, mean, feedback and defect budgets.
+The mass charge through an \(O(\ell)\) passage at fixed radius further
+requires bounded amplification of the complementary entry mass.
+Then \(\mu/q\) costs \(O(q^{pE_{\rm loc}-1}\ell)\).
+A shrinking radius \(q^\chi\) and amplification \(q^{-r_m}\) change the
+power to \(p(E_{\rm loc}-\chi)-1-r_m\).
+Now \(s/(1-P)=1/(1-P)+\lambda/(1-\lambda)\) lies strictly
+between \(L_-\) and \(L_+\) by monotonicity. This proves the enclosures
+by scalar identities, without assuming independent extremizers exist.
+The rational bounds all exceed 3. In particular \(E_{\rm loc}<0\) in
+the requested exponent range. A failed upper-bound test supplies no
+lower bound on escaped mass or bridge size.
+\end{proof}
+The fifth threshold solves
+\(\gamma_\kappa=1-\lambda(\kappa-4/(1-\lambda))/2=0\);
+in the audited range \(\gamma_\kappa>1\).
+For orientation within the proved deep chain, \(1600/169<10\).
+PROFILE and TAILREP give at ten and \(\chi=1/20\)
+\(E_{\rm loc}>3616/6375,\ p(E_{\rm loc}-\chi)-1-r_m\ge4561/35006\)
+and \(\Delta_\nu>3/25\) for \(0\le\nu\le1/100\). BULK's secondary
+test there has \(\gamma\ge6481/18480,\
+\Gamma_\nu\ge289169/924000>3/10\). These are ten-specific margins,
+not additional crossing thresholds. Finally \(20^2<5000<20^3\)
+gives \(2<\log(5000)/\log20<3\). Only the exponent placement is
+asserted at the specified finite pair.
+
+\section{Deep-chain dependence ledger}\label{an04crav1:ledger}
+The first failure depends on which statement within an increment is used.
+At fixed \(A>0\), TAIL's corollary \texttt{exponent} requires
+\[
+ (S_0/A)^\omega/q=A^{-\omega}q^{\kappa\omega-1}\to0 .
+\]
+Instead \(\kappa\omega<3(231/800)=693/800<1\). Its proposed asymptotic
+mass is proportional to \(Aq^{3(\kappa\omega-1)}\), unbounded although
+the nominal-clock reference mass is bounded by a constant times \(A\)
+by TAIL quadrants. Thus the small-tail conclusion itself cannot extend
+there. This is an earlier, weaker threshold \(1/\omega\) than the
+\emph{all-label} PROFILE arrival threshold \(2/\omega\).
+The earlier original-flow ancestral domination is unaffected.
+If only initialized all-Q1 profile handoffs are counted, PROFILE's
+required time fails and OWPT cannot open its overlap. These distinctions
+matter when choosing the S8 starting point.
+
+In the ledger below D means \emph{downstream of the first failure for
+the initialized application}. A D row identifies its deep inputs and
+where its result is used. Algebraic identities, target-only clocks and
+conditional tools retain their stated domains independently. In the deep
+rows write \(k=10(1-\lambda),\ h_1=q^{10d-2s},\
+\epsilon_h\asymp q^{10d-s}\), \(t_0=t_h=10\ell+O(1)\);
+\(H_0\asymp A_q^{-\lambda}q^k\).
+Thus the appearance of these symbols in a row includes the dependence
+on ten even if the local equation has no explicit exponent.
+\small
+\begin{longtable}{@{}p{.13\textwidth}p{.79\textwidth}@{}}
+\toprule Source & Model, range, and exponent-sensitive contract\\\midrule\endhead
+F & Independent. Balanced original dynamics and exact rates at regular times for positive initial mass.\\
+P & Independent early envelopes through the alignment guard. \(q^2\log(1/S_0)=\kappa q^2\ell=o(1)\). Model-specific fixed-parameter examples are not steps of this asymptotic implication.\\
+ARR & Holds through \(T_\delta\), choose fixed \(\delta\le1/100,\ R=1\). For small \(q\), \(q^\kappa<\delta,\ q\le\lambda/2\). The original incoming mass is at least \(qS_0(S_0/\delta)^{1/16}/3000\); its label set is a backward terminal-sector preimage. No later capture follows.\\
+TAIL & Earlyfraction holds: \(q^2\log(\delta/S_0)=o(1)\), and original positive-coordinate ancestry has mass \(\ge e^{-4\delta}\delta\exp[-2q^2\log(\delta/S_0)/(1+2q^2)]/4\). First failure is \texttt{exponent} above, for the zero-noise reference at \(T_A\). Its conditional leading shape and flux identities have no fixed \(\kappa\).\\
+Q2 & D. Crossing/transit on compact interior labels are comparison laws for arbitrary \(S_0\); originaltracking is conditional while left-facing. The original weighted defect is unpaid here.\\
+PROFILE & D. \(T_A\ge(2/\omega)\ell+C_1\) fails. Its instantaneous outside cost is independent. Tail-inclusive passage needs \(pE_{\rm loc}>1\), and its shrinking-core margin is evaluated at ten.\\
+Q2E & D. Endpoint-regularized clocks are comparison laws. The every-label conclusion needs \(4/\lambda<10\); fixed \(T=10\ell\) supplies aggregate \(J\asymp q^3,H\asymp q^5\) and recruited tail.\\
+OWPT & D. \(t_m=(2/\omega)\ell+C_m\), \(\sigma=10-2/\omega,\ \zeta=\sigma-1\). The bounds \(S=O(q^\sigma)\), scaled error \(O(q^\zeta)\) need positive powers. Replacing ten by \(2<\kappa<3\) reverses even the mass exponent.\\
+SMCP & D. Fixed \(C_m\), \(M_0\asymp e^{C_m}q^\sigma\), shape handoff \(A_q^dq^{10d-s}\). Even at ten this is an obstruction for a uniform linear multiplier on outer labels.\\
+MOMC & D. Moving \(C_m=\ell/2\) requires \(\sigma-1/2,\zeta-1/2>0\); passage from this overlap to \(M=1/2\) supplies \(t_h,\epsilon_h\) and the compact core.\\
+Q2EP & D. Uses MOMC to bound whole Q2 mass at \(t_h\) by \(C A_q^{-1}q^3\); comparison budgets contain \(q^{10}(1+q^3 e^t)\) and \(q^{10}(e^{\lambda t}+q^5 e^t)\).\\
+Q2EC & D. At \(t_h\), bulk has already crossed, latest crossing precedes \(10\ell\) by a diverging margin; \(H_0\), clock ratio \(O(q^{1/8})\), \(c_0\)-threshold \(Kq^{\gamma_{10}}\), and charted recruits.\\
+SEP & D. At \(t_h\), secondary mass \(O(q^3)\), scale \(A_q^dh_1\) and index \((1-3\lambda/2)/d\).\\
+RET2 & D. Leading stopped mixed-order retention assumes a supplied entry radius, mean budget and passage length. No initialized power law follows from the implication.\\
+LOC & D. Leading local clock gain \(N_0^{-\alpha/\lambda}\) requires an entered small core and controlled mean and defects.\\
+CLOCK & D. c-form passage requires small integrated forcing, positive amplitude and initial radius times the clock gain small.\\
+TAILREP & D. Conditional capped gain and tail moment; takes \(r_m=[10(1-\lambda)(1-P)-2-2\chi]_+\) and the ten-specific positive margins.\\
+BULK & D. \(t_0=10\ell+O(1)\), \(H_0\), clock cohort \(c_0\ge q^{1/4}\), \(J_0\le Cq^3\); secondary bound \(q^5+q^{\Gamma_\nu}H\), \(\Gamma_\nu=\gamma_{10}-\nu(k-2)\).\\
+RCET & D. Stopped small-ratio transport, comparison dichotomy with regularized endpoints at \(10\ell+O(1)\); retains the bulk clock for vanishing defect.\\
+LCRC & D. Joint ledger/closure on \(0\le c\le c_b\) consumes BULK/RCET entry ratios, \(H_0,J_0,h_1\) and retained core/outside budgets.\\
+CFR & D. Stopped c-form decomposition uses these cohorts and guards; selected secondary and outside charges initially unpaid.\\
+DECG & D. Stopped distance/gain estimates use \(H_0,\epsilon_h,h_1\) and a fixed-chart field allowance.\\
+GESG & D. Global envelope and signed-gate estimates, Q3 frozen masses initialized at \(q^{10}\), deep tail scales.\\
+S2CP & D. Joint secondary guard for \(q^5+q^{\Gamma_\nu}H\); complement charge \(q^{\Delta_\nu}\ell\) and clock amplification \(O(q^{-k})\).\\
+CFA & D. On stopped weak passage uses core cutoff \(q^{\chi+kP/2}\), overshoot and small fixed forcing/strip budgets.\\
+Q3SB & D. Pre-entry mass envelope \(q^{10}e^{(1+2q^2)t}\), \(t_m,t_h\), then weak clock with seed \(q^k\).\\
+PISB & D. Fixed near-\(\pi\) strip, deep initialization and pre/post half-mass estimates; mass divided by q costs a polylogarithmic factor times \(q^{411/800}\) up to \(c_b\).\\
+LSB & D. Late-joiner time shift from deep overlap; comparison mass \(O(q^{10}+q^{12}e^t)\) and original strip gain yielding \(q^{769/4000}\) up to logarithms in mass divided by q.\\
+WPT & D. First-exit assembly from \(t_h\), small outside mass and \(H_0\); two-boundary conclusion before RB.\\
+RB & D. Exact initialized barrier on \([t_h,t_b]\), with deep entry and Q3 budgets, yields \(H(t_b)\asymp c_b\) and elapsed time \(Q^{-1}[\log(c_b/H_0)+O(1)]\).\\
+SI & D. Selection interface inside this passage with \(k=10(1-\lambda)\); boundary field missing in that increment.\\
+WBR & D. Weak-side return of the deep clock cohort before \(c_b\); uses the deep chart, positive weak coordinates and cross-field powers.\\
+MP & D. Deep clock/logistic matching from \(H=q^{1/8}\); omitted primary amplitude fraction \(O(q^{1/4})\), integrated clock defect \(O(q^{1/8}+q^2\ell)\), phase shift \(t_h-10\ell\), regenerated \(J\le C(q^3+q^2H)\).\\
+SRR & D. Strong-reference error on selection interval after the deep return, \(H_0\) and retained radius \(O(q^{1/20})\).\\
+WEAK & D for application. Leading \(M=1\) transit and selection have no explicit ten. Sign, boundary and incoming moment conditions must be proved for a new entry.\\
+WCS & D. Fixed small weak level \(n\) after deep passage; reached chart \(|u|+|v|\lesssim q^{-603/640}\), incoming moment/phase matching, \(O_n(q^{1/20})\) concentration.\\
+CWI & D. Deep fixed-level entry and centered time. Its static leading first-moment estimate is state dependent and independent of \(\kappa\).\\
+PSE & D. Original \(q^{10}\) sector-energy control through passage and at fixed weak levels.\\
+FWC & D. Every fixed window after \(t_n\) uses WCS/PSE entry, \(M=1+O(q^{11/10})\), logistic mass error \(O(q^{1/8})\) and matched current first moments.\\
+RTA & D. Learned rectangle and windows require FWC \(O(q^{1/20})\) distance and full background precision. Initialized reversal/persistence are for ten.\\
+BC & D. On these learned windows the pre-saturation output channel has positive order \(q^2\); obstruction uses RTA/FWC original transfer.\\
+CPD & D. Same windows and fixed deep partition; producer and exact-lag errors \(O(q^{1/20})\) after scaling.\\
+PHS & D. The selected-orbit rational interval is independent of initialization. Original weak-input sign transfer uses CPD on \(J\cap(-\infty,1/1000]\).\\
+\bottomrule\end{longtable}\normalsize
+
+\section{Left-facing ancestry at the nominal clock}\label{an04crav1:seed}
+\begin{lemma}\label{an04crav1:outer}
+Fix \(0<d_-<d_+<\pi/2\), \(\alpha=\pi/2+d_0,\ d_0\in[d_-,d_+]\).
+For \(T=\kappa\ell+C\) with bounded \(C\) and \(\kappa>0,\
+\kappa\lambda/2<1\), the target-only law is
+\[
+ \widehat\theta(T)-\pi/2=(1+o(1))\tan(d_0)e^{-\lambda T/2},
+ \qquad
+ \widehat m(T)=(1+o(1))S_0e^{\lambda T}\sin^2\alpha .
+\]
+Errors are uniform for the displayed angle compact and parameters
+with a fixed positive exponent gap \(1-\kappa\lambda/2\).
+In particular the angle is comparable to \(q^{\kappa\lambda/2}\)
+through the canonical exponent band on the entire ratio box.
+\end{lemma}
+\begin{proof}
+Use Q2 \texttt{outer}, rather than inferring displacement from a
+crossing time alone. In its zero-noise Q2 coordinates
+\(\bar w=-\bar U_1=\sqrt{S_0}|\cos\alpha|\) and
+\(\bar z=\bar U_2=\sqrt{S_0}\sin\alpha\,e^{\lambda t/2}\).
+Take \(L=\ell\). Then
+\(\bar c(T)=(\bar w/\bar z)/\sqrt{1+(\bar w/\bar z)^2}
+\asymp q^{\kappa\lambda/2}\gg2qL\);
+\(\rho\bar s(0)\ge\rho_-\cos d_+>2qL\). The proposition's
+\(\epsilon_L=T[3q^2/4+K(-L)/(2L)]\) tends to zero by
+\(0<K(-L)\le\phi(L)\). It is below \((\log2)/4\).
+Therefore the positive-noise trajectory stays in Q2 through \(T\);
+both coordinate logs differ by at most \(\epsilon_L\). Apply
+\(\arctan(w/z)\sim w/z\) and \(m=w^2+z^2\). On the canonical band
+\(1-\kappa\lambda/2>1-147/200>0\). Neither closed endpoint
+belongs to this compact-cohort statement. Q2E's regularized crossing
+formula explains why those endpoints cannot be adjoined unconditionally.
+\end{proof}
+In weak-angle units \(u=(\pi/2-\theta)/q\), this is a negative
+coordinate of size \(q^{-1+\kappa\lambda/2}\). The target bulk radial
+mass is comparable to \(q^{\kappa(1-\lambda)}\) for a fixed positive
+length cohort and bounded clock offset. The orientation and mass law
+refer to the comparison only.
+
+\paragraph{Original-flow stop for S8(a).}
+For a proposed actual entry time offset \(O(1)\) from \(\kappa\ell\),
+Q2 originaltracking compares angular lifts and log weights using
+\(f=\mathfrak M X_1e_1+g,\ \mathcal E=\sqrt{a_*}\|g\|_{L^2(P_{\rm mix})}\)
+with \(\mathfrak M\ge0,\ a_*=1/2+q^2\). Its zero-initial envelopes solve
+\begin{align*}
+ \Delta'&=a_*\mathfrak M\Delta+3q\mathfrak M+2\mathcal E,\\
+ H_Q'&=a_*H_Q+a_*(1+\mathfrak M)\Delta+2q\mathfrak M+\mathcal E,\\
+ L_Q'&=2a_*(\Delta+H_Q)+2q\mathfrak M+2\mathcal E .
+\end{align*}
+For instance, a sufficient first-exit target up to entry is
+\[
+ H_Q(t)+\Delta(t)\le\tfrac12\inf_{\alpha}
+       (\widehat\theta(t,\alpha)-\pi/2),\qquad
+ \Delta<\pi,\qquad L_Q(T)=O(1).
+\]
+In particular the variation-of-constants integral for \(H_Q(T)\)
+has weight \(e^{a_*(T-t)}\) and must be below a fixed fraction of
+the terminal \(q^{\kappa\lambda/2}\) gap in this route.
+The stated original estimates do not supply this accuracy:
+the absolute early bound at fixed \(\delta\) is of order \(\delta\),
+whereas \(q^{\kappa\lambda/2}=o(\delta)\).
+ARR's cohort is different. A new argument must also identify the
+actual strong-entry clock used in this comparison. No original seed law
+or passage beyond the first left-facing exit is asserted.
+
+\section{The full weak receiver derivative}\label{an04crav1:slope}
+\begin{lemma}\label{an04crav1:contraction}
+Fix one state of WIT's leading system with finite nonnegative measures,
+finite weak first moments, masses \(M,N\), and \(Y=\int y\,d\mu_s\).
+Hold the donors, moments and the receiver output \(v\) fixed.
+Write \(F_w^u=u'\) and \(\mathcal W(u)=\int F(u,r)\,d\mu_w(r)\).
+For finite \(u\),
+\[
+ 2\partial_u F_w^u=-(u+Y)\phi(u)-(1-M)v\phi(u)
+                   -\lambda(1-N)-\mathcal W'(u),\qquad
+ \mathcal W'(u)=\phi(u)\int(r-u)_+\,d\mu_w(r)\ge0.
+\]
+Assume \(Y\ge0\). Put \(b_v=[-(1-M)v]_+\phi(0)/2\).
+On the negative half-line and on the indicated subinterval respectively,
+\begin{align*}
+ \partial_u F_w^u&\le-\tfrac12[\lambda(1-N)-\phi(1)]+b_v
+                                      &&(u<0),\\
+ \partial_u F_w^u&\le-\tfrac12\lambda(1-N)+b_v
+                                      &&(-Y\le u\le0).
+\end{align*}
+\end{lemma}
+\begin{proof}
+Differentiate the full equation in WIT \texttt{popsystem}.
+P \texttt{overlap} gives \(F_t(t,r)=(r-t)_+\phi(t)\), including the
+diagonal by continuity. On compact receiver intervals this is
+dominated by \(C(1+|r|)\); differentiation under the integral is
+legitimate. Since \(\phi'=-u\phi\), the only adverse contribution
+from \(u\phi(u)\) is bounded by \(\phi(1)\), the exact maximum of
+\(w\phi(w)\) on \(w\ge0\) at \(w=1\). On \([-Y,0]\),
+\((u+Y)\phi(u)\ge0\). These yield the bounds, valid also for non-atomic
+weak laws and for a receiver at the boundary \(u=0\).
+\end{proof}
+For an uncharged estimate require \((1-M)v\ge0\), for example \(M=1\)
+or \(M\le1,\ v\ge0\). A sign of \(v\) alone cannot cover \(M>1\).
+The reduced rate is strictly positive only if
+\(\lambda(1-N)>\phi(1)\). One explicit uniform range is \(0\le N\le1/4\):
+the rate is greater than \(\tfrac12[(169/400)(3/4)-1/4]=107/3200\).
+The full subinterval rate needs \(N<1\) for strict contraction.
+For example, at \(M=1,\ N=1,\ Y=0,\ u=-1\) with weak donors at \(-1\),
+the exact slope is \(\phi(1)/2>0\). A uniform positive contraction
+on the negative half-line cannot extend through saturation on these
+hypotheses. With sign unknown, an integrated charge
+\(\int |1-M||v|\phi(0)/2\) bounds the loss in the contraction exponent;
+a pointwise rate needs a pointwise charge. For two receivers at the
+same \(v\), integrate the derivative along the segment between inputs.
+With different output coordinates one must additionally bound the
+forcing \(|1-M|\Phi(u)|v_1-v_2|/2\), using the corresponding endpoint
+in the split. These are receiver estimates in the same field.
+
+At \(u=0\), \(2F_w^u=\phi(0)-\mathcal W(0)-[Y+(1-M)v]/2\).
+A negative slope neither makes this boundary value positive nor proves
+arrival at the boundary. To propagate a moving lower face \(-Y\),
+one needs the sign of \(F_w^u+Y'\) there. No initialized mass range,
+output sign, reached growing chart or inward boundary is inferred from
+the lemma.
+
+\section{Open S8 dependencies and the S7 state}\label{an04crav1:handoff}
+\begin{enumerate}
+\item S8(a) needs a fixed left-facing ancestry at an analytically
+matched original entry time, with positive weak-coordinate and radial
+mass, input/output angles, imbalance and controlled weights.
+Lemma \ref{an04crav1:outer} gives the comparison target.
+The weighted full-output defect and survival on the left are open.
+\item S8(b) must continue that ancestry through strong learning,
+show the negative weak chart is reached with finite-noise errors
+controlled on its actual radius, and bound the transient until
+entry into the intended weak state. Specify \(M,N,Y,v\) and the
+loss of contraction below \(-Y\); prove a crossing/invariance margin
+where the consumer requires one. Weak concentration or forcing must
+include changes of field, radial weights and output coordinates.
+\item S8(c) must give a common clock and actual strong/weak measures:
+radial masses and weights, joint input/output profiles on the reached
+charts, donor moments, weak seed and its spread, outside-field
+cost, and background probe output/rates to the consumer's precision.
+In particular the active/inactive split uses the \emph{current} probe
+gate. Establish any claimed non-small inactive mass by a lower bound.
+\item S7 receives this split state and evolves the active core, inactive
+bridge and weak residual producer together, including their backreaction.
+Needed outputs include exposure \(A_\zeta=\int(\zeta-x)_+d\mu_s\),
+the mixed moment \(\int y(\zeta-x)_+d\mu_s\), compensation and signed
+exact lag, and rate-weighted producer contributions on a matched window.
+The comparison with coherent depth requires both evolutions. A quantile
+description requires established co-order and its preservation in the
+same field. Order between different self-consistent populations does
+not follow. Errors must resolve the signed lag cancellation and the
+\(q^2\)-scale probe effect.
+\end{enumerate}
+These are open interface obligations. No bridge dynamics, canonical
+finite-noise theorem, or new conclusion about OP-W is used.
+\end{document}

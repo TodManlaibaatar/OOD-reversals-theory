@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.30 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.31 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -184,6 +184,21 @@
 - **The deep-regime paper core (milestone 1) is complete on its stated scope,** with OP-W as its one interpretive open sign. Consolidation (checkpoint 2.0) awaits Tod's approval.
 - **Next: S8a,** a canonical-regime audit: the regime map, the κ-dependence of the deep chain, and the first canonical entry lemmas.
 
+**Revision 1.31 (Nov 2).** Records CRA (`AN04_canonical_regime_audit_v1`, S8a): **audit closed; two comparison lemmas closed; original-flow canonical entry open.**
+- **Regime map.** Rational enclosures for every threshold in §2.1–2.2. The whole band $2<\kappa<3$ lies strictly below each one.
+- **First failure.** At $2<\kappa<3$ the deep chain first breaks at TAIL `exponent`, whose hypothesis is $(S_0/A)^\omega/q\to0$, i.e. $\kappa\omega>1$. Here $\kappa\omega<693/800$. Downstream, PROFILE's arrival time and OWPT's overlap fail as well.
+- **Missing threshold.** §2.1 lacked this earliest threshold, $\kappa=1/\omega=2/(1-\lambda)\in[800/231,200/51]$, and it is the one that places the canonical point (ledger 34). It is now added.
+- **Comparison lemmas.**
+  - **Left-facing.** For compact interior Q2 ancestry, $\theta-\pi/2=(1+o(1))\tan(d_0)e^{-\lambda T/2}\asymp q^{\kappa\lambda/2}$ at $T=\kappa\ell+O(1)$.
+  - **Weak-receiver slope.** The full slope, including the $(1-M)v$ and overlap terms. The reduced rate $\tfrac12[\lambda(1-N)-\phi(1)]$ is positive only while $\lambda(1-N)>\phi(1)$, and fails near weak saturation.
+- **Reframing of S8 (reviewer reading, see "Status after CRA").** At the nominal strong clock, a strong label's scaled angle is $\tan\alpha\,(S_0/A)^\omega/q$. So:
+  - for fixed $\kappa>1/\omega$ the strong family is coherent at the probe scale (the deep regime);
+  - for fixed $\kappa<1/\omega$ the strong family sits beyond the probe scale, and the probe-active fraction should vanish;
+  - only the **critical family** $S_0=c\,q^{1/\omega}$ gives an O(1) scaled spread, and hence an O(1) active/inactive split.
+  At the canonical pair, $(S_0/A)^\omega/q$ is of order one **[eval]**. The canonical bridge is plausibly this split.
+- **My errors (ledger 33–34).** The S8(b) analytic note was wrong, and the regime map was missing its first threshold.
+- **Next: S8b,** the critical-family strong entry profile and the source-1 freezing identity.
+
 ---
 
 ## 0. Ground rule: analytic proof only
@@ -251,13 +266,14 @@ $$\kappa=\frac{\log(1/S_0)}{\log(1/q)},\qquad E_{\rm loc}(\kappa)=\frac\kappa2(1
 
 | Threshold | Meaning (target-only flow) | Range on the box |
 |---|---|---|
+| $1/\omega=2/(1-\lambda)$ | Interior Q1 labels reach the strong chart $qL$ by the nominal clock (TAIL `exponent`: $\kappa\omega>1$) | $[800/231,200/51]$ **[rational]** (CRA; added v1.31) |
 | $2/\lambda$ | Bulk Q2 ancestry crosses the weak axis | $[4.08,4.74]$ |
 | $2/\omega=4/(1-\lambda)$ | Every Q1 label reaches the strong chart | $[6.93,7.85]$ |
 | $2/(\lambda(1-\lambda))$ | Bulk Q2 passes every fixed Q1 angle | $[8.00,8.20]$ |
 | $4/\lambda$ | Every Q2 label (including near $\pi$) has crossed | $\le 1600/169<10$ **[rational]** |
 | $2/\lambda+4/(1-\lambda)$ | Bulk Q2 reaches the strong chart; $\gamma_\kappa=0$ | $[11.66,11.92]$ |
 
-Ranges are endpoint evaluations of monotone expressions; the only inequality used in a proof so far is the marked one.
+Ranges are endpoint evaluations of monotone expressions; the only inequality used in a proof so far is the marked one. CRA `thresholds` (v1.31) gives rational enclosures for every row: $2/\lambda\in[200/49,800/169]$, $4/(1-\lambda)\in[1600/231,400/51]$, $4/\lambda\in[400/49,1600/169]$, and the two monotone rows at the box endpoints. The passage rows are $2s/(1-P)\in(2L_-,2L_+)$ and $8s/(3(1-P))\in(8L_-/3,8L_+/3)$ with $L_-=2+169/231$, $L_+=250/97+49/51$, using $s/(1-P)=1/(1-P)+\lambda/(1-\lambda)$.
 
 ### 2.2 Passage thresholds (conditional on candidate entry laws)
 
@@ -273,6 +289,20 @@ Ranges are endpoint evaluations of monotone expressions; the only inequality use
 At $(q,S_0)=(1/20,\,2\cdot10^{-4})$, $\kappa=\log 5000/\log 20$. Since $20^2=400<5000<8000=20^3$, we have $2<\kappa<3$ **[rational]**. On the box $2/\lambda\ge 200/49>4$ and $2s/(1-P)>2\cdot 1.28/(1/2)>5$ (using $s\ge s(169/400,153/250)>1.28$) **[rational]**.
 
 So, **at the level of exponents**, the canonical point lies in the regime where (i) bulk Q2 ancestry has not crossed the weak axis at strong entry, and (ii) the candidate local passage makes the strong shape non-small. These are asymptotic-in-$q$ comparisons. At the fixed value $q=0.05$ the $O(1)$ constants are not controlled, so this is a regime identification, not a theorem about the canonical run.
+
+**Critical scaling (reviewer reading, v1.31; to be proved in S8b).**
+- **The scaled angle at the nominal clock.** In the zero-noise target-only comparison, a Q1 label at angle α has $\tan\theta=\tan\alpha\,e^{-\omega t}$. So at the nominal clock $T_A=\log(A/S_0)$ its scaled angle is $x=\theta/q=(1+o(1))\tan\alpha\,(S_0/A)^\omega/q$.
+- **Three regimes.**
+  - For fixed $\kappa>1/\omega$, $x\to0$: the strong family is coherent at the probe scale (the deep regime).
+  - For fixed $\kappa<1/\omega$, $x\to\infty$: in the comparison, the strong family is beyond the probe gate.
+  - Only $S_0=c\,q^{1/\omega}$ keeps $x=\tan\alpha\,(c/A)^\omega$ of order one.
+- **Why this matters.** On the strong source the scaled velocity is $x'_1=-\tfrac12(1-M)x$, with $M'=M(1-M)$, so $x(t)=x(t_0)\,(M(t_0)/M(t))^{1/2}$. Saturation therefore shrinks scaled angles by only an O(1) factor; source 2 still acts and must be tracked. The canonical split (active core plus inactive bridge) is then plausibly the critical-family profile cut by the probe gate $x<\zeta$.
+- **Orientation [eval].** At $(q,S_0)=(1/20,2\cdot10^{-4})$, $\rho=2/3$: $\omega=5/18$, $1/\omega=18/5$, and $(S_0/A)^\omega/q\approx2.3$ at $A=1/2$, comparable with $\zeta=5\pi/9\approx1.75$.
+- **Consequence for the plan.** A fixed-κ asymptotic theorem at $2<\kappa<3$ would describe a degenerate split. The canonical mechanism belongs to the critical family. At $\kappa=1/\omega$ the other thresholds still place it in the canonical regime: $2/(1-\lambda)<2/\lambda$ for $\lambda<1/2$ (left-facing Q2 seed), and $1/\omega<2L_-$ (non-small passage).
+- **Consistency with the candidate passage law (exact algebra, conditional law).**
+  - With $S_0=c\,q^{1/\omega}$ and $s=d/\omega$, the candidate entry tail scale is $\epsilon(T_A)=q^{-s}(S_0/A)^d=(c/A)^d$, of order one.
+  - $E_{\rm loc}(1/\omega)=\tfrac{1-P}{1-\lambda}-\tfrac{1-\lambda P}{1-\lambda}=-P$ exactly, so the candidate multiplier amplifies that O(1) shape.
+  - Whether the spread actually survives the long resident phase before weak half mass (nominal length $\asymp(2/\lambda)\ell$) is a proof obligation for S8b, not a consequence of these exponents.
 
 ---
 
@@ -1169,6 +1199,34 @@ Notation: $A_*=\zeta-X$, $Z=X-Y$, $\Phi_x=\Phi(\rho X)$, $\mathsf K_x=\mathsf K(
   - the κ-dependence of every deep-chain increment, with the first failing inequality at $2<\kappa<3$;
   - the left-facing entry and $u<0$ weak-chart lemmas, where they close.
 
+**Status after CRA (`AN04_canonical_regime_audit_v1`, S8a, Nov 2): audit closed; comparison lemmas closed; original canonical entry open.**
+- *Theorem* (`thresholds`). Rational enclosures for the five target-only and two conditional passage thresholds. The band $2<\kappa<3$ lies below all of them, and $\gamma_\kappa>1$ there.
+- *Dependency ledger* (§3). One row per increment from F to PHS.
+  - **Independent:** F, P (early envelopes), ARR (through $T_\delta$), TAIL `earlyfraction`.
+  - **First power-sensitive failure:** TAIL `exponent`, since $\kappa\omega<693/800<1$. Its reference tail asymptotic $\propto Aq^{3(\kappa\omega-1)}$ would exceed the bounded total.
+  - **Downstream (D):** every later row. PROFILE's $T_A\ge(2/\omega)\ell+C_1$ fails, and OWPT's mass exponent $\sigma=\kappa-2/\omega$ turns negative.
+- *Lemma* (`outer`). For compact interior Q2 ancestry, at $T=\kappa\ell+O(1)$ with $\kappa\lambda/2<1$:
+  - $\widehat\theta-\pi/2=(1+o(1))\tan(d_0)e^{-\lambda T/2}$;
+  - $\widehat m=(1+o(1))S_0e^{\lambda T}\sin^2\alpha$.
+  In weak units, $u\asymp-q^{-1+\kappa\lambda/2}$. This is a comparison statement only. Original tracking needs the full-output defect below the $q^{\kappa\lambda/2}$ gap, and that is unpaid.
+- *Lemma* (`contraction`). $2\partial_uu'=-(u+Y)\phi(u)-(1-M)v\phi(u)-\lambda(1-N)-\phi(u)\int(r-u)_+\,d\mu_w$. For $Y\ge0$, with $b_v=[-(1-M)v]_+\phi(0)/2$:
+  - $\partial_uu'\le-\tfrac12[\lambda(1-N)-\phi(1)]+b_v$ on $u<0$;
+  - $\partial_uu'\le-\tfrac12\lambda(1-N)+b_v$ on $[-Y,0]$.
+  The rate exceeds $107/3200$ for $N\le1/4$. At $M=N=1$, $Y=0$, $u=-1$ with donors at $-1$, the slope is $+\phi(1)/2$. A slope gives no inward velocity at a face.
+- *Handoff* (§6). S8(a)–(c) and the S7 state, listed as open obligations.
+- *Checked (reviewer, Nov 2):*
+  - **Enclosures.** $\lambda(1-\lambda)$ is increasing for $\lambda<1/2$. $f'>0$ iff $2\lambda^2>(1-\lambda)^2$, with $2\cdot169^2=57122>53361=231^2$. The identity $s/(1-P)=1/(1-P)+\lambda/(1-\lambda)$ is exact. All lower endpoints exceed 3.
+  - **TAIL `exponent`.** Its hypothesis, read in the repo, is $(S_0/A)^{(1-\lambda)/2}/q\to0$, and its conclusion is $\mathcal T_+^{(0)}\sim\tfrac{A}{6\pi\zeta^3}(S_0/A)^{3(1-\lambda)/2}q^{-3}$. Also $\kappa\omega<3\cdot231/800$.
+  - **Left-facing law.** $\bar w=\sqrt{S_0}\,|\cos\alpha|$ and $\bar z=\sqrt{S_0}\sin\alpha\,e^{\lambda t/2}$ give the ratio $\tan d_0\,e^{-\lambda T/2}$. Also $\kappa\lambda/2<147/200$, and the error $\epsilon_L\to0$ with $L=\ell$.
+  - **Receiver slope.** From WIT `popsystem` with $\partial_tF(t,r)=(r-t)_+\phi(t)$; $\max_{w\ge0}w\phi(w)=\phi(1)$; $(169/400)(3/4)-1/4=107/1600$.
+  - **Escapes and prefix.** The .tex passes both escape scans; prefix `an04crav1:` is unique.
+- *Reviewer reading.* The first failure is the start of the canonical mechanism, not just a technical break: see §2.3 "Critical scaling". It moves S8's first target from the weak seed to the **strong entry profile of the critical family $S_0=c\,q^{1/\omega}$**.
+- *Next: S8b* (prompt in the v1.31 review):
+  - the critical-family regime statement;
+  - the comparison strong-entry profile and its probe-active fraction;
+  - the exact source-1 freezing identity in the leading system;
+  - an audit of the original-flow transfer through strong saturation.
+
 ### S6. The exact finite-noise lag (AN1)
 
 **Claim.** The original-flow help channel $D_1^{\rm phys}/(\mu_1^2q^2)=-\tfrac12A_{q,\xi}L^{\rm mean}_{1,q}+\text{remainder}$, with the remainder smaller than the lag's signed margin on the learned windows, and a positive-lag estimate for the exact lag.
@@ -1219,6 +1277,8 @@ The leading population system is the single analytic object. With a small-shape 
 $$\partial_uu'\le-\tfrac12[\lambda(1-N)-\phi(1)],\qquad \lambda\ge169/400>1/4>\phi(1).$$
 On $[-Y,0]$ the full rate $\lambda(1-N)/2$ holds. So WEAK's contraction extends to $u\ge-Y$ unchanged, and to all $u<0$ at a reduced rate. The rate loss accrues only while a label is below $-Y$.
 
+*Correction (v1.31, ledger 33).* This note omitted the $-(1-M)v\phi(u)$ and overlap terms. Its reduced rate is positive only while $\lambda(1-N)>\phi(1)$, not for all N. The corrected statement is CRA `contraction`.
+
 **S9. Canonical-parameter coverage (optional, analytic only).** A theorem for "sufficiently small $q,S_0$" says nothing at $q=0.05$ unless every constant is explicit. Explicit analytic constants are allowed, but current sufficient conditions are far from $q=0.05$ (e.g. WIT's $q\le\sigma/(100R)$). The realistic claim is: an asymptotic theorem, plus the regime map, plus the canonical run as empirical evidence in the predicted bridge regime.
 
 ---
@@ -1249,7 +1309,7 @@ Tracks that can run in parallel:
 | II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem, and **RB proved the response barrier: the deep-regime weak passage is a theorem.** Track II is complete; next is S4 (track III). |
 | III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction**, and **S4e (WCS) closed the weak-chart reduction and selection**: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ at a fixed small weak mass. **Track III is complete.** |
 | IV | S6 exact lag | Needed for B-core. Attempt 1 (BC) stopped at a wrong remainder contract and closed the two-channel identity for $D_2$. **CPD (S6 revised) closed the channel and producer tables, the signed exact lag and the help law**, and the four-part harm identity with every sign except $W_{\rm in}$ after half mass. PHS (S6c) extended that sign to $s\le1/1000$; the rest is parked as OP-W. **Track IV is complete on its scope.** |
-| V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
+| V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. **CRA (S8a)** closed the regime map and κ-audit (first failure: TAIL `exponent`, $\kappa\omega>1$) and two comparison lemmas. **Reframed (v1.31):** the canonical split is targeted through the critical family $S_0=c\,q^{1/\omega}$. **Next: S8b,** the critical-family strong entry profile. The quantile formulation (S7) comes after. |
 | — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **S5b (PSE) closed:** background paid on the passage; full error and rates match at every fixed level $n'\le n$, so A-error-transfer holds on windows inside $(-\infty,s_n]$. **S5c (FWC) closed:** continuation by combined transverse energy; **A-error-transfer on every fixed window**. **S5d (RTA) closed:** rate transfer on J; **initialized Theorem A and persistence**. |
 
 **Dependency sketch**
@@ -1374,6 +1434,10 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
     - *Rule:* a moment's contributors and a channel's producers are different decompositions. Do not carry an attribution from one to the other.
 32. **A pointwise sufficient condition offered as a region (my S6c prompt).** I noted that $U\ge0$ and $Y\ge0$ at a crossing suffice, and pointed approach B at barriers giving them. But the $y=0$ face points outward once $n\ge1/2$: at $u=x=y=0$, $2y'=\phi(0)[\rho(1-n)-n]<0$. And at $n=1$ the orbit has $2y'=-y-\mathsf K(u)$, so $y\ge0$ cannot hold late on the branch. Both facts were visible in WIT `orbit`.
     - *Rule:* a sufficient condition at one point is not an invariant region. Before proposing a region, check every face's inward sign and compare it with the orbit's limiting equations.
+33. **A slope with dropped terms and an unconditional sign (roadmap S8(b) note).** The note bounded $\partial_uu'$ without the $-(1-M)v\phi(u)$ and overlap terms. It also called $\lambda(1-N)-\phi(1)$ positive because $\lambda>\phi(1)$, which holds only for $N<1-\phi(1)/\lambda$. At $M=N=1$, $Y=0$, $u=-1$ the slope is $+\phi(1)/2$ (CRA).
+    - *Rule:* differentiate the full field, and state every factor's range before calling a rate positive.
+34. **A regime map missing its first threshold (roadmap §2.1).** I listed $2/\lambda$, $4/(1-\lambda)$, … but not $1/\omega=2/(1-\lambda)$. That is TAIL `exponent`'s own condition $\kappa\omega>1$ for interior Q1 labels to reach the probe scale by the nominal clock. It is the threshold that places the canonical point (CRA), and it was already in a cited increment.
+    - *Rule:* build a regime map from the hypotheses of the cited statements, not from a list of events. Every power condition in the chain is a candidate threshold.
 
 ---
 
@@ -1425,6 +1489,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | BC | `08_mechanism_AN01/AN01_original_flow_bcore_v1.tex` (+ review), prefix `an01bcv1:` — S6 attempt 1, obstruction increment: P's $r_2$ contains the positive cluster-2 output-rotation term $q^2\mathcal O_*$ on J, so a small-remainder contract for $D_2$ is false; closed two-channel identity for $D_2$ |
 | CPD | `08_mechanism_AN01/AN01_channel_producer_decomposition_v1.tex` (+ review), prefix `an01cpdv1:` — S6 revised, closed subset: input/output/radial channel limits for both sources with fixed-label producer tables; signed exact lag $\mathcal L_q=Y+n\mathsf K(U)+O(q^{1/20})\ge c_L$; help = exposure × lag; four-part harm identity with signs, $W_{\rm in}>0$ only on $J\cap(-\infty,0]$; corrected Theorem B item 3 |
 | PHS | `08_mechanism_AN01/AN01_post_half_mass_input_sign_v1.tex` (+ review), prefix `an01phsv1:` — S6c, fallback closed: rational post-half-mass interval $s\le1/1000$ with $T>0$ and $X-Y>0$, so $W_{\rm in}>0$ on $J\cap(-\infty,1/1000]$; exact failures of both extension approaches; final deep-regime B-core statement; the remaining sign parked as OP-W |
+| CRA | `09_canonical_regime_AN04/AN04_canonical_regime_audit_v1.tex` (+ review), prefix `an04crav1:` — S8a, audit: rational regime map; per-increment κ-dependence ledger, first failure TAIL `exponent` ($\kappa\omega>1$); left-facing Q2 comparison law $\asymp q^{\kappa\lambda/2}$; full weak-receiver slope with mass-deficit and overlap terms; S8/S7 obligations |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |
