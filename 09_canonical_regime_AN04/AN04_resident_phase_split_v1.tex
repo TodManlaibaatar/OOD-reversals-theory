@@ -1,0 +1,366 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{amsmath,amssymb,amsthm,lmodern,geometry}
+\geometry{margin=.92in}\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\title{The critical right-half entry law and a resident-phase escape test}
+\author{Standalone analytical increment}\date{Version 1, 3 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Positive-noise Q4 comparison ancestry supplies an aligned atom of mass
+\(A/8\) at the resident. The complementary Q1 comparison law remains
+distributed. For a prescribed compact leading entry we derive exact
+moment equations and a self-consistent, finite-time escape criterion.
+It gives an explicit positive mass of newly inactive labels and an
+exponential lower barrier up to a specified radius. It applies, in
+particular, to a saturated family of truncated critical profiles with
+sufficiently small scale parameter. We identify the face inequality
+that prevents this conclusion for unrestricted entry parameters.
+\end{abstract}
+
+\section{Domains}\label{an04rpsv1:domains}
+Set \(\lambda=\rho^2,\ 13/20\le\rho\le7/10,\ \omega=(1-\lambda)/2,\ 
+\ell=\log(1/q),\ S_0=cq^{1/\omega},\ T_A=\ell/\omega+\log(A/c)\).
+Write \(a=\rho K(\rho a)>0,\ K(t)=\phi(t)+t\Phi(t)\),
+\(d=[1-\lambda\Phi(\rho a)]/2\). All entry limits take q to zero
+at fixed positive \(A,c\), uniformly also on compact positive ranges.
+Offsets lie in a compact set separated above \(a\).
+\begin{itemize}
+\item PROFILE angle and coordinate concern the aligned Gaussian
+target-only comparison with any positive initial radial weight. Its
+local root estimate uses fixed bounded scaled charts at small q.
+Its full Q4 corollary has the all-right-half time guard
+\(T\ge(2/\omega)\ell+C,\ q^2T\le1\); the critical clock violates
+the first condition. We derive the needed Q4 estimate directly.
+\item CFS laws concerns Q1 comparison ancestry at \(T_A\), compact
+interiors for individual limits, endpoint mass bounds for its integrated
+law. CFS spread uses compact co-ordered labels in a single leading
+field with \(N=0,\ 0<M\le1\). CFS sat starts below strong half mass.
+\item WIT popsystem and P leading/order supply the defined leading
+characteristics, with finite masses and bounded support on the time
+interval in use. Comparison of two receivers holds with the same
+time-dependent donors. We take \(N=0,\ 0<M_0\le1\) throughout the
+resident calculation. At or near saturation the mass used is stated
+explicitly. P spectra concerns infinitesimal offsets about a coherent
+resident, not finite-amplitude escape. No WIT rate transfer or passage
+from entry to a trained population is assumed.
+\end{itemize}
+
+\section{Q4 and the right-half comparison law}\label{an04rpsv1:entry}
+\begin{theorem}\label{an04rpsv1:q4}
+On compact interior Q4 labels \(-\pi/2<\beta<0\),
+\[
+ a-\widehat\theta(T_A,\beta)/q\asymp
+ q^{d(1/\omega-2)},\qquad
+ \widehat m(T_A,\beta)=A\cos^2\beta\,(1+o(1)).
+\]
+The Q4 radial mass is \(A/8+O(Aq^{1/4})\). Outside an endpoint
+strip of mass \(O(Aq^{1/4})\), the absolute scaled displacement from
+\(a\) is \(O(q^{d(1/\omega-5/2)}+q^2)\).
+\end{theorem}
+\begin{proof}
+For \(r=-\theta>0\) the exact velocity from PROFILE angle is
+\[
+ 2\theta'=\sin r\cos r+q\sin r K(-\cos r/q)
+                      +\rho q\cos r K(-\rho\sin r/q).
+\]
+In particular \(r\) decreases. For an interior compact, until the
+first hit of \(-qL\) at fixed large \(L\), put \(v=\tan r/q\).
+Then \(-v'=v/2+E\) where, with \(D=\sqrt{1+q^2v^2}\),
+\(2E=qvD K(-1/(qD))+\rho D K(-\rho v/D)\).
+Here \(D\) is uniformly bounded, \(E\ge0\) and \(E\le C\).
+Integrating the reciprocal speed gives \(2\ell+O(1)\):
+subtract \(2/v\) on \(v\ge\tan(qL)/q\); the absolute difference is
+at most \(4C/v^2\). No approximation with bounded \(w=\theta/q\)
+is used at the initial angle of order one.
+
+On \([-L,L]\), \(f_q(x)=\theta'(qx)/q
+=[\rho K(\rho x)-x]/2+O_{C^2}(q^2)\) by the own-gate
+Gaussian tail and Taylor expansion. The root \(a_q=a+O(q^2)\)
+attracts from both sides and \(-f_q'(a_q)=d+O(q^2)\).
+For \(h=a_q-x>0\), \(h'=-b_q(h)h\), where
+\(b_q(h)\ge\omega/2\) and
+\(|b_q(h)-b_q(0)|\le C h\). Integration first bounds
+\(\int h\le2h(0)/\omega\), then bounds \(h(t)/h(0)\) above and below
+by fixed multiples of \(\exp[-(d+O(q^2))t]\).
+The time from \(-qL\) to observation is
+\((1/\omega-2)\ell+O(1)\). Since \(0<d(1/\omega-2)<1\),
+the \(O(q^2)\) shift cannot reverse the compact-interior sign.
+In fact the entire quadrant stays below \(a\) at observation for small
+q: the label initially at zero is the largest by scalar order and its
+gap to \(a_q\) is comparable to \(\exp[-d\ell/\omega]\), with
+\(d/\omega<2\). The label at the negative vertical axis is included
+by continuity; no uniform lower arrival-speed assertion is needed there.
+
+For a quantitative strip estimate restrict to \(\cos\beta\ge q^{1/4}\).
+The first velocity inequality gives time to \(-qL\) at most
+\(2\log[\tan|\beta|/\tan(qL)]\le(5/2)\ell+C\) whenever a hit is
+needed. Labels starting inside the local chart have at least as much
+relaxation time. This proves the asserted upper displacement, since
+\(1/\omega>5/2\) uniformly.
+With \(U_1=\sqrt m\cos\theta\), PROFILE coordinate gives exactly
+\[
+ (\log U_1)'=\tfrac12+d_q+
+ \frac{qK(-\cos\theta/q)}{2\cos\theta},\qquad 0\le d_q\le q^2 .
+\]
+On this retained strip complement \(\cos\theta\ge q^{1/4}/2\)
+through observation, by monotonicity towards the root. The final
+cosine is \(1+O(q^2)\). Hence the relative mass error is
+\(O(q^2(1+\ell))\). On either endpoint strip of length \(\eta\)
+the gated covariance bound \(m'\le(1+2q^2)m\) costs \(O(A\eta)\).
+The omitted negative-vertical strip has length \(O(q^{1/4})\);
+the horizontal endpoint is handled by the local estimate. The
+individual endpoints have zero mass. Integration against
+\(d\beta/(2\pi)\) proves the mass formula.
+\end{proof}
+
+Put \(b=(c/A)^\omega\) and use CFS's monotone quadrature
+\[
+ B(w)=[w-\rho K(\rho w)]/2,\quad
+ H(w)=w\exp\left[-\omega\int_w^\infty
+       \left(B(r)^{-1}-(\omega r)^{-1}\right)\dd r\right]\quad(w>a).
+\]
+Writing \(\delta_{(a,a)}\) for the aligned atom, the limiting joint
+measure on the initial right half is this atom with weight \(A/8\),
+plus the measure on \(y=x>a\) with density in \(x\)
+\[
+ f_b(x)=\frac{A}{2\pi b}\frac{H'(x)}{(1+(H(x)/b)^2)^2}.
+\]
+Each sector has limiting mass \(A/8\). For \(\zeta>a\) the fraction of
+the total \(A/4\) active at the current probe is therefore
+\begin{equation}\label{an04rpsv1:fraction}
+ \frac12+\frac2\pi\int_0^{H(\zeta)/b}\frac{\dd t}{(1+t^2)^2}.
+\end{equation}
+The atom is strictly active on the specified offset compact; the Q1
+boundary carries no mass. Q2 and Q3 ancestry are excluded. This is
+an entry comparison. No strong mass, phase or profile for the trained
+model is identified with it.
+
+\section{Rank transport, cutoff and moments}\label{an04rpsv1:rank}
+Use normalized mass rank \(\sigma\in[0,1]\) with uniform rank law and
+strong mass \(M(t)\). All labels have reaction \(1-M\), so normalized
+rank weights remain fixed. Let \(Y=\int y\,d\mu,\ X_m=\int x\,d\mu,\
+K_s=\int K(\rho x)d\mu,\ S(x)=\int F(\rho x,\rho\widetilde x)d\mu\),
+where \(F(t,r)=\E[(Z+r)_+1_{Z+t>0}]\) for a standard normal \(Z\).
+Use the actual current measure for every donor integral. Define
+\[
+ 2U=-(1-M)x+\rho\phi(\rho x)-\rho S(x)+\lambda y\Phi(\rho x),
+ \qquad 2V=-(1-M)y-Y+\rho K(\rho x).
+\]
+For prescribed compact nondecreasing entry coordinates the full
+self-consistent solution preserves co-order: at each time the pair
+difference solves the segment-averaged receiver Jacobian equation
+with the same donors. Both off-diagonal entries are averages of
+\(\lambda\Phi(\rho x)/2>0\). The integrating-factor argument of CFS
+spread applies to every ordered pair at once. Bounded initial support
+propagates on finite intervals by linear growth, as in the estimates
+below. A plateau of identical pairs stays a plateau by uniqueness.
+The active set is an initial segment of rank, of length
+\(\sigma_*=\mu\{x<\zeta\}/M\). It equals \([0,\sigma_*)\) modulo
+endpoints (take a right-continuous quantile convention on \([0,1)\)).
+A plateau at equality is excluded in its entirety. This assertion
+does not differentiate a moving rank boundary.
+
+For cutoff choose \(R>\max(a,\zeta)\) large enough that
+\(H(x)\ge x/2\) for \(x\ge R\), and set \(h_R=H(R)\).
+Deleting the tail removes mass at most
+\(Ab^3/(6\pi h_R^3)\) and first absolute input moment at most
+\(Ab^3/(2\pi h_R^2)\), by \(x\le2H(x)\) and integration in
+\(h=H(x)\). The same estimate holds for \(y\). The associated donor
+errors in \(K_s,S(x)\) are bounded by \(\phi(0)\) times the mass
+charge plus \(\rho\) times the first moment charge, uniformly in the
+receiver. No exposure is removed at these offsets. One can instead
+clamp this tail to \((R,R)\) and preserve mass and the active fraction.
+The first moment change is then bounded by the same first moment charge,
+and the kernel changes by at most \(\rho\) times that charge since
+\(|F_r|,|K'|\le1\). Multiply charges by \(4M_0/A\) if normalizing
+the comparison shape to a prescribed leading mass \(M_0\).
+These are entry costs. The clamped evolution is a new self-consistent
+solution, not a trajectory comparison with its unclamped counterpart.
+
+For any such leading state the following equations are exact:
+\begin{align}
+ M'&=M(1-M),\qquad
+ 2Y'=(1-2M)Y+\rho K_s,\notag\\
+ 2X_m'&=(1-M)X_m+\int [\rho\phi(\rho x)-\rho S(x)+
+                      \lambda y\Phi(\rho x)]\,d\mu,\notag\\
+ K_s'&=(1-M)K_s+\rho\int\Phi(\rho x)U\,d\mu,\notag\\
+ A_\zeta'&=(1-M)A_\zeta-\int_{x<\zeta}U\,d\mu,\quad
+ A_\zeta=\int(\zeta-x)_+d\mu .
+ \label{an04rpsv1:moments}
+\end{align}
+Apply transport with reaction to each integrand. The last line holds
+almost everywhere in time: an absolutely continuous coordinate has
+zero velocity almost everywhere on its level set, and finite-interval
+bounded speeds allow integration over rank. At a gate atom the right
+derivative has the additional term \(\int_{x=\zeta}(-U)_+d\mu\).
+Exposure is distinct from active mass. For example, at \(M=1\) a
+nonzero \(K_s\) forces the signed mean \(Y\); it cannot simply be set
+to its coherent value during escape.
+
+\section{A self-consistent escape region and its range}\label{an04rpsv1:escape}
+Reset leading time to zero at a prescribed resident-phase entry.
+Here is a sufficient test using only initial moments and the gate.
+It is constructive on a nonempty range of the critical profiles.
+\begin{theorem}\label{an04rpsv1:cone}
+Let \(0<M_0\le1,\ N=0,\ \zeta>a\). For compact entry define
+\[
+ g=\rho K(\rho\zeta)-\max\{\rho K_s(0),Y(0)\}
+                          -(1-M_0)(\zeta+1).
+\]
+When \(g>0\), let \(D_0=1+\int(|x|+|y|)d\mu_0\),
+\(C=10D_0e^7\), and set
+\begin{align*}
+ k&=\frac{g}{8(\zeta+1)},&
+ h&=\min\{1,g/(4C),\,k^{-1}\log((\zeta+1)/\zeta)\},\\
+ \delta&=\min\{g/(4\lambda),(\zeta-a)/2,\,
+                         \zeta(1-e^{-kh/2})/2\}.
+\end{align*}
+For each \(\xi\in[\zeta-\delta,\zeta]\) the region
+\[
+ 0\le t\le h,\qquad x,y\ge w(t)=\xi e^{kt}
+\]
+is forward-invariant up to its stated terminal time. An aligned label
+initially at \(\xi\in[\zeta-\delta,\zeta)\) leaves the active set by
+\(h/2\) and stays inactive through \(h\), with both coordinates bounded
+below by \(\xi e^{kt}\). For the clamped, mass-normalized critical
+profile the fraction of initial mass so certified is at least
+\begin{equation}\label{an04rpsv1:moved}
+ \frac4A\int_{\zeta-\delta}^{\zeta} f_b(u)\,du>0.
+\end{equation}
+The barrier reaches radius \(\xi e^{kh}>\zeta\); for entry chart radius
+\(R_0\) the entire proof takes place in
+\([-(1+R_0)e^2,(1+R_0)e^2]^2\).
+\end{theorem}
+\begin{proof}
+First obtain a donor budget without assuming any label stays below the
+probe. Let \(D(t)=1+\int(|x|+|y|)d\mu\).
+From \(0\le S(x)\le K_s\le M\phi(0)+\rho\int|x|d\mu\), \(|Y|\le D-1\)
+and the field equations,
+\[
+ |U|+|V|\le3(1+|x|+|y|+D-1).
+\]
+The radial reaction is at most one, hence \(D^+D\le7D\).
+This charges the escaping fraction with its own growing coordinates.
+On \(t\le1\), \eqref{an04rpsv1:moments} yields
+\(|Y'|,\rho|K_s'|\le C\) using \(\int|U|d\mu\le6D\).
+Independently the support radius satisfies \(D^+R\le2(1+R)\)
+by applying the same field formulas with \(K_s\le M(\phi(0)+\rho R)\).
+This proves finite-interval continuation and the stated chart budget.
+
+Now \(0<w\le\zeta+1\), \(M(t)\ge M_0\).
+At the input face \(x=w,\ y\ge w\) one has
+\[
+ 2U\ge -(1-M)w+\rho K(\rho w)-\rho K_s(t).
+\]
+Here both \(\rho\phi(\rho w)\) and \(\lambda w\Phi(\rho w)\)
+are retained. At the output face \(y=w,\ x\ge w\),
+\[
+ 2V\ge -(1-M)w+\rho K(\rho w)-Y(t).
+\]
+At either face the bound is at least \(g-\lambda\delta-Ch\ge g/2\),
+using \((\rho K(\rho w))'\) with respect to \(w\) at most \(\lambda\).
+Both velocities exceed \(w'=kw\le g/8\), including the corner.
+The entry face starts at the prescribed label, and the terminal face
+ends the estimate. Strict first-exit comparison proves the claim.
+Its mass is positive by the CFS density; common reaction preserves
+the fraction. This counts labels newly leaving the gate, independently
+of the mass already above it.
+\end{proof}
+
+\paragraph{Parameters for which the test closes.}
+For example take the normalized, clamped critical shape at \(M_0=1\)
+with fixed \(R>\zeta\). Let \(b\downarrow0\) in this family of
+\emph{entry states} before fixing a positive \(b\).
+The Q1 rank coordinate can be written \(H^{-1}(b\tan\beta)\),
+with normalized weight proportional to \(\cos^2\beta\) independent
+of \(b\); the Q4 atom is fixed. Bounded convergence after clamping
+gives \(Y(0)\to a\) and \(\rho K_s(0)\to\rho K(\rho a)=a\).
+Thus \(g\to\rho K(\rho\zeta)-a>0\).
+There is also a simple sufficient parameter interval with no moment
+integrals to evaluate. Put \(r_{\rm mid}=[a+\rho K(\rho\zeta)]/2\);
+then \(a<r_{\rm mid}<\rho K(\rho\zeta)<\zeta\). At \(M_0=1\)
+the mass above \(r_{\rm mid}\) is at most
+\(2b^3/[3\pi H(r_{\rm mid})^3]\) by integration of \(g_b\).
+For aligned clamped data, \(\rho K(\rho u_R)\le u_R\) for \(u_R\ge a\).
+Hence the test succeeds for every
+\[
+ 0<b<H(r_{\rm mid})
+ \left(\frac{3\pi[\rho K(\rho\zeta)-r_{\rm mid}]}{2R}\right)^{1/3}
+ \qquad \text{at } M_0=1:
+\]
+indeed \(Y(0)\le r_{\rm mid}+2Rb^3/[3\pi H(r_{\rm mid})^3]\).
+An explicit test for any fixed \(b\) uses the integrals of
+\(u_R=\min(u,R)\) and \(\rho K(\rho u_R)\) against
+\((4M_0/A)[(A/8)\delta_a+f_b(u)du]\) in the definition of \(g\).
+By continuity the same strict test holds at sufficiently close
+subunit masses in this range. This is a leading escape result at
+fixed parameters, without a coherent-donor approximation.
+If a later resident state was reached dynamically, its own current
+moments and available ordered pairs are required in this test.
+
+\paragraph{Obstruction for unrestricted critical parameters.}
+Even at \(M=1\), the exact input-face test at \(x=\zeta,\ y=\zeta\)
+for an aligned initial state is
+\begin{equation}\label{an04rpsv1:face}
+ 2U(\zeta,\zeta)=\rho[K(\rho\zeta)-S(\zeta)] .
+\end{equation}
+Its sign is not fixed. For the same normalization and cutoff construction,
+as \(b\to\infty\) the Q1 half converges to the clamped point \(R\).
+Thus \(S(\zeta)\to [K(\rho a)+\phi(\rho\zeta)+
+\rho R\Phi(\rho\zeta)]/2\), since \(a<\zeta<R\).
+Choose a finite \(R>\zeta\) large enough that this exceeds
+\(K(\rho\zeta)\), then fix sufficiently large finite \(b\).
+One can choose such an \(R\) first even without a tail-smallness
+requirement: clamping is a prescribed compact leading model. The
+negative-face example also holds with an arbitrarily small removed
+tail at fixed large \(b\): increasing \(R\) only increases the
+initial \(S(\zeta)\), because \(F_r\ge0\). The explicit cutoff
+charges then apply. At this input face the outward test fails even
+with zero prescribed barrier speed. The aligned gate has positive
+rank density in a neighborhood on either side. By continuity, nearby
+initially inactive labels move into the active segment at short time.
+This calculation precludes an unrestricted outward-gate argument.
+It does not decide eventual escape or capture for this latter family.
+CFS's output-gap bound separately precludes collapse of separated
+output quantiles into one coherent point. It does not place the input
+quantiles relative to a specified \(\zeta\).
+
+\paragraph{Active-rank monotonicity.}
+At a smooth gate with positive \(x_\sigma\),
+\(\sigma_*'=-U(\zeta,y(\sigma_*))/x_\sigma\).
+In particular the clamped shapes above have a regular gate initially.
+Equation \eqref{an04rpsv1:face} gives negative rank derivative for
+the small-\(b\) example and positive derivative for the large-\(b\)
+example. A parameter-uniform monotonic direction is impossible.
+Within any particular field a proof of perpetual nonincrease would
+need the input-face inequality
+\[
+ \rho\phi(\rho\zeta)-\rho S(\zeta)+\lambda y(\sigma_*)\Phi(\rho\zeta)
+ \ge(1-M)\zeta
+\]
+at the moving gate, with separate handling of equality atoms.
+Rank order does not supply it. The examples compare signs computed
+within their respective fields. They do not prove temporal
+nonmonotonicity along either single trajectory.
+
+\section{Handoff}\label{an04rpsv1:handoff}
+S7 has a right-half comparison entry measure and an \(N=0\) compact
+leading evolution in rank coordinates, with evolving \(M,Y,X_m,K_s\)
+and \(A_\zeta\). For the range of Theorem~\ref{an04rpsv1:cone} there
+is a certified newly inactive rank band and a lower bound through \(h\).
+For arbitrary prescribed critical parameters, the later split and even
+the sign of motion at the gate must still be determined from the field.
+There is no identified universal end time for the resident phase.
+
+S7b needs a matched switch to weak growth, the actual seed and joint
+weak law (the candidate scale is \(N_0\asymp S_0^{1-\lambda}\)),
+strong and weak donor feedback and radial weights through passage,
+and the current gate, exact signed lag and rate-weighted producer
+bounds at the probe scale. The transfer obligations remain the
+trained entry clock, \(o(q)\)-scale angular resolution or equivalent
+weighted-profile accuracy, radial mass and other-sector/tail budgets,
+and comparison through strong saturation in the full trained field.
+The critical comparison ratio \((S_0/A)^\omega/q=b\) is fixed and
+the deep all-right-half overlap has the wrong power here.
+\end{document}
