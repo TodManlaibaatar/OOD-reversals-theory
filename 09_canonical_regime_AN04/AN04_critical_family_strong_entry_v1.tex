@@ -1,0 +1,375 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,geometry}
+\geometry{margin=.92in}\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\title{Critical strong entry: two comparison profiles and a leading saturation bound}
+\author{Standalone analytical increment}\date{Version 1, November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+At the critical nominal clock the zero-noise Q1 profile has an explicit
+rational density. At positive noise a nonvanishing Gaussian gate term
+changes the limiting density and shifts its lower support edge to the
+resident angle. A one-dimensional quadrature gives the corrected
+probe-active fraction. In the leading system at zero weak mass,
+coordinate-ordered input and output profiles retain a positive output
+gap through strong saturation. We distinguish this finite-amplitude
+estimate from linear instability at the resident and from the open
+transfer to the trained flow.
+\end{abstract}
+
+\section{Models, source domains and powers}\label{an04cfsv1:scope}
+Fix \(\rho\in[13/20,7/10]\), \(\lambda=\rho^2,\ \omega=(1-\lambda)/2\),
+\(S_0=cq^{1/\omega},\ c,A>0,\ \ell=\log(1/q)\), and
+\(T_A=\log(A/S_0)\). The nominal mass scale refers to \(S_0e^{T_A}=A\).
+Write \(b=(c/A)^\omega,\ K(t)=\phi(t)+t\Phi(t)\);
+\(a=\rho K(\rho a)>0,\ P=\Phi(\rho a),\
+\alpha_{\rm sh}=\lambda P/2,\ d=1/2-\alpha_{\rm sh},\ s=d/\omega\).
+The initial label law is \(d\beta/(2\pi)\) with aligned input/output and
+uniform squared radius \(S_0\).
+\begin{itemize}
+\item TAIL \texttt{outer, zerofield, quadrants} applies to the auxiliary
+point-mass target-only data model, each open quadrant, all times and
+all \(S_0>0\). Its \texttt{exponent} corollary adds
+\((S_0/A)^\omega/q\to0\) at \(T_A\).
+\item PROFILE \texttt{angle, coordinate, root} concerns positive-noise
+target-only dynamics, small q, ratios on compact subsets of \((0,1)\).
+Its fixed-chart expansion uses bounded \(\theta/q\). Its upper-half
+Q1 arrival law uses \(\beta\in[\pi/4,\pi/2]\), and the entry theorem
+for all Q1 weights and the cutoff requires
+\(T\ge(2/\omega)\ell+C_1,\ q^2T\le1\).
+\item Q2 crossing/transit and CRA \texttt{outer} refer to compact
+interior Q2 ancestry in the comparison, with a strict exponent gap for
+CRA's pre-crossing result. An endpoint or an original trajectory
+requires separate estimates.
+\item WIT \texttt{popsystem} and P \texttt{leading, resident, spectra}
+apply within the defined leading system on chart-valid finite
+intervals with adequate moments. We use positive compactly supported
+strong measures, \(N=0,\ 0<M\le1\). The spectrum is at a coherent
+resident and separates centered from coherent perturbations.
+LOC's local gain additionally needs a small shape, an entered weak
+clock and controlled mean, feedback and field errors.
+\item For the initialized trained model P's early comparison and
+TAIL weighted ancestry use the early alignment guard. ARR main uses
+\(3/5\le\rho\le3/4,\ q\le1/20,\ S_0<\delta\le1/100\) and
+\(R\ge1,\ qR\le\lambda/2\). OWPT, SMCP and MOMC are ten-power
+statements with an all-right-half chart before saturation. Their
+specific clock tests are audited in Section~\ref{an04cfsv1:original}.
+\end{itemize}
+
+The critical coefficient satisfies
+\[
+ 800/231\le1/\omega\le200/51<4<2/\lambda,\qquad
+ 1/\omega<2L_-,\quad L_-=2+169/231 .
+\]
+Here \(2/\lambda\ge200/49>4\). Thus compact interior Q2 labels
+are still left-facing in the comparison at \(T_A\); the gap from the
+crossing coefficient is uniform. With the logarithmic convention
+\(\kappa_q=\log(1/S_0)/\ell\), the exact sign is
+\(\kappa_q=1/\omega-\log c/\ell=1/\omega+\log c/\log q\).
+In particular it is the limiting exponent that depends on \(\rho\).
+Direct substitution into the \emph{candidate} laws gives
+\[
+ \epsilon(T_A)=q^{-s}e^{-dT_A}=(c/A)^d,\qquad
+ E_{\rm loc}(1/\omega)=\frac{1-P}{1-\lambda}
+                     -\frac{1-\lambda P}{1-\lambda}=-P .
+\]
+Formally \(q^{E_{\rm loc}(\kappa_q)}=c^{(1-P)/2}q^{-P}\).
+These powers do not supply a transferred tail or justify continuing a
+local multiplier past its radius of validity.
+
+\section{Q1 comparison at the critical clock}\label{an04cfsv1:profiles}
+Write \(x=\theta/q\). Densities below are radial masses per unit \(x\);
+the denominator for activity is the total Q1-ancestry mass.
+Define
+\[
+ g_b(h)=\frac{A}{2\pi b}\left(1+(h/b)^2\right)^{-2}\quad(h>0),
+ \qquad
+ F_b(l)=\frac4\pi\int_0^{\max(l,0)/b}\frac{\dd t}{(1+t^2)^2}.
+\]
+\begin{theorem}[Zero-noise and positive-noise laws]\label{an04cfsv1:laws}
+For \(\beta\) on any fixed compact subset of \((0,\pi/2)\),
+put \(h=b\tan\beta\). In the zero-noise target-only model,
+\(x(T_A)=h+o(1)\); its limiting density is \(g_b(x)\) for \(x>0\),
+and its active fraction is \(F_b(\zeta)\).
+
+For positive-noise target-only flow define, for \(w>a\),
+\[
+ B(w)=\omega w-\tfrac\rho2K(-\rho w)
+     =\tfrac12[w-\rho K(\rho w)],\qquad
+ H(w)=w\exp\left\{-\omega\int_w^\infty
+       \left(\frac1{B(r)}-\frac1{\omega r}\right)\dd r\right\}.
+\]
+Then
+\begin{align}
+ x(T_A)&=H^{-1}(h)+o(1),&
+ m(T_A,\beta)&= A\cos^2\beta\,(1+o(1)).
+ \label{an04cfsv1:positive}
+\end{align}
+The same mass law holds in the zero-noise model. For positive noise the
+limiting density is \(g_b(H(x))H'(x)\) on \(x>a\), zero on \(x\le a\).
+The limiting Q1 probe-active fraction is
+\begin{equation}\label{an04cfsv1:active}
+ F_+(c,\zeta;\rho,A)=
+ \begin{cases}0,&\text{if }\zeta\le a,\\ F_b(H(\zeta)),&\text{if }\zeta>a.\end{cases}
+\end{equation}
+Both Q1 masses converge to \(A/8\). Angle and relative weight errors
+are uniform on the specified label compact, the ratio box, and compact
+positive ranges of \(c,A\). Fraction convergence is uniform also for
+\(\zeta\) on any fixed bounded interval.
+\end{theorem}
+\begin{proof}
+TAIL quadrants gives \(\tan\theta=e^{-\omega t}\tan\beta\) and
+\(m=S_0e^t(\cos^2\beta+e^{-2\omega t}\sin^2\beta)\).
+At \(T_A\), \(e^{-\omega T_A}=qb\). Changing variables from
+\(\beta\) to \(h\) in \(A\cos^2\beta\,d\beta/(2\pi)\) gives \(g_b\).
+
+For the second law set \(w=\tan\theta/q,\ w_0=\tan\beta/q\),
+\(D=(1+q^2w^2)^{1/2}\). PROFILE's exact angle equation gives
+\(w'=-B_q(w)\), where
+\[
+ B_q(w)=\omega w+\tfrac12qwD K(-1/(qD))
+                     -\tfrac\rho2D K(-\rho w/D).
+\]
+On bounded \(w\)-intervals \(B_q\to B\) uniformly. Since
+\(B'(w)=(1-\lambda\Phi(\rho w))/2\ge\omega>0\),
+\(B(a)=0\) is simple, with \(B'(a)=d\). For \(w>a\) the integrand
+in \(H\) is strictly positive, integrable at infinity by the Gaussian
+tail, and has a divergent integral at \(a\). Thus \(H(a+)=0\),
+\(H(w)/w\to1\) at infinity, and
+\(H'/H=\omega/B>0\). This proves invertibility and the strict
+inequality \(H(w)<w\).
+
+For fixed \(w>a\), let \(\tau_q(w)\) be its first hit from \(w_0\).
+On our label compact \(D\le D_*=\sec(\sup\beta)\) between \(w\) and
+\(w_0\). For \(r\ge L\) with L fixed sufficiently large,
+\(B_q(r)\ge\omega r/2\) and
+\[
+ \left|\frac1{B_q(r)}-\frac1{\omega r}\right|
+ \le C\frac{K(-\rho_-r/D_*)}{r^2}
+    +C\frac{qK(-1/(qD_*))}{r},\qquad r\le w_0 .
+\]
+The second term integrates to \(o(1)\) up to \(w_0=O(q^{-1})\);
+the first has uniformly vanishing integral as \(L\to\infty\).
+On \([w,L]\) positivity and convergence hold for small q. Separating
+variables therefore gives
+\[
+ \tau_q(w)=\frac1\omega\log\frac{w_0}{w}
+       +\int_w^\infty\left(\frac1{B(r)}-\frac1{\omega r}\right)\dd r+o(1).
+\]
+Since \(w_0e^{-\omega T_A}=h\), the time difference is
+\(\omega^{-1}\log(h/H(w))+o(1)\). Bracketing \(H^{-1}(h)\) by two
+nearby hit levels proves \eqref{an04cfsv1:positive} for \(w\), hence
+for \(\arctan(qw)/q\). For the parameter compacts, \(h\) stays
+bounded above and away from zero and the inverse levels stay a positive
+distance above their respective roots. This follows by continuity of
+the quadrature away from the root, its uniform logarithmic divergence
+at the simple roots, and its uniform tail estimate. The same bracketing
+is therefore uniform.
+
+For the weight, \(\cos\theta\) stays bounded below on this portion of
+the trajectory by the angular motion just proved. PROFILE coordinate
+and \(K(t)=t+K(-t)\) give
+\[
+ (\log\widehat U_1)'=\tfrac12+d_q+
+ \frac{q}{2\cos\theta}K(-\cos\theta/q),\qquad 0\le d_q\le q^2 .
+\]
+The integrated correction is \(o(1)\) since \(T_A=O(\ell)\).
+At the endpoint \(\cos\theta=1+O(q^2)\); use
+\(\widehat m=\widehat U_1^2/\cos^2\theta\).
+Changing variables \(h=H(x)\) gives the density claimed.
+
+For both endpoint strips, a bound independent of initial angle is
+essential. In the positive-noise model \(m'\le(1+2q^2)m\), by bounding
+the gated data second moment by its ungated matrix. Thus \(m(T_A)\le
+Ae^{2q^2T_A}\); the zero-noise bound is \(A\). Each strip of initial
+length \(\eta\) costs \(O(A\eta)\). First integrate on an interior
+compact, then send \(\eta\downarrow0\). The endpoint labels themselves
+have zero initial and terminal mass under this law, even though a
+uniform per-label approximation fails there. The limiting gate boundary
+has zero mass since both limiting maps are strictly increasing.
+On Q1 the exact probe gate is \(\sin(q\zeta-\theta)>0\), equivalent
+to \(x<\zeta\) for bounded offsets and small q. Integration gives the
+fractions including equality at the support edge. Uniformity follows
+also by taking convergent subsequences of the compact parameters and
+offset: the label indicators converge away from at most one interior
+boundary, with the same strip bound.
+\end{proof}
+
+In particular the requested positive-noise ratio \(x/h=1+o(1)\)
+would require \(H^{-1}(h)=h\). In fact \(H^{-1}(h)>h\) for every
+finite \(h>0\), since \(K(-\rho w)>0\).
+The difference persists for a single fixed interior label. This is
+the exact failure of the zero-noise substitution at the critical scale.
+
+\paragraph{Other sectors.}
+Q4 is excluded from both numerator and denominator. In the zero-noise
+model its interior has \(\tan\theta=e^{-t/2}\tan\beta\), hence
+\(x(T_A)\to0\) on compact interiors since \(1/(2\omega)>1\);
+its mass also tends to \(A/8\) in total. No positive-noise Q4 profile
+is used. Compact interior Q2 remains left-facing by CRA outer, with
+gap of order \(q^{\lambda/(2\omega)}\) at \(T_A\). Its endpoint layers,
+and all Q2 and Q3 labels, are excluded from the Q1 fractions.
+
+\section{Saturation in the defined leading system}\label{an04cfsv1:leading}
+Let a compact strong measure of mass \(m_0\in(0,1/2)\) start at \(t_0\)
+in \([-R_0,R_0]^2\). Set the weak measure to zero, so \(N=V=K_w=0\).
+In WIT's equations write \(\mathcal Y=\int y\,d\mu_s\),
+\(\mathcal S(x)=\int F(\rho x,\rho\widetilde x)d\mu_s\).
+With prime denoting normalized time the full system is
+\begin{align}
+ M'&=M(1-M),\qquad x'_1=-(1-M)x/2,\notag\\
+ 2x'_2&=\rho\phi(\rho x)-\rho\mathcal S(x)+\lambda y\Phi(\rho x),
+ \qquad 2y'_2=\rho K(\rho x),\notag\\
+ 2y'_1&=-(1-M)y-\mathcal Y .
+ \label{an04cfsv1:field}
+\end{align}
+Common radial reaction preserves normalized weights.
+\begin{lemma}\label{an04cfsv1:sat}
+The source-1-only input evolution is exactly \(x^{[1]}(t)
+=x_0\sqrt{m_0/M(t)}\). The first half-mass time is \(t_0+D_0\),
+\(D_0=\log[(1-m_0)/m_0]\). With
+\(R_*=(1+R_0)e^{2D_0}-1\), the full input and output obey,
+for \(0\le v=t-t_0\le D_0\),
+\begin{align*}
+ |x(t)-x_0\sqrt{m_0/M(t)}|
+ &\le v\left[\tfrac34\rho\phi(0)+\tfrac34\lambda R_*\right],\\
+ |y(t)-y_0\sqrt{m_0/M(t)}|
+ &\le v\left[R_*/4+\tfrac\rho2(\phi(0)+\rho R_*)\right].
+\end{align*}
+\end{lemma}
+\begin{proof}
+Integrate \((1-M)=(\log M)'\) and the logistic equation.
+The source-1-only formula for x does not solve the full x equation.
+For an instantaneous radius \(R\), the Gaussian kernel satisfies
+\(0\le F(t,r)\le K(r)\le\phi(0)+r_+\).
+Thus \(|\mathcal S|\le M(\phi(0)+\rho R)\) and
+\(|\mathcal Y|\le MR\). With \(M\le1/2\) these give
+\(|x'_2|\le3\rho\phi(0)/4+3\lambda R/4\) and
+\(|y'_2|\le\rho(\phi(0)+\rho R)/2\). The full speed in each coordinate
+is at most \(2(1+R)\), so comparison of the support supremum yields
+\(R\le R_*\). These bounds also give continuation to the stated finite
+time by the compact-chart local Lipschitz characteristic equations.
+Multiply the full equations by \(\sqrt M\) and integrate; the resulting
+kernel \(\sqrt{M(u)/M(t)}\le1\) yields both bounds, including the
+output donor term. In particular the isolated input multiplier at
+half mass is \(\sqrt{2m_0}\).
+\end{proof}
+
+\begin{theorem}[Finite spreads and local rates]\label{an04cfsv1:spread}
+On any finite chart-valid interval of the same \(N=0\) leading flow,
+a pair with \(x_2\ge x_1,\ y_2\ge y_1\) at entry preserves that order.
+Its output gap satisfies
+\[
+ y_2(t)-y_1(t)\ge\sqrt{m_0/M(t)}\,[y_2(t_0)-y_1(t_0)] .
+\]
+Thus an aligned nondegenerate entry profile of fixed positive mass
+has a persistent scaled spread even as \(M\uparrow1\). On the exactly
+saturated surface \(M=1\), its ordered output gap increases whenever
+its input gap is positive. At the coherent resident the centered
+symmetric mode grows at rate \(+\alpha_{\rm sh}\); the centered
+antisymmetric mode contracts at rate \(-\alpha_{\rm sh}\).
+\end{theorem}
+\begin{proof}
+For two actual receivers in one field write \(h=x_2-x_1,\ k=y_2-y_1\).
+Their difference satisfies a linear equation with receiver Jacobian
+averaged on the segment between them, with the current donors fixed.
+Both off-diagonal entries are averages of \(\lambda\Phi(\rho x)/2>0\).
+The diagonal entries are bounded on bounded charts. The integrating
+factor for each diagonal, or the positive linear propagator, preserves
+the nonnegative quadrant, including faces with one zero gap.
+In particular
+\[
+ (\sqrt M\,k)'=\tfrac{\rho}{2}\sqrt M\,[K(\rho x_2)-K(\rho x_1)]\ge0 .
+\]
+The common output donor term cancels exactly for this pair.
+Strict increase at \(M=1\) follows from strict monotonicity of K.
+Full fields have at most linear growth in the support radius for
+\(M\le1\), so fixed compact initial support continues on every fixed
+finite interval. The bound also separates two weight quantiles with
+an initial output gap, because the normalized label weights are
+constant. It does not require a coherent donor field.
+
+For the infinitesimal calculation write \(a=\rho K(\rho a)\).
+P's \texttt{spectra} has \(F_t(t,t)=0,\ F_r(t,t)=\Phi(t)\);
+centered perturbations have zero first-order donor variation. At
+the resident the receiver matrix is
+\[
+ -\tfrac12(1-M)I+
+ \begin{pmatrix}0&\alpha_{\rm sh}\\ \alpha_{\rm sh}&0\end{pmatrix}.
+\]
+This yields the asserted rates at \(M=1\), and rates \(-d\) and
+\(-1/2-\alpha_{\rm sh}\) at \(M=0\). In contrast \(-\omega\)
+is the strong outer zero-noise angular rate. The coherent mean block
+at saturation is
+\(\left(\begin{smallmatrix}-\alpha_{\rm sh}&\alpha_{\rm sh}\\
+\alpha_{\rm sh}&-1/2\end{smallmatrix}\right)\), with negative trace
+and determinant \(\alpha_{\rm sh}(1/2-\alpha_{\rm sh})>0\).
+Mean attraction therefore coexists with shape instability.
+\end{proof}
+For the intended aligned spread the finite-amplitude conclusion is
+persistence, with strict growth of the output gap at exact saturation.
+A global exponential rate for arbitrary finite spreads does not follow
+from the resident linearization. A special perturbation in the contracting
+eigendirection has a different local behavior. The bounds here are for
+the zero-weak-mass leading evolution; a growing weak measure changes
+the field. If the separate weak-entry law \(N_0\asymp S_0^{1-\lambda}\)
+and LOC's local hypotheses held, the nominal local gain through fixed
+weak mass would scale as \(N_0^{-\alpha_{\rm sh}/\lambda}\asymp q^{-P}\)
+for fixed c. This predicts loss of local smallness at weak half mass;
+it is neither a lower bound on the actual spread there nor a valid
+linear propagation of the full non-small profile. The limiting Q1
+measures of Section~\ref{an04cfsv1:profiles} have unbounded scaled
+support. Lemma~\ref{an04cfsv1:sat} applies to a prescribed compact
+entry state, not automatically to an untruncated limit or to a truncated
+subpopulation in the original self-consistent field.
+
+\section{Trained-flow audit and S7 handoff}\label{an04cfsv1:original}
+Fix \(0<\delta\le1/100\) before q. For small q, \(S_0<\delta\).
+P's early envelope \(\bar S=S_0e^{(1+2q^2)t}\) and alignment
+control apply through \(T_\delta=\log(\delta/S_0)/(1+2q^2)\);
+\(q^2\log(\delta/S_0)\to0\). TAIL weightedmass requires alignment
+error \(<\pi\), supplied there. TAIL earlyfraction gives
+right-half ancestry mass at least
+\(\delta e^{-4\delta}\exp[-2q^2\log(\delta/S_0)/(1+2q^2)]/4\).
+ARR with \(R=1\) gives its distinct incoming Q2 sector mass
+at least \(qS_0(S_0/\delta)^{1/16}/3000\). These are ancestry
+budgets at the early clock, without a current scaled profile.
+\begin{itemize}
+\item First comparison failure in CRA's chain order: TAIL
+\texttt{exponent} needs \((S_0/A)^\omega/q\to0\); the ratio
+is exactly \(b>0\). The exact point-mass-data profile above replaces
+that asymptotic.
+\item First trained-profile transfer gap: an absolute early angle
+allowance \(O(\delta)\) at fixed cap does not give \(o(q)\)
+resolution on the critical input scale. At the nominal clock the
+mass envelope is \(Ae^{2q^2T_A}\), of order one. No original labelwise
+error or relative weighted-profile estimate of the necessary precision
+is supplied.
+\item PROFILE entry needs \(T\ge (2/\omega)\ell+C_1\);
+the available clock is \(\ell/\omega+\log(A/c)\).
+The endpoint \(\beta=\pi/2\) has the longer arrival coefficient.
+\item OWPT's proposed substitution gives
+\(\sigma=\kappa-2/\omega=-1/\omega\) at the limiting exponent;
+exactly \(\sigma_q^{\rm pow}=-1/\omega-\log c/\ell\).
+At its fixed overlap time the mass envelope has scale
+\(c q^{-1/\omega}\) up to bounded factors. Neither its required
+small mass nor its \(O(q^{\sigma-1})\) scaled coupling estimate is
+obtained from that envelope. This is a failure of the bound, not a
+lower bound for trained mass.
+\item SMCP's fixed-offset passage requires the preceding overlap
+and already found nonuniform outer-label distortion at ten.
+MOMC's moving offset \(\ell/2\) additionally needs positive
+\(\sigma-1/2,\ \sigma-3/2\) and small initial \(M_0\) before
+half mass. Both powers have the wrong sign here. The deep time
+\(10\ell-\log A_q+o(1)\) and its chart law cannot be used as a
+critical-family initialized handoff.
+\end{itemize}
+For S7 the specified state is a pair of comparison Q1 measures and,
+separately, a leading evolution estimate given compact ordered entry.
+What is still needed is a trained entry clock, actual joint input/output
+and radial profiles including the other sectors, tail field and rate
+budgets, and transfer through saturation in the presence of their
+backreaction. A positive inactive comparison fraction cannot certify a
+trained bridge, its signed lag, or its producer-resolved effect.
+\end{document}
