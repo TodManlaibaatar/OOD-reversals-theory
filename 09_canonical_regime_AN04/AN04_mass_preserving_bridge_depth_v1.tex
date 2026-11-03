@@ -1,0 +1,209 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newcommand{\EE}{\mathcal E}
+\newcommand{\dd}{\,d}
+\title{A mass-preserving bridge can deepen the coherent probe minimum}
+\author{AN04 proof increment}\date{Version 1}
+\begin{document}\maketitle
+
+\paragraph{Leading system and depth convention.}
+Fix $(\rho,\zeta)$ in WIT's learned rectangle. Use its selected
+coherent orbit $z_0(s)=(X,Y,U,V)(s)$, strong mass one, and weak
+mass $n=(1+e^{-\lambda s})^{-1}$, $\lambda=\rho^2$.
+Depth here refers to the minimum of the leading scaled probe error on
+the fixed learned window $J$. WIT uniformtheorem gives $X<\zeta$
+there with a strict margin and strictly negative and positive rates
+on the left and right endpoint subwindows. A minimizer $s_m$ on $J$
+therefore exists in its interior. Fix any such minimizer. Write
+\[
+ A=\zeta-X_m,\quad Z=X_m-Y_m,\quad
+ P=\Phi(\rho X_m),\quad Q=\Phi(U_m),
+ \qquad z_m=z_0(s_m).
+\]
+Here $A>0$, and AN01 post-half-mass barrier, label
+\texttt{an01pbv1:sign}, gives $Z>0$ on this branch.
+No uniqueness or nondegeneracy of the minimum is used.
+
+\begin{theorem}[Prescribed split, full leading dynamics]\label{an04mpbv1:depth}
+At $s_0=s_m-h\in J$ replace strong mass $\varepsilon$ of the coherent
+atom by a bridge. Its normalized entry law is the image of a probability
+$\nu$ on $(r_x,r_y)$ under $(r_x,r_y)\mapsto(r_x/h,r_y/h)$.
+Fix $0<a\le K_*<\infty$, and assume support in
+$[a,K_*]\times[-K_*,K_*]$. Set
+$\kappa_x=\int r_x\dd\nu$, $\kappa_y=\int r_y\dd\nu$.
+Leave the weak state unchanged at injection and evolve every label
+in the common self-consistent field thereafter. Put
+\[
+ D=\tfrac12\{\lambda P Z\kappa_x+A\kappa_y\}-AZ .
+\]
+There exist $h_0>0$, $0<\varepsilon_0<1$ and $C<\infty$ such that,
+for $0<h<h_0$, $0<\varepsilon<\varepsilon_0$ and every such law,
+\begin{equation}\label{an04mpbv1:estimate}
+ \big|\EE_{\rm split}(s_m)-\EE_{\rm coh}(s_m)+\varepsilon D\big|
+ \le C\varepsilon(h+\varepsilon).
+\end{equation}
+The constants may depend on the fixed coherent orbit, window, and
+support bounds. For $D>0$, choose $h,\varepsilon$ sufficiently small
+that $C(h+\varepsilon)<D/2$. Then
+\[
+ \min_{s_0\le s\le\sup J}\EE_{\rm split}(s)
+ \le\EE_{\rm split}(s_m)
+ <\min_{s\in J}\EE_{\rm coh}(s)-\varepsilon D/2 .
+\]
+For $D<0$ the difference at $s_m$ has the opposite strict sign
+for sufficiently small $h,\varepsilon$. This last statement does not
+order the optimized minima.
+\end{theorem}
+
+\begin{proof}
+Use $K(t)=\phi(t)+t\Phi(t)$, $F(t,r)=\phi(\min(t,r))+r\Phi(\min(t,r))$.
+WIT popsystem gives $M'=M(1-M)$ and $n'=\lambda n(1-n)$. Thus
+$M=1$, the strong label weights are constant, and $n(s)$ and the
+weak half-mass clock are identical in both trajectories. The weak atom's
+two angular coordinates remain dynamical. Write $z=(x,y,u,v)$ for
+the actual core and weak coordinates, $\beta=(b_x,b_y)$ for a moving
+bridge label, and an overbar for averaging those labels under $\nu$.
+The coherent angular field $G$ at the same time and state is
+\[
+ 2G(s,z)=\begin{pmatrix}
+ \lambda\Phi(\rho x)[nv-x+(1-n)y]\\
+ -y-nK(u)+\rho(1-n)K(\rho x)\\
+ \phi(u)-nK(u)-y\Phi(u)-\lambda(1-n)u\\
+ \rho K(\rho x)-\lambda v
+ \end{pmatrix}.
+\]
+Replacing the donors, while retaining the actual receivers, gives
+the following exact equations whenever $b_x\ge x$ throughout the bridge:
+\begin{equation}\label{an04mpbv1:field}
+ z'=G(s,z)+\tfrac{\varepsilon}{2}B(s),\qquad
+ B=\begin{pmatrix}
+ -\lambda\Phi(\rho x)(\overline{b_x}-x)\\
+ -(\overline{b_y}-y)\\
+ -\Phi(u)(\overline{b_y}-y)\\
+ \rho(\overline{K(\rho b_x)}-K(\rho x))
+ \end{pmatrix}.
+\end{equation}
+Indeed $F(\rho x,\rho b_x)-K(\rho x)=\rho(b_x-x)\Phi(\rho x)$
+under this order. The output donor is $(1-\varepsilon)y+
+\varepsilon\overline{b_y}$ in both the strong and weak receiver
+equations. The bridge itself sees the complete strong overlap
+$(1-\varepsilon)F(\rho b_x,\rho x)+
+\varepsilon\int F(\rho b_x,\rho\widetilde b_x)\dd\nu$,
+and the same output and weak donors. This includes its internal motion.
+
+\emph{Uniform displacement and gate checks.}
+Let $R(s)$ be the supremum of the absolute values of all coordinates.
+From the unsimplified WIT field, $0\le F(t,r)\le K(r)\le\phi(0)+r_+$,
+bounded logistic masses and $|\Phi|\le1$ give
+$|\text{each velocity}|\le C(1+R)$ for all states. The constant
+is independent of $\nu,h,\varepsilon$. The chart equations are locally
+Lipschitz on bounded sets: the kernel has continuous partials
+$F_t=(r-t)_+\phi(t)$ and $F_r=\Phi(\min(t,r))$. For a compactly
+supported continuum these same local bounds apply in the supremum
+norm on continuous label maps on the initial support. Integration
+and Gronwall give continuation on every finite interval.
+Initially $R\le C(1+K_*/h)$. On $I_h=[s_0,s_m]$ this yields
+$R\le C'(1+K_*/h)$ and displacement of every coordinate at most
+$Ch(1+K_*/h)\le C''$ for $h\le1$. In particular
+\[
+ b_x=r_x/h+O(1),\qquad b_y=r_y/h+O(1),
+\]
+uniformly, and $z$ is in a fixed compact box since its initial
+value is coherent. For sufficiently small $h$, $b_x\ge a/h-C''$
+exceeds both $\zeta$ and the upper edge of the core box. This
+establishes the overlap ordering and the inactive bridge gate directly.
+
+On the reached compact core and weak box $G$ has a bounded Lipschitz
+constant. Equation~\eqref{an04mpbv1:field} has $|B|\le C/h$, and
+$z(s_0)=z_0(s_0)$. Gronwall gives
+$\sup_{I_h}|z-z_0|\le C\varepsilon$.
+WIT's gate margin now keeps $x<\zeta$ uniformly for small
+$\varepsilon$. Both gate checks were obtained from the full equations.
+
+\emph{Integrated response of both populations.}
+On $I_h$, $z_0(s)=z_m+O(h)$, so
+$\Phi(\rho x)=P+O(h+\varepsilon)$ and
+$\Phi(u)=Q+O(h+\varepsilon)$. The positive lower bound for $b_x$
+and $0<K(t)-t\le\phi(0)$ for $t\ge0$ yield
+$\overline{K(\rho b_x)}=\rho\kappa_x/h+O(1)$.
+Also $\overline{b_i}=\kappa_i/h+O(1)$ for each coordinate.
+In the integral of \eqref{an04mpbv1:field} subtract the coherent
+equation. The $G$ difference integrates to $O(h\varepsilon)$, including
+the feedback of both evolving weak coordinates. The $B$ integral
+over length $h$ gives
+\begin{equation}\label{an04mpbv1:response}
+ z(s_m)-z_m=\tfrac{\varepsilon}{2}
+ (-\lambda P\kappa_x,-\kappa_y,-Q\kappa_y,\lambda\kappa_x)
+ +O\big(\varepsilon(h+\varepsilon)\big).
+\end{equation}
+In particular the weak coordinate changes themselves can be of order
+$\varepsilon$. The proof only charges their subsequent action on the
+core over the short interval.
+
+\emph{Mass removal and the minimum.}
+P probe-pop and WIT generalrates use
+$\EE=A_\zeta^2/2-\zeta A_\zeta+\int y(\zeta-x)_+\dd\mu_s$.
+The weak probe is inactive in this leading observable.
+With the two strict strong gates just proved the exact energy is
+\[
+ H(\varepsilon,x,y)=\tfrac12(1-\varepsilon)^2(\zeta-x)^2
+       +(1-\varepsilon)(y-\zeta)(\zeta-x).
+\]
+At any active coherent state the instantaneous price of removal is
+$\varepsilon(\zeta-X)(X-Y)+\varepsilon^2(\zeta-X)^2/2$.
+At $(0,X_m,Y_m)$ the derivatives $(H_\varepsilon,H_x,H_y)$
+are $(AZ,Z,A)$. The Hessian is bounded on the reached compact set.
+Taylor expansion with \eqref{an04mpbv1:response} gives
+\eqref{an04mpbv1:estimate}, including the asserted error uniformity.
+Evaluating at the original minimizing time suffices for the strict
+depth comparison.
+\end{proof}
+
+\paragraph{Aligned atom and boundary (leading system).}
+\label{an04mpbv1:threshold}
+For a single atom at $(\kappa/h,\kappa/h)$ the gain coefficient $D$ is positive
+precisely when
+\[
+ \kappa>\kappa_*=\frac{2AZ}{A+\lambda P Z}.
+\]
+For instance $\kappa=2Z$ gives $D=\lambda P Z^2>0$.
+A compact distribution of diagonal marks with the same mean has
+the same leading coefficient. Equality cancels the leading
+coefficient at $s_m$. The estimate does not decide equality.
+
+\paragraph{Exact first-variation test at a fixed injection time.}
+\label{an04mpbv1:fixed}
+For fixed $h$ in the separated range, let $B_0(s)$ denote $B$ in
+\eqref{an04mpbv1:field} along the passive bridge trajectories and
+coherent core and weak state at $\varepsilon=0$. Put
+$c_m=(Z,A,0,0)^T$ and solve the backward linear equation
+\[
+ -p'=(D_zG(s,z_0(s)))^T p,\qquad p(s_m)=c_m .
+\]
+Differentiation at fixed $h$ is justified by the continuously
+differentiable kernel on the reached bounded set, or directly by
+difference quotients, continuous dependence and Gronwall.
+The state variation satisfies $w'=D_zG\,w+B_0/2$, $w(s_0)=0$.
+No derivative of the passive labels enters the direct forcing since
+the moving-donor difference is multiplied by $\varepsilon$.
+Integrating $(p^Tw)'$ gives the exact signed test
+\[
+ \left.\partial_{\varepsilon+}\EE_{\rm split}(s_m)\right|_0
+     =AZ+\tfrac12\int_{s_0}^{s_m}p(s)^T B_0(s)\dd s .
+\]
+Strict first-order improvement at this time holds precisely when
+the integral is less than $-2AZ$. This also applies on a longer
+fixed interval when the relevant strict gates and overlap order hold.
+It retains weak feedback at all times. It does not assert a sign on
+long intervals or when the leading short-time coefficient vanishes.
+
+\paragraph{Scope.} The construction prescribes a split at a chosen
+time within the learned window and fixes $R=\kappa/h$ before any
+finite-noise interpretation. It proves existence of a deeper leading
+minimum relative to the coherent learned-window minimum. Deriving
+this much donor forcing from an initialized critical profile, transport
+through an extended weak passage, and transfer to the finite-noise
+probe require separate estimates.
+\end{document}

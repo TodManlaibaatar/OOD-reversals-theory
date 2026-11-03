@@ -1,0 +1,415 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=.9in}\setlength{\emergencystretch}{1.5em}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\title{The trained half-mass band returns before weak learning}
+\author{AN04 proof increment}\date{Version 1}
+\begin{document}\maketitle
+
+\paragraph{Definitions and domains.}
+Fix the HBD critical Gaussian family $S_0=cq^{1/\omega}$, aligned
+balanced isotropic continuum, $c>0$, $\rho\in[13/20,7/10]$,
+$\lambda=\rho^2$, $\omega=(1-\lambda)/2$, and fixed $\zeta>a_\rho$.
+Use normalized time, $t_h$ the first right-ancestry half mass, and
+$s=t-t_h$. Let $B$ be the fixed positive-length compact interior Q1
+band of HBD main, chosen inactive at $t_h$.
+The probe is $\xi=(\sin(q\zeta),-\cos(q\zeta))$. In any reached
+bounded strong chart $x=\theta/q$ it is active precisely if $x<\zeta$.
+Weak learning is measured by P learning,
+$\mathsf m_2=\E_{P_2}[D_2 f_2(D)]/(\rho^2+q^2)$,
+where $D$ is the data vector. A positive weak radial mass in a
+chosen chart is a different event. Write $t_\eta$ for the first
+post-half-mass time $\mathsf m_2\ge\eta$ for fixed $\eta>0$, with
+infinite hitting time allowed.
+
+\begin{theorem}[Trained flow]\label{an04brwv1:return}
+There exist $T_B<\infty$ and $d_B>0$, independent of $q$, such that,
+for small $q$, every label in $B$ has $x(t_h+T_B)\le\zeta-d_B$.
+More generally this holds uniformly on $T_B\le s\le T$ for each
+fixed finite $T\ge T_B$, taking $q$ small after $T$. Moreover there
+is $k>0$ such that
+\[
+ \sup_{0\le s\le k\sqrt{\log(1/q)}}|\mathsf m_2(t_h+s)|\longrightarrow0.
+\]
+In particular the return is before $t_\eta$ for small $q$. The
+continuous-inactivity hypothesis for transporting this band from
+$t_h$ to weak learning is false. These quantifiers permit new
+crossings later on times depending on $q$.
+\end{theorem}
+
+\section{A delay from physical coordinates}
+Let $U,W$ be the balanced vectors, $\dd l=\dd\alpha/(2\pi)$,
+$S=\int m\dd l$, and
+$D_\perp=(\int(U_2^2+W_2^2)\dd l)^{1/2}$.
+At $t_h$, HBD physical and clock give $S\le C$, $D_\perp\le Cq$.
+For all later times P exactflow in vectors is
+$U'=R_\theta^TW$, $W'=R_\theta U$,
+$R_\theta=\E[(D-f)D^T{\bf1}_{U^TD>0}]$.
+Balance and positive homogeneity give
+$S'=2\E[f\cdot(D-f)]\le \E|D|^2/2$, hence $S\le C(1+s)$.
+The exact training loss $\E|D-f|^2/2$ decreases along gradient
+flow (its derivative is minus the integrated squared parameter
+velocities); its initial value is uniformly bounded.
+Cauchy--Schwarz then gives $\sup_\theta\|R_\theta\|\le C$.
+For the off-diagonal entries one has the sharper bound
+\[
+ |R_{12}|+|R_{21}|\le C[q(1+S)+\sqrt S D_\perp].
+\]
+Indeed $|f_1(D)|\le S|D_1|+\sqrt S D_\perp|D_2|$,
+$|f_2(D)|\le \sqrt S D_\perp|D|$, and $\E|D_1D_2|\le Cq$
+on the two-cluster mixture. These bounds retain all donors for
+every gate. Taking label $L^2$ norms in the second-component
+equations gives, including by regularization at norm zero,
+\[
+ D^+D_\perp\le C(1+S)D_\perp+Cq\sqrt S(1+S).
+\]
+Integration yields $D_\perp\le C q\exp(C(1+s)^2)$ (enlarge $C$
+to include the polynomial integral). Finally on $P_2$ itself,
+$|f_2(D)|\le \sqrt S D_\perp |D_1|+D_\perp^2 |D_2|$.
+Since $D_1$ has standard deviation $q$ on this cluster,
+\begin{equation}\label{an04brwv1:delay}
+ |\mathsf m_2|\le C(q\sqrt S D_\perp+D_\perp^2).
+\end{equation}
+Choose $k>0$ small enough for $C(1+k\sqrt{\log(1/q)})^2
+\le \log(1/q)/2$ for small $q$ in the $D_\perp$ estimate.
+Before $t_h$ the HBD physical bounds also imply
+$|\mathsf m_2|\le C H^2(Eq+E^2)=O(q^2)$ uniformly, where
+$E=e^{-\omega t}+q$. Indeed $H^2 e^{-2\omega t}
+=S_0e^{(\lambda+2q^2)t}$ is increasing with endpoint $O(q^2)$.
+This proves the delay, without giving an upper hitting time.
+
+\section{The logistic resident reached from training}
+HBD proves compact-time extraction, not a long-time $q$-uniform
+angular approximation. We first extend its compact-time range.
+For any fixed $T$, replace its nominal cap $S_0e^t=8$ by
+$A_{\max}= 8 e^T$. In HBD physical the global envelope
+$H^2=S_0e^{(1+2q^2)t}\le 2A_{\max}$ eventually; $\sqrt m\le
+H\exp(H^2/2)$ and $\int H^2\,dt\le2A_{\max}$ still hold.
+Integrating the same physical second-component inequality with
+these finite constants bounds $\sup(|U_2|,|W_2|)$ by
+$C_T H(e^{-\omega t}+q)$. HBD's small-cap left radial estimate
+propagates across a fixed time by $|(\log m)'|\le(1+2q^2)(1+S)$,
+and costs $o(q)$ in mass. A right interior compact keeps its
+positive radial lower bound by the same inequality; the physical
+second-component bound keeps its chart reached. Initial-label strips
+of length $d$ cost $C_Td$ in scaled receiver velocities by precisely
+the two Gaussian estimates of HBD. Hence its compact-kernel and
+tagged-path argument applies on this larger interval with constants
+depending on $T$. Diagonal extraction gives limiting paths for all
+finite $s\ge0$, with the same HBD entrance and laws. None of these
+constants are used as bounds at $s=t_\eta-t_h$.
+
+In each such limit write $M=(1+e^{-s})^{-1}$,
+$\dd\mu=M\dd\pi$, with fixed normalized right label weights
+$\dd\pi=4\cos^2\alpha\,\dd l$. Conditional paths, if present,
+use the same normalized marginal. With $P_x=\Phi(\rho x)$,
+$K(z)=\phi(z)+z\Phi(z)$, $K_s=\int K(\rho x)\dd\mu$,
+$Y=\int y\dd\mu$, and
+$S_x=\int F(\rho x,\rho\tilde x)\dd\mu$ as in HBD,
+\begin{equation}\label{an04brwv1:field}
+ 2x'=-(1-M)x+\rho\phi(\rho x)-\rho S_x+\lambda yP_x,\qquad
+ 2y'=-(1-M)y-Y+\rho K(\rho x).
+\end{equation}
+Here the weak limiting mass is zero at every finite $s$. The field
+has nonnegative off-diagonal receiver derivatives. HBD gives a
+single bottom Q4 path. Two different Q1 labels are ordered in both
+coordinates because their remote incoming coefficients
+$c^\omega\tan\alpha$ are strictly ordered in both coordinates
+(HBD incoming); thereafter compare only within the common field.
+The bottom path tends to $a_\rho>0$ at the remote end, so the
+whole law has positive $Y$ sufficiently far back. Differentiation
+gives $2Y'=(1-2M)Y+\rho K_s$; thus $Y>0$ at all finite times.
+HBD's moment domination on each fixed interval justifies differentiation.
+
+\paragraph{Uniform tail data at strong half mass.}
+On Q1 let $f=\int_\alpha^{\pi/2}4\cos^2\beta\,\dd\beta/(2\pi)$.
+It is the normalized upper mass. At the upper endpoint
+$f\asymp(\pi/2-\alpha)^3$. HBD physical at half mass and
+$m=2\cos^2\alpha$ imply
+$x_+(0)+y_+(0)\le C(1+f^{-1/3})$, since each angular numerator
+in the right-chart limit is bounded by
+$2\sup(|U_2|,|W_2|)/q$ before division by $\sqrt m$.
+The Q4 plateau is bounded using one interior representative.
+Conversely HBD outer gives at half mass, for sufficiently high
+Q1 labels,
+$\min(x(0),y(0))\ge 4^{-\omega}(c^\omega\tan\alpha-J_*)$,
+where $J_*$ depends only on the original HBD cap through $8$.
+In particular the normalized mass with both coordinates initially
+at least $R$ is at least $c_1(1+R)^{-3}$ for $R$ sufficiently
+large, uniformly in the limiting law. These two bounds replace
+the aligned unit-mass entry assumptions of IMP and FFP.
+
+\paragraph{Two rates for different ranks.}
+Set $L=\lambda/2$. For $s\ge0$, $M\ge1/2$. At a Q1 rank of upper
+mass $f$, $S_x\ge MfK(\rho x)$ by order. Equation
+\eqref{an04brwv1:field} gives the upper comparison
+\[
+ 2D^+\binom{x_+}{y_+}\le
+ \lambda\begin{pmatrix}-f/2&1\\1&0\end{pmatrix}
+ \binom{x_+}{y_+}+\rho\phi(0)\binom11 .
+\]
+At negative coordinates the derivative of the positive part is
+zero and the corresponding right side is nonnegative. At zero use
+the positive-part derivative; on positive faces use $Y\ge0$ and
+$K(r)\le r_++\phi(0)$. The same bound for bottom labels uses a
+fixed upper mass, for instance $1/2$. Multiplying by the positive
+left eigenvector $(w,1)$,
+$w=(\sqrt{4+(f/2)^2}-f/2)/2$, and integrating gives
+\[
+ x_++y_+\le C(1+f^{-1/3})e^{Lws},\qquad
+ Lw\le L-\lambda f/16.
+\]
+Use $\sqrt{4+d^2}\le2+d^2/4$ for $0\le d\le1$; $w$ stays bounded
+away from zero. Since $\dd\pi=|\dd f|$ on Q1, integration of
+$(1+f^{-1/3})e^{-\lambda fs/16}$ (substitute $u=fs$ when
+$s\ge1$) proves the donor budget
+\begin{equation}\label{an04brwv1:budget}
+ \max(\rho K_s,Y)\le B_0 e^{Ls}(1+s)^{-2/3}.
+\end{equation}
+The constants are uniform in the possible extracted profiles;
+only the half-mass tail data entered.
+
+For each horizon $T$, let $g(s)=e^{Ls}\sqrt{M(0)/M(s)}$, so
+$g\ge e^{Ls}/\sqrt2$ and $2g'/g=\lambda-(1-M)$.
+Take $b_0> \sqrt2 B_0$ and a large fixed $d>0$. Put
+\[
+ R_T=d+3b_0[(1+T)^{1/3}-1],\qquad
+ w_T(s)=g(s)\{R_T-3b_0[(1+s)^{1/3}-1]\}.
+\]
+Labels starting with both coordinates at least $R_T$ stay above
+$w_T$ in both on $[0,T]$. On the $x=w_T,y\ge w_T$ face use
+$\rho\phi(\rho x)+\lambda yP_x\ge\rho K(\rho w_T)$ and $S_x\le K_s$.
+On $y=w_T,x\ge w_T$ use monotonicity of $K$. Each doubled velocity
+strictly exceeds $2w_T'$ by \eqref{an04brwv1:budget},
+$\rho K(\rho w_T)>\lambda w_T$ and $g\ge e^{Ls}/\sqrt2$.
+This covers both faces and their corner. Therefore at every $s$ there
+is a set, depending on $s$, of actual limiting radial mass
+$\ge c_2/(1+s)$ with inputs $\ge d e^{Ls}/\sqrt2$.
+Its first input moment is at least $c_3e^{Ls}/(1+s)$.
+
+\paragraph{Return of the same labels.}
+On the fixed band $B$, $f\ge f_0>0$; thus $x_+,y_+\le C_Be^{rs}$
+for a single $r<L$. The protected set eventually lies above every
+receiver in $B$. Its donors alone give
+$S_x\ge\rho P_x c_3e^{Ls}/(1+s)$ because for $\tilde x\ge x$,
+$F(\rho x,\rho\tilde x)=\phi(\rho x)+\rho\tilde xP_x$, and the
+other overlap contributions are nonnegative. Fix $z=(a_\rho+\zeta)/2>0$.
+Whenever $x\ge z$, \eqref{an04brwv1:field} now gives
+\begin{equation}\label{an04brwv1:drift}
+ 2x'\le\rho\phi(0)+\lambda P_x[C_Be^{rs}-c_3 e^{Ls}/(1+s)]\le-1
+\end{equation}
+for $s\ge S_B$ independent of the extracted law, since
+$P_x\ge\Phi(\rho z)>0$. At $S_B$ the heights are uniformly bounded
+by the same ceiling. Integrate until first downward contact; the
+strict sign at the gate prevents upward recrossing of $z$. There
+is thus one finite $T_B$ after which all limiting $B$ paths satisfy
+$x\le z$. With $d_B=(\zeta-z)/2$, strict separation from the actual
+probe gate transfers on each fixed $[T_B,T]$ by tagged compactness
+(otherwise extract a violating label and time). This completes the
+proof of Theorem~\ref{an04brwv1:return}. For example at $T_B$ this
+band even has a strictly positive horizontal probe output divided by
+$q$ in the small-noise limit inferior: its limiting mass is positive,
+$b_1\to1$, and $\sin(q(\zeta-x))/q$ is bounded below on this compact
+band. Its zero probe-output assumption has a nonvanishing scaled error.
+
+\paragraph{Trained survivor corollary.}\label{an04brwv1:survivors}
+Weight each right-ancestry label by its mass at $t_h$.
+The mass remaining probe-inactive at every time from $t_h$ to
+$t_\eta$ tends to zero as $q\downarrow0$. If the hit never occurs,
+take survival on the full infinite interval.
+Indeed \eqref{an04brwv1:drift} and the return argument apply to
+any fixed compact Q1 subinterval away from the vertical endpoint,
+without initial inactivity being needed. Q4 interior compacts are
+already active at $t_h$ by HBD. Discard right label strips of total
+length $\delta$ about the axes; their half-mass weight is $O(\delta)$
+by HBD's uniform per-label radial bound. For fixed $\delta$, all
+remaining labels have been active by a fixed finite $T(\delta)$,
+prior to $t_\eta$ for small $q$. Take the upper limit, then send
+$\delta$ to zero. This concerns half-mass-time weights and continuous
+survival, not current inactive mass or donor first moments at
+$t_\eta$.
+
+\section{What a learned-depth proof must pay}
+\paragraph{Benchmark and clock.}
+Use $(\rho,\zeta)$ in WIT's learned rectangle for this section.
+Let $e_*=\min_{s\in J}\mathcal E_{\rm coh}(s)$, fix a minimizer
+$s_m$, and write $A_m=\zeta-X_m>0$, $Z_m=X_m-Y_m>0$.
+For the trained error put $e_q(t)=(E_\xi(t)-1/2)/q^2$.
+For definiteness a measured comparison window can be centered on
+$t_{1/2}$ as defined above, with test times $t\in t_{1/2}+J$
+satisfying the required trained learning criteria. The chosen
+response clock and the coherent logistic clock measure different
+quantities; existence of such a reached learned window is not assumed.
+The following identities work at any actual test time, hence also
+at a learned minimizer if one exists. Beating $e_*$ on a learned
+interval requires a time there with $e_q(t)<e_*$; a margin uniform
+in $q$ gives strict asymptotic enhancement.
+
+\paragraph{Exact accumulated test (trained flow).}
+For a receiver-dependent matrix field $H$ define the scalar observable
+\begin{align*}
+ \mathcal P_t(H)=-q^{-2}\int\big[&
+ 2(b^THa)z_+(e_\xi^Tb)+(b_\perp^THa)z_+(e_\xi^Tb_\perp)\\
+ &+(b^THa_\perp){\bf1}_{z>0}(a_\perp^T\xi)(e_\xi^Tb)\big]\dd\mu_t ,
+\end{align*}
+where $z=a^T\xi$, $e_\xi=\xi-f_t(\xi)$, $\dd\mu_t=m\dd l$,
+and $a,b$ here are the unit input and output directions of each
+current receiver. The Gaussian expectation in $H$ includes both
+mixture weights. P motion gives $e_q'=\mathcal P_t(R)$ almost everywhere,
+including radial motion and all current probe gates.
+Fix a reference label in the HBD core interval and at each time
+put $f_{\rm copy}(D)=\mu_t(B)b_C(a_C^TD)_+$. Define
+\[
+ H_B(a)=-\E[(f_B(D)-f_{\rm copy}(D))D^T{\bf1}_{a^TD>0}],
+ \qquad H_{\rm rest}=R-H_B .
+\]
+This is the exact fixed-label donor-minus-copy attribution in the
+trained field, with no inactivity restriction. It is linear at the
+actual state and does not freeze the weak population. In particular
+$\mathcal P_t(H_{\rm rest})$ includes motion of weak and strong
+receivers, as does $\mathcal P_t(H_B)$.
+
+To put the Step 1 cost on exactly the same scale, lift the coherent
+state at $s_m$ to the finite-$q$ probe prediction
+$F_c=b_{qY_m}\sin(qA_m)$ (unit active core, inactive weak atom).
+Take $\varepsilon=\mu_{t_h}(B)/M_q(t_h)$, a mass fraction, and
+$F_d=(1-\varepsilon)F_c$. Write
+$e(F)=(|\xi-F|^2-1)/(2q^2)$, and define
+\[
+ C_q=e(F_d)-e(F_c)
+ =q^{-2}\{\varepsilon(\xi-F_c)^TF_c+
+                    \varepsilon^2|F_c|^2/2\}.
+\]
+This is an accounting reference, not an assertion that the trained
+state ever equaled $F_d$. Uniformly for $0\le\varepsilon\le1$,
+$C_q=\varepsilon A_m Z_m+\varepsilon^2 A_m^2/2+O(q^2)$
+and $e(F_c)-e_*=O(q^2)$ by elementary trigonometric expansion.
+Integration of P motion gives the following exact necessary and
+sufficient strict test at any specified terminal time $t\ge t_h$:
+\begin{align}
+ -\int_{t_h}^{t}\mathcal P_u(H_B)\dd u
+ >{}& C_q+[e_q(t_h)-e(F_d)]+[e(F_c)-e_*]\nonumber\\
+    &+\int_{t_h}^t\mathcal P_u(H_{\rm rest})\dd u .
+ \label{an04brwv1:payment}
+\end{align}
+Both sides use the actual residual and receiver weights. A comparison
+to the exact lifted coherent minimum instead simply substitutes its
+value for $e_*$. An angular-velocity integral over core receivers
+alone omits the probe weights, radial reaction, other receivers and
+the remainder on the right. It cannot verify this inequality.
+Nor does this attribution give the difference between two evolved
+training runs: such a counterfactual has its own residual and clock.
+
+\paragraph{Evolved mass-matched comparison (trained flow).}
+There is a stronger causal formulation of the unpaid term. Start a
+second exact Gaussian flow at $t_0=t_h$ from the actual state with
+only $B$ concentrated at the chosen active core coordinates, retaining
+its radial mass. All other coordinates, including prospective weak
+labels, agree at $t_0$. Evolve both systems. Superscripts $S,C$ denote
+the factual split and concentrated runs; $C$ here is distinct from
+the selected coherent orbit. Let $r^i(D)=D-f^i(D)$, $d=r^S-r^C$,
+$\bar r=(r^S+r^C)/2$, and write $d_0=d(t_0)=f_{\rm copy}-f_B$.
+At the probe $d_0(\xi)=f_{\rm copy}(\xi)$ by strict initial inactivity.
+The physical removal cost in this experiment is
+$C_0^{\rm act}=q^{-2}\bar r_{t_0}(\xi)^T d_0(\xi)$; it need
+not equal the unit-core cost $C_q$.
+
+For either state use its current kernel on vector $L^2(P)$,
+\[
+ K(z,D)=\int\!\left[(a^Tz)_+(a^TD)_+ I_2+
+ (z^TD)\mathbf1_{a^Tz>0}\mathbf1_{a^TD>0}bb^T\right]\dd\mu .
+\]
+Write $K$ also for its integral operator and $k$ for its probe row
+$K(\xi,\cdot)$. Differentiating the two vector factors of each ReLU
+feature by P exactflow gives $(r^i)'=-K^i r^i$ on data, and
+$(r^i(\xi))'=-k^i r^i$ almost everywhere. The kernels are bounded
+operators on finite intervals by the mass and Gaussian second
+moments; the selector chain rule also applies to the concentrated
+atom. Let $\Delta K=K^S-K^C$, $\Delta k=k^S-k^C$.
+Write $U(t,s)$ for the time-ordered propagator of $v'=-K^S v$
+on the data space. For a finite terminal time $T$, define the map
+from data residual to probe output
+\[
+ J_T(s)=\int_s^T k^S_t U(t,s)\dd t,\qquad
+ B_T=J_T(t_0)d_0+
+ \int_{t_0}^T[\Delta k_s-J_T(s)\Delta K_s]r^C_s\dd s .
+\]
+Indeed $d'=-K^S d-\Delta K r^C$. Substitute its
+variation-of-constants solution into
+$d'(\xi)=-k^S d-\Delta k r^C$ and interchange the two finite
+integrals. This yields the exact identity
+$d_T(\xi)=d_0(\xi)-B_T$.
+Both direct probe-row changes and changes fed back through the
+data residual are present. Positive semidefiniteness of $K^S$ on
+the data gives no sign for the projected difference of these terms.
+
+Define the scaled accumulated response
+$\Pi_T=q^{-2}\bar r_T(\xi)^T B_T$. At $T$ the exact test for
+beating the coherent minimum becomes
+\begin{align}
+ \Pi_T>{}&C_q+(C_0^{\rm act}-C_q)
+ +q^{-2}[\bar r_T(\xi)-\bar r_{t_0}(\xi)]^Td_0(\xi)
+ +e_q^C(T)-e_* .\label{an04brwv1:causal}
+\end{align}
+Here $e_q^C$ uses the independently evolved concentrated run.
+The identity follows by polarizing squared norms at $T$.
+For a test purely against that counterfactual, omit $e_q^C(T)-e_*$.
+The first two terms on the right distinguish the actual half-mass
+cost from Step 1's benchmark. The third accounts for the changing
+probe residual weighting of the initially removed output. The
+last compares the counterfactual's attained depth with the specified
+benchmark. Even with the actual weak-learning time supplied,
+the half-mass theorem gives no lower bound on $\Pi_T$ exceeding
+this right side. In particular neither the sign of a local fitted
+core velocity nor the disappearance of perpetual inactive ancestry
+determines the sign of the memory term $J_T(s)\Delta K_s r_s^C$.
+
+\paragraph{A second test using current output moments (trained flow).}
+The following gives an endpoint target independent of the radial
+and angular decomposition. Put $H=f_1(\xi)/q$, $V=f_2(\xi)/q^2$,
+$s_q=\sin(q\zeta)/q$, $c_q=\cos(q\zeta)>0$, and
+$h_1(a)=\E_{P_1}[D_1(a^TD)_+]/(1+q^2)$.
+Let $I=\{a^T\xi\le0\}$ at the test time, $I^c$ its active complement,
+and $\ell_G=\int_G b_2 h_1(a)\dd\mu$ for any current label set $G$.
+The full regression is $r_{21}=\E_{P_1}[D_1(f_2-D_2)]/(1+q^2)
+=\int b_2h_1(a)\dd\mu$. For fixed $k>0$ define
+\[
+ G_k=q^{-2}\int_{I^c} b_2[a^T\xi-qk h_1(a)]\dd\mu .
+\]
+P transferprojection, with all labels, gives
+$V=k(r_{21}-\ell_I)/q+G_k$. The exact squared probe loss gives
+$e_q=H^2/2-s_qH+c_q V+q^2V^2/2$. Thus the same depth claim is
+equivalent at the test time to
+\begin{equation}\label{an04brwv1:endpoint}
+ \frac{c_q k}{q}\ell_{I\cap B}>
+ \frac{H^2}{2}-s_qH+c_qG_k+
+ \frac{c_q k}{q}(r_{21}-\ell_{I\setminus B})+
+ \frac{q^2V^2}{2}-e_* .
+\end{equation}
+This test is valid even if $I\cap B$ is empty; earlier influence
+can then remain in $G_k$, the regression, and other donors. It neither
+turns an active band into an inactive regression term nor drops the
+quadratic output penalty. The falsified guard is
+$x_\alpha\ge\zeta$ at all intervening times for $\alpha\in B$,
+with the exact finite-noise guard $a_\alpha^T\xi\le0$.
+The trained estimates through the pre-learning interval do not pay
+\eqref{an04brwv1:payment} or \eqref{an04brwv1:causal}, or bound the right side of
+\eqref{an04brwv1:endpoint} below the left. Neither inequality
+is shown false at a learned minimum.
+
+\paragraph{Source ledger.}
+HBD denotes \texttt{an04hbdv1:} main, clock, physical, incoming,
+outer and field, from the local trained half-mass increment.
+FFP return and IMP mass and budget concern unit strong mass and
+their prescribed aligned entrance. Here the changing logistic
+mass, upper-moment ceiling and lower barrier were rederived for
+the HBD entrance. Step 1 denotes \texttt{an04mpbv1:depth}, for
+a prescribed short split at unit strong mass with the weak atom
+retained. P's \texttt{pa:exactflow}, \texttt{pa:learning},
+\texttt{pa:motion}, and \texttt{pa:transferprojection} are exact
+Gaussian trained identities under finite moments and characteristic
+evolution with the probe chain rule a.e. WIT uniformtheorem supplies
+only the coherent learned-window benchmark. No finite-$q$ empirical
+trajectory or proposed weak-seed law enters a bound.
+\end{document}

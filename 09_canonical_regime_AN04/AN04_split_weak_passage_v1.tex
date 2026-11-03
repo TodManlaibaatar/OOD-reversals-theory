@@ -1,0 +1,163 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}\newtheorem{proposition}{Proposition}
+\title{Weak passage with an added inactive strong cohort}
+\author{AN04 closure campaign}\date{Version 1}
+\begin{document}\maketitle
+\paragraph{Leading system, Route A.}
+Fix a point of WIT's witness rectangle. Write $(X,Y,U,V)$ for
+the coherent atom coordinates on its logistic clock, $n$ for weak mass,
+$P=\Phi(\rho X)$, $Q=\Phi(U)$, $K_x=K(\rho X)$, $K_u=K(U)$,
+$A=\zeta-X$, $Z=X-Y$, $L=Y+nK_u$, $o=\rho(1-n)K_x/2$.
+Take $s_0=\inf J-h$ with $0<h\le1$ small enough that $X<\zeta$
+on $I=[s_0,\sup J]$; such $h$ exist by WIT's strict compact margin.
+Add mass $\varepsilon$ at $(x_b,y_b)$ at $s_0$ to the unchanged
+unit core, retaining the same weak atom and seed $n(s_0)$.
+This literal addition makes $M(s_0)=1+\varepsilon$.
+A replacement of core mass would give a different derivative.
+All perturbations below are right derivatives at zero mass.
+
+\paragraph{Passive trajectory and an exterior range.}
+At zero added mass its label $(b_x,b_y)$ solves
+\begin{align*}
+ 2b_x'&=\rho\phi(\rho b_x)-\rho F(\rho b_x,\rho X)
+      +\lambda[nV+(1-n)b_y]\Phi(\rho b_x),\\
+ 2b_y'&=-L+\rho(1-n)K(\rho b_x).
+\end{align*}
+Set $D=|I|$, $B=1+\sup_I (|L|+\rho K_x+\lambda |V|)$.
+For $y_b\ge0$ one has $b_y\ge-BD/2$ and
+$b_x'\ge-B/2-\lambda BD/4$, by $0\le F\le K_x$.
+In particular the explicit range
+\begin{equation}\label{an04swpv1:outside}
+ y_b\ge0,\qquad x_b>\zeta+1+BD/2+\lambda BD^2/4
+\end{equation}
+stays strictly inactive throughout $I$. These are integrated scalar
+bounds in the reached coherent field. All coordinates are finite on
+$I$ by linear growth. The finite-atom WIT field is continuously
+differentiable: $F_t(t,r)=(r-t)_+\phi(t)$ and
+$F_r(t,r)=\Phi(\min(t,r))$, also at equality. Standard finite-time
+continuous dependence keeps the core active and bridge inactive for
+all sufficiently small $\varepsilon$ for each fixed pair in this range.
+
+\begin{proposition}[Leading orbit response]\label{an04swpv1:response}
+Let $(j,k,l,m)$ be the variations of the core and weak coordinates,
+respectively, in their displayed order. Their initial data vanish.
+Put $d=e^{-(s-s_0)}$, $c=d-1$. Then
+\[
+ Y_1=k+cY+b_y,\quad K_1=\rho Pj+cK_x+K(\rho b_x),\quad
+ S_1=\rho Pj+cK_x+F(\rho X,\rho b_x).
+\]
+With $p_x=\phi(\rho X)$ and $p_u=\phi(U)$ the exact linear response is
+\begin{align}
+ 2j'={}&dX-\rho^3 X p_x j-\rho S_1
+  +\lambda P[nm+(1-n)k]+\lambda[nV+(1-n)Y]\rho p_xj,\nonumber\\
+ 2k'={}&dY-Y_1-nQl+\lambda(1-n)Pj,\nonumber\\
+ 2l'={}&-Up_u l-nQl-(Y_1-dV)Q-Yp_u l-\lambda(1-n)l,\nonumber\\
+ 2m'={}&\rho K_1-\lambda m+dK_u.\label{an04swpv1:linear}
+\end{align}
+\end{proposition}
+\begin{proof}
+$M'=M(1-M)$ and the normalized strong weights are fixed, so the
+derivatives of total, core and bridge mass are $d,c,1$.
+Weak mass has zero derivative. Differentiate WIT popsystem at the
+core and weak receivers. The core self overlap is $K(\rho X)$,
+including receiver and donor motion; the other strong donor enters
+with coefficient one. Hence $Y_1,K_1,S_1$ are the full moment and
+receiver-overlap variations. The weak self overlap is $nK(U)$.
+In particular at injection the bridge supplies $-y_b/2$ through
+the output moment, $-\rho[\phi(\rho X)+\rho x_bP]/2$ through input
+overlap, and $+y_b$ through full-output lag regression. The two
+strong velocity equations also gain $X/2,Y/2$ from the mass defect.
+More precisely the direct increment per unit added mass in the
+finite-noise static regression $r_{21}/q$ is, by P stein and Lexcharts,
+\[
+ \frac{\sin(qy_b)}{1+q^2}
+ \left[K(\cos(qx_b)/q)+q\cos(qx_b)\Phi(\cos(qx_b)/q)\right].
+\]
+Here the receiver is specified in the strong chart at fixed finite
+$(x_b,y_b)$. Gaussian integration by parts on the full regression,
+or the two cited identities, gives this expression exactly.
+It tends to $y_b$ as $q\downarrow0$. The finite-$q$ literal
+coefficient need not equal $y_b$. This static identity does not transfer
+the perturbed trajectory to training.
+\end{proof}
+
+\paragraph{Leading rates.}
+Write $a_1=cA-j$, $L_1=Y_1+nQl$,
+$o_1=\lambda(1-n)Pj/2$ and
+$C_0=(A-\zeta)A+YA/2-ZX/2$. On $J$, the exact variations are
+\begin{align}
+ D_1&=-(a_1 L+A L_1)/2-d C_0,\nonumber\\
+ D_2&=c(ZX'+Ao)+(-a_1-k)X'
+       +Z(j'-dX/2)-jo+Ao_1,\nonumber\\
+ D&=D_1+D_2=\partial_\varepsilon\mathcal E'_\zeta|_{0+}.
+ \label{an04swpv1:rates}
+\end{align}
+Indeed WIT generalrates gives $d_1=-A_\zeta L/2+(1-M)\mathcal C$.
+For source two, only the active core is integrated, with weight
+$M_c$, input coefficient $\zeta-A_\zeta-y_c$, and output coefficient
+$\zeta-x_c$. Its source-two input variation is $j'-dX/2$.
+This derivation differentiates the rate integrals with their actual
+weights and current gates. Outside the separated range, at any time with $b_x\ne\zeta$ and
+strict core activity, add $A_b=(\zeta-b_x)_+$ to $a_1$ everywhere.
+Also add $\mathbf 1_{b_x<\zeta}(\zeta-A-b_y)b_x'+A_b
+\rho(1-n)K(\rho b_x)/2$ to $D_2$.
+At zero mass $M=1$, so $b_x'$ is entirely source two. Strict
+separation in the stated range avoids all gate-contact derivatives.
+
+\paragraph{A signed subset and the window test.}
+At injection, extending the active formulas to $s_0$,
+\begin{equation}\label{an04swpv1:initial}
+ D(s_0)=-Ay_b/2-C_0-Z\rho[\phi(\rho X)+\rho x_bP]/2 .
+\end{equation}
+Here $Z>0$ by the preceding AN01 result. To give a signed result
+\emph{inside} the window put $s_L=\inf J$. Compute $B,D$ in the
+exterior bound on the larger interval $[s_L-1,\sup J]$ (the bound only
+uses the donor coordinates). Choose $y_b\ge0$ and $x_b$ satisfying
+that enlarged bound and
+$x_b>2(|C_0(s_L)|+1)/(\lambda Z(s_L)P(s_L))$.
+At $h=0$ the right side of \eqref{an04swpv1:initial} is below $-1$.
+Continuous dependence of the passive and inhomogeneous linear initial
+value problems on their initial time gives, for each fixed pair,
+$h_0>0$ and $\eta>0$ with $D<0$ on
+$[s_L,s_L+\eta]\subset J_-$ for $0<h<h_0$.
+The negative change strengthens descent on this subinterval.
+For the entire $J_-$ or $J_+$ the unpaid respective tests are
+\begin{equation}\label{an04swpv1:missing}
+ \sup_{s\in J_-}D(s)<0,\qquad \inf_{s\in J_+}D(s)>0 .
+\end{equation}
+Here $D$ is fully specified by \eqref{an04swpv1:linear}--\eqref{an04swpv1:rates}.
+For example the $-A nQl/2$ contribution competes with the direct
+$-A b_y/2$, while $l'$ contains $-QY_1/2$ and $m'$ contains
+$+\rho K_1/2$. No same-population order theorem signs this forced
+system. For any fixed separated pair, compactness and WIT's strict
+margins do preserve $d_1<0<d_2$ on $J$ and the opposite total-rate
+signs on $J_-,J_+$ for small $\varepsilon$. These are zeroth-order
+signs of the perturbed rates, distinct from \eqref{an04swpv1:missing}.
+For the rebound between any two specified times $t_-,t_+$ the exact
+first-order increase test is $\int_{t_-}^{t_+}D(s)\,ds>0$.
+An optimized minimum or maximum additionally needs its optimizing
+times treated; the supplied window margins do not identify them.
+
+\paragraph{Leading system, Route B.}\label{an04swpv1:full}
+Prescribe the entire RMS join, $M=1$, and weak mass $0<N_0<1/2$
+at $(u_0,v_0)=(0,0)$ as a concrete leading seed.
+The logistic half delay is exactly
+$\lambda^{-1}\log[(1-N_0)/N_0]$. At entry $K_w=N_0\phi(0)$ and $V_w=0$;
+on the aligned strong gate, with $t=\rho\zeta$, the doubled velocity is
+$\rho[K(t)-\langle F(t,\rho x)\rangle_b]-\lambda N_0\zeta\Phi(t)$.
+This follows directly from WIT, including the weak increment.
+On a characteristic interval the weak atom remains an atom, with
+$2u'=\phi(u)-NK(u)-Y_s\Phi(u)-\lambda(1-N)u$,
+$2v'=\rho K_s-\lambda v$ and
+$2Y_s'=-Y_s-NK(u)+\rho(1-N)K_s$.
+A finite-amplitude increase of a specified rebound needs
+$[\mathcal E_{\rm split}-\mathcal E_{\rm coh}]_{t_-}^{t_+}>0$
+with matched clocks, where
+$\mathcal E=A_\zeta^2/2-\zeta A_\zeta+\int y(\zeta-x)_+d\mu_s$.
+The first three moment equations leave both exposure integrals unpaid:
+their derivatives involve the active-rank input velocities.
+The gate sign at injection, and rank return when $N$ is identically zero,
+give no sign for this endpoint difference. No weak-seed scaling
+or trained-flow depth conclusion follows.
+\end{document}

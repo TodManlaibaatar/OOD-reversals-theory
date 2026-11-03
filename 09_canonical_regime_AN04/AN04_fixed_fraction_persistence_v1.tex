@@ -1,0 +1,99 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}\newtheorem{theorem}{Theorem}
+\title{Eventual return of every fixed interior rank}
+\author{AN04 closure campaign}\date{Version 1}
+\begin{document}\maketitle
+\paragraph{Leading system and normalization.} Fix $13/20\le\rho\le7/10$,
+$\lambda=\rho^2$, $a=\rho K(\rho a)$, $b>0$ and $\zeta>a$.
+Use the RMS join aligned law at $M=1,N=0$, with bottom half atom
+at $a$ and continuous upper half the pushforward of
+$(2/\pi)(1+u^2)^{-2}du$ on $u>0$ by $H^{-1}(bu)$.
+Times are elapsed since this prescribed entry. IMP scope supplies
+finite-interval characteristic evolution with locally finite first
+absolute moments. The normalized rank parameter $f\in(0,1)$
+is upper mass. Co-order is in this one field, and radial reaction
+vanishes. $Y(0)>0$ implies $Y>0$ by $2Y'=-Y+\rho K_s$.
+
+\begin{theorem}[Leading system]\label{an04ffpv1:return}
+For every such evolution and every fixed rank $0<f<1$ there is a
+finite time after which $x_f<\zeta$ permanently. Consequently both
+the instantaneous inactive mass and the mass continuously inactive
+from entry tend to zero. The parameter set with positive perpetual
+fraction is empty, its complement is the entire stated domain,
+and its relative boundary is empty. In fact $x_f(t)\to-\infty$ for every fixed interior rank.
+\end{theorem}
+\begin{proof}
+Write $L=\lambda/2$. GOE ceiling (or RMS horizons) gives
+\[
+ (x_f)_+,(y_f)_+\le C_f e^{r_f t},\qquad
+ r_f=\tfrac\lambda4(\sqrt{4+f^2}-f)<L.
+\]
+For the atom one can use any interior continuous rank above it by order.
+This upper bound needs the positive initial mean and common-field order.
+
+\emph{Moment at the moving receiver.} We restate the stronger
+displacement information needed in addition to IMP's mass conclusion.
+IMP budget gives $\max(\rho K_s,Y)<B e^{Lt}(1+t)^{-2/3}$.
+At horizon $T$ take initial labels above
+$R_T=1+\zeta+3B[(1+T)^{1/3}-1]$ and put
+$w(t)=e^{Lt}(R_T-3B[(1+t)^{1/3}-1])$.
+It satisfies $2w'=\lambda w-2B e^{Lt}(1+t)^{-2/3}$.
+At $x=w,y\ge w$, $2x'\ge\rho K(\rho w)-\rho K_s$ since
+$S\le K_s$. At $y=w,x\ge w$, $2y'\ge\rho K(\rho w)-Y$.
+Both exceed $2w'$ since $\rho K(\rho w)>\lambda w$.
+The two faces include the corner and the initial ranks meet both bounds.
+Hence at $T$ their inputs exceed or equal $(1+\zeta)e^{LT}$.
+Their mass is at least $c/(1+T)$ since the RMS join tail density
+is asymptotic to $2b^3/(\pi x^4)$, is positive above $a$,
+and $R_T\le C(1+T)^{1/3}$. This proof uses changing sets for
+different horizons. It gives a tail moment at the fixed gate of at
+least $D(t)=c(1+\zeta)e^{Lt}/(1+t)$ at every time.
+Moreover, for $t$ sufficiently large depending on $f$,
+$(1+\zeta)e^{Lt}>C_fe^{r_f t}$. Thus wherever $x_f\ge\zeta$,
+the entire protected set lies above the \emph{current receiver},
+including when that receiver is far beyond the gate.
+
+\emph{Velocity until and after return.} If $\tilde x\ge x$ then
+$F(\rho x,\rho\tilde x)=\phi(\rho x)+\rho\tilde x\Phi(\rho x)$.
+Elsewhere $F\ge0$. For any $x\ge\zeta>0$ this gives
+$S(x)\ge\rho\Phi(\rho x)\int_{\tilde x\ge x}\tilde x\,d\mu$.
+(The positive gate matters when interpreting this as a moment bound.)
+The doubled input velocity at the fixed rank thus obeys, whenever
+$x_f\ge\zeta$ and $t$ is large,
+\begin{equation}\label{an04ffpv1:drift}
+ 2x_f'\le\rho\phi(0)+\lambda\Phi(\rho x_f)
+          [C_f e^{r_ft}-D(t)]\le-1 \quad\text{when }x_f\ge\zeta .
+\end{equation}
+Indeed $D(t)/e^{r_ft}\to\infty$ and $\Phi(\rho x_f)\ge1/2$.
+The same formula with $x=\zeta$ verifies the proposed gate bound.
+Starting at the finite time from which this inequality holds,
+a rank above the gate must reach it in finite additional time.
+The strict inward drift at equality places it below and forbids
+recrossing; a rank already below cannot cross upward either.
+Dominated convergence for the unit rank measure now proves the
+instantaneous statement. The continuously inactive mass is bounded
+above by that mass. The endpoint $f=0$ carries zero mass, and no
+uniform return time in $f$ was used.
+
+For the last assertion fix any finite lower threshold $z$, keeping
+the protected set constructed with $\zeta>a$. For late $t$ it lies
+above $x_f$ regardless of the receiver's sign. Restrict the nonnegative
+overlap integral to this set alone, on which all donor inputs are
+positive. This gives $S(x_f)\ge\rho\Phi(\rho x_f)D(t)$ even for
+$x_f<0$. While $x_f\ge z$ use $\Phi(\rho x_f)\ge\Phi(\rho z)>0$
+instead of $1/2$ in \eqref{an04ffpv1:drift}. The same crossing
+argument yields permanent return below $z$. Apply this to each negative
+integer. Thus the zero-fraction conclusion also extends to every finite
+real gate if inactivity is defined by that cut.
+\end{proof}
+
+\paragraph{Leading-system positive route.}
+The aligned wedge would require $\rho S(x)-Y\ge0$ on its diagonal;
+at entry $\rho S\le\rho K_s<Y$ because $\rho K(\rho x)<x$ above $a$
+and $x=y$ with positive upper mass. IMP mass still ensures survival
+at least $c/(1+T)$ for every finite $T$. The theorem settles the
+infinite-horizon question on both sides of the initial GOE threshold
+and at equality. It gives no uniform decay rate and makes no weak-seed
+or trained-flow assertion.
+\end{document}

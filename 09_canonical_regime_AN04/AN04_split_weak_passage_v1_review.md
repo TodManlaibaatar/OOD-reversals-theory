@@ -1,0 +1,9 @@
+# OP-C2 review · partial
+
+**Proved in the leading system.** On WIT's local rectangle and common finite window, a literal addition of small inactive mass has the four-coordinate response in `an04swpv1:linear` and the two rate-weighted responses in `an04swpv1:rates`. The seed stays phase matched. For the explicit outer range in `an04swpv1:outside` the passive bridge stays outside the gate, and the true perturbed bridge does too for sufficiently small mass. The stricter range following `an04swpv1:initial` makes the first-order total rate more negative on an initial subinterval of descent when injected sufficiently shortly before the window. The original opposite source signs and ordered reversal persist over the full prescribed windows for sufficiently small additions.
+
+**Approaches and refutations.** Route A includes the change in total strong mass and ensuing core reaction. All three proposed direct donor terms are present. A rate evaluated at mean coordinates would omit the inactive gate, core weights and derivative of exposure. No depth ordering is refuted.
+
+**Exact stopping point.** `an04swpv1:missing` gives the two window-wide first-variation tests. The rebound between fixed times needs the positive integral of the displayed response. The short descent sign gives neither that integral nor the variation of an optimized rebound.
+
+**Handoff.** Route B uses the full normalized unclamped RMS law with an explicitly prescribed weak atom and positive sub-half seed. Its exact half clock and signed entry-gate correction appear in `an04swpv1:full`. The induced exposure and output exposure through half mass are unbounded by the moment equations used here. A depth comparison must control their endpoint difference in the two self-consistent fields. [empirical] E5 concerns a finite canonical population; this infinitesimal calculation does not establish its enhancement.

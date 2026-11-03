@@ -1,0 +1,193 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}\newtheorem{theorem}{Theorem}
+\title{A two-coordinate early donor estimate at the critical clock}
+\author{AN04 closure campaign}\date{Version 1}
+\begin{document}\maketitle
+\paragraph{Trained flow and comparison.}
+Use P data, representation, init and residualmatrix. Time is normalized;
+$13/20\le\rho\le7/10$, $\lambda=\rho^2$, $\omega=(1-\lambda)/2$,
+$S_0=cq^{1/\omega}$, $c$ in a fixed positive compact. Write
+$a_*=1/2+q^2$, $b_*=\lambda/2+q^2$,
+$H=\sqrt{S_0}e^{a_*t}$, $E=e^{-\omega t}+q$.
+Use $H^2\le\delta_0$ for a fixed sufficiently small numerical cap,
+$q$ sufficiently small, and only times from initialization. The symbol
+$H_b$ below denotes the CFS map called $H$ in that paper.
+Hats refer to the positive-noise target-only trajectory with the same label.
+
+\begin{theorem}[Trained flow]\label{an04ctev1:early}
+For every closed label interval $I\Subset(0,\pi/2)$ there is $C_I$
+independent of the cap level, time, and small $q$ such that
+\[
+ \sup_{\beta\in I}(|\theta-\widehat\theta|+
+ |\psi-\widehat\theta|)\le C_I H^2 E .
+\]
+For all labels $|\log(m/\widehat m)|\le 4H^2$.
+\end{theorem}
+\begin{proof}
+\emph{Outer donors in physical coordinates.}
+Write $U=\sqrt m\,a$, $W=\sqrt m\,b$ for the two vectors, with
+$U'=R^TW$, $W'=RU$, $R=A_\theta-C_f$. Put
+$B=\sup_\alpha\max(|U_2|,|W_2|)$. P earlybounds yields
+$|U|=|W|\le 2H$ on this cap. For every receiver,
+$|(A_\theta)_{12}|\le \mathbb E|X_1X_2|\le Cq$ by the two Gaussian
+cluster laws, and $(A_\theta)_{22}\le b_*$. For the full fitted field
+$f=\int W(U^TX)_+d\lambda_0$, pointwise
+\[
+ |f_1|\le 2H(2H|X_1|+B|X_2|),\qquad
+ |f_2|\le 2HB|X|.
+\]
+The gate indicator is bounded by one. Consequently, simultaneously
+for all receiver angles,
+\begin{equation}\label{an04ctev1:donor}
+ |(C_f)_{12}|+|(C_f)_{21}|\le C(HB+qH^2),\qquad
+ \|C_f\|\le C H^2 .
+\end{equation}
+The second-component equations now imply the scalar upper comparison
+\[
+ D^+B\le(b_*+CH^2)B+CqH(1+H^2).
+\]
+Equivalently integrate each label's scalar inequalities then take
+the supremum. The initial supremum is $\sqrt{S_0}$ and
+$\int_0^t H^2\le H(t)^2/(2a_*)$. Gronwall and $a_*-b_*=\omega$
+give $B\le C H E$ (the inhomogeneous convolution divided by $H$
+is at most $Cq/\omega$). Thus each off-diagonal fitted projection
+in \eqref{an04ctev1:donor} is bounded by $C H^2 E$.
+This includes left-facing, large scaled angle and endpoint donors.
+
+\emph{Alignment.} Write $d=\psi-\theta$ on the early lifts.
+Its target velocity is $-\operatorname{tr}(A_\theta)\sin d$.
+The absolute fitted contribution is at most
+$C H^2 E+C H^2|d|$: at $b=a$ its antisymmetric contraction
+is bounded by the two off-diagonal entries, and changing $b$ costs
+$C\|C_f\||d|$. P earlybounds gives $|d|<\pi$, so the target
+contributes nonpositively to $D^+|d|$. With $d(0)=0$, integration
+gives $|d|\le C H^2 E$ since $2a_*-\omega$ is bounded below.
+The radial assertion is P targetcomparison, whose log bound is
+$2S_0(2e^{2a_*t}-3e^{a_*t}+1)\le4H^2$ under the same guard.
+
+\emph{Q1 receiver.} For $I$ choose a fixed $\beta_+\in(\sup I,\pi/2)$.
+For the target flow $0\le\widehat\theta\le\beta_+$: the zero face
+points up by the Gaussian term, and the upper face tends to
+$-\omega\sin\beta_+\cos\beta_+<0$ as $q\to0$, uniformly in $\rho$.
+For $w=\tan\widehat\theta/q$, CFS's exact equation is
+\[
+ w'=-\omega w-\tfrac12qwD K(-1/(qD))
+          +\tfrac\rho2 D K(-\rho w/D),\qquad D=(1+q^2w^2)^{1/2}.
+\]
+Here $D\le\sec\beta_+$, hence $w'\le-\omega w+C_I$ and
+$|\sin\widehat\theta|\le C_I E$ from time zero.
+This proves the required outer-to-inner estimate along a moving label,
+without imposing a bounded scaled chart at initialization.
+
+Set $e=\theta-\widehat\theta$ and $v_0(\theta)=a^TA_\theta a^\perp$.
+P targetcomparison gives $|v_0'|\le a_*$ globally. In
+$\theta'=b^T(A_\theta-C_f)a^\perp$, replacing $b$ by $a$
+costs $C|d|$. The remaining fitted term is bounded by
+$C H^2(E+|\sin\theta|)$: the diagonal part carries
+$\sin\theta\cos\theta$, the off-diagonals use \eqref{an04ctev1:donor}.
+Since $|\sin\theta|\le C_I E+|e|$,
+\[
+ D^+|e|\le(a_*+CH^2)|e|+C_I H^2E .
+\]
+The homogeneous factor is at most $C e^{a_*(t-s)}$.
+Convolving from zero costs a bounded constant since
+$2a_*-\omega-a_*=b_*>0$. This proves the estimate for both angles.
+\end{proof}
+
+\paragraph{Nominal clock and a measured mass level (trained flow).}
+\label{an04ctev1:clock}
+At $T_A=\log(A/S_0)=\ell/\omega+\log(A/c)$,
+$\ell=\log(1/q)$, first fix $A>0$ with $2A<\delta_0$, then send $q$
+to zero. $H^2=Ae^{2q^2T_A}$ and $E/q=1+(c/A)^\omega$.
+CFS laws gives on $I$, for both trained angles divided by $q$,
+\begin{equation}\label{an04ctev1:profile}
+ H_b^{-1}((c/A)^\omega\tan\beta)
+       +O_I(A[1+(c/A)^\omega])+o_{q;A,I}(1).
+\end{equation}
+Also $m/(A\cos^2\beta)=1+O(A)+o_{q;A,I}(1)$.
+The big-O constants are uniform for the stated $c,\rho$.
+The small-noise error is taken at fixed cap.
+In particular the angular error divided by $q$ vanishes in the
+iterated limit, at order $A^{1-\omega}$ or better.
+
+To specify a measured clock, let $t_\delta$ be the first time the
+\emph{fixed right-half ancestry} has radial mass $\delta$.
+For all sufficiently small fixed $\delta$, set $A_0=4\delta$.
+Then for small $q$ this clock exists and
+$t_\delta=T_{A_0}+O(\delta)+o_{q;\delta}(1)$.
+Indeed no hit occurs before $T_{\delta/2}$ by the global envelope.
+On the subsequent compact range of nominal $A$ from $\delta/2$ to
+$5\delta$, the RMS join comparison mass is $A/4+o_{q;\delta}(1)$
+uniformly (CFS and RPS sector laws with endpoint strips).
+The uniform log-weight bound in Theorem~\ref{an04ctev1:early} gives
+relative error at most $C\delta+o_{q;\delta}(1)$ there.
+Continuity and bracketing $A_0$ by factors $1\pm C'\delta$
+with $C'$ sufficiently large bracket the first hit, including all
+earlier times. Applying \eqref{an04ctev1:profile} at the hit
+with $A=S_0e^{t_\delta}$ is legitimate by compact uniformity
+at fixed $\delta$. One may also use $A_0$ in its place:
+the derivative of $H_b^{-1}((c/A)^\omega\tan\beta)$ in $\log A$
+is $-[x-\rho K(\rho x)]/2$ at the inverse point $x$.
+It is $O_I(1+A^{-\omega})$ by the uniform CFS large-input estimate
+$H_b(x)/x\to1$. Thus the same $O_I(\delta^{1-\omega}+\delta)$
+angle error and $O(\delta)$ relative weight error hold at this
+measured mass with the corresponding fixed-cap vanishing errors.
+Current chart membership and right-half ancestry are distinct.
+
+\paragraph{Sharp target and stopping inequality.}\label{an04ctev1:sharp}
+The reviewer mass integral is correct for the leading logistic growth
+from $M_0$ to $\delta<1/2$:
+$\int M\,dt=\log[(1-M_0)/(1-\delta)]$. The source-one correction
+is $Mx/2$, hence relative. Even the source-two donor $-\rho S/2$
+has no cap-independent $O(M)$ estimate on the proposed profiles.
+Take the aligned RMS comparison shape prescribed at mass $M=A/4$.
+For $x,\tilde x\ge0$ restriction to the event that the Gaussian is
+positive gives $F(\rho x,\rho\tilde x)\ge\rho\tilde x/2$.
+The RMS mass from $1\le u\le2$ has fixed positive normalized size
+and $H_b^{-1}((c/A)^\omega u)>(c/A)^\omega u$. Thus
+$S/M\ge c_1(c/A)^\omega$ even at a fixed nonnegative receiver.
+This is an instantaneous counterexample to a uniform per-mass bound
+on these prescribed leading data; signed cancellation in the trained
+displacement remains possible.
+
+For specificity, the exact scalar input error at $t=t_\delta$ is
+\begin{align*}
+ e(t)&=\int_0^t e^{\int_s^t h(r)dr}\,
+ \{(b-a)^T A_\theta a^\perp-b^TC_f a^\perp\}(s)\,ds,\\
+ h&=\int_0^1 v_0'(\widehat\theta+z e)\,dz .
+\end{align*}
+The stronger $O(\delta)$ scaled discrepancy from target at the
+same clock needs
+\begin{equation}\label{an04ctev1:missing}
+ \limsup_{q\downarrow0}\sup_{\beta\in I}
+  \frac{\max(|e(t_\delta)|,|e(t_\delta)+d(t_\delta)|)}q
+  \le C_I\delta
+\end{equation}
+uniformly as $\delta\downarrow0$. For a comparator fixed at $A_0$,
+the signed clock displacement must be added before taking the norm.
+The proved upper bound costs the factor $1+(c/A)^\omega$;
+neither it nor the donor counterexample refutes the sharper trajectory
+bound. The weaker rate already removes the original absolute-angle
+obstruction for compact Q1 in the stated iterated limit.
+
+\paragraph{Saturation interface.}\label{an04ctev1:sat}
+CFS sat evolves a prescribed compact strong measure, $N=0$,
+$0<m_0<1/2$, to elapsed time $\log[(1-m_0)/m_0]$ at half mass.
+Its bounds depend on support radius and elapsed time.
+Our estimate supplies compact Q1 input, output and radial data at
+early right-half mass. Three further contracts are distinguishable.
+An OWPT-type weighted entry and outer matching estimate must cover Q4,
+endpoint strips, Q2/Q3 and their full donor projections, or bound the
+error of removing them. A MOMC-type critical mass-clock estimate must
+propagate that field error, radial weights and clock to half mass
+with constants controlled as the early level tends to zero.
+A FWC-type continuation must transport those errors through saturation
+on the reached charts and bound the background in the actual
+observables. Finite-time clamping at entry pays only the initial
+moments. Through the logarithmically increasing saturation delay one
+must also pay the integrated propagated error. The critical
+$T_A=\ell/\omega+O_A(1)$ is earlier than the deep all-label
+$2\ell/\omega+C$ overlap, so ten-power contracts cannot be imported.
+These are proposed proof tasks; saturation transfer remains open.
+\end{document}

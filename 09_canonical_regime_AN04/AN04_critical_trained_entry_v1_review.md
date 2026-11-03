@@ -1,0 +1,11 @@
+# OP-C3 review · partial
+
+**Proved for the trained flow.** From balanced, aligned, isotropic initialization in the positive-noise Gaussian model at critical scaling, both angles on each compact interior Q1 label interval track the target-only angle within a constant times the early mass envelope times the sum of the decaying outer angle and the noise scale. The log relative radial error is bounded by four times that envelope. All sectors, including labels with very large scaled angle, are retained in the fitted donor bound. See `an04ctev1:early` and `an04ctev1:donor`.
+
+**Measured clock.** The entry level is the first radial mass δ of fixed right-half ancestry. Its nominal comparison mass parameter is 4δ. At that hit, the errors in both angles divided by q are $O_I(\delta^{1-\omega}+\delta)+o_{q;\delta,I}(1)$, and the relative radial error is $O(\delta)+o_{q;\delta,I}(1)$. Constants of the first terms are independent of the small cap, while the vanishing terms take q to zero first. This pays the compact interior two-limit precision. See `an04ctev1:clock` and `an04ctev1:profile`.
+
+**Refuted.** The suggested uniform source-two donor estimate of order M fails even on the family of prescribed comparison shapes as the cap shrinks. Its per-mass overlap grows at least as the cap to power −ω. This refutes a step in the proposed proof. It does not refute the sharp trained angle target. The source-one correction is relative and the proposed leading logistic mass integral is valid.
+
+**Exact stopping point.** `an04ctev1:missing` records the stronger uniform $O(\delta)$ target for the signed integrated angular errors. The moment-based absolute estimate leaves a factor of order $\delta^{-\omega}$. At fixed nominal mass parameter, the signed matching-clock error must also be included. Neither a necessity claim for the lost factor nor a matching lower bound is proved.
+
+**Handoff.** Three proof packages remain for saturation. Extend the weighted entry law to the other sectors and tails, propagate the donor and radial errors in the critical mass clock through half mass, then continue them on the reached saturation charts with the required observable precision. See `an04ctev1:sat`. CFS saturation starts with compact leading data. An ancestry mass hit in the trained system supplies only one part of that interface.

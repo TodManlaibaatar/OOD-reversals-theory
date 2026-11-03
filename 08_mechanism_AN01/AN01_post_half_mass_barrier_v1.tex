@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\title{Positive strong input and the post-half-mass producer sign}
+\author{AN01 closure campaign}\date{Version 1}
+\begin{document}\maketitle
+\paragraph{Leading system.} Use WIT's selected coherent branch,
+$M=1$, $n=(1+e^{-\lambda s})^{-1}$, $13/20\le\rho\le7/10$,
+$\lambda=\rho^2$, $p=\phi(0)$, $P=\Phi(\rho x)$,
+$Q=\Phi(u)$, $A=\rho K(\rho x)$, $K(t)=\phi(t)+t\Phi(t)$.
+The four doubled velocities (WIT orbit) are
+\[
+ \lambda P[nv-x+(1-n)y],\quad -y-nK(u)+(1-n)A,\quad
+ (1-n)(\phi(u)-\lambda u)-(nu+y)Q,\quad A-\lambda v .
+\]
+The resident limit is $(a,a,u_*,a/\lambda)$ with $a=\rho K(\rho a)>0$.
+P atomiclag and limitreversal give $L=y+nK(u)>0$, $v>y,v>x,v>0$
+and finite-time continuation for this positive branch. WIT regiontheorem
+gives $y<x$, $u<1$ up to zero, and at zero $y<2/5$, $x<3/4$,
+$0<u<1$, $v<11/10$. PHS theorem also gives a strict gap through
+$1/1000$. All times here are the weak half-mass clock.
+
+\begin{theorem}[Leading system]\label{an01pbv1:sign}
+For all finite $s$, $x(s)>0$ and $x(s)>y(s)$ throughout the ratio box.
+\end{theorem}
+\begin{proof}
+Write $g(t)=K(t)-t$. We use $63/160<p<2/5$ (square and use
+$25/8<\pi<22/7$), and $g(1)<1/8$. Indeed integration by parts
+gives $I=\int_1^\infty\phi=\phi(1)-\int_1^\infty\phi(t)/t^2\,dt
+\ge\phi(1)-I$, so $g(1)\le\phi(1)/2<1/8$.
+Set $k=9/8$.
+
+\emph{Entry of the positive input barrier.} Start at the resident end,
+where $x>0$ and $v>p/\rho$ because $a>\rho p$.
+Up to a first $x=0$, $A\ge\rho p$ and the scalar $v$ equation gives
+$v\ge p/\rho$ (at equality $2v'=A-\rho p\ge0$).
+For $s\le0$, $K(u)<k$ and
+$2y'+y\ge D(n)=\rho p(1-n)-kn$. This decreasing forcing lies below
+the resident $y$ at entry. Scalar comparison gives $y\ge D(n)$,
+including at the first contact with $x=0$.
+With $h=n/(1-n)$ the input bracket on that face divided by $(1-n)^2$
+is at least
+\[
+ \rho p+(p/\rho-k)h+(p/\rho)h^2
+ \ge 39/160+(15/28-9/8)h+(15/28)h^2>0 .
+\]
+The last discriminant is negative. Thus $x>0$ up to half mass.
+
+\emph{Continuation of that barrier.} We first bound the only adverse
+output weight, without assuming further signs on $x,y$.
+For $u\ge1$, substitution of $y=L-nK(u)$ gives
+$2u'=(1-n)(\phi(u)-\lambda u)+[ng(u)-L]Q<n/8$,
+since $g$ decreases and $\phi(1)<\lambda$. Thus on $u\ge1$
+\[
+ [(1-n)K(u)]'=(1-n)[Qu'-\lambda nK(u)]<0.
+\]
+On $u\le1$ the product is at most $k/2$ after half mass.
+Since $u(0)<1$, continuity at each $u=1$ gives the same bound
+everywhere forward. At a first zero of $x$ after zero,
+$v\ge p/\rho$ still holds and $y>-nK(u)$. Hence
+$nv+(1-n)y>n(p/\rho-k/2)>0$. This excludes contact.
+In the original suggested lower faces $v=c$, $y=-c_y$, $x=-c_x$
+the doubled normal velocities are respectively $A-\lambda c$,
+$c_y-nK(u)+(1-n)A$, and
+$\lambda\Phi(-\rho c_x)[nv+c_x+(1-n)y]$.
+The time-weighted bound above avoids a constant lower $y$ face.
+
+\emph{A short middle interval.} For $0\le s\le s_2=(\log2)/\lambda<2$,
+bound $x,y,v$ above by $H=11/10+s/5$. At $x=H$ its velocity is
+nonpositive; at $v=H$ it is at most $\rho p/2<1/5$ by
+$A\le\rho p+\lambda H$; at $y=H$ it is at most
+$[-(1-\lambda)H+\rho p]/2<0$. All are strictly below $H'$.
+These are all faces of this upper bound, with strict entry and global
+finite-time continuation. In particular $H<3/2$ and
+$(1-n)A\le(\rho p+3\lambda/2)/2<11/20$.
+Scalar comparison in the output gives $y<11/20$. At $u=-1/2$,
+using $1/2\le n\le2/3$, $Q<1/2$ and
+$\phi(1/2)\ge(1-1/8)p>1/4$, we obtain
+\[
+ 2u'\ge\tfrac13(\phi(1/2)+\lambda/2)
+       -\tfrac12(11/20-1/4)>0.
+\]
+Here $\lambda/2>1/5$. Entry $u(0)>0$ yields $u>-1/2$ through $s_2$.
+
+\emph{Gap face.} At a first equality after half mass put $x=y=t>0$.
+The exact doubled gap derivative is
+$F=\lambda n\Phi(\rho t)(v-t)+t+nK(u)-(1-n)\rho K(\rho t)$.
+Use $v>t$, $\Phi(\rho t)\ge1/2$, $v\ge p/\rho$ and
+$K(\rho t)\le p+\rho t$ to get
+\begin{equation}\label{an01pbv1:face}
+ F\ge [1-\lambda(1-n/2)]t+nK(u)+\rho p(3n/2-1).
+\end{equation}
+For $n\ge2/3$ this is positive without a lower bound on $u$.
+Earlier on this face, convexity gives $K(u)>p-1/4>\rho p/2$
+because $(1-7/20)p>1/4$. Then the last two terms are strictly
+greater than $\rho p(2n-1)\ge0$. WIT's positive gap at zero
+therefore continues for all finite times.
+\end{proof}
+
+\paragraph{Trained flow.}\label{an01pbv1:transfer}
+On WIT's fixed witness rectangle $\mathcal P_*$ about $(2/3,5\pi/9)$
+and its compact common $J$, the weak-produced input term
+$W_{\rm in}=\tfrac12\lambda n\Phi(\rho x)(x-y)(v-y)$ has a positive
+minimum $m$ by WIT branchsmooth. CPD table for aligned isotropic
+balanced $S_0=q^{10}$ gives its normalized producer rate with uniform
+$O(q^{1/20})$ error. After fixing the window and constants take $q$
+so that this error is below $m/2$. The exact selector contribution
+in normalized time is then at least $q^2m/2$ throughout $J$.
+The total time derivative uses the existing almost-everywhere convention.
+\end{document}

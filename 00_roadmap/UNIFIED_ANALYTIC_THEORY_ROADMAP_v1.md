@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.36 — November 3, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.40 — November 3, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -252,6 +252,61 @@
   Both are corrected in place.
 - **Paper direction.** Tod's target is an ICML submission paired with the experiments repo `Swing-by-TwoLayerReLU`. The "Experiment interface" block below maps its results to the proved statements. **Next: P1,** a paper theory-section draft: condensed statements with exact scopes, a proof architecture, and stated predictions for the existing logs.
 
+**Revision 1.37 (Nov 3).** Records the **closure campaign**: four increments and `00_roadmap/CLOSURE_CAMPAIGN_REPORT_v1.md`. Also records the theorem-regime experiment protocol (experiments repo `theory_regime/`) and corrects two of my own claims (ledger 41–42).
+
+| Problem | Result | Increment |
+|---|---|---|
+| **OP-W** | **Closed.** On the selected orbit, $x>0$ and $x>y$ at every finite time; $W_{\rm in}>0$ on all of J in the trained deep family. **Deep B-core is complete.** | PB `an01pbv1:` |
+| **OP-C1** | **Refuted (negative theorem).** At $M=1$, $N=0$, every fixed interior rank eventually stays below the gate, and in fact $x_f\to-\infty$. The instantaneous inactive fraction tends to 0. | FFP `an04ffpv1:` |
+| **OP-C2** | **Partial.** Exact first-order response to an added small inactive cohort. A far-out bridge strengthens the early descent. The window-wide and rebound signs are open. | SWP `an04swpv1:` |
+| **OP-C3** | **Partial, trained flow.** At an early measured mass δ, compact interior Q1 angles track the comparison to $O(\delta^{1-\omega}+\delta)+o_q(1)$ in scaled units, which removes the absolute-angle obstruction. The sharp $O(\delta)$ rate and the saturation transfer are open. | CTE `an04ctev1:` |
+
+- **Report recommendation, which I endorse.** Submit the ICML package: deep Theorem A, persistence, the complete deep B-core, the regime map, and the negative resident theorem. Present E5, the canonical depth enhancement, as open.
+- **Corrections (ledger 41–42).**
+  - The O(M) per-mass donor bound I proposed for OP-C3 is false on the critical profiles; this repeats ledger 23.
+  - My E2 statement that the deep crossover is pre-saturation is false: the orbit gives $n(s_*)\approx0.988$ [eval].
+- **Next: P1** (ICML theory section, prompt in the v1.37 review), alongside the theory-regime sweep.
+
+**Revision 1.38 (Nov 3).** Records MPB (`AN04_mass_preserving_bridge_depth_v1`, OP-C2 follow-up) and the theorem-regime sweep results.
+- **MPB, leading system.** A mass-preserving split can deepen the coherent minimum: moving a fraction ε of strong mass to a far, probe-inactive bridge shortly before the minimizing time does it. Precisely, $\mathcal E_{\rm split}(s_m)=\mathcal E_{\rm coh}(s_m)-\varepsilon D+O(\varepsilon(h+\varepsilon))$, with $D=\tfrac12(\lambda PZ\kappa_x+A\kappa_y)-AZ$.
+  - For $D>0$ the split's minimum is strictly below the coherent minimum.
+  - For an aligned atom, $D>0$ iff $\kappa>2AZ/(A+\lambda PZ)$.
+  - Mechanism: the bridge's donor field lowers the core output through the strong output mean, and the core input through the overlap. Together these outweigh the cost of removing core mass.
+  This is an existence result for prescribed leading data. Whether the critical family's own dynamics supplies such forcing is still OP-C2.
+- **Theorem-regime sweep, experiments repo `theory_regime/`, frozen protocol: no hole flags.**
+  - All of H1–H5 pass, including the resolution check.
+  - As q goes 0.05 → 0.00625: crossing error $0.150\to0.006$; rate error $1.7\%\to0.1\%$; depth $-2.023\to-2.010$ (orbit −2.009); output share 0.062–0.064 (orbit 0.063).
+  - Empirical slopes: about $q^{1.5}$ for the crossing, $q^{1.4}$ for the rate, $q^{1.0}$ for the error curve. The proved rate is only $q^{1/20}$.
+  - **Companions** ($q=0.025$, κ = 10, 6, 4.5, 3.6, 3): depth −2.0, −2.7, −5.5, −9.2, −12.5; inactive fraction at κ = 6…3: 5.1, 8.6, 9.6, 10.7%. That is E5 reproduced in the exact infinite-width population flow, growing smoothly as κ falls [empirical].
+- **Paper consequence.** E5 now has a population-flow demonstration, plus a leading-system existence theorem that a bridge can deepen the minimum. What links them, the critical family's own dynamics, is still open.
+- **Next: P1,** with MPB and the sweep included (prompt in the v1.38 review).
+
+**Revision 1.39 (Nov 3).** Records HBD (`AN04_trained_half_mass_bridge_donors_v1`, E5 chain step 2): **the trained critical family produces bridge forcing at strong half mass.**
+- **Theorem (trained Gaussian continuum flow, $S_0=cq^{1/\omega}$, any fixed $c>0$).** Fix a compact interior Q4 receiver band. Then there is a compact interior Q1 donor band of positive limiting mass, and $\gamma>0$, such that for small q the following hold.
+  - At the first strong half-mass time $t_h=\log(4/S_0)+o(1)$, the receivers are probe-active and the donors are inactive.
+  - The donors' fitted contributions to both scaled receiver velocities are $\le-\gamma$.
+  - So are the differences from an equal mass placed at the receiver, and from concentrating all right-half mass there.
+  - All of this holds on $[t_h-\tfrac14,t_h]$.
+- **New tools.**
+  - A physical second-coordinate bound $B_2\le CHE$ for all labels, past CTE's small cap.
+  - A subsequential limit law on paths, with the exact clock $M=e^\tau/(4+e^\tau)$.
+  - Coalescence of all Q4 paths into one bottom path, with $x_a,y_a\le a$.
+  - A band-independent incoming budget, so that a high Q1 band stays beyond any L.
+- **What it does not give.** Anything after $\tau=\log8$: the forcing's duration through the diverging pre-weak interval, the weak passage, and the response integral at the learned minimum.
+- **Next: E5 step 3** (pre-weak asymptotics of the critical leading system; prompt in the v1.39 review). P1 stays available in parallel.
+
+**Revision 1.40 (Nov 3).** Records BRW (`AN04_bridge_return_before_weak_learning_v1`, E5 chain step 3): **the half-mass band returns before weak learning; the continuous-inactivity route is refuted; the depth test is exact but unsigned.**
+- **Return (trained flow).** For small q there is a fixed $T_B$ and $d_B>0$ such that every HBD band label satisfies $x\le\zeta-d_B$ on $[t_h+T_B,t_h+T]$. In other words, the band returns well before weak learning.
+- **Delay (trained flow).** The weak learning measure $\mathsf m_2$ stays $o(1)$ for $k\sqrt{\log(1/q)}$ after $t_h$.
+- **Survivors.** The right-half mass (weighted at $t_h$) that stays inactive throughout $[t_h,t_\eta]$ tends to 0.
+- **Moment envelopes (limiting system, constants uniform in s and in the extracted law).**
+  - Upper: $\max(\rho\mathsf K_s,Y)\le B_0e^{Ls}(1+s)^{-2/3}$, with $L=\lambda/2$.
+  - Lower: a protected set of mass $\ge c_2/(1+s)$ has inputs $\ge de^{Ls}/\sqrt2$ and first moment $\ge c_3e^{Ls}/(1+s)$.
+  The persistent bridge is therefore a vanishing-mass tail with a growing first moment, not a fixed band.
+- **Exact tests, unsigned.** `payment` (rate accounting on the factual run), `causal` (factual run against an evolved half-mass concentrated run), `endpoint` (current-gate output moments). Their signs are open.
+- **Correction (ledger 43).** In v1.39 and my step-3 prompt, I described FFP's return and IMP's tail moment as governing the HBD law's pre-weak interval. Both are proved only for unit mass with their own aligned entrance. BRW rederived both for the HBD entrance with logistic mass.
+- **Next: E5 step 4** (core output descent and the pre-weak probe error, limiting system at each fixed s, then fixed-s transfer). Prompt in the v1.40 review. P1 stays available in parallel.
+
 ---
 
 ## 0. Ground rule: analytic proof only
@@ -286,7 +341,7 @@ Every statement keeps H2's scope labels: exact original-flow result; exact compa
 | Name | Content | Current status |
 |---|---|---|
 | **Theorem A** | From aligned-isotropic initialization, on an analytically specified joint family $(q,S_0(q))$ near $\rho=2/3$: substantial learning of both concepts, strict opposite cluster signs $D_1<0<D_2$ on a common learned window, and an ordered negative-then-positive total rate, giving a rebound $\ge c\,q^2$ on an off-cone sector of width $\ge c\,q$. | **Proved (deep regime, Nov 2; RTA):** $S_0=q^{10}$, $0<q\le q_0$, $(\rho,\zeta)\in\mathcal P_*$. |
-| **B-core** | The same proof shows *why*: cluster-1 help = exposure × signed exact lag; cluster-2 harm = input rotation of the strong carrier driven by a residual that the weak family produces; the evolving lag/exposure/residual force the change of dominance, with complete remainders. | Proved in the leading system. **Original flow (CPD, deep regime): help = exposure × positive exact lag, proved.** Harm = four leading producer parts (target/weak × input/output rotation); all signs proved except the weak input part on $J\cap(1/1000,\infty)$ (PHS; open problem OP-W). The item-3 description "harm = weak-produced input rotation" is corrected accordingly. |
+| **B-core** | The same proof shows *why*: cluster-1 help = exposure × signed exact lag; cluster-2 harm = input rotation of the strong carrier driven by a residual that the weak family produces; the evolving lag/exposure/residual force the change of dominance, with complete remainders. | Proved in the leading system. **Original flow (CPD, deep regime): help = exposure × positive exact lag, proved.** Harm = four leading producer parts (target/weak × input/output rotation); **all four signs proved on J (OP-W closed by PB, v1.37); deep B-core complete.** Item 3 is restated with the four parts. At the crossover, weak-produced input rotation dominates [eval]. |
 | **B-bridge** | The canonical depth enhancement: a non-small inactive strong bridge changes exposure and compensation. | Open (AN4). |
 | **Persistence** | After the rebound, the scaled benefit is eventually zero on growing windows. | **Proved for the initialized family (RTA, via FWC and LP's diagonal argument)**, on a diverging horizon with no rate. |
 | **Linear contrast** | Commuting aligned linear networks have monotone probe error and clusterwise help. | Complete (LP, extending P10). |
@@ -1423,11 +1478,141 @@ Notation: $A_*=\zeta-X$, $Z=X-Y$, $\Phi_x=\Phi(\rho X)$, $\mathsf K_x=\mathsf K(
 | $-85^\circ$ persistent to $T=100$, 99% of the early gain lost (E6 L1/L2) | RTA `persistence` | Qualitative; no rate. |
 | Signed cluster decomposition, strong negative and weak positive with a switch | RTA `theoremA` source signs and ordered total rate | Qualitative. |
 | Help factorization $B\approx(\mu_1^2/2)(1+q^2)M\bar z|e\cdot b^\perp|r_{21}$, ratio 0.99–1.015 (population pilot) | P `pa:factorizations`; CPD `help` | Same identity. |
-| Harm through strong input rotation (E2); output remainder $r_2$ falls from $3.4\cdot10^{-3}$ at $t=2.0$ to $\approx0$ by $t=3.75$, with $m_2\ge0.9$ at $t=3.1$ and crossing at 3.68 | CPD four-part identity: output channel $=(1-n)T_{\rm out}$ | **Prediction, not theorem, at canonical.** The output share scales with $(1-n)$ at the crossover. It is consistent with the logs, which show a post-saturation crossover at canonical; in the deep regime the crossover is pre-saturation and both channels lead. |
+| Harm through strong input rotation (E2); output remainder $r_2$ falls from $3.4\cdot10^{-3}$ at $t=2.0$ to $\approx0$ by $t=3.75$, with $m_2\ge0.9$ at $t=3.1$ and crossing at 3.68 | CPD four-part identity: output channel $=(1-n)T_{\rm out}$ | **Consistent in both regimes (corrected v1.37, ledger 42).** The output channel carries $(1-n)$. Both crossovers are post-saturation: canonical $m_2\ge0.9$ before the crossing [empirical]; deep orbit $n(s_*)\approx0.988$, output share ≈6% [eval]. The magnitudes are [eval]; the factor is theorem (CPD). |
 | $S_0$ sweep $\kappa\approx2.1$–$5.9$: reversal at every $S_0$; bridge share 14.6% → 5.4% as $S_0$ falls | RMS `map`, `join` | **Partial.** The predicted entry inactive fraction is ≈14% at canonical [eval] against an empirical bridge share of 11–12%. At $\kappa\ge4.4$ the predicted entry fraction is ≲1% against an empirical 5–9% at the crossing, so the bridge there forms after entry. The entry law alone is not the explanation. |
 | Weak part of the empirical input-rotation attribution is negative before weak half mass | CPD: $W_{\rm in}>0$ before half mass (deep regime) | **Unreconciled.** Possibly a regime difference, or a mismatch between the empirical cohort split and the theory's producer split. To check before any attribution claim. |
 | $176^\circ$ reversal and about 115 other persistent directions | none | Not covered. |
 | Computer-assisted local certificate at canonical, conditional on entry (`verification/`) | none in this repo (interval arithmetic is excluded as a premise here) | Separate, computer-assisted evidence. Its inclusion in the paper is Tod's decision, clearly labeled. |
+| Theorem-regime sweep (experiments repo `theory_regime/`, frozen protocol; continuum population flow at $S_0=q^{10}$, $q\in\{0.05,0.025,0.0125,0.00625\}$, probe $-90^\circ+100^\circ q$) | RTA `theoremA`, `persistence`; CPD; PB; WIT `orbit` | **Done, no hole flags (H1–H5 pass, with the resolution check).** Crossing error $0.150,0.045,0.015,0.006$. Rate error $1.7,0.6,0.2,0.1\%$. Error-curve error $6.0,2.9,1.5,0.8\%$. Depth $-2.023\to-2.010$ (orbit −2.009). Output share 0.062–0.064 (orbit 0.063). Strong scaled std $0.134\to0.044$; $x-y>0$ after half mass (OP-W check). Empirical slopes are about $q^{1.0}$–$q^{1.5}$ [empirical]. |
+| Companion κ sweep at $q=0.025$ (same protocol, κ = 3, 3.6, 4.5, 6) | RMS `map`; FFP; MPB; OP-C2 | **E5 in the exact population flow [empirical].** Depth −12.5, −9.2, −5.5, −2.7 against −2.0 at κ = 10 (6.2×, 4.6×, 2.7×, 1.4×). Inactive strong fraction at the crossover 10.7, 9.6, 8.6, 5.1%. The enhancement is monotone in κ and continues above the critical value $1/\omega=3.6$. These runs test no theorem: OP-C2 (linking the critical family's own dynamics to MPB's forcing) remains open. |
+
+**Status after the closure campaign (Nov 3).**
+- *OP-W, closed* (`an01pbv1:sign`, `face`, `transfer`). On the selected orbit, for the whole ratio box: $x>0$ and $x>y$ at all finite s. The proof runs in four steps:
+  - **Up to half mass.** A barrier $x>0$ via $v\ge p/\rho$ and $y\ge D(n)=\rho p(1-n)-kn$, $k=9/8$. The face quadratic $\rho p+(p/\rho-k)h+(p/\rho)h^2$ has negative discriminant.
+  - **After half mass.** $(1-n)\mathsf K(u)\le k/2$ throughout, by decay on $u\ge1$, and $p/\rho>9/16=k/2$.
+  - **Middle interval** $n\in[\tfrac12,\tfrac23]$. Upper face $H=\tfrac{11}{10}+s/5$, then $y<11/20$ and $u>-1/2$.
+  - **Gap face.** $F\ge[1-\lambda(1-n/2)]t+n\mathsf K(u)+\rho p(3n/2-1)>0$.
+  The trained transfer follows via CPD with a compact positive minimum.
+- *OP-C1, refuted* (`an04ffpv1:return`, `drift`).
+  - IMP's protected set gives a gate tail moment $D(t)\ge c(1+\zeta)e^{\lambda t/2}/(1+t)$.
+  - That beats every fixed rank's GOE ceiling $C_fe^{r_ft}$, $r_f<\lambda/2$.
+  - So $2x_f'\le\rho\phi(0)+\lambda\Phi(\rho x_f)[C_fe^{r_ft}-D(t)]\le-1$ at late times, which forces permanent return and then $x_f\to-\infty$.
+  - IMP's finite-horizon survival $\ge C_*/(1+T)$ still holds. No erosion rate is given.
+- *OP-C2, partial* (`an04swpv1:response`, `rates`, `initial`, `missing`, `full`).
+  - Route A gives the exact variational system for a literal added mass ε at $(x_b,y_b)$, with $M=1+\varepsilon$.
+  - At injection, $D(s_0)=-Ay_b/2-C_0-Z\rho[\phi(\rho X)+\rho x_bP]/2$. This is very negative for a far bridge, which strengthens early descent.
+  - Open: $\sup_{J_-}D<0$, $\inf_{J_+}D>0$, and the sign of the rebound integral.
+  - Route B gives an exact clock with a prescribed weak atom; the endpoint exposures are unpaid.
+- *OP-C3, partial* (`an04ctev1:early`, `donor`, `clock`, `profile`, `missing`, `sat`).
+  - All-label second components satisfy $B\le CH(e^{-\omega t}+q)$.
+  - Compact interior Q1 angle errors are $\le C_IH^2(e^{-\omega t}+q)$, and $|\log(m/\hat m)|\le4H^2$.
+  - At the first right-half ancestry mass δ, the scaled error is $O_I(\delta^{1-\omega}+\delta)+o_{q;\delta}(1)$.
+  - Refuted along the way: my proposed uniform per-mass source-2 donor bound, since on the critical shapes $S/M\ge c_1(c/A)^\omega$.
+  - Remaining: three saturation contracts (OWPT-, MOMC- and FWC-type), estimated at 3–6 sessions.
+- *Checked (reviewer, Nov 3):*
+  - **OP-W constants.**
+    - $\phi(0)>63/160$, and $g(1)\le\phi(1)/2<1/8$ via the Mills bound.
+    - The discriminant $(15/28-9/8)^2-4\cdot\tfrac{15}{28}\cdot\tfrac{39}{160}<0$.
+    - $p/\rho>(63/160)/(7/10)=9/16$, strict.
+    - $u\ge1$ decay: $2u'=(1-n)(\phi-\lambda u)+[ng(u)-L]Q<n/8$ and $\lambda\mathsf K(1)>1/16$.
+    - Faces of H, with $H(s_2)<1.43$ and $(1-n)A\le0.5075<11/20$.
+    - The u-face at $-1/2$: tight at the rational bounds (0.15 = 0.15), strict through $\phi(1/2)>1/4$ and $\lambda/2>1/5$; true margin about 0.038.
+    - The gap-face algebra.
+  - **OP-C1 drift.** The drift inequality with $F(\rho x,\rho\tilde x)=\phi+\rho\tilde x\Phi$ for $\tilde x\ge x$ and $\rho S\ge\lambda\Phi D$.
+  - **OP-C3 Gronwall estimates.** $B$, via $a_*-b_*=\omega$; $|e|\le CH^2E$, via $a_*-\omega=b_*>0$.
+  - **OP-C2 injection formula.** At $j=k=l=m=0$.
+  - **Escapes and prefixes.** All four .tex files pass both escape scans; prefixes `an01pbv1:`, `an04ffpv1:`, `an04swpv1:`, `an04ctev1:` are unique.
+  - **Agreement with numerics** [eval]. The orbit integration gives $\min(x-y)=0.308$ after half mass.
+- *Theory-regime orbit, numerical orientation* [eval] (`theory_regime/theory_orbit.py`):
+  - $s_*=9.911$, i.e. a crossover delay of 1.10 physical units, matching E4;
+  - $n(s_*)=0.988$;
+  - depth $\min\mathcal E_\zeta=-2.009$;
+  - output share $0.063$;
+  - at $s_*$: $T_{\rm in},W_{\rm in},T_{\rm out},W_{\rm out}=-0.234,0.277,0.239,-0.236$;
+  - $s_{\rm gate}=72.8$.
+  So at the deep crossover the harm is about 94% input rotation. $W_{\rm in}$ is the largest positive producer, and $W_{\rm out}$ nearly cancels $T_{\rm out}$ because $n\approx1$.
+- *Paper consequence.* The deep mechanism statement for the paper reads as follows. Help is exposure × positive exact lag. Harm is four producer parts with all signs proved. At the crossover it is dominated by weak-produced input rotation, partly offset by the target-plus-core input term, with the net output channel small, since it carries $(1-n)$ [eval for the magnitudes]. This agrees with E2 in both regimes.
+
+**Status after MPB (`AN04_mass_preserving_bridge_depth_v1`, Nov 3): existence closed (leading system).**
+- *Theorem* (`depth`). Setup:
+  - fix a coherent minimizer $s_m\in J$ (it exists by WIT's endpoint signs; uniqueness is not needed);
+  - at $s_0=s_m-h$, move strong mass ε from the atom to a bridge law, the image of ν under $r\mapsto r/h$, with support in $[a,K_*]\times[-K_*,K_*]$;
+  - keep the weak seed; total strong mass stays 1 and the logistic clock is shared.
+
+  Then $|\mathcal E_{\rm split}(s_m)-\mathcal E_{\rm coh}(s_m)+\varepsilon D|\le C\varepsilon(h+\varepsilon)$, with $D=\tfrac12(\lambda PZ\kappa_x+A\kappa_y)-AZ$.
+- *Proof structure.*
+  - Exact donor-replaced field $z'=G+\tfrac\varepsilon2B$, valid while $b_x\ge x$.
+  - Uniform displacement O(1) over time h for coordinates of size O(1/h), by the linear-growth velocity bound.
+  - Gates checked from the full equations.
+  - Response $\tfrac\varepsilon2(-\lambda P\kappa_x,-\kappa_y,-Q\kappa_y,\lambda\kappa_x)+O(\varepsilon(h+\varepsilon))$.
+  - Energy $H=\tfrac12(1-\varepsilon)^2(\zeta-x)^2+(1-\varepsilon)(y-\zeta)(\zeta-x)$, with derivatives $(AZ,Z,A)$.
+  - It uses `an01pbv1:sign` for $Z>0$.
+- *Also.*
+  - **Aligned-atom threshold:** $\kappa_*=2AZ/(A+\lambda PZ)$; $\kappa=2Z$ gives $D=\lambda PZ^2$.
+  - **Exact fixed-h first variation:** $AZ+\tfrac12\int p^TB_0$ with adjoint $-p'=(D_zG)^Tp$, $p(s_m)=(Z,A,0,0)$.
+- *Checked (reviewer, Nov 3):*
+  - **Energy.** $\mathcal E=A_\zeta^2/2-\zeta A_\zeta+\int y(\zeta-x)_+$ with the bridge inactive gives H. The derivatives $H_\varepsilon=-A^2-(Y-\zeta)A=AZ$, $H_x=-A+\zeta-Y=Z$, $H_y=A$ also match finite differences at the orbit crossover state.
+  - **Donor terms.** From WIT `popsystem`:
+    - $F(\rho x,\rho b_x)-\mathsf K(\rho x)=\rho(b_x-x)\Phi(\rho x)$ gives $B_1$;
+    - the output mean $(1-\varepsilon)y+\varepsilon\bar b_y$ in $y'$ and $u'$ gives $B_2,B_3$;
+    - $\mathsf K_s$ in $v'$ gives $B_4$.
+  - **Response integrals.** $\int_{s_0}^{s_m}\varepsilon\kappa/(2h)\,ds=\varepsilon\kappa/2$.
+  - **Escapes and prefix.** The .tex passes both escape scans; prefix `an04mpbv1:` is unique.
+- *Scope.* Leading system, prescribed split at a chosen time, far bridge ($\kappa/h$). It does not show that the critical family produces this forcing. Bridges at finite positions over extended times need the fixed-h adjoint test. OP-C2 (depth from the critical family's own dynamics) remains open.
+
+**Status after HBD (`AN04_trained_half_mass_bridge_donors_v1`, Nov 3): trained bridge forcing at strong half mass, closed.**
+- *Theorem* (`an04hbdv1:main`). Trained Gaussian continuum flow; $S_0=cq^{1/\omega}$ with any fixed $c>0$; ratio box; offset $\zeta>a$.
+  - Every compact interior Q4 receiver band C has a compact interior Q1 donor band B, with limiting mass $m_B^*=2\int_B\cos^2\alpha\,dl$, and a $\gamma>0$.
+  - At the first strong half-mass time ($t_h=\log(4/S_0)+o(1)$), C is active and B inactive, with fixed scaled margins.
+  - Three comparisons each give both scaled velocity components $\le-\gamma$: B's raw fitted contribution; B against an equal mass at the receiver; the full field against all right mass concentrated there.
+  - All of this holds on $[t_h-\tfrac14,t_h]$.
+- *Proof structure.*
+  - `physical`: $B_2\le CHE$, by scalar Gronwall using $a_*-d_*=\omega$. Left ancestry is $o(1)$ even after division by q.
+  - Subsequential path laws via Arzelà–Ascoli, with endpoint strips paid by $O(\eta)$ kernel bounds.
+  - `clock`: $M=e^\tau/(4+e^\tau)$, $m=4M\cos^2\alpha$.
+  - `field`: the limiting equations. `budget`: $|Y|+\rho\mathsf K_s\le Ce^\tau(1+c^\omega e^{-\omega\tau})$.
+  - `incoming`: $e^{\omega\tau}(x,y)\to c^\omega\tan\alpha$ on Q1.
+  - Cooperative same-field order: Q4 coalescence to the bottom path, with $x_a,y_a\le a$ by a two-face barrier. `outer`: $w\ge e^{-\omega\tau}(c^\omega\tan\alpha-J_*)$.
+  - `sign`: per-donor differences $(-\lambda\Phi(\rho x)(\xi-x),-(\eta-y))$.
+- *Checked (reviewer, Nov 3).*
+  - **Clock.** The logistic $M$ with $M/e^\tau\to\tfrac14$ gives the $4/S_0$ clock and the band mass.
+  - **Physical bound.** The Gronwall terms: $\sqrt{S_0}e^{d_*t}=He^{-\omega t}$ and $\int qHe^{d_*(t-s)}\le CqH/\omega$.
+  - **Budget scale.** $E/q=1+c^\omega e^{-\omega\tau}$, from $e^{-\omega t}=c^\omega qe^{-\omega\tau}$.
+  - **Field.** It reduces to WIT `popsystem` at a coherent unit atom with $n=0$.
+  - **Jacobian.** The doubled diagonal, including $F_t=(r-t)_+\phi(t)$, and the off-diagonals $\lambda\Phi(\rho x)/2$.
+  - **Barriers.** Both faces of the lower-atom barrier ($(1-M)[\rho\mathsf K(\rho d)-d]<0$ and $\rho\mathsf K(\rho d)-d<0$). The $w$ inequality on both faces, and its integration with $J_*<\infty$.
+  - **Margins.** The sign constants ($a-\lambda p_CL<-2$, $a-L<-2$, equal-mass difference $\le-m_B^*(L-a)\min(1,\lambda p_C)$, γ). Mass at least $2m_B^*/3$ on $[\log2,\log6]$, which contains the last quarter unit.
+  - **Hygiene.** The file compiles cleanly, has no control characters, every cited label exists, and the prefix is unique.
+- *Reduction recorded for step 3 (from `field` at $M=1$, all donors above the bottom path):* $x_a'=\tfrac\lambda2\Phi(\rho x_a)(y_a-\bar X)$ and $y_a'=\tfrac12(\rho\mathsf K(\rho x_a)-\bar Y)$, where $\bar X,\bar Y$ are the strong means.
+- *Scope.* Instantaneous forcing on a bounded clock, $\tau\le\log8$. The pre-weak interval to the weak passage diverges like $\log(1/q)$. On it, FFP (fixed ranks return, $x_f\to-\infty$) and IMP's growing gate-tail moment are the known leading-system facts. No transfer, duration or response integral is claimed.
+
+**Status after BRW (`AN04_bridge_return_before_weak_learning_v1`, Nov 3): band return proved; continuous-inactivity route refuted; depth test exact and unsigned.**
+- *Theorem* (`an04brwv1:return`, trained flow). There are $T_B<\infty$ and $d_B>0$ such that, for small q, every label in HBD's band B has $x\le\zeta-d_B$ on $[t_h+T_B,t_h+T]$ for each fixed T. Moreover $\sup_{s\le k\sqrt{\log(1/q)}}|\mathsf m_2(t_h+s)|\to0$. The guard $x_\alpha\ge\zeta$ throughout the passage is therefore false for B.
+- *Corollary* (`survivors`). The continuously inactive right mass through $t_\eta$, weighted at $t_h$, tends to 0. This says nothing about the instantaneous inactive mass or the donor moments at $t_\eta$.
+- *Proof structure.*
+  - `delay`: $S\le C(1+s)$, then $D_\perp\le Cq\exp(C(1+s)^2)$ and $|\mathsf m_2|\le C(q\sqrt SD_\perp+D_\perp^2)$.
+  - HBD extraction extended to every fixed horizon. Field with $M=(1+e^{-s})^{-1}$; $2Y'=(1-2M)Y+\rho\mathsf K_s$, so $Y>0$.
+  - Half-mass tail data $x_++y_+\le C(1+f^{-1/3})$, and mass $\ge c_1(1+R)^{-3}$ beyond R.
+  - Rank ceiling with left eigenvector $(w,1)$, $Lw\le L-\lambda f/16$, giving `budget`.
+  - Moving barrier $w_T=g\{R_T-3b_0[(1+s)^{1/3}-1]\}$, with $2g'/g=\lambda-(1-M)$.
+  - `drift`: $2x'\le\rho\phi(0)+\lambda P_x[C_Be^{rs}-c_3e^{Ls}/(1+s)]\le-1$ on $x\ge z=(a+\zeta)/2$.
+- *Checked (reviewer, Nov 3).*
+  - **Delay.** All three output bounds and both $R$ off-diagonal bounds. The $L^2$ Gronwall step. The choice of k giving $|\mathsf m_2|\le Cq$.
+  - **Y equation.** The derivation, including the radial weight term $(1-M)$.
+  - **Tail data.** $f\asymp(\pi/2-\alpha)^3$ with $\sqrt m\asymp(\pi/2-\alpha)$ for the upper bound; HBD `outer` at $\tau=\log4$ for the lower bound.
+  - **Upper comparison.** Both rows, using $S_x\ge MfK(\rho x)$, $K(t)\ge t$ and $Y\ge0$.
+  - **Eigenvector and budget.** The eigenvector algebra and $w\le1-f/8$ for $f\le4$. The budget integral via $u=fs$.
+  - **Barrier.** Both barrier faces, with the strict margin from $b_0>\sqrt2B_0$.
+  - **Drift and return.** The drift constants, and no upward recrossing of z.
+  - **Exact tests.** The polarization identity behind `causal`, the propagator identity $d'=-K^Sd-\Delta Kr^C$, and the loss expansion behind `endpoint`. Also $C_q=\varepsilon A_mZ_m+\varepsilon^2A_m^2/2+O(q^2)$, which matches MPB's $H_\varepsilon$.
+  - **Hygiene.** Compiles cleanly, no control characters, cited labels exist, prefix unique.
+- *Reviewer note for step 4 (sketch, not a result).* BRW's facts appear to give a short proof that, in every limiting law, the bottom path's output satisfies $y_a(s)\le C-ce^{Ls}/(1+s)$.
+  - $\mathsf K_s\ge\rho\int_{\rm prot}\tilde x\,d\mu\ge\rho c_3e^{Ls}/(1+s)$ and $Y>0$ in $2Y'=(1-2M)Y+\rho\mathsf K_s$ give $Y\ge c'e^{Ls}/(1+s)$.
+  - Then $2y_a'=-(1-M)y_a-Y+\rho\mathsf K(\rho x_a)$, with HBD's $x_a\le a$ re-checked for all s, gives the descent.
+  - This is the mechanism MPB isolated: the bridge drags the core's output down through the strong output mean.
+  - Whether the probe error itself diverges depends on the positive output moment of the *active* non-core labels. BRW's upper envelope $e^{Ls}(1+s)^{-2/3}$ does not control it.
+- *Scope.* Limiting system and fixed-horizon transfer only. None of the constants holds at $s=t_\eta-t_h$. E5 at the learned minimum is unsigned.
+
 
 ### S6. The exact finite-noise lag (AN1)
 
@@ -1510,8 +1695,8 @@ Tracks that can run in parallel:
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
 | II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem, and **RB proved the response barrier: the deep-regime weak passage is a theorem.** Track II is complete; next is S4 (track III). |
 | III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction**, and **S4e (WCS) closed the weak-chart reduction and selection**: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ at a fixed small weak mass. **Track III is complete.** |
-| IV | S6 exact lag | Needed for B-core. Attempt 1 (BC) stopped at a wrong remainder contract and closed the two-channel identity for $D_2$. **CPD (S6 revised) closed the channel and producer tables, the signed exact lag and the help law**, and the four-part harm identity with every sign except $W_{\rm in}$ after half mass. PHS (S6c) extended that sign to $s\le1/1000$; the rest is parked as OP-W. **Track IV is complete on its scope.** |
-| V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. **CRA (S8a)** closed the regime map and κ-audit (first failure: TAIL `exponent`, $\kappa\omega>1$) and two comparison lemmas. **Reframed (v1.31):** the canonical split is targeted through the critical family $S_0=c\,q^{1/\omega}$. **CFS (S8b)** closed both comparison Q1 profiles (positive noise: support starts at the resident a) and N = 0 leading persistence of ordered spreads (shape mode $+\lambda P/2$). The trained-flow transfer through saturation is open. **RPS (S7a)** closed the right-half comparison state (Q4 atom at a plus Q1 spread), co-order, moment equations, and a self-consistent escape region for small b. The large-b gate moves inward. **GOE (S7b)** proved a unique gate threshold $b_c(\rho,\zeta)$ and ruled out sustained exponential escape of any positive-mass segment at N = 0. **IMP (S7c)** proved persistence of an inactive set of mass $\ge C_*/(1+T)$ and the exact weak-coupled gate formulas; a fixed fraction is open (OP-C1). **Canonical proofs paused (v1.35).** RMS closed the synthesis (regime-map theorem, composition lemmas, open problems); OP-C1–C3 stay open. **Next (paper track): P1,** the ICML theory-section draft. |
+| IV | S6 exact lag | Needed for B-core. Attempt 1 (BC) stopped at a wrong remainder contract and closed the two-channel identity for $D_2$. **CPD (S6 revised) closed the channel and producer tables, the signed exact lag and the help law**, and the four-part harm identity with every sign except $W_{\rm in}$ after half mass. PHS (S6c) extended that sign to $s\le1/1000$; **PB (closure campaign) closed OP-W on all of J. Track IV is complete.** |
+| V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. **CRA (S8a)** closed the regime map and κ-audit (first failure: TAIL `exponent`, $\kappa\omega>1$) and two comparison lemmas. **Reframed (v1.31):** the canonical split is targeted through the critical family $S_0=c\,q^{1/\omega}$. **CFS (S8b)** closed both comparison Q1 profiles (positive noise: support starts at the resident a) and N = 0 leading persistence of ordered spreads (shape mode $+\lambda P/2$). The trained-flow transfer through saturation is open. **RPS (S7a)** closed the right-half comparison state (Q4 atom at a plus Q1 spread), co-order, moment equations, and a self-consistent escape region for small b. The large-b gate moves inward. **GOE (S7b)** proved a unique gate threshold $b_c(\rho,\zeta)$ and ruled out sustained exponential escape of any positive-mass segment at N = 0. **IMP (S7c)** proved persistence of an inactive set of mass $\ge C_*/(1+T)$ and the exact weak-coupled gate formulas; a fixed fraction is open (OP-C1). **Canonical proofs paused (v1.35).** RMS closed the synthesis (regime-map theorem, composition lemmas, open problems). **Closure campaign:** OP-C1 refuted (FFP); OP-C2 partial (SWP: first-order bridge response, early descent strengthened); OP-C3 partial (CTE: trained compact Q1 entry at scaled precision $O(\delta^{1-\omega}+\delta)$). **MPB:** a mass-preserving far bridge deepens the coherent minimum (leading system, existence). Theorem-regime sweep: no hole flags; companions reproduce E5 in the population flow. **HBD:** the trained critical family produces strictly negative bridge forcing on the core at strong half mass. **BRW:** that band returns before weak learning, and continuously inactive mass vanishes. Moment envelopes $c_3e^{Ls}/(1+s)\le\cdot\le B_0e^{Ls}(1+s)^{-2/3}$; exact depth tests unsigned. **Next:** E5 step 4 (core descent and the pre-weak probe error) or P1. |
 | — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **S5b (PSE) closed:** background paid on the passage; full error and rates match at every fixed level $n'\le n$, so A-error-transfer holds on windows inside $(-\infty,s_n]$. **S5c (FWC) closed:** continuation by combined transverse energy; **A-error-transfer on every fixed window**. **S5d (RTA) closed:** rate transfer on J; **initialized Theorem A and persistence**. |
 
 **Dependency sketch**
@@ -1652,6 +1837,12 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
     - *Rule:* any region I suggest in a prompt comes with its face signs at the entry state computed by me in the review. "To verify" is not a substitute.
 40. **Inferences beyond an obstruction's or a test's quantifiers (roadmap §5.1, since early versions; v1.34 reading).** §5.1 read $E_{\rm loc}<0$, the failure of a sufficient smallness test, as proof that the shape becomes non-small. The v1.34 reading said "the split cannot be built by escape". GOE `gap` rules out only sustained exponential escape of a fixed positive segment on diverging horizons, and RPS `cone` gives real finite-time crossings. RMS stopped both.
     - *Rule:* restate a result with all its quantifiers before drawing a conclusion from it. A failed sufficient test proves nothing, and an obstruction excludes only what its hypotheses describe.
+41. **A per-mass field bound offered on an unreached chart (my closure-campaign prompt, OP-C3; a repeat of 23).** I proposed that source-2 donor corrections are $O(M)$ in scaled velocity up to mass δ. On the critical comparison shapes, the per-mass overlap grows like $S/M\ge c_1(c/A)^\omega$ as the cap shrinks, because the profile sits at large scaled angles. CTE refuted the step and proved the result by another route: physical second components across all labels.
+    - *Rule:* ledger 23 applies to my own hints too. Before charging a field by mass, bound its per-mass size on the actual profile.
+42. **A regime comparison asserted without computing the orbit (my v1.36 experiment interface and paper advice).** I said the deep-regime crossover is pre-saturation, so both harm channels lead. Integrating WIT's orbit gives $n(s_*)\approx0.988$ and an output share of about 6% [eval]. The E2 consistency holds for the simpler reason that both crossovers are post-saturation.
+
+43. **Leading-system facts applied across entrances (my v1.39 HBD scope line, my HBD reading and my step-3 prompt).** I described FFP's return ($x_f\to-\infty$) and IMP's gate-tail moment as governing the pre-weak interval of the HBD law. Both are proved for unit strong mass with their own prescribed aligned entrance. The HBD law has logistic mass and HBD's tail data. BRW had to rederive the budget, the protected barrier and the return for that entrance. Rule: a limiting-system theorem applies to another law only after its entrance and mass hypotheses are matched.
+    - *Rule:* before stating where an event falls on the orbit, compute it. A one-minute integration is cheap; a wrong mechanism claim in a paper is not.
 
 ---
 
@@ -1709,6 +1900,14 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | GOE | `09_canonical_regime_AN04/AN04_gate_threshold_and_outlier_escape_v1.tex` (+ review), prefix `an04goev1:` — S7b: unique initial gate threshold $b_c(\rho,\zeta)$, increasing in ζ; subunit-mass threshold set and RPS g-test range; exact large-x field; per-rank ceiling $r_+(f)<\lambda/2$; finite-horizon escape; obstruction to sustained exponential escape of any positive-mass segment; clock audit against the candidate weak delay |
 | IMP | `09_canonical_regime_AN04/AN04_inactive_mass_persistence_v1.tex` (+ review), prefix `an04impv1:` — S7c: inactive set of mass $\ge C_*/(1+T)$ persists on $[0,T]$ (moving barrier with averaged donor budget); initial return above $b_c$; bottom-rank exact field, downward start, zero crossing for large b; exact weak-coupled gate formulas and threshold; forced weak ceiling; unpaid wedge and output-speed faces (OP-C1) |
 | RMS | `09_canonical_regime_AN04/AN04_canonical_regime_map_synthesis_v1.tex` (+ review), prefix `an04rmsv1:` — S7-syn, synthesis: regime-map theorem (eight thresholds, C/H labels, placement of the canonical band and κ = 10); composition lemmas `join`, `horizons`; deep-vs-critical table; OP-W, OP-C1–C3; paper scope paragraph; two roadmap scope exceptions |
+| PB | `08_mechanism_AN01/AN01_post_half_mass_barrier_v1.tex` (+ review), prefix `an01pbv1:` — closure campaign, OP-W **closed**: $x>0$, $x>y$ at all finite times on the selected orbit (whole ratio box); $W_{\rm in}>0$ on all of J in the trained deep family; deep B-core complete |
+| FFP | `09_canonical_regime_AN04/AN04_fixed_fraction_persistence_v1.tex` (+ review), prefix `an04ffpv1:` — OP-C1 **refuted**: at $M=1,N=0$ every fixed interior rank returns below the gate and $x_f\to-\infty$; inactive fraction → 0 |
+| SWP | `09_canonical_regime_AN04/AN04_split_weak_passage_v1.tex` (+ review), prefix `an04swpv1:` — OP-C2 partial: exact first-order response to an added inactive cohort; exterior range; strengthened early descent; window and rebound tests open; Route B exact clock |
+| CTE | `09_canonical_regime_AN04/AN04_critical_trained_entry_v1.tex` (+ review), prefix `an04ctev1:` — OP-C3 partial: trained compact-Q1 entry at the critical family, scaled error $O_I(\delta^{1-\omega}+\delta)+o_q(1)$ at a measured mass; per-mass donor bound refuted; saturation contracts listed |
+| CCR | `00_roadmap/CLOSURE_CAMPAIGN_REPORT_v1.md` — advisor report for the closure campaign: status, approaches, feasibility, recommendation |
+| MPB | `09_canonical_regime_AN04/AN04_mass_preserving_bridge_depth_v1.tex` (+ review), prefix `an04mpbv1:` — OP-C2 follow-up, existence (leading system): a mass-preserving far bridge injected shortly before the coherent minimizer lowers the probe error there by $\varepsilon D$, $D=\tfrac12(\lambda PZ\kappa_x+A\kappa_y)-AZ$; aligned threshold; fixed-h adjoint test |
+| HBD | `09_canonical_regime_AN04/AN04_trained_half_mass_bridge_donors_v1.tex` (+ review), prefix `an04hbdv1:` — E5 step 2, trained flow at $S_0=cq^{1/\omega}$: at first strong half mass a Q1 donor band (inactive, beyond any L) gives strictly negative scaled forcing to the active Q4 core, in raw, equal-mass and full-concentration comparisons, on $[t_h-\tfrac14,t_h]$; physical bound, exact clock, Q4 coalescence, incoming budget |
+| BRW | `09_canonical_regime_AN04/AN04_bridge_return_before_weak_learning_v1.tex` (+ review), prefix `an04brwv1:` — E5 step 3, trained flow at $S_0=cq^{1/\omega}$: the HBD band returns at a fixed delay ($x\le\zeta-d_B$); weak learning is delayed by $k\sqrt{\log(1/q)}$; continuously inactive mass vanishes; limiting moment envelopes `budget` and protected tail; exact unsigned depth tests `payment`, `causal`, `endpoint` |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

@@ -1,0 +1,512 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,array,longtable,geometry,microtype}
+\geometry{margin=.77in,columnsep=.26in}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\E}{\mathbb E}\newcommand{\dd}{\,d}
+\newcommand{\idea}{\par\noindent\emph{Proof idea.} }
+\newcommand{\src}[1]{\textnormal{\small [#1]}}
+\title{Why a learned identity map can lose accuracy off the data cone}
+\author{Theory section draft for the ICML manuscript}
+\date{}
+\begin{document}\maketitle
+A probe can first benefit from learning an identity map and later lose
+that benefit while the network continues to learn the training task.
+In the small-noise family below, this change of direction occurs after
+both clusters meet explicit learning thresholds. The two clusters
+already push the probe in opposite directions before the reversal.
+What changes is their relative strength. Resolving these forces also
+explains why the corresponding linear population model behaves differently.
+
+\section{Model and learned windows}\label{p1thv1:model}
+In units of the larger cluster mean \(\mu_1\), draw \(X\) with equal
+probability from \(P_1=\mathcal N(e_1,q^2I_2)\) and
+\(P_2=\mathcal N(\rho e_2,q^2I_2)\), where
+\(q=\sigma/\mu_1,\ \rho=\mu_2/\mu_1,\ \lambda=\rho^2\).
+Train the bias-free untied two-layer ReLU population by gradient flow
+on \(\tfrac12\E\|f(X)-X\|^2\). Labels \(\beta\) have uniform
+probability on the circle; their input and output vectors start equal
+to \(\sqrt{S_0}(\cos\beta,\sin\beta)\) and evolve separately. Balance
+preserves their common length \(\sqrt m\). Writing
+\(a_\theta=(\cos\theta,\sin\theta)\), \(b_\psi=(\cos\psi,\sin\psi)\)
+and \(d\mu=m\,d\beta/(2\pi)\), the output is
+\[
+ f(X)=\int b_\psi(a_\theta^\top X)_+\,d\mu .
+\]
+For a unit probe \(\xi\), write \(E_\xi=\|\xi-f(\xi)\|^2/2\).
+Split its instantaneous derivative into \(D_1^\tau+D_2^\tau\)
+by taking the two cluster contributions to the parameter velocity,
+each with its mixture weight \(1/2\). A negative rate helps the probe.
+At a ReLU gate use the strict-positive selector. Rate signs below
+hold for those exact formulas, for classical derivatives where defined,
+and for the total time derivative almost everywhere. Define the cluster
+response and loss by
+\[
+ \mathsf m_p=\frac{\E_{P_p}[X_pf_p(X)]}{\E_{P_p}X_p^2},\qquad
+ \mathcal L_p=\tfrac12\E_{P_p}\|X-f(X)\|^2 .
+\]
+\src{RTA sourceconvention, learning; BC channels}
+
+Time on the limiting weak-growth orbit is centered at weak half mass:
+\(n=n_\rho(s)=(1+e^{-\lambda s})^{-1}\). For the initialized flow
+\[
+ \tau=\mu_1^2 t_{\rm phys},\quad s=\tau-\tau_h,\quad
+ \tau_h=t_\eta+\lambda^{-1}\log[(1-\eta)/\eta].
+\]
+Here \(\eta\le1/8\) is the fixed positive entry level and \(t_\eta\)
+is its analytically matched auxiliary logistic hit in normalized time.
+Finite-noise physical weak mass need not equal \(n\) or hit half at
+\(s=0\). Put \(\xi_q=(\sin(q\zeta),-\cos(q\zeta))\). WIT constructs
+a fixed positive-width rectangle
+\[
+ \mathcal P_*=[2/3\pm\delta_\rho]\times[5\pi/9\pm\delta_\zeta]
+\]
+(where \([a\pm h]=[a-h,a+h]\)), inside
+\([13/20,7/10]\times[87/50,7/4]\). On this rectangle all parameters
+share \(J=[s_*-r,s_*+r]\), with early and late subintervals
+\(J_-=[s_*-r,s_*-r/2]\), \(J_+=[s_*+r/2,s_*+r]\).
+The widths, \(r,p_*,\gamma_0>0\) and center \(s_*\) are analytic
+orbit constants. \src{WIT orbit, commonwindows, uniformtheorem;
+RTA time, rectangle}
+
+\begin{theorem}[Learned reversal and persistence]\label{p1thv1:reversal}
+For the initialized population above, \(S_0=q^{10}\), there is
+\(q_0>0\), unevaluated, such that for \(0<q\le q_0\) and all
+\((\rho,\zeta)\in\mathcal P_*\) the following hold.
+On \(J\), \(\mathsf m_1\ge1/2,\ \mathsf m_2\ge1/4\), and
+\(\mathcal L_p\le(169/196)\mathcal L_p(0)\) for both clusters, with \(\mathcal L_p(0)\) evaluated at initialization.
+The source margins are
+\[
+ D_1^\tau\le-\tfrac12p_*q^2,\qquad
+ D_2^\tau\ge \tfrac12p_*q^2 \quad\text{on }J .
+\]
+The total rate is at most \(-5\gamma_0q^2/8\) on \(J_-\) and at
+least \(5\gamma_0q^2/8\) on \(J_+\). There is an interior minimizer
+on \(J\). The errors at \emph{both} endpoints exceed its error by
+at least \(\gamma_0rq^2/4\). At each included ratio the probes form an
+off-cone angular sector of width \(2\delta_\zeta q\).
+
+There is a common finite \(S>s_*+r\) and, as \(q\downarrow0\),
+\(T_q\to\infty,\ \varepsilon_q\to0\) such that uniformly on the
+same rectangle, for \(S\le s\le S+T_q\),
+\[
+ |E_{\xi_q}(\tau_h+s)-1/2|\le\varepsilon_q q^2 .
+\]
+\src{RTA theoremA, persistence}
+\end{theorem}
+\idea One fixed set of weak-ancestry labels provides a clock accurate
+enough to select the limiting orbit. A separate estimate controls
+probe-active background at the \(q^2\) scale. This allows the initialized
+source rates to inherit WIT's strict margins. Comparing continuous
+errors at the endpoints of \(J_-\) and \(J_+\) gives the rebound.
+After the limiting strong input clears the probe, its scaled error is
+zero. Uniform convergence on each fixed later interval yields the
+unspecified growing horizon by a diagonal argument.
+\src{RTA inventory, ratetransfer, theoremA, persistence}
+
+\section{Which motion changes the probe error?}\label{p1thv1:mechanism}
+The training cluster specifies the \emph{source} of a gradient.
+A moving neuron's cohort is its \emph{carrier}. A cohort whose training
+output enters the residual is a \emph{producer}, even when its own
+probe gate is closed. These distinctions matter for cluster 2.
+
+Let \(\mathcal K\) be the fixed strong core transported from entry and
+\(S_w\) the fixed selected weak cohort (the bulk weak clock).
+Their current masses are \(M=\mu(\mathcal K), N=\mu(S_w)\).
+On the learned window \(M=1+O(q^{11/10})\),
+\(N=n+O(q^{1/8})\), and \(\mathsf m_2=N+O(q^{1/4})\).
+On \(\mathcal K\) write \(\theta=qx,\psi=qy\);
+on the selected weak chart the input/output directions are
+\((\sin(qu),\cos(qu))\) and \((-\sin(qv),\cos(qv))\).
+Let \((X_*,Y_*,U_*,V_*)\) be the strong and weak coordinates on WIT's
+selected coherent branch at \((\rho,s)\). The branch has strong mass
+one, weak mass \(n\), and the resident limit specified in the appendix.
+Define \(K(t)=\phi(t)+t\Phi(t)\) for standard normal density and
+distribution \(\phi,\Phi\). Set \(A_*=\zeta-X_*>0,\ Z=X_*-Y_*\),
+\(P_x=\Phi(\rho X_*)\). The exact exposure and cross-output lag are
+\begin{align*}
+ \mathcal A_q&=\int_{\mathcal K}(\zeta-x)d\mu,\\
+ \mathcal L_q&=\frac{\E_{P_1}[X_1(f_2(X)-X_2)]}{q(1+q^2)} .
+\end{align*}
+Here \(\mathcal L_q\) denotes a lag, distinguished by its subscript
+from cluster loss \(\mathcal L_p\). The core is strictly probe-active.
+\src{CPD scope, help; RTA coregap, learningresponse; WIT orbit}
+
+\begin{theorem}[Help and harm on the learned window]\label{p1thv1:channels}
+Under Theorem~\ref{p1thv1:reversal}'s hypotheses, uniformly on \(J\),
+\begin{align*}
+ \mathcal L_q&=Y_*+nK(U_*)+O(q^{1/20}),\\
+ q^{-2}D_1^\tau&=-\mathcal A_q\mathcal L_q/2+O(q^{1/20}),\\
+ q^{-2}D_2^\tau&=T_{\rm in}+W_{\rm in}+T_{\rm out}+W_{\rm out}
+                         +O(q^{1/20}).
+\end{align*}
+The limiting lag is bounded below by a positive constant, and the
+help error is below its signed margin for small \(q\). The four
+leading terms are
+\begin{align*}
+ T_{\rm in}&=-\lambda Z^2P_x/2,&
+ W_{\rm in}&=\lambda nZ(V_*-Y_*)P_x/2,\\
+ T_{\rm out}&=\rho A_*K(\rho X_*)/2,&
+ W_{\rm out}&=-nT_{\rm out}.
+\end{align*}
+Here \(T_{\rm in}\) combines target and core production.
+The target and selected weak contributions to output rotation sum
+to \((1-n)T_{\rm out}>0\). On all of \(J\),
+\(T_{\rm in}\le0,\ T_{\rm out}>0,\ W_{\rm out}<0\).
+The sign \(W_{\rm in}>0\) is proved on \(J\cap(-\infty,1/1000]\);
+on any remaining \(J\cap(1/1000,\infty)\) it is OP-W.
+Strict limiting signs transfer on compact sets with a positive
+margin. \src{BC twoway; CPD table, help; PHS theorem, transfer}
+\end{theorem}
+\idea In each exact output derivative, retain radial change, input
+rotation and output rotation. Split the training residual into target
+and fixed-label output producers \emph{before} integrating against
+the actual probe weights. For source 1 the target and core contributions
+to input rotation and radial change cancel to leading order.
+The surviving output motion measures the full signed Gaussian
+regression lag. For source 2 both rotations survive. In particular
+the leading output motion is positive before weak saturation, even
+if the selected weak carriers never fire on the probe.
+\src{BC twoway; CPD table, help}
+
+\begin{theorem}[Linear control]\label{p1thv1:linear}
+Replace the ReLU by the identity activation with identity targets.
+Let the data second-moment matrix be \(A=\operatorname{diag}(a_r)\),
+\(a_r>0\), in an orthonormal basis. Suppose input and output weights
+are aligned and equal initially almost everywhere and the initial
+input Gram matrix in that basis is \(\operatorname{diag}(c_r)\)
+with \(0<c_r<1\). Then the global unique linear map stays diagonal
+with entries \(\ell_r=[1+(c_r^{-1}-1)e^{-2a_r\tau}]^{-1}\).
+For every nonzero \(\xi\) at every finite time,
+\[
+ E_\xi'=-2\sum_r a_r\ell_r(1-\ell_r)^2\xi_r^2<0,
+ \qquad E_{\xi}=E_{-\xi}.
+\]
+If each mixture-weighted cluster moment \(A_p\) is also diagonal
+in this basis, its source derivative has the same sum with
+\(a_r\) replaced by \((A_p)_{rr}\), hence is nonpositive; it is
+negative if \(\xi\) has support on a positive cluster entry.
+For the two Gaussian clusters, aligned isotropic continuum
+initialization gives \(G_0=S_0I/2\), \(0<S_0<2\).
+The finite-width SIM conclusion requires an exactly positive diagonal
+Gram with entries below one on the stated population data.
+\src{LP linear-theorem, linear-SIM}
+\end{theorem}
+\idea Alignment and common diagonal axes preserve independent scalar
+logistic modes. Each reduces every squared error component on which it
+acts. By contrast, uniform angles in the positive quadrant give
+\(G_{11}=G_{22}=S_0/2,\ G_{12}=S_0/\pi\). This Gram leaves the
+commuting class when the data eigenvalues differ. The theorem then
+gives no sign prediction. Isotropic finite draws can also leave the
+class. \src{LP linear-SIM and following positive-quadrant remark}
+
+\section{Where the small-noise theory applies}\label{p1thv1:regime}
+\begin{proposition}[Regime map and critical entry]\label{p1thv1:map}
+Let \(S_0=q^\kappa\), \(q\downarrow0\), \(13/20\le\rho\le7/10\).
+Set \(\omega=(1-\lambda)/2,\ a=\rho K(\rho a),\
+P=\Phi(\rho a),\ d=(1-\lambda P)/2,\ s_{\rm sh}=d/\omega\).
+At the nominal strong clock \(T_A=\log(A/S_0)\), \(A>0\) fixed,
+the six \textbf{C} (comparison-only) thresholds are
+\[
+ \underbrace{1/\omega}_{\kappa_c},\
+ 2/\lambda,\ 2/\omega,\ 2/[\lambda(1-\lambda)],\
+ 4/\lambda,\ 2/\lambda+2/\omega .
+\]
+They mark, respectively, interior Q1 reaching the strong scale, bulk Q2
+crossing the weak axis, last Q1 chart arrival, bulk Q2 reaching an
+interior Q1 angle, last Q2 weak-axis crossing and bulk Q2 strong-chart
+arrival. The two \textbf{H} (candidate-conditional) thresholds are
+\(2s_{\rm sh}/(1-P)\) and \(8s_{\rm sh}/[3(1-P)]\). They test
+small shape and a complementary-mass charge assuming transferred
+entry, local gain and controlled radial amplification. The entire
+band \(2<\kappa<3\) lies below all eight. Ten lies above all except
+the last comparison threshold.
+
+At \(S_0=cq^{1/\omega}\) with \(c>0\) fixed,
+\(b=(c/A)^\omega\). In the positive-noise target-only comparison the
+right-half limiting mass is \(A/4\), half an aligned atom at \(a\)
+from Q4 and half a distributed Q1 component above \(a\).
+For offsets on a compact subset of \((a,\infty)\), the
+right-half inactive fraction equals
+\begin{equation}
+ I_{\rm ent}(b,\zeta)=\frac12\left[1-\frac4\pi
+ \int_0^{H(\zeta)/b}\frac{du}{(1+u^2)^2}\right].
+ \label{p1thv1:fraction}
+\end{equation}
+Here \(H(w)=w\exp[-\omega\int_w^\infty
+ (B(r)^{-1}-(\omega r)^{-1})dr]\) on \(w>a\), with
+\(B(r)=[r-\rho K(\rho r)]/2\).
+\src{RMS map, join}
+\end{proposition}
+\idea Compare the angular arrival clocks on their specified sectors
+with \(T_A\). The ratio \((S_0/A)^\omega/q\) remains finite and
+nonzero precisely on the critical scale up to a fixed prefactor.
+At positive noise the cross-cluster gate changes the entry coordinate
+from the zero-noise value \(b\tan\beta\) to \(H^{-1}(b\tan\beta)\).
+Weighting Q1 by \(A\cos^2\beta\,d\beta/(2\pi)\) and adding Q4 yields
+\eqref{p1thv1:fraction}. Prescribing this shape as leading data is
+a separate step from producing it by training. \src{RMS join, horizons}
+
+\paragraph{Limitations.}
+The deep theorem has an unevaluated \(q_0\), an \(O(q)\)-wide sector
+and an unspecified persistence horizon. It does not cover the reported
+\(176^\circ\) reversal or the other persistent directions outside its
+sector. OP-W is the remaining weak-produced input sign. For the
+critical family, OP-C1 asks whether a fixed positive fraction stays
+inactive indefinitely; the proved survival guarantee is
+\(C_*/(1+T)\) on each finite zero-weak-mass resident interval.
+OP-C2 asks for the coupled weak passage, seed, clock, exposure and
+exact lag. OP-C3 asks for critical trained entry, including
+noise-scale angular or weighted-profile precision and tail matching.
+At \(q=1/20,\ S_0=1/5000\), \(20^2<5000<20^3\) gives exponent
+placement only. No canonical reversal time, magnitude, attribution
+or persistent direction is certified here. Any conditional
+computer-assisted local evidence has separate hypotheses and is
+not a premise. \src{RTA persistence; PHS transfer; RMS open, paper}
+
+\clearpage\onecolumn\appendix
+\section{How the initialized theorem is assembled}\label{p1thv1:architecture}
+The proof has two sensitive scales. Long before the learned windows,
+the weak seed is a power of \(q\), so an order-one clock error changes
+its phase. On the learned windows the probe signal is of order \(q^2\),
+so a small unscaled population error alone cannot give its sign.
+The following dependency list follows RTA's \texttt{inventory, handoff}
+and roadmap v1.36, Section 9. S2 and S3 close jointly.
+\begin{enumerate}
+\item \textbf{S1. Entry at strong half mass.} The early comparison
+separates positive strong ancestry, interior Q2 and endpoint layers.
+Same-field relative transport transfers the strong profile to a moving
+overlap; a mass clock then carries it to \(M=1/2\) at \(10\ell+O(1)\).
+Fixed-constant Q2 entry and the recruited tail supply the seed
+\(H_0\asymp A_q^{-\lambda}q^{10(1-\lambda)}\), transverse energy
+\(O(q^3)\), and the secondary profile. Here \(A_q\) is the bounded
+positive strong-entry weight factor. Sources: F/P, ARR, TAIL, Q2,
+PROFILE, Q2E, OWPT, MOMC, Q2EP, Q2EC, SEP. The fixed-offset SMCP
+audit motivates the moving overlap.
+\item \textbf{S2. Tail and distance control, stopped form.} A clock
+cohort with small transport defect sets the time; a larger weak
+cohort is allowed fixed distortion. A distance envelope and capped
+radial gain bound the secondary energy and the complement's
+integrated field. The signed-gate budget is applied at each stopped
+endpoint. Sources: TAILREP, BULK, RCET, LCRC, DECG, GESG, S2CP.
+\item \textbf{S3. Strong field and joint passage.} Keep the strong
+donors explicitly and regress the selected weak response in the
+partial gate. The response ledger caps weak energy; Q3 strip
+budgets pay outside contributions. A joint first-exit argument
+and a positive response barrier close the passage to the first
+small fixed response \(c_b\). Sources: LOC, CLOCK, CFR, CFA, Q3SB,
+PISB, LSB, WPT, RB, with S2CP. This supplies a retained core of
+radius \(O(q^{1/20})\) and clock defect \(O(q^{1/8}+q^2\ell)\).
+\item \textbf{S4. Match and select the weak orbit.} Return of the
+actual weak input to the positive side is needed to use the
+contraction estimate. Strong-reference reduction, weighted weak
+concentration, and the actual clock select the orbit at a fixed small
+weak mass with \(O_\eta(q^{1/20})\) error. Sources: WEAK, TAILREP,
+SI (interface), WBR, MP, SRR, WCS.
+\item \textbf{S5. Continue to the windows and transfer rates.}
+Transverse probe-sector energy pays the background on the \(q^2\)
+scale. Continue physical masses and first moments on each fixed time
+window, separate every core label from the gate, then compare the two
+source derivatives separately. Cluster losses use a full-output
+\(L^2\) estimate. WIT supplies limiting margins; LP/LPR supply
+common late clearing. Sources: CWI, PSE, FWC, RTA.
+\item \textbf{S6. Resolve motion and producers.} Exact source-by-motion
+bookkeeping retains the second source's output channel. Fixed-label
+producer integration and a signed Gaussian regression give
+Theorem~\ref{p1thv1:channels}; PHS extends one sign slightly beyond
+half mass. Sources: P, BC, CPD, PHS. This interpretation uses S5;
+S6 is not a prerequisite for Theorem~\ref{p1thv1:reversal}.
+\end{enumerate}
+\paragraph{Constant order.} Keep the ratio box, model constants,
+duration cap and the outside-budget scale first. In the joint passage
+fix the small response level and the residual/energy bounds before
+choosing the small-ratio cutoff \(C_0\); its partition thresholds
+are chosen afterwards (the energy guard is \(2c_b\)). Keep the
+WPT/RB--WCS order and fixed selection level \(\eta\). Freeze WIT's
+original rectangle, windows, gaps and strict margins. Then choose the
+finite continuation window, enlarged chart radius and field, distance,
+background and learning constants. Choose \(q\) last, including the
+conditions that normalized source error is below
+\(\min(p_*/8,\gamma_0/16)\) and that the two endpoint errors fit
+within the rebound margin. For persistence, common clearing is fixed
+before the separate diagonal sequence of noise thresholds.
+\src{RTA q0, handoff, persistence; PHS transfer}
+
+\paragraph{Comparator for reconstructing the coefficients.}
+Writing \((x,y,u,v)=(X_*,Y_*,U_*,V_*)\), the branch used in the four
+terms is the solution, on \(n=(1+e^{-\lambda s})^{-1}\), of
+\[
+\begin{aligned}
+ 2x'&=\lambda[nv-x+(1-n)y]\Phi(\rho x),&
+ 2y'&=-y-nK(u)+\rho(1-n)K(\rho x),\\
+ 2u'&=(1-n)(\phi(u)-\lambda u)-(nu+y)\Phi(u),&
+ 2v'&=\rho K(\rho x)-\lambda v .
+\end{aligned}
+\]
+Its incoming state is \((a,a,u_*,a/\lambda)\), where
+\(a=\rho K(\rho a)\) and \(\phi(u_*)-a\Phi(u_*)-\lambda u_*=0\).
+This identifies the comparator and its phase without using a measured
+crossover time. \src{WIT orbit; RTA time}
+
+\section{Reading the experimental ledgers}\label{p1thv1:translation}
+The translations use the setup reported for \emph{Swing-by-TwoLayerReLU}
+in roadmap v1.36. An exact link identifies a conversion or identity.
+A qualitative link compares observations with a theorem on a different
+family. A prediction proposes a check. Unreconciled means the two sign
+assignments have yet to be matched.
+\small\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.18\textwidth}
+ >{\raggedright\arraybackslash}p{.42\textwidth}
+ >{\raggedright\arraybackslash}p{.32\textwidth}@{}}
+\toprule Measured quantity & Theory coordinate & Link and qualification\\\midrule\endhead
+Training setup & Finite sum \(\sum_{i=1}^{200}w_i(u_i^\top x)_+\),
+identity targets and full-batch loss \(\sum_i\|f(x_i)-x_i\|^2/(2N_{\rm data})\).
+Theory uses the corresponding population expectation. &
+Exact architecture and loss convention. Finite samples and width
+are separate from the continuum theorem.\\
+Means and noise & \(\mu_1=3,\ \mu_2=2,\ \sigma=3/20\), giving
+\(\rho=2/3,\ q=1/20,\lambda=4/9\). &
+Exact change of data units. The cluster-loss ratios are invariant
+under the common squared data-unit conversion.\\
+Initialization & For aligned units of norm \(\epsilon\),
+\(S_0=h\epsilon^2=1/5000\). &
+Exact mass definition. A finite isotropic angular draw need not have
+the population Gram.\\
+Probe and clock & \(\arg\xi=-\pi/2+q\zeta\).
+At \(-85^\circ\), \(q\zeta=\pi/36\), hence \(\zeta=5\pi/9\).
+\(\tau=9t_{\rm phys}\), \(D_p^{\rm phys}=9D_p^\tau\);
+the physical window is \((\tau_h+J)/9\). &
+Exact unit conversions. An empirical response-half hit is a different
+event from the analytic phase match. \src{RTA time}\\
+Learning traces & \(\mathsf m_p\) is a regression coefficient,
+\(M,N\) are fixed-cohort radial masses, \(n\) is a logistic comparison.
+Match the logged regression numerator and denominator. &
+Exact definitions; qualitative proxies outside the deep window.
+On the deep learned window \(\mathsf m_2=N+O(q^{1/4})\) and \(N=n+O(q^{1/8})\) hold. \src{RTA learning}\\
+Cluster-sourced rate & Contract the full probe residual with the
+output derivative generated by one cluster, including its mixture
+weight. The source derivatives add to the total.
+& Exact for matched definitions. Qualitative for the reported
+negative-to-positive switch at canonical initialization.\\
+Help and exposure & \(Q_1=1+q^2,\ z=a_\theta^\top\xi,\ 
+d_\xi=-(\xi-f(\xi))^\top b_\psi^\perp\).
+With current radial averages on the active core,
+\(B_0=M Q_1\bar z\,\bar d_\xi\,r_{21}/2\), \(r_{21}=q\mathcal L_q\).
+The exact source is \(-B_0-\epsilon_B+r_1\), with geometry defect \(\epsilon_B\) and remaining motions \(r_1\).
+Multiply by \(\mu_1^2\) for physical rates. &
+Exact product term plus signed remainders. The pilot's near-one
+ratio is qualitative evidence about remainder size. Absolute and
+signed projections agree only with the matching sign. \src{CPD help}\\
+Motion ledger & The exact remainder \(r_2\) after subtracting core input
+rotation contains core output rotation, radial motion and noncore
+source terms. &
+Exact bookkeeping for matched cohorts. Equating the entire remainder
+or a reported percentage to one leading term is a prediction.
+\src{BC twoway; CPD table}\\
+Producer ledger & Split \(X-f(X)\) by the producer of each training
+output while retaining the same carrier gate and probe weight.
+An inactive weak carrier can shape the strong carrier's velocity. &
+Exact distinction. Moving masks, counts and mean-angle evaluation
+can change the attribution. Early weak input sign is unreconciled.\\
+Architecture and duration & E1/E2 compare architectures; E3 also changes
+width or angular initialization. E6 reports persistence at the
+canonical probe through physical time 100. &
+Exact linear contrast only with LP's hypotheses. Qualitative for finite
+canonical observations and duration; no link for directions outside
+the proved sector.\\
+\bottomrule\end{longtable}\normalsize
+
+\section{Checks for existing logs}\label{p1thv1:checks}
+Match source units, carrier cohorts, gates and signed residual producers
+before comparing traces. Use the logs' derivative/discretization precision
+for exact identities. For extrapolations, fix the tolerance from the
+logging protocol before comparing results. A failure at the canonical
+pair tests the extrapolation, not a continuum theorem with unevaluated
+\(q_0\).
+
+\begin{enumerate}
+\item \textbf{Output rotation at crossover.}
+Theorem-regime: with \(O_{2,\mathcal K}\) the source-2 strong-core
+output-rotation contribution and \(d_{2,*}\) the four-term sum,
+\[
+ \frac{O_{2,\mathcal K}^{\rm phys}}{\mu_1^2q^2T_{\rm out}}
+       =1-n+O(q^{1/20}),\qquad
+ \frac{O_{2,\mathcal K}}{D_2}
+       =\frac{(1-n)T_{\rm out}}{d_{2,*}}+O(q^{1/20}).
+\]
+On \(J\), \(T_{\rm out}\) has the positive core gate margin, and WIT
+bounds \(d_{2,*}\) below. Prediction outside the theorem regime (E2):
+at the measured crossover, separate core output motion from radial
+and noncore motion in \(r_2\), and compare the coefficient-normalized
+output term with the remaining weak mass deficit. For a share divide
+by cluster-2 harm, not by total rate at its zero. A resolved wrong
+sign, or systematic failure to track the deficit after normalization,
+rejects this extrapolation. The reported post-saturation decay of
+\(r_2\) is qualitative evidence. \src{BC twoway; CPD table; WIT uniformtheorem}
+
+\item \textbf{Help product.}
+Theorem-regime: \(-D_1^\tau/(q^2\mathcal A_q\mathcal L_q/2)
+=1+O(q^{1/20})\) since the scaled denominator has a positive margin.
+Prediction outside the theorem regime: compute \(B_0\) with the
+same radial weights and full \(X_1\)-weighted lag; distinguish
+core output help from the full cluster source. A discrepancy beyond
+recording precision after restoring the signed remainder terms
+falsifies the bookkeeping match. A wrong-sign lag or a product
+residual comparable with help rejects product dominance there.
+\src{CPD help, table}
+
+\item \textbf{Linear monotonicity.}
+Theorem-regime (exact): verify alignment and the common eigenbasis
+of initial Gram and data moments, with \(0<c_r<1\). Every nonzero
+probe strictly descends and antipodes agree. A resolved increase or
+antipodal difference in that exact flow contradicts the prediction;
+a positive cluster source contradicts it when that cluster's moment
+is also diagonal. For full-batch sample runs check the actual data
+moment. Agreement of E1/E2 finite runs is qualitative without
+exact commutation. For narrow or quadrant-initialized E3 runs,
+inspect the off-diagonal Gram; leaving the commuting class by itself
+predicts no transient. \src{LP linear-theorem, linear-SIM}
+
+\item \textbf{Inactive entry fraction.}
+Comparison theorem, prediction outside the trained theorem regime:
+choose \(A\) in advance, read the normalized-time slice
+\(T_A=\log(A/S_0)\), and substitute \(b=(S_0/A)^\omega/q\) in
+\eqref{p1thv1:fraction}. Increasing \(S_0\) increases the predicted
+inactive fraction. Use radial mass, initial right-half ancestry and
+current activity at that time. A reproducible opposite ordering, or
+failure to approach the predicted curve in matched comparisons,
+rejects its use as a trained-entry proxy. Changing \(A\) changes
+both the fraction and its time slice. A bridge share at crossover
+measures a different state. \src{RMS join}
+
+\item \textbf{Position of the sweep.}
+At \(\rho=2/3\), \(\kappa_c=18/5\); the reported range of about
+\(2.1\) to \(5.9\) [eval] straddles it. The exact horizontal
+coordinate is \(\log b=(1-\kappa\omega)\log(1/q)-\omega\log A\).
+Recomputing \(\log(1/S_0)/\log(1/q)\) from logged initial norms
+and finding all values on the same side would falsify the stated
+sweep placement. Prediction outside the theorem regime: larger
+powers at fixed \(q,A\) correspond to smaller \(b\), hence smaller
+predicted inactive entry mass. An opposite matched entry trend
+rejects this extension. The placement gives no finite-\(q\) cutoff
+for reversal incidence. \src{RMS map, join}
+
+\item \textbf{Early weak input attribution.}
+Unreconciled; prediction outside the theorem regime. The reported
+early weak input attribution is negative, whereas the deep
+\(W_{\rm in}\) is positive on \(J\cap(-\infty,1/1000]\).
+Check whether the observation is even on the corresponding learned
+window. Match the weak mass phase and split the weak training output
+inside the residual. Keep the strong carrier's input-rotation
+channel and its actual rate weights. A negative like-for-like
+canonical term rejects the sign extrapolation; an unmatched time
+or producer mask leaves the check open. This comparison supplies
+no sign theorem for OP-W. \src{CPD table; PHS transfer}
+\end{enumerate}
+\paragraph{Source keys.}
+The suffixes cited above have prefixes RTA \texttt{an07rtav1:},
+BC \texttt{an01bcv1:}, CPD \texttt{an01cpdv1:}, PHS \texttt{an01phsv1:},
+RMS \texttt{an04rmsv1:}, WIT \texttt{inc:AN06:v2:},
+LP \texttt{inc:LP:v1:}. Experimental links follow the roadmap v1.36
+experiment interface. Empirical measurements enter no theorem premise.
+\end{document}

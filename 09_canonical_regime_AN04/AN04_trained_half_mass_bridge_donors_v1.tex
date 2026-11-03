@@ -1,0 +1,436 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=.9in}\setlength{\emergencystretch}{1.3em}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\dd}{\,d}
+\title{A trained critical bridge at first strong half mass}
+\author{AN04 proof increment}\date{Version 1}
+\begin{document}\maketitle
+
+\paragraph{Clock and signed observable.}
+Work in P's normalized time with aligned balanced isotropic continuum
+initialization, $S_0=cq^{1/\omega}$, fixed $c>0$,
+$13/20\le\rho\le7/10$ fixed, $\lambda=\rho^2$, $\omega=(1-\lambda)/2$.
+The data are the equally weighted Gaussians
+$P_1=N(e_1,q^2I)$ and $P_2=N(\rho e_2,q^2I)$.
+Write $\alpha$ for the initial angle with law $\dd l=\dd\alpha/(2\pi)$,
+$U=\sqrt m\,a_\theta$, $W=\sqrt m\,b_\psi$ for the two vectors,
+and $M_q=\int_{-\pi/2}^{\pi/2}m\dd l$ for the radial mass of fixed
+right-half ancestry. Use the scaled current angles $x=\theta/q$,
+$y=\psi/q$ on the right-facing chart. Let $a=\rho K(\rho a)$,
+$K(t)=\phi(t)+t\Phi(t)$ and fix $\zeta>a$.
+In this chart the probe is active for $x<\zeta$ at bounded coordinates.
+For a fixed label band $B$, put
+$f_B(D)=\int_B W(U^TD)_+\dd l$ and
+$C_B=\mathbb E[f_B(D)D^T{\bf1}_{a_\theta^TD>0}]$.
+Its actual fitted contribution to the two scaled receiver velocities is
+\[
+  (v_x^B,v_y^B)=-q^{-1}
+       (b_\psi^TC_Ba_\theta^\perp,(b_\psi^\perp)^TC_Ba_\theta).
+\]
+All expectations include the mixture weights. These are contributions
+at the actual trained state, with all donors present during training.
+
+\begin{theorem}[Trained flow]\label{an04hbdv1:main}
+For every nonempty compact interior Q4 interval $C$ of positive length,
+there exist a fixed compact interior Q1 interval $B$ of positive
+length and $\gamma>0$ such that for all sufficiently small $q$:
+\begin{enumerate}
+\item The first time $t_h$ with $M_q=1/2$ exists and
+$t_h=\log(4/S_0)+o(1)$.
+\item At $t_h$ every receiver in $C$ is strictly active and every
+donor in $B$ is strictly inactive, with fixed scaled gate margins.
+The radial mass of $B$ tends to
+$m_B^*=2\int_B\cos^2\alpha\dd l>0$.
+\item At each receiver in $C$, $v_x^B\le-\gamma$ and
+$v_y^B\le-\gamma$ at $t_h$. The same pair of strict signs holds for
+the difference between these velocities and those produced by an
+equal mass placed at the receiver's current coordinates.
+Compared with concentrating \emph{all} right-half mass at that receiver,
+the full trained angular field also has both components smaller by at
+least $\gamma$ in scaled units. These three velocity comparisons hold
+throughout $[t_h-1/4,t_h]$.
+\end{enumerate}
+\end{theorem}
+
+\paragraph{Models and dependencies.}
+P exactflow, representation, earlybounds and targetcomparison apply
+to this Gaussian initialization; the early angular and radial comparison
+is used only below its small envelope cap. CFS laws and RPS q4 are
+target-only, positive-noise sector limits at $T_A=\log(A/S_0)$ for
+fixed $A,c>0$, uniform on compact interior labels. CTE early and profile
+are trained compact-Q1 estimates on the small cap. The compact-chart
+Gaussian target and per-donor formulas below are the individual kernels
+in MOMC donorkernels, whose expansions require a bounded receiver and
+bounded donor chart, not ten-power initialization. We treat all other
+donors separately. WIT popsystem and RPS rank specify the limiting
+field; the passage to this field and its ingoing conditions are proved
+here. The time interval below ends at $S_0 e^t=8$, with no weak-switch
+or weak-seed assumption.
+
+\section{Physical bounds before taking chart limits}
+Use $\tau=t+\log S_0$, $A=e^\tau$, $H=\sqrt{S_0}e^{a_*t}$,
+$a_*=1/2+q^2$, $d_*=\lambda/2+q^2$, $E=e^{-\omega t}+q$.
+Through $\tau\le\log8$ one has $H^2=Ae^{2q^2t}\le9$ for small $q$.
+P's spectral envelope gives $S=\int m\dd l\le H^2$ throughout.
+The generic bound $|(\log m)'|\le 2a_*(1+S)$ follows from exactflow
+and $\|C_f\|\le a_*S$. Integration of the upper bound yields
+$\sqrt m\le H\exp(H^2/2)\le C H$ for every label. Here and below
+$C$ can change but is independent of $q$ and label. We claim
+\begin{equation}\label{an04hbdv1:physical}
+ B_2:=\sup_\alpha\max(|U_2|,|W_2|)\le C H E .
+\end{equation}
+Indeed $U'=R^TW$, $W'=RU$, $R=A_\theta-C_f$, with
+$|(A_\theta)_{12}|\le\mathbb E|D_1D_2|\le Cq$,
+$(A_\theta)_{22}\le d_*$. The fitted output obeys
+$|f_1|\le CH(H|D_1|+B_2|D_2|)$ and $|f_2|\le CHB_2|D|$,
+so $|(C_f)_{12}|+|(C_f)_{21}|\le C(HB_2+qH^2)$.
+Hence $D^+B_2\le(d_*+CH^2)B_2+CqH(1+H^2)$.
+The integral of $H^2$ is at most $9/(2a_*)$, $B_2(0)\le\sqrt{S_0}$,
+and $a_*-d_*=\omega>0$. Scalar integration proves
+\eqref{an04hbdv1:physical}. This extends the physical bound beyond
+the small-cap range of CTE without extending its angular comparison.
+
+At any fixed small nominal cap $A_0$, the entire left ancestry has
+mass per label $O_{A_0}(q^2(1+t)^2+S_0)$.
+For clarity, in target-only dynamics the component equation of
+PROFILE coordinate gives for positive parts
+$p_j'\le(\mu_j^2/2+q^2)p_j+CqH$, $\mu=(1,\rho)$, and negative
+parts grow at most at rate $q^2$. With $p_1(0)=0$ on the left,
+$p_1\le CqtH$, $p_2\le\sqrt{S_0}e^{d_*t}+CqH$ and the negative
+parts are at most $\sqrt{S_0}e^{q^2t}$. Square and use
+$e^{-2\omega t}=q^2(c/A_0)^{2\omega}$ at observation.
+P targetcomparison multiplies the weight by at most $e^{4H^2}$
+on this small cap. The generic logarithmic bound propagates the
+estimate from $A_0$ to $8$ over a fixed elapsed interval. In
+particular the entire left contribution divided by $q$ tends to
+zero there, even using just its mass and $\|C_{\rm left}\|\le
+a_*\int_{\rm left}m\dd l$.
+
+On a compact interior right label set and a compact $\tau$ interval
+the radial weights are bounded below by a positive constant. Start at
+a smaller fixed cap with CFS laws or RPS q4 and P targetcomparison,
+then integrate the generic lower logarithmic bound over finite time.
+At that starting cap both angles are on the right chart: CTE supplies
+this on Q1 and the Q4 version is justified below. Equation
+\eqref{an04hbdv1:physical} then keeps both angles on that chart
+($\sqrt m$ is bounded below and the sines are $O(q)$), with
+bounded scaled coordinates. This assertion is only label-compact.
+
+\paragraph{Q4 entry.}
+The proof of CTE early for an individual receiver requires just
+$|\sin\widehat\theta|\le C_I E$ on the target orbit in addition to
+the all-sector physical bound and early alignment guard. For compact
+Q4, while $\widehat\theta<0$, PROFILE angle gives
+$\widehat\theta'\ge-\sin\widehat\theta\cos\widehat\theta/2$,
+hence $\tan|\widehat\theta|\le e^{-t/2}\tan|\alpha|$.
+At zero the field points up, and at a sufficiently large positive
+angle $qL$ it points down, by its fixed-chart limit
+$[-L+\rho K(\rho L)]/2<0$. This proves the sine bound from
+initialization. To spell out the comparison, on the small cap the
+antisymmetric fitted projection at alignment is $O(H^2E)$ by
+\eqref{an04hbdv1:physical}; away from alignment add
+$CH^2|\psi-\theta|$. The target alignment term is inward under
+P's lift guard. Integration gives $|\psi-\theta|\le CH^2E$.
+For $e=\theta-\widehat\theta$, $|v_0'|\le a_*$ and the aligned
+fitted projection is $O(H^2(E+|\sin\theta|))$, giving
+$D^+|e|\le(a_*+CH^2)|e|+C_IH^2E$. Integration from zero uses
+$2a_*-\omega-a_*=d_*>0$ and gives the same $C_IH^2E$ error.
+Thus, by RPS q4, at each fixed small $A$ both Q4 scaled angles
+are within $C_I A[1+(c/A)^\omega]+o_{q;A,I}(1)$ of $a$.
+On Q1 the same bound about $H_{\rm CFS}^{-1}((c/A)^\omega\tan\alpha)$
+is CTE profile. These estimates concern each compact interior set;
+their constants need not stay bounded at a vertical initial axis.
+
+\section{All donors in the limiting equations}
+The following argument uses subsequences to avoid assuming a unique
+full profile arriving from infinite negative $\tau$. All the inequalities
+used at half mass will hold for every subsequential profile.
+
+\paragraph{Compact kernels and endpoint costs.}
+For a bounded-chart receiver and bounded-chart donor at
+$(\xi,\eta)$ the limiting per-unit-mass fitted contributions,
+with the sign of the fitted residual already included, are
+\[
+\begin{array}{c|cc}
+ &2v_x&2v_y\\ \hline
+ P_1\text{ term}&x&y-\eta\\
+ P_2\text{ term}&-\rho F(\rho x,\rho\xi)&0
+\end{array}
+\qquad
+ F(t,r)=\phi(\min(t,r))+r\Phi(\min(t,r)).
+\]
+Here the two rows sum to the doubled mixture velocity.
+On $P_1$ the right-facing gates tend to one, while
+$a^\perp\cdot D=q(Z_2-x)+O_{L^2}(q^2)$.
+On $P_2$, $D=(qZ_1,\rho+qZ_2)$ and the donor activation divided by
+$q$ tends to $(Z_1+\rho\xi)_+$. The receiver gate selects
+$Z_1>-\rho x$. These limits give the table by Gaussian integration
+and are uniform on fixed compact charts (also directly MOMC
+donorkernels). The doubled target velocities tend to
+$(-x+\rho\phi(\rho x)+\lambda y\Phi(\rho x),
+-y+\rho K(\rho x))$; the log radial target and fitted parts tend to
+$1$ and $-1$ per unit fitted mass respectively, with the single
+target counted once. These follow from the same Gaussian moments.
+
+For any set of right labels of initial length $\eta$, on any compact
+$\tau$ interval its physical output satisfies
+$|f_1|\le C\eta(|D_1|+q|D_2|)$ and $|f_2|\le C\eta q|D|$ by
+\eqref{an04hbdv1:physical}. At a bounded receiver its fitted angular
+contribution after division by $q$ is at most $C_R\eta$:
+on $P_1$, $a^\perp\cdot D=O_{L^2}(q)$ and
+$(b^\perp)^Tf=O_{L^2}(\eta q)$; on $P_2$, $f_1=O_{L^2}(\eta q)$,
+$f_2=O_{L^2}(\eta q)$. Dropping gates in absolute bounds is valid.
+Radial costs are $O(\eta)$. One may therefore pass first on compact
+label interiors, then send the omitted strip lengths to zero. This
+accounts for donors potentially much further out than the scaled
+receiver chart. The common velocity and weight bounds also give
+equicontinuous time paths on each compact interior and compact
+$\tau$ interval.
+
+\paragraph{Extraction and entrance.}
+For any sequence $q\downarrow0$, push the fixed right Lebesgue label
+measure forward to the joint law of label and its three time paths
+$(x,y,m)$; keep its unnormalized total label mass $1/2$.
+On compact time intervals bounded charts, weight bounds and
+equicontinuity on each interior label compact give tightness by
+Arzel\textendash Ascoli, discarding arbitrarily small endpoint and axis
+strips. Diagonal extraction on integer time windows gives a limit
+law of paths on $(-\infty,\log8]$ (one may extend the paths
+constantly before initialization for each $q$). The marginal in
+label is still $\dd l$. Any finite list of tagged paths, even with
+labels varying in a fixed interior compact, can be extracted on the
+same windows. Integrals on interior compacts pass by weak convergence
+of the joint law, evaluation of continuous paths, and the compact
+kernel bounds just proved; use label cutoffs with null boundary.
+Uniform time bounds allow integration in time before passing to
+the limit. Equivalently apply this argument in the integral equations
+with a tagged receiver and a second, independently sampled donor
+from the same law. For almost every limiting path the integral
+equations hold: the mean absolute residual of the integral equations
+on each receiver compact is zero in the limit by compact-kernel
+convergence and strip domination (test first at rational endpoints).
+They hold also for every extra tagged path.
+In particular if $\mu_\tau$ is the law weighted by the current $m$,
+$M=\int\dd\mu_\tau$, $Y=\int y\dd\mu_\tau$,
+$K_s=\int K(\rho x)\dd\mu_\tau$, and
+$S(x)=\int F(\rho x,\rho\tilde x)\dd\mu_\tau$, then
+\begin{align}
+ (\log m)'&=1-M,\qquad M'=M(1-M),\nonumber\\
+ 2x'&=-(1-M)x+\rho\phi(\rho x)-\rho S(x)+\lambda y\Phi(\rho x),
+ \qquad
+ 2y'=-(1-M)y-Y+\rho K(\rho x). \label{an04hbdv1:field}
+\end{align}
+Primes now denote $\tau$ derivatives. The raw moments needed here
+are uniformly locally integrable. More precisely
+\begin{equation}\label{an04hbdv1:budget}
+ |Y|+\rho K_s\le C e^\tau(1+c^\omega e^{-\omega\tau}),
+ \qquad \tau\le\log8 .
+\end{equation}
+Indeed on each right compact, in the limit $m|y|$ and $m|x|$
+are bounded by the limits superior of
+$2\sqrt m B_2/q\le C H^2 E/q$; the angles are small there.
+The same constant works on all compacts since the physical bound
+is global. Exhaust the interiors and use $K(r)\le\phi(0)+r_+$.
+This is the budget of the actual limit law, including the outliers.
+
+At each early fixed $A$, the target weight laws and
+$|\log(m/\widehat m)|\le4H^2$ give
+$m=A\cos^2\alpha\, e^{O(A)}$ in the limit, on every label interior.
+The constant in the relative bound is global. Thus as $\tau\to-\infty$,
+$M/e^\tau\to1/4$ and $m/e^\tau\to\cos^2\alpha$.
+These assertions, and the angular entry constraints below, may first
+be imposed at a countable dense set of nominal levels, and extended
+by continuity on compact time intervals. Integration of the radial
+equations fixes the mass and the normalized label weights:
+\begin{equation}\label{an04hbdv1:clock}
+ M=\frac{e^\tau}{4+e^\tau},\qquad m=4M\cos^2\alpha .
+\end{equation}
+The same formula holds on tagged paths with the limiting label.
+Every subsequence gives the same mass on compact times, uniformly
+there by equicontinuity of $M_q$. Before any fixed small $A_0$
+the spectral envelope rules out a half hit. The strictly increasing
+limit crosses $1/2$ at $\tau_*=\log4$, below $\log8$.
+Bracketing on either side and using continuity proves the asserted
+first-hit clock. Uniform local time compactness allows every
+subsequent evaluation at the moving first hit.
+
+For Q4 the limiting entrance estimate above gives $x,y\to a$
+in the remote past. For Q1 it gives
+\begin{equation}\label{an04hbdv1:incoming}
+ e^{\omega\tau}x,\ e^{\omega\tau}y\ \longrightarrow\
+ c^\omega\tan\alpha\qquad(\tau\to-\infty),
+\end{equation}
+using $H_{\rm CFS}(r)/r\to1$. Both assertions hold uniformly in the
+sense of the bounds on any one fixed interior label compact, hence
+for its tagged paths as well. No assertion of pointwise input order
+in the finite-noise original flow has been used.
+
+\section{The active receiver and the outer band}
+\paragraph{Same-field order and the lower atom.}
+In \eqref{an04hbdv1:field} both off-diagonal receiver derivatives
+are $\lambda\Phi(\rho x)/2>0$ with the donors held fixed. Differences
+in this same time-dependent field therefore preserve coordinate order
+by the linear difference equation with segment-averaged Jacobian
+and nonnegative off-diagonals. The two diagonal entries of the
+\emph{doubled} field are
+\[
+ -(1-M)+\lambda\rho(y-x)\phi(\rho x)
+ -\rho^2\phi(\rho x)\int(\rho\tilde x-\rho x)_+\dd\mu_\tau,
+ \qquad -(1-M).
+\]
+Differentiation uses \eqref{an04hbdv1:budget}.
+Any two limiting Q4 paths coalesce. Indeed both approach $(a,a)$
+as $\tau\to-\infty$. On their connecting segments for all sufficiently
+negative $\tau$, the row sums of the doubled Jacobian are at most
+$-(1-\lambda)/2$, since $M\to0$, $y-x\to0$, and the integral enters
+with a minus sign. The infinity-norm difference therefore decays
+forward there at rate at least $(1-\lambda)/4$ by the scalar
+upper derivative inequality. Integrate from arbitrarily early bounded
+data, then use same-field uniqueness forward. Denote this common
+path by $(x_a,y_a)$. Every Q1 path is above it in both coordinates:
+\eqref{an04hbdv1:incoming} gives strict separation far enough back
+for each such path, and same-field order propagates it. This applies
+also to the separately tagged receiver or donor. The exceptional
+initial axes have zero label measure.
+
+Both lower-atom coordinates satisfy $x_a,y_a\le a$ through $\log8$.
+For $d=a+\eta$ with $\eta>0$, the closed upper region $x_a,y_a\le d$
+has strict remote entry. Since all inputs exceed or equal $x_a$,
+$S(x_a)=M\phi(\rho x_a)+\rho\Phi(\rho x_a)\int\tilde x\dd\mu_\tau$.
+On $x_a=d$, $y_a\le d$, use $\int\tilde x\dd\mu_\tau\ge Md$
+in \eqref{an04hbdv1:field}. The doubled velocity is at most
+$(1-M)[\rho K(\rho d)-d]<0$. On $y_a=d$, $x_a\le d$, use
+$Y\ge Md$ to obtain $2y_a'\le\rho K(\rho d)-d<0$.
+The scalar $d-\rho K(\rho d)$ increases strictly and vanishes at
+$a$. Both faces, including their corner, are inward. Taking
+$\eta\downarrow0$ proves the claim. In particular $x_a<\zeta$.
+For a fixed Q4 compact $C$ there is also a lower bound $x_a,y_a\ge-L_C$
+near $\tau_*$ common to all subsequences, taking for example $\log2\le\tau\le\log6$
+as the neighborhood. It follows directly from
+the radial lower bound and \eqref{an04hbdv1:physical} on $C$,
+and does not use an order comparison between different fields.
+
+\paragraph{Uniform incoming lower estimate for high Q1 labels.}
+Set $w=\min(x,y)$ on a limiting Q1 path. While $w\ge0$,
+\[
+ 2w'\ge -(1-\lambda)w-J(\tau),\qquad
+ J(\tau)=C e^\tau(1+c^\omega e^{-\omega\tau}).
+\]
+Indeed at the smaller input, $\rho\phi(\rho x)+\lambda y\Phi(\rho x)
+\ge\rho K(\rho x)$, and $S(x)\le K_s$; at the smaller output
+$\rho K(\rho x)\ge\rho K(\rho y)$. Use $\rho K(\rho w)\ge\lambda w$,
+$Mw\ge0$ and \eqref{an04hbdv1:budget} on both faces. The minimum is
+absolutely continuous and the inequality holds at ties in the
+one-sided comparison sense. Let
+\[
+ J_*=\tfrac12\int_{-\infty}^{\log8} e^{\omega r}J(r)\dd r <\infty.
+\]
+For any Q1 label with $c^\omega\tan\alpha>J_*$,
+integration from the remote past gives
+\begin{equation}\label{an04hbdv1:outer}
+ w(\tau)\ge e^{-\omega\tau}(c^\omega\tan\alpha-J_*)>0
+ \qquad(\tau\le\log8).
+\end{equation}
+A first zero is excluded by the same inequality up to contact.
+This proof takes the incoming limit for each fixed interior label
+before selecting the high band. It never requires a uniform
+target-only estimate out to the vertical axis. The budget constant
+does not depend on the selected band.
+
+\paragraph{Signs and constants at the measured clock.}
+Take $p_C=\Phi(-\rho L_C)>0$. Choose a finite $L$ with
+\[
+ L>\max\{\zeta+2,\ a+2,\ (a+2)/(\lambda p_C)\}
+\]
+and a positive-length compact Q1 interval $B$ on which
+$c^\omega\tan\alpha>J_*+8^\omega L$.
+Such an interval exists for every fixed $c>0$. This choice can be
+made in the early chart too: \eqref{an04hbdv1:incoming} and the
+early estimates, on the now fixed $B$, place both coordinates beyond
+the gate at sufficiently small fixed nominal mass.
+On $B$, \eqref{an04hbdv1:outer} gives $x,y>L$ at $\tau_*$.
+For actual labels in $B$ the same lower bounds with a small margin
+loss hold at the first hit and on each fixed prior compact clock
+interval: otherwise extract the violating sequence as a tagged path.
+The same argument on $C$ gives $x\le a+o(1)$, $y\le a+o(1)$ at
+the hit, uniformly; take for example half the positive gap
+$\zeta-a$ as the activity margin. Equation~\eqref{an04hbdv1:clock}
+gives $m_B^*$ and, by boundedness on $B$, positive lower bounds
+for both band moments, with limit inferiors at least $L m_B^*$.
+
+In every subsequential limit at $\tau_*$, write $x=x_a,y=y_a$ and
+$(\xi,\eta)$ for the band donor. The exact trained fitted contributions
+at the hit converge along that subsequence to the compact Gaussian
+kernel integrals
+\begin{align}
+ 2v_x^{B,\lim}
+   &=\int_B[x-\rho\phi(\rho x)-\lambda\xi\Phi(\rho x)]\dd\mu,
+ &2v_y^{B,\lim}&=\int_B(y-\eta)\dd\mu .\label{an04hbdv1:sign}
+\end{align}
+Here $B$ denotes the initial labels, gated by their current inputs:
+$\xi>x$ permits the exact overlap simplification. The first integrand
+is at most $a-\lambda p_C L<-2$, and the second at most $a-L<-2$.
+Thus for sufficiently small $q$ both scaled velocities are at most
+$-m_B^*/2$ uniformly on $C$. In the equal-mass comparison the
+doubled differences instead are
+$-\lambda\Phi(\rho x)\int_B(\xi-x)\dd\mu$ and
+$-\int_B(\eta-y)\dd\mu$. Both are bounded above by
+$-m_B^*(L-a)\min(1,\lambda p_C)$.
+For example a common trained margin in the theorem is
+\[
+ \gamma=\min\{m_B^*/2,\,
+          m_B^*(L-a)\min(1,\lambda p_C)/4\}>0 .
+\]
+All margins follow for the full small-$q$ family by contradiction
+and tagged extraction. The proof has not assumed convergence to a
+unique critical angular profile.
+
+\paragraph{Accounting for the other donors.}
+In \eqref{an04hbdv1:field} the full velocity includes the target
+and the fitted field of $B$ \emph{and its complement}. Equivalently,
+for a receiver in $C$ at the hit its doubled limiting velocity
+is the target vector specified in the kernel calculation plus the
+integral of $(x-\rho F(\rho x,\rho\xi),y-\eta)$ over the whole
+right label law with current weights. Splitting that integral by
+initial labels gives \eqref{an04hbdv1:sign} and an explicit complement
+integral. The left error is $o(1)$ in scaled velocity, and the
+endpoint-strip bound is $O_C(\eta_0)$ for strip length $\eta_0$,
+sent to zero after taking the local chart limits. The raw complementary integral can be order one.
+For a second comparison, replace every right donor by a copy of the
+receiver, preserving the full right mass and the left population.
+The target cancels. On the bottom path all donors have
+$\xi\ge x,\eta\ge y$; each doubled difference from the copy equals
+$(-\lambda\Phi(\rho x)(\xi-x),-(\eta-y))$ per unit mass.
+Thus every right donor outside $B$ adds a nonpositive difference in
+both components. The margin from $B$ also holds for the full field
+relative to this mass-matched concentrated state. This conclusion
+uses limiting order only; finite-$q$ ordering is unnecessary.
+
+In fact the entire tagged compactness argument applies at arbitrary
+moving times in $\log2\le\tau\le\log6$. In that range
+$M\ge1/3$, so the band has limiting mass at least $2m_B^*/3$,
+and \eqref{an04hbdv1:outer} still gives $x,y>L$ on the band.
+The strict margins above leave room for precisely the same $\gamma$:
+the raw bound is strictly more negative than $-2m_B^*/3$,
+and the equal-mass bound is at most
+$-m_B^*(L-a)\min(1,\lambda p_C)/3$.
+Since $[t_h-1/4,t_h]$ lies inside this range in the shifted
+clock for small $q$, integration gives a contribution at most
+$-\gamma/4$ in each scaled coordinate on that interval, along any
+one of the actual tagged core trajectories. The equal-mass integrals
+are evaluated on this same receiver path; converting them to a
+difference of evolved probe errors requires solving the response. The moving-clock error in these statements is $o(1)$
+by compact time convergence. No power rate or universal numerical
+lower bound on the mass of $B$ is asserted.
+
+\paragraph{Handoff.}
+This is a trained result at the first strong half-mass time. The
+analyzed delay in $\tau$ stays bounded above by $\log8$; the proof
+does not continue to a weak-learning time diverging in this clock.
+The remaining depth inequality requires the time integral of the
+receiver's response to the donor field through weak learning,
+with the actual weak seed, current gates, and appropriate reference
+state. Two negative instantaneous fitted velocities at half mass
+do not provide that integral or the optimized trained minimum.
+\end{document}
