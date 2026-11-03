@@ -1,0 +1,374 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,longtable}
+\usepackage[margin=.9in]{geometry}\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\title{Original source channels, producers and signed lag}
+\author{Independent analytical increment}\date{Version 1, 2 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+On the initialized deep-regime learned windows, the six core motion
+channels and their fixed-label producer contributions converge at order
+\(q^{1/20}\) after normalization by \(q^2\). The exact full-output lag is
+positive, and cluster-1 help equals exposure times that signed lag with
+a smaller remainder. The weak-produced cluster-2 input sign is established
+on \(J\cap(-\infty,0]\), but not on the remainder of J. The increment stops
+at this sign-extension obligation; it does not claim a complete B-core
+sign theorem on all of J.
+\end{abstract}
+\section{Scope and inventory}\label{an01cpdv1:scope}
+Use the original \(S_0=q^{10}\) family, RTA's unchanged rectangle
+\(\mathcal P_*\subset[13/20,7/10]\times[87/50,7/4]\), and its fixed
+window \(J=[s_*-r,s_*+r]\). Keep the clock
+\[
+\tau=\mu_1^2t_{\rm phys},\quad
+\tau_h=t_n+\lambda^{-1}\log((1-n)/n),\qquad s=\tau-\tau_h,\quad\lambda=\rho^2.
+\]
+All statements are uniform on this rectangle/window; q is chosen last.
+Write \(d\mu=m\,d\lambda_0\), with FWC's fixed core \(K\), selected
+weak cohort S, other weak cohort \(P_q\cup\Sigma\), and outside B.
+Comparison coordinates are denoted \(X,Y,U,V\), weak mass \(n_\rho=n\)
+in formulas below, and \(A_*=\zeta-X\), \(Z=X-Y\).
+The entry level in the clock formula is distinct from this time-dependent n.
+Let R bound the fixed strong and comparison charts, and put \(\chi=1/20\).
+
+The exact identities used from P are motion, projection, factorizations,
+epsilonB, helpdefect and producer. Their hypotheses are finite Gaussian
+moments, balanced characteristic evolution, and the probe chain rule
+(or selector/a.e. interpretation). The core factorization additionally
+requires positive core mass and that the core be currently probe-active;
+RTA coregap gives the strict margin \(g_*/8\), and FWC gives \(M\ge1/2\).
+The Gaussian wrong-gate estimate in helpdefect requires positive first
+input coordinate, supplied by the compact core chart. No identity asserts
+that a remainder is small.
+
+P's matrices \(R_p=\E_{P_p}[(X_{\rm data}-f)X_{\rm data}^T1_{\rm gate}]\)
+are unhalved. RTA uses \(R^{(p)}=R_p/2\).
+Thus \(v_{\theta,p}=b^TR_pa^\perp/2\),
+\(v_{\psi,p}=(b^\perp)^TR_pa/2\), and \(h_p=2g_p=b^TR_pa\).
+All output derivatives below use this full radial reaction.
+
+P leading, pop-sources and atomicrates are leading-system statements,
+not finite-noise reductions. They require the defined characteristic
+system and sufficient moments; atomicrates further uses the selected
+coherent branch, \(M=1\), \(0<n<1\), active strong and inactive weak
+probe. Their original-flow uses below are supplied by FWC and direct
+Gaussian calculations, not by formal substitution.
+P lagtheorem requires bounded leading charts, \(M=1\), \(0\le N\le1\),
+positive incoming lag and finite coordinates for strict Xi. It is not
+used to infer exact lag positivity. P tracking requires fixed initial
+labels and projected kernel evolution; its damping/forcing comparison
+has additional quantitative hypotheses. That route is not used.
+
+FWC main, charts, charges, corefield, massfine, distbound and background
+are unconditional for this initialization on each fixed finite continuation
+window with bounded offsets. Choose such a window covering J.
+RTA coregap, corerate and backgroundrate apply on exactly
+\(\mathcal P_*\times J\). WIT uniformtheorem supplies its margins
+and comparator gap; regiontheorem is used only for \(s\le0\).
+P limitreversal's forward invariants \(V>0,V>Y,V>X\) hold on the
+selected branch for \(0<\rho<1\), at every finite time; their boundary
+proof is recalled in Section 5. No compact weak support is assumed.
+
+\section{Exact channels and producer limits}\label{an01cpdv1:channels}
+At the actual state set
+\[
+z=a\cdot\xi_q,\quad v=-a^\perp\cdot\xi_q,\quad
+c=e_\xi\cdot b,\quad d=-e_\xi\cdot b^\perp,\quad e_\xi=\xi_q-f(\xi_q).
+\]
+Here c is a probe projection, not the weak response. Define
+\[
+I_p=\int_K vc\,v_{\theta,p}\dd\mu,\quad
+O_p=\int_K zd\,v_{\psi,p}\dd\mu,\quad
+P_p=-\int_K h_pzc\dd\mu.
+\]
+P motion gives exactly \(D_p^\tau=I_p+O_p+P_p+D_{p,K^c}\).
+For each training producer \(j\), put
+\(e^{\rm tar}(X_{\rm data})=X_{\rm data}\) and \(e^j=-f_j\).
+Use these in \(R_p\) to define \(I_p^j,O_p^j,P_p^j\).
+Then each channel is the sum of these contributions. In this identity
+the actual probe residual, receiver state, measure and gate are held fixed.
+It is not an assertion that the rate is linear in the full network state.
+This extends P producer without changing its rate weighting.
+
+\begin{theorem}[Channel and producer table]\label{an01cpdv1:table}
+Each entry in the following table is the limit of the corresponding
+exact channel divided by \(q^2\), with uniform error \(O(q^\chi)\).
+Set \(\Phi_x=\Phi(\rho X)\), \(K_x=K(\rho X)\), \(K_u=K(U)\).
+Each omitted-producer row \(P_q\cup\Sigma\) and B has zero limit.
+\[
+\begin{array}{c|ccc}
+ &I_1/q^2&O_1/q^2&P_1/q^2\\ \hline
+{\rm target}&-ZX/2&-A_*Y/2&-A_*Z\\
+K&ZX/2&0&A_*Z\\
+S&0&-A_*nK_u/2&0\\ \hline
+{\rm sum}&0&-A_*(Y+nK_u)/2&0
+\end{array}
+\]
+\[
+\begin{array}{c|ccc}
+ &I_2/q^2&O_2/q^2&P_2/q^2\\ \hline
+{\rm target}&Z[\rho\phi(\rho X)+\lambda Y\Phi_x]/2&
+ A_*\rho K_x/2&0\\
+K&-Z\rho K_x/2&0&0\\
+S&Z\lambda n(V-Y)\Phi_x/2&-A_*\rho nK_x/2&0
+\end{array}
+\]
+In addition \(|D_{p,K^c}|\le Cq^2\epsilon_{\rm bg}\), where
+\(\epsilon_{\rm bg}=q^8+(1+\log(1/q))^2q^{289169/924000}\).
+In particular \(I_1,P_1=O(q^{2+\chi})\), although their separate
+target/core producer contributions are of order \(q^2\).
+\end{theorem}
+\begin{proof}
+BC's background calculation applies source by source: FWC gives
+\(|f_{\Sigma\cup B}(\xi_q)|\le Cq\epsilon_{\rm bg}\), strict primary
+inactivity, and RTA's full-rate versus core-self error.
+The total core output derivative is \(O(q)\). Hence the full versus
+self core-rate difference is \(O(q^2\epsilon_{\rm bg})\), and subtraction
+also bounds the actual non-core rate asserted here.
+
+First consider the channel sums. Write \(\mathcal A=\int_K(\zeta-x)d\mu\).
+On the reached core \(vc/q=\zeta-\mathcal A-y+O(q^2+\epsilon_{\rm bg})\),
+\(zd/q=\zeta-x+O(q^2+q\epsilon_{\rm bg})\), and
+\(zc/q^2=(\zeta-x)(\zeta-\mathcal A-y)+O(q^2+\epsilon_{\rm bg})\).
+These follow from RTA's core sine expansion and the background output bound.
+FWC gives \(x'_1=-(1-M)x/2+O(q^{1/10})\),
+\(h_1=1-M+O(q^2+\mu_B)\), \(1-M=O(q^{11/10})\), and
+\(2y'_1=-(1-M)y-\int_Ky\,d\mu-\int_SK(u)\,d\mu+O(q^{1/10})\).
+Multiplying by the three weights and integrating proves the source-1 sum
+limits by distbound. For source 2 use BC twoway and its separate output
+expansion, with \(h_2=O(q^2)\). These give respectively
+\(Zx'_{2,*},\,A_*\rho(1-n)K_x/2,\,0\) for the three limits.
+
+For producer resolution we use an explicit donor comparison that avoids
+any compact-support requirement on the weak tail. For one unit feature
+\(b(a\cdot X_{\rm data})_+\), changing the scaled coordinates by
+\((\Delta x,\Delta y)\) changes the feature pointwise in norm by at most
+\(q(|\Delta x|+|\Delta y|)|X_{\rm data}|\), also in the weak chart with
+its reversed output convention. Integrating over either fixed donor
+cohort and applying FWC distbound gives an \(L^2(P_p)\) error
+\(Cq^{1+\chi}\) on replacing its output by a single feature at its
+comparison coordinates with the \emph{actual} mass \(M\) or \(N\).
+For each actual core receiver, Cauchy--Schwarz against the gated data
+therefore costs \(O(q^{1+\chi})\) in every unscaled source matrix,
+hence \(O(q^\chi)\) even in scaled angular velocities. This estimate
+compares donor outputs inside the integral. The receiver and its
+probe weight have not moved.
+
+Here are the explicit Gaussian calculations for these two comparison
+donors, still at an actual receiver \((x,y)\). Entries are
+\((2x'_p,2y'_p,h_p)\), with errors \(O(q^\chi)\):
+\[
+\begin{array}{c|ccc}
+ &2x'_1&2y'_1&h_1\\ \hline
+{\rm target}&-x&-y&1\\
+K&Mx&M(y-Y)&-M\\
+S&0&-NK(U)&0
+\end{array}
+\qquad
+\begin{array}{c|ccc}
+ &2x'_2&2y'_2&h_2\\ \hline
+{\rm target}&\rho\phi(t)+\lambda y\Phi(t)&\rho K(t)&0\\
+K&-M\rho F(t,\rho X)&0&0\\
+S&\lambda N(V-y)\Phi(t)&-N\rho K(t)&0
+\end{array}
+\]
+Here \(t=\rho x\). On \(P_1\) write the data as \((1+qZ_1,qZ_2)\).
+The core receiver and comparison core donor gates can be opened with
+exponential error by Cauchy--Schwarz and their Gaussian tails. The core
+donor output is \((MX_1,qMYX_1)+O_{L^2}(q^2)\), and the weak output is
+\((0,qN(Z_2+U)_+)+O_{L^2}(q^2)\), by the Lipschitz positive part.
+Contracting against \(a^\perp=(-qx,1)+O(q^2)\),
+\(b^\perp=(-qy,1)+O(q^2)\) gives the first table, using
+\(\E Z_2=0\), \(\E(Z_2+U)_+=K(U)\).
+On \(P_2\) write the data as \((qZ_1,\rho+qZ_2)\).
+The core donor output is \((qM(Z_1+\rho X)_+,0)+O_{L^2}(q^2)\);
+the weak output is \((-qN\rho V,NX_2)+O_{L^2}(q^2)\).
+Its own gate has exponentially small closed tail. For the input
+velocity contract \(b\cdot e^j\) against \(a^\perp\cdot X_{\rm data}\)
+on the actual receiver gate, dividing by q. For the output velocity
+contract \(b^\perp\cdot e^j\) against \((a\cdot X_{\rm data})_+/q\).
+The latter feature differs from \((Z_1+t)_+\) by \(O_{L^2}(q)\).
+For the former, conditional on \(Z_2\), the gate threshold in \(Z_1\)
+is \(-(\tan(qx)/q)(\rho+qZ_2)\), differing from \(-t\) by
+\(O_R(q|Z_2|+q^2)\). Integrating over the intervening strip costs
+\(O_R(q)\) in each leading Gaussian moment: its integrand is bounded
+by a polynomial in \(|Z_2|\) times a bounded polynomial-weighted
+normal density in \(Z_1\). Thus the target input uses
+\(\E[(Z_1+\rho y)1_{Z_1>-t}]=\phi(t)+\rho y\Phi(t)\);
+the core uses \(F(t,\rho X)=\E[(Z_1+\rho X)_+1_{Z_1>-t}]\).
+The weak first output gives \(+\lambda NV\Phi(t)\), its second output
+gives \(-\lambda Ny\Phi(t)\). Every radial source-2 entry vanishes
+in the limit since \(a\cdot X_{\rm data}=O_{L^2}(q)\).
+
+For omitted \(A=P_q,\Sigma\), FWC's energy bound on the crossing
+component gives \(q^{-1}\|f_{A,2}\|_{P_1}+
+q^{-1}\|f_{A,1}\|_{P_2}\le C(\mu_A+q^{-1}\sqrt{\mu_AJ_A})\)
+by its outputenergy inequalities. The other component has norm
+\(O(\mu_A)\). On \(P_1\) it enters a scaled angular contraction
+with either \(b_1^\perp=O(q)\) or
+\(\|a^\perp\cdot X_{\rm data}\|_2=O(q)\); on \(P_2\) use
+\(b_2=O(q)\) or \(\|a\cdot X_{\rm data}\|_2=O(q)\).
+The radial charge is \(O(\mu_A)\). Hence each omitted row costs
+\(O(q^{1/8}+q^{\gamma_*/2})\), \(\gamma_*=289169/924000\).
+B costs \(C\mu_B/q=O(q^{1/10})\) by the global feature bound.
+
+Finally let \(\mathcal A=\int_K(\zeta-x)d\mu\). On the active core,
+\[
+z=q(\zeta-x)+O(q^3),\quad v=1+O(q^2),\quad
+c=q(\zeta-\mathcal A-y)+O(q^3+q\epsilon_{\rm bg}),\quad
+d=1+O(q^2+q\epsilon_{\rm bg}).
+\]
+Thus the three normalized channel integrands are respectively
+\((\zeta-\mathcal A-y)x'_p\),
+\((\zeta-x)y'_p\), and
+\(-h_p(\zeta-x)(\zeta-\mathcal A-y)\), up to vanishing errors.
+Integrate first against the actual core measure. FWC distance and
+RTA supremum tracking then replace these bounded Lipschitz functions
+and donor moments by their coherent values at error \(O(q^\chi)\).
+The weak function K is globally Lipschitz, so weak first moments suffice.
+This proves the tables without evaluating a rate at a mean angle.
+\end{proof}
+
+\section{Signed exact lag and help}\label{an01cpdv1:lag}
+\begin{theorem}\label{an01cpdv1:help}
+For the exact full output put
+\(\mathcal L_q=r_{21}/q\), \(Q_1=1+q^2\). Then
+\[
+\mathcal L_q=Y+nK(U)+O(q^\chi)=L_0+O(q^\chi),\qquad
+L_0\ge c_L:=\frac{5p_*}{4(7/4+R)}>0.
+\]
+With the exact scaled-angle exposure
+\(\mathcal A_q=\int_K(\zeta-x)d\mu\),
+\[
+q^{-2}D_1^\tau=-\tfrac12\mathcal A_q\mathcal L_q+O(q^\chi).
+\]
+The remainder is smaller than half the positive margin
+\(\mathcal A_qc_L/2\) for sufficiently small q.
+P's exact \(B_0\) obeys
+\(q^{-2}B_0=\mathcal A_q\mathcal L_q/2+O(q^2+q\epsilon_{\rm bg})\).
+\end{theorem}
+\begin{proof}
+Set \(\mathcal Y=\int_Ky\,d\mu,\ K_w=\int_SK(u)\,d\mu\) and
+\(p=603/640\) (FWC's weak support exponent).
+The target cross moment vanishes exactly. For the core, open its
+\(P_1\) gate at exponential cost. The surviving regression coefficient
+is \(\int_K\sin(qy)\cos(qx)d\mu\), up to that tail.
+For S put \(w=\sin(qu)/q\). Gaussian projection gives its exact
+coefficient before division by \(Q_1\) and after division by q as
+\(\int_S\cos(qv)[K(w)+q\sin(qu)\Phi(w)]d\mu\).
+The 1-Lipschitz property of K and Taylor bounds charge the difference
+from \(K_w\) by \(Cq^2\int_S(1+|u|+|v|)^3d\mu=O(q^{2-p})\)
+using FWC charts (bounded second moment and supremum \(O(q^{-p})\)).
+Consequently
+\[
+\frac{\E_{P_1}[X_1 f_{K,2}]}{qQ_1}=\mathcal Y+O(q^2),\qquad
+\frac{\E_{P_1}[X_1 f_{S,2}]}{qQ_1}=K_w+O(q^{2-p}+q^2).
+\]
+Other weak and outside terms have the same energy charges as above.
+FWC distance therefore proves the signed comparison, including all labels.
+This is a direct moment proof, not an absolute tracking estimate.
+
+WIT gives \(-A_*L_0/2=d_{1,*}\le-5p_*/8\).
+Since \(0<A_*\le7/4+R\), the stated lower bound follows.
+The sharper proposed \(5p_*/7\) would additionally require \(X\ge0\)
+on all of J; that fact is not assumed here.
+RTA's gap and \(M\ge1/2\) give \(\mathcal A_q\ge g_*/16\).
+The source-1 channel table, the lag comparison and exposure comparison
+prove the help law. Choose the fixed error constant times \(q^\chi\)
+below \(g_*c_L/64\), which is half the available margin.
+
+For the B0 comparison,
+\(M\bar z=q\mathcal A_q+O(q^3)\), \(\bar d=1+O(q^2+q\epsilon_{\rm bg})\) by the full probe bound. Thus
+\[
+q^{-2}B_0=\tfrac12\mathcal A_q\mathcal L_q
+ +O(q^2+q\epsilon_{\rm bg}).
+\]
+Here \(q\epsilon_{\rm bg}\) need not be \(O(q^2)\); retain it.
+Accordingly the B0 agreement asserted and used is at \(O(q^\chi)\)
+precision. The \(1-M\) input/radial reactions are in the remainder,
+not the leading help.
+\end{proof}
+
+\section{Signs and the stopping point}\label{an01cpdv1:signs}
+Combining target and core input contributions, define
+\[
+T_{\rm in}=-\tfrac\lambda2(X-Y)^2\Phi(\rho X),\quad
+W_{\rm in}=\tfrac\lambda2 n(X-Y)(V-Y)\Phi(\rho X),
+\]
+\[
+T_{\rm out}=\tfrac\rho2 A_*K(\rho X),\qquad
+W_{\rm out}=-\tfrac\rho2 nA_*K(\rho X).
+\]
+The reviewer's four-part table is correct, with target/core combined
+only in \(T_{\rm in}\). Uniformly,
+\[
+q^{-2}D_2^\tau=T_{\rm in}+W_{\rm in}+T_{\rm out}+W_{\rm out}
+ +O(q^\chi).
+\]
+Thus \(T_{\rm in}\le0,T_{\rm out}>0,W_{\rm out}<0\) on all of J.
+The output sum is BC's strictly positive \(\mathcal O_*\).
+P limitreversal proves \(V>0,V>Y,V>X\) forward: at \(V=0\),
+\(2V'=\rho K(\rho X)>0\); at \(V=Y>0\),
+\[
+2(V-Y)'=\rho nK(\rho X)+(1-\lambda)Y+nK(U)>0;
+\]
+at \(V=X\), using the previous invariant,
+\[
+2(V-X)'=\lambda[K(\rho X)/\rho-X+
+                       (1-n)(X-Y)\Phi(\rho X)]>0.
+\]
+These signs start strictly at the resident end and hold for every finite
+time by P's forward existence. They do not prove \(X>Y\).
+WIT regiontheorem does give \(X>Y\) for \(s\le0\), so
+\(W_{\rm in}>0\) on \(J\cap(-\infty,0]\).
+
+Here the direct invariant extension is incomplete. Set \(z=X-Y\),
+\(T=Y+nK(U)-\rho(1-n)K(\rho X)\). At the boundary \(z=0\),
+\[
+2z'=\lambda n(V-Y)\Phi(\rho Y)+T.
+\]
+The exact additional boundary inequality needed by this route is
+\begin{equation}\label{an01cpdv1:missing}
+T>-\lambda n(V-Y)\Phi(\rho Y)\quad\text{at every possible }
+z=0\text{ boundary after }s=0\text{ up to }\sup J.
+\end{equation}
+WIT's positive-T estimate assumes \(n\le1/2\) and its half-learning
+region. It cannot be applied after that boundary. No bound in the
+present proof supplies \eqref{an01cpdv1:missing}.
+We therefore stop at Step 6: the sign of \(W_{\rm in}\) on
+\(J\cap(0,\infty)\) is unproved here. No missing sign is inserted as
+a hypothesis of a full theorem. WIT's construction by the first change of sign before
+the probe gate hit fixes \(s_*>s_a\) but supplies no
+\(s_*+r\le0\) bound. Thus window placement alone does not discharge
+this inequality. On every compact part where a limiting sign is strict,
+continuity gives a positive absolute minimum and the uniform channel
+error transfers that sign for small q. In particular both output signs
+transfer on all of J. Near a potential zero of \(X-Y\), the
+nonpositive limiting square alone gives no strict finite-q sign.
+
+The closed mechanism statement consists of the channel tables, positive
+exact lag and help law, and the four-part second-source identity with the
+signs just stated. RTA still gives the total second-source positivity
+and the ordered total-rate windows. The present decomposition does not
+single out one evolving factor as their cause.
+
+\section{Constant order and handoff}\label{an01cpdv1:handoff}
+Keep WPT/RB--WCS and RTA/FWC constants, WIT's rectangle and J, and a
+fixed continuation radius R first. Fix the Gaussian/moment error constants,
+\(c_L\) and the channel error constants next; choose q last for all
+source thresholds and the displayed help margin. Physical rates multiply
+all normalized rates by \(\mu_1^2\). No numerical premise is used.
+
+Cluster 2 has both input and
+output rotation of the strong carrier. Selected weak output changes both
+the first-coordinate input drive and the second-coordinate response;
+its input term is \(W_{\rm in}\), its output term \(W_{\rm out}\).
+Target/core input opposes, and target output supports, the second-source
+rate. A pure input-rotation description is incomplete.
+
+The unresolved extension is the sign condition above, not the exact
+producer identity. Canonical/bridge coverage still requires initialized
+access to that regime and remainder precision relative to its small
+exact lag cancellation. No H2, P, README or prior increment is edited.
+\end{document}

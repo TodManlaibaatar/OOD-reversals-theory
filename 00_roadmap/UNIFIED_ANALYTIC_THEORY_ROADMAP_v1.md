@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.28 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.29 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -163,6 +163,17 @@
 - **Correction to the mechanism statement.** H2's Theorem B item 3 describes cluster-2 harm as input rotation only. At leading order in the deep regime, harm has two channels. The input channel has a weak-produced part $\tfrac\lambda2n(X-Y)(V-Y)\Phi$ and a target-plus-core part $-\tfrac\lambda2(X-Y)^2\Phi\le0$. The output channel has a target part $\tfrac\rho2(\zeta-X)\mathsf K(\rho X)>0$ and a weak-response part $-\tfrac\rho2n(\zeta-X)\mathsf K(\rho X)$. Which part dominates on J is not yet known.
 - **Next: S6, revised.** A channel-and-producer decomposition with a signed exact lag.
 
+**Revision 1.29 (Nov 2).** Records CPD (`AN01_channel_producer_decomposition_v1`, S6 revised): **closed subset; one sign open.**
+- **Closed on $\mathcal P_*\times J$, all at $O(q^{1/20})$:**
+  - the input, output and radial channel limits of both source rates, and every fixed-label producer's contribution to each;
+  - the signed exact lag $\mathcal L_q=r_{21}/q=Y+n\mathsf K(U)+O(q^{1/20})$, with $Y+n\mathsf K(U)\ge c_L>0$;
+  - help $q^{-2}D_1^\tau=-\tfrac12\mathcal A_q\mathcal L_q+O(q^{1/20})$, with the error below half the margin;
+  - the four-part harm identity $q^{-2}D_2^\tau=T_{\rm in}+W_{\rm in}+T_{\rm out}+W_{\rm out}+O(q^{1/20})$, with $T_{\rm in}\le0<T_{\rm out}$ and $W_{\rm out}<0$ on J, and $W_{\rm in}>0$ on $J\cap(-\infty,0]$.
+- **Open.** The sign of $W_{\rm in}$ on $J\cap(0,\infty)$. It needs $X>Y$ after weak half mass, beyond the reach of WIT's region theorem. The exact failing inequality is $T>-\lambda n(V-Y)\Phi(\rho Y)$ at any zero of $X-Y$ after $s=0$.
+- **Mechanism statement corrected.** H2 Theorem B item 3 (harm = weak-produced input rotation) is replaced by the four-part split. Target plus core opposes harm in the input channel. The target's own output pull is a positive harm term. The weak family adds input-channel harm (proved up to half mass) and removes the fraction n of the output-channel harm.
+- **My errors (ledger 30–31).** My lag bound $5p_*/7$ silently assumed $X\ge0$ on J. My prompt and v1.28 also called the lag's regression split a "producer split".
+- **Next: S6c.** The post-half-mass input sign. This is one bounded attempt; S8 is the alternative.
+
 ---
 
 ## 0. Ground rule: analytic proof only
@@ -197,7 +208,7 @@ Every statement keeps H2's scope labels: exact original-flow result; exact compa
 | Name | Content | Current status |
 |---|---|---|
 | **Theorem A** | From aligned-isotropic initialization, on an analytically specified joint family $(q,S_0(q))$ near $\rho=2/3$: substantial learning of both concepts, strict opposite cluster signs $D_1<0<D_2$ on a common learned window, and an ordered negative-then-positive total rate, giving a rebound $\ge c\,q^2$ on an off-cone sector of width $\ge c\,q$. | **Proved (deep regime, Nov 2; RTA):** $S_0=q^{10}$, $0<q\le q_0$, $(\rho,\zeta)\in\mathcal P_*$. |
-| **B-core** | The same proof shows *why*: cluster-1 help = exposure × signed exact lag; cluster-2 harm = input rotation of the strong carrier driven by a residual that the weak family produces; the evolving lag/exposure/residual force the change of dominance, with complete remainders. | Proved in the leading system; original-flow version open. S6 attempt 1 (BC) showed that cluster-2 harm has input **and** output channels at leading order; S6 revised is next. |
+| **B-core** | The same proof shows *why*: cluster-1 help = exposure × signed exact lag; cluster-2 harm = input rotation of the strong carrier driven by a residual that the weak family produces; the evolving lag/exposure/residual force the change of dominance, with complete remainders. | Proved in the leading system. **Original flow (CPD, deep regime): help = exposure × positive exact lag, proved.** Harm = four leading producer parts (target/weak × input/output rotation); all signs proved except the weak input part on $J\cap(0,\infty)$ (S6c). The item-3 description "harm = weak-produced input rotation" is corrected accordingly. |
 | **B-bridge** | The canonical depth enhancement: a non-small inactive strong bridge changes exposure and compensation. | Open (AN4). |
 | **Persistence** | After the rebound, the scaled benefit is eventually zero on growing windows. | **Proved for the initialized family (RTA, via FWC and LP's diagonal argument)**, on a diverging horizon with no rate. |
 | **Linear contrast** | Commuting aligned linear networks have monotone probe error and clusterwise help. | Complete (LP, extending P10). |
@@ -206,12 +217,12 @@ Every statement keeps H2's scope labels: exact original-flow result; exact compa
 
 | # | Empirical fact (user-reported) | Theory component | Status |
 |---|---|---|---|
-| E1 | ReLU off-cone reversals; no above-threshold linear reversals in matched controls | LP linear contrast + Theorem A | Contrast done; A open |
-| E2 | Help from cluster 1 via strong-family output; harm from cluster 2 via strong input rotation; weak output is the residual producer | Leading identities $d_1=-\tfrac12A_\zeta L$, $d_2$ formula; positive-lag theorem | Leading done; original needs AN1 + AN7 |
+| E1 | ReLU off-cone reversals; no above-threshold linear reversals in matched controls | LP linear contrast + Theorem A | Contrast done; A proved in the deep regime (RTA) |
+| E2 | Help from cluster 1 via strong-family output; harm from cluster 2 via strong input rotation; weak output is the residual producer | Leading identities $d_1=-\tfrac12A_\zeta L$, $d_2$ formula; positive-lag theorem | Help proved in the original flow (CPD, deep regime). Deep-regime harm also has a leading target output-rotation part. The empirical "input rotation" attribution (canonical run) needs reconciling with this split |
 | E3 | Lag collapses through the crossover while exposure is roughly steady | Lag ODE; WIT windows | Signs proved; a quantitative "collapse" statement is not |
 | E4 | Crossover ≈1.10–1.15 physical time after weak learning | Selected-orbit timing | Existence proved; the decimal is **[eval]**; two-sided analytic timing optional |
 | E5 | Canonical depth several times the coherent limiting value | B-bridge (AN4) | Open |
-| E6 | Persistence through physical time 100 | LP/LPR + AN7 | Limiting done; original open |
+| E6 | Persistence through physical time 100 | LP/LPR + AN7 | Limiting done; initialized persistence proved (RTA), diverging horizon, no rate |
 | E7 | Weak amplitude $H_{Q2}$ tracks $(\lambda+q^2)\int(1-\mathsf m_2)$ with a small positive correction | CLOCK amplitude identity; BULK bulk clock | Exact identity done; defect bound conditional |
 | E8 | Weak mass exponent ≈0.576 at strong half-mass (instantaneous mask) | Seed law; compare $1-\lambda=5/9$ at $\rho=2/3$ | Conditional |
 | E9 | Positive-quadrant initialization restores compositional Swing-by | Not in current scope | Out of scope for A/B |
@@ -1078,13 +1089,45 @@ uniformly at every intermediate endpoint, with $\beta=\lambda/Q$ and a gain expo
   - **Help.** It is the source-1 **output** channel: $B_0=(M/2)Q_1\bar z\bar d\,r_{21}$, with $\Lambda_1\approx Q_1r_{21}$ on the core, and the lag $L_0=Y+K_w$ has core and weak (cross-output leakage) parts. The source-1 input and radial channels carry $1-M=O(q^{11/10})$, so the original small-remainder contract should hold for $D_1$.
 - *Next: S6 revised* (prompt in the v1.28 review). Channel-and-producer limits for both sources, the signed exact lag, help = exposure × lag, and the signs of the producer parts on J.
 
+**Status after CPD (`AN01_channel_producer_decomposition_v1`, S6 revised, Nov 2): closed subset; one sign open.**
+
+Notation: $A_*=\zeta-X$, $Z=X-Y$, $\Phi_x=\Phi(\rho X)$, $\mathsf K_x=\mathsf K(\rho X)$, $\mathsf K_u=\mathsf K(U)$, $n=n_\rho$.
+- *Theorem* (`table`). Each exact channel divided by $q^2$ converges uniformly at $O(q^{1/20})$. The channels are $I_p=\int_Kvc\,v_{\theta,p}$, $O_p=\int_Kzd\,v_{\psi,p}$ and $P_p=-\int_Kh_pzc$, and the target, core and selected-weak producers contribute as follows:
+  - **Source 1.** Input: $-ZX/2$, $ZX/2$, $0$. Output: $-A_*Y/2$, $0$, $-A_*n\mathsf K_u/2$. Radial: $-A_*Z$, $A_*Z$, $0$. So $I_1,P_1=O(q^{2+1/20})$, and the output total is $-A_*(Y+n\mathsf K_u)/2$.
+  - **Source 2.** Input: $Z[\rho\phi(\rho X)+\lambda Y\Phi_x]/2$, $-Z\rho\mathsf K_x/2$, $Z\lambda n(V-Y)\Phi_x/2$. Output: $A_*\rho\mathsf K_x/2$, $0$, $-A_*\rho n\mathsf K_x/2$. Radial: all $0$.
+  - **The rest.** $P_q\cup\Sigma$ costs $O(q^{1/8}+q^{\gamma_*/2})$ and B costs $O(q^{1/10})$. The non-core rate is $|D_{p,K^c}|\le Cq^2\epsilon_{\rm bg}$.
+- *Theorem* (`help`). $\mathcal L_q=Y+n\mathsf K(U)+O(q^{1/20})$ and $L_0\ge c_L=5p_*/[4(7/4+R)]$. $q^{-2}D_1^\tau=-\tfrac12\mathcal A_q\mathcal L_q+O(q^{1/20})$ with $\mathcal A_q=\int_K(\zeta-x)\,d\mu\ge g_*/16$, and the error is at most $g_*c_L/64$. P's $q^{-2}B_0=\tfrac12\mathcal A_q\mathcal L_q+O(q^2+q\epsilon_{\rm bg})$.
+- *Signs* (Section 4). $T_{\rm in}=-\tfrac\lambda2Z^2\Phi_x\le0$; $T_{\rm out}=\tfrac\rho2A_*\mathsf K_x>0$; $W_{\rm out}=-nT_{\rm out}<0$; $W_{\rm in}=\tfrac\lambda2nZ(V-Y)\Phi_x>0$ on $J\cap(-\infty,0]$. Strict limiting signs transfer to the original producer contributions for small q.
+- *Open* (`missing`). At a zero of $z=X-Y$ after half mass, $2z'=\lambda n(V-Y)\Phi(\rho Y)+T$ with $T=Y+n\mathsf K(U)-\rho(1-n)\mathsf K(\rho X)=-2Y'$. The proof needs $T>-\lambda n(V-Y)\Phi(\rho Y)$ there. This is an unresolved comparison, not a counterexample.
+- *Checked (reviewer, Nov 2):*
+  - **Donor Gaussian tables.** I re-derived all 18 entries with:
+    - data $(1+qZ_1,qZ_2)$ on $P_1$ and $(qZ_1,\rho+qZ_2)$ on $P_2$, with $a^\perp\approx(-qx,1)$ and $b^\perp\approx(-qy,1)$;
+    - core donor output $Mb_Y(a_X\cdot X)_+$;
+    - weak donor output $(0,qN(Z_2+U)_+)$ on $P_1$ and $(-qN\rho V,NX_2)$ on $P_2$.
+    The core's own output entry $M(y-Y)$ vanishes at the atom because $b^\perp\cdot b_Y=\sin(q(Y-y))$. The source-2 rows reproduce WIT `popsystem`, with $F(t,r)=\phi(\min)+r\Phi(\min)$.
+  - **Channel weights.** On the core, $c=q(\zeta-\mathcal A-y)$, $d=1$, $z=q(\zeta-x)$ and $v=1$ to leading order. So the normalized integrands are $(\zeta-\mathcal A-y)x'_p$, $(\zeta-x)y'_p$ and $-h_p(\zeta-x)(\zeta-\mathcal A-y)$, and at the atom $\zeta-\mathcal A-Y\to Z$.
+  - **$T_{\rm in}$.** Target plus core is $Z[\rho\phi+\lambda Y\Phi-\rho\mathsf K(\rho X)]/2=-\lambda Z^2\Phi/2$, by $\mathsf K(t)=\phi(t)+t\Phi(t)$.
+  - **Totals.** The input total $\tfrac\lambda2Z\Phi[nV-X+(1-n)Y]$ plus the output total $(1-n)T_{\rm out}$ is WIT's $d_2$ and BC's $\mathcal O_*$. The source-1 totals are WIT `popsystem`'s $x'_1,y'_1$ and $d_1=-\tfrac12A_*L$.
+  - **Weak lag coefficient.** $a_w\cdot X=q(w+G)$ with G standard normal on $P_1$, so by Stein $\mathbb E[(a_w\cdot X)_+X_1]=q\mathsf K(w)+q^2\sin(qu)\Phi(w)$ exactly. The $O(q^{2-p})$ charge uses the bounded second moment and sup $O(q^{-p})$.
+  - **Lag lower bound and margin.** $c_L$ follows from WIT's $d_{1,*}\le-5p_*/8$ and $A_*\le7/4+R$. With $\mathcal A_q\ge g_*/16$ and $\mathcal L_q\ge c_L/2$, the leading help is at least $g_*c_L/64$.
+  - **Invariants.** $V>0$, $V>Y$, $V>X$ re-derived from WIT `orbit`. At $V=X$ one has $X=V>Y$, so the $(1-n)(X-Y)\Phi$ term is positive.
+  - **The stop is real.** WIT's $z=0$ check uses $T>0$, which is proved only under $n\le1/2$ (via $P\le71/100$, $Q\ge1/2$, $v-y\le8/5$ and the $x=3/4$ boundary). WIT `commonwindows` gives $s_*>s_a=-\tfrac94\log3$ and nothing about the sign of $s_*+r$.
+  - **Escapes and prefix.** The .tex passes both escape scans; prefix `an01cpdv1:` is unique.
+- *Reviewer reduction for S6c* (unverified; for the session to check). At a zero of z with $n\ge1/2$, drop $\lambda n\Phi(V-Y)>0$. Use $Y(1-(1-n)\lambda\Phi)\ge0$ when $Y\ge0$, and $\rho\mathsf K(\rho Y)\le\rho\phi(0)<7/25$ when $Y<0$. Then
+  $$2z'>n[\mathsf K(U)-7/25]-Y_-,\qquad Y_-=\max(-Y,0).$$
+  So $U\ge0$ and $Y\ge0$ at the crossing suffice, since $\mathsf K(0)=\phi(0)>3/8$. Also, at $u=0$, $u'=\tfrac12[(1-n)\phi(0)-y/2]$, which is inward whenever $y<2(1-n)\phi(0)$.
+- *Remaining:*
+  - **S6c (next):** $X>Y$ on $[0,\sup J]$, or the largest analytic closed subset.
+  - **Consolidation** (checkpoint 2.0) awaits Tod's approval.
+  - **S7/S8.**
+
 ### S6. The exact finite-noise lag (AN1)
 
 **Claim.** The original-flow help channel $D_1^{\rm phys}/(\mu_1^2q^2)=-\tfrac12A_{q,\xi}L^{\rm mean}_{1,q}+\text{remainder}$, with the remainder smaller than the lag's signed margin on the learned windows, and a positive-lag estimate for the exact lag.
 
 **Route.** Start from the exact Stein relation and P's lag-tracking identity. Transfer the leading positive-lag forcing (symmetrized $\Xi>0$) with remainders measured relative to the lag, not in absolute $O(q^2)$, since the lag is a small cancellation at canonical noise.
 
-**Unlocks.** B-core in the original flow: help = exposure × signed exact lag, harm = producer-attributed input rotation.
+**Unlocks.** B-core in the original flow: help = exposure × signed exact lag, harm = producer-attributed input rotation. *(Corrected in v1.28–1.29: harm has input and output channels at leading order. See "Status after CPD".)*
 
 ### Deliverable of S0–S6
 
@@ -1157,7 +1200,7 @@ Tracks that can run in parallel:
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
 | II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem, and **RB proved the response barrier: the deep-regime weak passage is a theorem.** Track II is complete; next is S4 (track III). |
 | III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction**, and **S4e (WCS) closed the weak-chart reduction and selection**: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ at a fixed small weak mass. **Track III is complete.** |
-| IV | S6 exact lag | Needed for B-core. Attempt 1 (BC) stopped at a wrong remainder contract and closed the two-channel identity for $D_2$. **Next: S6 revised,** the channel-and-producer decomposition with a signed exact lag. |
+| IV | S6 exact lag | Needed for B-core. Attempt 1 (BC) stopped at a wrong remainder contract and closed the two-channel identity for $D_2$. **CPD (S6 revised) closed the channel and producer tables, the signed exact lag and the help law**, and the four-part harm identity with every sign except $W_{\rm in}$ after half mass. **Next: S6c,** the post-half-mass input sign. |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
 | — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **S5b (PSE) closed:** background paid on the passage; full error and rates match at every fixed level $n'\le n$, so A-error-transfer holds on windows inside $(-\infty,s_n]$. **S5c (FWC) closed:** continuation by combined transverse energy; **A-error-transfer on every fixed window**. **S5d (RTA) closed:** rate transfer on J; **initialized Theorem A and persistence**. |
 
@@ -1277,6 +1320,10 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
     - *Rule:* when continuing coupled bounds, look for one quantity whose differential inequality uses only a priori bounds, and derive the rest from it in a stated non-circular order. Choose each guard constant only after the bound it depends on.
 29. **A remainder that is not small (my S6 prompt).** I asked for every remainder in P's factorizations to be $O(q^{2+\kappa})$. P's $r_2$ is defined as everything in $D_2$ except core input rotation, so it contains the core's cluster-2 output rotation, which is of order $q^2$ and strictly positive on J. P `pa:atomicrates` already says so, and my own Goal (4) listed that channel separately, so the prompt contradicted itself. BC proved the obstruction and stopped correctly.
     - *Rule:* a remainder is a name, not a size. Before demanding that a remainder be small, compute its leading term on the comparator orbit.
+30. **A sign hidden in a range bound (my S6-revised prompt).** I offered $L_0\ge5p_*/7$ from $\zeta-X_*\le7/4$. That bound needs $X_*\ge0$ on J, which is not proved. CPD used $A_*\le7/4+R$ and $c_L=5p_*/[4(7/4+R)]$ instead.
+    - *Rule:* bounding a difference by an endpoint is a sign claim on the subtracted term. Check that sign, on the whole window, before using the bound.
+31. **Regression contributor vs. channel producer (my S6-revised prompt and v1.28).** I called $L_0=Y+n\mathsf K(U)$ the lag's "producer split", core plus weak. But in the moving help channel the core's own output contribution is zero at the atom; the target residual supplies $-A_*Y/2$ and the selected weak $-A_*n\mathsf K(U)/2$. The core and weak terms are regression moments of the fitted output, not producers of motion. CPD kept the two indices separate.
+    - *Rule:* a moment's contributors and a channel's producers are different decompositions. Do not carry an attribution from one to the other.
 
 ---
 
@@ -1326,6 +1373,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | FWC | `07_compact_windows_AN07/AN07_finite_window_continuation_v1.tex` (+ review), prefix `an07fwcv1:` — S5c, closed: combined transverse energy continuation from $t_n$ (cross residuals, alignment, charts, primary inactivity, physical mass laws) with no passage guard; sourcewise core and signed weak value reductions; perturbed first-moment propagation with current weights; gap-free static comparison; **A-error-transfer on every fixed centered window**; LP `compact-transfer` |
 | RTA | `07_compact_windows_AN07/AN07_rate_transfer_and_assembly_v1.tex` (+ review), prefix `an07rtav1:` — S5d, closed: sup core tracking and strict probe gap; A-rate-transfer on WIT's J; direct learning (responses, 169/196 loss ratio); **initialized Theorem A** on $\mathcal P_*$ ($S_0=q^{10}$); **initialized persistence** on a diverging horizon; dependency ledger and S6 handoff |
 | BC | `08_mechanism_AN01/AN01_original_flow_bcore_v1.tex` (+ review), prefix `an01bcv1:` — S6 attempt 1, obstruction increment: P's $r_2$ contains the positive cluster-2 output-rotation term $q^2\mathcal O_*$ on J, so a small-remainder contract for $D_2$ is false; closed two-channel identity for $D_2$ |
+| CPD | `08_mechanism_AN01/AN01_channel_producer_decomposition_v1.tex` (+ review), prefix `an01cpdv1:` — S6 revised, closed subset: input/output/radial channel limits for both sources with fixed-label producer tables; signed exact lag $\mathcal L_q=Y+n\mathsf K(U)+O(q^{1/20})\ge c_L$; help = exposure × lag; four-part harm identity with signs, $W_{\rm in}>0$ only on $J\cap(-\infty,0]$; corrected Theorem B item 3 |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |
