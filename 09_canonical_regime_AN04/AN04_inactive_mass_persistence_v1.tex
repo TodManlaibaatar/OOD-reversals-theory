@@ -1,0 +1,344 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{amsmath,amssymb,amsthm,lmodern,geometry}
+\geometry{margin=.95in}\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\title{Inactive ancestry through a logarithmic resident interval}
+\author{Analytic increment for review}\date{Version 1, November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For the unclamped critical right-half entry in the saturated leading
+system, a fixed set of initially inactive labels of mass at least
+\(c_{b,\rho,\zeta}/(1+T)\) stays inactive throughout \([0,T]\).
+The set depends on the horizon. The proof averages the per-rank ceiling
+against the actual initial tail before constructing an invariant region.
+At the opposite end of the distribution the Q4 atom initially moves
+down in both coordinates, and crosses zero in finite time for an
+explicit range of large scales. We give the initial return and weak
+gate thresholds, and a two-coordinate weak-coupled ceiling with the
+signed mean forcing included. Persistence of a nonvanishing fraction
+on arbitrarily long windows remains open.
+\end{abstract}
+
+\section{State and source ranges}\label{an04impv1:scope}
+Use \(13/20\le\rho\le7/10,\ \lambda=\rho^2,\ \ell=\log(1/q),\
+\omega=(1-\lambda)/2,\ S_0=cq^{1/\omega},\ b=(c/A)^\omega>0\).
+The offset \(\zeta>a\) stays in a compact subset of that domain;
+\(a=\rho K(\rho a)\), \(K(t)=\phi(t)+t\Phi(t)\).
+CFS laws and RPS q4 are positive-noise \emph{comparison} results
+at \(T_A=\log(A/S_0)\). Their right-half limiting shape is now
+prescribed as aligned leading data. Write
+\[
+ \langle j\rangle_b=\tfrac12j(a)+\frac2\pi\int_0^\infty
+         j(H^{-1}(bu))(1+u^2)^{-2}\dd u,
+\]
+where \(H\) is CFS's increasing time-of-flight map from \((a,\infty)\)
+onto \((0,\infty)\). This law has unit mass, with Q4 atom \(1/2\)
+and continuous Q1 part of density asymptotic to \(2b^3/(\pi x^4)\).
+Let \(m=\langle x\rangle_b\), and denote its decreasing upper-tail
+quantile by \(\xi(f)\), \(0<f<1\); the order of the physical coordinates
+is increasing in rank \(\sigma=1-f\). Endpoints of rank intervals
+have zero rank measure. Equality at the probe belongs to the inactive set.
+
+WIT popsystem/P leading concern a given positive leading measure with
+sufficient moments, at finite times of characteristic evolution. We use
+\(M=1,N=0\) until Section~\ref{an04impv1:weak}. RPS moments and
+GOE ceiling concern the same field; the ceiling uses \(Y(0)\ge0\)
+and the upper donor fraction. CFS spread uses co-order and common
+radial reaction, giving \(y_j-y_i\ge y_j(0)-y_i(0)\) at \(M=1,N=0\).
+The GOE initial gate threshold applies only to aligned input at the
+stated mass; GOE gap excludes fixed positive mass with a sustained
+positive exponential input lower rate, not fixed mass above a fixed gate.
+No WIT learned-window or original-flow sign theorem is used here.
+
+With \(t=\rho x,\ F(t,r)=\E[(Z+r)_+1_{Z>-t}]\), let
+\(S(x)=\int F(\rho x,\rho\tilde x)d\mu,\ K_s=\int K(\rho x)d\mu,\
+Y=\int y\,d\mu,\ X_m=\int x\,d\mu\).
+At saturation the exact velocities are
+\[
+ 2U=\rho\phi(t)-\rho S(x)+\lambda y\Phi(t),\qquad
+ 2V_s=\rho K(t)-Y,\qquad 2Y'=-Y+\rho K_s.
+\]
+In particular \(Y>0\) for finite time. Strong order follows by taking
+differences in the same donor field; both off-diagonals in the
+receiver Jacobian are \(\lambda\Phi(t)/2>0\).
+For clarity the finite-interval estimates below apply also to the
+unclamped law: \(D=1+\int(|x|+|y|)d\mu\) obeys \(D^+D\le7D\)
+by \(S\le K_s\le\phi(0)+\rho\int x_+d\mu\) and
+\(|U|+|V_s|\le3(|x|+|y|+D)\).
+One may construct an evolution by clamping the initial rank map at
+successively larger radii. These estimates and pointwise Gronwall give
+\(|x|+|y|\le C_T(1+\xi(f))\) uniformly in the clamp. On each closed
+rank interval bounded away from \(f=0\) the velocities and their receiver
+Lipschitz constants are uniformly bounded (use
+\(F_t(t,r)=(r-t)_+\phi(t)\)). Dependence on initial rank is therefore
+equicontinuous there by the continuous initial quantile and Gronwall in
+each common field. Compactness, a diagonal subsequence in rank and time,
+and domination by \(C_T(1+\xi(f))\) in the donor integrals give the
+unclamped characteristic equations on finite intervals. The proofs
+apply to any such evolution, without comparing velocities across
+different self-consistent populations.
+
+\section{Resident persistence}\label{an04impv1:resident}
+Initially the inactive fraction is
+\(\tfrac12[1-F_b(H(\zeta))]\), where
+\(F_b(l)=\frac4\pi\int_0^{l/b}(1+u^2)^{-2}\dd u\) for \(l>0\).
+This is positive for every finite \(b>0,\zeta>a\).
+
+\begin{theorem}\label{an04impv1:mass}
+For each such parameter pair there is \(C_*>0\), independent of
+\(T,q\), with
+\[
+ \mu_0\{\text{labels with }x(s)\ge\zeta\text{ for every }0\le s\le T\}
+ \ \ge\ \frac{C_*}{1+T}.
+\]
+In particular at \(T=(2/\lambda)\ell\) the guaranteed persistent mass
+is at least \(C_* /[1+(2/\lambda)\ell]\). This is an estimate in the
+defined zero-weak-mass system on that time scale; it does not locate
+a weak switch.
+\end{theorem}
+\begin{proof}
+First pay the donor costs with no persistence assumption. Put
+\(L=\lambda/2\) and \(w_f=(\sqrt{4+f^2}-f)/2\).
+The GOE upper comparison, applied to the rank with at least upper mass
+\(f\), gives
+\[
+ 2D^+\binom{x_+}{y_+}\le
+ \lambda\begin{pmatrix}-f&1\\1&0\end{pmatrix}\binom{x_+}{y_+}
+ +\rho\phi(0)\binom11 .
+\]
+Indeed \(S(x)\ge f K(\rho x)\), \(Y\ge0\), and the nonnegative-face
+test holds for the positive parts. Multiply by \((w_f,1)\).
+Since \(1/2<w_f\le1\) and \(L w_f\ge L/2\), scalar integration gives
+\[
+ x_+(s,f)+y_+(s,f)\le C(1+\xi(f))e^{Lw_fs},\qquad
+ Lw_f\le L-\lambda f/8.
+\]
+The constant is uniform in rank, including the bottom plateau.
+The exponent bound follows by \(\sqrt{4+f^2}\le2+f^2/4\) for
+\(0\le f\le1\). From the GOE density and bounded lower support,
+\(\xi(f)\le C_b(1+f^{-1/3})\). Consequently the full donor moments obey
+\begin{equation}
+ \max(\rho K_s(s),Y(s))<B e^{Ls}(1+s)^{-2/3}
+ \label{an04impv1:budget}
+\end{equation}
+for a fixed \(B\). To see this, integrate
+\((1+f^{-1/3})e^{-\lambda fs/8}\) over \(0<f<1\); for \(s\ge1\)
+the substitution \(u=fs\) bounds it by \(Cs^{-2/3}\), and the
+integral is bounded on \(s\le1\). Absorb the constant in
+\(K_s\le\phi(0)+\rho\int x_+\) by increasing \(B\).
+This use of the ceiling includes the outliers in their own donor moments.
+
+Fix \(T\), and set
+\[
+ R_T=\zeta+1+3B[(1+T)^{1/3}-1],\qquad
+ w(s)=e^{Ls}\{R_T-3B[(1+s)^{1/3}-1]\}.
+\]
+Consider the upper ranks initially at \(x=y\ge R_T\). On
+\(0\le s\le T\) one has \(w\ge e^{Ls}(\zeta+1)\) and
+\(2w'=\lambda w-2B e^{Ls}(1+s)^{-2/3}\).
+On the face \(x=w,\ y\ge w\),
+\(2U\ge\rho K(\rho w)-\rho K_s\); on the face \(y=w,\ x\ge w\),
+\(2V_s\ge\rho K(\rho w)-Y\). Since \(\rho K(\rho w)>\lambda w\),
+\eqref{an04impv1:budget} makes both faces strictly inward relative
+to \(w'\), including their corner. Entry and terminal faces give
+the claimed finite-time invariant region. The tail asymptotic implies
+\(\mu_0\{x\ge R\}\ge c_b/(1+R)^3\) for \(R\ge\zeta+1\) by continuity
+and positivity on compact radii. Since \(1+R_T\le C(1+T)^{1/3}\)
+the result follows. The region may even be charged with the initial
+band \([R_T,2R_T]\) after decreasing the constant, by the same tail
+asymptotic. The protected ranks vary with \(T\), consistently with GOE gap.
+\end{proof}
+
+\paragraph{Initial return and the uniform-in-time question.}
+GOE threshold gives outward gate velocity for \(b<b_c(\rho,\zeta)\),
+zero at equality, inward for \(b>b_c\). The continuous Q1 density is
+positive at the initial gate. Continuity in label and time thus gives
+a positive mass of initially inactive labels returning inside at short
+time for \(b>b_c\) (and an initially active band crossing outward
+for \(b<b_c\)). Equality has no first-order decision. Complete
+finite-time return of all initially inactive labels is excluded for
+every \(b\) by Theorem~\ref{an04impv1:mass}.
+
+For a stronger fixed-fraction result the proposed wedge \(x\ge\zeta,\
+y\ge x\) requires at the gate \(2U\ge0\) and at \(y=x\),
+\[
+ 2(V_s-U)=\rho S(x)-Y\ge0 .
+\]
+At aligned entry \(S(x)\le K_s,\ \rho K_s<Y=m\) since the law
+has positive mass above \(a\) and \(\rho K(\rho r)<r\) there. The
+second face points out for all \(b\), even for very high labels.
+The expanding-orthant proof instead spends a normalized donor budget
+of order \(\int_0^T(1+s)^{-2/3}ds\); its upper estimate diverges
+and does not certify a fixed \(R_T\) for all time.
+
+For the alternative output-speed route let \(G=\rho K(\rho x)-Y\)
+on a candidate fixed upper rank. At \(G=0\),
+\[
+ 2G'=2\lambda\Phi(\rho x)U+Y-\rho K_s .
+\]
+The needed inward sign is \(2\lambda\Phi(\rho x)U+Y\ge\rho K_s\)
+at every such contact. Neither \(Y>0\), order, nor the positive
+output-gap estimate supplies it. In addition, keeping \(G\ge0\)
+would still require \(U(\zeta,y)\ge0\) to protect the input gate.
+We stop this route at those inequalities. There is no classification
+here of a time-independent positive surviving fraction, or of eventual
+return of each individually fixed rank. New outward crossings in RPS
+and initial inward crossings are compatible with the lower bound.
+
+\section{Bottom ranks}\label{an04impv1:bottom}
+At entry \(2y'=\rho K(\rho x)-m\); it changes from negative to
+positive at the unique root above \(a\), since \(m>a\).
+For the input, \(2x'=\rho[K(\rho x)-S_b(x)]\) on the aligned line.
+It is strictly negative at \(a\), positive for all sufficiently
+large \(x\), and has a unique upward zero by the offset derivative
+test in GOE threshold. At the output-speed zero the input speed is
+already positive because \(\rho S_b< m\). Thus the bottom atom and
+an adjacent band initially move down in both coordinates for every
+\(b>0\). By continuity the direction persists on some positive
+parameter-dependent interval.
+
+There is an exact simplification at the bottom rank. Write its
+coordinates \(x_a,y_a\). Since every donor has \(\tilde x\ge x_a\),
+\(S(x_a)=\phi(\rho x_a)+\rho X_m\Phi(\rho x_a)\), whence
+\begin{equation}
+ 2x_a'=\lambda\Phi(\rho x_a)(y_a-X_m),\qquad
+ 2y_a'=\rho K(\rho x_a)-Y.
+ \label{an04impv1:bottomfield}
+\end{equation}
+At zero time the two velocities doubled are
+\(-\lambda\Phi(\rho a)(m-a)\) and \(a-m\). In fact a crossing
+of \(x=0\) is provable for large scales. Here is one explicit,
+nonoptimal sufficient range. Let \(C=100e^7,\ h=1/(4C)\). Require
+\[
+ m>\max(1,4a,8a/(\lambda h)).
+\]
+This holds eventually because \(m/b\to1/\pi\) by GOE. For
+\(0\le s\le1\), \(D(s)\le(1+2m)e^7\). The full field then gives
+\(|X_m'|,|Y'|\le6D(s)\le Cm\). Hence through \(h\) both signed
+means stay at least \(3m/4\). At \(x_a=a,y_a\le a\) the first
+equation points down, and at \(y_a=a,x_a\le a\) the second does
+also. The starting corner is strictly inward to the lower rectangle.
+There is no finite-time escape through infinity by the growth bounds.
+While \(0\le x_a\le a\), \(x_a'\le-\lambda m/8\);
+throughout, \(y_a'\le-m/4\). Thus the Q4 atom crosses \(x=0\)
+strictly before \(h\), and the sign at that face keeps it negative
+through \(h\). A positive adjacent Q1 band also has negative input
+at \(h\) by continuity in the initial coordinates in this field.
+For other scales the signed bottom field and initial descent do
+not decide a later crossing: control of \(y_a-X_m\) and
+\(\rho K(\rho x_a)-Y\) is still needed beyond their proved range.
+The growing output differences alone give no absolute bottom sign.
+
+\section{Weak-coupled gate and ceiling}\label{an04impv1:weak}
+In this section \(V=\int v\,d\mu_w\) is the signed weak output
+moment and \(K_w=\int K(u)d\mu_w\ge0\). For the full WIT leading
+state the strong receiver velocities are
+\begin{align*}
+ 2U&=-(1-M)x+\rho\phi(\rho x)-\rho S(x)
+                  +\lambda[V+(1-N)y]\Phi(\rho x),\\
+ 2V_s&=-(1-M)y-Y-K_w+\rho(1-N)K(\rho x).
+\end{align*}
+The weak overlap \(\mathcal W(u)=\int F(u,\tilde u)d\mu_w\)
+enters weak receiver dynamics; no such term appears directly in
+these strong equations. In particular at the aligned input gate
+\(x=y=\zeta\) with strong entry shape \(\langle\cdot\rangle_b\)
+normalized to mass \(M>0\), define \(P_\zeta=\Phi(\rho\zeta)\) and
+\[
+ D_{\rm gate}=\rho K(\rho\zeta)-(1-M)\zeta+
+                    \lambda(V-N\zeta)P_\zeta .
+\]
+Then \(2U=D_{\rm gate}-\rho M S_b(\zeta)\). The increment relative
+to zero weak mass is outward iff \(V>N\zeta\) (on a coherent weak
+atom, iff \(v>\zeta\)). The total direction has a different test:
+\begin{itemize}
+\item If \(D_{\rm gate}\le Ma\), the gate velocity is inward for
+every \(b>0\).
+\item If \(D_{\rm gate}>Ma\), there is exactly one
+\(b_*(M,N,V,\rho,\zeta)>0\) with
+\(S_{b_*}(\zeta)=D_{\rm gate}/(\rho M)\).
+The gate is outward below, stationary at, and inward above \(b_*\).
+Equivalently at fixed \(b,M,N\) the outward half-space is
+\[
+ V>N\zeta+\frac{\rho M S_b(\zeta)+(1-M)\zeta-
+                         \rho K(\rho\zeta)}{\lambda P_\zeta}.
+\]
+\end{itemize}
+Here GOE gives continuity and strict increase from \(a/\rho\) to
+infinity for \(S_b\). Both the explicit \(-(1-M)\zeta\) term and
+the mass scaling of the donor are necessary. At a regular gate,
+the active-rank velocity is \(-U/x_\sigma\); these surfaces concern
+the initial direction and the corresponding initial rank flux.
+
+\begin{lemma}[Forced per-rank ceiling]\label{an04impv1:ceiling}
+On any finite chart-valid leading interval with \(M>0,\ 0\le N\le1\),
+nonnegative measures and integrable moment charges, let a strong
+receiver have normalized upper fraction \(f\) in a co-ordered strong
+family. Define \(z=(x_+,y_+)^T\). Then
+\begin{align}
+ 2D^+ z &\le
+ \left[-(1-M)I+\lambda
+ \begin{pmatrix}-Mf&1-N\\1-N&0\end{pmatrix}\right]z+d_w,
+ \label{an04impv1:matrix}\\
+ d_w&=\binom{\rho\phi(0)+\lambda V_+}
+             {\rho(1-N)\phi(0)+(Y+K_w)_-}.\notag
+\end{align}
+Put \(r=-(1-M)/2+(\lambda/4)
+[\sqrt{(Mf)^2+4(1-N)^2}-Mf]\). For \(s\ge t\) in that interval,
+\[
+ |z(s)|_2\le e^{\int_t^s r}|z(t)|_2+
+      \tfrac12\int_t^s e^{\int_u^s r}|d_w(u)|_2\,du .
+\]
+\end{lemma}
+\begin{proof}
+The normalized strong weights are unchanged by the common reaction.
+For \(0\le N\le1\) the two off-diagonal receiver derivatives are
+\(\lambda(1-N)\Phi(\rho x)/2\ge0\), preserving co-order on this
+interval. Hence \(S(x)\ge Mf K(\rho x)\).
+For \(x\ge0\) use \(K(\rho x)\ge\rho x\); for the output use
+\(K(\rho x)\le\phi(0)+\rho x_+\).
+The factor \(\Phi\) allows a positive upper charge \(\lambda V_+\)
+for both signs of \(V\). Simply replacing \(V\Phi\) by \(V\) in
+an upper bound requires \(V\ge0\). When \(Y+K_w\ge0\) the bottom
+forcing charge vanishes, but nonnegative \(Y\) is no longer automatic:
+\[
+ 2Y'=(1-2M)Y-MK_w+\rho(1-N)K_s .
+\]
+This identity or a separate moment bound is needed to pay a
+negative-part charge over time. On a zero positive-part face the
+right side of \eqref{an04impv1:matrix} is nonnegative; negative
+coordinates cause no uncharged term. Take the Euclidean norm
+inequality using the top eigenvalue of the symmetric matrix,
+including the forcing bound at \(z=0\), and integrate. This avoids
+differentiating a time-dependent eigenvector.
+\end{proof}
+At \(M=1,\ N=0,\ V=K_w=0,\ Y\ge0\), the rate reduces to GOE's
+\(r_+(f)\). At \(N=1\) the off-diagonal strengths vanish. The
+forced estimate retains its time integral, even if its homogeneous
+rate is zero. When \(N>1\) the displayed positive-part comparison
+is not justified by that argument. On the upper faces of the resident
+barrier a weak response changes both the input coefficient and the
+output donor charge; the zero-weak-mass estimate cannot be continued
+through a weak passage by using the sign of \(V-N\zeta\) at one time.
+
+\section{End state and handoff}\label{an04impv1:handoff}
+For any fixed \(\tau>0\) in the \(N=0\) continuation, at
+\(T=\tau\ell\) the strong measure still has its co-ordered rank law,
+the original atom's rank weight \(1/2\), and an initially inactive
+upper mass at least \(C_* /(1+\tau\ell)\) which has stayed inactive.
+The estimate is strongest as a statement about the defined system:
+a diverging scaled upper radius can exceed the range of a uniform
+finite-noise chart approximation. No fixed positive terminal inactive
+mass, active fraction, terminal atom location, or actual switch time
+is identified by these bounds.
+
+S7d needs the strong rank profile, donor moments, active exposure and
+signed lag at a matched weak switch; a weak seed and joint weak law
+with their clock and field errors; and evolution of \(S,Y,K_s,V,K_w,
+\mathcal W\) with rate-weighted producers through the coupled passage.
+The candidate \(N_0\asymp S_0^{1-\lambda}\asymp q^2\) only motivates
+the comparison time. Matching of escaped angles to an outer chart,
+trained entry and radial weights including other sectors, control
+of probe output and rate through saturation, and lag-relative
+precision remain separate transfer obligations.
+\end{document}
