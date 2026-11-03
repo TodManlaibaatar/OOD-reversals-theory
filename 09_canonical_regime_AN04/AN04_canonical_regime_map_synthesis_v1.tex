@@ -1,0 +1,501 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,array,geometry,lmodern}
+\geometry{margin=.88in}\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Composition lemma}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\newcommand{\src}[1]{\textnormal{\small[#1]}}
+\title{Critical-family regime map and split-population results}
+\author{AN4 synthesis for independent review}\date{Version 1, November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The nominal strong clock distinguishes three questions: which labels have
+reached an angular scale in comparison dynamics, which split states evolve
+in the leading equations, and which states are reached from training
+initialization. At the critical scale, the positive-noise right-half
+comparison has a resident atom and a distributed strong component. As
+prescribed leading data this law exhibits a gate threshold, finite-time
+escape, and survival of an initially inactive mass of order at least
+\(1/(1+T)\). Neither this comparison law nor its subsequent weak passage
+has been transferred to the trained critical family. We collect the
+existing results and their interfaces; the proofs below concern only
+their composition.
+\end{abstract}
+
+\section{Reading key and source inventory}\label{an04rmsv1:inventory}
+Use normalized time and \(\ell=\log(1/q)\). Except where a smaller
+set is specified, \(\rho\in[13/20,7/10]\), \(\lambda=\rho^2\).
+Strong coordinates are \((x,y)\), weak coordinates \((u,v)\).
+\(M,N\) are radial masses; \(Y=\int y\,d\mu_s,\ V=\int v\,d\mu_w\)
+are signed, unnormalized moments. In the leading statements assume
+positive measures, sufficient first moments and characteristic evolution
+on the finite intervals in use. Write \(\phi,\Phi\) for the standard
+normal density and distribution function, \(K(t)=\phi(t)+t\Phi(t)\).
+Source references below use the following exact prefix map:
+\[
+\begin{array}{c|cccccccc}
+ &{\rm CRA}&{\rm CFS}&{\rm RPS}&{\rm GOE}&{\rm IMP}&{\rm RTA}&{\rm CPD}&{\rm PHS}\\
+\text{prefix}&\texttt{an04cra}&\texttt{an04cfs}&\texttt{an04rps}&\texttt{an04goe}&
+\texttt{an04imp}&\texttt{an07rta}&\texttt{an01cpd}&\texttt{an01phs}
+\end{array}
+\]
+Append \texttt{v1:} and the printed suffix. For example
+\src{IMP mass} denotes \texttt{an04impv1:mass}. The roadmap source is
+v1.35, Sections 2 and 5 and the status entries for these increments.
+The inventory separates model, population and time before combining results.
+
+\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.23\textwidth}>{\raggedright\arraybackslash}p{.72\textwidth}@{}}
+\toprule Source and labels & Operative domain and use\\\midrule\endhead
+CRA thresholds, ledger, outer &
+Fixed-power \(S_0=q^\kappa,\ \kappa>0\), nominal \(T_A=\kappa\ell+\log A\).
+TAIL's first failed tail test is for zero-noise right-half ancestry.
+The five subsequent clocks concern positive-noise target-only motion:
+compact interiors for bulk Q2, closed sectors for last arrivals.
+Original early ancestry estimates stop at their small mass cap.\\
+CRA contraction, handoff &
+Defined leading weak receiver, frozen donors and fixed output \(v\),
+finite weak first moments, \(Y\ge0\); sign/charge for \((1-M)v\).
+A positive slope margin requires a suitable weak-mass range.\\
+CFS scope, laws, active, original &
+Critical nominal \(T_A\); aligned isotropic labels, compact positive
+\(A,c\). Zero- and positive-noise Q1 comparisons. Relative per-label
+limits use compact interior angles; whole-sector measures use endpoint
+strip bounds. No prediction at a trained hitting time.\\
+CFS sat, spread &
+Leading \(N=0\), prescribed compact support and \(0<m_0<1/2\) for
+passage to half mass. Same-field order and the gap estimate use
+\(0<m_0\le M\le1\) on chart-valid intervals. Centered rates are local
+at the coherent resident.\\
+RPS q4, fraction, rank, moments &
+Positive-noise comparison Q4 at the same \(T_A\); positive separation
+\(\zeta>a_\rho\) for the combined fraction. Rank evolution and moments
+use compact leading entry, \(N=0,\ 0<M_0\le1\), common radial
+reaction. Exposure derivative uses the a.e.\ chain rule.\\
+RPS cone, moved, face &
+Compact leading aligned critical shape clamped at \(R>\zeta\) for
+the explicit crossing mass; moment margin \(g>0\), restricted
+time \(h\). Face formula at aligned initial gate and \(M=1,N=0\).\\
+GOE integration, threshold, large &
+Unclamped right-half limiting shape prescribed at \(M_0>0\).
+Gate classification at aligned entry, \(M_0\le1,N=0\). Large-input
+identities are current-state statements, \(M=1,N=0,x\ge0\).\\
+GOE ceiling, escape, gap, clock &
+Co-ordered leading evolution, \(M=1,N=0\), positive entry mean and
+locally finite first absolute moments. Upper-rank mass \(f\) is
+normalized. Gap obstruction requires two distinct finite ranks in
+the continuous upper segment. Horizon and quantifiers matter.\\
+IMP mass, budget, bottomfield &
+Same saturated unclamped entry. All finite resident horizons, including
+\(T=(2/\lambda)\ell\) in the defined system. Large-scale crossing
+uses its explicit lower threshold on the entry mean.\\
+IMP weak, ceiling, matrix &
+Initial aligned gate with weak moments prescribed. Forced comparison
+on a chart-valid interval has \(M>0,\ 0\le N\le1\), fixed normalized
+upper rank and integrable forcing. Weak-mass evolution is not an output
+of the gate test.\\
+RTA theoremA, persistence; CPD table, help; PHS transfer &
+Trained isotropic balanced \(S_0=q^{10}\), sufficiently small \(q\).
+Common learned windows on WIT's fixed rectangle about
+\((2/3,5\pi/9)\), matched half-mass clock. Selector source rates,
+classical where differentiable and a.e.\ total derivative. Persistence
+uses every-fixed-window transfer and a separate common clearing time.
+PHS transfers only through \(s=1/1000\) within the learned window.\\
+\bottomrule
+\end{longtable}\normalsize
+
+\section{Regime-map theorem}\label{an04rmsv1:regimes}
+Put \(\omega=(1-\lambda)/2,\ a=\rho K(\rho a),\
+P=\Phi(\rho a),\ \alpha_{\rm sh}=\lambda P/2,\ d=1/2-\alpha_{\rm sh},\
+s=d/\omega,\ p=3/s\). Let
+\[
+ u=169/400,\quad v=49/100,\quad j(t)=2/t+4/(1-t),\qquad
+ L_-=2+169/231,\quad L_+=250/97+49/51 .
+\]
+\begin{theorem}[Existing thresholds and their model]\label{an04rmsv1:map}
+The entries compare \(\kappa\) to the threshold, with \(<\) meaning
+the nominal clock is earlier in a timing row. C denotes proved
+comparison algebra/dynamics, and H a sufficient test conditional on a
+candidate entry law. \src{CRA thresholds, ledger; CFS scope, original}
+\[
+\begin{array}{ll|l|cc}
+ &\text{threshold/event}&\text{rational enclosure}
+       &2<\kappa<3&\kappa=10\\\hline
+ C&1/\omega:\ \text{interior Q1 scale}&[800/231,200/51]&<&>\\
+ C&2/\lambda:\ \text{bulk Q2 crosses weak axis}&[200/49,800/169]&<&>\\
+ C&2/\omega:\ \text{last Q1 chart arrival}&[1600/231,400/51]&<&>\\
+ C&2/[\lambda(1-\lambda)]:\ \text{bulk Q2 at fixed Q1 angle}
+ &[2/(v(1-v)),2/(u(1-u))]&<&>\\
+ C&4/\lambda:\ \text{last Q2 crosses weak axis}&[400/49,1600/169]&<&>\\
+ C&j(\lambda):\ \text{bulk Q2 reaches strong chart}&[j(u),j(v)]&<&<\\
+ H&2s/(1-P):\ E_{\rm loc}>0&(2L_-,2L_+)&<&>\\
+ H&8s/[3(1-P)]:\ pE_{\rm loc}>1&(8L_-/3,8L_+/3)&<&>
+\end{array}
+\]
+The first row includes TAIL's strict nominal small-tail condition
+\((S_0/A)^\omega/q\to0\). At equality a finite critical factor
+remains, so constants decide an individual gate. The next five rows
+use the Q2, PROFILE and Q2E target clocks inventoried in CRA.
+In particular the last weak-axis crossing and the last row of Q2
+transit are different events. For the passage rows
+\[
+ E_{\rm loc}(\kappa)=\tfrac{\kappa}{2}(1-P)-s,\qquad
+ \gamma_\kappa=1-\tfrac{\lambda}{2}(\kappa-4/(1-\lambda)).
+\]
+Here \(\gamma_\kappa=0\) precisely at \(j(\lambda)\). Those tests
+use a transferred tail law, weak seed of order \(S_0^{1-\lambda}\),
+local shape multiplier, controlled mean/feedback/defects and, for
+the mass charge, bounded radial amplification. The enclosures follow
+from CRA's monotone endpoint formulas and
+\(s/(1-P)=1/(1-P)+\lambda/(1-\lambda)\), using
+\(1/2<P<153/250\). At ten the rational benchmarks with
+\(\chi=1/20,\ 0\le\nu\le1/100\) include \(E>3616/6375\),
+\(p(E-\chi)-1-r_m\ge4561/35006,\ \Delta_\nu>3/25\),
+\(\gamma\ge6481/18480,\ \Gamma_\nu\ge289169/924000\).
+The initialized conclusion at ten uses the deep chain in addition
+to the inequalities.
+\end{theorem}
+
+\paragraph{Critical row and candidate-law algebra.}
+For \(S_0=cq^{1/\omega}\), \(c,A>0\) fixed,
+\[
+ \kappa_q=1/\omega-\log c/\ell,\quad
+ T_A=\ell/\omega+\log(A/c),\quad b=(c/A)^\omega.
+\]
+Thus \(1/\omega<2/\lambda\) and \(1/\omega<2L_-\). In positive-noise
+target-only dynamics compact interior Q2 is still left-facing at
+\(T_A\), with \(\widehat\theta-\pi/2\asymp q^{\lambda/(2\omega)}\).
+The comparison radial mass of a fixed compact bulk cohort is of order
+\(q^{(1-\lambda)/\omega}=q^2\); no subsequent weak seed is identified.
+In the candidate profile/gain expressions only,
+\[
+ \epsilon(T_A)=q^{-s}e^{-dT_A}=(c/A)^d,\qquad
+ E_{\rm loc}(1/\omega)=-P .
+\]
+The nominal gain \(N_0^{-\alpha_{\rm sh}/\lambda}\asymp q^{-P}\)
+requires \(N_0\asymp c^{1-\lambda}q^2\) and a local passage regime.
+A negative smallness exponent is insufficient to prove a lower
+bound on a bridge mass. \src{CRA outer, thresholds, handoff; CFS scope, spread}
+
+\section{The entry measure and the model change}\label{an04rmsv1:entry}
+\begin{lemma}[Join the sectors, then prescribe mass]\label{an04rmsv1:join}
+At \(T_A\), the raw positive-noise right-half comparison law has mass
+\(A/4\) on the aligned diagonal. As a leading initial shape of mass
+\(M_0\) it has test integral \(M_0\langle j\rangle_b\), where
+\[
+ \langle j\rangle_b=\tfrac12j(a)+\frac2\pi\int_0^\infty
+             j(H^{-1}(bu))(1+u^2)^{-2}\dd u .
+\]
+Its limiting active fraction at offsets in a compact subset of
+\((a,\infty)\) is \(\tfrac12+\tfrac12 F_b(H(\zeta))\).
+\src{CFS laws, active; RPS q4, fraction; GOE integration}
+\end{lemma}
+\begin{proof}
+In the zero-noise point-data comparison, a compact Q1 label \(\beta\)
+has scaled angle \(b\tan\beta+o(1)\), and weight
+\(A\cos^2\beta(1+o(1))\). The Q1 density in its scaled coordinate is
+\(g_b(h)=A(1+(h/b)^2)^{-2}/(2\pi b)\) on \(h>0\), and its active
+fraction is \(F_b(l)=4\pi^{-1}\int_0^{l_+/b}(1+u^2)^{-2}du\) at \(l=\zeta\).
+In the positive-noise comparison the weight is the same but the angle
+tends to \(H^{-1}(b\tan\beta)\), with
+\[
+ B(x)=[x-\rho K(\rho x)]/2,\qquad
+ H(x)=x\exp\left[-\omega\int_x^\infty(B(r)^{-1}-(\omega r)^{-1})dr\right]
+ \quad(x>a).
+\]
+CFS proves \(H(x)<x,\ H(x)/x\to1,\ H'>0\), and Q1 density
+\(g_b(H(x))H'(x)\). RPS uses the same label law, critical clock,
+Gaussian model and radial normalization on Q4. On compact Q4
+interiors \(a-\widehat\theta/q\asymp q^{d(1/\omega-2)}\);
+Q4 converges to the atom at \(a\), of mass \(A/8\).
+Endpoint strips of label length \(\eta\) cost \(O(A\eta)\), and
+the shared axis label has zero mass. Adding the Q1 mass \(A/8\),
+then dividing by \(A/4\), gives the displayed probability integral
+and active fraction. The atom is strictly active and Q1 has no gate
+atom. For completeness, in the point-data model the Q4 scaled angle
+tends to zero and its mass tends to \(A/8\); hence for the offsets here
+the corresponding right-half fraction is \(\tfrac12[1+F_b(\zeta)]\)
+by the same weighting \src{CFS profiles}. The Gaussian and point-data
+fractions use different Q1 input maps. Q2 and Q3 were never in this denominator. Multiplication by
+\(M_0\) prescribes mass without changing the fraction. This last
+operation is an assignment of leading data, not a proof of a
+trained mass or a trajectory arriving at a prescribed time.
+\end{proof}
+
+\section{Resident dynamics and initial gates}\label{an04rmsv1:package}
+Write \(F(t,r)=\E[(Z+r)_+1_{Z>-t}],\
+ S(x)=\int F(\rho x,\rho\tilde x)d\mu_s,\
+ K_s=\int K(\rho x)d\mu_s,\ X_m=\int x\,d\mu_s\).
+At \(N=0,\ 0<M\le1\), normalized rank weights are constant.
+In one self-consistent leading field both off-diagonal receiver
+derivatives are \(\lambda\Phi(\rho x)/2\), so co-order is preserved.
+The current active ranks form an initial segment (equality excluded).
+For ordered pairs the output gap satisfies
+\(\Delta y(t)\ge\sqrt{M_0/M(t)}\Delta y(0)\).
+At the exactly saturated coherent resident, centered aligned and
+antisymmetric infinitesimal perturbations have rates
+\(+\alpha_{\rm sh},-\alpha_{\rm sh}\) while the mean block attracts.
+Through half mass from \(0<M_0<1/2\), the isolated source-1 multiplier
+is \(\sqrt{M_0/M}\). CFS sat bounds the full-field displacements on
+that finite interval for a prescribed compact support. These different
+statements neither condense a finite ordered profile nor give it a
+universal exponential growth rate. \src{CFS sat, spread; RPS rank}
+For large cutoff \(R>\zeta,\ H(R)\ge R/2\) with this bound also
+above \(R\), the raw discarded mass and first moment per coordinate
+are at most \(Ab^3/[6\pi H(R)^3]\) and \(Ab^3/[2\pi H(R)^2]\).
+Clamping onto \(R\) preserves the initial active fraction. These
+are instantaneous costs. \src{RPS rank}
+
+With \(U=x'\), the exact moments and exposure \(A_\zeta=\int(\zeta-x)_+d\mu_s\)
+obey \src{RPS moments}
+\begin{align*}
+ M'&=M(1-M), &2Y'&=(1-2M)Y+\rho K_s,\\
+ 2X_m'&=(1-M)X_m+
+ \int[\rho\phi(\rho x)-\rho S(x)+\lambda y\Phi(\rho x)]d\mu_s,\\
+ K_s'&=(1-M)K_s+\rho\int\Phi(\rho x)U\,d\mu_s,\\
+ A_\zeta'&=(1-M)A_\zeta-\int_{x<\zeta}U\,d\mu_s\quad\text{a.e.}
+\end{align*}
+At a gate atom the right derivative adds \(\int_{x=\zeta}(-U)_+d\mu_s\).
+For the unclamped law the finite-time first-moment domination and
+compact-rank limiting construction are supplied by IMP scope and mass;
+this does not bound the propagation error of any fixed clamp.
+
+\paragraph{Gate threshold.}
+For aligned entry put \(t=\rho\zeta,\ S_b=\langle F(t,\rho x)\rangle_b\).
+GOE shows \(S_b\) increases continuously and strictly from \(a/\rho\)
+to infinity as \(b\) increases. At mass one, \(b_c\) is the unique
+root \(S_b=K(t)\), continuous in \((\rho,\zeta)\) and strictly increasing
+in \(\zeta\). Input motion is outward below, stationary at and inward
+above the root. For \(0<M_0\le1\) there is an outward range only for
+\(M_0>(\zeta-\rho K(t))/(\zeta-a)\); then its upper endpoint solves
+\[
+ S_b=\frac{\rho K(t)-(1-M_0)\zeta}{\rho M_0}.
+\]
+At smaller or equal masses motion is inward for each \(b>0\).
+Here and below \(S_b\) denotes the unit-mass donor, not \(M_0 S_b\).
+\src{RPS face; GOE integration, threshold}
+
+\paragraph{Weak moments at entry.}
+For \(M>0\), fixed \(N,V\), let
+\(D=\rho K(t)-(1-M)\zeta+\lambda(V-N\zeta)\Phi(t)\).
+The full aligned gate has \(2U=D-\rho M S_b\): outward below,
+stationary at and inward above the unique root if \(D>Ma\);
+inward for all \(b>0\) otherwise. Only the weak increment has sign
+\(V-N\zeta\). For a general strong receiver the doubled output velocity
+is \(-(1-M)y-Y-K_w+\rho(1-N)K(\rho x)\), with
+\(K_w=\int K(u)d\mu_w\). This is instantaneous algebra.
+For \(0\le N\le1\) and retained co-order, IMP's forced ceiling for
+the positive-part vector uses homogeneous largest rate
+\[
+ -\frac{1-M}{2}+
+ \frac{\lambda}{4}\{\sqrt{(Mf)^2+4(1-N)^2}-Mf\}.
+\]
+Here \(f\) is normalized upper mass. Its forcing vector is
+\(\tfrac12(\rho\phi(0)+\lambda V_+,\,
+ \rho(1-N)\phi(0)+(Y+K_w)_-)^T\), integrated with the scalar rate
+multiplier on a chart-valid interval. In particular \(2Y'=(1-2M)Y
+-MK_w+\rho(1-N)K_s\). A homogeneous ceiling or an initial sign cannot
+replace this forcing integral through passage.
+\src{IMP weak, matrix, ceiling; GOE threshold}
+
+\paragraph{Finite-time crossings.}
+RPS's sufficient compact-entry test is
+\(g=\rho K(t)-\max(\rho K_s(0),Y(0))-(1-M_0)(\zeta+1)>0\).
+For the normalized unclamped profile the test itself holds precisely
+when \(M_0>(\zeta+1-\rho K(t))/(\zeta+1-a)\) and \(b<b_g\),
+where \(M_0\langle x\rangle_{b_g}=\rho K(t)-(1-M_0)(\zeta+1)\).
+GOE threshold evaluates this test; RPS cone proves its moving-region
+statement with compact entry. For an aligned critical clamp \(R>\zeta\)
+in the RPS range, let \(C=10e^7(1+\int(|x|+|y|)d\mu_0)\),
+\(k=g/[8(\zeta+1)]\),
+\(h=\min(1,g/(4C),\log[(\zeta+1)/\zeta]/k)\), and
+\(\delta=\min(g/(4\lambda),(\zeta-a)/2,\zeta(1-e^{-kh/2})/2)\).
+The band \(\zeta-\delta\le x=y<\zeta\) crosses by \(h/2\) and stays
+out through \(h\), with lower envelope \(x(0)e^{kt}\) in elapsed time.
+Its normalized mass is \(4A^{-1}\int_{\zeta-\delta}^\zeta
+g_b(H(u))H'(u)\,du\). This distinguishes newly inactive labels
+from those inactive from entry. \src{RPS cone, moved; GOE threshold}
+
+\begin{lemma}[Ceiling, escape and survival use different quantifiers]
+\label{an04rmsv1:horizons}
+For the unit-mass unclamped law at \(N=0\), both the GOE escape
+obstruction and the IMP survival estimate apply. More explicitly,
+for a fixed rank of upper mass \(f>0\),
+\[
+ \max(x_+,y_+)\le C_fe^{r_+(f)t},\qquad
+ r_+(f)=\frac{\lambda}{4}(\sqrt{4+f^2}-f)<\frac\lambda2.
+\]
+No fixed positive upper segment can maintain \(x\ge c_0e^{rt}\),
+\(c_0,r>0\), on intervals of unbounded length starting at a fixed time.
+Nevertheless for each finite \(T\),
+\[
+ \mu_0\{x(t)\ge\zeta\ \text{for all }0\le t\le T\}
+ \ge C_{b,\rho,\zeta}/(1+T).
+\]
+\src{GOE ceiling, escape, gap, failure; IMP budget, mass}
+\end{lemma}
+\begin{proof}
+Lemma~\ref{an04rmsv1:join} at \(M_0=1\) supplies the normalized
+entry with positive \(Y(0)\), upper-tail density asymptotic to
+\(2b^3/(\pi x^4)\) and strictly ordered continuous upper ranks.
+Thus the first two absolute moments are finite. With \(N=0\)
+the mean equation preserves \(Y\ge0\), as required by GOE.
+The GOE obstruction uses two different interior ranks; it does not
+apply to a passive test label or the last atom of a clamp.
+For comparison, at fixed horizon \(h\), \(D_0=1+\int(|x|+|y|)d\mu_0\),
+and \(0<f<1/2\) with entry quantile
+\(\lambda\xi_f>2D_0 e^{7h}\), GOE escape guarantees both coordinates
+at least \(\xi_f e^{r_- t}\) through \(h\), with
+\(r_-=(\lambda-2D_0e^{7h}/\xi_f)/2>0\).
+
+IMP integrates the same ceiling against this actual tail before
+constructing its lower barrier. Its protected labels start above
+\(R_T=\zeta+1+3B[(1+T)^{1/3}-1]\) for a fixed donor-budget constant
+\(B\); their mass is bounded below by order \((1+T)^{-1}\).
+The labels stay fixed on the given interval but the chosen set
+varies with \(T\). This matches both source hypotheses and proves
+compatibility without taking a positive limit of the lower bound.
+At \(T=2\ell/\lambda\) this is an inverse-logarithmic guarantee
+in the zero-weak-mass evolution. The logistic switch time with
+that coefficient would require the candidate weak seed.
+\end{proof}
+
+For a finite fixed rank a first hit of \(R_q\) takes at least
+\((\log R_q-O_f(1))/r_+(f)\), if it occurs. At
+\(\log R_q=\ell+o(\ell)\) this is later in leading coefficient than
+the candidate \(2\ell/\lambda\). GOE's isolated coherent-field
+passive example attains coefficient \(2/\lambda\). These clocks
+are neither a uniform approximation on growing charts nor a prediction
+of arrival of positive mass in the weak passage. \src{GOE large, clock}
+
+\paragraph{Return and lower ranks.}
+Initially \(b>b_c\) gives short-time return of some initially
+inactive labels, and \(b<b_c\) gives new outward crossings. These are
+regular aligned gates with positive Q1 density. The survivor inequality
+holds on both sides. For the bottom Q4 atom the exact equations are
+\[
+ 2x_a'=\lambda\Phi(\rho x_a)(y_a-X_m),\qquad
+ 2y_a'=\rho K(\rho x_a)-Y .
+\]
+Both derivatives are negative initially for all \(b>0\), since
+\(m=\langle x\rangle_b>a\). For \(C=100e^7,\ h=1/(4C)\) and
+\(m>\max(1,4a,8a/(\lambda h))\), the atom crosses \(x=0\) before
+\(h\) and stays negative through \(h\). GOE gives \(m/b\to1/\pi\);
+this is a sufficient large-scale range, with no complementary
+capture claim. \src{GOE integration, threshold; IMP bottomfield, mass}
+
+\section{Deep versus critical}\label{an04rmsv1:comparison}
+\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.16\textwidth}>{\raggedright\arraybackslash}p{.375\textwidth}>{\raggedright\arraybackslash}p{.38\textwidth}@{}}
+\toprule Quantity & Initialized deep family \(S_0=q^{10}\) & Critical family \(S_0=cq^{1/\omega}\)\\\midrule\endhead
+Entry geometry & Strong half mass at \(10\ell+O(1)\), recruited chart and bulk Q2 clock seed of order \(q^{10(1-\lambda)}\). \src{CRA ledger}
+& At the nominal clock, interior Q2 remains left-facing in comparison. Original seed open. \src{CRA outer; CFS scope, original}\\
+Strong profile at saturation & MOMC transports the original strong profile to first half mass with compact core and controlled tail. Later learned-window core tracking is \(O(q^{1/20})\). \src{CRA ledger; RTA coregap}
+& Q4 atom plus Q1 spread at nominal comparison entry. Ordered finite leading output gaps persist; trained saturated profile open. \src{RPS fraction; CFS sat, spread, original}\\
+Active fraction & On \(J\) all core labels are strictly active, primary carriers inactive, with background charged separately. No full-population fraction formula needed. \src{RTA coregap, backgroundrate}
+& Exact limiting comparison fraction in Lemma~\ref{an04rmsv1:join}; later leading active mass is a current rank cut. \src{RPS fraction, rank; GOE threshold}\\
+Resident behaviour & Initialized retention/selection followed by fixed-window continuation to the coherent comparator. \src{CRA ledger; RTA inventory}
+& Conditional choice of leading initial mass, ordered ranks, gate threshold, finite crossings and all-finite-horizon survival bound. \src{CFS spread; RPS cone; GOE gap; IMP mass}\\
+Trained flow & On WIT's rectangle the responses are at least \(1/2,1/4\), losses at most \(169/196\) of their initial cluster values, opposite source signs, ordered total rates, rebound \(\ge\gamma_0rq^2/4\) on a sector of width \(2\delta_\zeta q\). After common clearing the error is within \(o(q^2)\) of \(1/2\) on a diverging unspecified horizon. \src{RTA theoremA, persistence}
+& Early mass/ancestry estimates at fixed small cap. Critical trained profile, learned windows and persistence transfer open. \src{CFS original; CRA ledger, handoff}\\
+Open & Positive weak-produced input sign on \(J\cap(1/1000,\infty)\). \src{CPD table, help, missing; PHS transfer}
+& Fixed-fraction survival, coupled weak passage, trained transfer. \src{IMP resident, weak, handoff; GOE clock; CFS original}\\
+\bottomrule
+\end{longtable}\normalsize
+In the deep column times on \(J\) are on the matched half-mass
+clock \(s=\mu_1^2t_{\rm phys}-\tau_h\), not the elapsed resident
+time of Lemma~\ref{an04rmsv1:horizons}. RTA's parameter set is
+the fixed learned-witness rectangle around \((2/3,5\pi/9)\), not
+the full ratio box for its common-window conclusion. CPD gives
+\(-\mathcal A_q\mathcal L_q/2+O(q^{1/20})\) for normalized help,
+with positive exact lag, and four producer/channel terms for normalized
+harm. PHS proves the weak input term positive on
+\(J\cap(-\infty,1/1000]\). \src{RTA rectangle, time; CPD table, help; PHS transfer}
+
+\section{Unmatched interfaces}\label{an04rmsv1:open}
+\paragraph{OP-W: post-half-mass weak input sign.}
+On WIT's selected branch prove \(X>Y\) from \(1/1000\) through
+\(\sup J\), where this interval is nonempty. At a first equality
+\(X=Y\), the sufficient strict inward test is
+\[
+ \lambda n(V-Y)\Phi(\rho Y)+Y+nK(U)>(1-n)\rho K(\rho Y).
+\]
+Here \(U,V\) are coherent weak coordinates. \(V>Y\) is known.
+The \(T=-2Y'\) route used a half-learning region requiring \(n\le1/2\);
+a nonnegative-quadrant route lacks a lower entry bound for \(Y\)
+and an inward \(Y=0\) face. PHS obtained only the additional rational
+time interval. Closing this comparison would complete the interpretive
+input sign on \(J\); RTA and the four-part identity already stand.
+\src{CPD missing; PHS missing, theorem, transfer}
+
+\paragraph{OP-C1: fixed-fraction persistence.}
+For the critical entry in the saturated \(N=0\) state, determine for
+which parameters \(\inf_T\mu_0\{x(s)\ge\zeta\ \forall\,0\le s\le T\}>0\).
+IMP's bound tends to zero. In the proposed wedge \(y\ge x\ge\zeta\),
+the diagonal face needs \(\rho S(x)-Y\ge0\); initially
+\(\rho S(x)\le\rho K_s<Y\). The alternative \(G=\rho K(\rho x)-Y\)
+test at \(G=0\) requires \(2\lambda\Phi(\rho x)U+Y\ge\rho K_s\)
+and additionally \(U(\zeta,y)\ge0\) at the input gate. A positive
+solution would preserve an order-one inactive ancestry through
+arbitrarily long resident intervals; a negative answer would
+distinguish finite survival from perpetual survival. Neither is a
+consequence of GOE's gap contradiction.
+\src{IMP resident, budget, mass; GOE failure}
+
+\paragraph{OP-C2: weak passage of the split population.}
+Supply a matched weak switch with actual seed, weights, spread and clock;
+evolve the strong/weak donors \(S,Y,K_s,V,K_w,\mathcal W\) together
+through weak half mass. Control current gate flux, exposure,
+compensation, exact lag and rate-weighted producer terms. The candidate
+\(N_0\asymp c^{1-\lambda}q^2\) would give \(2\ell/\lambda+O(1)\)
+for a logistic half-mass delay. GOE's passive clock lacks positive-mass
+backreaction; IMP's gate evaluates an instant and its ceiling needs
+the integrated forcing. CRA's negative-input contraction at a frozen
+receiver assumes \(Y\ge0\) and costs
+\([-(1-M)v]_+\phi(0)/2\); strict negative-side contraction without
+that charge requires \(\lambda(1-N)>\phi(1)\). Neither that slope nor
+the \(N=0\) long interval proves crossing or selection.
+Closing OP-C2 would give the leading split state and observables
+through weak learning. \src{CRA contraction, handoff; GOE clock; IMP weak, ceiling, handoff}
+
+\paragraph{OP-C3: critical trained-flow entry and transfer.}
+Identify the actual strong clock, and prove \(o(q)\) angular accuracy
+or a sufficient weighted profile estimate, with radial weights,
+other sectors, tails, and matching where \(x\) approaches \(1/q\).
+At fixed small early cap the available absolute angle allowance
+\(O(\delta)\) does not supply this precision. The critical ratio
+\((S_0/A)^\omega/q=b\) violates TAIL's small-tail test; the
+PROFILE all-label clock requires \(T\ge2\ell/\omega+C_1\), whereas
+\(T_A=\ell/\omega+O(1)\). OWPT's limiting mass exponent is
+\(-1/\omega\), before the extra scaled-field loss. CRA's localized
+Q2 route leaves a weighted full-output defect unpaid. Solving the
+entry and continuation obligations would make a leading split law
+applicable to a trained critical family, subject to the later weak
+and probe-precision contracts. \src{CRA ledger, seed, handoff; CFS original; GOE clock; IMP handoff}
+
+\paragraph{Scope exceptions recorded.}
+Roadmap Section 5.1 reads the negative candidate exponent as driving a
+non-small bridge. CRA \texttt{map} proves failure of a sufficient
+upper-bound test, which does not imply a lower bound on escaped mass.
+We stop that inference. Likewise the phrase that a split cannot be
+built by escape in the discussion after GOE is supported only for a
+fixed positive upper segment with a sustained exponential lower
+envelope on diverging horizons; RPS \texttt{cone} gives actual
+finite-time crossings in a prescribed leading state. We stop the
+unrestricted inference. The underlying labeled results are used above
+on their own domains.
+
+\section{Scope for the paper}\label{an04rmsv1:paper}
+At the reported canonical pair \(q=1/20,\ S_0=2\cdot10^{-4}\),
+the exact placement is \(2<\log(5000)/\log(20)<3\) because
+\(20^2<5000<20^3\). For orientation only, at \(\rho=2/3,\ A=1/2\),
+the zero-noise scale factor \((S_0/A)^\omega/q\) is about
+\(2.3\) [eval], compared with \(5\pi/9\) about \(1.75\) [eval].
+The positive-noise critical comparison instead uses \(H^{-1}\).
+The deep theorem proves trained reversal and persistence for sufficiently
+small \(q\) on its specified power family and witness rectangle.
+The critical results describe comparison entry and prescribed leading
+states. At this fixed canonical pair the trained entry law, inactive
+fraction, weak clock, signed mechanism, reversal size and persistence
+are not certified by this package.
+\src{roadmap v1.35, Sect.~2.3; CRA map; CFS laws, original; RTA theoremA, persistence}
+\end{document}
