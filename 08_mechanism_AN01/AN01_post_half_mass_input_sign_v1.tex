@@ -1,0 +1,201 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\title{A rational post-half-mass interval for the weak-produced input sign}
+\author{Analytic increment for independent review}\date{Version 1, 2 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+On the selected orbit the input gap \(z=X-Y\) is positive through
+\(s_1=1/1000\) in the weak half-mass clock, uniformly for
+\(13/20\le\rho\le7/10\). We give lower bounds for both \(T=-2Y'\)
+and \(z\) on the new interval. On the intersection of WIT's learned
+window with \(s\le s_1\), the limiting weak-produced input contribution
+has a positive uniform minimum and the initialized contribution has
+the same sign for small noise. The boundary estimates below leave
+the part of the window after \(s_1\) unresolved.
+\end{abstract}
+\section{Domains and clocks}\label{an01phsv1:domains}
+Write \(x,y,u,v\) for the coherent comparator, \(\lambda=\rho^2\),
+\(n=(1+e^{-\lambda s})^{-1}\), \(z=x-y\), \(A=\rho K(\rho x)\),
+\(P=\Phi(\rho x)\), \(Q=\Phi(u)\), \(T=y+nK(u)-(1-n)A\).
+Here \(K(t)=\phi(t)+t\Phi(t)\), \(K'=\Phi\). The exposure in
+the producer formula is \(\zeta-x\), distinct from \(A\).
+The following are the source domains used throughout.
+\begin{itemize}
+\item WIT \texttt{orbit} and \texttt{Tequation} concern the selected
+coherent leading branch of strong mass one, at finite \(s\) with
+\(0<n<1\). The identity for \(T'\) has this domain. The lower bound
+\(T\ge (5/62)n(1-n)\) and the region
+\(-n<y<a<2/5,\ y<x<3/4,\ 0<u<1,\ 0<v<11/10\) in
+\texttt{regiontheorem} require the WIT ratio box and \(s\le0\)
+(\(n\le1/2\)). The elementary Gaussian bounds apply throughout that box.
+\item P \texttt{limitreversal} gives finite-time continuation and
+\(v>0,\ v>x,\ v>y\) on the positive weak-growth branch for
+\(0<\rho<1\). Its probe reversal statement additionally assumes
+\(\zeta>a_\rho\). Only its probe-independent invariant and growth
+estimates are used here.
+\item WIT \texttt{branchsmooth} supplies continuous parameter
+dependence on fixed finite windows of the selected branch.
+\texttt{commonwindows} fixes the common compact \(J\), with
+\(s_a=-(9/4)\log3<s_*\) at the central ratio and the window inside the
+central pre-hit interval. \texttt{uniformtheorem} supplies the mass,
+probe-gap and rate margins only on \(\mathcal P_*\times J\).
+Its construction does not put \(\sup J\) before half mass or before
+the rational endpoint below.
+\item CPD's table and help theorem concern the original aligned balanced
+initialization \(S_0=q^{10}\) on \(\mathcal P_*\times J\), for small
+positive \(q\) after fixed constants. The rates use the selector
+convention (classical at regular states, a.e.\ for the time derivative).
+The phase is \(s=\mu_1^2 t_{\rm phys}-\tau_h\). CPD uses
+\(R^{(p)}=R_p/2\) and the full reaction \(h_p=2g_p\).
+\end{itemize}
+
+\section{Crossing test and the attempted extensions}\label{an01phsv1:cross}
+The orbit gives \(2y'=-T\), \(2x'=\lambda P[n(v-y)-z]\).
+At any \(z=0\) with \(n\ge1/2\), keeping the signed term gives
+\[
+ 2z'=\lambda n\Phi(\rho y)(v-y)+y+nK(u)-(1-n)\rho K(\rho y).
+\]
+For \(y\ge0\) group the \(y\) term with the linear part of \(K\):
+\(y[1-(1-n)\lambda\Phi(\rho y)]\ge0\). For \(y<0\),
+\(K(\rho y)\le K(0)\). In either case
+\(\rho\phi(\rho y)\le\rho\phi(0)<(7/10)(2/5)=7/25\).
+Dropping the strictly positive first term and using \(1-n\le n\)
+therefore proves
+\begin{equation}\label{an01phsv1:reviewer}
+ 2z'>n[K(u)-7/25]-y_-,\qquad y_-=\max(-y,0).
+\end{equation}
+This includes \(y=0\) and \(n=1/2\). At \(u=0\) the exact formula is
+\(2u'=(1-n)\phi(0)-y/2\). Both proposed local tests are valid.
+In particular \(u,y\ge0\) suffice at a crossing since \(K(0)>3/8\).
+
+\paragraph{Approach A.} To propagate \(T>0\) and \(z>0\) together,
+consider a first \(T=0\) with \(z\ge0\). WIT's exact equation there is
+\[
+ \frac{T'}{n(1-n)}
+ =A(\lambda-Q^2/2)+\frac\lambda2(K(u)+\phi(u))
+ +\frac12Q\phi(u)+\frac{n}{2(1-n)}(K(u)-u)Q^2
+ -\frac{\lambda P x'}n .
+\]
+Let \(R=\max(|x|,|y|,|u|,|v|)\). For all \(s\ge0\), P's Dini
+bound gives \(R(s)\le R_s=(11/10+s/5)\exp[(1-\lambda)\log2/(2\lambda)]\)
+by integrating \(1-n\) from zero to infinity.
+Then \(P\le\Phi(\rho R_s), Q\le\Phi(R_s),v-y\le2R_s\).
+Even retaining the positive forcing terms, the sufficient inward test
+obtained from \(x'\le\lambda nP(v-y)/2\) needs their sum plus
+\(A(\lambda-Q^2/2)\) to exceed \(\lambda^2P^2(v-y)/2\).
+The half-learning estimates \(Q\le9/10,P\le71/100,v-y\le8/5\)
+do not follow from these forward bounds. For example a direct uniform
+lower estimate (discarding positive terms) is
+\[
+ -\tfrac{31}{400}\rho K(\rho R_s)
+ +\tfrac{\lambda}{2}K(-R_s)-\lambda^2 R_s ,
+\]
+which is negative (\(K(-R_s)<2/5,\ R_s>1,\lambda>2/5\)).
+This estimate leaves \(T'>0\) unpaid. At a fixed state
+\(\partial_n T=K(u)+A>0\), but along the orbit \(A'=\lambda Px'\);
+the last term in the exact test is precisely the cost of moving \(x\).
+The fixed-state derivative does not settle its sign.
+
+\paragraph{Approach B.} A first-exit proof using the nonnegative quadrant
+needs lower entry bounds and inward velocities. WIT supplies only
+\(y(0)>-1/2\); its upper bound \(y<a\) does not provide
+\(y<2(1-n)\phi(0)\) as \(n\) grows. At \(y=0\) one additionally needs
+\((1-n)A\ge nK(u)\) for inward \(y'\). Even \(u=x=y=0\) and
+\(n\ge1/2\) give the reverse strict inequality.
+For a crossing with \(y<0\), retaining the positive term instead
+requires
+\begin{equation}\label{an01phsv1:missing}
+ \lambda n\Phi(\rho y)(v-y)+y+nK(u)>(1-n)\rho K(\rho y).
+\end{equation}
+To see the limitation of the pointwise bounds, take a boundary test
+state \(x=y=-1/5,\ u=0,\ v=1/20,\ n=9/16\). It satisfies all three
+forward \(v\) inequalities, \(u\ge0,\ y>-n\), and even
+\(y+nK(u)>-1/5+27/128>0\).
+The left side of \eqref{an01phsv1:missing} is strictly less than
+\(9/256+1/40\) using \(\lambda<1/2,\Phi(\rho y)<1/2\).
+By convexity \(K(t)\ge K(0)+t/2\), so its right side exceeds
+\((7/16)(13/20)(3/8-7/100)>9/256+1/40\).
+Thus these inequalities alone do not close the crossing test.
+This test state is not asserted to occur on the orbit. Neither failed
+extension gives evidence of an actual sign change.
+
+\section{A rational interval from the half-mass margin}\label{an01phsv1:local}
+\begin{theorem}\label{an01phsv1:theorem}
+For the whole ratio box and \(0\le s\le s_1=1/1000\),
+\[
+ R(s)<2,\qquad T(s)\ge5/248-12s_1>0,\qquad
+ z(s)\ge e^{-s/4}\frac{15}{3968}>0 .
+\]
+Consequently \(W_{\rm in}=(\lambda/2)n z(v-y)P>0\) through \(s_1\),
+including the entire preceding finite selected branch.
+\end{theorem}
+\begin{proof}
+On \([-1,0]\), \(1/4<n\le1/2\) since \(e^\lambda<3\).
+WIT's half-learning region and the exact \(z\) equation imply
+\[
+ z'+z/4\ge T/2\ge(5/124)n(1-n)\ge5/992 .
+\]
+Here \(\lambda P/2<1/4,\ z>0,\ v-y>0\).
+Integration over that unit interval gives \(z(0)\ge(3/4)(5/992)\)
+using \(e^{-1/4}\ge3/4\). Also \(T(0)\ge5/248\).
+These bounds use no learned-window margins.
+
+At zero \(R(0)\le11/10\). On the closed box \(R\le2\),
+\(K(u)<12/5,\ A< (7/10)(2/5+7/5)<13/10,\ |n'|<1/8\).
+Each coordinate speed is at most 4: the brackets in \(2x',2y',2v'\)
+are bounded in magnitude by \(4\lambda,\ 2+12/5+13/10,\ 13/10+2\lambda\),
+respectively, and in \(2u'\) by \(2/5+2\lambda+4\).
+Thus before any first box exit \(R(s)\le11/10+4s\), strictly
+below 2 through \(s_1\). Differentiating the definition of \(T\)
+within the reached box gives
+\[
+ |T'|\le |y'|+|n'|(K(u)+A)+nQ|u'|+(1-n)\lambda P|x'|
+ <4+(12/5+13/10)/8+4+2<12 .
+\]
+It follows that \(T\) is strictly positive through the closed endpoint.
+Finally
+\[
+ 2z'+\lambda Pz=\lambda nP(v-y)+T>0 .
+\]
+The integrating factor gives the stated \(z\) bound. For earlier times
+apply WIT's region and the forward \(v-y\) invariant directly.
+\end{proof}
+
+\section{Original-flow conclusion and open interval}\label{an01phsv1:transfer}
+Put \(J_1=J\cap(-\infty,s_1]\). If this set is nonempty it is compact.
+WIT branchsmooth and Theorem \ref{an01phsv1:theorem} give
+\(m_1=\min_{K_\rho\times J_1}W_{\rm in}>0\).
+Keep CPD's constants first, fix \(s_1\) and this minimum, then take
+q small enough that CPD's uniform producer error \(Cq^{1/20}<m_1/2\).
+The exact selected-weak-produced core input contribution to source 2
+is then at least \(q^2m_1/2\) on \(\mathcal P_*\times J_1\).
+An empty \(J_1\) entails no transfer claim.
+
+For the initialized \(S_0=q^{10}\) population, CPD gives on all of J
+\[
+ q^{-2}D_1^\tau=-\tfrac12\mathcal A_q\mathcal L_q+O(q^{1/20}),\qquad
+ q^{-2}D_2^\tau=T_{\rm in}+W_{\rm in}+(1-n)T_{\rm out}
+                   +O(q^{1/20}).
+\]
+Here the exact lag is positive for small q by CPD help,
+\(T_{\rm in}=-\lambda z^2P/2\),
+\(T_{\rm out}=\rho(\zeta-x)K(\rho x)/2>0\), and
+\(W_{\rm out}=-nT_{\rm out}<0\).
+CPD retains all fixed-label producers, radial and non-core charges.
+On \(J_1\) the weak-produced input term has the positive sign proved
+above. On any part of J where \(z\le0\), both limiting input terms
+are nonpositive, so the positive limiting \(d_2\) is carried by
+\((1-n)T_{\rm out}\ge d_2\ge5p_*/8\). This implication does not
+assert existence of such a subwindow.
+
+The scope of the updated mechanism is therefore target/core and
+weak-produced input rotation together with positive net output rotation
+of the strong carrier. The weak input sign on \(J\cap(s_1,\infty)\)
+still needs \eqref{an01phsv1:missing} at any first zero, or a
+window-placement bound. Physical rates multiply the normalized rates
+by \(\mu_1^2\) in the matched clock \(s=\mu_1^2t_{\rm phys}-\tau_h\).
+The canonical and bridge regimes need their own initialized state
+and producer errors below the actual signed lag margin.
+\end{document}

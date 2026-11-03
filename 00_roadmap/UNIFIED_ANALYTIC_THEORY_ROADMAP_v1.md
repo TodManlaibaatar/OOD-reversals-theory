@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.29 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.30 — November 2, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -174,6 +174,16 @@
 - **My errors (ledger 30–31).** My lag bound $5p_*/7$ silently assumed $X\ge0$ on J. My prompt and v1.28 also called the lag's regression split a "producer split".
 - **Next: S6c.** The post-half-mass input sign. This is one bounded attempt; S8 is the alternative.
 
+**Revision 1.30 (Nov 2).** Records PHS (`AN01_post_half_mass_input_sign_v1`, S6c): **rational fallback closed; the main sign is parked as an open problem.**
+- **Closed.** For $\rho\in[13/20,7/10]$ and $0\le s\le s_1=1/1000$: $T\ge5/248-12/1000>0$ and $X-Y\ge\tfrac{15}{3968}e^{-s/4}$. So $W_{\rm in}>0$ on $J_1=J\cap(-\infty,1/1000]$ in the original flow, for small q.
+- **Both approaches failed, as the stop rules require recording.**
+  - **Approach A (propagate $T>0$).** The term $-\lambda(1-n)\Phi(\rho X)X'$ in $T'$ is unpaid.
+  - **Approach B (barriers).** The $y=0$ face points outward. A test state satisfying every available pointwise bound fails the crossing inequality.
+- **Assessment.** The interval gained past half mass is only $1/1000$. In substance, the sign of $W_{\rm in}$ after half mass is still open. I recommend parking it as a named open problem (OP-W below) rather than spending a third session now. Nothing proved depends on it.
+- **My error (ledger 32).** My S6c hint pointed approach B at a region with $y\ge0$. The orbit equations already show that region cannot be invariant.
+- **The deep-regime paper core (milestone 1) is complete on its stated scope,** with OP-W as its one interpretive open sign. Consolidation (checkpoint 2.0) awaits Tod's approval.
+- **Next: S8a,** a canonical-regime audit: the regime map, the κ-dependence of the deep chain, and the first canonical entry lemmas.
+
 ---
 
 ## 0. Ground rule: analytic proof only
@@ -208,7 +218,7 @@ Every statement keeps H2's scope labels: exact original-flow result; exact compa
 | Name | Content | Current status |
 |---|---|---|
 | **Theorem A** | From aligned-isotropic initialization, on an analytically specified joint family $(q,S_0(q))$ near $\rho=2/3$: substantial learning of both concepts, strict opposite cluster signs $D_1<0<D_2$ on a common learned window, and an ordered negative-then-positive total rate, giving a rebound $\ge c\,q^2$ on an off-cone sector of width $\ge c\,q$. | **Proved (deep regime, Nov 2; RTA):** $S_0=q^{10}$, $0<q\le q_0$, $(\rho,\zeta)\in\mathcal P_*$. |
-| **B-core** | The same proof shows *why*: cluster-1 help = exposure × signed exact lag; cluster-2 harm = input rotation of the strong carrier driven by a residual that the weak family produces; the evolving lag/exposure/residual force the change of dominance, with complete remainders. | Proved in the leading system. **Original flow (CPD, deep regime): help = exposure × positive exact lag, proved.** Harm = four leading producer parts (target/weak × input/output rotation); all signs proved except the weak input part on $J\cap(0,\infty)$ (S6c). The item-3 description "harm = weak-produced input rotation" is corrected accordingly. |
+| **B-core** | The same proof shows *why*: cluster-1 help = exposure × signed exact lag; cluster-2 harm = input rotation of the strong carrier driven by a residual that the weak family produces; the evolving lag/exposure/residual force the change of dominance, with complete remainders. | Proved in the leading system. **Original flow (CPD, deep regime): help = exposure × positive exact lag, proved.** Harm = four leading producer parts (target/weak × input/output rotation); all signs proved except the weak input part on $J\cap(1/1000,\infty)$ (PHS; open problem OP-W). The item-3 description "harm = weak-produced input rotation" is corrected accordingly. |
 | **B-bridge** | The canonical depth enhancement: a non-small inactive strong bridge changes exposure and compensation. | Open (AN4). |
 | **Persistence** | After the rebound, the scaled benefit is eventually zero on growing windows. | **Proved for the initialized family (RTA, via FWC and LP's diagonal argument)**, on a diverging horizon with no rate. |
 | **Linear contrast** | Commuting aligned linear networks have monotone probe error and clusterwise help. | Complete (LP, extending P10). |
@@ -1121,6 +1131,44 @@ Notation: $A_*=\zeta-X$, $Z=X-Y$, $\Phi_x=\Phi(\rho X)$, $\mathsf K_x=\mathsf K(
   - **Consolidation** (checkpoint 2.0) awaits Tod's approval.
   - **S7/S8.**
 
+**Status after PHS (`AN01_post_half_mass_input_sign_v1`, S6c, Nov 2): fallback (4a) closed; main sign parked.**
+- *Theorem* (`theorem`). For $13/20\le\rho\le7/10$ and $0\le s\le1/1000$:
+  - $\max(|x|,|y|,|u|,|v|)<2$;
+  - $T\ge5/248-12/1000>0$;
+  - $z\ge\tfrac{15}{3968}e^{-s/4}$.
+  Hence $W_{\rm in}>0$ through $s_1$. On $J_1=J\cap(-\infty,s_1]$, if nonempty, compactness gives $m_1=\min W_{\rm in}>0$, and $Cq^{1/20}<m_1/2$ gives an original selected-weak input contribution $\ge q^2m_1/2$.
+- *Also recorded.*
+  - The reviewer crossing reduction $2z'>n[\mathsf K(U)-7/25]-Y_-$, verified.
+  - The implication "on any subwindow of J with $X-Y\le0$, $d_2>0$ is carried by $(1-n)T_{\rm out}$". This requires no claim that such a subwindow exists.
+- *Failures (exact).*
+  - **Approach A.** At a first $T=0$, the exact `Tequation` test leaves $-\lambda Px'/n$ unpaid under the available forward radius bounds.
+  - **Approach B.** At $u=x=y=0$, $n\ge1/2$: $2y'=\phi(0)[\rho(1-n)-n]<0$, so the $y=0$ face points outward. The test state $x=y=-1/5$, $u=0$, $v=1/20$, $n=9/16$ satisfies $V>0$, $V>X$, $V>Y$, $u\ge0$, $y>-n$ and $y+n\mathsf K(u)>0$. It still has LHS $<9/256+1/40<(7/16)(13/20)(3/8-7/100)<$ RHS in the crossing inequality. Reachability of this state is not asserted.
+- *Checked (reviewer, Nov 2):*
+  - **Pre-half-mass margin.** On $[-1,0]$, $n>1/4$ (since $e^\lambda<3$). With $T\ge\tfrac5{62}n(1-n)\ge\tfrac{15}{992}$, $z'+z/4\ge T/2\ge5/992$ follows from $2z'=\lambda P[n(v-y)-z]+T$, $v>y$ and $\lambda P/2<1/4$. Integration with $e^{-1/4}>3/4$ gives $z(0)\ge15/3968$; also $T(0)\ge5/248$.
+  - **Box speeds.** In $R\le2$:
+    - $|2x'|\le4\lambda$;
+    - $|2y'|\le2+\mathsf K(2)+A<2+12/5+13/10$, using $\mathsf K(t)\le t_++\phi(0)$;
+    - $|2v'|\le13/10+2\lambda$;
+    - $|2u'|\le2/5+2\lambda+4$.
+    So every speed is $\le4$ and $R(s)\le11/10+4s<2$.
+  - **$T'$ bound.** $T'=y'+n'(\mathsf K(u)+A)+nQu'-(1-n)\lambda Px'$, with $|n'|\le\lambda/4<1/8$, gives $|T'|<12$.
+  - **Remaining arithmetic.** $z$ by the integrating factor; the test-state inequalities by exact rational arithmetic, using the tangent bound $\mathsf K(t)\ge\phi(0)+t/2$.
+  - **Escapes and prefix.** The .tex passes both escape scans; prefix `an01phsv1:` is unique.
+- **OP-W (open problem: post-half-mass weak input sign).** Show that $X>Y$ on $[1/1000,\sup J]$ for ρ in WIT's interval. Equivalently, at any zero of $X-Y$ there, show
+  $$\lambda n\Phi(\rho Y)(V-Y)+Y+n\mathsf K(U)>(1-n)\rho\mathsf K(\rho Y).$$
+  Reviewer note for any future attempt:
+  - The failing test state has $v=1/20$, but the orbit obeys $2v'=\rho\mathsf K(\rho x)-\lambda v$. So a forward **lower** barrier for v, together with a lower barrier for y, on $[0,\sup J]$ is the missing input.
+  - Any such region must allow $y<0$, since at $n=1$ the orbit has $2y'=-y-\mathsf K(u)$.
+  - The sign is interpretive. Theorem A, the help law and the four-part identity do not depend on it.
+- *B-core, final deep-regime statement.* On $\mathcal P_*\times J$ ($S_0=q^{10}$, small q):
+  - help $=$ exposure $\times$ positive exact lag;
+  - harm $=T_{\rm in}+W_{\rm in}+T_{\rm out}+W_{\rm out}$, with $T_{\rm in}\le0<T_{\rm out}$ and $W_{\rm out}<0$ on J, and $W_{\rm in}>0$ on $J\cap(-\infty,1/1000]$.
+  H2 Theorem B item 3 reads as corrected in CPD/PHS.
+- *Next: S8a* (prompt in the v1.30 review). Canonical-regime audit:
+  - a rational regime map;
+  - the κ-dependence of every deep-chain increment, with the first failing inequality at $2<\kappa<3$;
+  - the left-facing entry and $u<0$ weak-chart lemmas, where they close.
+
 ### S6. The exact finite-noise lag (AN1)
 
 **Claim.** The original-flow help channel $D_1^{\rm phys}/(\mu_1^2q^2)=-\tfrac12A_{q,\xi}L^{\rm mean}_{1,q}+\text{remainder}$, with the remainder smaller than the lag's signed margin on the learned windows, and a positive-lag estimate for the exact lag.
@@ -1200,7 +1248,7 @@ Tracks that can run in parallel:
 | I | S1 strong-stage tracking | Bottleneck for Theorem A. Steps 1–2a done unconditionally (OWPT, MOMC; SMCP records the fixed-offset obstruction). Steps 6–7 done (Q2EP, Q2EC, SEP). **S1's entry contracts are complete.** $B_s$, core retention and $\mu_B$ move to the weak-passage bootstrap (S2/S3). |
 | II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem, and **RB proved the response barrier: the deep-regime weak passage is a theorem.** Track II is complete; next is S4 (track III). |
 | III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction**, and **S4e (WCS) closed the weak-chart reduction and selection**: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ at a fixed small weak mass. **Track III is complete.** |
-| IV | S6 exact lag | Needed for B-core. Attempt 1 (BC) stopped at a wrong remainder contract and closed the two-channel identity for $D_2$. **CPD (S6 revised) closed the channel and producer tables, the signed exact lag and the help law**, and the four-part harm identity with every sign except $W_{\rm in}$ after half mass. **Next: S6c,** the post-half-mass input sign. |
+| IV | S6 exact lag | Needed for B-core. Attempt 1 (BC) stopped at a wrong remainder contract and closed the two-channel identity for $D_2$. **CPD (S6 revised) closed the channel and producer tables, the signed exact lag and the help law**, and the four-part harm identity with every sign except $W_{\rm in}$ after half mass. PHS (S6c) extended that sign to $s\le1/1000$; the rest is parked as OP-W. **Track IV is complete on its scope.** |
 | V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. Start with the quantile formulation. |
 | — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **S5b (PSE) closed:** background paid on the passage; full error and rates match at every fixed level $n'\le n$, so A-error-transfer holds on windows inside $(-\infty,s_n]$. **S5c (FWC) closed:** continuation by combined transverse energy; **A-error-transfer on every fixed window**. **S5d (RTA) closed:** rate transfer on J; **initialized Theorem A and persistence**. |
 
@@ -1324,6 +1372,8 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
     - *Rule:* bounding a difference by an endpoint is a sign claim on the subtracted term. Check that sign, on the whole window, before using the bound.
 31. **Regression contributor vs. channel producer (my S6-revised prompt and v1.28).** I called $L_0=Y+n\mathsf K(U)$ the lag's "producer split", core plus weak. But in the moving help channel the core's own output contribution is zero at the atom; the target residual supplies $-A_*Y/2$ and the selected weak $-A_*n\mathsf K(U)/2$. The core and weak terms are regression moments of the fitted output, not producers of motion. CPD kept the two indices separate.
     - *Rule:* a moment's contributors and a channel's producers are different decompositions. Do not carry an attribution from one to the other.
+32. **A pointwise sufficient condition offered as a region (my S6c prompt).** I noted that $U\ge0$ and $Y\ge0$ at a crossing suffice, and pointed approach B at barriers giving them. But the $y=0$ face points outward once $n\ge1/2$: at $u=x=y=0$, $2y'=\phi(0)[\rho(1-n)-n]<0$. And at $n=1$ the orbit has $2y'=-y-\mathsf K(u)$, so $y\ge0$ cannot hold late on the branch. Both facts were visible in WIT `orbit`.
+    - *Rule:* a sufficient condition at one point is not an invariant region. Before proposing a region, check every face's inward sign and compare it with the orbit's limiting equations.
 
 ---
 
@@ -1374,6 +1424,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | RTA | `07_compact_windows_AN07/AN07_rate_transfer_and_assembly_v1.tex` (+ review), prefix `an07rtav1:` — S5d, closed: sup core tracking and strict probe gap; A-rate-transfer on WIT's J; direct learning (responses, 169/196 loss ratio); **initialized Theorem A** on $\mathcal P_*$ ($S_0=q^{10}$); **initialized persistence** on a diverging horizon; dependency ledger and S6 handoff |
 | BC | `08_mechanism_AN01/AN01_original_flow_bcore_v1.tex` (+ review), prefix `an01bcv1:` — S6 attempt 1, obstruction increment: P's $r_2$ contains the positive cluster-2 output-rotation term $q^2\mathcal O_*$ on J, so a small-remainder contract for $D_2$ is false; closed two-channel identity for $D_2$ |
 | CPD | `08_mechanism_AN01/AN01_channel_producer_decomposition_v1.tex` (+ review), prefix `an01cpdv1:` — S6 revised, closed subset: input/output/radial channel limits for both sources with fixed-label producer tables; signed exact lag $\mathcal L_q=Y+n\mathsf K(U)+O(q^{1/20})\ge c_L$; help = exposure × lag; four-part harm identity with signs, $W_{\rm in}>0$ only on $J\cap(-\infty,0]$; corrected Theorem B item 3 |
+| PHS | `08_mechanism_AN01/AN01_post_half_mass_input_sign_v1.tex` (+ review), prefix `an01phsv1:` — S6c, fallback closed: rational post-half-mass interval $s\le1/1000$ with $T>0$ and $X-Y>0$, so $W_{\rm in}>0$ on $J\cap(-\infty,1/1000]$; exact failures of both extension approaches; final deep-regime B-core statement; the remaining sign parked as OP-W |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |
