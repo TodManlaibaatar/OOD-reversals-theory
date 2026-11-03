@@ -1,0 +1,417 @@
+% New increment only. No prior source is modified.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[margin=.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,longtable,array,booktabs}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\dd}{\,d}
+\newcommand{\K}{\mathcal K}
+\newcommand{\E}{\mathbb E}
+\newcommand{\one}{\mathbf1}
+\newcommand{\kf}{\mathsf K}
+\title{Original-flow B-core audit:\\the nonvanishing cluster-2 output-rotation channel}
+\author{Standalone analytical increment for review}
+\date{Version 1 --- 2 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Step 2 of the proposed S6 contract fails on the original initialized
+deep-regime flow itself. With the checkpoint's unchanged definitions,
+its remainder \(r_2\) contains cluster-2 output rotation of the strong
+core. On WIT's fixed learned windows,
+\[
+ q^{-2}r_2=
+ \frac{\rho}{2}(1-n_\rho)(\zeta-X_*)\kf(\rho X_*)
+ +O(q^{1/20}),
+\]
+uniformly on the specified parameter rectangle. The displayed leading
+term has an explicit positive, \(q\)-independent lower bound.
+Consequently \(r_2=O(q^{2+\kappa})\) is false for every \(\kappa>0\).
+The exact factorizations remain valid; the proposed budget does not.
+This increment proves that obstruction with all background labels
+retained, and stops at Step 2. It does not claim the full B-core
+theorem or proceed to signed-lag and producer-attribution tasks.
+\end{abstract}
+
+\section{Scope, conventions and hypothesis inventory}
+\label{an01bcv1:inventory}
+Use the initialized balanced untied Gaussian population of RTA and FWC,
+\(S_0=q^{10}\), with their already fixed constant order and sufficiently
+small \(q>0\). Keep WIT's original compact rectangle
+\(\mathcal P_*=K_\rho\times I_\zeta\), where
+\[
+ K_\rho\subset[13/20,7/10],\qquad
+ I_\zeta\subset[87/50,7/4],
+ \qquad J=[s_*-r,s_*+r].
+\]
+The same matched clock is
+\[
+ \tau=\mu_1^2t_{\rm phys},\qquad
+ \tau_h=t_n+\lambda^{-1}\log\frac{1-n}{n},\qquad
+ s=\tau-\tau_h,\qquad \lambda=\rho^2.
+\]
+Here \(n\) is the fixed entry level, whereas
+\(n_\rho(s)=(1+e^{-\lambda s})^{-1}\) is the comparison mass.
+Write \(d\mu=m\,d\lambda_0\), \(M=\mu_\K\), \(N=\mu_S\);
+the core \(\K\), selected cohort \(S\), primary remainder \(P_q\),
+secondary cohort \(\Sigma\) and outside set \(B\) are the fixed-label
+sets in FWC. No new cohort is selected.
+
+For a receiver write \(a=a_\theta=(\cos\theta,\sin\theta)\),
+\(b=a_\psi\). Let \(e_\xi=\xi_q-f(\xi_q)\), with
+\(\xi_q=(\sin q\zeta,-\cos q\zeta)\).
+The checkpoint uses the \emph{unhalved} source matrix
+\[
+ R_p(\theta)=\E_{P_p}[(X-f(X))X^T\one_{\{a\cdot X>0\}}],
+\]
+and velocities
+\[
+ g_p=\tfrac12 b^TR_pa,\quad
+ v_{\theta,p}=\tfrac12 b^TR_pa^\perp,\quad
+ v_{\psi,p}=\tfrac12(b^\perp)^TR_pa.
+\]
+Thus \((\log m)'_p=2g_p\). RTA's matrix \(R^{(p)}\) equals
+\(R_p/2\), and its full radial reaction \(h_p=2g_p\).
+These conventions account for every mixture factor below.
+
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{.22\textwidth}
+ >{\raggedright\arraybackslash}p{.44\textwidth}
+ >{\raggedright\arraybackslash}p{.25\textwidth}}
+\toprule Source & Hypotheses and exact/leading scope & Disposition\\
+\midrule\endhead
+P \texttt{motion}
+& Exact balanced characteristic flow, finite moment integrals, fixed
+ probe; chain rule at gate-regular times, or selector/a.e. convention.
+ All labels and all three motions are retained.
+& Used. FWC supplies finite moments and RTA supplies the
+ gate-separated core.\\
+P \texttt{projection}
+& Exact full output; \(P_1=N(e_1,q^2I)\), \(Q_1=1+q^2\);
+ current probe-active/inactive partition; finite \(L^2(P_1)\) output.
+ Uses \(\E_{P_1}X_1X_2=0\). No lag sign is assumed or concluded.
+& Exact identity available. Not used to infer a signed lag.\\
+P \texttt{factorizations}, \texttt{epsilonB}, \texttt{epsilonH}
+& A measurable core \(C\) contained in the current active set,
+ \(M_C>0\); normalized current mass averages, signed variables,
+ finite integrals. No smallness of remainders is a hypothesis or
+ conclusion of the algebraic identities.
+& Use \(C=\K\). RTA gives strict activity, FWC gives \(M\ge1/2\).
+ The proposed smallness is tested, not imported.\\
+P \texttt{helpdefect}
+& Same exact Gaussian setting and variables. The four-term identity
+ is algebraic; its displayed Gaussian tail estimate additionally
+ assumes \(a_1>0\) and finite \(\|e_2\|_{P_1}\).
+& Hypotheses hold on the compact core chart, but its quantitative
+ evaluation is not needed after the \(r_2\) obstruction.\\
+P \texttt{GLC}, \texttt{GLCidentity}
+& The preceding exact core definitions. A rate identity at
+ chain-rule times; no autonomous closure or small-error assertion.
+ Separate-sign criteria require the explicitly displayed margins.
+& Exact bookkeeping retained. Its error budget cannot be replaced
+ by \(o(q^2)\) under the proposed partition.\\
+P \texttt{producer}
+& An exhaustive output partition with integrable moments;
+ same receiver gate in each term; same rate-weighted core integral.
+ No evaluation at a mean receiver is allowed.
+& Available exact identity; producer asymptotics not attempted
+ after Step 2 fails.\\
+P \texttt{tracking}
+& Fixed initial-label subset and complement, Gaussian \(L^2\)
+ projection, exact kernel evolution and regularity for differentiation.
+ Positive damping estimate also needs \(|\theta|\le\theta_0<\pi/2\);
+ the comparison bound assumes \(\kappa_A\ge\kappa_*>0\),
+ \(|\eta_A|\le\eta_*\). It does not prove a positive lag.
+& Not invoked. No forcing or signed-lag hypothesis is added.\\
+P \texttt{lagtheorem}, \texttt{lag-pop}, \texttt{Xi-positive}
+& Bounded-chart leading characteristic solution, \(M=1\),
+ \(0\le N\le1\); positive measures; continuous interpretation at
+ \(N=0\); finite coordinates for strict \(\Xi>0\); positive incoming
+ lag for positivity preservation.
+& Leading-only statements. Not substituted for exact original
+ lag positivity; not needed for the obstruction.\\
+P \texttt{atomiclag}, \texttt{atomicrates}
+& Selected coherent leading branch, \(0<n_\rho<1\), \(M=1\);
+ active strong probe for the displayed rate formula, inactive weak
+ probe in its two-family representation.
+& Only the leading rate identity is used as a consistency check.
+ The original estimate is proved using RTA/FWC.\\
+RTA \texttt{coregap}, \texttt{backgroundrate}, \texttt{ratetransfer}
+& Original \(S_0=q^{10}\) family; sufficiently small q after
+ fixed constants; original \(\mathcal P_*\times J\); matched clock.
+ Selector source formulas, classical derivatives where defined.
+& Unconditional inputs on exactly this window. Core gap
+ \(\zeta-x\ge g_*/8\); supremum tracking \(O(q^{1/20})\).\\
+FWC \texttt{corefield}, \texttt{distbound}, \texttt{background}
+& Original deep-regime initialized family; fixed finite
+ \(T>\max_\rho s_n\), bounded offsets, q last.
+ Physical current masses/moments and unchanged cohorts.
+& Choose fixed T covering J. Source-2 output velocity,
+ reaction, masses and background estimates are available.\\
+WIT \texttt{uniformtheorem}
+& Selected leading branch and original rectangle/windows.
+& Gives \(\zeta-X_*\ge g_*/4\) on J.
+ Finite logistic time gives \(1-n_\rho>0\) uniformly.\\
+WIT \texttt{regiontheorem}
+& Selected branch, its ratio box, and specifically \(s\le0\).
+& Not extended to an arbitrary point of J. No positivity of
+ \(X_*\) is needed below.\\
+\bottomrule
+\end{longtable}\normalsize
+
+\section{Exact factorization and the channel left in \texorpdfstring{\(r_2\)}{r2}}
+\label{an01bcv1:channels}
+Use the checkpoint's exact definitions on \(C=\K\):
+\[
+ z=a\cdot\xi_q>0,\quad v=-a^\perp\cdot\xi_q,\quad
+ d=-e_\xi\cdot b^\perp,\quad c=e_\xi\cdot b,\quad
+ T_2=R_2a^\perp,\quad j=b_1T_{2,1}.
+\]
+The scalar \(c\) here is the checkpoint's probe projection, not the
+weak training response. Its sign is not imposed.
+With bars denoting normalized current core averages,
+\begin{align}
+ B_0&=\tfrac M2Q_1\bar z\,\bar d\,r_{21},&
+ H_{1,0}&=\tfrac M2\bar v\,\bar c\,\bar j,\notag\\
+ D_1^\tau&=-B_0-\epsilon_B+r_1,&
+ D_2^\tau&=H_{1,0}+\epsilon_H+H^{(2)}+r_2.
+ \label{an01bcv1:exactfactor}
+\end{align}
+These remain exact. In particular
+\begin{equation}
+ H^{(1)}+H^{(2)}
+ =\frac12\int_\K vc\,b^TR_2a^\perp\dd\mu
+ =\int_\K vc\,v_{\theta,2}\dd\mu
+ \label{an01bcv1:inputchannel}
+\end{equation}
+is the full core input-rotation channel, including both coordinates
+of \(b^TR_2a^\perp\).
+
+Define the full-residual core output and radial channels by
+\[
+ O_{2,\K}=\int_\K zd\,v_{\psi,2}\dd\mu,\qquad
+ P_{2,\K}=-\int_\K 2g_2zc\dd\mu.
+\]
+P \texttt{motion} gives exactly
+\begin{equation}
+ r_2=O_{2,\K}+P_{2,\K}+D_{2,\K^c},
+ \label{an01bcv1:r2identity}
+\end{equation}
+where \(D_{2,\K^c}\) retains all three motions of every non-core
+label. Thus no algebraic convention permits one to call \(r_2\)
+only a finite-noise error.
+
+\begin{theorem}[Positive leading term in the exact \(r_2\)]
+\label{an01bcv1:obstructiontheorem}
+Put \(\chi=1/20\), \(L=1+\log(1/q)\),
+\(\gamma_*=289169/924000\), and
+\(\epsilon_{\rm bg}=q^8+L^2q^{\gamma_*}\).
+There is a fixed C, independent of q, such that uniformly on
+\(\mathcal P_*\times J\),
+\begin{equation}
+ \left|q^{-2}r_2-\mathcal O_*(\rho,\zeta,s)\right|
+ \le C(q^\chi+q^{1/10}+q^2+\epsilon_{\rm bg})
+ \le C_{\rm rem}q^\chi,
+ \label{an01bcv1:r2limit}
+\end{equation}
+where the signed leading term is
+\begin{equation}
+ \mathcal O_*=\frac{\rho}{2}(1-n_\rho)
+                 (\zeta-X_*)\kf(\rho X_*).
+ \label{an01bcv1:Ostar}
+\end{equation}
+Let \(R\ge2\) bound the reached core and comparison charts and offsets
+on a fixed FWC window covering J. Define
+\begin{equation}
+ b_J=|s_*|+r,\quad
+ \delta_n=\frac1{1+\exp((49/100)b_J)},\quad
+ c_{\rm out}=\frac{13g_*}{160}\delta_n\kf(-7R/10)>0.
+ \label{an01bcv1:cout}
+\end{equation}
+Then \(\mathcal O_*\ge c_{\rm out}\). Consequently, after decreasing
+q so that \(C_{\rm rem}q^\chi\le c_{\rm out}/2\),
+\begin{equation}
+ r_2(\tau_h+s,\xi_q)\ge\tfrac12 c_{\rm out}q^2
+ \qquad ((\rho,\zeta,s)\in\mathcal P_*\times J).
+ \label{an01bcv1:r2lower}
+\end{equation}
+All source rates here use the exact selector convention, with the
+usual classical/a.e. interpretations; there is no core gate hit.
+\end{theorem}
+
+\begin{proof}
+We first keep background in the precise observable needed, rather
+than assuming it is absent. Set \(T_0=\Sigma\cup B\).
+FWC and the RTA background proof give
+\[
+ \mu_{T_0}\le Cq^{\gamma_*},\qquad
+ \mathcal Q_{T_0}\le Cq^2\epsilon_{\rm bg},\qquad
+ |f_{T_0}(\xi_q)|\le\sqrt{\mu_{T_0}\mathcal Q_{T_0}}
+                         \le Cq\epsilon_{\rm bg}.
+ \tag{*}
+\]
+The last inequality follows from \(q^{\gamma_*}\le\epsilon_{\rm bg}\).
+The bound before it follows directly by Cauchy--Schwarz applied
+to the positive feature integral; \(\mathcal Q\) is FWC's squared
+active-probe input integral. FWC gives exact primary inactivity,
+so \(f=f_\K+f_{T_0}\) at this probe. RTA also gives
+\[
+ |D_2^\tau-D_2^{\K,\mathrm{self}}|\le Cq^2\epsilon_{\rm bg},
+ \qquad
+ D_2^{\K,\mathrm{self}}=-(\xi_q-f_\K)\cdot\dot f_{\K,2}.
+ \tag{**}
+\]
+These bounds include all outside labels and probe-gate slices.
+
+Replacing \(e_\xi\) by \(e_\xi^\K=\xi_q-f_\K\) in the core
+input channel changes it by at most
+\(|f_{T_0}|\,|\dot f_{\K,2}^{\,\theta}|\).
+On the bounded core chart, FWC gives
+\(v_{\theta,2}=O(q)\), so
+\(|\dot f_{\K,2}^{\,\theta}|\le Cq\).
+The change is therefore \(O(q^2\epsilon_{\rm bg})\).
+Subtracting this input channel from (**) yields
+\begin{equation}
+ r_2=O_{2,\K}^{\rm self}+P_{2,\K}^{\rm self}
+                       +O(q^2\epsilon_{\rm bg}).
+ \label{an01bcv1:r2self}
+\end{equation}
+This is also a direct bound on the combined non-core and
+full-output corrections in \eqref{an01bcv1:r2identity}; none is
+discarded by ancestry or sign.
+
+For compact core coordinates \(\theta=qx,\ \psi=qy\), put
+\(A=\int_\K(\zeta-x)\dd\mu\), \(B_\zeta=\int_\K y(\zeta-x)\dd\mu\).
+RTA's core expansion and the reached chart give
+\[
+ f_{\K,1}=qA+O(q^3),\quad f_{\K,2}=q^2B_\zeta+O(q^4),
+ \quad z=q(\zeta-x)+O(q^3).
+\]
+It follows by direct projection that
+\[
+ d^{\rm self}=-e_\xi^\K\cdot b^\perp=1+O(q^2),
+ \qquad c^{\rm self}=e_\xi^\K\cdot b=O(q).
+\]
+In particular the sign in the output-rotation channel is positive.
+FWC \texttt{corefield} states, source by source,
+\[
+ y'_2=\frac{\rho}{2}(1-N)\kf(\rho x)+O(q^{1/10}),
+ \qquad v_{\psi,2}=q y'_2,\qquad 2g_2=O(q^2).
+\]
+Therefore
+\begin{align}
+ q^{-2}O_{2,\K}^{\rm self}
+ &=\frac{\rho}{2}(1-N)
+       \int_\K(\zeta-x)\kf(\rho x)\dd\mu
+                +O(q^{1/10}+q^2),\notag\\
+ |P_{2,\K}^{\rm self}|&\le Cq^4.
+ \label{an01bcv1:outputexpansion}
+\end{align}
+This calculation differentiates the exact source output formula,
+not a static error remainder.
+
+The function \((\zeta-x)\kf(\rho x)\) is uniformly bounded and
+Lipschitz on the fixed chart. FWC's physical masses and distance,
+or RTA's supremum tracking together with those masses, give
+\[
+ \left|\int_\K(\zeta-x)\kf(\rho x)\dd\mu
+           -(\zeta-X_*)\kf(\rho X_*)\right|\le Cq^\chi,
+ \quad |N-n_\rho|\le Cq^{1/8}.
+\]
+Combining this with \eqref{an01bcv1:r2self} and
+\eqref{an01bcv1:outputexpansion} proves the first bound in
+\eqref{an01bcv1:r2limit}. Since \(\gamma_*>\chi\),
+\(L^2q^{\gamma_*}=o(q^\chi)\); also
+\(q^{1/8},q^{1/10},q^2\le q^\chi\) for \(0<q\le1\).
+This proves its stated explicit power.
+
+For positivity, \(s\le b_J\), \(\lambda\le49/100\), and hence
+\[
+ 1-n_\rho(s)=\frac1{1+e^{\lambda s}}\ge\delta_n.
+\]
+WIT gives \(\zeta-X_*\ge g_*/4\), and
+\(\rho X_*\ge-7R/10\). The Gaussian function
+\[
+ \kf(t)=\phi(t)+t\Phi(t)=\int_0^\infty u\phi(u-t)\dd u
+\]
+is strictly positive and increasing at every finite t.
+For a fully elementary positive bound,
+\(\kf(-a)\ge\int_1^2u\phi(u+a)\dd u
+\ge\tfrac32\phi(a+2)>0\) when \(a\ge0\).
+Multiplying \(\rho/2\ge13/40\), the logistic slack, the gap,
+and this Gaussian moment proves \eqref{an01bcv1:cout}.
+The final lower bound follows from \eqref{an01bcv1:r2limit}.
+No positivity of \(X_*\), and no extension of WIT's \(s\le0\)
+region theorem, was used.
+\end{proof}
+
+\section{Exact failed inequality and the closed subset}
+\label{an01bcv1:stop}
+Step 2 requires, among its separate remainder estimates,
+\begin{equation}
+ |r_2|\le C_*q^{2+\kappa},\qquad \kappa=1/20
+ \quad\hbox{(or any fixed \(\kappa>0\))}.
+ \label{an01bcv1:failed}
+\end{equation}
+Theorem \ref{an01bcv1:obstructiontheorem} would force
+\[
+ \tfrac12c_{\rm out}\le C_*q^\kappa,
+\]
+which is impossible for a q-independent \(C_*\) as \(q\downarrow0\).
+This is a false estimate, not an unpaid hypothesis or a missing
+tail budget. Even the coherent limit retains this channel.
+P \texttt{atomicrates} explicitly identifies its second-source
+output rotation before weak saturation.
+
+For clarity, the already available RTA rate transfer and the theorem
+above yield the rigorously closed two-channel statement
+\begin{align}
+ q^{-2}(H^{(1)}+H^{(2)})
+       &=(X_*-Y_*)\,x'_{2,*}+O(q^\chi),\notag\\
+ q^{-2}D_2^\tau
+       &=(X_*-Y_*)\,x'_{2,*}+\mathcal O_*+O(q^\chi),
+ \label{an01bcv1:twoway}\\
+ x'_{2,*}
+       &=\frac{\lambda}{2}
+       [n_\rho V_*-X_*+(1-n_\rho)Y_*]\Phi(\rho X_*).\notag
+\end{align}
+Indeed subtract \eqref{an01bcv1:r2limit} from RTA's convergence
+to P's coherent source rate. This keeps the entire input channel,
+not a mean-angle approximation to a producer contribution.
+It does not establish producer signs or the exact-lag comparison.
+
+The necessary change to a future contract is to retain
+\(\mathcal O_*\), or the exact \(O_{2,\K}\), in the leading
+second-source mechanism. One may then seek an \(O(q^{2+\chi})\)
+bound for \(r_2-q^2\mathcal O_*\), which is already supplied here.
+The unchanged \(r_2\) cannot have that bound. No such change is
+silently made to P or to the requested factor definitions.
+
+\paragraph{Constant order and physical units.}
+Keep all inherited RTA/FWC constants first; fix a finite continuation
+window covering J and its radius R. Then fix \(\delta_n,c_{\rm out}\)
+and \(C_{\rm rem}\), and choose q last with
+\(C_{\rm rem}q^{1/20}\le c_{\rm out}/2\).
+All constants are uniform on the original \(\mathcal P_*\times J\).
+The lower bound on the physical remainder is
+\(\mu_1^2c_{\rm out}q^2/2\). None of these is a numerical premise.
+
+\paragraph{Stop and handoff.}
+Inventory is complete for the proposed sources; Step 2 is stopped
+at \eqref{an01bcv1:failed}. The other individual remainder
+evaluations, signed exact lag, exposure comparison, producer
+attribution and dominance mechanism are not pursued after this
+failure. There is no claimed full initialized B-core theorem.
+RTA's Theorem A and persistence are unaffected.
+
+For a revised deep-regime S6 task, keep both rotation channels at
+leading order and then test the signed exact lag and rate-weighted
+producer split. S7/S8 additionally need a reached canonical/bridge
+state and lag-relative precision when the lag is a small cancellation.
+Neither an absolute norm estimate nor the present positive
+output-rotation result supplies those items. No prior source,
+checkpoint or README is modified.
+\end{document}
