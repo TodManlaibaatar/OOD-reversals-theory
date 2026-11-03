@@ -1,0 +1,382 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{amsmath,amssymb,amsthm,lmodern,geometry}
+\geometry{margin=.95in}\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\title{Gate threshold and a rank obstruction to sustained exponential escape}
+\author{Standalone analytical increment}\date{Version 1, November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For the unclamped critical right-half shape, an explicit monotone
+integral determines a unique initial gate threshold at saturation.
+The threshold increases strictly with the probe offset. We give the
+subunit-mass phase diagram and the distinct sufficient escape test of RPS.
+At saturation a receiver with upper-tail fraction \(f>0\) has a
+strictly smaller growth ceiling than an isolated receiver. For the
+continuously distributed upper tail this also obstructs a sustained
+positive exponential lower rate for a fixed upper segment: two interior
+ranks in such a segment would separate faster than the higher rank
+can grow. The obstruction concerns exponential escape on diverging
+time intervals. It allows finite-time crossings and gives no eventual
+capture theorem.
+\end{abstract}
+
+\section{Scope and exact entry threshold}\label{an04goev1:scope}
+Fix \(13/20\le\rho\le7/10,\ \lambda=\rho^2,\ \omega=(1-\lambda)/2\),
+\(a=\rho K(\rho a),\ K(t)=\phi(t)+t\Phi(t)\). Use the CFS critical
+family \(S_0=cq^{1/\omega}\), \(b=(c/A)^\omega>0\), fixed positive
+\(c,A\), offsets \(\zeta>a\) on compact subsets of this domain.
+The CFS/RPS entry laws concern the positive-noise target-only
+comparison at \(T_A=\log(A/S_0)\). Here their limiting right-half
+shape, normalized to a prescribed \(0<M_0\le1\), specifies an
+initial state for the defined leading system. Its Q4 half is an atom
+and its Q1 half is continuous. Q2 and Q3 do not enter this state.
+
+WIT popsystem/P leading give the characteristic equations for positive
+finite measures on chart-valid intervals with sufficient moments.
+RPS moments, order and cone apply in one field with \(N=0\),
+\(0<M\le1\), originally on compact support. We use the initial
+integrals on the unclamped law and establish the estimates below on
+any interval of its characteristic evolution with locally finite first
+absolute moments. The long-time conclusion is a necessary obstruction
+on such intervals; it requires no assumption that a finite-noise flow
+tracks this evolution. The positive-noise probe transfer on the deep
+windows, the coherent orbit, and the P resident linearization have
+different hypotheses and are not used as escape estimates.
+
+Define the CFS increasing map, on \(w>a\), by
+\[
+ B(w)=[w-\rho K(\rho w)]/2,\quad
+ H(w)=w\exp\left[-\omega\int_w^\infty
+       (B(r)^{-1}-(\omega r)^{-1})\,dr\right],\qquad L=H^{-1}.
+\]
+CFS gives \(H(a+)=0,\ H(w)/w\to1,\ H'/H=\omega/B\). Thus
+\(H'\to1\), \(L(0+)=a\), \(L(h)\le C(1+h)\). These bounds are
+uniform on the ratio box by the CFS Gaussian tail and simple-root
+estimates. Write \(X_b\) for the random input under unit mass. For
+any integrable test function \(j\),
+\begin{equation}\label{an04goev1:integration}
+ \langle j\rangle_b=\tfrac12 j(a)+\frac2\pi\int_0^\infty
+                    \frac{j(L(bu))}{(1+u^2)^2}\dd u .
+\end{equation}
+Initially \(y=x\). The raw CFS Q1 density is asymptotic to
+\(Ab^3/(2\pi x^4)\) as \(x\to\infty\); indeed it is
+\(A H'(x)[1+(H(x)/b)^2]^{-2}/(2\pi b)\). Upon normalizing by
+\(A/4\) its coefficient is \(2b^3/\pi\). There is no singular mass
+loss at \(a\) by \eqref{an04goev1:integration}. Both first and second
+absolute moments are finite (the third diverges). In particular
+\(\E X_b/b\to1/\pi\) as \(b\to\infty\) by dominated
+convergence in \eqref{an04goev1:integration}.
+
+Put \(t=\rho\zeta\),
+\[
+ F(t,r)=\E[(Z+r)_+1_{Z>-t}]
+       =\phi(\min(t,r))+r\Phi(\min(t,r)),\quad
+ S_b(\zeta)=\langle F(t,\rho X_b)\rangle_b .
+\]
+The actual donor is \(M_0 S_b\).
+\begin{theorem}\label{an04goev1:threshold}
+At \(M_0=1\) there is a unique \(b_c>0\) solving
+\(S_{b_c}(\zeta)=K(t)\). Initial input velocity at the aligned gate
+is positive below \(b_c\), zero there, negative above. The function
+\(b_c\) is continuous in \((\rho,\zeta)\) and strictly increasing in
+\(\zeta\) at fixed \(\rho\).
+
+For \(0<M_0\le1\), set
+\[
+ m_{\rm gate}=\frac{\zeta-\rho K(t)}{\zeta-a}.
+\]
+If \(M_0\le m_{\rm gate}\) every \(b>0\) gives inward velocity.
+Otherwise there is a unique threshold, with the same three signs,
+given by
+\[
+ S_b(\zeta)=\frac{\rho K(t)-(1-M_0)\zeta}{\rho M_0}.
+\]
+It increases with \(M_0\) on this existence range.
+\end{theorem}
+\begin{proof}
+The velocity doubled is \(\rho K(t)-(1-M_0)\zeta-\rho M_0 S_b\).
+The overlap is strictly increasing in its second argument since
+\(F_r=\Phi(\min(t,r))>0\). The continuously distributed half
+in \eqref{an04goev1:integration} moves strictly with \(b\).
+The linear bound on \(L\) gives continuity and the limit
+\(S_{0+}=K(\rho a)=a/\rho\) by domination. On \(r>t\), \(F(t,r)\)
+grows linearly with slope \(\Phi(t)>0\); hence \(S_b\to\infty\).
+The comparison \(\rho K(t)<\zeta\) follows from the resident root
+and slope \(\lambda\Phi<1\), and \(\rho K(t)>a\).
+These observations give the threshold set including its equality
+case at \(M_0=m_{\rm gate}\). The right side of the threshold
+equation increases strictly in \(M_0\).
+
+For dependence on offset, write \(r=\rho X_b\), holding its law fixed.
+At a zero of \(K(t)-\E F(t,r)\),
+\[
+ \Phi(t)\E(r-t)_+=\E[(K(t)-K(r))1_{r<t}]\le K(t).
+\]
+Since \(F_t=(r-t)_+\phi(t)\), differentiation under the finite first
+moment yields at this zero
+\[
+ \partial_t(K(t)-\E F(t,r))\ge
+ \Phi(t)-\phi(t)K(t)/\Phi(t)>0 .
+\]
+The last strict sign is \(\Phi(t)\) times the variance of a standard
+normal conditioned on \(Z>-t\), from its first two truncated moments.
+Thus every offset zero at fixed \(b\) is an upward crossing; two such
+zeros on one interval are impossible. This proves the strict increase
+of \(b_c\). Continuity follows by bracketing each root with two
+strict signs and joint continuity of the integrals (including the
+CFS inverse on compact parameter sets).
+\end{proof}
+
+For RPS cone the initial \(g\)-test uses \(Y=M_0\E X_b\)
+and \(\rho K_s=M_0\langle\rho K(\rho X_b)\rangle_b\le Y\) since
+\(X_b\ge a\). Precisely, \(g>0\) iff
+\[
+ M_0>m_g=\frac{\zeta+1-\rho K(t)}{\zeta+1-a},\qquad
+ 0<b<b_g,\qquad
+ \E X_{b_g}
+ =\frac{\rho K(t)-(1-M_0)(\zeta+1)}{M_0}.
+\]
+Here the notation on the left means the first moment from
+\eqref{an04goev1:integration} at scale \(b_g\).
+Existence and uniqueness follow from the same strict monotonicity.
+At or below \(m_g\) the sufficient set is empty. Where \(b_g\)
+exists it is strictly smaller than the exact gate threshold, since
+\(\rho F(t,\rho x)\le\rho K(\rho x)<x\) for \(x>a\).
+These tests concern initial gate direction and a sufficient
+finite-time barrier. Neither one asserts a long-time exponential law.
+
+\section{Donor costs at saturation}\label{an04goev1:large}
+Now \(M=1,N=0\) and normalized ranks carry fixed mass \(d\sigma\).
+With current donors \(S(x)=\int F(\rho x,\rho\tilde x)d\mu\),
+\(K_s=\int K(\rho\tilde x)d\mu,\ Y=\int\tilde y\,d\mu\), write
+\(U=x'\), \(V=y'\) for the strong receiver velocities only. Exactly,
+for \(t=\rho x\ge0\),
+\begin{align*}
+ 2U &=\lambda y-\rho K_s+
+       \rho\phi(t)-\lambda y\Phi(-t)+\rho(K_s-S(x)),\\
+ 2V &=\lambda x-Y+\rho K(-t),\qquad \text{for }x\ge0,\\
+ 0&\le K_s-S(x)\le \rho\Phi(-t)\int\tilde x_+\,d\mu .
+\end{align*}
+The last bound integrates the discarded gate \(Z\le-t\le0\).
+Thus the receiver linear part is off-diagonal \(\lambda/2\), with
+the full common forces \(-\rho K_s/2,-Y/2\). Linear donor dependence
+belongs in those integrals. In particular
+\(0\le K_s-\rho\int\tilde x_+\,d\mu\le\phi(0)\).
+One cannot replace common forces by bounded remainders during escape.
+The displayed Gaussian errors are absolute bounds at each time,
+including their moment and \(y\) factors.
+
+\begin{lemma}[Per-rank growth ceiling]\label{an04goev1:ceiling}
+Along a co-ordered characteristic of upper mass at least \(f>0\)
+(including its own equality plateau), with the specified entry,
+\[
+ \max(x_+,y_+)\le C_f e^{r_+(f)s},\qquad
+ r_+(f)=\frac{\lambda}{4}(\sqrt{4+f^2}-f)<\frac{\lambda}{2}
+\]
+for elapsed leading time \(s\ge0\) in its interval of existence.
+\(C_f\) may depend on the initial coordinates. The isolated
+upper comparison \(f=0\) has exponent \(\lambda/2\).
+\end{lemma}
+\begin{proof}
+RPS's moment equation \(2Y'=-Y+\rho K_s\) and positive initial
+\(Y\) imply \(Y\ge0\). For each of the upper labels
+\(F(\rho x,\rho\tilde x)\ge K(\rho x)\). Hence
+\(S(x)\ge fK(\rho x)\) using the actual upper mass.
+At \(x\ge0\), \(K(\rho x)\ge\rho x\).
+The two positive parts obey the cooperative upper comparison
+\[
+ 2D^+\binom{x_+}{y_+}\le
+ \lambda\begin{pmatrix}-f&1\\1&0\end{pmatrix}
+          \binom{x_+}{y_+}+\rho\phi(0)\binom11 .
+\]
+At a zero face the off-diagonal and constant terms are nonnegative;
+for a negative coordinate its positive part is locally constant.
+For the output estimate use \(K(\rho x)\le\rho x_++\phi(0)\).
+A positive left eigenvector for the largest eigenvalue reduces this
+inequality to a scalar Gronwall estimate with exponent \(r_+(f)>0\).
+This is an envelope rate, not an instantaneous bound on \(x'/x\)
+for an arbitrary aspect ratio.
+\end{proof}
+
+For comparison, the isolated rate is attained by a passive aligned
+receiver in the prescribed coherent field \(\mu=\delta_{(a,a)}\).
+On \(x=y>a\), \(S(x)=K(\rho a)\), \(\rho K(\rho a)=a\), and
+\[
+  x'=y'=\tfrac12[\rho K(\rho x)-a]>0 .
+\]
+It reaches any fixed larger level in finite time. Beyond \(a/\lambda+1\),
+\(x'\ge\lambda(x-a/\lambda)/2\), while the \(f=0\) upper comparison
+bounds growth by \(C e^{\lambda s/2}\). Thus
+\(T_R^{\rm passive}=(2/\lambda)\log R+O(1)\) for this specific
+zero-mass receiver. Positive mass introduces a different donor field.
+
+\section{What escape can be certified}\label{an04goev1:escape}
+We first pay the moment costs without a cone assumption. Put
+\(D(s)=1+\int(|x|+|y|)d\mu\). From the full equations,
+\(S(x)\le K_s\le\phi(0)+\rho\int x_+d\mu\) and \(|Y|\le D-1\).
+Integrating the absolute velocity inequalities gives \(D^+D\le7D\)
+(the bound \(|U|+|V|\le3(|x|+|y|+D)\) suffices).
+Consequently \(D(s)\le D(0)e^{7s}\). The weak moment identity is
+justified by truncation of the test functions and finite first moments.
+For two finite ranks local integrability of these moments bounds each
+receiver on finite intervals by Gronwall. The receiver Jacobian on
+their segment is locally bounded and its off-diagonals are positive,
+so CFS's pairwise order argument holds also for the unclamped donor
+law. In particular ranks in the continuous Q1 part with distinct
+initial \(x\) keep a strictly positive pair gap on finite intervals.
+All moment estimates include these upper labels.
+
+\paragraph{Finite horizon lower rate.}
+Fix \(h>0\), \(C_h=2D(0)e^{7h}\), and let \(\xi_f\) be the initial
+\(1-f\) quantile, \(0<f<1/2\), computed from
+\eqref{an04goev1:integration}. On the nonempty range
+\(\xi_f>C_h/\lambda\), define
+\[
+ r_-(f,h)=\tfrac12(\lambda-C_h/\xi_f)>0,\qquad
+ w(s)=\xi_f e^{r_-(f,h)s}.
+\]
+Then the entire upper mass \(f\) stays in \(x,y\ge w(s)\) on
+\([0,h]\), or to the endpoint of the leading interval if earlier.
+The range is nonempty because \(\xi_f\to\infty\) as \(f\downarrow0\).
+At the face \(x=w,\ y\ge w\),
+\(2U\ge\rho K(\rho w)-\rho K_s\). At the face \(y=w,\ x\ge w\),
+\(2V\ge\rho K(\rho w)-Y\). Both are strictly greater than
+\(\lambda w-C_h\ge2w'\), by the bound on \(D\) and the strict
+Gaussian inequality \(K(t)>t\). The entry face and corner satisfy
+the inequalities by alignment, and the terminal face ends the
+estimate. Thus the certified radius at time \(h\) is at least
+\(\xi_f e^{r_-(f,h)h}\). The estimate gives a positive fraction for
+every fixed horizon, with the fraction chosen for that horizon.
+It gives no fixed \(f,r_->0\) on diverging horizons.
+
+\begin{theorem}[Obstruction for the unclamped continuous upper tail]
+\label{an04goev1:gap}
+For the specified \(q\)-independent entry law at \(M=1,\ N=0\),
+no upper segment of fixed mass \(f>0\) can obey a uniform bound
+\(x(s)\ge c_0 e^{rs}\), \(c_0,r>0\), from a fixed time onward on
+intervals of unbounded length. This already fails at the level of
+the defined equations, even if no lower bound on \(y\) is demanded.
+\end{theorem}
+\begin{proof}
+Choose two fixed interior ranks \(i<j<1\) in the continuous portion
+of the proposed segment. Put \(h_x=x_j-x_i,\ h_y=y_j-y_i\).
+Both are nonnegative. Their sum initially is positive, and remains so.
+Lemma~\ref{an04goev1:ceiling} gives \(x_j^+\le C_j e^{r_js}\),
+\(r_j=r_+(1-j)<\lambda/2\).
+For the absolute coordinates of the two labels a coarser
+\(C_{ij}e^{8s}\) bound follows by the preceding \(D\)-estimate and
+the pointwise linear-growth inequality (or by scalar Gronwall).
+This suffices to compare polynomial factors to the Gaussian below.
+
+Along the segment between the two states the receiver Jacobian is exactly
+\[
+ 2J=\begin{pmatrix}
+ \rho^2\phi(t)\big[\rho y-t-\int(\rho\tilde x-t)_+d\mu\big]
+       &\lambda\Phi(t)\\
+ \lambda\Phi(t)&0
+ \end{pmatrix},\qquad t=\rho x .
+\]
+Indeed \(F_t(t,u)=(u-t)_+\phi(t)\). Differentiate at fixed
+donors, which is legitimate with a finite first moment. Subtraction
+of two velocities in this field cancels the common output mean.
+Under the proposed lower bound the entire joining segment has
+\(t\ge\rho c_0 e^{rs}\). Its diagonal error is bounded by
+\(C_{ij}e^{8s}\phi(\rho c_0e^{rs})=o(1)\);
+its off-diagonals converge to \(\lambda/2\). This step charges
+the outliers in the moment integral before using the Gaussian tail.
+
+Choose \(\epsilon>0\) so small that \(r_j<\lambda/2-2\epsilon\)
+and \(l=\lambda/2-\epsilon>0\).
+For all sufficiently late times on the candidate interval the
+averaged Jacobian has first diagonal at least \(-\epsilon\)
+and both off-diagonals at least \(l\). With \(d=h_x+h_y\) this gives
+\[
+ d'\ge(\lambda/2-2\epsilon)d,\qquad
+ h_x'\ge l d-(l+\epsilon)h_x .
+\]
+The first inequality and a last-unit integration of the second give
+\(h_x(s)\ge c_{ij}\exp[(\lambda/2-2\epsilon)s]\) for all later
+times. The constants can be fixed before the terminal time:
+on the finite initial interval the diagonal is bounded below using
+\(D(0)e^{7s}\) and the two initial coordinates, hence \(d\)
+has a positive lower bound at the start of this comparison.
+But \(0\le h_x\le x_j^+\) once \(x_i>0\).
+The necessary inequality
+\begin{equation}\label{an04goev1:failure}
+ c_{ij}e^{(\lambda/2-2\epsilon)s}\le C_j e^{r_js}
+\end{equation}
+fails on arbitrarily long intervals.
+\end{proof}
+The two attempts have different outcomes. The explicit orthant
+works on a restricted finite horizon: its unpaid lower faces for
+a proposed constant rate \(r\) are
+\(\rho K(\rho w)-\rho K_s\ge2rw\) and
+\(\rho K(\rho w)-Y\ge2rw\) for the sufficient moment test.
+Mass fraction alone supplies no upper bound for these two donor
+moments. More decisively, \eqref{an04goev1:failure} rules out the
+desired sustained lower envelope for the continuous upper segment.
+It makes no claim about a single passive label, the very last
+label of a compact truncation, or a top atom which has no internal
+pair of distinct ranks. It also does not preclude slower or
+intermittent motion. A strict decrease in a per-rank \emph{ceiling}
+is proved; identifying that ceiling with a realized growth rate
+would give a different and unsupported statement.
+
+\section{Radius, time comparisons and handoff}\label{an04goev1:clock}
+The leading equations are mathematically defined for finite
+coordinates (and sufficient donor moments). For interpreting an
+expansion about the strong axis a radius \(R_q\) must at least
+satisfy \(qR_q=o(1)\) for both scaled angles. There is no largest
+such radius: \(\sqrt{R_q/q}\) is larger if \(qR_q\to0\) and still
+has that property. Neither RPS nor the present estimates prove
+uniform original-to-leading error on an arbitrary growing chart.
+At \(x\asymp1/q\) the angle is order one. The unclamped law already
+has mass \(O(R_q^{-3})\) outside \(R_q\) at entry.
+An edge time must refer to specified finite starting ranks.
+
+Write \(\ell=\log(1/q)\), take a fixed finite initial radius \(x_0>0\),
+and set \(\log R_q=\beta\ell+o(\ell)\), \(0<\beta\le1\).
+For \(\beta=1\) an inner example is \(R_q=1/[q\log(1/q)]\).
+With a genuine two-sided exponential law of rate \(r>0\) up to
+first hit one would have \(T_R=(\beta/r)\ell+o(\ell)\).
+A lower exponential barrier only gives
+\(T_R\le r_-^{-1}\log(R_q/x_0)\) if it persists that long.
+An upper bound gives a lower bound on first-hit time (infinity
+allowed). In particular a fixed rank with upper mass \(f\) has
+\[
+ T_R\ \ge\ \frac{\log R_q-O_f(1)}{r_+(f)} .
+\]
+For the candidate logistic weak seed \(N_0\asymp
+S_0^{1-\lambda}=c^{1-\lambda}q^2\), its candidate delay to
+half mass is \(\lambda^{-1}\log[(1-N_0)/N_0]
+=(2/\lambda)\ell+O(1)\). Both the seed and its application across
+the switch are unproved. Comparing coefficients:
+\begin{itemize}
+\item An isolated envelope at \(\beta=1\) has earliest coefficient
+\(2/\lambda\). Equality of actual times does not follow.
+For every fixed \(f>0\) and \(\beta=1\), the ceiling gives a strictly
+later earliest coefficient. This also applies to a hypothetical
+continuation of the zero-weak-mass system to the outer edge; the
+outer expansion itself is unpaid.
+\item More generally a fixed rank cannot hit before the candidate
+delay to leading order if \(r_+(f)\le\beta\lambda/2\), equivalently
+\(f\ge(1-\beta^2)/\beta\), when that condition is feasible.
+Strict inequality in the rate comparison gives strictly later or
+no hit. Otherwise the ceiling alone gives no ordering.
+\item For a hypothetical two-sided rate \(r\), before, same leading
+scale, and after correspond respectively to \(r>\beta\lambda/2\),
+\(r=\beta\lambda/2\), and \(r<\beta\lambda/2\).
+Theorem~\ref{an04goev1:gap} prevents using a fixed positive
+upper-segment lower rate to predict such a clock for this law.
+\end{itemize}
+No weak evolution has been run in making these clock comparisons.
+S7c/S8 need an outer angular field and controlled inner-to-outer
+matching, with the mass and moments of the ranks approaching the
+edge. They also need the actual weak entry clock, seed and coupled
+strong/weak evolution, including any escaped strong-ancestry contribution
+near the weak axis. Probe exposure, compensation, exact signed lag and
+rate-weighted producers must be controlled in that changing field.
+An initial gate sign and a radius-versus-time ceiling do not supply
+those data.
+\end{document}

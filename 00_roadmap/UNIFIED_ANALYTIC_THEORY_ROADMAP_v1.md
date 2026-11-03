@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.33 — November 3, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.34 — November 3, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -227,6 +227,13 @@
 - **Obstruction.** At $M=1$ the gate velocity is $2U(\zeta,\zeta)=\rho[\mathsf K(\rho\zeta)-S(\zeta)]$. For large b the outer mass makes $S(\zeta)>\mathsf K(\rho\zeta)$, and gate labels move **inward**. So the direction of the initial split depends on b.
 - **My framing error (ledger 37).** I posed (3b) as "escape or capture" when the answer depends on b.
 - **Next: S7b,** the unclamped gate threshold $b_c(\rho,\zeta)$ and the large-x outlier dynamics on the resident-phase time scale.
+
+**Revision 1.34 (Nov 3).** Records GOE (`AN04_gate_threshold_and_outlier_escape_v1`, S7b): **(H1) proved; (H2) refuted for any positive mass.**
+- **Gate threshold.** At $M_0=1$ there is a unique $b_c(\rho,\zeta)$: below it the gate moves outward, above it inward. It is continuous and strictly increasing in ζ. For $M_0<1$ there is an explicit threshold set with the cutoff $m_{\rm gate}=(\zeta-\rho\mathsf K(\rho\zeta))/(\zeta-a)$. RPS's g-test region is a strict subset.
+- **No sustained escape.** At $M=1$, $N=0$, a rank with upper mass $f>0$ has growth ceiling $r_+(f)=\tfrac\lambda4(\sqrt{4+f^2}-f)<\lambda/2$. Its own internal gaps would separate at nearly $\lambda/2$ under any sustained exponential escape. So **no fixed positive-mass segment escapes at any exponential rate on diverging horizons.** Only vanishing-mass outliers can reach the isolated $\lambda/2$ clock.
+- **Consequence.** My time-scale picture (H2, escaped strong labels reaching O(1) angle during the weak passage) fails for positive mass. Ledger 38 records it.
+- **Reading revised.** The inactive part of the critical split is better read as the **entry's own inactive fraction**, the Q1 mass beyond ζ, which is positive for every b, together with whether it **persists**, rather than as an escape.
+- **Next: S7c,** persistence of inactive mass through the N = 0 resident phase, and the exact weak-coupled gate field.
 
 ---
 
@@ -1312,6 +1319,40 @@ Notation: $A_*=\zeta-X$, $Z=X-Y$, $\Phi_x=\Phi(\rho X)$, $\mathsf K_x=\mathsf K(
   - **Time-scale match.** At $M=1$, $N=0$, an isolated outlier at large x grows at rate at most $\lambda/2$ along $x=y$; a positive escaping fraction lowers the self-consistent rate. Reaching $x\asymp1/q$ (angle O(1)) at rate $\lambda/2$ takes $(2/\lambda)\ell$. That is the candidate weak half-mass delay, since $N_0\asymp S_0^{1-\lambda}=c^{1-\lambda}q^{(1-\lambda)/\omega}=c^{1-\lambda}q^2$. This suggests escaped strong labels reach O(1) angle during the weak passage; the bridge would then be a strong-ancestry cohort fitting cluster 2 alongside the weak family. This rests on the candidate law and an isolated-outlier rate.
 - *Next: S7b* (prompt in the v1.33 review): the unclamped gate threshold, the outlier escape rate with self-consistent donors, and the time-scale comparison.
 
+**Status after GOE (`AN04_gate_threshold_and_outlier_escape_v1`, S7b, Nov 3): threshold closed; sustained escape of positive mass ruled out.**
+- *Entry integral.* $\langle j\rangle_b=\tfrac12j(a)+\tfrac2\pi\int_0^\infty j(L(bu))(1+u^2)^{-2}du$ with $L=H^{-1}$. The unit-mass tail is $2b^3/(\pi x^4)$, so the first two moments are finite and the third diverges. Also $\mathbb EX_b/b\to1/\pi$.
+- *Theorem* (`threshold`).
+  - At $M_0=1$, the equation $S_{b_c}(\zeta)=\mathsf K(\rho\zeta)$ has a unique root. The gate moves out below $b_c$ and in above it. $b_c$ is continuous in $(\rho,\zeta)$ and strictly increasing in ζ.
+  - For $M_0\le m_{\rm gate}$ the gate moves inward for every b. Above that, the threshold is $S_b=[\rho\mathsf K(t)-(1-M_0)\zeta]/(\rho M_0)$, increasing in $M_0$.
+  - RPS's test holds iff $M_0>m_g=(\zeta+1-\rho\mathsf K(t))/(\zeta+1-a)$ and $b<b_g$, where $M_0\mathbb EX_{b_g}=\rho\mathsf K(t)-(1-M_0)(\zeta+1)$. Then $b_g<b_c$.
+- *Large-x field* at $M=1$, $N=0$:
+  - $2U=\lambda y-\rho\mathsf K_s+\rho\phi(t)-\lambda y\Phi(-t)+\rho(\mathsf K_s-S)$;
+  - $2V=\lambda x-Y+\rho\mathsf K(-t)$;
+  - $0\le\mathsf K_s-S(x)\le\rho\Phi(-t)\int\tilde x_+$.
+- *Lemma* (`ceiling`). For upper mass $\ge f$: $S(x)\ge f\mathsf K(\rho x)$ and $Y\ge0$, so $\max(x_+,y_+)\le C_fe^{r_+(f)s}$.
+- *Finite-horizon escape.* For $h>0$ and $\lambda\xi_f>C_h=2D_0e^{7h}$, the upper f-segment stays above $\xi_fe^{r_-(f,h)s}$ on $[0,h]$, with $r_-=(\lambda-C_h/\xi_f)/2$.
+- *Theorem* (`gap`). No fixed positive upper segment satisfies $x\ge c_0e^{rs}$ with $r>0$ on unbounded intervals. Exact failure: $c_{ij}e^{(\lambda/2-2\epsilon)s}\le C_je^{r_+(1-j)s}$.
+- *Clock audit.*
+  - There is no largest $R_q=o(1/q)$.
+  - A rank's earliest coefficient to reach $\log R_q=\beta\ell$ is $\ge\beta/r_+(f)$.
+  - Against the candidate $(2/\lambda)\ell$: no earlier iff $f\ge(1-\beta^2)/\beta$. At $\beta=1$, every $f>0$ is strictly later.
+- *Checked (reviewer, Nov 3):*
+  - **Normalization.** $(8/A)\cdot\tfrac12\cdot g_b$ with $h=bu$ gives the $\tfrac2\pi(1+u^2)^{-2}$ weight. The tail is $g_b\sim Ab^3/(2\pi h^4)$ with $H\sim x$, and $\tfrac2\pi\int u(1+u^2)^{-2}=1/\pi$.
+  - **Limits and existence.** $S_{0+}=F(t,\rho a)=\mathsf K(\rho a)<\mathsf K(t)$. And $w-\rho\mathsf K(\rho w)$ is increasing with root a, so $\rho\mathsf K(t)<\zeta$.
+  - **Offset monotonicity.** $F(t,r)=\mathsf K(r)$ for $r<t$ and $\mathsf K(t)+(r-t)\Phi(t)$ for $r\ge t$. So at a root $\Phi\,\mathbb E(r-t)_+=\mathbb E[(\mathsf K(t)-\mathsf K(r))1_{r<t}]\le\mathsf K(t)$. Then $\Phi^2-\phi\mathsf K=\Phi^2-t\phi\Phi-\phi^2>0$, which is $\Phi^2$ times the variance of a truncated normal.
+  - **Subunit and g-test sets.** Algebra checked, including $\rho\mathsf K(\rho x)<x$ for $x>a$, which gives $b_g<b_c$.
+  - **Ceiling.** $F(\rho x,\rho\tilde x)=\phi(t)+\rho\tilde x\Phi(t)\ge\mathsf K(t)$ for $\tilde x\ge x$. The top eigenvalue of $\lambda\begin{pmatrix}-f&1\\1&0\end{pmatrix}$ is $\lambda(\sqrt{f^2+4}-f)/2$.
+  - **Exact Jacobian.** $2J_{11}=\rho^2\phi(t)[\rho y-t-\int(\rho\tilde x-t)_+]$ from $F_t=(r-t)_+\phi(t)$, with off-diagonals $\lambda\Phi$ and $J_{22}=0$.
+  - **Clock condition.** $r_+(f)\le\beta\lambda/2\iff1-\beta^2\le\beta f$.
+  - **Escapes and prefix.** The .tex passes both escape scans; prefix `an04goev1:` is unique.
+- *Reviewer reading (v1.34).* (H2) is refuted for positive mass: a cohort cannot outrun its own internal stretching. So at N = 0 the split cannot be built by escape. What the entry does supply, for every b, is an inactive Q1 fraction $\tfrac12[1-F_b(H(\zeta))]$ of the right half. The live question is whether this inactive mass persists through the resident phase (times $\asymp(2/\lambda)\ell$) and the weak passage, or returns inside the gate. Two facts are relevant (exact algebra from WIT `popsystem`, to verify):
+  - **Weak input push.** With weak mass N, the aligned gate velocity gains $\lambda(V-N\zeta)\Phi(\rho\zeta)$. That is outward iff the weak output moment satisfies $V>N\zeta$; on a coherent weak atom, iff $v>\zeta$.
+  - **Weak output terms.** The output drive becomes $\rho(1-N)\mathsf K(\rho x)$, and the weak response adds $-\mathsf K_w$.
+- *Next: S7c* (prompt in the v1.34 review):
+  - lower bounds on inactive mass over the N = 0 resident phase;
+  - stretching of the lower ranks;
+  - the exact weak-coupled gate field and ceiling.
+
 ### S6. The exact finite-noise lag (AN1)
 
 **Claim.** The original-flow help channel $D_1^{\rm phys}/(\mu_1^2q^2)=-\tfrac12A_{q,\xi}L^{\rm mean}_{1,q}+\text{remainder}$, with the remainder smaller than the lag's signed margin on the learned windows, and a positive-lag estimate for the exact lag.
@@ -1394,7 +1435,7 @@ Tracks that can run in parallel:
 | II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem, and **RB proved the response barrier: the deep-regime weak passage is a theorem.** Track II is complete; next is S4 (track III). |
 | III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction**, and **S4e (WCS) closed the weak-chart reduction and selection**: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ at a fixed small weak mass. **Track III is complete.** |
 | IV | S6 exact lag | Needed for B-core. Attempt 1 (BC) stopped at a wrong remainder contract and closed the two-channel identity for $D_2$. **CPD (S6 revised) closed the channel and producer tables, the signed exact lag and the help law**, and the four-part harm identity with every sign except $W_{\rm in}$ after half mass. PHS (S6c) extended that sign to $s\le1/1000$; the rest is parked as OP-W. **Track IV is complete on its scope.** |
-| V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. **CRA (S8a)** closed the regime map and κ-audit (first failure: TAIL `exponent`, $\kappa\omega>1$) and two comparison lemmas. **Reframed (v1.31):** the canonical split is targeted through the critical family $S_0=c\,q^{1/\omega}$. **CFS (S8b)** closed both comparison Q1 profiles (positive noise: support starts at the resident a) and N = 0 leading persistence of ordered spreads (shape mode $+\lambda P/2$). The trained-flow transfer through saturation is open. **RPS (S7a)** closed the right-half comparison state (Q4 atom at a plus Q1 spread), co-order, moment equations, and a self-consistent escape region for small b. The large-b gate moves inward. **Next: S7b,** the gate threshold $b_c$ and outlier escape on the resident-phase time scale. |
+| V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. **CRA (S8a)** closed the regime map and κ-audit (first failure: TAIL `exponent`, $\kappa\omega>1$) and two comparison lemmas. **Reframed (v1.31):** the canonical split is targeted through the critical family $S_0=c\,q^{1/\omega}$. **CFS (S8b)** closed both comparison Q1 profiles (positive noise: support starts at the resident a) and N = 0 leading persistence of ordered spreads (shape mode $+\lambda P/2$). The trained-flow transfer through saturation is open. **RPS (S7a)** closed the right-half comparison state (Q4 atom at a plus Q1 spread), co-order, moment equations, and a self-consistent escape region for small b. The large-b gate moves inward. **GOE (S7b)** proved a unique gate threshold $b_c(\rho,\zeta)$ and ruled out sustained exponential escape of any positive-mass segment at N = 0. **Next: S7c,** persistence of the entry's inactive mass and the weak-coupled gate field. |
 | — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **S5b (PSE) closed:** background paid on the passage; full error and rates match at every fixed level $n'\le n$, so A-error-transfer holds on windows inside $(-\infty,s_n]$. **S5c (FWC) closed:** continuation by combined transverse energy; **A-error-transfer on every fixed window**. **S5d (RTA) closed:** rate transfer on J; **initialized Theorem A and persistence**. |
 
 **Dependency sketch**
@@ -1529,6 +1570,8 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
     - *Rule:* write exponents once in $\ell=\log(1/q)$ and convert only at the end.
 37. **A parameter-dependent question posed as a dichotomy (my S7a prompt).** I asked the session to conclude either "a positive fraction escapes (the bridge forms)" or "all mass is captured (no bridge)". RPS showed the initial gate direction depends on the entry scale b: outward for small b, inward for large b. Neither alternative holds uniformly, and capture versus escape is not an exhaustive split.
     - *Rule:* when a sign may depend on parameters, ask for the parameter set on which each alternative holds and for the boundary between them, not for one universal answer.
+38. **An isolated-outlier rate used as a population rate (my v1.33 hypothesis H2).** I suggested that escaped strong labels grow at λ/2 and so reach O(1) angle on the candidate weak clock $(2/\lambda)\ell$. GOE showed that any rank with positive upper mass f has ceiling $r_+(f)<\lambda/2$. Its internal gaps separate at nearly λ/2, so no fixed positive-mass segment escapes exponentially at all on diverging horizons. Only vanishing-mass outliers attain λ/2.
+    - *Rule:* a single receiver's rate in a frozen field is not a cohort's rate. Before using it, check the cohort against its own donor field and its internal shape modes.
 
 ---
 
@@ -1583,6 +1626,7 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | CRA | `09_canonical_regime_AN04/AN04_canonical_regime_audit_v1.tex` (+ review), prefix `an04crav1:` — S8a, audit: rational regime map; per-increment κ-dependence ledger, first failure TAIL `exponent` ($\kappa\omega>1$); left-facing Q2 comparison law $\asymp q^{\kappa\lambda/2}$; full weak-receiver slope with mass-deficit and overlap terms; S8/S7 obligations |
 | CFS | `09_canonical_regime_AN04/AN04_critical_family_strong_entry_v1.tex` (+ review), prefix `an04cfsv1:` — S8b: critical family $S_0=c\,q^{1/\omega}$; zero-noise and positive-noise Q1 comparison profiles at $T_A$ with explicit densities and active fractions (positive noise: $x=H^{-1}(h)$, support above the resident a); N = 0 leading saturation bounds and persistence of ordered spreads; resident shape rate $+\lambda P/2$; trained-flow transfer audit |
 | RPS | `09_canonical_regime_AN04/AN04_resident_phase_split_v1.tex` (+ review), prefix `an04rpsv1:` — S7a: positive-noise Q4 atom at the resident; right-half comparison law and active fraction; N = 0 co-order, truncation charges, exact moment equations; self-consistent finite-time escape region (`cone`) for small b; gate obstruction $2U=\rho[\mathsf K(\rho\zeta)-S(\zeta)]$ inward for large b |
+| GOE | `09_canonical_regime_AN04/AN04_gate_threshold_and_outlier_escape_v1.tex` (+ review), prefix `an04goev1:` — S7b: unique initial gate threshold $b_c(\rho,\zeta)$, increasing in ζ; subunit-mass threshold set and RPS g-test range; exact large-x field; per-rank ceiling $r_+(f)<\lambda/2$; finite-horizon escape; obstruction to sustained exponential escape of any positive-mass segment; clock audit against the candidate weak delay |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |
