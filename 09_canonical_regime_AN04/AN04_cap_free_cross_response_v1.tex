@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=.9in}\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks[2]
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\E}{\mathbb E}\newcommand{\dd}{\,d}
+\title{Cap-free control of the entrance term in the cross response}
+\author{E5 continuation: analytic partial result}
+\date{4 November 2026}
+\begin{document}\maketitle
+
+\paragraph{Result.}
+The small bound for the actual weak cross-output $h$ through half
+response is not closed. The homogeneous entrance contribution can,
+however, be controlled without a residual-cap hypothesis. An exact
+scalar damping formula and a contractive three-regression evolution
+leave one explicit signed convolution of weak-target covariances.
+Its needed smallness remains unproved. No residual exit or failure
+of the desired initialized bound is asserted.
+
+\section{An interval with no residual stop}
+Use the actual aligned balanced isotropic critical family
+$S_0=cq^{1/\omega}$, fixed $c>0$,
+$\rho\in[13/20,7/10]$, $\lambda=\rho^2$,
+$\omega=(1-\lambda)/2$. The exact model and loss are
+\[
+ f(D)=\int W(U^TD)_+\dd l,\quad |U|=|W|,\quad
+ \mathcal L=\tfrac14\sum_{p=1}^2\E_{P_p}|D-f(D)|^2,
+\]
+with $P_1=N(e_1,q^2I)$ and $P_2=N(\rho e_2,q^2I)$.
+Put $S=\int|U|^2\dd l$, $Q_1=1+q^2$, $Q=\lambda+q^2$, and
+\[
+ m=\E_{P_1}D_1f_1/Q_1,\quad z=\E_{P_1}D_1f_2/Q_1,
+ \quad h=\E_{P_2}D_2f_1/Q,\quad n=\E_{P_2}D_2f_2/Q.
+\]
+Their full physical parameter gradients are $g_m,g_z,g_h,g$.
+Write $w=Q(1-n)$ and $\mathcal R=4\mathcal L-Q(1-n)^2$.
+
+Fix a resident delay $b$ and take the \emph{reached} time
+$t_b=t_h+b$. Define
+\[
+ T_{1/2}=\inf\{t\ge t_b:n(t)=1/2\},\qquad
+ T_K=\min\{T_{1/2},t_b+K\ell\},\quad \ell=\log(1/q),
+\]
+for any fixed $K>0$, with the infimum of the empty set equal to
+$+\infty$. There is no stop at a residual cap, a chart boundary,
+or a cross-output threshold. Neither finiteness of $T_{1/2}$ nor
+its occurrence before the deterministic cutoff is assumed.
+
+The fixed-time HBD/BRW entrance and SPM's cross-regression estimate give
+\begin{equation}\label{an04cfcrv1:entry}
+ m(t_b)\to M(b),\quad z(t_b),h(t_b)=O_b(q),\quad n(t_b)\to0,
+ \quad 4\mathcal L(t_b)\to[1-M(b)]^2+\lambda,
+ \quad M(b)=(1+e^{-b})^{-1}.
+\end{equation}
+Here $S(t_b)\le C_b$ and the global mass identity implies
+\begin{equation}\label{an04cfcrv1:mass}
+ S(t_b+s)\le C_b+Cs\quad(s\ge0),\qquad
+ \int_{t_b}^{T_K}\|\dot\Theta\|^2\dd t\le\mathcal L(t_b)\le C.
+\end{equation}
+All regression coefficients are bounded by loss and Gaussian
+projection inequalities, independently of a small residual cap.
+
+There is even an order-one strong-response lower bound before
+half response. Choose $b$ so that $[1-M(b)]^2<1/100$ and then
+$q$ small so $4\mathcal L(t_b)\le\lambda+1/50$.
+For $t\le T_K$, $n\le1/2$, even if $n$ is nonmonotone. Hence
+\begin{equation}\label{an04cfcrv1:coarse}
+ 0\le\mathcal R(t)\le\lambda+1/50-Q/4\le31/80,
+ \qquad m(t)\ge1-\sqrt{31/80}>1/3.
+\end{equation}
+This is a consequence of decreasing loss, not a retained
+small-cap hypothesis. It does not imply the required
+$\mathcal R\le r_*^2$, where $r_*=\lambda/800$.
+
+\section{Exact finite-noise reductions remain valid without the cap}
+REC's within-cluster residual projections give, directly at the
+current state,
+\begin{equation}\label{an04cfcrv1:flow}
+ \dot\Theta=\tfrac{Q_1}{2}(1-m)g_m-\tfrac{Q_1}{2}zg_z
+              -\tfrac Q2hg_h+\tfrac w2g+N_{\rm sh},
+ \qquad \|N_{\rm sh}\|\le Cq\sqrt S(1+S).
+\end{equation}
+The proof uses only the network's $S$-Lipschitz bound and
+Gaussian projection, so it does not require $\mathcal R\le r_*^2$.
+The shape energy $\chi$ and the regression vector
+\[
+ e=\begin{pmatrix}\sqrt{Q_1}(m-1)\\\sqrt{Q_1}z\\\sqrt Qh\end{pmatrix}
+\]
+satisfy the exact identity
+\begin{equation}\label{an04cfcrv1:regression}
+ \mathcal R=|e|^2+\chi,\qquad 0\le\chi\le Cq^2(1+S)^2.
+\end{equation}
+
+For $b_p=\E_{P_p}D_p(U^TD)_+/Q_p$ and
+$v_p=\E_{P_p}D_pD\mathbf1_{U^TD>0}/Q_p$, the gradient of
+output-$i$ regression on cluster $p$ has blocks $(W_iv_p,e_ib_p)$.
+Uniform Gaussian moment estimates, including all gate directions,
+therefore give
+\begin{align}
+ \langle g,g_m\rangle&=O(qS),&
+ \langle g_z,g_h\rangle&=O(qS),\nonumber\\
+ \langle g_m,g_h\rangle&=C_{12}+O(qS),&
+ \langle g,g_z\rangle&=C_{12}+O(qS),\nonumber\\
+ \langle g,g_h\rangle&=T_2,&
+ \|g_i\|&\le C\sqrt S,\label{an04cfcrv1:grams}
+\end{align}
+where $C_{12}=\int(U_1)_+(U_2)_+\dd l\ge0$ and
+$T_2=\int W_1W_2|v_2|^2\dd l$ is signed.
+These follow from $b_p=(U_p)_++O(q|U|)$ and
+$v_p=\theta_pe_p+O(q)$, $0\le\theta_p\le1$.
+They use physical mass factors, not isolated-label growth rates.
+
+\section{First approach: the scalar homogeneous entrance does not amplify}
+Taking the $g_h$ inner product of \eqref{an04cfcrv1:flow} gives
+\begin{equation}\label{an04cfcrv1:scalar}
+ h'+\tfrac Q2\|g_h\|^2h
+ =\tfrac12\{wT_2+Q_1(1-m)C_{12}\}+\varepsilon_h,
+ \qquad |\varepsilon_h|\le CqS(1+S).
+\end{equation}
+Specifically
+\[
+ \varepsilon_h=\tfrac{Q_1}{2}(1-m)
+      (\langle g_h,g_m\rangle-C_{12})
+ -\tfrac{Q_1z}{2}\langle g_h,g_z\rangle
+ +\langle g_h,N_{\rm sh}\rangle.
+\]
+No signed term was dropped: the estimates in
+\eqref{an04cfcrv1:grams} explain the paid errors.
+Set
+\[
+ D_h(T,t)=\exp\left[-\tfrac Q2\int_t^T\|g_h(u)\|^2\dd u\right]
+ \in(0,1].
+\]
+Then, uniformly on $[t_b,T_K]$,
+\begin{equation}\label{an04cfcrv1:scalarvoc}
+ h(T)=D_h(T,t_b)h(t_b)
+ +\tfrac12\int_{t_b}^TD_h(T,t)
+       [wT_2+Q_1(1-m)C_{12}](t)\dd t+O_{b,K}(q(1+\ell)^3).
+\end{equation}
+The first term is $O_b(q)$ on the entire interval, independently
+of its length. At literal initialization isotropy gives
+$f_0(D)=S_0D/4$ and hence $h(0)=0$ exactly. The corresponding
+scalar formula from time zero has no homogeneous term at all.
+
+This does not prove that physical transverse perturbations cannot
+grow. GTM split $T_2$ into $h+(T_2-h)$ and placed the first part
+in a potentially positive scalar coefficient. Equation
+\eqref{an04cfcrv1:scalar} leaves all of that feedback in the
+self-consistent forcing $wT_2/2$. Its sign and filtered size remain
+to be controlled. The strong-overlap forcing in
+\eqref{an04cfcrv1:scalarvoc} is also unpaid by this scalar argument.
+
+\section{Second approach: absorb all regression couplings into dissipation}
+Define the three parameter vectors
+$j_1=\sqrt{Q_1}g_m$, $j_2=\sqrt{Q_1}g_z$,
+$j_3=\sqrt Qg_h$, and their Gram matrix
+$\mathsf G_{ij}=\langle j_i,j_j\rangle$.
+It is positive semidefinite at every actual state. Differentiating
+$e$ along the exact flow yields
+\begin{equation}\label{an04cfcrv1:vector}
+ e'=-\tfrac12\mathsf G e+\tfrac w2 b_0+\varepsilon,
+ \qquad
+ b_0=\begin{pmatrix}0\\\sqrt{Q_1}C_{12}\\\sqrt Q T_2\end{pmatrix},
+ \qquad |\varepsilon|\le CqS(1+S).
+\end{equation}
+Here the explicit error components are
+\[
+ \varepsilon_i=\langle j_i,N_{\rm sh}\rangle
+       +\tfrac w2(\langle j_i,g\rangle-(b_0)_i).
+\]
+In particular strong-response relaxation, its coupling to $h$,
+and the mixed $z,h$ terms are included in $\mathsf G$.
+None is estimated as an external unsigned source.
+
+Let $\mathsf U(T,t)$ be the fundamental matrix for
+$v'=-\mathsf Gv/2$, with $\mathsf U(t,t)=I$.
+For each solution,
+$\frac{d}{dT}|v|^2=-v^T\mathsf Gv\le0$, so
+\begin{equation}\label{an04cfcrv1:contraction}
+ \|\mathsf U(T,t)\|_{\rm op}\le1\qquad(T\ge t).
+\end{equation}
+No commutation or uniform positive eigenvalue is needed.
+This is a pathwise equation with coefficients evaluated along
+the actual trajectory, not its linearized sensitivity to a changed
+initialization. The source $b_0$ depends on that same trajectory.
+
+\begin{theorem}[Cap-free entrance and error control]
+\label{an04cfcrv1:main}
+For each fixed $c,\rho,b,K$ and all small $q$, the actual trajectory
+on $[t_b,T_K]$ satisfies exactly
+\begin{equation}\label{an04cfcrv1:representation}
+ e(T)=\mathsf U(T,t_b)e(t_b)+\mathcal F(T)+\mathcal Z(T),
+\end{equation}
+where
+\[
+ \mathcal F(T)=\tfrac12\int_{t_b}^T
+          w(t)\mathsf U(T,t)b_0(t)\dd t,\qquad
+ \mathcal Z(T)=\int_{t_b}^T\mathsf U(T,t)\varepsilon(t)\dd t.
+\]
+Uniformly over this interval,
+\begin{equation}\label{an04cfcrv1:paid}
+ |\mathsf U(T,t_b)e(t_b)|\le1-M(b)+o_b(1),\qquad
+ |\mathcal Z(T)|\le C_{b,K,c}q(1+\ell)^3=o(1).
+\end{equation}
+Thus the homogeneous entrance term can be made arbitrarily small
+by taking fixed $b$ large and then $q$ small, without any residual
+stop and without knowing the half-response hitting time.
+\end{theorem}
+\begin{proof}
+Variation of constants applied to \eqref{an04cfcrv1:vector} proves
+\eqref{an04cfcrv1:representation}. Apply
+\eqref{an04cfcrv1:contraction} to both the entrance and the error
+integral. Equation \eqref{an04cfcrv1:entry} gives
+$|e(t_b)|\to1-M(b)$. Integration of
+$CqS(1+S)$ using \eqref{an04cfcrv1:mass} proves the second bound.
+All constants were selected on fixed $b,K$ before small $q$.
+\end{proof}
+
+\section{The precise signed forcing still uncontrolled}
+The third component is
+\begin{equation}\label{an04cfcrv1:unpaid}
+ \boxed{\quad
+ \mathcal F_h(T)=\tfrac12\int_{t_b}^T w(t)
+ \left[\sqrt{Q_1}\mathsf U_{32}(T,t)C_{12}(t)
+       +\sqrt Q\mathsf U_{33}(T,t)T_2(t)\right]\dd t.\quad}
+\end{equation}
+The exact $h$ identity is
+\[
+ \sqrt Qh(T)=[\mathsf U(T,t_b)e(t_b)]_3
+                        +\mathcal F_h(T)+\mathcal Z_3(T).
+\]
+For example, choose $b$ with $1-M(b)<r_*/16$ and then $q$
+small so the entrance term is below $r_*/8$ and the error below
+$r_*/8$. A concrete sufficient component bound still needed is
+\begin{equation}\label{an04cfcrv1:target}
+ \sup_{t_b\le T\le T_K}|\mathcal F_h(T)|\le r_*/4.
+\end{equation}
+It would give $Qh(T)^2\le r_*^2/4$. This allocation is sufficient,
+not necessary, and is not a full residual or E5 theorem.
+The exact desired bound can instead be imposed on the signed sum
+of all three terms in the preceding identity; neither has been
+proved independently here.
+
+Contraction gives only the rough estimate
+$|\mathcal F|\le C\int_{t_b}^TS\dd t=O_{b,K,c}((1+\ell)^2)$.
+Decreasing loss and \eqref{an04cfcrv1:coarse} improve it to
+\begin{equation}\label{an04cfcrv1:insufficient}
+ |\mathcal F(T)|\le\sqrt{31/80}+1-M(b)+o(1).
+\end{equation}
+This order-one estimate does not establish
+\eqref{an04cfcrv1:target}, whose right side is $\lambda/3200$.
+It is an insufficient upper bound, not a lower bound or a proof
+that the forcing is large.
+
+The sign $C_{12}\ge0$ does not sign its contribution after
+transport by $\mathsf U_{32}$. Positive semidefiniteness of
+$\mathsf G$ proves norm contraction, not entrywise positivity of
+the evolution. $T_2$ is itself a signed covariance. Both terms
+in \eqref{an04cfcrv1:unpaid} therefore remain in the same signed
+integral. GTM's covariance bound by $\sqrt{S\Delta}$ and its signed
+gate-transport estimates do not supply its required smallness at
+these times. In particular absorbing the strong-overlap term into
+$\mathsf G$ accounts for it but does not remove the transmitted
+$C_{12}$ contribution.
+
+\paragraph{What is and is not closed.}
+The homogeneous entrance term and all finite-noise errors in this
+representation are paid without the residual cap. The physical
+feedback capable of amplifying $h$ has been retained in the
+explicit actual-path forcing, not proved to cancel. That forcing
+is the exact remaining term. The scalar and coupled-regression
+approaches stop here. Neither an actual violation nor the desired
+small bound through half response has been proved.
+
+No boundary face has been assumed inward: the interval ends only
+at the target half response or a deterministic horizon. The
+order-one bound \eqref{an04cfcrv1:coarse} follows directly from
+loss, including negative or nonmonotone $n$. The Gaussian feature
+estimates include every gate direction. Fixed-time entrance is
+used only at fixed $b$; no COD constant is claimed at
+$s=t_\eta-t_h$. A reached $T_{1/2}$ later than the specified
+logarithmic horizon is not covered by the uniform error bound,
+and no half-response time bound is inferred from RQT's earlier
+residual-stopped theorem. Constants and small-noise thresholds may
+depend on fixed $c,\rho,b,K$, with no uniformity in extreme $c$.
+Even a bound for $h$ would leave the other residual components and
+the learned probe-depth inequality to control. Previous increments,
+foundations, checkpoints, synced files, and GitHub remain unchanged.
+All proof steps are analytic; no numerical trajectory or empirical
+premise has been used.
+\end{document}

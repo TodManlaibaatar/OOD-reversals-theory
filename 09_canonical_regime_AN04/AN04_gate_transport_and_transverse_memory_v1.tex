@@ -1,0 +1,326 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=.9in}\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks[2]
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\E}{\mathbb E}\newcommand{\dd}{\,d}
+\title{Gate transport, overlap, and the weak transverse error}
+\author{E5 continuation: analytic partial result}
+\date{4 November 2026}
+\begin{document}\maketitle
+
+\paragraph{Decision.}
+The projected dissipation inequality is not closed through half
+response for the actual critical initialization. We remove the
+inverse-noise factor from a \emph{signed integrated} gate estimate
+and control the overlap and output covariances by a single physical
+energy. Smallness of that energy at the moving small-response
+hit remains unproved. Moreover, small covariance defects alone do not imply the
+desired dissipation inequality: an auxiliary balanced state with
+strictly frozen gates shows why a transverse-amplification budget
+is also needed. This auxiliary state is not the critical trajectory.
+We derive the exact unpaid entry-and-forcing bound on that trajectory.
+
+\section{Actual stopped interval and exact quantities}
+Use the critical Gaussian family $S_0=cq^{1/\omega}$, fixed $c>0$,
+$\rho\in[13/20,7/10]$, $\lambda=\rho^2$,
+$\omega=(1-\lambda)/2$, and the balanced two-layer flow
+\[
+ f(D)=\int W(U^TD)_+\dd l,\qquad |U|=|W|,\qquad
+ S=\int |U|^2\dd l.
+\]
+The populations have means $e_1,\rho e_2$, covariance $q^2I$,
+and mixture weights $1/2$. Write $r=D-f$ and
+$\mathcal L=\frac14\sum_p\E_{P_p}|r|^2$.
+The four regressions $m,z,h,n$, constants $Q_1=1+q^2$,
+$Q=\lambda+q^2$, and parameter gradients $g_m,g_z,g_h,g$
+are as in REC/PCD. Thus $h=\E_{P_2}D_2f_1/Q$ and
+$n=\E_{P_2}D_2f_2/Q$. Set $w=Q(1-n)$.
+
+Use TBW/RQT's reached interval $I=[\tau_0,\tau]$, where
+$n(\tau_0)=\eta_0$, $\mathcal R(\tau_0)\le r_*^2/16$,
+$r_*=\lambda/800$, and $\tau$ is the first subsequent hit
+of $n=1/2$ or $\mathcal R=r_*^2$. Here
+\[
+ \mathcal R=4\mathcal L-Q(1-n)^2,
+ \quad \tau-t_h\le C_c(1+\ell),\quad
+ S\le C_c(1+\ell),\quad \ell=\log(1/q).
+\]
+Loss decreases with $\mathcal L'=-\|\dot\Theta\|^2$.
+No half-response arrival or monotonicity of $n$ is assumed.
+
+For $Q_2=Q$, let
+\[
+ b_p(U)=Q_p^{-1}\E_{P_p}D_p(U^TD)_+,\qquad
+ v_p(U)=Q_p^{-1}\E_{P_p}D_pD\mathbf1_{U^TD>0},
+ \quad \theta_p=(v_p)_p.
+\]
+The current moments of interest are
+\[
+ C_{12}=\int(U_1)_+(U_2)_+\dd l,\qquad
+ T_2=\int W_1W_2|v_2|^2\dd l,\qquad
+ O_{12}=\int_{\{U_1>0,U_2>0\}}\theta_2U_1W_2\dd l.
+\]
+PCD's overlap equation contains $wO_{12}$; its output-moment
+equation contains the exact gate term
+\begin{equation}\label{an04gtmv1:gate}
+ T_2'=A_2+\mathfrak G_2,\quad
+ A_2=\int(W_1'W_2+W_1W_2')|v_2|^2\dd l,\quad
+ \mathfrak G_2=2\int W_1W_2v_2^TDv_2(U)[U']\dd l.
+\end{equation}
+
+\section{First approach: a signed gate budget without an inverse-noise loss}
+For any scalar absolutely continuous weight $\chi$ and any
+$[a,b]\subset I$, integration by parts in \emph{time} gives exactly
+\begin{equation}\label{an04gtmv1:ibp}
+ \int_a^b\chi\mathfrak G_2\dd t
+ =[\chi T_2]_a^b-\int_a^b\chi'T_2\dd t-\int_a^b\chi A_2\dd t.
+\end{equation}
+The moving gate has not been discarded: it is accounted for by the
+endpoint moment and the two displayed integrals. This operation
+does not integrate by parts across a data selector.
+
+REC's feature bound gives $|T_2|\le CS$ and
+$|A_2|\le C\sqrt S\|W'\|$. Therefore, with
+$D_{ab}=\mathcal L(a)-\mathcal L(b)$,
+\begin{align}
+ \left|\int_a^b\chi\mathfrak G_2\dd t\right|
+ \le C\bigg[&|\chi(a)|S(a)+|\chi(b)|S(b)+\int_a^b|\chi'|S\dd t\nonumber\\
+ &+\|\chi\|_\infty\sqrt{D_{ab}\int_a^bS\dd t}\bigg].
+ \label{an04gtmv1:signedbudget}
+\end{align}
+All terms are finite. PCD's explicit Gaussian Hessian and
+$|U'|\le C|U|$ justify the chain rule at each positive $q$ by
+an integrable bound $CS/q$; positive initialized radii remain
+positive at finite times.
+
+Since $D_{ab}\le C$, the actual stopped interval satisfies
+\begin{equation}\label{an04gtmv1:gatebounds}
+ \left|\int_a^b\mathfrak G_2\dd t\right|\le C_c(1+\ell),
+ \qquad
+ \left|\int_a^b wh\mathfrak G_2\dd t\right|\le C_c(1+\ell)^2.
+\end{equation}
+For the second bound, $|wh|\le C$ and
+$|(wh)'|\le C\sqrt S\|\dot\Theta\|$, since
+$\|g\|,\|g_h\|\le C\sqrt S$ and the regressions are bounded
+by loss. Hence $\int S|(wh)'|\le C\sqrt{D_{ab}\int S^3}$.
+These estimates remove the former $1/q$ loss, but neither tends
+to zero nor pays a fixed residual cap. They bound signed integrals,
+not $\int|\mathfrak G_2|$ or its positive part. In particular
+they give no pointwise upper-face sign.
+
+\section{Second approach: one energy controls the covariance defects}
+Define the physical second-component energy and the hard-gate
+weak response by
+\[
+ E_2=\tfrac12\int(U_2^2+W_2^2)\dd l,\qquad
+ n_0=\int W_2(U_2)_+\dd l.
+\]
+Their difference has an exact nonnegative form
+\begin{equation}\label{an04gtmv1:defect}
+ \Delta=E_2-n_0
+ =\tfrac12\int\{(U_2)_-^2+[W_2-(U_2)_+]^2\}\dd l\ge0,
+ \qquad |n-n_0|\le CqS.
+\end{equation}
+The subscript on $n_0$ denotes a current-state functional, not
+the evolution of a substituted zero-noise law.
+
+\begin{theorem}[Covariance control at the actual state]
+\label{an04gtmv1:covariances}
+Uniformly on the stopped interval,
+\begin{equation}\label{an04gtmv1:covbound}
+ |C_{12}-z|+|T_2-h|+|O_{12}-z|
+                    \le C\sqrt{S\Delta}+CqS.
+\end{equation}
+Consequently, with $R_\times=Q_1z^2+Qh^2\le\mathcal R$,
+\begin{equation}\label{an04gtmv1:source}
+ |Q_1zC_{12}+QhT_2-R_\times|
+            \le C\sqrt{\mathcal R}(\sqrt{S\Delta}+qS).
+\end{equation}
+No smallness of $\Delta$ at a moving time is asserted.
+\end{theorem}
+\begin{proof}
+REC proves $b_p=(U_p)_++O(q|U|)$.
+Writing $d_U=W_2-(U_2)_+$, one has $\int d_U^2\le2\Delta$,
+and
+$C_{12}-z=-\int(U_1)_+d_U+\int W_2[(U_1)_+-b_1]$.
+Cauchy--Schwarz proves the first estimate.
+
+Let $t=\rho U_2/(q|U|)$. Uniformly in direction,
+$\theta_2=\Phi(t)+O(q)$ and $v_2=\theta_2e_2+O(q)$.
+For the first identity subtract $1$ from $D_2^2/Q$ inside
+the expectation, whose absolute mean is $O(q)$.
+The second is REC's exact off-axis moment estimate.
+Since $t_+\Phi(-t)$ is bounded, these imply
+\[
+ (U_2)_+|1-\theta_2|\le Cq|U|,\qquad
+ |(U_2)_+|v_2|^2-b_2|\le Cq|U|.
+\]
+Use
+$T_2-h=\int W_1[d_U|v_2|^2+(U_2)_+|v_2|^2-b_2]$.
+For $O_{12}-C_{12}$, on $++$ use
+$\theta_2W_2-U_2=\theta_2d_U+(\theta_2-1)U_2$.
+The same Cauchy--Schwarz estimate pays both. All gate directions,
+including $U_2=0$ and either sign of $U_1$, are included.
+The last bound follows by multiplying by the signed regressions
+and then applying the absolute-value bound, retaining their masses.
+\end{proof}
+
+There is also a direct energy balance on the actual flow:
+\begin{equation}\label{an04gtmv1:energy}
+ E_2'=wn-\tfrac12R_\times+\epsilon_E,
+ \qquad |\epsilon_E|\le C\{qS+q^2(1+S)^2\}.
+\end{equation}
+For completeness the exact expression before estimation is
+\[
+ E_2'=\E_{\rm mix}[D_2r^T\partial_2f+r_2f_2].
+\]
+On $P_1$ its first term is $O(qS)$ and its second is
+$-Q_1z^2+O(q^2(1+S)^2)$, using the residual projection.
+On $P_2$, Euler's identity gives
+$D_2r^T\partial_2f=r^Tf-D_1r^T\partial_1f$.
+The latter subtraction is $O(qS)$ since $\|\partial_1f\|\le S$
+and the residual has bounded Gaussian $L^2$ norm.
+The remaining two terms have expectation
+$2Qn(1-n)-Qh^2+O(q^2(1+S)^2)$ by orthogonal regression.
+Including the mixture halves proves \eqref{an04gtmv1:energy}.
+
+Thus, uniformly for $T\in I$,
+\begin{equation}\label{an04gtmv1:clockdefect}
+ \Delta(T)=\Delta(\tau_0)+\int_{\tau_0}^T wn\dd t
+       -[n(T)-\eta_0]-\tfrac12\int_{\tau_0}^TR_\times\dd t+o(1).
+\end{equation}
+The error here is bounded by
+$C_c[q(1+\ell)^2+q^2(1+\ell)^3]$ from
+\eqref{an04gtmv1:defect} and \eqref{an04gtmv1:energy}.
+The positive logistic-energy integral cannot be replaced by the
+response increase without proving the corresponding clock match.
+The existing entrance theorem bounds $\mathcal R(\tau_0)$, not
+$\Delta(\tau_0)$. Fixed-resident-time transverse bounds do not
+give this moving-time bound. Therefore \eqref{an04gtmv1:covbound}
+does not yet supply a small covariance defect throughout $I$.
+
+\section{Why even vanishing defects do not automatically pay dissipation}
+The following exact algebra is an audit of a proposed general
+implication, \emph{not} a statement about the critical trajectory.
+Use the zero-noise two-center model and two effective rank-one
+contributions. They can be realized with probability weights
+$1/2,1/2$ and vectors multiplied by $\sqrt2$, preserving every
+formula below and the gradient-flow time normalization.
+Choose
+\[
+ U_s=(t,-\varepsilon),\quad W_s=(1/t,0),\quad
+ t^2=\frac{\sqrt{\varepsilon^4+4}-\varepsilon^2}{2},\qquad
+ U_w=W_w=(-a,b).
+\]
+Both labels are balanced. For $a,b,\varepsilon>0$, each label
+activates only its own center, with strict margins. Put
+$n=b^2=1/4$ and $a^2=r_*^2/(\lambda n)$.
+Then
+\[
+ m=1,\quad z=0,\quad h=-ab,\quad
+ \mathcal R=\lambda h^2=r_*^2,\quad
+ C_{12}=O_{12}=0,\quad T_2=h,\quad \Delta=\varepsilon^2/2.
+\]
+All gates are locally frozen, so their motion term is zero.
+The covariance defects tend to zero as $\varepsilon\to0$.
+The strong-response projection does not change the weak gradients,
+and its completed square is zero. Direct differentiation gives
+\begin{equation}\label{an04gtmv1:audit}
+ \mathcal D_\perp=\lambda^2h^2(a^2+n),\qquad
+ w\mathcal C_\perp=\lambda^2(1-n)h^2,
+ \qquad
+ \mathcal R'=\lambda^2h^2(1-2n-a^2)>0.
+\end{equation}
+Indeed $\|g_h\|^2=a^2+n$, $\langle g,g_h\rangle=h$,
+and $a^2=\lambda/160000<1/2$. The proposed domination would
+require $a^2+2n\ge1$, which fails exactly.
+
+This example refutes only a statewise implication from balance,
+small residual, small covariance defects and frozen gates to the
+desired dissipation sign. It is not an alternative entrance for
+any critical-family theorem. No zero-noise limit is substituted
+for the actual positive-noise trajectory. It shows why tracking
+the inherited weak cross-output error and its forcing is necessary
+in addition to controlling the two gate/overlap terms.
+
+\section{The exact unpaid bound on the critical trajectory}
+Retain PCD's projection $P$ away from $g_m$, and set
+\[
+ A=\|g_m\|^2,\quad B_m=\langle g_m,g_h\rangle,\quad
+ H_{ij}=\langle Pg_i,Pg_j\rangle,\quad
+ k_h=\langle Pg,Pg_h\rangle.
+\]
+The denominator $A\ge2m^2/S>0$ on $I$.
+Projecting the exact parameter flow gives
+\begin{equation}\label{an04gtmv1:hexact}
+ h'=a_hh+F_h,\qquad a_h=\tfrac Q2(1-n-H_{hh}),
+\end{equation}
+where every signed forcing term is retained:
+\begin{equation}\label{an04gtmv1:forcing}
+ F_h=\frac{B_m}{A}m'-\frac{Q_1z}{2}H_{hz}
+        +\frac w2(k_h-h)+\langle Pg_h,PN_{\rm sh}\rangle.
+\end{equation}
+In deriving this identity, use
+$h'=(B_m/A)m'+\langle Pg_h,P\dot\Theta\rangle$ and
+$PN=-\tfrac12(Q_1zPg_z+QhPg_h)+PN_{\rm sh}$.
+No derivative of a projection and no response monotonicity is used.
+The covariance estimate implies
+\[
+ |k_h-h|\le C\sqrt{S\Delta}+CqS(1+S),
+\]
+but the new $\Delta$ estimate is not small, and the other signed
+forcing terms in \eqref{an04gtmv1:forcing} are not removed.
+
+Let $J(T)=\int_{\tau_0}^Ta_h\dd t$. Exact variation of constants
+gives the following \emph{necessary} bound for retention of the cap:
+\begin{equation}\label{an04gtmv1:unpaid}
+ \boxed{\quad
+ \left|h(\tau_0)+\int_{\tau_0}^Te^{-J(t)}F_h(t)\dd t\right|
+       \le\frac{r_*}{\sqrt Q}e^{-J(T)}\quad(T\in I).
+ }
+\end{equation}
+This follows from $Qh(T)^2\le\mathcal R(T)\le r_*^2$.
+It is an exact obligation to prove in a continuation argument,
+not a new estimate derived independently of the stopped cap.
+An independent strict improvement is needed to exclude an exit.
+For example, replacing $r_*$ on the right by $r_*/2$ would
+allocate $r_*^2/4$ to $Qh^2$; the initialized value already
+uses at most $r_*^2/16$. This is a concrete sufficient component
+budget, not a necessary allocation or a full residual theorem.
+It would still leave the other residual components to control.
+No estimate in this note establishes such an independent improvement,
+or bounds the signed forcing by the shrinking budget when $J$ grows.
+Neither a positive $J$ on the actual interval nor its failure is
+asserted; the audit explains why positivity cannot be excluded
+by the stated statewise constraints.
+
+For the full residual, the aggregate projected face still needs
+\[
+ w\mathcal C_\perp\le\mathcal D_\perp+\beta^2-\mathcal E_q
+ \quad\hbox{at }\mathcal R=r_*^2,\ n<1/2,
+\]
+with PCD's signed $\mathcal E_q$ of vanishing integrated size.
+The gate integration and covariance-energy approach have not
+proved this bound; we stop after these two approaches.
+
+\paragraph{Scope and face checks.}
+Entry into the residual cap is strict. Its upper face remains
+unsigned; the half-response boundary is a stopping target, and a
+simultaneous event already reaches that response. Nonnegativity of
+$\Delta$ is algebraic, including the face $U_2=0$ and both signs
+of $W_2$. The covariance bounds include entry through all input
+gates. No invariant quadrant or sign of a mixed moment was assumed.
+All constants and noise thresholds may depend on fixed $c,\rho$
+and the previous entry choices, with no uniformity as $c\to0$ or
+$c\to\infty$. No COD constant is claimed at $s=t_\eta-t_h$.
+The new moving-interval bounds follow from exact physical flow,
+mass, and loss identities; they do not extend a resident limit to
+the weak clock. Half response and a learned probe minimum beating
+the coherent comparator remain open. Even a residual-cap proof
+would leave the signed probe-motion requirement to be paid.
+All prior increments, foundations, checkpoints, and GitHub remain
+unchanged. No simulation, empirical value, or numerical certificate
+is used as a premise.
+\end{document}

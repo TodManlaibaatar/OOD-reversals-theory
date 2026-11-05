@@ -1,0 +1,299 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=.92in}\setlength{\emergencystretch}{1.5em}
+\newtheorem{theorem}{Theorem}
+\title{Retention of pre-weak probe depth through weak learning}
+\author{AN04, E5 step 5}\date{Version 1}
+\begin{document}\maketitle
+\paragraph{Question and conventions.}
+Normalize time as in P. Use the aligned balanced isotropic critical
+family $S_0=cq^{1/\omega}$, $c>0$ fixed,
+$\lambda=\rho^2$, $\omega=(1-\lambda)/2$. For the benchmark choose
+$(\rho,\zeta)$ on WIT's fixed learned rectangle and put
+$e_*=\min_{s\in J}\mathcal E_{\rm coh}(s)$. It is finite and negative:
+on $J$, $A=\zeta-X>0$ by WIT uniformtheorem and $Z=X-Y>0$
+by AN01 barrier sign, so the coherent energy equals $-AZ-A^2/2$.
+Write $\xi=(\sin(q\zeta),-\cos(q\zeta))$, $r_t(z)=z-f_t(z)$ and
+$e_q(t)=(|r_t(\xi)|^2-1)/(2q^2)$.
+The strong half-mass clock $t_h$ is that of HBD; the weak-response
+hit $t_{1/2}$ is that of BRW. For a concrete measured target, let
+$\mathcal L_q$ consist of the times in $t_{1/2}+J$ satisfying the
+two response bounds $\mathsf m_1\ge1/2,\mathsf m_2\ge1/4$ and
+the two cluster-loss ratios at most $169/196$. If there is no hit,
+take the set empty. These are evaluation criteria; RTA's attainment
+theorem applies to the ten-power family. Other learned windows or a
+fixed weak-response test can be used in the transport identity below.
+A clock hit alone would not prove the cluster-loss guards.
+
+\section{How much of the depth does transfer?}
+\begin{theorem}[Trained, before weak learning]\label{an04drrv1:interval}
+There are delays $s(q)\to\infty$ and lengths $w(q)\to\infty$ such
+that, on $I_q=t_h+[s(q),s(q)+w(q)]$,
+\[
+ \sup_{I_q}e_q\to-\infty,\qquad
+ \sup_{I_q}|f_t(\xi)|\to0,\qquad
+ \sup_{[t_h,\sup I_q]}|\mathsf m_2|\to0 .
+\]
+No explicit growth rate for the delays or lengths is asserted.
+\end{theorem}
+\begin{proof}
+COD main and trained give the common limiting upper bound
+$C-k e^{\lambda s/2}/(1+s)$ at fixed $s$. In fact on any fixed compact
+interval of delays the same limsup bound applies at moving times
+$s_q\to s$ with the bound evaluated at $s$. To justify this step,
+BRW extracts right interior label paths uniformly in time on each
+such interval. COD's two scaled probe integrands on these compacts
+are continuous positive-part functions, converging uniformly on
+their bounded charts. Its physical bound gives an $O_I(\delta)$
+contribution from axis strips of label length $\delta$ to both
+$f_1/q$ and $f_2/q^2$, uniformly on that time interval. The Q2
+compact is probe-inactive by COD's two positive component bounds
+through the endpoint; the compact Q3 mass remains $O_I(S_0)=o(q^2)$
+throughout. Thus COD's passage to the probe works also at $s_q$.
+In particular both scaled output components are bounded on a fixed
+interval and $|f_t(\xi)|=O_I(q)$ there.
+For integer $j$ choose increasing $s_j\ge j$ with the common energy
+bound below $-2j$ for every $s\ge s_j$. Apply the compact assertion
+on $[s_j,s_j+j]$ and BRW delay on $[0,s_j+j]$. Choose $q_j\downarrow0$
+so that for $q\le q_j$ the supremum of $e_q$ on the former interval
+is below $-j$, that of $|f_t(\xi)|$ below $1/j$, and that of the
+weak response in absolute value on the latter interval below $1/j$.
+On $q_{j+1}<q\le q_j$ choose $s(q)=s_j$, $w(q)=j$.
+The selected intervals end before any fixed positive weak-response
+threshold for small $q$. The assertion supplies no bounds at that hit.
+\end{proof}
+
+\section{Exact retention test with weak feedback}
+Take $t_0=t_h+s_K$ to be a COD witness with $e_0=e_q(t_0)<e_*$,
+fixing $s_K$ before $q$, or take any witness from the diagonal
+interval above. Set $r_0=r_{t_0}(\xi)$, $R_0=|r_0|$ and
+$\hat r=r_0/R_0$. For the witnesses under consideration $R_0\to1$.
+Define the time-dependent probe row of the full tangent kernel by
+\[
+ k_t(\xi,D)=\int\left[
+ (a^T\xi)_+(a^TD)_+ I_2+
+ (\xi^TD){\bf1}_{a^T\xi>0}{\bf1}_{a^TD>0}\,bb^T
+ \right]\,d\mu_t .
+\]
+Here $a,b$ are the input/output unit directions of a current
+balanced label, $d\mu_t=m\,d\alpha/(2\pi)$ and the mixture expectation
+is over the two training Gaussians. For finite $T\ge t_0$ put
+\begin{align}
+ G(T)&=\int_{t_0}^{T}\mathbb E[k_t(\xi,D)r_t(D)]\,dt,\nonumber\\
+ B_q(T)&=q^{-2}\hat r^T G(T),\qquad
+ A_q(T)=q^{-1}(\hat r^\perp)^T G(T). \label{an04drrv1:projections}
+\end{align}
+The letters in this display are signed changes in probe output, not
+radial masses or the strong exposure. This fixes a direction at the
+deep witness; it does not keep the evolving network or its residual
+fixed. Differentiating the two physical factors of each ReLU
+feature by P exactflow gives $\dot f_t(\xi)=\mathbb E[k_t r_t]$
+almost everywhere, as in BRW's kernel derivation. The positive-part
+chain rule permits gate crossings. Thus $G=f_T(\xi)-f_{t_0}(\xi)$.
+Polarization at $t_0$ gives the exact identity
+\begin{equation}\label{an04drrv1:test}
+ e_q(T)-e_0=\tfrac12 A_q(T)^2+\tfrac12q^2 B_q(T)^2-R_0 B_q(T).
+\end{equation}
+It follows that the missing strict inequality, in independently
+specified field integrals, is
+\begin{equation}\label{an04drrv1:missing}
+ \inf_{\substack{T\in\mathcal L_q\\T\ge t_0}}
+ \left\{\tfrac12 A_q(T)^2+\tfrac12q^2 B_q(T)^2-R_0 B_q(T)\right\}
+       < e_*-e_0 .
+\end{equation}
+The infimum of the empty set is $+\infty$. For small $q$ any reached
+learned window lies after the fixed witness by BRW delay; for the
+diagonal construction the $1/j$ response bound and the fixed width
+of $J$ also exclude earlier learned times for small $q$.
+Strict inequality is equivalent to beating the benchmark somewhere
+on the chosen learned window. A fixed positive asymptotic gap
+requires a fixed strict margin. In particular a negative longitudinal
+projection consumes the initial gain, and a transverse projection
+of either sign incurs a square cost. Step 4 bounds the right side
+from below but does not sign these two projections through a positive
+weak-response hit. The following two checks locate actual failures
+of attempts to deduce that bound.
+
+\paragraph{First attempt: global movement budget (trained flow).}
+Write $U,W$ for the physical vectors, $S=\int m\,dl$,
+$dl=d\alpha/(2\pi)$ and
+$g^2=\int(|\dot U|^2+|\dot W|^2)\,dl$. Direct differentiation of
+$f_t(z)=\int W(U^Tz)_+dl$ and Cauchy--Schwarz give
+$|\dot f_t(z)|\le |z|\sqrt{2S}\,g$. The same absolute budget
+$P_T=\int_{t_0}^T\sqrt{2S}\,g\,dt$ thus bounds $|G|$.
+A sufficient sign-blind estimate would be
+\begin{equation}\label{an04drrv1:falsebudget}
+ P_T<\sqrt{1+2q^2e_*}-R_0
+ =\frac{2q^2(e_*-e_0)}{\sqrt{1+2q^2e_*}+R_0}.
+\end{equation}
+The right side is $O_{s_K}(q^2)$ for a fixed witness and is $o(1)$
+even on the deep diagonal by Theorem~\ref{an04drrv1:interval}.
+But from the exact weak response definition under $P_2$,
+\[
+ |\mathsf m_2(T)-\mathsf m_2(t_0)|
+ \le\frac{\mathbb E_{P_2}|D_2||D|}{\rho^2+q^2}P_T
+ \le\sqrt{\frac{\rho^2+2q^2}{\rho^2+q^2}}P_T .
+\]
+At every learned time $P_T\ge(1/4-o(1))/\sqrt2$.
+Consequently \eqref{an04drrv1:falsebudget} is false on any
+reached learned interval for small $q$, even if dissipation were
+estimated exactly. This lower bound is on the common majorant,
+not on the norm or the sign of the actual probe change.
+
+\paragraph{Second attempt: forward invariance of depth (leading system).}
+There is an explicit self-consistent flow test for the proposed rule
+that a sufficiently deep pre-weak state must stay below $e_*$ until
+weak learning. Use P \texttt{pa:6d} with one atom in each family,
+strong mass one, actual weak mass $n'=\lambda n(1-n)$ and coordinates
+$x,y,u,v$. Given any $K_0>0$, start at
+$x(0)=0,\ y(0)=-R,\ u(0)=0$, where $R>0$ is chosen so that
+$-\zeta^2/2-R\zeta<\min(-K_0,e_*)$.
+Choose $0<n_0<1/4$ sufficiently small that the first time
+$t_{1/4}$ of $n=1/4$ is after time one and the matched window
+$t_{1/2}^{n}+J$ also starts after one. Here
+$t_{1/2}^{n}=\lambda^{-1}\log[(1-n_0)/n_0]$.
+Fix a finite $T$ beyond that window and $t_{1/4}$, and choose $v(0)$
+last. All data are prescribed in the leading system.
+
+The doubled velocities are
+\begin{align*}
+ 2x'&=\lambda\Phi(\rho x)[nv-x+(1-n)y],&
+ 2y'&=-y-nK(u)+\rho(1-n)K(\rho x),\\
+ 2u'&=(1-n)(\phi(u)-\lambda u)-(nu+y)\Phi(u),&
+ 2v'&=\rho K(\rho x)-\lambda v .
+\end{align*}
+They have at most linear growth and are smooth. To control the
+unfavorable core output, set $H=y_-+u_+$. Wherever $y\le0$,
+$2(y_-)'\le K(u)\le\phi(0)+u_+$, with upper right derivative
+at zero. Wherever $u\ge0$, $2(u_+)'\le\phi(0)+y_-$, also at
+zero. On the other sides the corresponding positive-part velocity
+vanishes. Thus $D^+H\le\phi(0)+H/2$ and
+$H\le H_T=(R+2\phi(0))e^{T/2}$ through $T$, independently of $v(0)$.
+Choose $d=\zeta+1$ and a positive $v(0)$ such that
+\[
+ n_0v(0)e^{-\lambda T/2}>d+H_T+8d/\lambda .
+\]
+Since $K\ge0$, $v(t)\ge v(0)e^{-\lambda t/2}$. Throughout
+$0\le x\le d$ one has $\Phi(\rho x)\ge1/2$, hence $x'>2d$.
+At the initial lower face $x=0$ the velocity is upward, and the
+upper endpoint is a crossing face with the same strict sign.
+The input reaches $d$ before time $1/2$; the face $x=d$ forbids
+downward return through $T$. The leading probe error is exactly zero
+after clearing on this interval since both atoms are inactive.
+In particular the entire matched window has error $0>e_*$; weak
+mass passes through $1/4$ and $1/2$ under its own equations.
+The core state and both weak angles evolve throughout.
+
+The same example supplies a strict outward contact for the
+depth sublevel if desired. On $0\le x<\zeta$, write
+$A=\zeta-x$, $Z=x-y$. On $\mathcal E=e_*$,
+$Z=-e_*/A-A/2$. For an immediate boundary test choose any
+$0<A<\min(\zeta,\sqrt{-2e_*})$, set $x=\zeta-A,\ y=x-Z$,
+and take $u=0$, $0<n<1/4$. Then $Z>0$, and the full derivative
+is $Zx'+Ay'$. Its coefficient of $v$ is
+$\lambda Z\Phi(\rho x)n/2>0$. All other terms at this state are
+independent of $v$. Thus a large finite $v$ gives a strictly outward
+velocity on the depth face. This refutes the unrestricted sublevel
+barrier. The example is neither a critical initialized trajectory
+nor a counterexample to E5 for that family; in particular its
+weak output tilt was freely prescribed. Applying this test to the
+trained entrance would require bounding the actual weak feedback.
+
+\paragraph{Finite-noise check for the prescribed entrance.}
+The same loss of depth is possible in the original Gaussian
+equations with the prescribed balanced two-atom initial state.
+Fix all its constants, including $v(0)$ and $T$, before $q$.
+Lift the strong vectors to angles $qx,qy$ and the weak vectors to
+$\pi/2-qu,\pi/2+qv$, with radial masses $m=1,n=n_0$ initially.
+The leading trajectory is bounded on a slightly extended finite interval.
+Here is the compact field check.
+
+Write $D=(1+qZ_1,qZ_2)$ on $P_1$ and $(qZ_1,\rho+qZ_2)$ on
+$P_2$. On bounded mass and angular boxes, the components
+of $r=D-f(D)$ are
+\[
+\begin{array}{c|cc}
+ &r_1&r_2\\ \hline
+ P_1&(1-m)D_1+O(q^2)&
+ q[Z_2-my-n(Z_2+u)_+]+O(q^2)\\
+ P_2&q[Z_1-m(Z_1+\rho x)_++\rho nv]+O(q^2)&
+ (1-n)D_2+O(q^2).
+\end{array}
+\]
+The errors hold in each fixed finite Gaussian $L^p$ norm, using
+Lipschitz continuity of positive part and the own-cluster Gaussian
+tail. In the exact angular projections $b^Tr(a^\perp\cdot D)$
+times the receiver gate and $(b^\perp)^Tr(a^TD)_+$, divide by
+$q$ and negate the weak input row for the $u$ convention.
+The resulting doubled angular field has the following cluster limits,
+where $P=\Phi(\rho x)$ and $Q=\Phi(u)$:
+\[
+\begin{array}{c|cc}
+ &P_1&P_2\\\hline
+ 2x'&-(1-m)x&\rho(1-m)\phi(\rho x)+
+          \lambda[nv-mx+(1-n)y]P\\
+ 2y'&-y-nK(u)&\rho(1-n)K(\rho x)\\
+ 2u'&(1-n)\phi(u)-[nu+my+(1-m)v]Q&-\lambda(1-n)u\\
+ 2v'&-(1-m)K(u)&\rho mK(\rho x)-\lambda v
+\end{array}
+\]
+Each row sums to the doubled velocity. For example on $P_2$ the
+strong cross gate tends to $\mathbf1_{Z_1+\rho x>0}$, and the
+divided projected residual in its input row tends to
+$Z_1-m(Z_1+\rho x)_++\rho[nv+(1-n)y]$.
+Use $\mathbb E[Z{\bf1}_{Z+w>0}]=\phi(w)$; the $P_1$ weak cross
+gate uses $Z_2+u$ in the same way. The log radial rates tend to
+$1-m,\lambda(1-n)$ by the undivided projections. These convergences
+are uniform on every fixed compact box: for any convergent sequence
+of its parameters the cross gates converge almost surely outside
+one Gaussian level set, with uniformly integrable divided products
+as given by the residual expansions. The own gates have exponentially
+small complements. Compactness gives uniformity. The leading field
+is locally Lipschitz; Gronwall up to a first exit from a box strictly
+enclosing its path excludes that exit and proves uniform finite-time
+convergence for this prepared initial state.
+
+Consequently the original weak response converges uniformly to $n$,
+and the strong response to $1$, by the same residual table. The first
+weak half-response hit converges to $t_{1/2}^{n}$ by strict logistic
+crossing and uniform convergence. The strong loss tends uniformly
+to zero, and the weak loss to $\rho^2(1-n)^2/2$. On the matched
+window WIT gives $n\ge1/4+\sigma$ for some $\sigma>0$.
+Thus these losses clear the numerical cutoffs against the critical
+family's isotropic baseline losses (which tend to $1/2,\rho^2/2$).
+The test itself has a different initialization. Choose $T$ with a
+strict time margin as above. The strong gate stays inactive on the
+full measured window since the limiting $x\ge\zeta+1$ there. The
+weak gate is inactive by its bounded chart. The exact probe prediction
+is then zero and $e_q=0$ throughout that window. Initially its
+scaled energy tends to $-\zeta^2/2-R\zeta<-K_0$. This verifies a
+failure of the depth-only implication even for the exact finite-noise
+vector field, while leaving the critical trained family's sign undecided.
+
+\paragraph{Disposition and handoff.}
+The new positive result transfers deep pre-weak error over a growing
+but unspecified interval. The learned-depth comparison is open.
+Two separate quantities remain unpaid for the critical initialization:
+existence and alignment of a learned window, and the projected
+probe motion \eqref{an04drrv1:missing} on at least one reached
+time there. The kernel expectations in \eqref{an04drrv1:projections}
+give a target for a weak-passage estimate that avoids paying for
+large training motion invisible to this probe. The example identifies
+$nv$ in the strong input equation as one concrete term that a
+gate-retention argument would have to control. It does not establish
+its size on a trained learned window.
+
+\paragraph{Source ranges.}\raggedright
+COD \texttt{an04codv1:main, trained} and BRW \texttt{an04brwv1:delay}
+concern the specified trained critical family only at the respective
+fixed resident times or pre-weak delay. Compact-window extraction
+uses their physical endpoint estimates under the same initialization.
+P \texttt{pa:exactflow, learning, rawvelocity} use the finite-noise
+Gaussian population, finite moments and the a.e.\ probe chain rule.
+P \texttt{pa:6d} concerns prescribed atomic leading states;
+WIT \texttt{inc:AN06:v2:uniformtheorem} and
+AN01 \texttt{an01pbv1:sign} concern the selected branch and common
+learned window for the benchmark only. No small-noise critical
+weak-seed law, trained rate transfer through weak learning, or
+numerical premise is used.
+\end{document}

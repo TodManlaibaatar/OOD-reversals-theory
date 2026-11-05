@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.40 — November 3, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.46 — November 5, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -306,6 +306,84 @@
 - **Exact tests, unsigned.** `payment` (rate accounting on the factual run), `causal` (factual run against an evolved half-mass concentrated run), `endpoint` (current-gate output moments). Their signs are open.
 - **Correction (ledger 43).** In v1.39 and my step-3 prompt, I described FFP's return and IMP's tail moment as governing the HBD law's pre-weak interval. Both are proved only for unit mass with their own aligned entrance. BRW rederived both for the HBD entrance with logistic mass.
 - **Next: E5 step 4** (core output descent and the pre-weak probe error, limiting system at each fixed s, then fixed-s transfer). Prompt in the v1.40 review. P1 stays available in parallel.
+
+**Revision 1.41 (Nov 3).** Records COD (`AN04_core_output_descent_v1`, E5 step 4): **E5 is proved in the depth-over-training sense. At the critical scale, the trained scaled probe error falls below any fixed level before weak learning.**
+- **Limiting system** (`main`, uniform over BRW's extracted laws). $y_a(s)\le C-k_yD(s)$ and $\mathcal E_\zeta(s)\le C-k_ED(s)$, with $D=e^{Ls}/(1+s)$ and $L=\lambda/2$. The positive output of the active non-core labels is $o(D)$.
+- **Trained flow** (`trained`). For each fixed s, $\limsup_q(E_\xi(t_h+s)-\tfrac12)/q^2\le C-k_ED(s)$. For every K there is a fixed delay at which the trained scaled error is below −K, before the weak response reaches η, for small q. So $\inf_{[t_h,t_\eta)}(E_\xi-\tfrac12)/q^2\to-\infty$.
+- **Contrast with the deep regime.** At κ = 10 the scaled error converges to the WIT orbit, whose learned-window minimum is −2.009 [eval]. In units of q², the critical family's depth is unbounded.
+- **Mechanism.** A thinning protected tail with a growing first moment drives the strong output mean $Y\ge k_YD$. That drags the core output down: $y_a\le C-k_yD$, as in MPB. The active core exposes this at the probe.
+- **Scope.** Each fixed s, each fixed c. No constant is claimed at $s=t_\eta-t_h$. The post-weak swing-by minimum, where the measured E5 depth sits, is open.
+- **Reviewer data check** (committed `theory_regime/results`, [empirical]). Companions descend below the resident before weak learning; the deep runs do not. Every global minimum still falls at $s\approx+10$, after weak learning. See the interface table.
+- **Next: P1** (ICML theory section; prompt in the v1.41 review). Optional fixed-κ = 3.6 q-sweep to test COD's q → 0 prediction.
+
+**Revision 1.42 (Nov 3).** Records E5 steps 5–7: DRR (`AN04_learned_depth_retention_v1`), SPM (`AN04_signed_probe_motion_v1`) and TBW (`AN04_transverse_balance_and_weak_clock_v1`). Also records the committed P1 v1 draft. **E5 at the learned (post-weak) minimum stays open after three bounded attempts; the E5 chain is paused.**
+- **DRR.**
+  - Trained: pre-weak intervals of diverging length on which the scaled error tends to −∞ while the weak response tends to 0 (`interval`).
+  - Exact retention identity $e_q(T)-e_0=\tfrac12A^2+\tfrac12q^2B^2-R_0B$ (`test`) and the unpaid inequality (`missing`).
+  - Two refuted routes: (1) a sign-blind movement budget, false at any learned time (`falsebudget`); (2) "deep pre-weak ⇒ deep learned", refuted by a prescribed two-atom entrance in P `6d`. In that entrance the error equals the baseline on the whole learned window, also in the finite-noise field. The weak angle there is free, so the example does not refute E5 for isotropic critical initialization.
+- **SPM.**
+  - From a fixed COD witness: longitudinal gain $\ge kD(s)-C\sqrt{1+s}$, transverse $\le C\sqrt{1+s}$ (`early`).
+  - Exact source decomposition through weak learning (`sources`, `centered`, `one`), with $\alpha\ge1/3$ before half response.
+  - The transverse cross-source integrals diverge (`divergence`). This uses $\delta/q\to K_s/\rho$ and $j_{vv}\gtrsim e^{-Ls}(1+s)^{1/6}$ from the sharpened lower face $x_a\ge-\sqrt{s-\tfrac{2}{3L}\log(1+s)+d}$.
+  - The norm-estimate radii are at least of order $1/q$ (`width`). The exact remaining sign is `missing`.
+- **TBW.**
+  - Bulk input location $\approx-\sqrt s$, exposure $H=\sqrt s+\zeta+O(\log s/\sqrt s)$ (`bulk`).
+  - Active outputs satisfy $y\le K_s/\rho+C$, and $K_s$ is eventually increasing (`sign`).
+  - Receiver-wise cancellation leaves only $O(\sqrt S)$ of the divergent transverse source (`balance`, `matched`).
+  - Trained incoming surplus: $(A^2+q^2B^2)/(2R_0B)\to0$ at moving pre-weak endpoints (`surplus`).
+  - Exact Q2 seed $H_2/q^2\to c^{2\omega}(4e^s)^\lambda/8$ (`seed`).
+  - A fixed small weak response $\eta_0$ is hit by $t_h+b+k_0\log(1/q)$ for any $k_0>4/\lambda$ (`smallhit`).
+  - Remaining: the clock gap to quarter and half response (`clockgap`), bounded regeneration is false (`false`), and the learned-endpoint deficit (`missing`).
+- **P1 v1** (`PAPER_theory_section_v1`, committed at the repo root, not in `10_paper_theory/`). Written before MPB–COD and the sweep, from the v1.36 interface, with no logs evaluated. Superseded by the P2 prompt in the v1.42 review.
+- **Correction (ledger 44).** v1.41 called COD "E5 proved in the depth-over-training sense". E5 as recorded is the post-weak learned-window minimum. COD is a separate theorem, pre-weak depth divergence, and E5 stays open.
+- **Next: P2** (the paper theory section v2 with the full E5 chain). The E5 learned-window problem goes to the advisor as the stated open problem.
+
+**Revision 1.43 (Nov 5).** Records two finite-network experiment suites from the experiments repo: `composition_probes_v1` (33 runs) and `depth_robustness_v1` (228 runs). No theory changes. Reviewer analysis is of the committed or delivered report CSVs, and every number is [empirical].
+- **Composition probes.**
+  - In the canonical ReLU network, composition a+b is learned monotonically while the −85° probe reverses.
+  - The tied-linear control reproduces Yang et al.'s compositional transient, and the untied linear network is monotone everywhere.
+  - In canonical ReLU, the off-cone signs D1 < 0 < D2 hold 10/10, and on the composition probe the roles flip.
+  - Reversal timing matches the deep orbit: weak response at the minimum 0.989 ± 0.001 (orbit 0.988), delay after weak half response 1.13 ± 0.03 physical (orbit 1.10), while the depth is −7.2 ± 0.7 against −2.0.
+- **Depth and robustness.**
+  - At depth 2 with small initialization, reversal plus the learned-crossing signs D1 < 0 < D2 hold 5/5 in every condition except a 120° concept angle (0/5). That includes Gaussian small-output init, mixture weights 0.25/0.75, a 60° angle, and 16 dimensions with nuisance noise (both scalings). Linear depth 2 never reverses.
+  - Depth 4 and 8 with small initialization are censored: the minima sit at the horizon (t = 40), and depth 8 mostly does not learn.
+  - Common fan-in runs have one-step defects of 2 to 5e3, so their rate signs are not reliable.
+- **Next.**
+  - Longer-horizon depth-4/8 runs (protocol v2, disclosed).
+  - Smaller dt or dropping the fan-in condition.
+  - An angle sweep between 90° and 120°.
+  - The width sweep and the κ = 3.6 q-sweep remain open.
+
+**Revision 1.44 (Nov 5).** Records two further partial E5 increments, RQT (`AN04_response_quarter_half_transfer_v1`) and CFCR (`AN04_cap_free_cross_response_v1`), plus ledger 45. E5 stays open and the chain stays paused; the current work is the appendix rewrite (Part I sections A–J, Part II R1–R5).
+- **RQT (trained, critical family).**
+  - Exact regression defect $\mathcal R=4\mathcal L-Q(1-n)^2\ge0$ and exchange identities $n'=a\|g\|^2+\Gamma$, $\mathcal R'=-4\|N\|^2-2Q(1-n)\Gamma$.
+  - Reached alternative (`alternative`): within $k\log(1/q)$ after the small hit, for any $k>8/\lambda$, either the half response is hit, with the response and loss criteria met at the quarter and half crossings, or the residual face $\mathcal R=r_*^2$ is hit with a paid exchange.
+  - Unsigned: the face test `face`, the coupling `coupling`, and the orthogonal probe forcing `probe`/`depth`.
+- **CFCR (trained, critical family).**
+  - On $[t_b,\min(T_{1/2},t_b+K\log(1/q))]$, with no residual stop: exact regression vector $e$ with $\mathcal R=|e|^2+\chi$; contractive pathwise evolution $e'=-\tfrac12\mathsf Ge+\tfrac w2b_0+\varepsilon$.
+  - Entrance term at most $1-M(b)+o(1)$, error $O(q\log^3(1/q))$ (`main`).
+  - Unsigned: the signed convolution $\mathcal F_h$ (`unpaid`).
+  - Depends on increments REC (within-cluster residual projections, giving the bound on $N_{\rm sh}$) and GTM, which have not been delivered or reviewed.
+- **Correction (ledger 45).** My main-paper theorem table overstated two statements. In Theorem 1, "falls below baseline" needs a corollary (the coherent energy $-AZ-A^2/2<0$ on $J$, then FWC value transfer). In Theorem 2, "the crossover comes after saturation" is not proved; the proved ordering is after weak quarter mass.
+
+**Revision 1.45 (Nov 5).** Records REC (`AN04_residual_exchange_channels_v1`) and GTM (`AN04_gate_transport_and_transverse_memory_v1`). Both are partial E5 results. REC supplies CFCR's imported $N_{\rm sh}$ bound, so CFCR is now fully checked. GTM imports PCD, which has not been delivered.
+- **REC.**
+  - Four-regression reduction with shape residual $\chi\le Cq^2(1+S)^2$ and $\|N_{\rm sh}\|\le Cq\sqrt S(1+S)$.
+  - Exact channel form $\Gamma=-\tfrac12(Q_1zC_{12}+QhT_2)+\varepsilon_q$, with $\int|\varepsilon_q|=O(q\log^3(1/q))$ on RQT's stopped interval (`reduction`).
+  - Missing face inequality $B\le4\|N\|^2/(Q(1-n))+2\varepsilon_q$ (`missing`). If the residual exit occurs, one of the two signed channel integrals is at least $7r_*^2/16$ (`exit`).
+- **GTM.**
+  - Signed time-integrated gate budget without a $1/q$ loss (`signedbudget`, `gatebounds`).
+  - Covariance defects bounded by one energy, $\Delta=E_2-n_0\ge0$ (`covariances`), with the energy balance $E_2'=wn-\tfrac12R_\times+\epsilon_E$.
+  - An audit state with balanced labels, frozen gates and vanishing defects where $\mathcal R'=\lambda^2h^2(1-2n-a^2)>0$ on the face. This refutes the statewise implication only, not the critical trajectory.
+  - Exact necessary bound for retaining the cap, `unpaid`.
+
+**Revision 1.46 (Nov 5).** Records PCD (`AN04_projected_cross_dissipation_v1`), a partial E5 result. It supplies GTM's projection, so the whole RQT–CFCR–REC–GTM–PCD subchain is now checked. No new ledger items. The E5 chain is paused, and the appendix rewrite is the current work.
+- **PCD.**
+  - The strong-response direction is removed by the projection $P=I-e\otimes e$, with $A=\|g_m\|^2\ge2m^2/S$.
+  - Exact face form $\mathcal R'=w\mathcal C_\perp-\mathcal D_\perp-\beta^2+\mathcal E_q$, with $\int|\mathcal E_q|=o(1)$ and $\mathcal C_\perp=Q_1zC_{12}+QhT_2+O(qS(1+S))$ (`main`).
+  - Joint Gram bound $w\mathcal C_\perp-\mathcal D_\perp\le w^2\kappa/4$, which can be positive.
+  - Exact gate Hessian $Dv_2=\gamma_q\,t_Ut_U^T$ with $\gamma_q\ge0$, giving `gate`. GTM later improved its crude $CS/q$ bound to a signed integrated bound.
+- **The open problem in its sharpest form.** At the residual face, sign the projected correlation $\mathcal C_\perp=\langle Pg,Q_1zPg_z+QhPg_h\rangle$ against $\mathcal D_\perp+\beta^2$ along the critical trajectory, then the learned-window probe inequality.
 
 ---
 
@@ -1485,6 +1563,9 @@ Notation: $A_*=\zeta-X$, $Z=X-Y$, $\Phi_x=\Phi(\rho X)$, $\mathsf K_x=\mathsf K(
 | Computer-assisted local certificate at canonical, conditional on entry (`verification/`) | none in this repo (interval arithmetic is excluded as a premise here) | Separate, computer-assisted evidence. Its inclusion in the paper is Tod's decision, clearly labeled. |
 | Theorem-regime sweep (experiments repo `theory_regime/`, frozen protocol; continuum population flow at $S_0=q^{10}$, $q\in\{0.05,0.025,0.0125,0.00625\}$, probe $-90^\circ+100^\circ q$) | RTA `theoremA`, `persistence`; CPD; PB; WIT `orbit` | **Done, no hole flags (H1–H5 pass, with the resolution check).** Crossing error $0.150,0.045,0.015,0.006$. Rate error $1.7,0.6,0.2,0.1\%$. Error-curve error $6.0,2.9,1.5,0.8\%$. Depth $-2.023\to-2.010$ (orbit −2.009). Output share 0.062–0.064 (orbit 0.063). Strong scaled std $0.134\to0.044$; $x-y>0$ after half mass (OP-W check). Empirical slopes are about $q^{1.0}$–$q^{1.5}$ [empirical]. |
 | Companion κ sweep at $q=0.025$ (same protocol, κ = 3, 3.6, 4.5, 6) | RMS `map`; FFP; MPB; OP-C2 | **E5 in the exact population flow [empirical].** Depth −12.5, −9.2, −5.5, −2.7 against −2.0 at κ = 10 (6.2×, 4.6×, 2.7×, 1.4×). Inactive strong fraction at the crossover 10.7, 9.6, 8.6, 5.1%. The enhancement is monotone in κ and continues above the critical value $1/\omega=3.6$. These runs test no theorem: OP-C2 (linking the critical family's own dynamics to MPB's forcing) remains open. |
+| Pre-weak descent (reviewer analysis of the committed T1–T4, C1–C4 outputs; no new runs) | COD `trained`; RTA `theoremA` | **[empirical].** Minimum scaled error between strong half mass and the weak response $\mathsf m_2=0.01$: T1–T4 (κ = 10) −0.98 at every q, matching the resident value $-(\zeta-a)^2/2=-0.97$. C4, C3, C2, C1 (κ = 6, 4.5, 3.6, 3): −1.03, −1.26, −1.56, −1.80. At $\mathsf m_2=0.05$: −1.01 (T) against −1.13, −1.64, −2.34, −2.99. Every global minimum falls at $s\approx+10$ (κ = 10: 9.9–10.1; companions 10.2–10.6), after weak learning. COD's q → 0 prediction, at fixed c, is untested: it needs a fixed-κ = 3.6 sweep over q. |
+| Composition and signed probe motion (`composition_probes_v1`; finite network, h = 200, canonical data, 10 seeds per model; tied-linear control on Yang-style data) | CPD `table` (signs); linear control (LP); WIT `orbit` (timing) | **[empirical].** Composition a+b: ReLU monotone 10/10, untied linear monotone, tied linear transient 10/10 (Yang control reproduced; that control uses different data, so it validates the measurement, not the architecture comparison). −85° probe: ReLU dips to 0.482 and recovers to ≈0.498, persistent class 10/10; linear models monotone. In ReLU the off-cone signs D1 < 0 < D2 hold on the whole learned interval for 10/10 seeds. On the composition probe the roles flip (weak cluster helps), but the magnitudes are about 100× smaller (Δ composition ≈ −2e-4 against Δ off-cone ≈ +0.016). Timing: weak response at the minimum 0.989 ± 0.001, delay 1.13 ± 0.03 physical (orbit 0.988 and 1.10; population κ = 3–10: 0.988–0.991 and 1.10–1.18). Depth −7.2 ± 0.7 against −2.02 for the population run at κ = 10, q = 0.05. Weak response and weak mass agree only to leading order. Half-step checks agree; identity residuals ~1e-15. |
+| Depth and robustness (`depth_robustness_v1`; widths 64/200, depths 2/4/8, 5 seeds; 228 runs) | none (empirical extension) | **[empirical].** Depth 2, small initialization (aligned isotropic or Gaussian scaled to small output): reversal plus signs D1 < 0 < D2 at the first learned crossing hold 5/5 at the canonical setting, angle 60°, mixture 0.25 and 0.75, and d = 16 with matched or per-coordinate noise. At angle 120° it is 0/5: the −85° error is nearly flat (min 0.4955) and grid off-cone persistent counts are 0–56 against 171. Linear depth 2: no reversal in any condition. Depth 4/8 with small initialization: censored (minima at the horizon t = 40; learning at t ≈ 9–19 for depth 4; depth 8 learns in 1/5), and deep linear shows bumps of order 1e-4 to 1e-3. Common fan-in: one-step rate defects of 2 to 5e3 at dt = 0.002, so its signed rates are not interpretable. |
 
 **Status after the closure campaign (Nov 3).**
 - *OP-W, closed* (`an01pbv1:sign`, `face`, `transfer`). On the selected orbit, for the whole ratio box: $x>0$ and $x>y$ at all finite s. The proof runs in four steps:
@@ -1613,6 +1694,124 @@ Notation: $A_*=\zeta-X$, $Z=X-Y$, $\Phi_x=\Phi(\rho X)$, $\mathsf K_x=\mathsf K(
   - Whether the probe error itself diverges depends on the positive output moment of the *active* non-core labels. BRW's upper envelope $e^{Ls}(1+s)^{-2/3}$ does not control it.
 - *Scope.* Limiting system and fixed-horizon transfer only. None of the constants holds at $s=t_\eta-t_h$. E5 at the learned minimum is unsigned.
 
+**Status after COD (`AN04_core_output_descent_v1`, Nov 3): A, B and C closed. Pre-weak depth is unbounded at the critical scale.**
+- *Theorem* (`an04codv1:main`, limiting system). Uniformly over BRW's extracted laws, for all $s\ge0$: $y_a(s)\le C-k_yD(s)$ and $\mathcal E_\zeta(s)\le C-k_ED(s)$, with $D=e^{Ls}/(1+s)$.
+- *Theorem* (`an04codv1:trained`, trained flow). For each fixed s, $\limsup_{q\downarrow0}(E_\xi(t_h+s)-\tfrac12)/q^2\le C-k_ED(s)$. For every $K_0>0$ and $\eta>0$ there are $s_{K_0}$ and $q_0$ with $t_h+s_{K_0}<t_\eta$ and scaled error $<-K_0$ for all $q<q_0$.
+- *Proof structure.*
+  - `ceiling`: rank ceiling $x_++y_+\le C(1+f^{-1/3})e^{Ls-bfs}$, with $b=\lambda/16$.
+  - The protected moment, re-derived.
+  - Core faces $x_a,y_a\le a$ for all s.
+  - `mean`: $Y\ge k_YD$, with $k_Y=\lambda c_3(1-e^{-(L+1/2)})/(1+2L)$.
+  - Core output by the exact kernel $\sqrt{M(r)/M(s)}\in[1/\sqrt2,1]$.
+  - `exposure`: lower input face $x_a>-H\sqrt{1+s}$, so $A_\zeta^2/2-\zeta A_\zeta\le C(1+s)$.
+  - Quadrant exclusion: $y_+\le h(s)=H_1e^{Ls}(b_1+s)^{-2/3}$ on active labels.
+  - Positive-output ranks: $f<F_s=D_0\log(1+s)/(1+s)$.
+  - `positive`: active positive exposure $O(e^{Ls}(1+s)^{-7/6}\log(1+s))$.
+  - Transfer: Cartesian strip control; Q2 inactive, via CRA `outer` and sign-preserving second components; Q3 mass $O(S_0)=o(q^2)$; exact energy identity.
+- *Checked (reviewer, Nov 3).*
+  - **Core drift.** $2x_a'=-(1-M)x_a+\rho(1-M)\phi(\rho x_a)+\lambda P(y_a-X_m)$, and both upper faces.
+  - **Mean output.** The integration giving $k_Y$, and the core kernel integration giving $b_y=k_Ye^{-L}/(2\sqrt2)$.
+  - **Lower input face.** It needs $\rho^2H^2/2-L\ge1$, $Ce^{-\rho^2H^2/2}<H$ and $e^{-s}\le(1+s)^{-1/2}$.
+  - **Quadrant faces.** Input: $\lambda\Phi(\rho\zeta)h>\zeta+B_0e^{Ls}(1+s)^{-2/3}$. Output: $\rho K(\rho\zeta)<2h'$, with $h'\ge Lh/2$ when $b_1\ge4/(3L)$. Entry: labels with $x(0)\le\zeta$ have $f\ge f_*$.
+  - **Rank cutoff.** $bD_0/2>3$ makes the ceiling $o(D)$ on $[s-1,s]$ for $s\ge3$. Then $y'\le-\sigma D$ on $y\ge0$.
+  - **Final assembly.** Q4 has π-mass 1/2, and $\tfrac M2y_a(\zeta-x_a)\le-(\zeta-a)k_yD/4$.
+  - **Transfer.** Q2 sign ($R_{22}\ge-C_sq^2$, drift $O(q^2)$ over a bounded time). Weak mass at the cap $\asymp S_0^{1-\lambda}A_0^\lambda\asymp q^2$, using $(1-\lambda)/\omega=2$. Q3: $S_0/q^2\to0$ since $1/\omega>2$. Strip integrands bounded via $|U^T\xi|\le C_sq$.
+  - **Hygiene.** Compiles cleanly, no control characters, cited labels exist, prefix unique.
+- *Reading.*
+  - Depth over training is $\inf_t$ of the scaled probe error. It is unbounded at the critical scale, while the deep regime's learned-window minimum converges to the orbit value.
+  - The empirical E5 depth is measured on W_full, from weak quarter mass on, and its minimum sits after weak learning. COD does not claim that minimum. At q = 0.025 the pre-weak excess is a modest part of the measured depth (see the interface table).
+- *Open.* The post-weak minimum at the critical scale: its timing, its size, and whether the pre-weak deepening is carried through the weak passage. Also any quantitative rate in q.
+
+**Status after E5 steps 5–7 (DRR, SPM, TBW; Nov 3): learned-window E5 open; chain paused.**
+- *Proved (trained, critical family).*
+  - **DRR `interval`.** Diverging pre-weak intervals with $\sup e_q\to-\infty$, $|f(\xi)|\to0$, $\mathsf m_2\to0$.
+  - **SPM `early`.** Signed fixed-delay motions.
+  - **SPM `divergence`.** Both transverse cross budgets diverge on every sequence of reached learned times.
+  - **TBW `surplus`.** Net incoming longitudinal gain dominates the transverse square at moving pre-weak endpoints.
+  - **TBW `seed` and `smallhit`.** The exact Q2 seed constant, and a logarithmic-time hit of a fixed small weak response.
+- *Proved (limiting system).*
+  - **TBW `bulk`.** Bulk input $\approx-\sqrt s$, outside upper mass $O(\log s/s)$.
+  - **TBW `sign`.** Active output ceiling $K_s/\rho+C$.
+  - **TBW `matched`.** Unmatched transverse source $O(\sqrt S)$.
+- *Refuted routes.*
+  - Sign-blind movement budget (DRR `falsebudget`).
+  - Depth-only retention (DRR prescribed two-atom entrance, leading and finite-noise).
+  - Bounded transverse budget (SPM `divergence`).
+  - Bounded weak cross-regression regeneration (TBW `false`).
+  - The norm route to scaled accuracy (SPM `width`, radii of order $1/q$).
+- *Checked (reviewer, Nov 3).*
+  - **DRR identity.** Polarization behind `test`, the algebra of `falsebudget`, and $|\Delta\mathsf m_2|\le CP_T$.
+  - **DRR counterexample.** The $H=y_-+u_+$ bound ($D^+H\le\phi(0)+H/2$), the input speed $>2d$ on $[0,d]$, and the face at $x=d$.
+  - **SPM limits.**
+    - $A\to\Delta H$ and $B\to(\zeta-H_0)\Delta H-\Delta V$, from $u\approx(q(\zeta-H_0),-1)$.
+    - $\mathbb E_{P_2}[D_2f_1]/(q\rho^2)\to K_s/\rho$, and $j_{vv}\to\Phi(\rho x_a)$ on the core.
+    - The lower face via $\Phi(-z)\le\phi(z)/z$, giving $\Phi(\rho x_a)\gtrsim e^{-Ls}(1+s)^{1/6}$, hence integrands of order $(1+s)^{-5/6}$ and $e^{Ls}(1+s)^{-11/6}$.
+  - **TBW bulk and sign.**
+    - Bulk face speed of order $(1+s)^{Lb-3/2}$ with $Lb>2$.
+    - The overlap identity $0\le F-K(r)\Phi(t)\le\phi(t)$, by the Harris inequality and $\mathrm{Cov}(Z,\mathbf1_{Z>-t})=\phi(t)$.
+    - Quadrant faces, via $\lambda(k/\rho+C)-\rho k=\lambda C$.
+  - **TBW seed.** $S_0^{1-\lambda}a_0^\lambda=c^{2\omega}q^2a_0^\lambda$ and $\int_{\rm Q2}\sin^2\alpha\,dl=1/8$.
+  - **TBW smallhit.** Loss budget from monotonicity and $\mathbb E_{P_2}r_2^2\ge(\lambda+q^2)(1-\mathsf m_2)^2$; growth $q^{2-\lambda k_0/2}$ against $S\le C(1+t)$.
+  - **Hygiene.** All three compile cleanly, have no control characters, cite existing labels (including P `6d`, `rawvelocity`), and have unique prefixes.
+- *Open (the problem for the advisor).* At the critical scale, does the trained probe error at the learned (post-weak) minimum fall below the coherent value $e_*$? Three things are needed:
+  - (i) reaching the quarter- and half-response learned window (TBW `clockgap`);
+  - (ii) a signed joint bound on the feedback-filtered correlations of TBW `missing` (equivalently SPM `missing`);
+  - (iii) control of the actual weak output tilt $nv$ in the strong input equation, the term DRR's example isolates.
+
+**Status after RQT and CFCR (Nov 5): two partial results; E5 still open.**
+- *Proved (trained).*
+  - **RQT `alternative`.** A reached half-response-or-residual-face alternative in logarithmic time. On the half branch, both response and loss criteria hold at the quarter and half crossings. On the face branch, the exchange is paid ($-2Q\int(1-n)\Gamma\ge15r_*^2/16$) and $n(\tau)\ge\eta_0+[r_*^2-\mathcal R(\tau_0)]/(2Q)$.
+  - **CFCR `main`.** Cap-free control of the entrance and finite-noise errors in the regression vector, through half response or a logarithmic horizon.
+- *Checked (reviewer, Nov 5).*
+  - **RQT identities.** The regression decomposition, via $\mathbb E_{P_2}D_2[r_2-(1-n)D_2]=0$ and $\mathbb E_{P_2}D_2^2=Q$; $\dot\Theta=ag+N$ with $N=-\tfrac14\nabla\mathcal R$; both exchange identities; the face test.
+  - **RQT cone.** Faces $z'\ge\lambda z/8$, $|U_1|,|W_1|$ speed $\le\lambda z/50<z'/2$, and the $|w|$ face; the growth exponent $q^{2-\lambda k/4}$ against mass $C\log(1/q)$, giving $k>8/\lambda$.
+  - **RQT end conditions.** Learning criteria at the hits ($|\mathsf m_1-1|\le r_*$, $2\mathcal L_2\le Q(1-n)^2+r_*^2$ against 169/196). The paid-exit integration and the $n(\tau)$ bound. The probe equations $B'=b_Bn'+\langle h_B,N\rangle$.
+  - **CFCR.**
+    - The decomposition $\mathcal R=|e|^2+\chi$, with three regression projections giving $Q_1(1-m)^2$, $Q_1z^2$ and $Qh^2$.
+    - The flow decomposition from $\nabla\mathcal L$, and $e'=-\tfrac12\mathsf Ge+\tfrac w2b_0+\varepsilon$ with $b_0\approx\langle j_i,g\rangle$.
+    - Contraction from $\mathsf G\succeq0$.
+    - The coarse bound $\mathcal R\le3\lambda/4+1/50\le31/80$ at $\rho\le7/10$, so $m>1/3$.
+  - **Hygiene.** Both compile cleanly with no control characters and unique prefixes.
+  - **Not checked.** The $N_{\rm sh}$ bound imported from REC.
+- *Open, unchanged.* Signing the face test (or an amplification bound for $\mathcal F_h$), aligning a learned window, and the orthogonal probe forcing in DRR's depth inequality.
+
+**Status after REC and GTM (Nov 5): the residual barrier reduced to two signed channels; E5 still open.**
+- *Proved (trained, critical family, on RQT's stopped interval).*
+  - **REC `reduction`.** $\Gamma=-\tfrac12(Q_1zC_{12}+QhT_2)+\varepsilon_q$ with $\varepsilon_q$ integrably $o(1)$.
+  - **REC `exit`.** A residual exit requires one channel to pay at least $7r_*^2/16$.
+  - **GTM.** The signed gate budget and covariance-energy control.
+- *Refuted shortcut.* GTM's audit: balance, a small residual, small covariance defects and frozen gates do not imply the face sign.
+- *Checked (reviewer, Nov 5).*
+  - **REC reduction.**
+    - The shape bound: comparing $r$ with $r(\mu e_p)D_p/\mu$ uses positive homogeneity and $(1+S)$-Lipschitz continuity; regression is the best approximation in the span of $D_p$.
+    - $N_{\rm sh}=-\tfrac14\nabla\chi$, since the coefficient gradients drop by orthogonality.
+    - The three Gram identities from the blocks $(W_iv_p,e_ib_p)$.
+    - The channel identity, the face rewrite, and the exit payment (from RQT's identity).
+    - $\mathcal R'=a^2\|g\|^2-4\|N+ag/2\|^2$.
+  - **GTM.**
+    - The integration-by-parts identity and its bounds, via $\int\sqrt S\|W'\|\le\sqrt{D_{ab}\int S}$.
+    - The defect identity $\tfrac12\int[(U_2)_-^2+(W_2-(U_2)_+)^2]$, and $|n-n_0|\le CqS$ from $n=\int W_2b_2$.
+    - The $C_{12}-z$ and $T_2-h$ decompositions.
+    - The leading energy balance, consistent with logistic growth $n'\approx Qn(1-n)$.
+    - The audit: the balance condition $t^4+\varepsilon^2t^2=1$, the gates, $m=1$, $h=-ab$, $\mathcal R=\lambda a^2n=r_*^2$, $\Delta=\varepsilon^2/2$, $a^2=\lambda/160000$, $\|g_h\|^2=a^2+n$, $T_2=h$, and $\mathcal R'=Q^2h^2(1-n-\|g_h\|^2)$.
+  - **Not checked.** GTM's $h$-projection (`hexact`, `forcing`) uses PCD's projection and $\mathcal E_q$, and PCD has not been delivered.
+  - **Hygiene.** Both compile cleanly with no control characters and unique prefixes.
+- *Open.* Signing the two channels at the face (or a strict improvement of `unpaid`), aligning a learned window, and the probe-depth inequality.
+
+**Status after PCD (Nov 5): the E5 continuation subchain is checked; E5 is open.**
+- *Checked (reviewer, Nov 5).*
+  - **PCD projection.**
+    - $\langle g_m,\Theta\rangle=2m$ (2-homogeneity) and $\|\Theta\|^2=2S$, so $A\ge2m^2/S$.
+    - The identity $2N=\alpha e-V$ and completing the square in α give `exact`.
+    - $|d|\le CqS^{3/2}$, and $V=V_0-2E$ gives the stated $\mathcal E_q$.
+    - $k_i=\langle g,g_i\rangle-d\langle e,g_i\rangle$ gives `source`.
+    - The exit payment.
+    - The Schur form of $\mathcal D_\perp$, with $T_1=\int W_1W_2|v_1|^2$.
+    - The pseudo-inverse Cauchy–Schwarz bound $w\mathcal C_\perp-\mathcal D_\perp\le w^2\kappa/4$.
+  - **PCD gate Hessian.** Surface density $\phi(\rho a_{U,2}/q)/(q|U|)$; the tangential component $T\sim N(\rho t_{U,2},q^2)$ is independent of the normal one; $t_{U,2}\mathbb ET^3=\rho t_{U,2}^2(\lambda t_{U,2}^2+3q^2)$.
+  - **GTM's $h$-equation, now checkable.** $g_h=(B_m/A)g_m+Pg_h$ gives $h'=(B_m/A)m'+\langle Pg_h,P\dot\Theta\rangle$, and $(w/2)k_h=\tfrac Q2(1-n)h+\tfrac w2(k_h-h)$ gives $a_h$ and $F_h$.
+  - **Hygiene.** PCD compiles cleanly with no control characters and a unique prefix.
+
 
 ### S6. The exact finite-noise lag (AN1)
 
@@ -1696,7 +1895,7 @@ Tracks that can run in parallel:
 | II | S2 capped gain + S3 field contract | Mutually dependent (ledger 16). CFR has proved the primary and radial parts of S3. DECG has proved the chart envelope, the radial bound and the conditional gain. GESG has proved the global envelope and the Q3 interior. **S2CP closes S2 and CFA closes S3, both in stopped-guard form, with a conditional CLOCK passage.** Only the Q3 strip budget remains external. Q3SB proved the pre-entry inputs, PISB paid the π strip and the frozen zones, and **LSB paid $J_3$; the strips are complete**. WPT assembled a two-boundary theorem, and **RB proved the response barrier: the deep-regime weak passage is a theorem.** Track II is complete; next is S4 (track III). |
 | III | S0 + S4 weak return/matching | S0 is now unconditional inside the completed weak passage. S4a (SI) completed the hypothesis inventory and stopped at the original weak input return. **S4b (WBR) proved that return** for the whole clock, up to a fixed level. **S4c (MP) closed the matching package** (population accounting, logistic phase, $A_0$, mass defects). **S4d (SRR) closed the strong-reference reduction**, and **S4e (WCS) closed the weak-chart reduction and selection**: $E_s(t_n)+W_2(t_n)=O_n(q^{1/20})$ at a fixed small weak mass. **Track III is complete.** |
 | IV | S6 exact lag | Needed for B-core. Attempt 1 (BC) stopped at a wrong remainder contract and closed the two-channel identity for $D_2$. **CPD (S6 revised) closed the channel and producer tables, the signed exact lag and the help law**, and the four-part harm identity with every sign except $W_{\rm in}$ after half mass. PHS (S6c) extended that sign to $s\le1/1000$; **PB (closure campaign) closed OP-W on all of J. Track IV is complete.** |
-| V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. **CRA (S8a)** closed the regime map and κ-audit (first failure: TAIL `exponent`, $\kappa\omega>1$) and two comparison lemmas. **Reframed (v1.31):** the canonical split is targeted through the critical family $S_0=c\,q^{1/\omega}$. **CFS (S8b)** closed both comparison Q1 profiles (positive noise: support starts at the resident a) and N = 0 leading persistence of ordered spreads (shape mode $+\lambda P/2$). The trained-flow transfer through saturation is open. **RPS (S7a)** closed the right-half comparison state (Q4 atom at a plus Q1 spread), co-order, moment equations, and a self-consistent escape region for small b. The large-b gate moves inward. **GOE (S7b)** proved a unique gate threshold $b_c(\rho,\zeta)$ and ruled out sustained exponential escape of any positive-mass segment at N = 0. **IMP (S7c)** proved persistence of an inactive set of mass $\ge C_*/(1+T)$ and the exact weak-coupled gate formulas; a fixed fraction is open (OP-C1). **Canonical proofs paused (v1.35).** RMS closed the synthesis (regime-map theorem, composition lemmas, open problems). **Closure campaign:** OP-C1 refuted (FFP); OP-C2 partial (SWP: first-order bridge response, early descent strengthened); OP-C3 partial (CTE: trained compact Q1 entry at scaled precision $O(\delta^{1-\omega}+\delta)$). **MPB:** a mass-preserving far bridge deepens the coherent minimum (leading system, existence). Theorem-regime sweep: no hole flags; companions reproduce E5 in the population flow. **HBD:** the trained critical family produces strictly negative bridge forcing on the core at strong half mass. **BRW:** that band returns before weak learning, and continuously inactive mass vanishes. Moment envelopes $c_3e^{Ls}/(1+s)\le\cdot\le B_0e^{Ls}(1+s)^{-2/3}$; exact depth tests unsigned. **Next:** E5 step 4 (core descent and the pre-weak probe error) or P1. |
+| V | S7 + S8 bridge and canonical entry | Bottleneck for explaining the empirics. **CRA (S8a)** closed the regime map and κ-audit (first failure: TAIL `exponent`, $\kappa\omega>1$) and two comparison lemmas. **Reframed (v1.31):** the canonical split is targeted through the critical family $S_0=c\,q^{1/\omega}$. **CFS (S8b)** closed both comparison Q1 profiles (positive noise: support starts at the resident a) and N = 0 leading persistence of ordered spreads (shape mode $+\lambda P/2$). The trained-flow transfer through saturation is open. **RPS (S7a)** closed the right-half comparison state (Q4 atom at a plus Q1 spread), co-order, moment equations, and a self-consistent escape region for small b. The large-b gate moves inward. **GOE (S7b)** proved a unique gate threshold $b_c(\rho,\zeta)$ and ruled out sustained exponential escape of any positive-mass segment at N = 0. **IMP (S7c)** proved persistence of an inactive set of mass $\ge C_*/(1+T)$ and the exact weak-coupled gate formulas; a fixed fraction is open (OP-C1). **Canonical proofs paused (v1.35).** RMS closed the synthesis (regime-map theorem, composition lemmas, open problems). **Closure campaign:** OP-C1 refuted (FFP); OP-C2 partial (SWP: first-order bridge response, early descent strengthened); OP-C3 partial (CTE: trained compact Q1 entry at scaled precision $O(\delta^{1-\omega}+\delta)$). **MPB:** a mass-preserving far bridge deepens the coherent minimum (leading system, existence). Theorem-regime sweep: no hole flags; companions reproduce E5 in the population flow. **HBD:** the trained critical family produces strictly negative bridge forcing on the core at strong half mass. **BRW:** that band returns before weak learning, and continuously inactive mass vanishes. Moment envelopes $c_3e^{Ls}/(1+s)\le\cdot\le B_0e^{Ls}(1+s)^{-2/3}$; exact depth tests unsigned. **COD:** at the critical scale the trained scaled probe error falls below any fixed level before weak learning ($\inf_{[t_h,t_\eta)}\to-\infty$). Mechanism: the output mean drags the core output down. The post-weak minimum is open. **DRR, SPM, TBW:** exact retention test, refuted shortcuts, incoming cancellation, seed and small-response clock. The learned-window E5 is open and the chain is paused. **Next:** P2. |
 | — | S5 AN7 | Assembles I–IV. Error transfer on every fixed window, not only the crossing windows. Starts from WCS's state at $t_n$. **S5a (CWI) done:** interface, exact precision criterion, leading first-moment extension. **S5b (PSE) closed:** background paid on the passage; full error and rates match at every fixed level $n'\le n$, so A-error-transfer holds on windows inside $(-\infty,s_n]$. **S5c (FWC) closed:** continuation by combined transverse energy; **A-error-transfer on every fixed window**. **S5d (RTA) closed:** rate transfer on J; **initialized Theorem A and persistence**. |
 
 **Dependency sketch**
@@ -1842,6 +2041,10 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 42. **A regime comparison asserted without computing the orbit (my v1.36 experiment interface and paper advice).** I said the deep-regime crossover is pre-saturation, so both harm channels lead. Integrating WIT's orbit gives $n(s_*)\approx0.988$ and an output share of about 6% [eval]. The E2 consistency holds for the simpler reason that both crossovers are post-saturation.
 
 43. **Leading-system facts applied across entrances (my v1.39 HBD scope line, my HBD reading and my step-3 prompt).** I described FFP's return ($x_f\to-\infty$) and IMP's gate-tail moment as governing the pre-weak interval of the HBD law. Both are proved for unit strong mass with their own prescribed aligned entrance. The HBD law has logistic mass and HBD's tail data. BRW had to rederive the budget, the protected barrier and the return for that entrance. Rule: a limiting-system theorem applies to another law only after its entrance and mass hypotheses are matched.
+
+44. **An open target renamed to fit a proved statement (my v1.41 revision note and COD reading).** I wrote "E5 is proved in the depth-over-training sense". E5 as recorded (roadmap and companion rows) is the depth of the post-weak learned-window minimum, measured on W_full. COD proves pre-weak divergence of the scaled error. That is a different theorem, and DRR's prescribed-entrance example shows that one does not imply the other. Rule: a proved result keeps its own name and scope; an open target is closed only by a statement about that target.
+
+45. **Main-paper theorem statements stronger than their sources (my Nov 5 theorem table).** Two of my one-line statements overreached. Theorem 1 said the error "falls below baseline", but RTA `theoremA` proves an interior minimizer with drop and rebound of at least $c_{\rm rev}q^2$, not a sign. The sign needs the corollary coherent energy $-AZ-A^2/2<0$ on $J$ (WIT, PB) plus FWC value transfer. Theorem 2 said "the crossover comes after saturation", but WIT `postthreshold` proves only the ordering after weak quarter mass, and $n(s_*)\approx0.988$ is an orbit evaluation; P's numerical table says its 0.99 proves no threshold. Rule: a one-line theorem summary must be checked against the source theorem's exact conclusions before it enters the paper plan.
     - *Rule:* before stating where an event falls on the orbit, compute it. A one-minute integration is cheap; a wrong mechanism claim in a paper is not.
 
 ---
@@ -1908,6 +2111,16 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | MPB | `09_canonical_regime_AN04/AN04_mass_preserving_bridge_depth_v1.tex` (+ review), prefix `an04mpbv1:` — OP-C2 follow-up, existence (leading system): a mass-preserving far bridge injected shortly before the coherent minimizer lowers the probe error there by $\varepsilon D$, $D=\tfrac12(\lambda PZ\kappa_x+A\kappa_y)-AZ$; aligned threshold; fixed-h adjoint test |
 | HBD | `09_canonical_regime_AN04/AN04_trained_half_mass_bridge_donors_v1.tex` (+ review), prefix `an04hbdv1:` — E5 step 2, trained flow at $S_0=cq^{1/\omega}$: at first strong half mass a Q1 donor band (inactive, beyond any L) gives strictly negative scaled forcing to the active Q4 core, in raw, equal-mass and full-concentration comparisons, on $[t_h-\tfrac14,t_h]$; physical bound, exact clock, Q4 coalescence, incoming budget |
 | BRW | `09_canonical_regime_AN04/AN04_bridge_return_before_weak_learning_v1.tex` (+ review), prefix `an04brwv1:` — E5 step 3, trained flow at $S_0=cq^{1/\omega}$: the HBD band returns at a fixed delay ($x\le\zeta-d_B$); weak learning is delayed by $k\sqrt{\log(1/q)}$; continuously inactive mass vanishes; limiting moment envelopes `budget` and protected tail; exact unsigned depth tests `payment`, `causal`, `endpoint` |
+| COD | `09_canonical_regime_AN04/AN04_core_output_descent_v1.tex` (+ review), prefix `an04codv1:` — E5 step 4. Limiting: $y_a,\mathcal E_\zeta\le C-kD(s)$, $D=e^{Ls}/(1+s)$, via mean-output lower bound, rank ceiling, quadrant exclusion and positive-rank cutoff. Trained: for each K, the scaled probe error is below −K at a fixed delay before weak learning, for small q |
+| DRR | `09_canonical_regime_AN04/AN04_learned_depth_retention_v1.tex` (+ review), prefix `an04drrv1:` — E5 step 5: diverging pre-weak deep intervals (trained); exact retention identity and unpaid inequality; false movement budget; prescribed two-atom entrance where deep pre-weak error gives baseline learned error |
+| SPM | `09_canonical_regime_AN04/AN04_signed_probe_motion_v1.tex` (+ review), prefix `an04spmv1:` — E5 step 6: signed fixed-delay motions; exact source decomposition; divergence of transverse cross budgets; norm-radius obstruction; exact missing sign |
+| TBW | `09_canonical_regime_AN04/AN04_transverse_balance_and_weak_clock_v1.tex` (+ review), prefix `an04tbwv1:` — E5 step 7: bulk at $-\sqrt s$, active output ceiling, receiver-wise cancellation $O(\sqrt S)$, trained incoming surplus, exact Q2 seed, logarithmic hit of a small weak response, clock gap and learned-endpoint deficit |
+| RQT | `09_canonical_regime_AN04/AN04_response_quarter_half_transfer_v1.tex` (no review file), prefix `an04rqtv1:` — E5 continuation: exact regression defect and exchange identities; reached half-response-or-residual-face alternative in $k\log(1/q)$, $k>8/\lambda$; unsigned face test, coupling and orthogonal probe forcing |
+| CFCR | `09_canonical_regime_AN04/AN04_cap_free_cross_response_v1.tex` (no review file), prefix `an04cfcrv1:` — E5 continuation: cap-free contractive regression evolution through half response or a logarithmic horizon; entrance and finite-noise errors paid; unsigned forcing $\mathcal F_h$. Imports REC and GTM (not yet delivered) |
+| REC | `09_canonical_regime_AN04/AN04_residual_exchange_channels_v1.tex` (no review file), prefix `an04recv1:` — E5 continuation: four-regression reduction; $\Gamma$ as two signed cross-output channels plus $o(1)$; missing face inequality; exit payment splits between the channels |
+| GTM | `09_canonical_regime_AN04/AN04_gate_transport_and_transverse_memory_v1.tex` (no review file), prefix `an04gtmv1:` — E5 continuation: signed integrated gate budget, covariance defects controlled by the energy $\Delta$, audit refuting a statewise face implication, exact unpaid cap obligation. Imports PCD (checked in v1.46) |
+| PCD | `09_canonical_regime_AN04/AN04_projected_cross_dissipation_v1.tex` (no review file), prefix `an04pcdv1:` — E5 continuation: projection off the strong-response gradient; exact face form $\mathcal R'=w\mathcal C_\perp-\mathcal D_\perp-\beta^2+\mathcal E_q$; joint Gram bound; exact Gaussian gate Hessian |
+| P1 v1 | `PAPER_theory_section_v1.tex` (+ review), repo root, prefix `p1thv1:` — first ICML theory-section draft (deep theorems, mechanism, linear control, regime map); predates MPB–TBW and the sweep |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
 | LP | `LINEAR_CONTRAST_LIMIT_PERSISTENCE_v1.tex` |

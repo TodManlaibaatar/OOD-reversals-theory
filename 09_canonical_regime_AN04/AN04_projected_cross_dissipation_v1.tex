@@ -1,0 +1,329 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=.9in}\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks[2]
+\newtheorem{theorem}{Theorem}
+\newcommand{\E}{\mathbb E}\newcommand{\dd}{\,d}
+\title{Dissipation versus cross-output exchange on the critical path}
+\author{E5 continuation: analytic partial result}
+\date{4 November 2026}
+\begin{document}\maketitle
+
+\paragraph{Result.}
+The residual barrier through half response remains unproved.
+The strong-response component of the dissipation can be completed
+into a nonnegative square, with a vanishing accumulated error.
+The remaining comparison is a particular signed correlation between
+the weak-target gradient and the transverse-error correction, after
+both have been projected away from the strong-response gradient.
+An attempt to propagate the needed covariance bound encounters an
+explicit signed weak-gate-motion term. No actual exit, and no
+violation of the comparison on the critical path, is asserted.
+
+\section{Reached interval and definitions}
+Use REC's exact finite-noise notation and the same critical family
+$S_0=cq^{1/\omega}$, with fixed $c>0$,
+$\lambda=\rho^2$, $\rho\in[13/20,7/10]$,
+$\omega=(1-\lambda)/2$. The model is
+\[
+ f(D)=\int W(U^TD)_+\dd l,\quad |U|=|W|,\quad
+ P_1=N(e_1,q^2I),\quad P_2=N(\rho e_2,q^2I).
+\]
+The mixture weights are $1/2$ and the loss is
+$\mathcal L=\frac14\sum_p\E_{P_p}|D-f(D)|^2$.
+Write $S=\int|U|^2\dd l$, $Q_1=1+q^2$, $Q=\lambda+q^2$,
+and define the four actual regressions
+\[
+ m=\E_{P_1}D_1f_1/Q_1,\quad z=\E_{P_1}D_1f_2/Q_1,\quad
+ h=\E_{P_2}D_2f_1/Q,\quad n=\E_{P_2}D_2f_2/Q.
+\]
+Let $g_m,g_z,g_h,g$ be their full two-layer parameter gradients,
+in that order, and set $w=Q(1-n)$.
+Then $\dot\Theta=(w/2)g+N$, where
+\[
+ \mathcal R=4\mathcal L-Q(1-n)^2,\qquad N=-\nabla\mathcal R/4,
+ \qquad \mathcal R'=-4\|N\|^2-2w\langle g,N\rangle.
+\]
+We work on the \emph{reached stopped interval} $[\tau_0,\tau]$
+of TBW/RQT: $n(\tau_0)=\eta_0$, $\mathcal R(\tau_0)\le r_*^2/16$,
+$r_*=\lambda/800$, and $\tau$ is the first subsequent hit of
+$n=1/2$ or $\mathcal R=r_*^2$. The proved statements are
+\begin{equation}\label{an04pcdv1:interval}
+ \tau-t_h\le C_c(1+\ell),\qquad S\le C_c(1+\ell),
+ \qquad \ell=\log(1/q).
+\end{equation}
+No half-response arrival is presumed. On this interval
+$m\ge1-r_*/\sqrt{Q_1}>1/2$, $w\ge Q/2>0$,
+and all four residual coefficients are bounded by loss decrease.
+
+REC's exact shape decomposition reads
+\begin{equation}\label{an04pcdv1:split}
+ 2N=Q_1(1-m)g_m-Q_1z g_z-Qh g_h+2N_{\rm sh},
+ \qquad \|N_{\rm sh}\|\le Cq\sqrt S(1+S).
+\end{equation}
+It follows from the orthogonal within-cluster residuals, whose
+total squared norm is at most $Cq^2(1+S)^2$.
+This estimate uses the network's global Lipschitz constant $S$,
+and is valid without an angular chart.
+
+\section{Removing the strong-response direction without losing dissipation}
+Let $A=\|g_m\|^2$, $e=g_m/\sqrt A$, and let
+$P=I-e\otimes e$ denote orthogonal projection in parameter space.
+Positive two-homogeneity gives
+$\langle g_m,\Theta\rangle=2m$ and $\|\Theta\|^2=2S$.
+Consequently
+\begin{equation}\label{an04pcdv1:nondegenerate}
+ A\ge2m^2/S>0.
+\end{equation}
+Thus this projection is defined on the entire stopped interval;
+there is no inverse of a possibly zero cross-gradient matrix here.
+Define
+\[
+ d=\langle g,e\rangle,\quad \alpha=2\langle N,e\rangle,
+ \quad V=-2PN,\quad \beta=\alpha+wd/2.
+\]
+Orthogonality alone proves the exact identity
+\begin{equation}\label{an04pcdv1:exact}
+ \mathcal R'=w\langle Pg,V\rangle-\|V\|^2-\beta^2
+                         +w^2d^2/4.
+\end{equation}
+Indeed $2N=\alpha e-V$, so
+$4\|N\|^2=\alpha^2+\|V\|^2$ and
+$2\langle g,N\rangle=\alpha d-\langle Pg,V\rangle$.
+Complete the square in $\alpha$.
+
+REC proves $|\langle g,g_m\rangle|\le CqS$.
+Together with \eqref{an04pcdv1:nondegenerate}, this gives
+\begin{equation}\label{an04pcdv1:smallparallel}
+ |d|\le CqS^{3/2},\qquad
+ \int_{\tau_0}^{\tau}w^2d^2\dd t\le C_cq^2(1+\ell)^4=o(1).
+\end{equation}
+The strong-response adjustment has therefore been accounted for
+as a nonnegative square and a paid error. Its mixed dissipation
+terms were not discarded.
+
+To expose the two cross regressions, put
+\[
+ p=\binom{Q_1z}{Qh},\qquad
+ H_{ij}=\langle Pg_i,Pg_j\rangle,\qquad
+ k_i=\langle Pg,Pg_i\rangle\quad(i,j\in\{z,h\}),
+\]
+and define
+$V_0=Q_1zPg_z+QhPg_h$,
+$\mathcal D_\perp=p^THp=\|V_0\|^2$,
+$\mathcal C_\perp=p^Tk=\langle Pg,V_0\rangle$.
+The correlation $\mathcal C_\perp$ is signed.
+
+\begin{theorem}[Exact remaining comparison on the initialized stopped path]
+\label{an04pcdv1:main}
+On $[\tau_0,\tau]$,
+\begin{equation}\label{an04pcdv1:remaining}
+ \boxed{\quad\mathcal R'=w\mathcal C_\perp
+                 -\mathcal D_\perp-\beta^2+\mathcal E_q.\quad}
+\end{equation}
+The error is explicitly, with $E=PN_{\rm sh}$,
+\[
+ \mathcal E_q=-2w\langle Pg,E\rangle+4\langle V_0,E\rangle
+                  -4\|E\|^2+w^2d^2/4,
+\]
+and obeys
+\begin{equation}\label{an04pcdv1:error}
+ \int_{\tau_0}^{\tau}|\mathcal E_q|\dd t
+ \le C_c\{q(1+\ell)^3+q^2(1+\ell)^4\}=o(1).
+\end{equation}
+Furthermore, for REC's moments $C_{12},T_2$,
+\begin{equation}\label{an04pcdv1:source}
+ \mathcal C_\perp=Q_1zC_{12}+QhT_2+O(qS(1+S)).
+\end{equation}
+The exact upper-face condition is
+\begin{equation}\label{an04pcdv1:face}
+ w\mathcal C_\perp\le\mathcal D_\perp+\beta^2-\mathcal E_q
+       \qquad(\mathcal R=r_*^2,\ n<1/2).
+\end{equation}
+No assertion that this inequality holds is part of the theorem.
+\end{theorem}
+\begin{proof}
+Equation \eqref{an04pcdv1:split} implies $V=V_0-2E$.
+Substitution in \eqref{an04pcdv1:exact} proves
+\eqref{an04pcdv1:remaining} with the stated signed error.
+Use $\|Pg\|,\|V_0\|\le C\sqrt S$ and
+$\|E\|\le Cq\sqrt S(1+S)$ to bound the error pointwise by
+$C[qS(1+S)+q^2S(1+S)^2+q^2S^3]$.
+Integration with \eqref{an04pcdv1:interval} proves
+\eqref{an04pcdv1:error}.
+For each cross gradient,
+\[
+ k_i=\langle g,g_i\rangle-d\langle e,g_i\rangle,
+ \qquad |d\langle e,g_i\rangle|\le CqS^2.
+\]
+REC gives $\langle g,g_z\rangle=C_{12}+O(qS)$ and
+$\langle g,g_h\rangle=T_2$. This proves
+\eqref{an04pcdv1:source}; the face condition follows from the exact
+derivative. No pointwise sign was assigned to an error bound.
+\end{proof}
+
+If the residual event occurs first, integration gives the necessary
+payment
+\begin{equation}\label{an04pcdv1:exit}
+ \int_{\tau_0}^{\tau}(w\mathcal C_\perp-\mathcal D_\perp)\dd t
+ \ge15r_*^2/16+\int_{\tau_0}^{\tau}\beta^2\dd t-o(1).
+\end{equation}
+This is conditional on an actual exit; it does not establish one.
+The unknown has been localized to the weak-target correlation with
+the projected transverse correction, relative to its own dissipation.
+
+\section{First attempted closure: joint Gram control}
+The projection matters even though the unprojected $g_z,g_h$
+are nearly orthogonal. To see the mixed term explicitly, let
+\[
+ T_1=\langle g_m,g_z\rangle,
+ \quad B_m=\langle g_m,g_h\rangle,
+ \quad G_{ij}=\langle g_i,g_j\rangle.
+\]
+Then
+\begin{equation}\label{an04pcdv1:schur}
+ \mathcal D_\perp=
+ p_z^2G_{zz}+2p_zp_hG_{zh}+p_h^2G_{hh}
+                 -\frac{(p_zT_1+p_hB_m)^2}{A}.
+\end{equation}
+Here $G_{zh}=O(qS)$, $B_m=C_{12}+O(qS)$, and
+$T_1=\int W_1W_2|v_1(U)|^2\dd l$ in REC's Gaussian features.
+Thus subtracting the strong-response direction produces the
+cross-correlation $-T_1B_m/A$ in $H_{zh}$. Replacing
+\eqref{an04pcdv1:schur} by its unprojected diagonal terms would
+overestimate the available dissipation.
+
+The sharp Cauchy--Schwarz estimate using the two cross gradients is
+\begin{equation}\label{an04pcdv1:cs}
+ |\mathcal C_\perp|\le\sqrt{\mathcal D_\perp\,\kappa},
+ \qquad \kappa=k^TH^\dagger k\le\|Pg\|^2.
+\end{equation}
+This remains valid at singular $H$: a null vector of $H$ represents
+the zero parameter vector and is orthogonal to $k$, so $k$ is in
+the range of $H$. Equivalently, $\kappa$ is the squared norm of
+the projection of $Pg$ onto the span of $Pg_z,Pg_h$.
+It is used pointwise; no inverse is differentiated or integrated.
+Consequently
+\[
+ w\mathcal C_\perp-\mathcal D_\perp
+ \le w\sqrt{\mathcal D_\perp\kappa}-\mathcal D_\perp
+ \le w^2\kappa/4.
+\]
+This can be positive. For example, the sufficient comparison
+$\mathcal D_\perp\ge w^2\kappa$ would pay the two displayed
+terms, but is not supplied by the residual cap or by the reached
+small-hit estimates. The actual signed direction could also help;
+that direction is exactly the unpaid $\mathcal C_\perp$ in
+\eqref{an04pcdv1:face}. This algebra is not a counterexample
+on the critical trajectory.
+
+\section{Second attempted closure: transporting the covariances}
+We compute the terms that a moment argument would have to control.
+For $Q_2=Q$, define the exact Gaussian features
+\[
+ v_p(U)=Q_p^{-1}\E_{P_p}[D_pD\mathbf1_{U^TD>0}],\qquad
+ \theta_p(U)=Q_p^{-1}\E_{P_p}[D_p^2\mathbf1_{U^TD>0}].
+\]
+They satisfy $v_p=\theta_pe_p+O(q)$ and $0\le\theta_p\le1$
+uniformly over every input direction.
+The residual projection used in REC gives the pointwise receiver
+matrix, with both mixture halves retained,
+\[
+ R_U=\tfrac{Q_1}{2}[(1-m)e_1-ze_2]v_1^T
+       +\tfrac Q2[-he_1+(1-n)e_2]v_2^T+O(q(1+S)).
+\]
+The error follows by Cauchy--Schwarz on the shape residuals;
+it is uniform over receiver gates.
+
+For $C_{12}=\int(U_1)_+(U_2)_+\dd l$, the a.e. chain rule gives
+\begin{align}
+ 2C_{12}'={}&Q_1\int_{++}\theta_1U_2[(1-m)W_1-zW_2]\dd l\nonumber\\
+ &+Q\int_{++}\theta_2U_1[-hW_1+(1-n)W_2]\dd l
+                  +O(qS(1+S)),\label{an04pcdv1:overlap}
+\end{align}
+where $++=\{U_1>0,U_2>0\}$ at the current time.
+The positive-part product vanishes at each face, so this identity
+does not drop a boundary-flux term. At intersections of the faces
+the same chain rule applies; no invariant quadrant is assumed.
+In particular the target regenerates overlap through
+$w\int_{++}\theta_2U_1W_2\dd l$.
+That restricted covariance is not the measured total $z$.
+The cap bounds the total regression, and does not exclude signed
+cancellation with labels outside this overlap region.
+
+There is an additional issue for
+$T_2=\int W_1W_2|v_2(U)|^2\dd l$.
+Its exact derivative is
+\begin{equation}\label{an04pcdv1:transport}
+ T_2'=\int(W_1'W_2+W_1W_2')|v_2|^2\dd l+\mathfrak G_2,
+ \qquad
+ \mathfrak G_2=2\int W_1W_2\,v_2^TDv_2(U)[U']\dd l.
+\end{equation}
+Thus a moving Gaussian gate contributes even after the ordinary
+output derivatives have been included.
+
+Its coefficient can be calculated exactly, without numerics.
+For $a_U=U/|U|$ let $t_U=(-a_{U,2},a_{U,1})$. For $U\ne0$,
+\begin{equation}\label{an04pcdv1:hessian}
+ Dv_2(U)=\gamma_q(U)t_Ut_U^T,\qquad
+ \gamma_q(U)=\frac{\rho\,t_{U,2}^2(\lambda t_{U,2}^2+3q^2)}
+                         {Qq|U|}
+                 \phi(\rho a_{U,2}/q)\ge0.
+\end{equation}
+Indeed differentiate the Gaussian integral for $v_2$. The surface
+$a_U^TD=0$ has density $\phi(\rho a_{U,2}/q)/(q|U|)$ in the
+variable $U^TD$. On that surface $D=t_UT$, with
+$T\sim N(\rho t_{U,2},q^2)$. Its contribution is
+$t_{U,2}\E T^3\,t_Ut_U^T$ and
+$t_{U,2}\E T^3=\rho t_{U,2}^2(\lambda t_{U,2}^2+3q^2)$.
+This proves the formula, including directions on the weak gate.
+Positive initialized radii cannot vanish at a finite time because
+the exact flow has uniformly bounded receiver matrices by loss
+decrease. Therefore no zero-input label is omitted.
+
+The remaining gate-motion correlation is explicitly
+\begin{equation}\label{an04pcdv1:gate}
+ \boxed{\quad\mathfrak G_2=
+ 2\int\gamma_q(U)W_1W_2
+           (v_2^Tt_U)(U'^Tt_U)\dd l.\quad}
+\end{equation}
+Positivity of $\gamma_q$ does not sign the other three factors.
+Using only $\|R_U\|\le C$ and balance gives
+\[
+ |\mathfrak G_2|\le\frac Cq\int|W_1W_2|
+                 \phi(\rho a_{U,2}/q)\dd l\le CS/q.
+\]
+This upper estimate is far too large to close the residual budget
+on a logarithmic interval. No sharper signed or integrated bound
+on this gate-layer covariance has been proved here for the actual
+critical trajectory. Initial alignment and fixed-resident-time
+physical bounds do not provide it at the moving small hit or
+through the subsequent stopping interval.
+
+\paragraph{Stop and quantifiers.}
+The joint Gram attempt leaves \eqref{an04pcdv1:face} unpaid;
+the covariance-transport attempt leaves the restricted overlap
+covariance in \eqref{an04pcdv1:overlap} and the signed gate-motion
+term \eqref{an04pcdv1:gate} uncontrolled. We stop after these two
+approaches. Neither original source $zC_{12}$ or $hT_2$ has been
+proved independently dominated, and we do not identify one as
+the actual cause of an exit that has not been established.
+The precise aggregate missing correlation is
+$\mathcal C_\perp=\langle Pg,Q_1zPg_z+QhPg_h\rangle$.
+
+The residual face has strict initialized entry, but its outward
+sign is unresolved. The half-response boundary is a stopping
+target, and a simultaneous event already reaches that response.
+No monotonicity or unproved lower response barrier was used.
+All constants may depend on fixed $c,\rho$ and the prior entry
+choices; no uniformity in $c\to0$ or $c\to\infty$ is claimed.
+The new physical estimates apply on the stopped logarithmic
+interval by exact flow identities and the proved mass and time
+bounds. No COD constant is claimed at $s=t_\eta-t_h$.
+This work does not prove half response or a learned probe minimum
+below the coherent comparator. The probe's remaining signed
+motion would still need control even after this barrier closes.
+No previous increment, foundation, checkpoint, or remote file is
+modified. There is no empirical or computer-assisted proof premise.
+\end{document}

@@ -1,0 +1,575 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=.9in}\setlength{\emergencystretch}{1.5em}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\title{Cancellation of the transverse source and the critical weak clock}
+\author{E5 closure attempt, step 7}\date{Version 1}
+\begin{document}\maketitle
+
+\paragraph{Question.}
+Use the actual isotropic aligned balanced critical family
+$S_0=cq^{1/\omega}$ with fixed $c>0$, $\lambda=\rho^2$,
+$\omega=(1-\lambda)/2$, $L=\lambda/2$ and WIT's witness rectangle.
+Let $s=t-t_h$ be time after first right half mass. From a fixed COD
+witness $t_0=t_h+s_0$, set $u=r_{t_0}(\xi)/|r_{t_0}(\xi)|$,
+$v=(-u_2,u_1)$, $r_t(z)=z-f_t(z)$,
+$\xi=(\sin(q\zeta),-\cos(q\zeta))$. Write
+$A=v^T(f_t-f_{t_0})(\xi)/q$ and $B=u^T(f_t-f_{t_0})(\xi)/q^2$;
+$e_q=(|r_t(\xi)|^2-1)/(2q^2)$, $e_*=\min_J\mathcal E_{\rm coh}$.
+The target is a trained time in the measured half-weak-response
+window satisfying DRR's two strong/weak learning and loss tests and
+$e_q<e_*$. We prove statements about the incoming trajectory,
+then test their continuation to this endpoint.
+
+\section{Net transverse growth and its signed sources}
+The BRW extracted law at each finite $s$ has logistic mass
+$M=(1+e^{-s})^{-1}$, zero weak mass, and fixed normalized rank
+weights $4\cos^2\alpha\,d\alpha/(2\pi)$ on the right half.
+Q4 is the bottom atom, Q1 is co-ordered in its own field.
+Use $P=\Phi(\rho x)$, $k=K_s=\int K(\rho x)\dd\mu$,
+$Y=\int y\dd\mu$, and $S_x=\int F(\rho x,\rho\tilde x)\dd\mu$.
+Here $K(z)=\phi(z)+z\Phi(z)$, and $F(t,r)=\E[(Z+r)_+
+{\bf1}_{Z>-t}]$. Put $H=\int(\zeta-x)_+\dd\mu$ and
+$\mathcal A=\{x<\zeta\}$. Constants may depend on the fixed family
+and witness but not on the extracted law.
+
+\begin{lemma}[Location of the bulk]\label{an04tbwv1:bulk}
+There are constants $b,d,C>0$ such that for all sufficiently large
+$s$, except for normalized upper mass at most
+$F_s=C\log(1+s)/(1+s)$,
+\[
+ -\sqrt{s-\tfrac{2}{3L}\log(1+s)+d}\le x(s)
+       \le-\sqrt{s-b\log(1+s)} .
+\]
+The lower bound holds for all ranks. Consequently
+\begin{align}
+ H(s)&=\sqrt s+\zeta+O(\log(1+s)/\sqrt{s}),\nonumber\\
+ \int [P+\phi(\rho x)]\dd\mu&=O(\log(1+s)/(1+s)).
+ \label{an04tbwv1:exposure}
+\end{align}
+\end{lemma}
+\begin{proof}
+The first face is SPM's Gaussian lower face for the bottom path,
+extended to all ranks by order. Its guards are precisely the BRW
+logistic entrance: $2x_a'\ge-Ce^{Ls}(1+s)^{-2/3}P_{x_a}$ at
+$x_a<0$, from the true donor and core bounds. For the stated
+radicand $h$ with $d$ large, entry is strict at a fixed sufficiently
+large $s_1$, $h'\ge1/2$, and $\Phi(-\rho\sqrt h)\le
+\phi(\rho\sqrt h)/(\rho\sqrt h)$ gives $2x_a'>-h'/\sqrt h$ on
+the sole lower face.
+
+For the upper face fix the terminal $s$ and a rank $f\ge F_s$
+(Q4 may use $f=1/2$). The BRW rank ceiling on $r\in[s-2,s]$ is
+$C(1+f^{-1/3})e^{Lr-\lambda f r/16}$ for $x_++y_+$.
+Choose the constant in $F_s$ large enough that this is
+$o(D(s))$ uniformly, $D(s)=e^{Ls}/(1+s)$. For example require
+$\lambda C/32>3$. At each $r$ the protected donors above
+$d_1e^{Lr}$ have first moment at least $c_1D(r)$ with actual
+mass; both conclusions follow from BRW's two-face moving barrier
+for its logistic law. Those donors are above this moving receiver.
+Thus $S_x\ge\rho P c_1D(r)$ even when $x<0$. The input equation
+yields, whenever $x\ge-z_s$, $z_s=\sqrt{s-b\log(1+s)}$,
+\[
+ 2x'\le e^{-(s-2)}z_s+\rho\phi(0)-c_2 D(s)P
+\]
+for large $s$. On $x\ge0$ the right side is at most $-c_3D(s)$.
+Entry height is $o(D(s))$, so by $s-1$ the input is nonpositive
+and cannot recross zero. On $-z_s\le x\le0$,
+$P\ge c e^{-Ls}(1+s)^{Lb-1/2}$ by the lower Gaussian tail.
+Take $Lb>2$. The negative speed dominates $\sqrt s$ here, so the
+second unit interval suffices to reach $-z_s$. Both crossing faces
+$0,-z_s$ forbid upward return during the corresponding intervals;
+a rank already below a face requires no crossing time.
+The positive radicand and all these bounds are only used for large $s$.
+With $M=1-O(e^{-s})$, bounding the exposure above by the all-rank
+lower face and below by the contribution of mass $M(1-F_s)$ proves
+the first formula. On this bulk both Gaussian functions in the
+second formula are exponentially small up to a fixed polynomial,
+and on the remaining mass both are bounded.
+\end{proof}
+
+\begin{lemma}[Cost of overshooting the cross regression]\label{an04tbwv1:sign}
+Uniformly for large $s$, $k'(s)>0$ and every active label satisfies
+$y\le k(s)/\rho+C$.
+\end{lemma}
+\begin{proof}
+First compute the centered overlap. For any $t,r$,
+$0\le F(t,r)-K(r)\Phi(t)\le\phi(t)$: the lower sign follows from
+covariance of increasing functions of the same normal. For the
+upper bound subtract $(Z+r)_+$ from $Z$; the difference is
+nondecreasing too, and $\operatorname{Cov}(Z,{\bf1}_{Z>-t})=\phi(t)$.
+Write $S_x=kP+C_x$ with $0\le C_x\le M\phi(\rho x)$.
+
+COD's active output ceiling and its positive-rank mass cutoff give
+$\int_{\mathcal A}y_+\dd\mu=o(D(s))$: multiply
+$O(e^{Ls}(1+s)^{-2/3})$ by $F_s$, noting the core output is negative
+late. Let $p=\Phi(\rho\zeta)$, $w=\max(P^2,p^2)$. Order in the
+single population gives $\int yw\dd\mu\ge Y\int w\dd\mu/M\ge p^2Y$
+as $Y>0$. Replacing $w$ by $P^2$ costs at most
+$p^2\int_{\mathcal A}y_+\dd\mu$. COD gives $Y\ge c_4 D(s)$.
+Hence $\int yP^2\dd\mu\ge p^2Y/2$ late. In
+$k'=(1-M)k+\rho\int P x'\dd\mu$, insert BRW field. By the
+centered overlap inequality the doubled integral is bounded below by
+\[
+ 2\int P x'\dd\mu\ge
+ -(1-M)\int x_+\dd\mu-\rho k\int P^2\dd\mu+\lambda\int yP^2\dd\mu.
+\]
+BRW and COD bound $k$ and $\int x_+$ by
+$C e^{Ls}(1+s)^{-2/3}$, while \eqref{an04tbwv1:exposure} gives
+$\int P^2=O(F_s)$. The two costs are $o(Y)$.
+Differentiation is justified by finite-interval first-moment domination
+and $|K'|\le1$. This proves eventual increase.
+
+Start at a fixed late time with $h=k/\rho+C$ strictly above all
+$y$ for $x\le\zeta$, by COD's active-ceiling proof, including at
+the gate (or directly its strict vertical-face test there).
+Choose $C$ larger if necessary. At $x=\zeta,\ y\ge h$,
+$2x'\ge-(1-M)\zeta+\rho(1-M)\phi(\rho\zeta)+\lambda p C>0$.
+At $y=h,\ x\le\zeta$, $2y'\le\rho K(\rho\zeta)-Y<0<2h'$.
+Both inequalities apply at the corner. These two faces exclude
+entry into the forbidden open quadrant, proving the bound.
+\end{proof}
+
+\paragraph{Signed balance.}
+Write $\ell_0=\zeta-H(s_0)$. In units of scaled transverse motion
+the limiting positive cross source and the two signs of the mixed
+weak term have densities on $\mathcal A$ (per actual radial mass)
+\[
+ c_x=\tfrac{\lambda}{2}(k/\rho-\ell_0)_+P,\qquad
+ n_x=\tfrac{\lambda}{2}(y-\ell_0)_+P,\qquad
+ p_x=\tfrac{\lambda}{2}(\ell_0-y)_+P .
+\]
+The signed transverse terms at late times are $+c_x,-n_x,+p_x$.
+Since $k/\rho\ge c_3D(s)$ whereas $|\ell_0|$ is bounded,
+the positive-part truncation of the cross coefficient is immaterial
+late. Lemma~\ref{an04tbwv1:sign} gives $(n_x-c_x)_+\le C P$
+on the active set. The actual exposure derivative, almost everywhere,
+satisfies
+\begin{align}
+ H'={}&\int_{\mathcal A}(c_x-n_x+p_x)\dd\mu+R,\nonumber\\
+ 2R={}&(1-M)(H+\zeta\mu(\mathcal A))
+              +\rho\int_{\mathcal A}(C_x-\phi(\rho x))\dd\mu .
+ \label{an04tbwv1:balance}
+\end{align}
+Indeed differentiate the positive part along each path with the
+common radial reaction, then insert the exact $x'$ and $S_x$.
+This retains the logistic and Gaussian density terms.
+By \eqref{an04tbwv1:exposure}, $\int_{s_1}^S |R|\le C(1+\log^2(1+S))$.
+The same integrated bound holds for $\int_{\mathcal A}(n_x-c_x)_+\dd\mu$.
+Consequently
+\begin{equation}\label{an04tbwv1:matched}
+ \int_{s_0}^S\int_{\mathcal A}\big[(c_x-n_x)_++p_x\big]\dd\mu\,ds
+       =\sqrt S+O(1+\log^2(1+S)).
+\end{equation}
+All early fixed-interval integrals are finite, even if
+$k/\rho-\ell_0$ initially has the opposite sign.
+The matching is performed at each active receiver before
+integration. Thus any cross contribution in excess of $O(\sqrt S)$
+is matched by the negative mixed source. This does not assert that
+the two have asymptotically equal integrals; the cross source
+could itself be of order $\sqrt S$ or smaller.
+
+\paragraph{Why these are the contributions on the initialized trajectory.}
+Let $Q=\E_{P_2}(\xi^TD)^2$, $\alpha u+\delta v=
+\E_{P_2}[(\xi^TD)r_t(D)]/Q$. SPM sources uses the overlap weight
+$w_a=\E_{P_2}[(\xi^TD)^2{\bf1}_{a^TD>0}]/Q$.
+On a probe-active label the original densities in question are
+\[
+ c_q=\tfrac Q{2q}\delta_+(v^Tb)^2w_a,\qquad
+ n_q=\tfrac Q{2q}[-\alpha(v^Tb)(u^Tb)]_+w_a,\qquad
+ p_q=\tfrac Q{2q}[\alpha(v^Tb)(u^Tb)]_+w_a,
+\]
+where $a,b$ are the current unit directions; all three are zero
+on probe-inactive labels. Along resident extraction
+$\alpha\to1$, $w_a\to P$ on a compact right chart and
+$(u^Tb)/q\to\ell_0-y$. More precisely $\delta/q\to k/\rho-\ell_0$.
+To see the constant, $v_1\to1$, $v_2/q\to\ell_0$ and the second
+cluster has $\E D_1D_2=0$ and negligible fixed-time response.
+The first-output fitted moment divided by $q$ gives $k/\rho$
+by SPM divergence's Gaussian calculation. In using
+$\xi^TD=-D_2+O(q|D_1|+q^2|D_2|)$ here, $D_1=O_{L^2(P_2)}(q)$;
+the error divided by $q$ vanishes. Thus $c_q,n_q,p_q\to c_x,n_x,p_x$
+on the active charts. Indicators may be passed under the integral:
+different Q1 labels are strictly ordered in input at finite time
+by their distinct remote incoming coefficients and the same-field
+cooperative difference equation (the positive initial input gap
+has a positive integrating-factor lower bound on a finite segment).
+There can thus be no Q1 atom at a given input, since the label marginal
+has no atoms; Q4 lies strictly below $\zeta$. Equivalently two
+independent Q1 samples with distinct labels cannot tie.
+Endpoint strips cost $O_S(\eta)$ for length $\eta$ since
+$|W|=O_S(1)$, $|u^TW|=O_S(q)$ and $\delta/q=O_S(1)$ on the
+fixed interval. The whole left mass is $o_S(q)$ by HBD--BRW.
+Time integration and positive parts now pass by finite-horizon
+domination. In particular \eqref{an04tbwv1:matched} bounds the
+uncanceled part of SPM's very same divergent source.
+
+\begin{theorem}[Trained surplus on an incoming interval]\label{an04tbwv1:surplus}
+There exist moving pre-weak endpoints $b(q)\to\infty$ at which
+the accumulated positive cross term diverges, the portion left
+after receiver-by-receiver matching has square $O(b(q))$, and
+the net longitudinal gain dominates the net transverse square.
+In particular $A/\sqrt{b(q)}\to1$ and
+\[
+ \frac{A^2+q^2B^2}{2R_0B}\longrightarrow0,\qquad
+ R_0=|r_{t_0}(\xi)|,
+\]
+at $t=t_h+b(q)$ for the actual $q$-flow. No conclusion at the
+weak-response clock is included.
+\end{theorem}
+\begin{proof}
+At fixed $S$, use SPM early to pass to
+$A=H(S)-H(s_0)$ and
+$B=\ell_0[H(S)-H(s_0)]-[V(S)-V(s_0)]$ in the limit,
+$V=\int y(\zeta-x)_+\dd\mu$. In fact the COD core bound improves
+to $V(S)\le-c e^{LS}/\sqrt{1+S}$ late: Q4 is included in the
+upper face of Lemma~\ref{an04tbwv1:bulk}, hence its exposure is
+at least $c\sqrt S$, its mass at least $1/4$, and its output at
+most $-c'D(S)$. COD positive bounds the entire positive Q1 cost
+by $o(D(S))$. Thus the limiting $B$ is at least
+$c e^{LS}/\sqrt{1+S}$ for large $S$ uniformly over extractions.
+SPM divergence's lower integrand $c(1+s)^{-5/6}$ gives an
+unbounded lower integral for $c_q$ already in the iterated
+resident limit. For integer $S=j\to\infty$ use compact extraction
+on $[s_0,j]$ and the preceding bounds; choose $q_j\downarrow0$
+so that for $q\le q_j$ the net transverse motion is
+$\sqrt j+O(1)$, the unmatched positive integral is $O(\sqrt j)$,
+the cumulative positive cross source exceeds a lower bound tending
+to infinity, and $B\ge c e^{Lj}/\sqrt{1+j}$. Each upper bound
+for $|B|$ is finite at fixed $j$, so also impose $q^2|B|<1/j$.
+BRW delay permits $\sup_{0\le s\le j}|\mathsf m_2(t_h+s)|<1/j$.
+Taking $b(q)=j$ on $(q_{j+1},q_j]$ proves all assertions. The
+proof neither chooses nor controls the rate at which $b(q)$ grows.
+\end{proof}
+
+\section{An initialized seed for the attempt to reach weak learning}
+\begin{theorem}[Fixed Q2 ancestry]\label{an04tbwv1:seed}
+In physical balanced coordinates write $z=(U_2+W_2)/2$,
+$H_2=\int_{\rm Q2} z^2\,dl$ with $dl=d\alpha/(2\pi)$.
+At each fixed finite resident delay $s\ge0$,
+\[
+ \frac{H_2(t_h+s)}{q^2}\longrightarrow
+                  \frac{c^{2\omega}}8(4e^s)^\lambda .
+\]
+This is a Cartesian amplitude, not a weak-chart mass count.
+\end{theorem}
+\begin{proof}
+First observe at $T_A=\log(A/S_0)$ for fixed positive nominal $A$.
+Fix a compact interior Q2 arc and a smaller fixed cap $a_0>0$.
+At $T_{a_0}$ CRA outer gives the target angle tending to $\pi/2$
+and $\widehat m=(1+o_q(1))S_0 e^{\lambda T_{a_0}}\sin^2\alpha$
+uniformly on the arc since $\lambda/(1-\lambda)<1$.
+P targetcomparison then bounds both trained angles within $O(a_0)$
+of that angle and the relative radial weight by $e^{O(a_0)}$
+times the target in both directions. In particular
+\[
+ \frac{z(T_{a_0})}{q}
+   =c^\omega a_0^{\lambda/2}\sin\alpha\,
+       (1+O(a_0)+o_{q;a_0}(1)).
+\]
+The big-$O$ is independent of the small cap. At fixed $a_0$,
+both second components are bounded below by a positive multiple
+of $q$, and $\sqrt m\le C_{a_0,A}q$ up to $T_A$ by the finite
+elapsed time and HBD's generic radial bound.
+
+For completeness, on this interval the full Gaussian fitted field
+has $|f_1(D)|\le C_A(|D_1|+q|D_2|)$ and
+$|f_2(D)|\le C_{a_0,A}(q|D_1|+q^2|D_2|)$, allowing $C_{a_0,A}$
+also in the first bound. This is HBD--BRW physical on the fixed
+nominal compact. For $R=\E[(D-f)D^T{\bf1}_{U^TD>0}]$ it implies
+$|R_{12}|+|R_{21}|\le C_{a_0,A}q$ and $R_{22}\ge-C_{a_0,A}q^2$.
+Both $U_2',W_2'\ge-C_{a_0,A}q^2$ while both components are
+nonnegative. Integrating excludes a first contact of either with
+half its positive lower entry bound, including joint contact.
+Consequently $U_2/|U|$ is bounded away from zero there, uniformly
+on the arc for fixed caps. Its $P_2$ wrong gate costs
+$O_{a_0,A}(e^{-d_{a_0,A}/q^2})$ in the second diagonal data moment
+(by a Gaussian tail and Cauchy--Schwarz). The $P_1$ second diagonal
+data moment is $O(q^2)$ and the full fitted $22$ contribution is
+$O_{a_0,A}(q^2)$. Hence $R_{22}=\lambda/2+O_{a_0,A}(q^2)$.
+The exact equation
+$z'=R_{22}z+(R_{12}W_1+R_{21}U_1)/2$ gives
+$z'=\lambda z/2+O_{a_0,A}(q^2)$ on the arc.
+Integrate to $T_A$: the cap-dependent accumulated error is $o(q)$
+with caps fixed. The relative entry error $O(a_0)$ stays relative
+after multiplication by $(A/a_0)^{\lambda/2}$. Take $q\to0$ and
+then $a_0\to0$ to obtain $z(T_A)/q\to c^\omega A^{\lambda/2}\sin\alpha$.
+These arguments hold uniformly for $A$ in a compact positive interval.
+The gradient estimate \emph{does not} assert a bounded weak scaled
+angle. HBD physical bounds $|z/q|$ on the entire Q2 circle at fixed
+nominal times, so both endpoint strips have arbitrarily small
+contribution after squaring. Integrate $\sin^2\alpha$ on Q2 against
+$dl$ (integral $1/8$), and use $S_0e^{t_h+s}\to4e^s$.
+\end{proof}
+
+\begin{theorem}[Arrival at a fixed small weak response]\label{an04tbwv1:smallhit}
+For the critical initialized Gaussian family there exist a fixed
+$\eta_0>0$ and a fixed finite $b$ such that, for any fixed
+$k_0>4/\lambda$ and all sufficiently small $q$, the first
+post-strong-half hit of $\mathsf m_2=\eta_0$ occurs by
+$t_h+b+k_0\log(1/q)$.
+\end{theorem}
+\begin{proof}
+We first refine the tagged compact-Q2 entry at $t_b=t_h+b$.
+There $U_1/q,W_1/q\to0$ uniformly on the arc. To check this
+stronger statement, at the small nominal cap $a_0$ the upper
+bound on these two absolute first components divided by $q$ is
+$O(a_0^{\lambda/2+1})+o_{q;a_0}(1)$ by the same target comparison.
+Thereafter put $D_1^*=\max(|U_1|,|W_1|)$. The off-diagonal
+bounds and positive-component proof above give
+\[
+ D^+D_1^*\le a_*(1+S)D_1^*+C_{a_0,A}q^2,\quad
+ a_*=1/2+q^2,\quad S=\int m\,dl.
+\]
+Here $|R_{11}|\le a_*(1+S)$ by the spectral bounds in P.
+The homogeneous multiplier is bounded by
+$C_A(A/a_0)^{a_*}$ since $\int_{T_{a_0}}^{T_A} S\,dt\le C_A$
+from the global mass envelope, independent of $a_0$. The
+inhomogeneous term is $o(q)$ at fixed caps. Thus the upper limit
+after division by $q$ is $C_A a_0^{(1+\lambda)/2}$; send $a_0$
+to zero. The moving clock again lies in a fixed compact of nominal
+levels. Balance, the strictly positive second components, and the
+seed formula on the arc now imply that $w=(U_2-W_2)/2=o(q)$ and
+$z/q$ is bounded below uniformly there.
+
+Write $r=D-f$. At any fixed $b$, HBD--BRW give
+\[
+ 4\mathcal L(t_b)=\E_{P_1}|r|^2+\E_{P_2}|r|^2
+     \longrightarrow (1-M(b))^2+\lambda .
+\]
+For this order-one statement, restrict first to compact right interiors:
+their charted contributions converge in Gaussian $L^2$ to their
+mass times $e_1(D_1)_+$ on $P_1$ and to zero on $P_2$.
+Strips cost $O_b(\epsilon)$ in norm for label length $\epsilon$,
+left ancestry has $o_b(1)$ mass and $D_1\to1$ on $P_1$.
+Use the HBD mass clock. By loss monotonicity and the regression
+inequality $\E_{P_2} r_2^2\ge(\lambda+q^2)(1-\mathsf m_2)^2$,
+as long as $\mathsf m_2\le\eta_0<1$,
+\begin{equation}\label{an04tbwv1:lossbudget}
+ \E_{P_1}|r|^2+\E_{P_2}r_1^2
+ \le (1-M(b))^2+\lambda(2\eta_0-\eta_0^2)+o_{q;b}(1).
+\end{equation}
+Choose $b$ large, then $\eta_0>0$ small so that the square root
+of this upper bound is below $\lambda/400$ for small $q$.
+Take also $\eta_0<1/8$. BRW ensures the weak response is below
+this level up to $t_b$ for small $q$.
+
+For all receiver gates, Cauchy--Schwarz on each cluster gives
+$|R_{11}|,|R_{12}|,|R_{21}|\le\lambda/100$ throughout this
+no-hit interval. Indeed each uses an $L^2$ residual component
+bounded by \eqref{an04tbwv1:lossbudget}, except the $P_2$ term in
+$R_{21}$, which is at most $q\|r_2\|_{P_2}/2=O(q)$.
+All data component norms are at most two for small $q$. Whenever
+the receiving input direction satisfies $U_2/|U|\ge1/\sqrt2$,
+\[
+ R_{22}\ge(\lambda+q^2)(1-\mathsf m_2)/2-O(q)
+                    -O(e^{-d/q^2})\ge\lambda/3 .
+\]
+Indeed the full $P_2$ correlation is exact, its missing gate
+moment is exponentially small by Cauchy--Schwarz, the Gaussian
+tail on that cone and the bounded residual norm; the $P_1$ cost
+is at most $q\|r_2\|_{P_1}/2$.
+
+Start a positive-length compact Q2 arc at $t_b$. The reached entry
+just proved is strict for the cone
+$|U_1|,|W_1|,|w|\le z/2,\ z>0$.
+Inside including its faces, $U_2,W_2\in[z/2,3z/2]$, hence
+$U_2/|U|\ge1/\sqrt2$. The exact equations imply $z'\ge\lambda z/4$.
+The upper derivatives of either absolute first component on its
+face are at most $(\lambda/100)(z/2+3z/2)< z'/2$.
+On $|w|=z/2$ the equation
+$w'=-R_{22}w+(R_{12}W_1-R_{21}U_1)/2$ gives
+$(|w|)'\le-\lambda z/6+\lambda z/200<z'/2$.
+The common bounds cover simultaneous faces; the positive $z$ face
+cannot be lost by the growth inequality. Thus the cone continues
+for as long as there is no hit. On the arc
+$\int z^2dl\ge c_b q^2 e^{\lambda(t-t_b)/2}$.
+But $z^2\le m$, and $S\le C(1+t-t_h)$ by BRW, since
+$S'=2\E[f\cdot(D-f)]\le\E|D|^2/2$. At duration
+$k_0\log(1/q)$ with $k_0>4/\lambda$ these bounds contradict one
+another. This proves the hit by continuity.
+\end{proof}
+
+The measured threshold here is small and fixed; no threshold
+depending on $q$ was called learning. In particular the upper
+bound in \eqref{an04tbwv1:lossbudget} at $\eta_0=1/4$
+already includes $7\lambda/16$, greater than $(\lambda/400)^2$,
+even before adding the entry loss. The sufficient small-coupling
+test used on the cone is therefore unpaid at the required quarter
+response, and still less so at the half hit. This is a failure of
+that upper estimate, not a lower bound on the actual cross error.
+
+\paragraph{Attempt to force a measured clock.}
+Set $Q_2=\rho^2+q^2$, $m_2=\mathsf m_2$, and use the exact
+CLOCK amplitude equation without division by $H_2$:
+\begin{align*}
+ H_2'&=Q_2(1-m_2)H_2+\mathcal D_2,\\
+ \mathcal D_2&=\int_{\rm Q2}
+ \{[2R_{22}-Q_2(1-m_2)]z^2+z(R_{12}W_1+R_{21}U_1)\}\,dl .
+\end{align*}
+All residual matrices include both sources and their actual gates.
+With $G(t)=\exp[Q_2\int_{t_h}^t(1-m_2)]$, the normalized
+retained amplitude is $H_2(t)/G(t)=H_2(t_h)+\int_{t_h}^t
+\mathcal D_2/G$. Up to any time $T$ without a response hit
+of $\eta\in(0,1)$ one therefore necessarily has
+\begin{equation}\label{an04tbwv1:clockgap}
+ H_2(t_h)+\int_{t_h}^T\mathcal D_2/G
+ \le C(1+T-t_h)e^{-Q_2(1-\eta)(T-t_h)} .
+\end{equation}
+Indeed $H_2\le\int m$, and total radial mass is at most
+$C(1+t-t_h)$ by the BRW physical mass identity.
+At $T=t_h+k_0\log(1/q)$ with $k_0>2/[\lambda(1-\eta)]$,
+the right side is $o(q^2)$. Theorem~\ref{an04tbwv1:seed} thus
+pins down the charge: nonarrival by this time requires the
+discounted defect to remove at least
+$(c^{2\omega}4^\lambda/8-o(1))q^2$.
+On each fixed delay interval $m_2=o(1)$ and the theorem gives
+$\int\mathcal D_2/G=o(q^2)$ over that interval. This supplies no
+such estimate on the logarithmic interval: the off-diagonal forcing
+and receiver gate in $R_{22}$ are controlled above only with fixed
+caps. For the required half response we cannot contradict
+\eqref{an04tbwv1:clockgap} there. Even
+a reached half-response hit would still require the learned-window
+loss and alignment checks.
+
+\section{Can feedback cancel the transverse source at the learned time?}
+Here is a second attempt, valid without resident approximations and
+even when the answer to the clock question is supplied. Follow the
+very regression that produces the divergent term instead of discarding
+its sign. In physical parameter space use the label $L^2(dl)$
+inner product (both vector layers). Set
+\[
+ \ell=\nabla_\Theta\frac{\E_{P_2}[(\xi^TD)v^Tf_t(D)]}{Q},
+ \qquad g_i=\nabla_\Theta[i^Tf_t(\xi)]\quad(i=u,v).
+\]
+In these formulas $u,v$ are the fixed witness axes, $Q=\E_{P_2}(\xi^TD)^2$.
+The regression target is fixed, so $\delta'=-\langle\ell,\dot\Theta\rangle$.
+Let $\mathcal N=\dot\Theta-Q\delta\ell/2$.
+Equivalently $\mathcal N$ is the feature gradient applied to the
+complete $P_1$ residual and the $P_2$ residual minus
+$\delta(\xi^TD)v$, with both mixture weights. This is an explicit
+field of the actual trajectory, including the weak longitudinal
+response and the centered residual. Define
+\[
+ d=Q\|\ell\|^2/2,\quad p_i=Q\langle g_i,\ell\rangle/2,\quad
+ F=-\langle\ell,\mathcal N\rangle,\qquad
+ K_i(r,T)=\int_r^T p_i(t)\exp[-\textstyle\int_r^t d]\,dt .
+\]
+SPM's two-block product gives
+$p_v=Q(j_{vv}+\omega_t)/2$ and $p_u=Qj_{uv}/2$; $\omega_t$ is
+the direct-output term, including the actual mass, of SPM overlap.
+With all signs retained the exact scalar and probe equations are
+$\delta'=-d\delta+F$,
+$i^T\dot f(\xi)=p_i\delta+\langle g_i,\mathcal N\rangle$.
+Thus for any $t_b<T$ the remaining \emph{physical} probe movements are
+\begin{equation}\label{an04tbwv1:filter}
+ L_i(r,T):=i^T[f_T(\xi)-f_r(\xi)]
+  =K_i(r,T)\delta(r)+
+    \int_r^T\langle g_i(t)-K_i(t,T)\ell(t),\mathcal N(t)\rangle\,dt,
+ \qquad r=t_b .
+\end{equation}
+Variation of constants and finite-interval Fubini give this identity;
+it avoids differentiating a gate or dividing by a possibly small
+instantaneous response rate. The explicit $\delta j_{vv}$ integral
+has been eliminated, but its effect on the probe has not been set
+to zero.
+
+\paragraph{Test of the damping route on the actual entrance.}
+It would be incorrect to treat $\delta$ as a freely decaying error.
+Indeed for \emph{every} fixed $t_b=t_h+b$, $b\ge s_0$, and every
+sequence of reached learned endpoints $T_q$,
+\begin{equation}\label{an04tbwv1:false}
+ \int_{t_b}^{T_q}\frac{F_+}{q}\,dt\longrightarrow\infty .
+\end{equation}
+On a fixed later resident interval $\delta(t_h+s)/q$ has limit
+$k(s)/\rho-\ell_0\ge cD(s)-C_{s_0}$, while $|\delta(t_b)|/q\le C_b$.
+Since $d\ge0$, the scalar equation bounds
+$\delta(t_h+s)/q\le|\delta(t_b)|/q+\int_{t_b}^{t_h+s} F_+/q$.
+First take small noise at fixed $s$, then send $s$ to infinity,
+using BRW delay. Thus the shortcut of charging only a bounded
+regeneration of the weak cross regression fails on the trained
+family. This is not a sign claim for its \emph{filtered} net effect.
+
+One can isolate the failure more sharply over the resident part.
+Along extraction on fixed clocks, $d(t_h+s)\to
+(\lambda/2)\int P^2 d\mu$, and $p_v(t_h+s)\to
+(\lambda/2)\int_{\mathcal A}P\,d\mu$. For the first limit the input
+block of $\ell$ has squared norm per radial mass tending to $P^2$
+(the vector Gaussian moment tends to $-P e_2$); the output block
+is $O(q)$ on bounded strong charts. On both blocks the squared
+contribution per physical label is bounded by $C m$, so right strips
+and negligible left mass can be removed as above. For $p_v$ use
+the no-atom argument and the per-mass bound on $\omega_t$.
+The protected outer labels have actual mass $\ge c/(1+s)$ with
+positive input and $P\ge1/2$. Thus $d^{\lim}\ge c'/(1+s)$.
+By \eqref{an04tbwv1:exposure}, $0\le p_v^{\lim}\le
+C\log(2+s)/(1+s)$. For fixed $b$ it follows that
+\[
+ \sup_{S\ge b}\limsup_{q\downarrow0}|K_v(t_h+b,t_h+S)|
+ \le C_b\int_b^\infty\log(2+s)(1+s)^{-1-c'}\,ds<\infty .
+\]
+This limit passage is on finite $[b,S]$ first. The homogeneous
+response $K_v\delta(t_b)/q$ therefore cannot account for the
+divergence of the resident signed cross integral. Indeed the latter
+is eventually positive in the limit, with the SPM lower integral
+of order at least $\int^S (1+s)^{-5/6}ds$; the direct-output
+correction $\omega_t\delta/q$ vanishes on each fixed interval.
+The continuing forcing of the regression is essential. This is
+consistent with the cancellation estimate \eqref{an04tbwv1:matched}.
+
+At times where the exact projected weak response
+$h=\E_{P_2}[(\xi^TD)u^Tf_t(D)]/Q$ has $|h|\ge\eta'>0$,
+$\|\ell\|^2\ge(\eta')^2/\int (u^TW)^2 dl$ by the output
+block and Cauchy--Schwarz. SPM shows $h=\mathsf m_2+O_{s_0}(q)$
+uniformly from the loss bound. Thus there is damping at a learned
+time. Even on an entire interval with this guard it controls the
+kernel $K_i$ only by a weighted average of $p_i/d$; for instance
+$|K_i|\le C\sup(\int m\,dl)^2/(\eta')^2$ on that interval
+by the Gaussian moment bounds. The guard is absent on most of
+the incoming interval; the resulting bound is unsigned and does not
+control the correlations against $\mathcal N$ at the required scales.
+
+\paragraph{Exact learned-endpoint deficit.}
+Choose a fixed late $b$ with the incoming surplus above, put
+$A_b=A(t_b)$, $B_b=B(t_b)$, $U_b=R_0-q^2B_b$.
+Let $T$ be in the actual measured learned window of DRR (if reached).
+The exact test on the remaining passage is
+\begin{equation}\label{an04tbwv1:missing}
+ \frac{A_b L_v(t_b,T)}q+\frac{L_v(t_b,T)^2}{2q^2}
+ -\frac{U_b L_u(t_b,T)}{q^2}+\frac{L_u(t_b,T)^2}{2q^2}
+       < e_*-e_q(t_b).
+\end{equation}
+This is obtained by subtracting the DRR squared-residual identity
+at $t_b$ from the one at $T$; the four terms include the interaction
+with the transverse displacement already acquired. All quantities
+on the left are specified regression-feedback integrals
+\eqref{an04tbwv1:filter}. The incoming right side is at least of
+order $e^{Lb}/\sqrt{1+b}$ for late fixed $b$ in the small-noise
+limit. That lower bound depends on choosing $q$ after $b$.
+For a learned-depth theorem one needs the strict inequality at
+\emph{some} reached learned $T$; a fixed asymptotic margin yields
+a quantitative gain. We do not have a signed joint bound on the
+correlations $\langle g_i-K_i\ell,\mathcal N\rangle$ there,
+or a continuation of the resident activity and damping estimates
+to this time. In particular \eqref{an04tbwv1:false} rules out the
+bounded positive-forcing shortcut but does not refute
+\eqref{an04tbwv1:missing}. Replacing $b$ by the learned delay in
+the fixed-clock bounds would assume the missing passage.
+
+\paragraph{Dependency ledger.}
+HBD physical, outer, incoming and clock and BRW budget, delay and
+field apply to this critical family on fixed nominal or resident
+intervals. BRW's protected-set conclusions use the HBD entrance
+and logistic mass, including its radial mass factor. COD mean,
+exposure and positive concern that same limiting law and supply
+fixed-time probe transfer. SPM early, sources, overlap and divergence
+use the fixed critical witness axes. The Q2 seed uses CRA outer's
+positive-noise target comparison on compact interior Q2 labels
+at exponent $1/\omega$, P targetcomparison only before the small cap,
+and the COD compact-Q2 finite-time physical bounds thereafter.
+CLOCK's Cartesian identity is proved for fixed ancestry irrespective
+of gate or chart; its conditional deep passage estimates are not
+imported. No generated trajectory or finite-noise empirical value
+enters the argument.
+\end{document}

@@ -1,0 +1,377 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=.9in}\setlength{\emergencystretch}{1.5em}
+\newtheorem{theorem}{Theorem}
+\newcommand{\dd}{\,d}
+\title{Core output descent and the pre-weak probe minimum}
+\author{AN04 proof increment}\date{Version 1}
+\begin{document}\maketitle
+
+\paragraph{Domains and conclusions.}
+Fix $c>0$, $\rho\in[13/20,7/10]$, $\lambda=\rho^2$,
+$\omega=(1-\lambda)/2$, $L=\lambda/2$, and $\zeta>a$ where
+$a=\rho K(\rho a)$, $K(t)=\phi(t)+t\Phi(t)$. Use the aligned balanced
+isotropic Gaussian flow with $S_0=cq^{1/\omega}$. The origin
+$s=t-t_h=0$ is the actual first right-ancestry half mass in normalized
+time. All limiting statements below concern any fixed-horizon
+diagonal extraction of this family as in BRW. Write
+$D(s)=e^{Ls}/(1+s)$, $P_x=\Phi(\rho x)$, and $r_+=\max(r,0)$.
+
+\begin{theorem}[Logistic resident limit]\label{an04codv1:main}
+There are $C<\infty$, $k_y,k_E>0$ independent of the extracted law
+such that, for all $s\ge0$,
+\[
+ y_a(s)\le C-k_yD(s),\qquad
+ \mathcal E_\zeta(s)\le C-k_ED(s).
+\]
+The positive part of the active Q1 output exposure is $o(D(s))$,
+uniformly over those laws.
+\end{theorem}
+
+\paragraph{Source inventory.}
+HBD denotes the trained half-mass increment, prefix \texttt{an04hbdv1:};
+BRW denotes the return increment, prefix \texttt{an04brwv1:}.
+HBD \texttt{clock, incoming, outer, physical} concern the critical
+family at fixed nominal mass $A=S_0e^t$, with compact Q1/Q4 labels
+for individual chart assertions, and all labels for the Cartesian
+bound. BRW extends extraction to each fixed finite resident horizon.
+In the limit $N=0$, $M=(1+e^{-s})^{-1}$ and $\dd\mu=M\dd\pi$ with
+normalized right label marginal $\dd\pi=4\cos^2\alpha\,\dd\alpha/(2\pi)$.
+Q4 is one common bottom path $(x_a,y_a)$ with normalized mass $1/2$.
+Q1 paths are co-ordered by their initial angle in this same field.
+These claims follow from HBD entrance and common-field order as
+continued in BRW; they do not require ordering two separate laws.
+Put $Y=\int y\dd\mu$, $X_m=\int x\dd\mu$, $K_s=\int K(\rho x)\dd\mu$,
+$S_x=\int F(\rho x,\rho\tilde x)\dd\mu$,
+$F(t,r)=\phi(\min(t,r))+r\Phi(\min(t,r))$. BRW field is
+\begin{align}
+ 2x'&=-(1-M)x+\rho\phi(\rho x)-\rho S_x+\lambda yP_x,\nonumber\\
+ 2y'&=-(1-M)y-Y+\rho K(\rho x),\qquad
+ 2Y'=(1-2M)Y+\rho K_s .\label{an04codv1:field}
+\end{align}
+BRW proves $Y>0$ from the positive remote entrance. On $s\ge0$ its
+\texttt{budget} gives
+$\max(Y,\rho K_s)\le B_0e^{Ls}(1+s)^{-2/3}$.
+Here $S_x\le K_s$ by the nonnegative Gaussian overlap integral.
+We also need two consequences within BRW's proof. To keep their
+mass and time ranges explicit we give their derivations below.
+
+\paragraph{Transfer sources.}
+P \texttt{pa:exactflow}, \texttt{pa:earlybounds} and
+\texttt{pa:targetcomparison} concern the exact physical Cartesian
+dynamics and the small-cap comparison under its early alignment
+guard. CRA \texttt{an04crav1:outer} supplies the target-only compact
+Q2 law at the critical nominal cap; PROFILE
+\texttt{inc:AN02:profile:v1:angle} supplies the target-only Gaussian
+angular field on Q3. Their separate domains are checked in the
+trained-flow proof. The finite-time limit uses BRW's delay and
+extraction, with no weak-passage inputs.
+
+\section{Two tail estimates on the logistic law}
+\label{an04codv1:tail}
+For Q1, $f=\pi\{\tilde\alpha\ge\alpha\}\in(0,1/2)$ and
+$|\dd f|=\dd\pi$ on that sector. At $s=0$ HBD physical and
+$m=2\cos^2\alpha$ give $x_++y_+\le C(1+f^{-1/3})$:
+$f\asymp(\pi/2-\alpha)^3$ near the vertical axis, and each
+limiting angle is bounded there by $C/\cos\alpha$. Q4 is bounded
+using a single compact interior representative. Since $M\ge1/2$,
+order implies $S_x\ge MfK(\rho x)$. For positive parts
+\[
+ 2D^+\binom{x_+}{y_+}\le
+ \lambda\begin{pmatrix}-f/2&1\\1&0\end{pmatrix}\binom{x_+}{y_+}
+       +\rho\phi(0)\binom11.
+\]
+At a positive coordinate use \eqref{an04codv1:field}, $Y\ge0$,
+$K(t)\ge t$, $K(t)\le\phi(0)+t_+$. At a negative coordinate its
+positive part has zero derivative and the corresponding right side
+is nonnegative; at equality with zero it bounds the positive-part
+derivative as well. For Q4 take $f=1/2$. Multiply by the positive
+left eigenvector $(w,1)$ of the matrix, $w=(\sqrt{4+(f/2)^2}-f/2)/2$.
+It stays bounded away from zero and $Lw\le L-\lambda f/16$
+by $\sqrt{4+d^2}\le2+d^2/4$ for $0\le d\le1$. Integration gives
+\begin{equation}\label{an04codv1:ceiling}
+ x_+(s)+y_+(s)\le C(1+f^{-1/3})e^{Ls-bfs},\qquad b=\lambda/16 .
+\end{equation}
+In particular $X_m\le\int x_+\dd\mu\le C e^{Ls}$; the sharper
+BRW moment budget follows by integrating the damped ceiling.
+
+For the lower estimate, HBD outer at half mass gives initial
+$\min(x,y)\ge4^{-\omega}(c^\omega\tan\alpha-J_*)$ for high Q1
+ranks. Thus $\pi\{\min(x(0),y(0))\ge R\}\ge c_1(1+R)^{-3}$
+for large $R$, uniformly in the law. For a horizon $T$, put
+$g=e^{Ls}\sqrt{M(0)/M(s)}$, $b_0>\sqrt2 B_0$,
+$R_T=d+3b_0[(1+T)^{1/3}-1]$ for fixed sufficiently large $d$,
+and $w_T=g(R_T-3b_0[(1+s)^{1/3}-1])$. On $0\le s\le T$,
+$w_T\ge dg\ge de^{Ls}/\sqrt2$. Labels initially above $R_T$
+in both coordinates satisfy both lower faces. On $x=w_T,y\ge w_T$
+use $S_x\le K_s$ and $\rho\phi(\rho x)+\lambda yP_x\ge\rho K(\rho x)$.
+On $y=w_T,x\ge w_T$ use monotonicity of $K$.
+Both doubled velocities exceed $2w_T'$ since
+$2g'/g=\lambda-(1-M)$, $\rho K(\rho w_T)>\lambda w_T$, and
+$b_0g>B_0e^{Ls}$. This includes the corner and the initial faces.
+At time $T$ the actual mass of this set is at least
+$M(T)c_1(1+R_T)^{-3}\ge c_2/(1+T)$. Multiplying by the lower
+input gives BRW's protected first input moment at least
+$c_3D(T)$ for every $T\ge0$. The set varies with $T$.
+
+\section{Core faces, mean output and exposure}
+\paragraph{Upper core faces on every finite horizon.}
+HBD gives $x_a(0),y_a(0)\le a$ at half mass. For $d=a+\epsilon$
+the entry into $x_a,y_a\le d$ is strict. All donors are above the
+bottom path, hence $X_m\ge M x_a$, $Y\ge M y_a$, and
+$S_{x_a}=M\phi(\rho x_a)+\rho P_{x_a}X_m$. In particular
+\[
+ 2x_a'=-(1-M)x_a+\rho(1-M)\phi(\rho x_a)
+                  +\lambda P_{x_a}(y_a-X_m).
+\]
+On $x_a=d,y_a\le d$ this is at most $(1-M)[\rho K(\rho d)-d]<0$.
+On $y_a=d,x_a\le d$, $2y_a'\le\rho K(\rho d)-d<0$.
+Both inequalities hold at the corner. They are strict because
+$M(s)<1$ for every finite $s$ and $r-\rho K(\rho r)$ is increasing
+with zero at $a$. This excludes exit on any finite continuation;
+send $\epsilon$ down to zero. Thus $x_a,y_a\le a$ on all $s\ge0$.
+
+\paragraph{A lower bound on the true output mean.}
+On the protected set $K(\rho x)\ge\rho x$, and elsewhere $K\ge0$.
+Consequently $\rho K_s\ge\lambda c_3 D(s)$ for $s\ge0$.
+For all $s\ge1$ it suffices to integrate the inequality
+$2Y'\ge-Y+\lambda c_3D$ over the last unit of time.
+To use one explicit constant through the initial unit, normalize
+$c_3$ downwards once as follows. On the preceding $-1\le s\le0$,
+HBD outer in its nominal clock $\tau=\log4+s$ puts a fixed positive
+normalized mass $p$ at $x\ge1$: choose a compact Q1 band with
+$c^\omega\tan\alpha>J_*+4^\omega$. There $M\ge1/(1+e)$.
+Take $c_3$ to be the smaller of BRW's protected constant and
+$p/(1+e)$. Then $\rho K_s\ge\lambda c_3 e^{Ls}/(1+s_+)$
+on $s\ge-1$. In either interval $(1-2M)Y\ge-Y$ because $Y>0$.
+Integrate from $s-1$, using $1+r_+\le1+s$ for $s-1\le r\le s$.
+This proves, with the unmodified BRW constant also valid for $s\ge1$,
+\begin{equation}\label{an04codv1:mean}
+ Y(s)\ge k_Y D(s),\qquad
+ k_Y=\frac{\lambda c_3}{1+2L}\left(1-e^{-(L+1/2)}\right)>0 .
+\end{equation}
+
+\paragraph{Core output.}
+The core equation gives $2y_a'+(1-M)y_a\le a-Y$.
+The exact integration kernel from $r$ to $s$ is
+$\sqrt{M(r)/M(s)}\in[1/\sqrt2,1]$ on $0\le r\le s$ because
+$(\log M)'=1-M$. Thus for $s\ge1$,
+\[
+ y_a(s)\le a+as/2-b_yD(s),\qquad b_y=k_Ye^{-L}/(2\sqrt2),
+\]
+where the negative contribution uses \eqref{an04codv1:mean} on
+$[s-1,s]$. The polynomial term is eventually at most $b_yD(s)/2$.
+Taking $k_y=b_y/2$ gives $y_a\le-k_yD$ for all sufficiently large $s$
+and $y_a\le C-k_yD$ globally. In the opposite direction the same
+kernel, BRW's upper bound on $Y$ and $\rho K\ge0$ give
+$(y_a)_-\le C e^{Ls}$, using the uniform finite lower entry bound.
+
+\paragraph{A lower input face.}
+At $x_a<0$, the first two terms of its doubled equation are
+nonnegative. The bounds just established for $(y_a)_-$ and $(X_m)_+$
+therefore give $2x_a'\ge-Ce^{Ls}\Phi(\rho x_a)$.
+Put $\ell(s)=-H\sqrt{1+s}$. Choose $H$ so the entry is strict
+($x_a(0)$ has a uniform lower bound), $\rho^2H^2/2-L\ge1$ and
+$Ce^{-\rho^2H^2/2}<H$. The Gaussian bound
+$\Phi(-u)\le e^{-u^2/2}$ for $u\ge0$ follows by the exponential
+moment inequality. On the sole lower face $x_a=\ell(s)$,
+\[
+ 2x_a'\ge-Ce^{-\rho^2H^2/2}e^{-s}>
+ -H/\sqrt{1+s}=2\ell'(s).
+\]
+There is no upper or output face in this scalar comparison.
+Order gives $x\ge x_a>\ell(s)$ for all ranks. Hence for
+$A_\zeta=\int(\zeta-x)_+\dd\mu$,
+\begin{equation}\label{an04codv1:exposure}
+ A_\zeta\le \zeta+H\sqrt{1+s},\qquad
+ A_\zeta^2/2-\zeta A_\zeta\le C(1+s).
+\end{equation}
+
+\section{The active non-core upper bound}
+\paragraph{First restriction: output at an active input.}
+Set $h(s)=H_1e^{Ls}(b_1+s)^{-2/3}$, $b_1\ge\max(1,4/(3L))$.
+Then $h'\ge Lh/2$ and $h$ is comparable to
+$H_1 e^{Ls}(1+s)^{-2/3}$ with fixed constants.
+We exclude the quadrant $x<\zeta,\ y>h(s)$, including the possibility
+of entering it from an initially inactive label.
+At entry, $x(0)\le\zeta$ on Q1 forces $f\ge f_*>0$: HBD outer
+puts all sufficiently high Q1 labels strictly above $\zeta$.
+By \eqref{an04codv1:ceiling} the remaining labels have $y(0)\le C_*$
+there; use the core bound on Q4. Choose $h(0)>C_*+a+1$.
+Enlarge $H_1$ so that at every $s\ge0$
+\[
+ \lambda\Phi(\rho\zeta) h(s)>\zeta+B_0e^{Ls}(1+s)^{-2/3},
+ \qquad 2h'(s)>\rho K(\rho\zeta).
+\]
+Such a choice exists since $h$ is increasing and its ratio to the
+budget envelope is bounded below by $H_1 b_1^{-2/3}$.
+At the vertical boundary $x=\zeta,\ y\ge h$ one has
+$2x'\ge-(1-M)\zeta-\rho K_s+\lambda\Phi(\rho\zeta)h>0$.
+At the horizontal boundary $y=h,\ x\le\zeta$ one has
+$2y'\le\rho K(\rho\zeta)<2h'$ using $Y>0$.
+Both directions exclude the forbidden quadrant at the corner.
+Continuity and these strict faces prove $y_+\le h(s)$ for every
+currently active label.
+
+\paragraph{Second restriction: mass capable of positive output.}
+For large $s$ let $F_s=D_0\log(1+s)/(1+s)$ with $bD_0/2>3$,
+where $b=\lambda/16$ in \eqref{an04codv1:ceiling}.
+Consider the same label on the entire interval $s-1\le r\le s$;
+its normalized rank $f$ stays fixed. If $f\ge F_s$, then
+$r\ge(1+s)/2$ for $s\ge3$ and
+\[
+ \sup_{[s-1,s]}(x_++y_+)
+ \le C(1+F_s^{-1/3}) e^{Ls}(1+s)^{-bD_0/2}=o(D(s))
+\]
+uniformly. Throughout that interval $Y(r)\ge k_Y e^{-L}D(s)$.
+For all sufficiently large $s$, the preceding ceiling therefore
+implies $\rho K(\rho x)\le\rho\phi(0)+\lambda x_+
+\le k_Y e^{-L}D(s)/2$. While $y\ge0$,
+\[
+ y'\le-\sigma D(s),\qquad \sigma=k_Ye^{-L}/4.
+\]
+At entry $y_+(s-1)=o(D(s))<\sigma D(s)$, so a positive label
+must cross zero before $s$; one initially at or below zero cannot
+cross upwards because the same strict inequality holds at zero.
+It follows that $y(s)>0$ on Q1 requires $f<F_s$.
+This is an upper bound on positive-output ranks, whether active
+or inactive. Their actual Q1 mass is at most $MF_s\le F_s$.
+
+\paragraph{Combine the restrictions.}
+In the active Q1 integral, the exposure of one label is at most
+$\zeta+H\sqrt{1+s}$ by the core lower face, its positive output
+is at most $h(s)$ by the quadrant argument, and its positive-output
+mass is at most $F_s$. Thus
+\begin{equation}\label{an04codv1:positive}
+ 0\le\int_{\mathrm{Q1},\,x<\zeta} y_+(\zeta-x)\dd\mu
+ \le C e^{Ls}(1+s)^{-7/6}\log(1+s)=o(D(s)).
+\end{equation}
+No estimate of a single outlier is used in place of this integral.
+For bounded $s$ it is uniformly bounded by the exposure and quadrant
+bounds. Now split the full output term:
+\[
+ \int y(\zeta-x)_+\dd\mu
+ =\tfrac M2 y_a(\zeta-x_a)
+ +\int_{\mathrm{Q1},\,x<\zeta} y(\zeta-x)\dd\mu+0 .
+\]
+The last zero includes labels at the gate. For large $s$ the first
+term is at most $-(\zeta-a)k_yD(s)/4$ since $y_a\le-k_yD$,
+$M/2\ge1/4$, and $x_a\le a$. Combining \eqref{an04codv1:exposure},
+\eqref{an04codv1:positive} and the exact leading formula
+$\mathcal E_\zeta=A_\zeta^2/2-\zeta A_\zeta+\int y(\zeta-x)_+\dd\mu$
+proves Theorem~\ref{an04codv1:main}, for example with
+$k_E=(\zeta-a)k_y/8$ after increasing $C$ on a bounded interval.
+
+\section{Transfer of the probe at each fixed resident time}
+\begin{theorem}[Original trained flow]\label{an04codv1:trained}
+For each fixed finite $s\ge0$,
+\[
+ \limsup_{q\downarrow0}\frac{E_\xi(t_h+s)-1/2}{q^2}
+       \le C-k_E D(s).
+\]
+More precisely, along each BRW extracted subsequence the scaled
+error converges to the probe functional of that extracted law
+at $s$. For every $K_0>0$ and fixed weak response level $\eta>0$,
+there exist a finite $s_{K_0}$ and a $q_0>0$ such that for every
+$0<q<q_0$,
+\[
+ t_h+s_{K_0}<t_\eta,\qquad
+ \frac{E_\xi(t_h+s_{K_0})-1/2}{q^2}<-K_0 .
+\]
+Here $t_\eta$ is the first post-half-mass hit of the BRW weak-response
+threshold, possibly infinite. In particular the infimum on
+$[t_h,t_\eta)$ tends to $-\infty$ in this scaled convention.
+\end{theorem}
+\begin{proof}
+In Cartesian notation $f(\xi)=\int W(U^T\xi)_+\dd l$,
+$\dd l=\dd\alpha/(2\pi)$, $\xi=(\sin(q\zeta),-\cos(q\zeta))$.
+Fix $s$ throughout this transfer. BRW's finite-horizon physical
+bound gives $|U|,|W|\le C_s$ and $|U_2|,|W_2|\le C_s q$ at
+observation and on any fixed nominal-clock interval ending there
+and starting at a fixed positive cap. Thus the individual-label
+integrands of $H_q=f_1(\xi)/q$ and $V_q=f_2(\xi)/q^2$ are
+both bounded by $C_s$ on the entire circle, since $|U^T\xi|\le C_s q$.
+An initial-angle strip of length $\delta$ costs $O_s(\delta)$
+in each scaled observable.
+
+On compact right interiors, HBD--BRW give bounded $x,y$ and
+convergence of the joint label-path law, including $m$, along extraction.
+The exact integrands are $m\cos(qy)[\sin(q(\zeta-x))]_+/q$ and
+$m[\sin(qy)/q][\sin(q(\zeta-x))]_+/q$.
+Their limits are $m(\zeta-x)_+$ and $my(\zeta-x)_+$ on these
+compacts. Positive part is continuous even for a gate atom.
+These formulas transfer at $t_h+s$ by HBD clock and compact time
+convergence. Endpoint-strip control also applies to the limiting
+integrals by taking limits on compact strips first.
+
+\emph{Left ancestry at the required output precision.}
+A mass estimate $o(q)$ alone would not justify discarding $V_q$.
+Fix a sufficiently small nominal cap $A_0$, at time
+$T_0=\log(A_0/S_0)$. P \texttt{targetcomparison} applies there
+with angles within $O(A_0)$ of the target-only angle and relative
+radial weights within factors $e^{O(A_0)}$. The time from $T_0$ to
+$t_h+s$ is bounded for fixed $s,A_0$ by HBD clock. On this interval
+the generic radial bound $|(\log m)'|\le(1+2q^2)(1+\int m\dd l)$
+and the physical envelope give a bounded radial multiplier.
+On a compact interior Q2 arc, CRA \texttt{outer} applies with
+$\kappa=1/\omega$ and $\kappa\lambda/2=\lambda/(1-\lambda)<1$.
+At $T_0$ the target angle tends to $\pi/2$ and its radial weight
+is comparable to $S_0e^{\lambda T_0}\asymp q^2$.
+Take $A_0$ small before $q$. Both trained second components are
+then at least $k_I q$ at this cap; $|U|,|W|\le C_{s,I}q$
+up to observation.
+
+To check the signs up to observation, the Cartesian field is
+$U'=R^TW$, $W'=RU$, $R=A_\theta-C_f$.
+The physical bounds above give $|f_1(D)|\le C_s(|D_1|+q|D_2|)$
+and $|f_2(D)|\le C_s(q|D_1|+q^2|D_2|)$ for any data vector $D$.
+Since $\mathbb E|D_1D_2|\le Cq$ under the two Gaussian clusters,
+$|R_{12}|+|R_{21}|\le C_s q$ and $R_{22}\ge-C_s q^2$
+(the target diagonal is nonnegative). While $U_2,W_2\ge0$ these
+estimates give $U_2',W_2'\ge-C_{s,I}q^2$. Integration from
+their strict entry excludes a first contact of either component
+with $k_I q/2$ over this fixed interval, including simultaneous
+contact. Consequently $U^T\xi<0$ on the Q2 compact at observation.
+
+On a compact interior Q3 arc both target-only directions have
+negative projections on both cluster means, separated from zero
+at initialization. They retain half of this separation until $T_0$:
+on that neighborhood the exact target angular drift is
+$q[-\sin\theta K(\cos\theta/q)+\rho\cos\theta
+K(\rho\sin\theta/q)]/2$ (PROFILE \texttt{angle}), exponentially
+small by $K(-v)\le\phi(v)$ for $v\ge0$. Its integral over
+$O(\log(1/q))$ cannot reach either enlarged arc endpoint.
+The target log radial rate $2\mathbb E[(a^TD)_+^2]$ is exponentially
+small there by the Gaussian tail and Cauchy--Schwarz. The trained
+radial weight at $T_0$ is therefore $O_I(S_0)$ by P, and remains
+$O_{s,I}(S_0)$ at observation. Its output divided by $q^2$
+vanishes since $S_0/q^2\to0$. This treats both left interiors.
+The axis labels have zero initial measure; take $q\downarrow0$ on
+the interior compacts and then send all strip lengths to zero.
+
+It follows that $(H_q,V_q)\to(A_\zeta,\int y(\zeta-x)_+\dd\mu)$
+on the extracted subsequence. The exact energy identity is
+\[
+ (E_\xi-1/2)/q^2=H_q^2/2-[\sin(q\zeta)/q]H_q
+                 +\cos(q\zeta)V_q+q^2 V_q^2/2 .
+\]
+This proves convergence on extraction at each fixed $s$. Every
+subsequence has a further extraction and the limiting upper bound
+is uniform in the law, proving the full limsup. Choose $s_{K_0}$
+so that $C-k_ED(s_{K_0})<-K_0-1$, and only then make $q$ small.
+BRW delay gives $\sup_{0\le r\le s_{K_0}}|\mathsf m_2(t_h+r)|\to0$.
+This proves the strict pre-weak witness and the assertion about
+the infimum without requiring attainment at the right endpoint.
+\end{proof}
+
+\paragraph{Scope and constants.}
+Uniformity over laws uses the fixed-$c,\rho,\zeta$ entry, tail and
+budget constants from HBD and BRW. In particular $c_1,c_2,c_3$,
+the input-face constant, and the onset of the rank cutoff may
+depend on $c$; no common depth rate as $c\downarrow0$ is claimed.
+The mean $Y$ supplies the negative output drive on the active core,
+as in MPB's bridge mechanism; here the growing mean has an actual
+protected-tail source on the pre-weak time scale. No bound is
+asserted at $s=t_\eta-t_h$. The post-learning swing-by minimum is
+a different comparison.
+\end{document}

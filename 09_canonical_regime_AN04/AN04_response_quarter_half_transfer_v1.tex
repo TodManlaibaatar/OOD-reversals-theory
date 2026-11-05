@@ -1,0 +1,298 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=.9in}\setlength{\emergencystretch}{1.6em}
+\newtheorem{theorem}{Theorem}\newcommand{\E}{\mathbb E}
+\title{Quarter and half response from the initialized small hit}
+\author{E5 continuation attempt}\date{Version 1}
+\begin{document}\maketitle
+
+\paragraph{Scope and notation.}
+Fix the actual aligned balanced isotropic critical family
+$S_0=cq^{1/\omega}$ with $c>0$, $\rho$ in the theory box,
+$\lambda=\rho^2$, $\omega=(1-\lambda)/2$ and the WIT probe offset.
+Time is normalized. Use physical Cartesian label vectors
+$\Theta=(U,W)$, $dl=d\alpha/(2\pi)$, $|U|=|W|=\sqrt m$,
+and population loss
+$\mathcal L=\frac14\sum_{p=1}^2\E_{P_p}|r|^2$, $r(D)=D-f(D)$.
+Let $Q=\lambda+q^2$ and $n=\mathsf m_2=\E_{P_2}[D_2f_2]/Q$.
+The scalar $n$ below is an exact regression, not a radial logistic mass.
+Use TBW's small-hit argument with its constants chosen smaller if
+necessary; it gives a reached $\tau_0$ with $n(\tau_0)=\eta_0$
+for a fixed sufficiently small $\eta_0>0$. The origin $t_h$
+is the trained first right-half mass.
+
+\section{The complementary residual and its signed exchange}
+Set
+\begin{equation}\label{an04rqtv1:defect}
+ \mathcal R=4\mathcal L-Q(1-n)^2
+  =\E_{P_1}|r|^2+
+    \E_{P_2}\{r_1^2+[r_2-(1-n)D_2]^2\}\ge0.
+\end{equation}
+The equality is the exact Gaussian regression decomposition;
+$\E_{P_2}D_2[r_2-(1-n)D_2]=0$.
+Use the label Hilbert gradient and write
+\[
+ g=\nabla_\Theta n,\quad
+ a=\tfrac Q2(1-n),\quad
+ N=\dot\Theta-a g=-\tfrac14\nabla_\Theta\mathcal R,\quad
+ \Gamma=\langle g,N\rangle .
+\]
+Indeed $\nabla\mathcal L=-\dot\Theta$, and differentiate
+\eqref{an04rqtv1:defect}. In data coordinates
+\[
+ N=\tfrac12\E_{P_1}[J_D^T r]+
+   \tfrac12\E_{P_2}[J_D^T(r-(1-n)D_2e_2)],
+\]
+where $J_D$ is the feature derivative with respect to both layers
+at the actual population. Thus no source or residual component has
+been discarded. The identities are, almost everywhere,
+\begin{equation}\label{an04rqtv1:exchange}
+ n'=a\|g\|^2+\Gamma,\qquad
+ \mathcal R'=-4\|N\|^2-2Q(1-n)\Gamma .
+\end{equation}
+They use the actual finite-noise gradient flow and finite moments.
+
+On the upper face $\mathcal R=r_*^2$ with $n<1/2$, the nonoutward
+test is exactly
+\begin{equation}\label{an04rqtv1:face}
+ \Gamma\ge-\frac{2\|N\|^2}{Q(1-n)} .
+\end{equation}
+A strict version, or a locally Lipschitz scalar comparison that
+supplies a uniform bound near the face, would exclude first exit.
+No sign for this face is asserted for the critical trajectory.
+The generic estimate $\Gamma\ge-\|g\|\|N\|$ does not give it:
+apart from $N=0$, it suffices only where $\|N\|\ge a\|g\|$
+(or additional direction information is known). Small complementary residual alone supplies
+an upper norm bound, not this lower norm condition or signed angle.
+
+\begin{theorem}[Initialized reached alternative]\label{an04rqtv1:alternative}
+Fix $r_*=\lambda/800$. One can choose TBW's fixed $b,\eta_0$ so
+that $\mathcal R(\tau_0)\le r_*^2/16$ for small $q$ and the same
+compact Q2 arc reaches $\tau_0$ inside its strict vertical cone.
+Let $\tau$ be the first time after $\tau_0$ with either $n=1/2$
+or $\mathcal R=r_*^2$. For every fixed $k>8/\lambda$, small $q$ gives
+\[
+ \tau\le\tau_0+k\log(1/q).
+\]
+If the half hit occurs first, the actual trajectory has crossed
+one-quarter response, and both response and cluster-loss criteria
+are met at those crossing times for small $q$. If the residual
+face occurs first, then
+\begin{equation}\label{an04rqtv1:paidexit}
+ -2Q\int_{\tau_0}^{\tau}(1-n)\Gamma\,dt
+ =r_*^2-\mathcal R(\tau_0)+4\int_{\tau_0}^{\tau}\|N\|^2dt
+ \ge15r_*^2/16 .
+\end{equation}
+Moreover $n(\tau)\ge\eta_0+[r_*^2-\mathcal R(\tau_0)]/(2Q)$.
+This is a conclusion about the initialized path, with no
+residual-cap hypothesis retained.
+\end{theorem}
+\begin{proof}
+TBW's actual loss estimate before the small hit is
+$\mathcal R\le(1-M(b))^2+\lambda(2\eta_0-\eta_0^2)+o_{q;b}(1)$.
+Choose $b$ sufficiently large and then $\eta_0>0$ sufficiently
+small that this is below $r_*^2/16$; use TBW's cone argument
+with its tightened constants to reach this $\eta_0$.
+At $t_h+b$ its compact Q2 arc has
+$z=(U_2+W_2)/2\ge c_bq$, and
+$|U_1|,|W_1|,|w|\le z/2$, $w=(U_2-W_2)/2$, with strict entry.
+The cone is retained up to $\tau_0$ by the proved small-hit theorem.
+
+Up to $\tau$, the full residual has bounded Gaussian $L^2$ norm
+from loss decrease and \eqref{an04rqtv1:defect} bounds
+$\|r\|_{P_1},\|r_1\|_{P_2}\le r_*$. Each of
+$|R_{11}|,|R_{12}|,|R_{21}|$ is consequently at most $\lambda/100$
+for small $q$, uniformly over receiver gates, by Cauchy--Schwarz
+on the two clusters; the remaining $P_2$ contribution in $R_{21}$
+costs $q\|r_2\|_{P_2}/2$. On an input cone with $U_2/|U|\ge1/\sqrt2$,
+\[
+ R_{22}\ge Q(1-n)/2-O(q)-O(e^{-d/q^2})\ge\lambda/5 .
+\]
+This subtracts the $P_2$ wrong gate by Cauchy--Schwarz and a
+Gaussian tail; the $P_1$ term is at most $q r_*/2$ in absolute
+value. It requires $n<1/2$, not monotonicity of $n$.
+
+For the same compact arc the exact $z$ equation gives
+$z'\ge\lambda z/8$ in the closed cone. At either face
+$|U_1|=z/2$ or $|W_1|=z/2$, the upper speed is at most
+$2(\lambda/100)z<z'/2$. At $|w|=z/2$,
+$(|w|)'\le-\lambda z/10+\lambda z/200<z'/2$.
+These strict signs include both signs of each first component,
+both antisymmetric faces and every corner. The positive $z$ face
+is protected by its growth inequality. The cone therefore persists
+until the stopping event, even if the weak response temporarily
+falls. Hence its amplitude is at least
+$c_bq^2e^{\lambda(t-\tau_0)/4}$, while the full radial mass is
+at most $C(1+t-t_h)$ from BRW. TBW bounds
+$\tau_0-t_h=O(\log(1/q))$. At elapsed $k\log(1/q)$ with
+$k>8/\lambda$, these estimates are inconsistent unless one of
+the stopping events has already occurred.
+
+At a first quarter or half hit while the cap holds,
+$|\mathsf m_1-1|\le r_*/\sqrt{1+q^2}$ by regression on $P_1$,
+$\mathcal L_1\le r_*^2/2$, and
+$2\mathcal L_2\le Q(1-n)^2+r_*^2$.
+The isotropic initial cluster losses tend to $1/2$ and
+$\lambda/2$; these bounds satisfy the DRR thresholds
+$1/2,1/4$ and loss ratio $169/196$ at both specified hits.
+They do not align those times with a WIT learned window.
+If instead the residual face is first, integration of
+\eqref{an04rqtv1:exchange} proves \eqref{an04rqtv1:paidexit}.
+Loss decrease gives
+$r_*^2-\mathcal R(\tau_0)
+ \le Q[(1-\eta_0)^2-(1-n(\tau))^2]$.
+The positive difference implies $n(\tau)>\eta_0$ since
+$n(\tau)<1/2$. Dividing by $2-\eta_0-n(\tau)\le2$ yields the
+last bound. For simultaneous events the half-hit conclusions hold.
+\end{proof}
+
+\paragraph{Does restarting the loss budget pay the face?}
+For any actual starting time $t_a$ with $n(t_a)=\eta_a$,
+\begin{equation}\label{an04rqtv1:reset}
+ \mathcal R(t)= \mathcal R(t_a)+
+ Q[(1-\eta_a)^2-(1-n(t))^2]
+ -4\int_{t_a}^t\|\dot\Theta\|^2\,du .
+\end{equation}
+This follows either from loss decrease as an equality or from
+\eqref{an04rqtv1:exchange}. Restarting it at successive response
+levels preserves all previous terms by telescoping.
+To keep the same cap at a candidate quarter hit one needs the
+actual dissipation to satisfy
+\[
+ 4\int_{\tau_0}^{t_{1/4}}\|\dot\Theta\|^2dt
+ \ge \mathcal R(\tau_0)+Q[(1-\eta_0)^2-9/16]-r_*^2;
+\]
+at half response replace $9/16$ by $1/4$.
+These endpoint inequalities alone would not protect the preceding
+cone; the intermediate version of \eqref{an04rqtv1:reset} is needed.
+Cauchy--Schwarz using $n'=\langle g,\dot\Theta\rangle$ yields only
+$\int\|\dot\Theta\|^2\ge(\eta-\eta_0)^2/\int\|g\|^2$.
+It neither supplies the displayed lower dissipation nor signs
+\eqref{an04rqtv1:face}. Thus subdividing into many small response
+increments does not turn the original loss budget into a stronger
+one. We cannot choose the half-hit alternative over the
+residual-exit alternative on the actual critical trajectory.
+
+\section{What is the unsigned transfer?}
+The correlation at the face has a concrete full-kernel form.
+For data vectors $D,D'$, write the exact two-layer tangent kernel
+\[
+ K_\Theta(D,D')=\int\left[
+ (a^TD)_+(a^TD')_+ I_2+
+ (D^TD'){\bf1}_{a^TD>0}{\bf1}_{a^TD'>0}bb^T\right]\,d\mu .
+\]
+Let $\tilde r_2(D')=r(D')-(1-n)D'_2 e_2$. Then
+\begin{align}
+ \Gamma={}&\frac1{2Q}\E_{D\sim P_2,D'\sim P_1}
+       [D_2 e_2^TK_\Theta(D,D')r(D')]\nonumber\\
+ &+\frac1{2Q}\E_{D,D'\sim P_2}
+       [D_2 e_2^TK_\Theta(D,D')\tilde r_2(D')] .
+ \label{an04rqtv1:coupling}
+\end{align}
+The Gaussian variables in each expectation are independent.
+The weak residual has $\E_{P_2}D_2 e_2^T\tilde r_2=0$.
+This removes a plain regression projection; the selected feature
+kernel in \eqref{an04rqtv1:coupling} remains, so the identity
+does not set the second term to zero. The $P_1$ term is also
+present after the first concept meets a response threshold.
+All expectations are on the actual initialized state. No sign
+on \eqref{an04rqtv1:coupling} follows from positivity of the
+data tangent kernel, which signs its quadratic forms with identical
+data functions rather than this mixed correlation.
+
+\section{Probe forcing if the response passage is reached}
+Fix the deep COD witness $t_0=t_h+s_0$ before $\tau_0$ and retain
+DRR's witness basis $u=r_{t_0}(\xi)/R_0$, $v=(-u_2,u_1)$ and
+$R_0=|r_{t_0}(\xi)|$. In parameter space define
+\[
+ p_B=\nabla_\Theta[u^Tf(\xi)]/q^2,\qquad
+ p_A=\nabla_\Theta[v^Tf(\xi)]/q .
+\]
+The current probe gates are part of these gradients. Their
+integrals against $\dot\Theta$ give the DRR signed motions $B,A$.
+For $g\ne0$ put
+\[
+ b_i=\langle p_i,g\rangle/\|g\|^2,\qquad h_i=p_i-b_i g
+       \quad(i=B,A).
+\]
+On the zero set of $g$ put $b_i=0,h_i=p_i$. The identities below
+are interpreted a.e.; no time derivative of these coefficients is
+taken. All integrals can alternatively be stopped where
+$\|g\|$ exceeds a cutoff and passed to the limit in their combined
+exact expressions. In fact the terms are individually integrable
+on finite time intervals: $|b_i n'|\le\|p_i\|\|\dot\Theta\|$
+and $|\langle h_i,N\rangle|\le\|p_i\|\|\dot\Theta\|$
+since $n'=\langle g,\dot\Theta\rangle$ and $h_i\perp g$.
+Finite-moment feature bounds and dissipation pay these estimates.
+The exact equations are
+\begin{equation}\label{an04rqtv1:probe}
+ B' = b_B n'+\langle h_B,N\rangle,\qquad
+ A' = b_A n'+\langle h_A,N\rangle .
+\end{equation}
+They follow from $\dot\Theta=a g+N$ and
+$n'=a\|g\|^2+\Gamma$, without any monotonicity of the response.
+Thus the very residual update $N$ whose projection $\Gamma$
+controls the response tube also has a probe-sensitive component
+orthogonal to $g$. SPM's actual signed sources are included in
+this update. Bounding $\Gamma$ alone does not bound the two
+orthogonal correlations.
+
+For any finite terminal time $T$, let
+\[
+ Z_i(T)=\int_{t_0}^T b_i n'\,dt+
+                  \int_{t_0}^T\langle h_i,N\rangle\,dt .
+\]
+Thus $B=Z_B,A=Z_A$, with both populations evolved throughout.
+For the actual learned candidate set $\mathcal T_q$ of DRR
+(the half-response-centered fixed window with the response and
+loss criteria), the remaining exact depth condition is
+\begin{equation}\label{an04rqtv1:depth}
+ \inf_{T\in\mathcal T_q,\ T\ge t_0}
+ \left\{\frac{Z_A(T)^2}{2}+\frac{q^2Z_B(T)^2}{2}
+                            -R_0Z_B(T)\right\}<e_*-e_q(t_0).
+\end{equation}
+An empty set gives no witness. Even proving the half-hit alternative
+in Theorem~\ref{an04rqtv1:alternative} would only prove learning
+at crossing times; aligning a suitable learned interval and
+\eqref{an04rqtv1:depth} would still be required. In particular the
+probe value at the moving small hit $\tau_0$ is not supplied by
+COD's fixed-delay theorem.
+
+The cap $\mathcal R\le r_*^2$ is an order-one data accuracy
+estimate. It permits only
+$\|N\|\le C\sqrt{S\mathcal R}$ by the feature derivative bound,
+$S=\int m\,dl$. Used on the right sides of \eqref{an04rqtv1:probe},
+it does not deliver the $q$ and $q^2$ signed precision. SPM proves,
+on the actual pre-weak entry, large projected-gradient uncertainty
+even after a response measurement is removed. No sign or scaled
+joint bound for these orthogonal correlations is established here.
+A hypothetical positive response slope is therefore insufficient
+to bound the regenerated probe forcing.
+
+\paragraph{Disposition.}
+Two attempts were checked. Restarted loss control gives the exact
+exchange identity but leaves \eqref{an04rqtv1:face} unsigned.
+Projecting onto the actual weak response accounts for that
+exchange but leaves the orthogonal probe forcing in
+\eqref{an04rqtv1:probe} unpaid. The reached alternative is proved;
+we have not proved quarter or half response for this initialization,
+nor a deeper learned swing-by minimum. A violation of the proposed
+residual tube is allowed by the analysis and would obstruct this
+particular cone argument, rather than refuting the true learned
+trajectory. No assertion of which alternative actually occurs is made.
+
+\paragraph{Source ranges.}
+TBW \texttt{an04tbwv1:seed, smallhit} supply this initialization's
+compact Q2 entry and the actual fixed small response hit, with
+constants chosen before small $q$. BRW's physical mass identity
+is global after its reached half mass; its delay is used only
+before that small hit. COD main and trained and SPM early are
+fixed-resident-time results. P exactflow and learning are exact
+finite-noise identities; its finite-moment Gaussian kernel and
+the a.e.\ probe chain rule justify the gradient formulas here.
+WIT and DRR specify the comparator and the measured target window,
+not a critical-family arrival theorem. Both signs of all cone faces
+and the signed residual-face test have been stated. All constants
+may depend on fixed $c,\rho,\zeta$; no empirical or simulated
+trajectory has been used.
+\end{document}

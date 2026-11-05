@@ -1,0 +1,271 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=.9in}
+\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks[2]
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,d}
+\title{The residual-budget barrier: two signed exchange channels}
+\author{E5 continuation, analytic partial result}
+\date{Version 1}
+\begin{document}\maketitle
+
+\paragraph{Disposition.}
+The required barrier for the actual critical trajectory remains open.
+We prove that, up to RQT's reached stopping event, the accumulated
+exchange omitted by a four-regression reduction is $o(1)$.
+Consequently a fixed-size residual exit would require a signed payment
+from two explicit cross-output channels. We neither prove an exit nor
+choose which channel dominates on the initialized path.
+
+\section{Actual initialization and the exact face}
+Use the actual aligned balanced isotropic flow with
+$S_0=cq^{1/\omega}$, fixed $c>0$, $\rho\in[13/20,7/10]$,
+$\lambda=\rho^2$, and $\omega=(1-\lambda)/2$.
+The two populations are $P_1=N(e_1,q^2I)$ and
+$P_2=N(\rho e_2,q^2I)$ with mixture weights $1/2$.
+Write $f(D)=\int W(U^TD)_+\dd l$, $|U|=|W|$,
+$S=\int|U|^2\dd l$, $r=D-f(D)$, and
+$\mathcal L=\frac14\sum_p\E_{P_p}|r|^2$.
+The parameter gradient uses both physical vectors $(U,W)$ and the
+fixed probability label measure $\dd l$.
+Put $Q_1=1+q^2$, $Q=\lambda+q^2$, and
+\[
+ m=\frac{\E_{P_1}D_1f_1}{Q_1},\qquad
+ z=\frac{\E_{P_1}D_1f_2}{Q_1},\qquad
+ h=\frac{\E_{P_2}D_2f_1}{Q},\qquad
+ n=\frac{\E_{P_2}D_2f_2}{Q}.
+\]
+Here $z,h$ are signed cross regressions, and $n$ is the actual weak
+response. None of these is identified with a cohort's radial mass.
+
+RQT supplies an initialized stopping time. Choose its small hit
+$\tau_0$, with $n(\tau_0)=\eta_0>0$, so that, for
+$r_*=\lambda/800$,
+\[
+ \mathcal R(\tau_0)\le r_*^2/16,\qquad
+ \mathcal R=4\mathcal L-Q(1-n)^2.
+\]
+Let $\tau$ be the first subsequent hit of either $n=1/2$ or
+$\mathcal R=r_*^2$. RQT proves $\tau-t_h\le C_c(1+\log(1/q))$
+for sufficiently small $q$. This is a stopping-event theorem and
+does not assert that the half-response event occurs first.
+
+Let $g=\nabla n$, $a=Q(1-n)/2$, and
+$N=\dot\Theta-ag=-\nabla\mathcal R/4$.
+The exact identities, with $\Gamma=\langle g,N\rangle$, are
+\begin{equation}\label{an04recv1:face}
+ \mathcal R'=-4\|N\|^2-2Q(1-n)\Gamma,
+ \qquad
+ \Gamma\ge-\frac{2\|N\|^2}{Q(1-n)}
+ \quad\hbox{on the upper face}.
+\end{equation}
+The inequality is the required nonoutward face test, not a proved
+bound on the critical path. Since $n\le1/2$ before the stop,
+its denominator is strictly positive even if $n$ is not monotone.
+The entry is strictly inside the residual cap. At the simultaneous
+half-response and residual event the target half response is already
+reached; no continuation through that corner is required.
+
+\section{A uniform reduction without a reached angular chart}
+Define the vector shape residuals
+\[
+ e^{(1)}(D)=r(D)-D_1((1-m)e_1-z e_2),\qquad
+ e^{(2)}(D)=r(D)-D_2(-h e_1+(1-n)e_2).
+\]
+Each is orthogonal in its population to the corresponding scalar
+$D_p$, component by component. In particular
+\begin{equation}\label{an04recv1:shapes}
+ \mathcal R=Q_1[(1-m)^2+z^2]+Qh^2+\chi,
+ \qquad
+ 0\le\chi:=\sum_p\E_{P_p}|e^{(p)}|^2
+ \le Cq^2(1+S)^2.
+\end{equation}
+To prove the bound, $f$ is globally $S$-Lipschitz and positively
+homogeneous, hence $r$ is $(1+S)$-Lipschitz and $r(0)=0$.
+On a cluster with center $\mu e_p$, compare $r(D)$ to
+$r(\mu e_p)D_p/\mu$. Their $L^2$ difference is at most
+$Cq(1+S)$. Orthogonal projection onto $D_p$ can only improve
+this bound. This proof is uniform over all gates and all labels.
+
+Write $g_m=\nabla m$, $g_z=\nabla z$, $g_h=\nabla h$.
+For the full feature derivative $J_D$ define
+\[
+ N_{\rm sh}=\tfrac12\sum_p\E_{P_p}J_D^Te^{(p)}(D).
+\]
+Exact population gradient flow gives
+\begin{equation}\label{an04recv1:four}
+ N=\tfrac{Q_1}{2}(1-m)g_m-\tfrac{Q_1}{2}z g_z
+             -\tfrac Q2 h g_h+N_{\rm sh}.
+\end{equation}
+The label-gradient feature bound
+$\|J_D^Tv\|^2\le2S|D|^2|v|^2$, followed by
+Cauchy--Schwarz in data, gives
+\[
+ \|N_{\rm sh}\|\le Cq\sqrt S(1+S),\qquad
+ \|g\|+\|g_m\|+\|g_z\|+\|g_h\|\le C\sqrt S.
+\]
+In using Cauchy--Schwarz here one may first use the operator norm
+of $J_D$, bounded by $\sqrt{2S}|D|$, so only second data moments
+and the $L^2$ shape bound are required.
+
+For a label $U$, put $Q_2=Q$ and define exact Gaussian features
+\[
+ b_p(U)=\frac{\E_{P_p}D_p(U^TD)_+}{Q_p},\qquad
+ v_p(U)=\frac{\E_{P_p}D_pD\,\mathbf1_{U^TD>0}}{Q_p}.
+\]
+The gradient of output-$i$ regression on cluster $p$ has blocks
+$(W_i v_p,e_i b_p)$. Uniformly in $U$,
+\begin{equation}\label{an04recv1:features}
+ |b_p-(U_p)_+|\le Cq|U|,\qquad
+ v_p=\theta_p e_p+O(q),\qquad 0\le\theta_p\le1.
+\end{equation}
+For the first estimate use the Lipschitz property of the positive
+part and $D=\mu e_p+qZ$. For the second choose
+$\theta_p=\E_{P_p}D_p^2\mathbf1_{U^TD>0}/Q_p$.
+The remaining coordinate is at most
+$\sqrt{\E D_p^2\E D_{3-p}^2}/Q_p\le Cq$.
+Thus $|v_1^Tv_2|\le Cq$, including every gate boundary.
+There is no replacement of a Gaussian gate by a hard center gate.
+
+Define two current-population moments
+\begin{equation}\label{an04recv1:moments}
+ C_{12}=\int(U_1)_+(U_2)_+\dd l\ge0,\qquad
+ T_2=\int W_1W_2|v_2(U)|^2\dd l.
+\end{equation}
+The latter is signed. The gradient formulas and
+\eqref{an04recv1:features} show
+\begin{align}
+ \langle g,g_m\rangle
+  &=\int W_1W_2v_1^Tv_2\dd l=O(qS),\nonumber\\
+ \langle g,g_z\rangle
+  &=\int(b_1b_2+W_2^2v_1^Tv_2)\dd l=C_{12}+O(qS),\nonumber\\
+ \langle g,g_h\rangle&=T_2.\label{an04recv1:grams}
+\end{align}
+All terms have their physical label masses. In particular
+$C_{12}\le S/2$, $|T_2|\le CS$; these bounds do not sign $T_2$.
+
+\begin{theorem}[Two-channel exchange on the stopped critical path]
+\label{an04recv1:reduction}
+For the above actual trajectory, on $[\tau_0,\tau]$ one has exactly
+\begin{equation}\label{an04recv1:gamma}
+ \Gamma=-\tfrac12\{Q_1zC_{12}+QhT_2\}+\varepsilon_q,
+ \qquad |\varepsilon_q|\le CqS(1+S).
+\end{equation}
+Here the remainder is explicitly
+\[
+ \varepsilon_q=\tfrac{Q_1}{2}(1-m)\langle g,g_m\rangle
+ -\tfrac{Q_1}{2}z(\langle g,g_z\rangle-C_{12})
+ +\langle g,N_{\rm sh}\rangle.
+\]
+For fixed $c$, as $q\downarrow0$,
+\begin{equation}\label{an04recv1:budget}
+ \sup_{[\tau_0,\tau]}|\varepsilon_q|
+      \le C_c q(1+\log(1/q))^2,
+ \qquad
+ \int_{\tau_0}^{\tau}|\varepsilon_q|\dd t
+      \le C_c q(1+\log(1/q))^3=o(1).
+\end{equation}
+Also $\sup\chi\le C_cq^2(1+\log(1/q))^2=o(1)$.
+\end{theorem}
+\begin{proof}
+Take the inner product of \eqref{an04recv1:four} with $g$ and
+apply \eqref{an04recv1:grams}. Loss decrease bounds $1-m,z,h,1-n$
+uniformly by their exact regression inequalities, with $Q,Q_1$
+bounded away from zero. This proves \eqref{an04recv1:gamma}.
+The global mass identity gives $S(t)\le C(1+t-t_h)$ after the
+reached strong half mass. Apply RQT's logarithmic stopping bound
+to this identity and integrate. No limiting-system estimate has
+been evaluated at a moving time.
+\end{proof}
+
+\section{The inequality still missing, and what an exit must pay}
+Put $B=Q_1zC_{12}+QhT_2$. Equations
+\eqref{an04recv1:face} and \eqref{an04recv1:gamma} give
+\begin{equation}\label{an04recv1:missing}
+ \boxed{\quad B\le\frac{4\|N\|^2}{Q(1-n)}+2\varepsilon_q\quad}
+ \qquad(\mathcal R=r_*^2, n<1/2).
+\end{equation}
+This is exactly the nonoutward condition. A strict margin or a
+local scalar comparison would be needed to turn it into a
+no-exit proof. An unsigned $o(1)$ error alone supplies no such margin.
+The full dissipation in this test is
+\[
+ 4\|N\|^2=
+ \|Q_1(1-m)g_m-Q_1z g_z-Qh g_h+2N_{\rm sh}\|^2.
+\]
+Its mixed terms cannot be dropped to manufacture lower bounds.
+
+If the residual event occurs before half response, its exact signed
+payment is
+\begin{equation}\label{an04recv1:exit}
+ \int_{\tau_0}^{\tau}Q(1-n)B\dd t
+ =r_*^2-\mathcal R(\tau_0)+4\int_{\tau_0}^{\tau}\|N\|^2\dd t
+     +2\int_{\tau_0}^{\tau}Q(1-n)\varepsilon_q\dd t.
+\end{equation}
+In particular its left side is at least
+$15r_*^2/16+4\int\|N\|^2-o(1)$.
+For sufficiently small $q$ it exceeds $7r_*^2/8$.
+At least one of the two \emph{signed integrals}
+\[
+ \int_{\tau_0}^{\tau}Q(1-n)Q_1zC_{12}\dd t,\qquad
+ \int_{\tau_0}^{\tau}Q(1-n)QhT_2\dd t
+\]
+must therefore exceed $7r_*^2/16$. This conclusion does not
+select one of them in advance. It holds only if the residual
+event actually occurs. In particular an accumulated fixed-size
+exit cannot be attributed solely to Gaussian shape residuals or
+to the strong longitudinal mixed term absorbed in $\varepsilon_q$.
+
+The first channel is adverse when the strong-cluster second output
+$z$ is positive: shared positive input activation $C_{12}$ couples
+the still-unlearned weak target into this cross residual. The second
+channel is adverse when the weak-cluster first output $h$ and the
+gate-weighted output product $T_2$ have the same sign. It is their
+product, not either one's magnitude, that matters. These are
+receiver/population correlations in the exact flow, not an
+attribution to a fixed ancestral donor cohort.
+
+\paragraph{Two approaches checked.}
+First, Cauchy--Schwarz gives
+$\Gamma\ge-\|g\|\|N\|$.
+For $N\ne0$ this pays \eqref{an04recv1:face} only if
+$\|N\|\ge a\|g\|$. Neither the small cap nor loss decrease
+gives that lower bound. Completing the square gives only
+$\mathcal R'=a^2\|g\|^2-4\|N+ag/2\|^2$, which also
+leaves the upper face unsigned.
+Second, regression orthogonality removes the shape residuals in
+the ordinary data inner product but leaves the gradient Gram terms
+in \eqref{an04recv1:grams}. Theorem~\ref{an04recv1:reduction}
+pays their approximation errors on the actual stopped interval.
+It leaves the two signed products in \eqref{an04recv1:missing}.
+Positive semidefiniteness of the Gram matrix supplies no sign or
+required size comparison for these mixed entries. The argument
+stops here after these two approaches. No actual violation of
+\eqref{an04recv1:missing} has been proved.
+
+\paragraph{Scope, constants, and source matching.}
+The analytic estimates in \eqref{an04recv1:shapes}--\eqref{an04recv1:grams}
+hold directly at finite noise, without chart or ancestry restrictions.
+BRW's global mass identity and TBW/RQT's initialized small hit and
+stopping bound supply their time interval. Their constants, the
+chosen $b,\eta_0$, and the small-noise threshold may depend on fixed
+$c,\rho$; $r_*^2=\lambda^2/640000$ does not depend on $c$.
+No uniformity as $c\to0$ or $c\to\infty$ is asserted.
+FWC's deep-family continuation is not invoked for this critical
+entrance. COD's resident estimates remain statements for each fixed
+$s$; no COD constant is claimed at $s=t_\eta-t_h$.
+The new logarithmic estimates above concern only the physical
+regression reduction on the stopped interval, not the scaled probe.
+They prove neither half response nor retention of the learned
+swing-by advantage. MPB's output-mean mechanism concerns the
+lowering of core output; the same evolving cross outputs here can
+exchange training residual with weak learning. Their existence
+alone does not pay the barrier or the probe-depth inequality.
+No numerical trajectory or empirical premise has been used.
+All prior increments, foundations, checkpoint and remote files
+remain unchanged.
+\end{document}

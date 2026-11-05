@@ -1,0 +1,516 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=.9in}\setlength{\emergencystretch}{1.6em}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}{Lemma}
+\newcommand{\dd}{\,d}\newcommand{\E}{\mathbb E}
+\title{Signed probe motion resolved against the measured weak response}
+\author{AN04, E5 step 6}\date{Version 1}
+\begin{document}\maketitle
+
+\paragraph{Setting and benchmark.}
+Use the actual Gaussian continuum flow with aligned balanced isotropic
+critical initialization $S_0=cq^{1/\omega}$, fixed $c>0$ and
+$(\rho,\zeta)$ on WIT's learned rectangle. Write $\lambda=\rho^2$,
+$\omega=(1-\lambda)/2$, $L=\lambda/2$, $D(s)=e^{Ls}/(1+s)$.
+Use a fixed COD witness $t_0=t_h+s_0$ chosen before $q$ so that
+$e_0=e_q(t_0)<e_*=\min_J\mathcal E_{\rm coh}$ with a strict margin
+for small $q$. Here $e_q=(|r_t(\xi)|^2-1)/(2q^2)$,
+$r_t(z)=z-f_t(z)$, $\xi=(\sin(q\zeta),-\cos(q\zeta))$.
+Set $R_0=|r_{t_0}(\xi)|$, $u=r_{t_0}(\xi)/R_0$ and
+$v=(-u_2,u_1)$. Both vectors are fixed after choosing the witness,
+although they depend on $q$.
+For $G=f_T(\xi)-f_{t_0}(\xi)$ denote the longitudinal and transverse
+changes by $B=u^TG/q^2$ and $A=v^TG/q$, respectively. The target
+set of times is DRR's measured $t_{1/2}+J$, restricted to the two
+response and two cluster-loss criteria; the set is empty if not
+reached. Nothing below assumes a logistic weak seed or imports the
+deep-family passage. Estimates stated through learning apply to any
+such reached finite $T$. They do not prove that a learned time exists.
+
+\section{Two separate signed estimates before weak learning}
+\label{an04spmv1:early}
+Put $H_t=f_{t,1}(\xi)/q$, $V_t=f_{t,2}(\xi)/q^2$.
+For each fixed $s\ge s_0$, along any BRW extraction at $t_h+s$,
+COD gives limits $H(s)=\int(\zeta-x)_+\dd\mu$ and
+$V(s)=\int y(\zeta-x)_+\dd\mu$. Its exposure bound gives
+$0\le H(s)\le C\sqrt{1+s}$, and
+$V(s)\le C-kD(s)$ by COD's signed core bound and positive-Q1 estimate
+(or by its energy bound and $H^2/2-\zeta H\ge-\zeta^2/2$).
+Constants here and below may depend on the fixed family and witness.
+At the witness $u_1/q\to\zeta-H(s_0)$ and $u_2\to-1$ on this
+extraction. More precisely $u_1=O_{s_0}(q)$, $1+u_2=O_{s_0}(q^2)$
+by the fixed-time bounds. Consequently
+\begin{align*}
+ A&\longrightarrow H(s)-H(s_0),\\
+ B&\longrightarrow (\zeta-H(s_0))[H(s)-H(s_0)]-[V(s)-V(s_0)] .
+\end{align*}
+Thus the full fixed-$s$ limsup of $|A|$ is at most $C_{s_0}\sqrt{1+s}$
+and the liminf of $B$ is at least $kD(s)-C_{s_0}\sqrt{1+s}$.
+This proves a signed longitudinal surplus against the transverse
+square in the ordered pre-weak limit. It does not evaluate the
+limits at a positive weak-response hit.
+
+\section{A regression accessible through weak learning}
+Define the auxiliary weak response in the fixed probe directions by
+\[
+ Q=\E_{P_2}(\xi^TD)^2=\rho^2\xi_2^2+q^2,\qquad
+ h(t)=\frac{\E_{P_2}[(\xi^TD)u^Tf_t(D)]}{Q}.
+\]
+Uniformly in time, $h(t)=\mathsf m_2(t)+O_{s_0}(q)$.
+Indeed the training loss decreases along the actual gradient flow,
+so $\|f_t\|_{L^2(P_2)}\le C$ by the initial loss and Gaussian moments.
+Expand the two scalar products about $-e_2$, use $u_1=O_{s_0}(q)$,
+$\xi_1=O(q)$, $u_2,\xi_2=-1+O_{s_0}(q^2)$ and
+$Q=\rho^2+q^2+O(q^2)$. Cauchy--Schwarz gives the claim for this
+order-one response comparison. In the identities below $h$ itself
+is used without approximation. Since $\mathsf m_2(t_0)=o(1)$,
+$\Delta h=h(T)-h(t_0)\ge1/4-o(1)>0$ at any learned time.
+
+Use Cartesian label vectors $\Theta=(U,W)$ with
+$dl=d\alpha/(2\pi)$, $|U|=|W|=\sqrt m$, $d\mu=m\,dl$.
+The inner product below on paths is integrated over $dl\,dt$
+from $t_0$ to $T$, with Euclidean inner product in the two vector
+blocks. For a unit direction $d$, the probe gradient in this space
+at each instant is
+\[
+ g_d=\big((d^TW)\xi\,{\bf1}_{U^T\xi>0},\
+                        d(U^T\xi)_+\big).
+\]
+The corresponding regression gradient is
+\[
+ l=\left((u^TW)\frac{\E_{P_2}[(\xi^TD)D{\bf1}_{U^TD>0}]}{Q},
+         \quad u\,\frac{\E_{P_2}[(\xi^TD)(U^TD)_+]}{Q}\right).
+\]
+These are the two physical-layer derivatives, with a.e.\ chain
+rule at a probe contact. Let $F=\|l\|^2$, $\mathcal D=\|\dot\Theta\|^2$.
+Then $\Delta h=\langle l,\dot\Theta\rangle$, and $\mathcal D$ is
+the drop in population training loss on this interval by gradient
+flow. At a learned $T$, $F>0$, $F\ge(\Delta h)^2/\mathcal D$, and
+$0<\beta=\Delta h/F\le\mathcal D/\Delta h\le C$ with $C$
+independent of $T,q$ for small $q$. No monotonicity of $h$ was used.
+
+\paragraph{Gate integrals of the response component.}
+Write $a=U/|U|$, $b=W/|W|$, $z=a^T\xi$, and ignore zero masses.
+For $i,j\in\{u,v\}$ define the time-integrated matrix
+\[
+ J_{ij}=\int_{t_0}^T\int_{z>0}(i^Tb)(j^Tb)
+       \frac{\E_{P_2}[(\xi^TD)^2{\bf1}_{a^TD>0}]}{Q}\,d\mu\,dt .
+\]
+Define the scalar direct-output contribution
+\[
+ \Omega=\int_{t_0}^T\int z_+\,
+       \frac{\E_{P_2}[(\xi^TD)(a^TD)_+]}{Q}\,d\mu\,dt,\qquad
+ I_S=\int_{t_0}^T\int d\mu\,dt.
+\]
+Taking the block inner products gives, exactly,
+\begin{equation}\label{an04spmv1:measured}
+ \langle g_u,l\rangle=J_{uu}+\Omega,\qquad
+ \langle g_v,l\rangle=J_{vu},\qquad
+ J\succeq0,\quad |J_{vu}|\le\sqrt{J_{uu}J_{vv}} .
+\end{equation}
+The last two signs are the Gram inequality. There is no sign
+assignment to the mixed gate overlap $J_{vu}$.
+
+\begin{lemma}[Both tails of the direct-output term]\label{an04spmv1:overlap}
+For all the reached times in these formulas,
+$-Cq^2 I_S\le\Omega\le C e^{-d_0/q^2}I_S$ for a fixed $d_0>0$.
+\end{lemma}
+\begin{proof}
+It suffices to bound each unit donor. If $a_2\ge0$ and $z>0$,
+then $a_2\le Cq$ and $z\le Cq$, since $\xi_2$ stays bounded
+away from zero on its negative side. The weak-cluster activation
+has $L^2$ norm at most $\rho a_2+q\le Cq$. If $a_2<0$ then
+$z_+\le C(q+|a_2|)$ and its weak activation has norm
+$q\| (Z-\rho |a_2|/q)_+\|_2$ for standard normal $Z$.
+By Cauchy--Schwarz and the Gaussian tail, this is at most
+$Cq\exp[-(\rho |a_2|/q)^2/8]$.
+Multiplying by $z_+$ and $\|\xi^TD\|_2/Q$ gives $Cq^2$ in
+both cases. If $z\le0$ the term vanishes. For the positive side
+$\xi^TD$ has mean $\rho\xi_2\le-\rho/2$ and standard deviation
+$q$, so its positive-part $L^2$ norm is exponentially small;
+the other factor has bounded norm. This proves both bounds with
+the actual mass and elapsed time retained.
+\end{proof}
+
+\paragraph{Signed bounds on the actual motions.}
+Let $\Pi^\perp$ be the orthogonal projection off the single path
+$l$ on $[t_0,T]$, set $p_B=g_u/q^2$, $p_A=g_v/q$,
+$\Sigma_{ij}=\langle\Pi^\perp p_i,\Pi^\perp p_j\rangle$
+for $i,j=B,A$, and
+\[
+ \mathcal D_\perp=\mathcal D-(\Delta h)^2/F,\qquad
+ Z_i=\langle \Pi^\perp p_i,\,\dot\Theta-\beta l\rangle .
+\]
+All the quantities are calculated on the critical trained trajectory.
+For every finite learned $T$ one has
+\begin{align}
+ B&=\beta(J_{uu}+\Omega)/q^2+ Z_B,&
+ A&=\beta J_{vu}/q+Z_A,\label{an04spmv1:split}\\
+ |d_B Z_B+d_A Z_A|&\le
+ \sqrt{\mathcal D_\perp\,d^T\Sigma d}
+ &&(d=(d_B,d_A)^T\in\mathbb R^2). \label{an04spmv1:ellipse}
+\end{align}
+Indeed $\dot\Theta-\beta l$ has squared norm $\mathcal D_\perp$;
+pair it with any linear combination of the projected probe gradients.
+In particular, writing $r_i=\sqrt{\mathcal D_\perp\Sigma_{ii}}$,
+\begin{align*}
+ \beta J_{uu}/q^2-C\beta I_S-r_B
+ &\le B\le\beta(J_{uu}+C e^{-d_0/q^2}I_S)/q^2+r_B,\\
+ \beta J_{vu}/q-r_A&\le A\le\beta J_{vu}/q+r_A .
+\end{align*}
+The response-associated input term in $B$ is favorable at a
+learned endpoint. The direct-output term is paid only per unit mass
+per unit time. The decomposition uses one path projection over the
+whole interval, not a division by $\dot h$ or a positive-time-weight
+assumption on the instantaneous weak response. The correlations $Z_i$
+include all sources of motion invisible to that one integrated
+regression measurement.
+
+\section{Which part of the Gaussian training field drives the motion?}
+The path projection above is a measurement identity. A separate
+instantaneous decomposition identifies the source terms of the
+actual gradient flow. Write $h_1(D)=D_1$, $h_2(D)=\xi^TD$,
+$Q_p'=\E_{P_p} h_p^2$ and define the full-vector regressions
+\[
+ c_p=\E_{P_p}[h_p r_t(D)]/Q_p',\qquad
+ \epsilon_p(D)=r_t(D)-c_p h_p(D).
+\]
+Thus $c_1=(1-\mathsf m_1,-r_{21})$ in the physical basis, with
+P's convention $r_{21}=\E_{P_1}[D_1(f_2-D_2)]/(1+q^2)$.
+Write $c_2=\alpha u+\delta v$. Uniformly in actual time,
+\begin{equation}\label{an04spmv1:cross}
+ \alpha=1-\mathsf m_2+O_{s_0}(q),\qquad
+ \delta=\E_{P_2}[D_2 f_{t,1}(D)]/(\rho^2+q^2)+O_{s_0}(q).
+\end{equation}
+For the first formula subtract $h(t)$ from
+$\E[(\xi^TD)u^TD]/Q$. For the second, $v=e_1+O(q)$ and
+$\xi=-e_2+O(q)$, $\E D_1D_2=0$ on $P_2$; the uniform loss bound
+controls the remaining errors. Below we use the exact regressions,
+not these $O(q)$ approximations inside scaled time integrals.
+In particular $\alpha\ge1/3$ from $t_0$ through the first exact
+half-response hit for small $q$, without requiring monotonicity
+of the trajectory. There is no such claimed lower bound after the hit.
+
+Let $j_{ij}(t)$ and $\omega_t$ be the instantaneous integrands in
+$J_{ij}$ and $\Omega$. For the strong cluster put
+\begin{align*}
+ d_1&=\int z_+\E_{P_1}[(a^TD)_+D_1]\,d\mu,\qquad
+ M_1=\int_{z>0}bb^T\E_{P_1}[(\xi^TD)D_1{\bf1}_{a^TD>0}]\,d\mu,\\
+ V_1&=(d_1I_2+M_1)c_1/2,\qquad S=\int d\mu .
+\end{align*}
+All lower-case kernels here are instantaneous. With
+$\epsilon_p$ as defined above, direct insertion in the exact probe row
+gives for $i=u,v$
+\begin{equation}\label{an04spmv1:sources}
+ i^T\dot f_t(\xi)=
+ i^TV_1+\tfrac Q2\{\alpha j_{iu}+\delta j_{iv}
+                        +\omega_t\,i^Tc_2\}+E_i,\qquad
+ E_i=\tfrac12\sum_p\E_{P_p}[i^Tk_t(\xi,D)\epsilon_p(D)] .
+\end{equation}
+In particular the finite-noise physical weak residual, and not only
+the measured path projection, gives a positive longitudinal input
+contribution $Q\alpha j_{uu}/2$ before half response.
+The mixed angular contribution is $\delta j_{uv}$ longitudinally
+and $\alpha j_{vu}$ transversely. In the transverse equation
+$\delta j_{vv}$ has the sign of the cross regression.
+
+\paragraph{Actual bounds on the centered fields.}
+Because $f_t$ is $S$-Lipschitz and $|f_t(z)|\le S|z|$,
+\[
+ \|\epsilon_p\|_{L^2(P_p)}\le C q(1+S).
+\]
+Indeed fit $h_p$ by the vector coefficient $r_t(\mu_p)/h_p(\mu_p)$
+at the cluster center $\mu_1=e_1$ or $\mu_2=\rho e_2$.
+The denominator is bounded away from zero, and the Lipschitz
+and Gaussian deviation bounds give the displayed error for this
+candidate; least squares only decreases it. On $P_1$ subtract
+$(a_1)_+D_1$ from $(a^TD)_+$ in the direct part since
+$\E_{P_1}D_1\epsilon_1=0$. Their $L^2$ difference is $O(q)$
+by Lipschitz continuity about $e_1$. Also
+$\|\xi^TD\|_{L^2(P_1)}=O(q)$. Both centered strong terms are
+therefore at most $C q^2(1+S)S$ in absolute value. On $P_2$ the
+direct term costs $Cq^3(1+S)S$ by the opposite-gate estimate in
+Lemma~\ref{an04spmv1:overlap}. For its angular part Cauchy--Schwarz
+first on data and then on labels gives
+\begin{equation}\label{an04spmv1:centered}
+ |E_i|\le C q^2(1+S)S+
+             Cq(1+S)\sqrt{S j_{ii}},\qquad i=u,v .
+\end{equation}
+Here the second term retains the overlap with the actual receiver
+gates; no independence of $\epsilon_2$ and those gates is used.
+
+For example, on the portion with $\mathsf m_2\le1/2$, the pointwise
+longitudinal bound simplifies to
+\begin{equation}\label{an04spmv1:one}
+ u^T\dot f_t(\xi)\ge
+ u^TV_1+\tfrac{Q\alpha}{4}j_{uu}
+             -C\delta^2 j_{vv}-C q^2(1+S)^2 S .
+\end{equation}
+Use $|j_{uv}|\le\sqrt{j_{uu}j_{vv}}$ and absorb both that product
+times $|\delta|$ and the last term of \eqref{an04spmv1:centered}
+by Young's inequality against the positive angular term. Use
+$\alpha\ge1/3$, the loss bound on $c_2$, and the per-time estimate
+$|\omega_t|\le C q^2 S$. The transverse component has its exact
+signed center $v^TV_1+Q(\alpha j_{vu}+\delta j_{vv}+
+\delta\omega_t)/2$ with the two-sided error
+\eqref{an04spmv1:centered}. Integration divided by $q^2$ and $q$,
+respectively, bounds the motions from the actual witness through
+the hit if reached. Equations \eqref{an04spmv1:sources} and
+\eqref{an04spmv1:centered} also apply after it, retaining both
+signs of $\alpha$. This exhibits an unpaid penalty
+$q^{-2}\int\delta^2 j_{vv}\,dt$ in the one-sided attempt, and an
+unpaid signed $q^{-1}\int\delta j_{vv}\,dt$ in the transverse center.
+A bound on $\mathsf m_2$ alone estimates neither; the strong
+regression term and the integrated centered errors also require
+budgets. The loss bound only gives $\delta=O(1)$. The next theorem tests the
+smaller scale actually needed for a bounded fluctuation budget.
+
+\section{A cross term that actually exceeds a bounded budget}
+\begin{theorem}[Critical initialized flow]\label{an04spmv1:divergence}
+Let $T_q$ be any sequence of reached learned times, or first weak
+half-response hits. Along such a sequence with $q\downarrow0$,
+\[
+ \int_{t_0}^{T_q}\frac{\delta(t)_+}{q}j_{vv}(t)\,dt\to\infty,
+ \qquad
+ \int_{t_0}^{T_q}\frac{\delta(t)^2}{q^2}j_{vv}(t)\,dt\to\infty .
+\]
+In fact their lower bounds are already obtained on fixed pre-weak
+intervals by taking noise small first. The first assertion concerns
+the positive variation of one physical transverse source in
+\eqref{an04spmv1:sources}; the second concerns the nonnegative
+penalty of \eqref{an04spmv1:one}. Neither is the net probe movement.
+\end{theorem}
+\begin{proof}
+First, at each fixed $s=t-t_h$, along BRW extraction,
+\[
+ \frac{\E_{P_2}[D_2 f_{t,1}(D)]}{q(\rho^2+q^2)}
+       \longrightarrow \frac{K_s}{\rho},
+ \qquad K_s=\int K(\rho x)\,d\mu .
+\]
+Indeed a bounded strong donor has $P_2$ activation divided by $q$
+tending to $(Z_1+\rho x)_+$ per unit vector; its output direction
+tends to $e_1$ and $D_2\to\rho$. The right endpoint strips
+of initial length $\eta$ cost $O_s(\eta)$ by the physical bounds
+$|U|,|W|\le C_s$, $|U_2|,|W_2|\le C_s q$ on $P_2$, and the whole
+left mass is $o_s(q)$ by HBD--BRW. Compact-time convergence and
+then strip exhaustion give the assertion. By COD's protected first
+input moment, $K_s/\rho\ge c_3D(s)$. Since the error in
+\eqref{an04spmv1:cross} is at most $C_{s_0}q$ uniformly in time,
+\[
+ \liminf_{q\downarrow0}\delta(t_h+s)/q\ge c_3D(s)-C_{s_0}.
+\]
+The error here does not depend on the later fixed $s$. In particular,
+for all sufficiently large fixed $s$ this lower bound exceeds
+$c_3D(s)/2$. It uses the entire true donor law.
+
+Second, retain the polynomial factor in the core input bound.
+In the limiting logistic resident law set $M=(1+e^{-s})^{-1}$,
+$X_m=\int x\,d\mu$, $Y=\int y\,d\mu$. The BRW rank ceiling
+integrated over $f$ gives
+$(X_m)_+\le C e^{Ls}(1+s)^{-2/3}$ (use $|df|=d\pi$ on Q1,
+its damped $f^{-1/3}$ integral, and the fixed-rank core). The BRW
+budget bounds $Y$ above by the same order. COD's core output
+equation, integrated with the logistic kernel at most one and the
+nonnegative $\rho K(\rho x_a)$ source, yields
+$(y_a)_-\le C e^{Ls}(1+s)^{-2/3}$. For the convolution without
+decay kernel, split the integral of $e^{Lr}(1+r)^{-2/3}$ at $s/2$;
+the earlier piece is exponentially smaller for large $s$, and the
+later piece is bounded by $C e^{Ls}(1+s)^{-2/3}$.
+At $x_a<0$ the exact bottom equation in COD therefore gives
+\[
+ 2x_a'\ge -C e^{Ls}(1+s)^{-2/3}\Phi(\rho x_a).
+\]
+Choose $s_1$ so that $h(s)=s-\frac{2}{3L}\log(1+s)+d$
+has $h'\ge1/2$ for $s\ge s_1$. Enlarge $d$ so $h\ge1$ there,
+$x_a(s_1)>-\sqrt{h(s_1)}$ by COD's uniform lower bound, and
+$C e^{-Ld}/(\rho\sqrt{2\pi})<1/2$. At the only lower face
+$x_a=-\sqrt h$, the Gaussian tail bound
+$\Phi(-z)\le\phi(z)/z$ makes the displayed doubled velocity
+strictly greater than $-h'/\sqrt h$. Hence this lower face holds
+on all finite continuations of the extracted law. Conversely
+$\Phi(-z)\ge c\phi(z)/(1+z)$ for $z\ge0$ by integrating the
+density from $z$ to $z+(1+z)^{-1}$. We obtain
+\[
+ \Phi(\rho x_a)\ge c e^{-Ls}(1+s)^{1/6}\qquad(s\ge s_1).
+\]
+All constants are independent of the extraction; the mass and
+entrance here are precisely BRW's logistic trained limit.
+
+At fixed $s$ the active Q4 core on a compact interior Q4 band
+contributes at least $c\Phi(\rho x_a)$ to the limit inferior of
+$j_{vv}(t_h+s)$. Its radial mass is bounded below independently
+of $s$ by HBD clock. COD gives $x_a\le a_\rho<\zeta$; $v^Tb\to1$,
+and the normalized squared weak Gaussian gate moment tends to
+$\Phi(\rho x_a)$ on this band. This last limit follows at each fixed
+$s$ from $D=(q Z_1,\rho+qZ_2)$ and compact tagged extraction.
+The remaining contributions to $j_{vv}$ are nonnegative.
+
+Combine the lower bounds at each sufficiently large fixed $s$.
+For the two nonnegative integrands of the theorem, the respective
+limit inferiors are at least $c(1+s)^{-5/6}$ and
+$c e^{Ls}(1+s)^{-11/6}$. Integrate first over a fixed
+$[s_2,S]$, $s_2>\max(s_0,s_1)$ sufficiently large, using Fatou's
+lemma. BRW delay puts this interval before $T_q$ for sufficiently
+small $q$. Finally let $S$ increase: both lower integrals diverge.
+There was no angular-field approximation evaluated at $T_q$.
+\end{proof}
+
+\section{A critical-initialization obstruction to the norm estimate}
+\begin{theorem}\label{an04spmv1:width}
+For the fixed COD witness there is $d>0$, independent of small $q$
+and of the finite learned endpoint $T$, such that
+\[
+ \mathcal D_\perp\ge d,\qquad
+ d'{}^T\Sigma d'\ge d q^{-2}|d'|^2\quad(d'\in\mathbb R^2).
+\]
+Thus \eqref{an04spmv1:ellipse}, even after removing the exact
+observed weak-response change and using the actual total loss drop,
+has radii at least of order $1/q$ in both scaled directions.
+This is a lower bound on the uncertainty of the norm estimate.
+It is not a lower bound on either actual signed correlation.
+\end{theorem}
+\begin{proof}
+Work first on the unit interval $I=[t_0,t_0+1]$.
+BRW delay places this interval before every learned $T$ for small
+$q$. HBD--BRW physical bounds give $S\le C$, $|U|,|W|\le C$,
+$|U_2|,|W_2|\le Cq$ uniformly there. Constants in this proof may
+depend on $s_0$. The instantaneous label norm of $l$ is at most
+$Cq$: its input block uses $u^TW=O(q)$ and its output block
+uses $\|(U^TD)_+\|_{L^2(P_2)}=O(q)$. These are all-label estimates.
+
+The following two tagged sets are available uniformly on $I$.
+A compact Q4 core band $C$ has a uniform positive lower radial
+weight and an active probe margin. In the limit its common input
+is $x_a\le a_\rho<\zeta$, so $(U^T\xi)_+\ge c_I q$ and
+$|v^TW|\ge c_I$ for every label in $C$ at small $q$.
+A second compact Q1 band $D_+$ has a uniform inactive margin
+and positive lower radial weight with bounded scaled coordinates.
+For this assertion one cannot reuse a fixed half-mass band at
+arbitrary later times. Instead set the fixed BRW horizon to
+$s_0+1$ and choose a compact Q1 band sufficiently high that
+HBD outer at half mass puts both coordinates above BRW's $R_{s_0+1}$
+with strict slack. Use the BRW protected barrier with entry level
+$d_{\rm gate}>\sqrt2(\zeta+1)$ in its definition. The two faces
+are checked by BRW on this same logistic law and finite horizon;
+they give $x>\zeta+1$ throughout. Bounded charts on the band,
+positive radial weights and the strict gate margins transfer to
+the original $I$ by compact-time tagged extraction and the half-mass
+clock. All choices precede the small-noise limit.
+
+A definite fraction of the squared label norm of $l$ is then on
+$D_+$, on which the probe gradient is zero. Indeed on that compact
+band, in the notation $U=\sqrt m(\cos(qx),\sin(qx))$,
+\[
+ q^{-1}\E_{P_2}[(\xi^TD)(U^TD)_+]/\sqrt m
+           =-\rho K(\rho x)+o(1)
+\]
+uniformly by the two Gaussian coordinates and Lipschitz positive
+part. The output block of $l$ alone gives
+$\|{\bf1}_{D_+} l(t)\|_{\rm lab}^2\ge c_I q^2$.
+The total squared norm is at most $C_I q^2$ as seen above.
+For any probe-gradient combination $p$ (supported on the probe-active
+labels, up to the zero-gate selector), Cauchy--Schwarz on the
+complement of $D_+$ therefore gives, for every coefficient $a$,
+\[
+ \|p(t)-a l(t)\|_{\rm lab}^2\ge c_I\|p(t)\|_{\rm lab}^2 .
+\]
+This is an inequality at each time, hence also holds for the
+constant coefficient chosen by full-path projection.
+
+For $p=d_B p_B+d_A p_A$, take $|d'|=1$.
+On $C$, the output block has magnitude at least $c_I|d_B|/q$
+by orthogonality of $u,v$. The input block of $p_A$ has magnitude
+at least $c_I/q$ there and that of $p_B$ at most $C_I/q$ since
+$|u^TW|\le C_Iq$. If $|d_B|$ is below a sufficiently small fixed
+number, $|d_A|$ is bounded below and the input block of $p$ has
+magnitude at least $c'_I/q$ by the reverse triangle inequality.
+Otherwise the output block suffices. Integration over this fixed
+positive-length band and $I$ yields the stated lower bound on
+$\Sigma$ for every $T$.
+
+Finally the strong response changes by a positive fixed amount on
+$I$ for small $q$. Here is the required original-flow justification.
+On each compact right interior the HBD Gaussian evaluations yield
+$\E_{P_1}[D_1 W_1(U^TD)_+]/(1+q^2)=m+o(1)$ uniformly.
+The omitted right strips have $O_I(\delta)$ cost, by the per-label
+physical bound times their length; the left mass tends to zero by
+HBD--BRW. The true response therefore converges at the two
+endpoints to the logistic values $M(s_0)$ and $M(s_0+1)$.
+Their strict difference, however small for this fixed $s_0$,
+is independent of $q$. The instantaneous parameter gradient of
+this response is bounded in label norm on $I$: differentiate
+$\E_{P_1}[D_1 e_1^Tf_t(D)]/(1+q^2)$ and use $S\le C_I$ and
+Gaussian second moments. Cauchy--Schwarz gives
+$\|\dot\Theta\|_{I}\ge c_I$. Meanwhile $\|\beta l\|_I\le C_I q$,
+using the upper bound on $\beta$ for every learned endpoint.
+The reverse triangle inequality on $I$ bounds
+$\|\dot\Theta-\beta l\|_{[t_0,T]}$ from below by $c_I/2$,
+as required. Early strong training thus spends some dissipation
+outside the weak-response direction even for the actual initialization.
+\end{proof}
+
+\section{Exactly which sign is still missing?}
+For clarity the unmeasured terms have an explicit residual in data
+coordinates. With $k_t(\xi,D)$ the full two-layer probe row of DRR
+and $r_t(D)=D-f_t(D)$, form
+\begin{equation}\label{an04spmv1:residual}
+ W_T=\tfrac12\int_{t_0}^T\!\left\{
+  \E_{P_1}[k_t r_t]+
+  \E_{P_2}\!\left[k_t\left(r_t-2\beta(\xi^TD)u/Q\right)\right]
+                         \right\}dt .
+\end{equation}
+Then $Z_B=u^TW_T/q^2$, $Z_A=v^TW_T/q$.
+Indeed the actual parameter velocity is the adjoint feature gradient
+applied to the full mixture residual. Subtracting $\beta l$ subtracts
+the displayed weak-cluster mode with the factor two required by
+the mixture. Pair against the two probe gradients. Path orthogonality
+to $l$ does not imply orthogonality to a gated probe row. In
+particular the $P_1$ term and the residual remaining on $P_2$ must
+both be included; the latter is not assumed to vanish even when
+the measured weak response is known.
+
+Put $m_*=e_*-e_0>0$, $a_T=\beta J_{vu}/q+Z_A$, and
+$D_T=1+2q^2 e_*-q^2 a_T^2$. The exact remaining inequalities
+for a learned $T$ are
+\begin{equation}\label{an04spmv1:missing}
+ \begin{gathered}
+ D_T>0,\\
+ R_0-\sqrt{D_T}-\beta(J_{uu}+\Omega)
+  < u^T W_T <
+ R_0+\sqrt{D_T}-\beta(J_{uu}+\Omega).
+ \end{gathered}
+\end{equation}
+Use $R_0^2=1+2q^2e_0$ and complete the square in DRR test:
+$(R_0-q^2B)^2+q^2A^2<1+2q^2 e_*$. For the near side of the
+permitted interval one can equivalently rationalize
+$R_0-\sqrt{D_T}=q^2(a_T^2-2m_*)/(R_0+\sqrt{D_T})$.
+Thus the favorable longitudinal input term has a known sign.
+What remains unsigned is the longitudinal action of
+\eqref{an04spmv1:residual} relative to this threshold after the
+actual transverse overlap and transverse residual have been paid.
+There is also no small learned-window bound here on $\Omega/q^2$
+or on $J_{vv}$ integrated through the critical passage.
+The physical-field shortcut that assigns a bounded total budget to
+the positive transverse cross term or the squared longitudinal penalty
+is false by Theorem~\ref{an04spmv1:divergence}. The orthogonal norm
+bound does not deliver the needed scaled accuracy: the sufficient route requiring $r_A,r_B=O_{s_0}(1)$
+fails by Theorem~\ref{an04spmv1:width}. A large favorable center
+could in principle change a sign test; the width result does not
+rule that out, nor does it assert that \eqref{an04spmv1:missing}
+fails on the trained flow. No single bad coordinate or attribution
+to a particular cohort follows from these estimates.
+
+\paragraph{Scope.}
+The actual trained family supplies the witness orientation, both
+tagged bands, the strong and weak responses, and the path and
+dissipation estimates. COD main and trained and BRW field, delay
+and protected tail enter only on fixed resident intervals.
+HBD clock, outer and physical are used on their prescribed right
+ancestry or all-label physical domains. DRR projections and test
+are finite-noise identities, P exactflow and learning use the
+balanced Gaussian continuum with the a.e.\ probe chain rule, and
+WIT supplies only the coherent benchmark. All constants may depend
+on the fixed critical $c,\rho,\zeta,s_0$. No other initialization is
+used to infer a sign. Existence of the critical learned window and
+the strict retention inequality on it remain open.
+\end{document}
