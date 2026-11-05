@@ -1,6 +1,6 @@
 # Roadmap to a unified analytic theory of the ReLU SIM reversal mechanism
 
-**Version 1.46 — November 5, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
+**Version 1.48 — November 5, 2026.** Working roadmap, not a proof and not a merge instruction. No source increment, foundations file, or checkpoint is modified by this document. It supersedes the "recommended next task" parts of `THEORY_HANDOFF_ANALYTICAL_A_B_v2.md` (H2) only where explicitly stated; H2's ground rules, file contracts, and withdrawn-claims ledger remain in force.
 
 **Revision 1.1 (Oct 6).** Records RCET (`AN03_residual_closure_and_eta0_transport_v1`). S0 is rewritten: the v1 scalar fixed point was invalid (it dropped a regenerated $LH$ term), RCET's Volterra closure is conditional on a clock premise, and a candidate repair (Route 3) is described. S4's primary-band bullets are marked proved, with the endpoint-regularized dichotomy. New ledger items 9–11; file map updated.
 
@@ -385,6 +385,31 @@
   - Exact gate Hessian $Dv_2=\gamma_q\,t_Ut_U^T$ with $\gamma_q\ge0$, giving `gate`. GTM later improved its crude $CS/q$ bound to a signed integrated bound.
 - **The open problem in its sharpest form.** At the residual face, sign the projected correlation $\mathcal C_\perp=\langle Pg,Q_1zPg_z+QhPg_h\rangle$ against $\mathcal D_\perp+\beta^2$ along the critical trajectory, then the learned-window probe inequality.
 
+**Revision 1.47 (Nov 5).** Records CE5 (`AN04_initialized_central_E5_v1`), a **proposed** closure of E5 at the central parameters. It is not yet accepted as proved. A reviewer pass found no error in the steps checked, but several steps are compressed and need full proofs and independent review before CE5 is cited as a theorem.
+- **Proposed theorem (trained flow).** $(\rho,\zeta)=(2/3,5\pi/9)$, $S_0=cq^{18/5}$ ($=cq^{1/\omega}$), any fixed $c>0$.
+  - The first half response is finite.
+  - At $T=t_{1/2}+s_*$ all four learning guards hold.
+  - $e_q(T)\to-\infty$, so $e_q(T)<e_*$: E5 in DRR's learned-window sense, at the central parameters.
+- **Route.** It bypasses the residual-cap approach (RQT–PCD):
+  - §2: transverse energy $E'\le QE+C(q\sqrt E+q^2)$ gives a two-sided small-hit clock $\tau-t_h=\ell/L+O(1)$ with bounded mass.
+  - §3: the square completion for $\det F$ gives a fixed loss gap and half response within bounded time.
+  - §4: a charged energy with growth coefficient exactly $Q$, discounted by $e^{L\cdot\ell/L}=1/q$, gives axis separation $(m,z,h,n)\to(1,0,0,N(s))$ and the guards.
+  - §§5–10: the terminal-gate-weighted strong-minus-weak history $G_\alpha$. The core output $W_2\le-ckI$ and the core input reach $U_2\le-dqk\sqrt\ell$; all adverse output is charged by Cauchy–Schwarz. The net is $-F_2/q^2\gtrsim\sqrt\ell\,I(T)/q$ with $I(T)\gg q^{3/4}$.
+- **If verified,** this also closes TBW's clock gap: a learned window exists at the critical scale.
+
+**Revision 1.48 (Nov 5).** Records CE5 v2 (`AN04_initialized_central_E5_v2`), which writes out the five steps v1 left compressed: the cone, charged energy, shrinking bands, retained labels and final continuation. A full reviewer pass found no mathematical error. **E5 is therefore closed at the central parameters, reviewer-checked.** It awaits independent review (Yongyi) before the paper cites it as proved. E5 off the central point stays open.
+- **Theorem (trained flow; `an04ce5v2:main`).** $(\rho,\zeta)=(2/3,5\pi/9)$, $S_0=cq^{18/5}$, any fixed $c>0$, small $q$.
+  - The first half response is finite and $t_{1/2}=t_h+\ell/L+O(1)$.
+  - At $T=t_{1/2}+s_*$: $m\ge\tfrac12$, $n\ge\tfrac14$ and $\mathcal L_j(T)/\mathcal L_j(0)\le169/196$.
+  - $e_q(T)\to-\infty$, so $e_q(T)<e_*$; the unscaled probe loss tends to $1/2$.
+- **What v2 adds over v1.**
+  - The cone is now continued past $t_d$ by loss alone, using TBW `lossbudget` and four Cauchy–Schwarz bounds on $\mathsf R$; the sharpened clock is used only before $t_d$.
+  - The band comparisons are written in the finite-q flow in two phases: initialization to $t_0$, then $t_0$ to the test time.
+  - The retained set $K$ is built with norms of time suprema.
+  - The active-left bound integrates the sum mode backward from $T$.
+  - The constants are given as a table: $R$, then $\delta$, then $b$, then $q$.
+- **Paper consequence.** Theorem 4 can be stated as learned-window E5 at the central parameters, conditional only on independent review. COD stays the fallback. The asymptotic statement covers the canonical family ($c\approx9.65$) as $q\downarrow0$; it gives no value at $q=0.05$.
+
 ---
 
 ## 0. Ground rule: analytic proof only
@@ -432,7 +457,7 @@ Every statement keeps H2's scope labels: exact original-flow result; exact compa
 | E2 | Help from cluster 1 via strong-family output; harm from cluster 2 via strong input rotation; weak output is the residual producer | Leading identities $d_1=-\tfrac12A_\zeta L$, $d_2$ formula; positive-lag theorem | Help proved in the original flow (CPD, deep regime). Deep-regime harm also has a leading target output-rotation part. The empirical "input rotation" attribution (canonical run) needs reconciling with this split |
 | E3 | Lag collapses through the crossover while exposure is roughly steady | Lag ODE; WIT windows | Signs proved; a quantitative "collapse" statement is not |
 | E4 | Crossover ≈1.10–1.15 physical time after weak learning | Selected-orbit timing | Existence proved; the decimal is **[eval]**; two-sided analytic timing optional |
-| E5 | Canonical depth several times the coherent limiting value | B-bridge (AN4) | Open |
+| E5 | Canonical depth several times the coherent limiting value | B-bridge (AN4) | **Closed at the central parameters** (CE5 v2, $S_0=cq^{18/5}$, $e_q(T)\to-\infty$; reviewer-checked, independent review pending). Open off-center |
 | E6 | Persistence through physical time 100 | LP/LPR + AN7 | Limiting done; initialized persistence proved (RTA), diverging horizon, no rate |
 | E7 | Weak amplitude $H_{Q2}$ tracks $(\lambda+q^2)\int(1-\mathsf m_2)$ with a small positive correction | CLOCK amplitude identity; BULK bulk clock | Exact identity done; defect bound conditional |
 | E8 | Weak mass exponent ≈0.576 at strong half-mass (instantaneous mask) | Seed law; compare $1-\lambda=5/9$ at $\rho=2/3$ | Conditional |
@@ -1812,6 +1837,82 @@ Notation: $A_*=\zeta-X$, $Z=X-Y$, $\Phi_x=\Phi(\rho X)$, $\mathsf K_x=\mathsf K(
   - **GTM's $h$-equation, now checkable.** $g_h=(B_m/A)g_m+Pg_h$ gives $h'=(B_m/A)m'+\langle Pg_h,P\dot\Theta\rangle$, and $(w/2)k_h=\tfrac Q2(1-n)h+\tfrac w2(k_h-h)$ gives $a_h$ and $F_h$.
   - **Hygiene.** PCD compiles cleanly with no control characters and a unique prefix.
 
+**Status after CE5 (Nov 5): proposed central E5 closure, under verification.**
+- *Checked by the reviewer.*
+  - **§2.**
+    - The energy inequality: on $P_2$ the Euler rewrite and $(D_1-a)(a-cD_1)\le D_1^2(1-c)^2/4$; $\mathbb E r_2f_2\le Qn(1-n)\le Qn$.
+    - $S'\le Q_1m(1-m)+Qn(1-n)+q^2/2$ and $a_m\ge Q_1m^2/S$ (Euler).
+    - The envelope integrals and both directions of the clock.
+  - **§3.**
+    - The identity $2\gamma\det F=(Q-D_{\mathcal L}+\chi)/Q_1+(m-1+\gamma n)^2+(z-\gamma h)^2+2\gamma(1-\gamma)n$, verified algebraically.
+    - $\dot W=\tfrac12(I-F)Au+N_W$, and $\int uu^\top\succeq(FA)^\top FA/S$ by Cauchy–Schwarz, which gives the Gram bound.
+    - $\sigma_{\min}(FA)\ge\sqrt Q-\sqrt{Q-\Delta}$, and the logarithmic dissipation argument.
+  - **§4.** The pairings $\langle P\Theta,\nabla n\rangle\approx2\int_{J_2^c}W_2(U_2)_+\le2E_J$ and $\langle P\Theta,\nabla z\rangle\approx z$ (one charged factor on each side). The discount $e^{L(\ell/L-b)}=e^{-Lb}/q$; the rank-ceiling squares are integrable; the discounted Q2 seed is $4^\lambda c^{2\omega}/8$.
+  - **§§6–10.**
+    - The $z$ equation from the Gram identities, and $U_2'=\tfrac Q2[(1-n)W_2-hW_1]\theta_2+O(qk)$ from the $\mathsf R$ decomposition.
+    - The moving-band overlap ($\varepsilon^2qe^{Ls}$ against $q(1+s)$, and $q^{2/3}$ against $q^{3/4}$).
+    - The deep-gate speed $q^{3/4+\gamma}\gg q\sqrt\ell$ for $\gamma<1/4$.
+    - The $h_-$ amplification $e^{-2LR}\cdot e^{LR}$; the Cauchy–Schwarz charge of adverse output.
+    - $W_2(T)=W_2(0)-G/2+O(q^2\ell)$, using the shape residual against the feature residual.
+    - Exposure $U^\top\xi\ge dqk\sqrt\ell$ on the core.
+  - **Hygiene.** All cited labels exist; it compiles (needs `lmodern`).
+  - **Numerics.** The session's $e_q(T)=-9.19$ at $q=0.025$ matches the archived C2 global minimum $-9.20$ at $s\approx+10.4$ [empirical, independent run].
+- *Compressed: needs full proofs before acceptance.*
+  1. §4: the iterated limits ($q\downarrow0$, then $b\to\infty$, then Q2 exhaustion) and uniformity in time of the right vertical norm.
+  2. §6: lower comparisons on the shrinking bands, for both layers, including integrated wrong-gate tails.
+  3. §7: from the supremum of norms to the norm of the time supremum; the construction of $K$ with constants relative to $k_\alpha$ and independent of δ.
+  4. §9: the order of choices $R\to\delta\to b\to q$, and that no constant fixed earlier depends on a later choice.
+  5. §2: continuing TBW's cone past $t_d$ with the sharpened clock.
+- *Scope.* Central $(\rho,\zeta)$ only; any fixed $c>0$; constants depend on $c$; no location of the trained minimizer is claimed.
+
+**Status after CE5 v2 (Nov 5): E5 closed at the central parameters (reviewer-checked; independent review pending).**
+- *Checked by the reviewer, step by step.*
+  - **Cone (`conelemma`).**
+    - The four $\mathsf R$ bounds: $\|r\|_{P_1},\|r_1\|_{P_2}\le\lambda/400$ from $4\mathcal L(t_0)\to(1-M)^2+\lambda$ and $\mathbb E_2r_2^2\ge Q(1-n)^2$.
+    - $\mathsf R_{22}\ge Q(1-\eta)/2-o(1)>\lambda/3$ for $\eta<1/8$.
+    - All six faces: $v'>\lambda v/4$; horizontal speeds $\le2\lambda v/100<v'/2$; difference speed $\le(-\lambda/6+\lambda/200)v$.
+    - Continuation: exponential $\int_{J_0}v^2$ against $S\le4+Cu$.
+    - The two clock cases, and $(2/Q)\ell=\ell/L+o(1)$.
+  - **§2–3 identities.**
+    - The Euler rewrite of $E'$ on $P_2$ and the square bound $D_1^2(1-a)^2/4$.
+    - $S'\le Q_1m(1-m)+Qn(1-n)+q^2/2$, which is exact by Cauchy–Schwarz on each cluster.
+    - $a_m\ge Q_1m^2/S$, from $\langle\Theta,\nabla m\rangle=2m$ and $\|\Theta\|^2=2S$.
+    - The $\det F$ square completion, and the $e_q$ expansion, both verified symbolically.
+  - **Axis (`axislemma`).**
+    - Both pairing identities, including the Euler subtraction on $D_j$ for $i\ne j$.
+    - The flow contributions $-Q_1z^2/2-Qh^2/2$.
+    - The discount $e^{Q(t_f-t_b)/2}=O(e^{-Lb}/q)$.
+    - Against COD `ceiling` at 12aa3b6 ($x_++y_+\le C(1+f^{-1/3})e^{Ls-bfs}$, $b=\lambda/16$): the squared, discounted envelope is $C(1+f^{-1/3})^2e^{-\lambda fb/8}$, which is integrable.
+    - The Q2 strip term $c^{2\omega}4^\lambda\int_{Q2\setminus J_2}\sin^2$.
+    - The quantifier order: the conclusions do not depend on $J_2$ or $b$.
+  - **Prefix (§6).**
+    - The $x$, $z$, $h$, $d_1$, $d_2$ equations, each rederived from the four-regression Gram identities and the $\mathsf R$ decomposition; they match term by term.
+    - The integrable entrance cost uses $a_m>L+\varepsilon$; this holds because $m\to1$ and $S\to M(b_0)\le1$.
+    - The Gronwall removal of the terminal weight.
+  - **Bands (`bandlemma`).**
+    - The unit exponents ($5/12$ and $1/12$ in the second test).
+    - Both phase-1 integrals: $O(q)$ horizontal and $O(\varepsilon)$ vertical.
+    - The wrong-gate tails, with $e^{2\omega v}\ge1+2\omega v$.
+    - The lower faces with $a<e^{-M_0-2}/8$ and $a'<\underline ae^{-M_1-2}/4$.
+    - Both contradictions ($e^{Ls}/(1+s)^9$, and $q^{2/3}$ against $q^{3/4}$), and the $B/I$ extension past $t_R$.
+  - **Bulk (`bulklemma`).** Minkowski on the time supremum; Chebyshev on fixed compacts; $D$ independent of $\delta$; the active-left argument (terminal bound $U_2(T)\le Cq|U|$, then the sum mode backward with propagator $e^{Cq(T-t_0)}$).
+  - **Entry and gate (`gatelemma`).**
+    - $\theta_2=1/2$ on $U_2=0$.
+    - Entry speed against the strip: $q^{3/4+\gamma}\gg q\sqrt\ell$ for $\gamma<1/4$.
+    - The $h$ equation from the Gram identities.
+    - The $h_-$ amplification, $e^{-2LR}\cdot e^{LR}$.
+    - The three-way $T_2-h$ split.
+    - The order-of-choices table: no constant fixed earlier depends on a later choice.
+  - **Endpoint.** Favorable Q4 exposure $\ge d_gqk\sqrt\ell$; the Cauchy–Schwarz charge of all adverse output; the threshold $A_q+O(q\sqrt\ell(1+\ell))$; and $\sqrt\ell\,I/q\gg\ell$.
+  - **Imports checked against labels at 12aa3b6:** COD `ceiling`, TBW `bulk`, BRW `budget` and the protected first moment $c_3e^{Ls}/(1+s)$ in BRW's proof of `return`.
+  - **Hygiene.** Compiles to 15 pages with no undefined references, no control characters and a unique prefix; every label the review cites exists.
+- *Non-blocking fixes (fold into the paper rewrite or a v3).*
+  1. **`bulklemma`.** "The entrance pair tends uniformly" should read "in $L^2(dl)$ on compact right interiors". This is what HBD `clock` and BRW tagged transfer give, and Chebyshev needs no more.
+  2. **§7 entry.** "TBW's bulk upper input face" should cite `an04tbwv1:bulk`, and say that each fixed compact lies below the exceptional upper rank $F_b=C\log(1+b)/(1+b)$ once $b$ is large.
+  3. **`gatelemma` lower gate probability.** Restrict to $|D_2-\rho|\le q$ as well as removing $D_2\le\rho/2$. The threshold is then $\rho Dd_g\sqrt\ell(1+o(1))$, which the strict $(\rho Dd_g)^2/2<\gamma$ absorbs.
+  4. **`bulklemma`.** The left initial term is $O(q\ell)$, not $O(q)$, by HBD's left mass bound. This is harmless.
+- *Open.* E5 off the central point; rates in $q$; the location of the trained minimizer. Independent review of CE5 v2 is pending.
+
 
 ### S6. The exact finite-noise lag (AN1)
 
@@ -2120,6 +2221,8 @@ H2 §13 remains in force. Additional items from the October 3–6 increments and
 | REC | `09_canonical_regime_AN04/AN04_residual_exchange_channels_v1.tex` (no review file), prefix `an04recv1:` — E5 continuation: four-regression reduction; $\Gamma$ as two signed cross-output channels plus $o(1)$; missing face inequality; exit payment splits between the channels |
 | GTM | `09_canonical_regime_AN04/AN04_gate_transport_and_transverse_memory_v1.tex` (no review file), prefix `an04gtmv1:` — E5 continuation: signed integrated gate budget, covariance defects controlled by the energy $\Delta$, audit refuting a statewise face implication, exact unpaid cap obligation. Imports PCD (checked in v1.46) |
 | PCD | `09_canonical_regime_AN04/AN04_projected_cross_dissipation_v1.tex` (no review file), prefix `an04pcdv1:` — E5 continuation: projection off the strong-response gradient; exact face form $\mathcal R'=w\mathcal C_\perp-\mathcal D_\perp-\beta^2+\mathcal E_q$; joint Gram bound; exact Gaussian gate Hessian |
+| CE5 | `09_canonical_regime_AN04/AN04_initialized_central_E5_v1.tex` (+ review), prefix `an04ce5v1:` — **Superseded by CE5 v2** (same theorem; five steps were compressed here). Central initialized E5: small-hit clock, loss gap and half response, axis separation and guards, terminal-gate-weighted history giving $e_q(t_{1/2}+s_*)\to-\infty$ at $S_0=cq^{18/5}$ |
+| CE5 v2 | `09_canonical_regime_AN04/AN04_initialized_central_E5_v2.tex` (+ review), prefix `an04ce5v2:` — **E5 at the central parameters, reviewer-checked; independent review pending.** Full proofs of the cone past $t_d$, charged-energy axis separation, the shrinking-band comparisons, the retained set $K$ and the final gate continuation; constants table. Four non-blocking wording fixes are listed in the status block |
 | P1 v1 | `PAPER_theory_section_v1.tex` (+ review), repo root, prefix `p1thv1:` — first ICML theory-section draft (deep theorems, mechanism, linear control, regime map); predates MPB–TBW and the sweep |
 | SGWR | `SIGNED_GROWTH_WEAK_RETENTION_v1.tex` |
 | WIT | `AN06_learned_orbit_witnesses_v2.tex` |
